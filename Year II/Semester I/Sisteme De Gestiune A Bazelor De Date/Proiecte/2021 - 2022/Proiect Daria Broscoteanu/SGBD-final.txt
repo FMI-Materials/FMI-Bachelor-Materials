@@ -1,0 +1,1511 @@
+----------------------------------------------FACULTATE-------------------------------------------
+CREATE TABLE FACULTATE
+                        (cod_facultate NUMBER(5) CONSTRAINT PKEY_FACULTATE PRIMARY KEY,
+                         denumire VARCHAR(100) CONSTRAINT denumire_facultate NOT NULL,
+                         adresa VARCHAR(100) CONSTRAINT adresa_facultate NOT NULL,
+                         telefon VARCHAR(20) CONSTRAINT telefon_facultate NOT NULL,
+                         mail VARCHAR(50) UNIQUE,
+                         fax VARCHAR(50),
+                         cod_postal VARCHAR(6)
+                        );
+                        
+SELECT *
+FROM facultate;
+
+INSERT INTO FACULTATE
+VALUES(1,'Facultatea de Matematica si Informatica','Str. Academiei nr. 14', '+4021–314.28.63', 'secretariat@fmi.unibuc.ro','+4021–314.28.63','010014');
+
+INSERT INTO FACULTATE
+VALUES(2,'Facultatea de Drept','Bd. M. Kog?lniceanu, nr. 36–46', '+4021-312.49.48', 'informatii.drept@drept.unibuc.ro','+4021-312.49.48','050107');
+
+INSERT INTO FACULTATE
+VALUES(3,'Facultatea de Geografie','Bd. Nicolae B?lcescu Nr. 1', '+0421-305.38.10', 'secretariat@geo.unibuc.ro','+0421-305.38.10','010041');
+
+INSERT INTO FACULTATE
+VALUES(4,'Facultatea de Istorie','Bd. Regina Elisabeta nr. 4-12', '+4021-314.35.89', 'secretariat@istorie.unibuc.ro','+4021-314.35.89','030018');
+
+INSERT INTO FACULTATE
+VALUES(5,'Facultatea de Litere','Str. Edgar Quinet, nr. 5-7', '+4021–313.43.36', 'gabriela.dena@litere.unibuc.ro','+4021–313.43.36','010017');
+
+COMMIT;
+
+
+--------------------------------------------------------------ASOCIATIE------------------------------------
+
+
+CREATE TABLE ASOCIATIE(cod_asociatie NUMBER(5) CONSTRAINT PKEY_ASOCIATIE PRIMARY KEY,
+                         denumire VARCHAR(100) CONSTRAINT denumire_asociatie NOT NULL,
+                         data_infiintarii DATE CONSTRAINT data_infiintarii_const NOT NULL,
+                        cod_facultate NUMBER(5),
+                        CONSTRAINT fk_asoc FOREIGN KEY(cod_facultate) REFERENCES FACULTATE(cod_facultate)
+                        );
+                        
+Select *
+from asociatie;
+
+INSERT INTO ASOCIATIE
+VALUES(10,'ASMI', TO_DATE('12-04-2009','DD-MM-YYYY'), 1);    
+
+INSERT INTO ASOCIATIE
+VALUES(11,'ASD', TO_DATE('17-06-2011','DD-MM-YYYY'), 2); 
+
+INSERT INTO ASOCIATIE
+VALUES(12,'ASG', TO_DATE('02-08-2012','DD-MM-YYYY'), 3);
+
+INSERT INTO ASOCIATIE
+VALUES(13,'ASID', TO_DATE('18-05-2008','DD-MM-YYYY'), 4); 
+
+INSERT INTO ASOCIATIE
+VALUES(14,'ASL', TO_DATE('14-07-2010','DD-MM-YYYY'), 5);  
+
+COMMIT;
+
+
+
+      
+------------------------------------SECTIE-----------------------------          
+
+CREATE TABLE SECTIE(cod_sectie NUMBER(5) CONSTRAINT PKEY_SECTIE PRIMARY KEY,
+                    denumire VARCHAR(100) CONSTRAINT denumire_serie NOT NULL,
+                    cod_facultate NUMBER(5),
+                     CONSTRAINT fk_sect FOREIGN KEY(cod_facultate) REFERENCES FACULTATE(cod_facultate)
+
+                    );
+                    
+Select *
+from sectie;
+
+INSERT INTO SECTIE
+VALUES(20,'Informatica', 1);
+
+INSERT INTO SECTIE
+VALUES(21,'Matematica', 1);
+
+INSERT INTO SECTIE
+VALUES(22,'Calculatoare si Tehnologia Informatiei', 1);
+
+INSERT INTO SECTIE
+VALUES(23,'Drept Privat', 2);
+
+INSERT INTO SECTIE
+VALUES (24,'Drept Public',2);
+
+INSERT INTO SECTIE
+VALUES (25,' Drept Penal',2);
+
+
+------------------------------------------------SERIE-------------------------
+
+CREATE TABLE SERIE(cod_serie NUMBER(5) CONSTRAINT PKEY_SERIE PRIMARY KEY,
+                    denumire VARCHAR(100) CONSTRAINT denumire_sectie NOT NULL,
+                    cod_sectie NUMBER(5),
+                    CONSTRAINT fk_ser FOREIGN KEY( cod_sectie) REFERENCES SECTIE(cod_sectie)
+
+                    );
+                    
+Select *
+from serie;
+
+INSERT INTO SERIE
+VALUES(30,'13', 20);
+
+INSERT INTO SERIE
+VALUES(31,'14', 20);
+
+INSERT INTO SERIE
+VALUES(32,'15', 20);
+
+INSERT INTO SERIE
+VALUES(33,'16', 21);
+
+INSERT INTO SERIE
+VALUES (34,'11',22);
+
+INSERT INTO SERIE
+VALUES (35,'12',22);
+
+
+
+-------------------------------------------------GRUPA----------------------------------------------
+
+
+CREATE TABLE GRUPA(cod_grupa NUMBER(5) CONSTRAINT PKEY_GRUPA PRIMARY KEY,
+                    denumire VARCHAR(100) CONSTRAINT denumire_grupa NOT NULL,
+                    cod_serie NUMBER(5),
+                    CONSTRAINT fk_grupa FOREIGN KEY( cod_serie) REFERENCES SERIE(cod_serie)
+
+                    );
+                    
+select *
+from grupa;
+
+INSERT INTO GRUPA
+VALUES(40,'131', 30);
+
+INSERT INTO GRUPA
+VALUES(41,'132', 30);
+
+INSERT INTO GRUPA
+VALUES(42,'133', 30);
+
+INSERT INTO GRUPA
+VALUES(43,'141', 31);
+
+INSERT INTO GRUPA
+VALUES(44,'142', 31);
+
+INSERT INTO GRUPA
+VALUES(45,'143', 31);
+
+INSERT INTO GRUPA
+VALUES(46,'144', 31);
+
+INSERT INTO GRUPA
+VALUES(47,'151', 32);
+
+INSERT INTO GRUPA
+VALUES(48,'152', 32);
+
+COMMIT;
+                    
+-------------------------------------STUDENT---------------------------------
+
+CREATE TABLE STUDENT(
+                         cod_student NUMBER(5) CONSTRAINT PKEY_STUDENT PRIMARY KEY,
+                         nume VARCHAR(100) CONSTRAINT nume_student NOT NULL,
+                         prenume VARCHAR(100) CONSTRAINT prenume_student NOT NULL,
+                         data_nasterii DATE CONSTRAINT data_nasterii_const NOT NULL,
+                         sex VARCHAR(10) CONSTRAINT sex_const NOT NULL,
+                         nationalitate VARCHAR(30) CONSTRAINT nat_const NOT NULL,
+                         telefon VARCHAR(20) CONSTRAINT telefon_student NOT NULL,
+                         mail VARCHAR(50) UNIQUE,
+                         cod_asociatie NUMBER(5),
+                          CONSTRAINT fk_student FOREIGN KEY( cod_asociatie) REFERENCES ASOCIATIE(cod_asociatie)
+                        );                    
+                    
+Select *
+from student;
+
+INSERT INTO STUDENT 
+VALUES(51,'Nimara', 'Dan', TO_DATE('12-04-2000','dd-mm-yyyy'),'masculin','roman','0743234789', 'dnimara@gmail.com', 10);
+
+INSERT INTO STUDENT 
+VALUES(52,'Dima', 'Oana', TO_DATE('26-01-2000','dd-mm-yyyy'),'feminin','roman','0757674789', 'dima.oana26@gmail.com', 10);
+
+INSERT INTO STUDENT 
+VALUES(53,'Miu', 'Adania', TO_DATE('14-01-2001','dd-mm-yyyy'),'feminin','roman','0756789901', 'adania.miu@gmail.com', null);
+
+INSERT INTO STUDENT 
+VALUES(54,'Gherghescu', 'Andreea', TO_DATE('27-09-2001','dd-mm-yyyy'),'feminin','roman','0778901456', 'gh.andreea@gmail.com', 10);
+
+INSERT INTO STUDENT 
+VALUES(55,'Pascu', 'Adrian', TO_DATE('15-08-2001','dd-mm-yyyy'),'masculin','roman','0767891056', 'pascu.adi@gmail.com', 10);
+
+INSERT INTO STUDENT 
+VALUES(56,'Baciu', 'Daniel', TO_DATE('24-06-2001','dd-mm-yyyy'),'masculin','roman','0748913234', 'dani.baciu@gmail.com', 10);
+
+INSERT INTO STUDENT 
+VALUES(57,'Guleama', 'Dan', TO_DATE('17-07-2001','dd-mm-yyyy'),'masculin','roman','0767458910', 'dan.guleama@gmail.com', null);
+
+INSERT INTO STUDENT 
+VALUES(58,'Marton', 'Sergiu', TO_DATE('15-02-2001','dd-mm-yyyy'),'masculin','roman','0742561340', 'sergiu.marton@gmail.com', null);
+
+INSERT INTO STUDENT 
+VALUES(59,'Vultur', 'Sofia', TO_DATE('10-12-2001','dd-mm-yyyy'),'feminin','roman','0755678923', 'sofi.vultur@gmail.com', null);
+
+INSERT INTO STUDENT 
+VALUES(60,'Fritz', 'Raluca', TO_DATE('11-10-2001','dd-mm-yyyy'),'feminin','roman','0765678432', 'fritz.ralu@gmail.com', 10);
+
+----------------------------------------------INSCRIERE------------------------------------------------
+
+
+
+CREATE TABLE INSCRIERE(cod_student NUMBER(5)  CONSTRAINT pk_c_stundent REFERENCES STUDENT(cod_student),
+                    data_inscrierii DATE CONSTRAINT data_inscr NOT NULL,
+                    cod_grupa NUMBER(5)CONSTRAINT pk_c_grupa REFERENCES GRUPA(cod_grupa) ,
+                    CONSTRAINT pk_compus_inscr primary key(cod_grupa,cod_student)
+                    );
+                    
+select *
+from inscriere;
+
+INSERT INTO INSCRIERE
+VALUES(51,  TO_DATE('01-10-2020','dd-mm-yyyy'), 40);
+
+INSERT INTO INSCRIERE
+VALUES(52,  TO_DATE('01-10-2020','dd-mm-yyyy'), 41);
+
+INSERT INTO INSCRIERE
+VALUES(53,  TO_DATE('01-10-2020','dd-mm-yyyy'), 40);
+
+INSERT INTO INSCRIERE
+VALUES(54,  TO_DATE('01-10-2019','dd-mm-yyyy'), 43);
+
+INSERT INTO INSCRIERE
+VALUES(60,  TO_DATE('01-10-2019','dd-mm-yyyy'), 43);
+
+INSERT INTO INSCRIERE
+VALUES(59,  TO_DATE('01-10-2019','dd-mm-yyyy'), 44);
+
+INSERT INTO INSCRIERE
+VALUES(58,  TO_DATE('01-10-2019','dd-mm-yyyy'), 43);
+
+INSERT INTO INSCRIERE
+VALUES(57,  TO_DATE('01-10-2019','dd-mm-yyyy'), 42);
+
+INSERT INTO INSCRIERE
+VALUES(56,  TO_DATE('01-10-2018','dd-mm-yyyy'), 45);
+
+INSERT INTO INSCRIERE
+VALUES(55,  TO_DATE('01-10-2018','dd-mm-yyyy'), 45);
+
+---------------------------------------------------PROFESOR--------------------------------------------------
+
+
+CREATE TABLE PROFESOR(
+                         cod_profesor NUMBER(5) CONSTRAINT PKEY_profesor PRIMARY KEY,
+                         nume VARCHAR(100) CONSTRAINT nume_prof NOT NULL,
+                         prenume VARCHAR(100) CONSTRAINT prenume_prof NOT NULL,
+                         telefon VARCHAR(20) CONSTRAINT telefon_prof NOT NULL,
+                         mail VARCHAR(50) UNIQUE
+                         
+                        ); 
+select *
+from profesor;
+
+INSERT INTO PROFESOR
+VALUES(100,  'Popescu','Ion', '0756789546','ion.popescu@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(101,  'Ionescu','Irina', '0745678923','irina.ionescu@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(102,  'Avram','Bianca', '0745678213','bianca.avram@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(103,  'Branescu','Robert', '0789456234','robbranescu@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(104,  'Enache','Teodora', '0723563781','enache.teo@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(105,  'Boboc','Stefania', '0723157368','boboc.stefania@gmail.com');
+
+COMMIT;
+
+----------------------------------------------------------------CONTRACT------------------------------
+
+CREATE TABLE CONTRACT(cod_facultate NUMBER(5) CONSTRAINT pk_c_fac REFERENCES FACULTATE(cod_facultate),
+                    data_inceput DATE CONSTRAINT data_inc NOT NULL,
+                    cod_profesor NUMBER(5) CONSTRAINT pk_c_prof REFERENCES PROFESOR(cod_profesor),
+                    salariu NUMBER CONSTRAINT sal_const NOT NULL,
+                    CONSTRAINT pk_compus_cont primary key(cod_facultate,cod_profesor)
+                    );
+                    
+Select *
+from contract;
+
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-08-2018','dd-mm-yyyy'), 100, 5400);
+
+
+INSERT INTO CONTRACT
+VALUES(2, TO_DATE('01-07-2018','dd-mm-yyyy'), 101, 5200);
+
+INSERT INTO CONTRACT
+VALUES(3, TO_DATE('01-06-2017','dd-mm-yyyy'), 100, 5400);
+
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-06-2017','dd-mm-yyyy'), 102, 4500);
+
+INSERT INTO CONTRACT
+VALUES (1, TO_DATE('01-06-2017','dd-mm-yyyy'), 103, 4200);
+
+INSERT INTO CONTRACT
+VALUES (1,TO_DATE('01-06-2017','dd-mm-yyyy'), 104, 4700);
+
+INSERT INTO CONTRACT
+VALUES (1,TO_DATE('01-06-2019','dd-mm-yyyy'), 105, 4700);
+
+INSERT INTO CONTRACT
+VALUES (4,TO_DATE('01-06-2016','dd-mm-yyyy'), 104, 5400);
+
+INSERT INTO CONTRACT
+VALUES (5,TO_DATE('02-08-2015','dd-mm-yyyy'), 102, 5700);
+
+INSERT INTO CONTRACT
+VALUES (5,TO_DATE('13-07-2016','dd-mm-yyyy'), 104, 3600);
+
+INSERT INTO CONTRACT
+VALUES (2,TO_DATE('19-06-2017','dd-mm-yyyy'), 102, 3800);
+
+--------------------------------------------------------SALA----------------------------------------------------
+
+CREATE TABLE SALA(cod_sala NUMBER(5) CONSTRAINT PKEY_sala PRIMARY KEY,
+                    denumire VARCHAR(30) CONSTRAINT denumire_sala NOT NULL,
+                    locatie VARCHAR(50) CONSTRAINT locatie_sala NOT NULL
+                    );
+
+select *
+from sala;
+
+INSERT INTO SALA
+VALUES (200,'Amfiteatrul Titulescu', 'Str. Alexandru Lapusneanu, nr.11');
+
+INSERT INTO SALA
+VALUES (201,'Amfiteatrul Haret', 'Str. Ion Minulescu, nr.12');
+
+INSERT INTO SALA
+VALUES (202,'Amfiteatrul Pompeiu', 'Str. Stefan cel Mare, nr.201');
+
+INSERT INTO SALA
+VALUES (203,'Amfiteatrul Moisil', 'Str. Lebedei, nr.304');
+
+INSERT INTO SALA
+VALUES (204,'Amfiteatrul Lalescu', 'Str. Herastrau, nr.215');
+
+INSERT INTO SALA
+VALUES (205,'Amfiteatrul Ghika', 'Splaiul Independentei, nr.5');
+
+INSERT INTO SALA
+VALUES (206,'Amfiteatrul Barbilian', 'Str. Unirii, nr.20');
+
+--------------------------------------------------------CURS---------------------------------------------
+
+CREATE TABLE CURS(cod_curs NUMBER(5) CONSTRAINT PKEY_curs PRIMARY KEY,
+                    denumire VARCHAR(50) CONSTRAINT denumire_curs NOT NULL
+                    );
+
+select *
+from curs;
+
+INSERT INTO CURS
+VALUES (300, 'Arhitectura sistemelor de calcul');
+
+INSERT INTO CURS
+VALUES (301, 'Gandire Critica si Etica Academica');
+
+INSERT INTO CURS
+VALUES (302, 'Limba si Literatura Engleza');
+
+INSERT INTO CURS
+VALUES (303, 'Programare Orientata pe Obiecte');
+
+INSERT INTO CURS
+VALUES (304, 'Educatie Fizica');
+
+INSERT INTO CURS
+VALUES (305, 'Baze de Date');
+
+INSERT INTO CURS
+VALUES (306, 'Istoria Religiilor');
+
+INSERT INTO CURS
+VALUES (307, 'Chimie organica');
+
+-------------------------------------------------------EXAMEN----------------------------------------------
+CREATE TABLE EXAMEN(cod_examen NUMBER(5) CONSTRAINT PKEY_examen PRIMARY KEY,
+                    forma VARCHAR(30) CONSTRAINT forma_const NOT NULL,
+                    cod_curs NUMBER(5),
+                    CONSTRAINT fk_examen FOREIGN KEY( cod_curs) REFERENCES CURS(cod_curs)
+                    );
+select *
+from examen;
+
+CREATE SEQUENCE SEQ_EXAM
+INCREMENT by 10
+START WITH 400
+MAXVALUE 10000
+NOCYCLE;
+
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Examen Scris', 300);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Examen Scris', 301);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Examen Scris', 302);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Interviu', 303);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Interviu', 304);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Proiect', 305);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Proiect', 306);
+
+INSERT INTO EXAMEN
+VALUES (SEQ_EXAM.NEXTVAL, 'Examen Scris', 307);
+
+----------------------------------------------------PROMOVEAZA------------------------------------------
+
+CREATE TABLE PROMOVEAZA(
+                        nota NUMBER(5,2) CONSTRAINT nota_const NOT NULL,
+                        cod_student  NUMBER(5) CONSTRAINT pk_c_s REFERENCES STUDENT(cod_student),
+                        cod_examen NUMBER(5) CONSTRAINT pk_c_e REFERENCES EXAMEN(cod_examen),
+                        CONSTRAINT pk_compus_prom primary key(cod_student,cod_examen)
+                        );
+
+select *
+from promoveaza;
+
+             
+INSERT INTO PROMOVEAZA
+VALUES (10,51, 410);
+
+INSERT INTO PROMOVEAZA
+VALUES (10,52, 470);
+
+INSERT INTO PROMOVEAZA
+VALUES (8.5,53, 480);
+
+INSERT INTO PROMOVEAZA
+VALUES (7.5,54, 480);
+
+INSERT INTO PROMOVEAZA
+VALUES (9.5,55, 430);
+
+INSERT INTO PROMOVEAZA
+VALUES (8,56, 470);
+
+INSERT INTO PROMOVEAZA
+VALUES (7.5,53, 460);
+
+INSERT INTO PROMOVEAZA
+VALUES (9.3,55,460);
+
+INSERT INTO PROMOVEAZA
+VALUES (10,60, 470);
+
+INSERT INTO PROMOVEAZA
+VALUES (10,60, 420);
+
+INSERT INTO PROMOVEAZA
+VALUES (8.7, 51, 430);
+
+INSERT INTO PROMOVEAZA
+VALUES (5.6, 60, 460);
+
+INSERT INTO PROMOVEAZA
+VALUES (8.7, 59, 420);
+
+INSERT INTO PROMOVEAZA
+VALUES (7.7, 57, 470);
+
+---------------------------------------------------ORAR---------------------------------------------------------
+CREATE TABLE ORAR(cod_grupa NUMBER(5) CONSTRAINT pk_c_gr REFERENCES GRUPA(cod_grupa),
+                  cod_curs  NUMBER(5) CONSTRAINT pk_c_curs REFERENCES CURS(cod_curs),
+                  cod_profesor NUMBER(5) CONSTRAINT pk_c_ REFERENCES PROFESOR(cod_profesor),
+                  cod_sala NUMBER(5) CONSTRAINT pk_c_sala REFERENCES SALA(cod_sala),
+                  CONSTRAINT pk_compus_orar primary key(cod_grupa, cod_curs,cod_profesor,cod_sala)
+                  );
+                  
+select *
+from orar;
+
+INSERT INTO ORAR
+VALUES (40,300,100,200);
+
+INSERT INTO ORAR
+VALUES (41,303,102,201);
+
+INSERT INTO ORAR
+VALUES (42,305,105,205);
+
+INSERT INTO ORAR
+VALUES (43,300,103,202);
+
+INSERT INTO ORAR
+VALUES (44,302,102,203);
+
+INSERT INTO ORAR
+VALUES (45,303,101,202);
+
+INSERT INTO ORAR
+VALUES (46,305,101,201);
+
+COMMIT;
+
+
+select * from sala;
+-- 6 .Formula?i în  limbaj  natural o problem? pe care s? orezolva?i folosind unsubprogram stocatcare s? utilizeze dou?tipuride colec?ie studiate. Apela?i subprogramul.
+select *
+from grupa;
+select * from serie;
+select * from sectie;
+select * from facultate;
+select * from student;
+
+
+-- pentru o facultate al carei nume este dat, pentru fiecare amfiteatru, afisati studentii ai caror grupe desfasoara ore in amfiteatrul curent sau afisati 'nu exista'
+-- daca pentru grupa x nu exista studenti care se aiba ore in amfiteatrul y
+
+
+CREATE OR REPLACE PROCEDURE Ex6 (denumirefac FACULTATE.denumire%TYPE)
+AS 
+    TYPE tabl_idx IS TABLE OF sala%rowtype INDEX BY PLS_INTEGER;
+    amfiteatre tabl_idx;
+    
+    TYPE tip_lista_nested IS TABLE OF grupa%rowtype;
+    grupe tip_lista_nested := tip_lista_nested();
+    
+    TYPE tabl_index IS TABLE OF VARCHAR(200) INDEX BY PLS_INTEGER;
+    v_nume tabl_index;
+
+    numar NUMBER(6);
+BEGIN
+    SELECT *
+    BULK COLLECT INTO amfiteatre
+    FROM sala;
+    
+    SELECT COUNT(*)
+    INTO numar
+    FROM grupa g, sectie sect, serie ser, facultate f
+    WHERE g.cod_serie = ser.cod_serie and ser.cod_sectie = sect.cod_sectie and sect.cod_facultate = f.cod_facultate
+    AND UPPER(f.denumire) LIKE  UPPER(denumirefac) AND ROWNUM <= 1000;
+    
+    grupe.extend(numar + 1);
+    
+     SELECT g.cod_grupa, g.denumire, g.cod_serie
+     BULK COLLECT INTO grupe
+    FROM grupa g, sectie sect, serie ser, facultate f
+    WHERE g.cod_serie = ser.cod_serie and ser.cod_sectie = sect.cod_sectie and sect.cod_facultate = f.cod_facultate
+    AND UPPER(f.denumire) LIKE  UPPER('Facultatea de Matematica%');
+    
+    FOR i IN amfiteatre.first..amfiteatre.last LOOP
+        DBMS_OUTPUT.PUT_LINE('Amfiteatrul ' || amfiteatre(i).denumire);
+        DBMS_OUTPUT.PUT_LINE('----------------------------------------------------');
+        
+        FOR j IN grupe.first..grupe.last LOOP
+            DBMS_OUTPUT.PUT_LINE('Grupa ' || grupe(j).denumire);
+            DBMS_OUTPUT.PUT_LINE('---------------------');
+            SELECT s.nume || ' ' || s.prenume
+            BULK COLLECT INTO v_nume
+            FROM student s, orar o, inscriere ins
+            WHERE s.cod_student = ins.cod_student and ins.cod_grupa = grupe(j).cod_grupa and o.cod_grupa = grupe(j).cod_grupa and amfiteatre(i).cod_sala = o.cod_sala;
+            IF v_nume.count > 0 THEN
+            numar := 0;
+                FOR k in v_nume.first..v_nume.last LOOP
+                    numar := numar + 1;
+                    DBMS_OUTPUT.PUT_LINE(numar || '. ' || v_nume(k));
+                END LOOP;
+            END IF;
+            IF v_nume.count = 0 
+                THEN DBMS_OUTPUT.PUT_LINE('Nu exista');
+                END IF;
+            DBMS_OUTPUT.NEW_LINE;
+            DBMS_OUTPUT.NEW_LINE;
+        END LOOP;
+    END LOOP;
+    
+    
+END;
+/
+
+BEGIN
+    Ex6('Facultatea de Matematica si Informatica');
+END;
+/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from examen;
+select * from promoveaza;
+select * from curs;
+-- pentru examenele care au ca forma 'Examen Scris'
+-- afisati studentii care le-au promovat cu nota mai mare de 7
+
+CREATE OR REPLACE PROCEDURE Ex7 (tip_examen examen.forma%TYPE, nota_examen promoveaza.nota%TYPE)
+AS 
+   CURSOR cursuri (cod curs.cod_curs%TYPE) IS
+                SELECT denumire
+                FROM curs
+                WHERE cod_curs = cod;
+    
+    CURSOR examene (tip_examen examen.forma%TYPE) IS
+                SELECT cod_examen, cod_curs
+                FROM examen
+                WHERE UPPER(forma) LIKE UPPER(tip_examen);
+                
+    CURSOR studenti (cod examen.cod_examen%TYPE ) IS
+                SELECT s.nume || ' ' || s.prenume || ' a obtinut nota ' || p.nota as result
+                FROM promoveaza p, student s
+                WHERE p.cod_student = s.cod_student AND p.cod_examen = cod AND p.nota >= nota_examen;
+        
+    den curs.denumire%TYPE;
+    cod curs.cod_curs%TYPE;
+BEGIN
+    
+    FOR examen in examene(tip_examen) LOOP
+        OPEN cursuri(examen.cod_curs);
+            FETCH cursuri INTO den;
+            DBMS_OUTPUT.PUT_LINE('Cursul ' || den);
+            DBMS_OUTPUT.PUT_LINE('------------------------');
+        CLOSE cursuri;
+        
+        FOR student IN studenti(examen.cod_examen) LOOP
+            DBMS_OUTPUT.PUT_LINE(student.result);
+        END LOOP;
+        
+        DBMS_OUTPUT.NEW_LINE;
+        DBMS_OUTPUT.NEW_LINE;
+    END LOOP;
+    
+    
+END;
+/
+
+BEGIN
+    Ex7('Examen Scris', 7);
+END;
+/
+SELECT *
+FROM profesor;
+SELECT *
+FROM orar;
+-- 8 
+-- pentru un prenume al unui profesor dat, determinati numarul de facultati la care acesta este angajat 
+-- daca prenumele lui apare de cel putin doua ori, selectand doar facultatile care cifra 1 in codul postal
+
+-- pentru exemplul acesta, o sa mai introduc cateva date in tabelele profesor si contract
+INSERT INTO PROFESOR
+VALUES(106,  'Georgescu','Ion', '0745678923','ion.geo@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(107,  'Visan','Irina', '0726357985','irina.visan@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(108,  'Paduraru','Bianca', '0722537253','bianca.pad@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(109,  'Irinescu','Robert', '0721548293','robertiri@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(110,  'Ene','Teodora', '0723234545','ene.teo@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(111,  'Baciu','Stefania', '0719323354','bstefania@gmail.com');
+COMMIT;
+
+INSERT INTO PROFESOR
+VALUES(112,  'Iorga','Flavius', '0745678291','iflav@gmail.com');
+
+INSERT INTO PROFESOR
+VALUES(113,  'Enescu','Violeta', '0745678291','vio.enescu@gmail.com');
+COMMIT;
+---
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-08-2018','dd-mm-yyyy'), 113, 5400);
+
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-08-2018','dd-mm-yyyy'), 111, 5400);
+
+INSERT INTO CONTRACT
+VALUES(4, TO_DATE('01-07-2018','dd-mm-yyyy'), 108, 5200);
+
+INSERT INTO CONTRACT
+VALUES(3, TO_DATE('01-06-2017','dd-mm-yyyy'), 107, 5400);
+
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-06-2017','dd-mm-yyyy'), 109, 4500);
+
+INSERT INTO CONTRACT
+VALUES (1, TO_DATE('01-06-2017','dd-mm-yyyy'), 110, 4200);
+
+INSERT INTO CONTRACT
+VALUES (1,TO_DATE('01-06-2017','dd-mm-yyyy'), 106, 4700);
+
+INSERT INTO CONTRACT
+VALUES (1,TO_DATE('01-06-2019','dd-mm-yyyy'), 107, 4700);
+
+INSERT INTO CONTRACT
+VALUES (4,TO_DATE('01-06-2016','dd-mm-yyyy'), 108, 5400);
+
+INSERT INTO CONTRACT
+VALUES (2,TO_DATE('02-08-2015','dd-mm-yyyy'), 111, 5700);
+
+INSERT INTO CONTRACT
+VALUES (5,TO_DATE('13-07-2016','dd-mm-yyyy'), 111, 3600);
+
+INSERT INTO CONTRACT
+VALUES (5,TO_DATE('19-06-2017','dd-mm-yyyy'), 108, 3800);
+COMMIT;
+select * from contract;
+select * from profesor;
+
+CREATE OR REPLACE FUNCTION Ex8(cod profesor.cod_profesor%TYPE) RETURN NUMBER 
+IS 
+    nr_facultati NUMBER;
+    TYPE tip_tabel IS TABLE OF contract%rowtype INDEX BY PLS_INTEGER;
+    tabel tip_tabel;
+    pren profesor.prenume%type;
+    --exceptii
+    NEGATIVE_NUMBER EXCEPTION;
+    NO_DATA_FOUND1 EXCEPTION;
+    NO_DATA_FOUND2 EXCEPTION;
+
+BEGIN 
+    IF cod < 0 THEN -- codul profesorului nu e valid
+        RAISE NEGATIVE_NUMBER;
+    END IF;
+    
+    SELECT *
+    BULK COLLECT INTO tabel
+    FROM contract
+    WHERE cod_profesor = cod;
+    
+    IF SQL%NOTFOUND THEN
+        RAISE NO_DATA_FOUND1;
+    END IF;
+    
+    SELECT prenume
+    INTO pren
+    FROM profesor 
+    WHERE cod_profesor = cod;
+    
+    SELECT COUNT(f.cod_facultate)
+    INTO nr_facultati
+    FROM facultate f 
+    JOIN contract c ON (c.cod_facultate = f.cod_facultate)
+    WHERE c.cod_profesor = cod
+    AND (SELECT COUNT(prenume)FROM profesor WHERE UPPER(prenume) LIKE UPPER(pren) ) >= 2
+    AND cod_postal LIKE '%1%';
+    
+    IF nr_facultati = 0  THEN
+        RAISE No_DATA_FOUND2;
+    ELSE RETURN nr_facultati;
+    END IF;
+    
+    EXCEPTION
+        WHEN NEGATIVE_NUMBER THEN
+            DBMS_OUTPUT.PUT_LINE('Codul profesorului nu poate sa fie negativ!');
+            RETURN -1;
+        WHEN NO_DATA_FOUND1 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista profesorul cu codul ' || cod || ' in tabela contract!');
+            RETURN -1;
+        WHEN NO_DATA_FOUND2 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista facultati care sa indeplineasca acele conditii!');
+            RETURN -1;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Codul de eroare: '  || SQLCODE);
+            DBMS_OUTPUT.PUT_LINE('Mesajul erorii: ' || SQLERRM); 
+            RETURN -1;
+END;
+/
+
+DECLARE 
+    numar NUMBER;
+    cod profesor.cod_profesor%type := &cod;
+BEGIN
+    numar := Ex8(cod);
+    DBMS_OUTPUT.PUT_LINE(numar);
+    IF numar > -1 THEN
+        DBMS_OUTPUT.PUT_LINE('Rezultatul pentru profesorul cu codul ' || cod ||' este: ' || numar );
+    END IF;
+END;
+/
+SET SERVEROUTPUT ON;
+
+select * from sala;
+-- ex 9
+-- pentru un student al carui nume este dat, afisez cursurile la care e inscris, luandu le in calcul doar pe cele desfasurate in amfiteatre
+-- cu litera i in denumire
+-- mai fac o inserare in tabela student pentru a exemplifica eroarea de too many rows
+
+INSERT INTO STUDENT 
+VALUES(61,'Nimara', 'Irina', TO_DATE('19-03-2000','dd-mm-yyyy'),'feminin','roman','0756428912', 'irina_nim@gmail.com', 10);
+COMMIT;
+INSERT INTO STUDENT 
+VALUES(62,'Teodorescu', 'Karla', TO_DATE('19-03-2002','dd-mm-yyyy'),'feminin','roman','0753212342', 'karlateo@gmail.com', 10);
+COMMIT;
+
+CREATE OR REPLACE PROCEDURE Ex9(nume_student student.nume%type)
+AS 
+    TYPE tabel_index IS TABLE OF curs.denumire%type INDEX BY PLS_INTEGER;
+    den_curs tabel_index;
+    TYPE tabel_index_studenti IS TABLE OF student%rowtype INDEX BY PLS_INTEGER;
+    studenti tabel_index_studenti;
+    
+    NO_DATA_FOUND1 EXCEPTION;
+    NO_DATA_FOUND2 EXCEPTION;
+    TOO_MANY_ROWS1 EXCEPTION;
+    
+BEGIN
+    SELECT *
+    BULK COLLECT INTO studenti
+    FROM student
+    WHERE UPPER(nume) = UPPER(nume_student);
+    IF SQL%NOTFOUND THEN
+        RAISE NO_DATA_FOUND1;
+    END IF;
+    
+    IF studenti.count >= 2 THEN
+        RAISE TOO_MANY_ROWS1;
+    END IF;
+    
+    SELECT c.denumire
+    BULK COLLECT INTO den_curs
+    FROM curs c JOIN orar o ON (o.cod_curs = c.cod_curs)
+    JOIN sala s ON (o.cod_sala = s.cod_sala)
+    JOIN grupa g on (o.cod_grupa = g.cod_grupa)
+    JOIN inscriere i ON (i.cod_grupa = g.cod_grupa)
+    JOIN student stud ON (stud.cod_student = i.cod_student)
+    WHERE UPPER(stud.nume) = UPPER(nume_student)
+    AND s.denumire LIKE '%i%';
+    
+    IF den_curs.count = 0 THEN
+        RAISE NO_DATA_FOUND2;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Cursurile la care participa studentul cu numele ' || nume_student);
+    FOR i IN den_curs.FIRST..den_curs.LAST LOOP
+        DBMS_OUTPUT.PUT_LINE(den_curs(i));
+    END LOOP;
+    
+    EXCEPTION
+        WHEN NO_DATA_FOUND1 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista studenti care sa aiba acest nume de familie!');
+        WHEN NO_DATA_FOUND2 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista cursuri care sa indeplineasca acele conditii!');
+        WHEN TOO_MANY_ROWS1 THEN
+            DBMS_OUTPUT.PUT_LINE('Exista mai mult de un student cu acel nume!');
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Codul de eroare: '  || SQLCODE);
+            DBMS_OUTPUT.PUT_LINE('Mesajul erorii: ' || SQLERRM); 
+END;
+/
+DECLARE
+    nume student.nume%type := '&nume';
+BEGIN
+    Ex9(nume);
+END;
+/
+SET SERVEROUTPUT ON;
+select * from student;
+-- ex 10
+-- voi realiza un trigger care se va declansa atunci cand vreau sa modific tabela contract cu conditiile
+-- nu pot modifica tabela student in timpul cursurlui de sgbd si de so
+-- nu pot modifica tabela in zilele libere
+
+CREATE OR REPLACE TRIGGER Ex10
+BEFORE INSERT OR UPDATE OR DELETE ON student
+DECLARE 
+   
+BEGIN
+     IF((TO_CHAR(sysdate, 'HH24') BETWEEN 12 AND 16) OR TO_CHAR(sysdate, 'DD-MM') = '01-12' OR TO_CHAR(sysdate, 'DD-MM') = '25-12' OR TO_CHAR(sysdate, 'DD-MM') = '01-01')
+        THEN RAISE_APPLICATION_ERROR(-20001, 'Nu poti modifica tabela in aceasta zi sau in cadrul acestui interval orar!');
+    END IF;
+END;
+/
+
+INSERT INTO STUDENT 
+VALUES(65,'Filote', 'Serban', TO_DATE('08-08-2001','dd-mm-yyyy'),'masculin','roman','0752414789', 'serbanf@gmail.com', null);
+
+
+-- ex 11
+-- voi realiza un trigger care se va declansa atunci cand vreau sa modific tabela contract cu conditiile
+-- nu pot introduce date de inceput ale contractului mai vechi de 1 martie 2012
+-- nu pot incepe contractul cu un profesor intr-o zi libera
+
+CREATE OR REPLACE TRIGGER Ex11
+BEFORE INSERT OR UPDATE OR DELETE ON contract
+FOR EACH ROW
+DECLARE 
+
+BEGIN
+     IF(TO_DATE(:NEW.data_inceput, 'dd-mm-yyyy') <= TO_DATE('01-02-2012', 'dd-mm-yyyy') OR (TO_CHAR(:NEW.data_inceput, 'DD-MM') = '30-11' OR TO_CHAR(:NEW.data_inceput, 'DD-MM') = '01-12' OR TO_CHAR(:NEW.data_inceput, 'DD-MM') = '25-12' OR TO_CHAR(:NEW.data_inceput, 'DD-MM') = '01-01'))
+        THEN RAISE_APPLICATION_ERROR(-20001, 'Probleme cu data de inceput! Aceasta trebuie sa nu fie in zile libere si mai devreme de 1 martie 2012!');
+    END IF;
+END;
+/
+
+INSERT INTO CONTRACT
+VALUES(4, TO_DATE('01-06-2011','dd-mm-yyyy'), 107, 2900);
+
+INSERT INTO CONTRACT
+VALUES(1, TO_DATE('01-01-2017','dd-mm-yyyy'), 108, 4500);
+
+COMMIT;
+
+DROP TRIGGER Ex11;
+
+-- ex 11 trigger pentru mutating error
+-- voi realiza un trigger care se va declasa in momentul in care voi incerca sa atribui cuiva un salariu de 3 ori mai mare decat cel mai mic salariu
+desc contract;
+CREATE OR REPLACE TRIGGER salariu_contract 
+    FOR UPDATE OR INSERT ON contract
+    COMPOUND TRIGGER
+    TYPE r_contract IS RECORD (
+        cod_facultate contract.cod_facultate%type,
+        cod_profesor contract.cod_profesor%type,
+        salariu contract.salariu%type,
+        data_inceput contract.data_inceput%type
+        );
+    TYPE t_contract IS TABLE OF r_contract INDEX BY PLS_INTEGER;
+    
+    tabel t_contract;
+    counter NUMBER := 0;
+    AFTER EACH ROW IS
+    BEGIN
+        tabel(counter).cod_profesor := :OLD.cod_profesor;
+        tabel(counter).cod_facultate := :OLD.cod_facultate;
+        tabel(counter).salariu := :NEW.salariu;
+        tabel(counter).data_inceput := :OLD.data_inceput;
+    END AFTER EACH ROW;
+
+    AFTER STATEMENT IS
+        salariu_maxim NUMBER;
+    BEGIN
+        SELECT MIN(salariu) * 3
+        INTO salariu_maxim
+        FROM contract;
+        
+        FOR ind IN tabel.first..tabel.last LOOP
+            IF salariu_maxim < tabel(ind).salariu
+                THEN 
+                    UPDATE contract
+                    SET salariu = salariu_maxim
+                    WHERE cod_facultate = tabel(ind).cod_facultate AND cod_profesor = tabel(ind).cod_profesor;
+            END IF;
+        END LOOP;
+    END AFTER STATEMENT;
+END;
+/
+COMMIT;
+SELECT * from contract;
+
+UPDATE contract
+SET salariu = 12000
+WHERE cod_profesor = 107 AND TO_DATE(data_inceput, 'dd-mm-yyyy') LIKE TO_DATE('01-06-2011', 'dd-mm-yyyy');
+
+ROLLBACK;
+
+
+
+-----------------------------
+-- ex 12
+-- am creat un trigger care se declanseaza de fiecare data cand se executa operatii ldd
+-- salvez modificarile in tabela modificari_daria
+
+CREATE TABLE modificari_daria (
+                utilizator VARCHAR2(50),
+                nume_bd VARCHAR2(50),
+                eveniment VARCHAR2(50),
+                nume_obiect VARCHAR2(50),
+                tip_obiect VARCHAR2(50),
+                data_realizarii DATE
+                );
+
+select * from modificari_daria;
+CREATE OR REPLACE TRIGGER Ex12
+    AFTER CREATE OR ALTER OR DROP ON SCHEMA
+BEGIN
+    INSERT INTO modificari_daria 
+    VALUES(SYS.LOGIN_USER, SYS.DATABASE_NAME, SYS.SYSEVENT, SYS.DICTIONARY_OBJ_NAME, SYS.DICTIONARY_OBJ_TYPE, SYSDATE);
+END;
+/
+
+CREATE TABLE FRUCTE ( cod_fruct NUMBER(6,2) CONSTRAINT codfruct_pk PRIMARY KEY,
+                      denumire VARCHAR2(60)
+                      );
+                   
+ALTER TABLE FRUCTE 
+ADD ( sezon VARCHAR2(60));
+
+ALTER TABLE FRUCTE
+DROP COLUMN denumire;
+
+DROP TABLE FRUCTE;
+SELECT *
+FROM modificari_daria;
+    
+
+-- 13 pachet
+CREATE OR REPLACE PACKAGE proiect_daria AS
+    PROCEDURE Ex6(denumirefac FACULTATE.denumire%TYPE);
+    PROCEDURE Ex7(tip_examen examen.forma%TYPE, nota_examen promoveaza.nota%TYPE);
+    FUNCTION Ex8(cod profesor.cod_profesor%TYPE) RETURN NUMBER;
+    PROCEDURE Ex9(nume_student student.nume%type);
+END proiect_daria;
+/
+
+CREATE OR REPLACE PACKAGE BODY proiect_daria 
+AS 
+    -- pentru o facultate al carei nume este dat, pentru fiecare amfiteatru, afisati studentii ai caror grupe desfasoara ore in amfiteatrul curent sau afisati 'nu exista'
+-- daca pentru grupa x nu exista studenti care se aiba ore in amfiteatrul y
+
+
+    PROCEDURE Ex6 (denumirefac FACULTATE.denumire%TYPE)
+AS 
+    TYPE tabl_idx IS TABLE OF sala%rowtype INDEX BY PLS_INTEGER;
+    amfiteatre tabl_idx;
+    
+    TYPE tip_lista_nested IS TABLE OF grupa%rowtype;
+    grupe tip_lista_nested := tip_lista_nested();
+    
+    TYPE tabl_index IS TABLE OF VARCHAR(200) INDEX BY PLS_INTEGER;
+    v_nume tabl_index;
+
+    numar NUMBER(6);
+BEGIN
+    SELECT *
+    BULK COLLECT INTO amfiteatre
+    FROM sala;
+    
+    SELECT COUNT(*)
+    INTO numar
+    FROM grupa g, sectie sect, serie ser, facultate f
+    WHERE g.cod_serie = ser.cod_serie and ser.cod_sectie = sect.cod_sectie and sect.cod_facultate = f.cod_facultate
+    AND UPPER(f.denumire) LIKE  UPPER(denumirefac) AND ROWNUM <= 1000;
+    
+    grupe.extend(numar + 1);
+    
+     SELECT g.cod_grupa, g.denumire, g.cod_serie
+     BULK COLLECT INTO grupe
+    FROM grupa g, sectie sect, serie ser, facultate f
+    WHERE g.cod_serie = ser.cod_serie and ser.cod_sectie = sect.cod_sectie and sect.cod_facultate = f.cod_facultate
+    AND UPPER(f.denumire) LIKE  UPPER('Facultatea de Matematica%');
+    
+    FOR i IN amfiteatre.first..amfiteatre.last LOOP
+        DBMS_OUTPUT.PUT_LINE('Amfiteatrul ' || amfiteatre(i).denumire);
+        DBMS_OUTPUT.PUT_LINE('----------------------------------------------------');
+        
+        FOR j IN grupe.first..grupe.last LOOP
+            DBMS_OUTPUT.PUT_LINE('Grupa ' || grupe(j).denumire);
+            DBMS_OUTPUT.PUT_LINE('---------------------');
+            SELECT s.nume || ' ' || s.prenume
+            BULK COLLECT INTO v_nume
+            FROM student s, orar o, inscriere ins
+            WHERE s.cod_student = ins.cod_student and ins.cod_grupa = grupe(j).cod_grupa and o.cod_grupa = grupe(j).cod_grupa and amfiteatre(i).cod_sala = o.cod_sala;
+            IF v_nume.count > 0 THEN
+            numar := 0;
+                FOR k in v_nume.first..v_nume.last LOOP
+                    numar := numar + 1;
+                    DBMS_OUTPUT.PUT_LINE(numar || '. ' || v_nume(k));
+                END LOOP;
+            END IF;
+            IF v_nume.count = 0 
+                THEN DBMS_OUTPUT.PUT_LINE('Nu exista');
+                END IF;
+            DBMS_OUTPUT.NEW_LINE;
+            DBMS_OUTPUT.NEW_LINE;
+        END LOOP;
+    END LOOP;
+    
+    
+    END Ex6;
+    
+    -- pentru examenele care au ca forma 'Examen Scris'
+    -- afisati studentii care le-au promovat cu nota mai mare de 7
+    PROCEDURE Ex7 (tip_examen examen.forma%TYPE, nota_examen promoveaza.nota%TYPE)
+AS 
+   CURSOR cursuri (cod curs.cod_curs%TYPE) IS
+                SELECT denumire
+                FROM curs
+                WHERE cod_curs = cod;
+    
+    CURSOR examene (tip_examen examen.forma%TYPE) IS
+                SELECT cod_examen, cod_curs
+                FROM examen
+                WHERE UPPER(forma) LIKE UPPER(tip_examen);
+                
+    CURSOR studenti (cod examen.cod_examen%TYPE ) IS
+                SELECT s.nume || ' ' || s.prenume || ' a obtinut nota ' || p.nota as result
+                FROM promoveaza p, student s
+                WHERE p.cod_student = s.cod_student AND p.cod_examen = cod AND p.nota >= nota_examen;
+        
+    den curs.denumire%TYPE;
+    cod curs.cod_curs%TYPE;
+BEGIN
+    
+    FOR examen in examene(tip_examen) LOOP
+        OPEN cursuri(examen.cod_curs);
+            FETCH cursuri INTO den;
+            DBMS_OUTPUT.PUT_LINE('Cursul ' || den);
+            DBMS_OUTPUT.PUT_LINE('------------------------');
+        CLOSE cursuri;
+        
+        FOR student IN studenti(examen.cod_examen) LOOP
+            DBMS_OUTPUT.PUT_LINE(student.result);
+        END LOOP;
+        
+        DBMS_OUTPUT.NEW_LINE;
+        DBMS_OUTPUT.NEW_LINE;
+    END LOOP;
+    
+    
+    END Ex7;
+
+    FUNCTION Ex8(cod profesor.cod_profesor%TYPE) RETURN NUMBER 
+IS 
+    nr_facultati NUMBER;
+    TYPE tip_tabel IS TABLE OF contract%rowtype INDEX BY PLS_INTEGER;
+    tabel tip_tabel;
+    pren profesor.prenume%type;
+    --exceptii
+    NEGATIVE_NUMBER EXCEPTION;
+    NO_DATA_FOUND1 EXCEPTION;
+    NO_DATA_FOUND2 EXCEPTION;
+
+BEGIN 
+    IF cod < 0 THEN -- codul profesorului nu e valid
+        RAISE NEGATIVE_NUMBER;
+    END IF;
+    
+    SELECT *
+    BULK COLLECT INTO tabel
+    FROM contract
+    WHERE cod_profesor = cod;
+    
+    IF SQL%NOTFOUND THEN
+        RAISE NO_DATA_FOUND1;
+    END IF;
+    
+    SELECT prenume
+    INTO pren
+    FROM profesor 
+    WHERE cod_profesor = cod;
+    
+    SELECT COUNT(f.cod_facultate)
+    INTO nr_facultati
+    FROM facultate f 
+    JOIN contract c ON (c.cod_facultate = f.cod_facultate)
+    WHERE c.cod_profesor = cod
+    AND (SELECT COUNT(prenume)FROM profesor WHERE UPPER(prenume) LIKE UPPER(pren) ) >= 2
+    AND cod_postal LIKE '%1%';
+    
+    IF nr_facultati = 0  THEN
+        RAISE No_DATA_FOUND2;
+    ELSE RETURN nr_facultati;
+    END IF;
+    
+    EXCEPTION
+        WHEN NEGATIVE_NUMBER THEN
+            DBMS_OUTPUT.PUT_LINE('Codul profesorului nu poate sa fie negativ!');
+            RETURN -1;
+        WHEN NO_DATA_FOUND1 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista profesorul cu codul ' || cod || ' in tabela contract!');
+            RETURN -1;
+        WHEN NO_DATA_FOUND2 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista facultati care sa indeplineasca acele conditii!');
+            RETURN -1;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Codul de eroare: '  || SQLCODE);
+            DBMS_OUTPUT.PUT_LINE('Mesajul erorii: ' || SQLERRM); 
+            RETURN -1;
+    END Ex8;
+
+    PROCEDURE Ex9(nume_student student.nume%type)
+AS 
+    TYPE tabel_index IS TABLE OF curs.denumire%type INDEX BY PLS_INTEGER;
+    den_curs tabel_index;
+    TYPE tabel_index_studenti IS TABLE OF student%rowtype INDEX BY PLS_INTEGER;
+    studenti tabel_index_studenti;
+    
+    NO_DATA_FOUND1 EXCEPTION;
+    NO_DATA_FOUND2 EXCEPTION;
+    TOO_MANY_ROWS1 EXCEPTION;
+    
+BEGIN
+    SELECT *
+    BULK COLLECT INTO studenti
+    FROM student
+    WHERE UPPER(nume) = UPPER(nume_student);
+    IF SQL%NOTFOUND THEN
+        RAISE NO_DATA_FOUND1;
+    END IF;
+    
+    IF studenti.count >= 2 THEN
+        RAISE TOO_MANY_ROWS1;
+    END IF;
+    
+    SELECT c.denumire
+    BULK COLLECT INTO den_curs
+    FROM curs c JOIN orar o ON (o.cod_curs = c.cod_curs)
+    JOIN sala s ON (o.cod_sala = s.cod_sala)
+    JOIN grupa g on (o.cod_grupa = g.cod_grupa)
+    JOIN inscriere i ON (i.cod_grupa = g.cod_grupa)
+    JOIN student stud ON (stud.cod_student = i.cod_student)
+    WHERE UPPER(stud.nume) = UPPER(nume_student)
+    AND s.denumire LIKE '%i%';
+    
+    IF den_curs.count = 0 THEN
+        RAISE NO_DATA_FOUND2;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Cursurile la care participa studentul cu numele ' || nume_student);
+    FOR i IN den_curs.FIRST..den_curs.LAST LOOP
+        DBMS_OUTPUT.PUT_LINE(den_curs(i));
+    END LOOP;
+    
+    EXCEPTION
+        WHEN NO_DATA_FOUND1 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista studenti care sa aiba acest nume de familie!');
+        WHEN NO_DATA_FOUND2 THEN
+            DBMS_OUTPUT.PUT_LINE('Nu exista cursuri care sa indeplineasca acele conditii!');
+        WHEN TOO_MANY_ROWS1 THEN
+            DBMS_OUTPUT.PUT_LINE('Exista mai mult de un student cu acel nume!');
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('Codul de eroare: '  || SQLCODE);
+            DBMS_OUTPUT.PUT_LINE('Mesajul erorii: ' || SQLERRM); 
+    END Ex9;
+
+END proiect_daria;
+/
+
+-- testare package
+EXECUTE proiect_daria.Ex6('Facultatea de Matematica si Informatica');
+EXECUTE proiect_daria.Ex7('Examen Scris', 7);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Rezultat Ex8: ' || proiect_daria.Ex8(111));
+END;
+/
+EXECUTE proiect_daria.Ex9('Dima');
+
+
+-- ex 14
+-- Defini?i un pachet care s? includ? tipuri de date complexe ?i obiecte necesare unui 
+-- flux  deac?iuni integrate, specifice bazei de date definite (minim 2 tipuri de date, minim 2func?ii, minim 2 proceduri).
+select *
+from student;
+select *
+from profesor;
+select *
+from curs;
+select *
+from sala;
+CREATE OR REPLACE PACKAGE Ex14 AS
+    TYPE tip_tabel_orar IS TABLE OF orar%rowtype INDEX BY PLS_INTEGER;
+    tabel_orar tip_tabel_orar;
+    
+    TYPE tip_tabel_sali IS TABLE OF sala.cod_sala%type;
+    tabel_sali tip_tabel_sali := tip_tabel_sali();
+    
+    FUNCTION GetStudentId(nume_student student.nume%type,prenume_student student.prenume%type)
+             RETURN student.cod_student%type;
+    FUNCTION GetGrupa(cod_stud student.cod_student%type)
+             RETURN grupa.cod_grupa%type;
+    FUNCTION GetProfesor(nume_prof profesor.nume%type, prenume_prof profesor.prenume%type)
+             RETURN profesor.cod_profesor%type;
+    FUNCTION GetCurs(denumire_curs curs.denumire%type) 
+             RETURN curs.cod_curs%type;   
+             
+    PROCEDURE GetOrar(
+                nume_student IN student.nume%type,
+                prenume_student IN student.prenume%type,
+                nume_profesor IN profesor.nume%type,
+                prenume_profesor IN profesor.prenume%type,
+                denumire_curs IN curs.denumire%type);
+                
+    PROCEDURE afisSala(cod IN sala.cod_sala%type);
+    
+END Ex14;
+/
+
+CREATE OR REPLACE PACKAGE BODY Ex14 AS
+    FUNCTION GetStudentId(nume_student student.nume%type,prenume_student student.prenume%type)
+             RETURN student.cod_student%type AS
+                v_student_id student.cod_student%type;
+                nr NUMBER(6) := 0;
+             BEGIN
+                DBMS_OUTPUT.PUT_LINE('Caut studentul ' || prenume_student || ' ' || nume_student);
+                SELECT COUNT(cod_student)
+                INTO nr
+                FROM student s
+                WHERE UPPER(s.nume) = UPPER(nume_student) AND UPPER(s.prenume) = UPPER(prenume_student);
+                --DBMS_OUTPUT.PUT_LINE(nr);
+                IF nr > 1 THEN
+                    DBMS_OUTPUT.PUT_LINE('Exista mai multi studenti');
+                    RETURN 0;
+                ELSIF nr = 0 THEN
+                    DBMS_OUTPUT.PUT_LINE('Nu exista studenti');
+                    RETURN 0;
+                ELSE 
+                    SELECT cod_student
+                    INTO v_student_id
+                    FROM student s
+                    WHERE UPPER(s.nume) = UPPER(nume_student) AND UPPER(s.prenume) = UPPER(prenume_student);
+                    
+                    RETURN v_student_id;
+                END IF;            
+    END GetStudentId;
+    
+    FUNCTION GetGrupa(cod_stud student.cod_student%type)
+             RETURN grupa.cod_grupa%type AS
+                v_grupa_id grupa.cod_grupa%type;
+                nr NUMBER(6);
+             BEGIN
+                DBMS_OUTPUT.PUT_LINE('Caut grupa studentului cu codul ' || cod_stud);
+                SELECT COUNT(cod_grupa)
+                INTO nr
+                FROM inscriere s
+                WHERE s.cod_student = cod_stud;
+                
+                IF nr > 1 THEN
+                    DBMS_OUTPUT.PUT_LINE('Exista mai multe grupe');
+                    RETURN 0;
+                ELSIF nr = 0 THEN
+                    DBMS_OUTPUT.PUT_LINE('Nu exista grupe');
+                    RETURN 0;
+                ELSE 
+                    SELECT cod_grupa
+                    INTO v_grupa_id
+                    FROM inscriere s
+                    WHERE s.cod_student = cod_stud;
+                        
+                    RETURN v_grupa_id;
+                END IF;            
+    END GetGrupa;
+    
+    FUNCTION GetProfesor(nume_prof profesor.nume%type, prenume_prof profesor.prenume%type)
+             RETURN profesor.cod_profesor%type AS
+                v_profesor_id grupa.cod_grupa%type;
+                nr NUMBER(6);
+             BEGIN
+                DBMS_OUTPUT.PUT_LINE('Caut profesorul ' || nume_prof || ' ' || prenume_prof);
+                SELECT COUNT(cod_profesor)
+                INTO nr
+                FROM profesor p
+                WHERE p.nume = nume_prof AND p.prenume = prenume_prof;
+                
+                IF nr > 1 THEN
+                    DBMS_OUTPUT.PUT_LINE('Exista mai multi profesori');
+                    RETURN 0;
+                ELSIF nr = 0 THEN
+                    DBMS_OUTPUT.PUT_LINE('Nu exista profesori');
+                    RETURN 0;
+                ELSE 
+                    SELECT cod_profesor
+                    INTO v_profesor_id
+                    FROM profesor p
+                    WHERE p.nume = nume_prof AND p.prenume = prenume_prof;
+                        
+                    RETURN v_profesor_id;
+                END IF;
+    END GetProfesor;
+    
+    FUNCTION GetCurs(denumire_curs curs.denumire%type) 
+             RETURN curs.cod_curs%type AS
+             v_curs_id curs.cod_curs%type;
+                nr NUMBER(6);
+             BEGIN
+                DBMS_OUTPUT.PUT_LINE('Caut cursul ' || denumire_curs);
+                SELECT COUNT(cod_curs)
+                INTO nr
+                FROM curs c
+                WHERE c.denumire = denumire_curs;
+                
+                IF nr > 1 THEN
+                    DBMS_OUTPUT.PUT_LINE('Exista mai multe cursuri');
+                    RETURN 0;
+                ELSIF nr = 0 THEN
+                    DBMS_OUTPUT.PUT_LINE('Nu exista cursuri');
+                    RETURN 0;
+                ELSE 
+                    SELECT cod_curs
+                    INTO v_curs_id
+                    FROM curs c
+                    WHERE c.denumire = denumire_curs;
+                        
+                    RETURN v_curs_id;
+                END IF;
+    END GetCurs;
+    
+    
+    PROCEDURE afisSala(cod IN sala.cod_sala%type) AS
+        den sala.denumire%type;
+        nr NUMBER(6);
+        BEGIN
+            SELECT count(*)
+            INTO nr
+            FROM sala
+            WHERE cod_sala = cod;
+            IF nr = 0 THEN
+                DBMS_OUTPUT.PUT_LINE('Nu exista');
+            ELSE
+                SELECT denumire
+                INTO den
+                FROM sala
+                WHERE cod_sala = cod;
+                
+                DBMS_OUTPUT.PUT_LINE(den);
+            END IF;
+        END afisSala;
+    
+    PROCEDURE GetOrar(
+                nume_student IN student.nume%type,
+                prenume_student IN student.prenume%type,
+                nume_profesor IN profesor.nume%type,
+                prenume_profesor IN profesor.prenume%type,
+                denumire_curs IN curs.denumire%type) AS
+                cod_stud student.cod_student%type;
+                cod_prof profesor.cod_profesor%type;
+                cod_c curs.cod_curs%type;
+                cod_gr grupa.cod_grupa%type;
+                cod sala.cod_sala%type;
+                v_orar orar%rowtype;
+                BEGIN
+                cod_stud := GetStudentId(nume_student, prenume_student);
+                IF cod_stud != 0 THEN
+                    cod_gr := GetGrupa(cod_stud);
+                    cod_prof := GetProfesor(nume_profesor, prenume_profesor);
+                    cod_c := GetCurs(denumire_curs);
+                    IF cod_stud != 0 AND cod_prof != 0 AND cod_c != 0 THEN
+                            --DBMS_OUTPUT.PUT_LINE('Am ajuns aici');
+                        DBMS_OUTPUT.PUT_LINE(cod_prof ||' '|| cod_gr ||' '|| cod_c);
+                        SELECT *
+                        BULK COLLECT INTO tabel_orar
+                        FROM orar o
+                        WHERE o.cod_profesor = cod_prof AND cod_gr = o.cod_grupa AND cod_c = o.cod_curs;
+                        --DBMS_OUTPUT.PUT_LINE(tabel_orar.count);
+                        IF tabel_orar.count > 0 THEN
+                        FOR i in tabel_orar.FIRST..tabel_orar.LAST LOOP
+                           cod := tabel_orar(i).cod_sala;
+                           tabel_sali.extend;
+                           tabel_sali(i) := cod;
+                           --DBMS_OUTPUT.PUT_LINE(cod);
+                        END LOOP;
+                          IF tabel_sali.count > 0 THEN
+                            FOR i in tabel_sali.FIRST..tabel_sali.LAST LOOP
+                                afisSala(tabel_sali(i));
+                            END LOOP;
+                            END IF;
+                        ELSE 
+                            DBMS_OUTPUT.PUT_LINE('Nu se poate');
+                        END IF;
+                    ELSE
+                        DBMS_OUTPUT.PUT_LINE('Nu exista');
+                    END IF;
+                ELSE 
+                    DBMS_OUTPUT.PUT_LINE('Student incorect');
+                END IF;           
+    END GetOrar;
+    
+                
+    
+END Ex14;
+/
+SELECT *
+from orar;
+select *
+from curs
+where cod_curs = 303;
+select *
+from inscriere
+where cod_grupa = 41;
+select *
+from student
+where cod_student = 52;
+select *
+from profesor
+where cod_profesor = 102;
+
+EXECUTE Ex14.GetOrar('Dima', 'Oana', 'Avram', 'Bianca', 'Programare Orientata pe Obiecte');
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(Ex14.GetStudentId('Dima', 'Oana'));
+END;
+/

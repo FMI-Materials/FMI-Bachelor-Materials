@@ -1,0 +1,37 @@
+﻿@{
+
+    ViewBag.Title = "Afisare utilizatori";
+}
+<section class="bg-light py-10">
+    <div class="container">
+
+        <h1>@ViewBag.Title</h1>
+        <hr /><br />
+        @foreach (var user in ViewBag.UsersList)
+        {
+            
+    <div class="panel-body">
+
+        <i class="glyphicon glyphicon-user"></i>&nbsp; Nume: <span class="label label-default">@user.UserName</span>
+        <br /><br />
+        <i class="glyphicon glyphicon-envelope"></i>&nbsp; Email: <span class="label label-default">@user.Email</span>
+        <br /><br />
+
+        @if (@user.PhoneNumber != null)
+        {
+            <i class="glyphicon glyphicon-phone"></i>@:Telefon utilizator:<span class="label label-default">@user.PhoneNumber</span>
+        }
+
+    </div>
+
+            <div class="panel-footer">
+
+                <a class="btn btn-sm btn-success" href="/Users/Edit/@user.Id"><i class="glyphicon glyphicon-edit"></i>&nbsp; Editare utilizator</a>
+                <a class="btn btn-sm btn-primary" href="/Users/Show/@user.Id"><i class="glyphicon glyphicon-eye-open"></i>&nbsp; Vizualizare utilizator</a>
+
+            </div>
+
+            <br /><br />
+        }
+    </div>
+</section>

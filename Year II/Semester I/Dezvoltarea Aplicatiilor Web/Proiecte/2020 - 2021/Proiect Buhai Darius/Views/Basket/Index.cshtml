@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Cos";
+}
+
+<section class="bg-light py-10">
+    <div class="container">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="mb-0">@ViewBag.Title - Magazin Online</h6>
+            <p>Pret total: <span>@ViewBag.TotalPrice lei</span></p>
+        </div>
+        <hr class="mb-4">
+
+        @foreach (var product in ViewBag.Products)
+        {
+            if (product.Approved)
+            {
+                <div class="card post-preview post-preview-featured lift mb-5">
+                    <div class="row no-gutters">
+                        <div class="col-lg-5">
+                            <a href="/Products/Show/@product.ProductId"><div class="post-preview-featured-img" style="background-image: url(&quot;@Url.Content(product.Image)&quot;)"></div></a>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="card-body">
+                                <div class="pb-5">
+                                    <a class="text-dark" href="/Products/Show/@product.ProductId"><h1>@product.Title</h1></a>
+
+                                    <div class="rating-box">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (i <= product.FinalRating)
+                                            {
+                                                <i class="glyphicon glyphicon-star text-warning"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="glyphicon glyphicon-star-empty"></i>
+                                            }
+                                        }
+                                    </div>
+                                    <p>@product.Description</p>
+                                    <span><i class="glyphicon glyphicon-bitcoin"></i> &nbsp;Pret: @product.Price lei</span>
+                                    <br /><span><i class="glyphicon glyphicon-globe"></i> &nbsp;Categorie: @product.Category.CategoryName</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <br />
+
+        <div class="text-center"><a class="btn btn-danger btn-marketing rounded-pill" href="/Basket/Empty"><span class="glyphicon glyphicon-trash"></span>&nbsp; Golese cos</a></div>
+        
+    </div>
+</section>
+

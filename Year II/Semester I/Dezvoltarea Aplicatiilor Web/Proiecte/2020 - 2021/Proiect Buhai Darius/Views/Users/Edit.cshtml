@@ -1,0 +1,54 @@
+﻿@model ProiectDAW.Models.ApplicationUser
+
+@{
+    /**/
+
+    ViewBag.Title = "Editare rol utilizator";
+}
+<header class="page-header page-header-dark bg-img-repeat bg-primary-soft" style="background-image: url(&quot;assets/img/pattern-shapes.png&quot;)">
+    <div class="page-header-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="page-header-title text-black">Editare Utilizator</h1>
+                    <p class="page-header-text" style="color: black!important">Modifica detaliile utlizatorilor cat si drepturile lor.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card rounded-lg text-dark">
+                        <div class="card-header py-4">Detalii Utilizator</div>
+                        <div class="card-body">
+                            @using (Html.BeginForm(actionName: "Edit", controllerName: "Users", routeValues: new { id = @Model.Id }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                @Html.HttpMethodOverride(HttpVerbs.Put)
+                                <div class="form-group">
+                                    @Html.Label("UserName", "Nume utilizator", new { @class = "small text-gray-600" })
+
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control rounded-pill" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Email", "Email utilizator", new { @class = "small text-gray-600" })
+
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control rounded-pill" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("PhoneNumber", "Numar telefon", new { @class = "small text-gray-600" })
+
+                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control rounded-pill" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("newRole", "Selectati rolul", new { @class = "small text-gray-600" })
+
+                                    @Html.DropDownList("newRole", new SelectList(Model.AllRoles, "Value", "Text", ViewBag.userRole), null, new { @class = "form-control rounded-pill" })
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-marketing btn-block rounded-pill mt-2">Modifica date utilizator</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

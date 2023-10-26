@@ -1,0 +1,353 @@
+
+
+#SORTARI
+
+#1.a) Se citește o propoziție cu cuvinte separate prin spațiu. Să se formeze o nouă propoziție cu
+#cuvintele din prima propoziție care au lungime cel puțin 2 ordonate descrescător
+
+p=input()
+cuvinte=[x for x in p.split() if len(x)>=2]
+rez=sorted(cuvinte,key=None,reverse=True)
+print(rez)
+#b) Aceeași cerință ca la a), dar cu cuvintele ordonate descrescător după lungime
+
+
+p=input()
+cuvinte=[x for x in p.split() if len(x)>=2]
+rez=sorted(cuvinte,key=len,reverse=True)
+print(rez)
+
+
+
+#2. a) Se citesc un număr natural n și următoarele informații despre n persoane: cod de cel
+#mult 3 cifre, nume (un singur nume), prenume (un singur prenume), vârsta (informația despre
+#o persoana este dată pe o linie). Să se creeze o listă de tupluri cu 3 elemente cu informațiile
+#despre cele n persoane și să se afișeze lista cu print.
+
+n=int(input())
+l=[]
+for i in range(n):
+    s=input()
+    cod,nume,prenume,varsta=s.split()
+    nume=nume+" "+prenume
+    t=(int(cod),nume,int(varsta))
+    l.append(t)
+print(l)
+#a) Să se afișeze persoanele ordonate după cod și, în caz de egalitate, după nume (pentru o
+#persoană se va afișa codul pe 4 caractere și numele)
+l1=sorted(l,key=lambda t:(t[0],t[1]))
+for x in l1:
+    print(x[0],x[1])
+
+#b) Să se afișeze persoanele ordonate după nume și, în caz de egalitate, după cod (pentru o
+#persoană se va afișa codul pe 4 caractere și numele)
+l1=sorted(l,key=lambda t:(t[1],t[0]))
+for x in l1:
+    print(x[0],x[1])
+#c) Să se afișeze vârsta maximă a unei persoane din listă (folosind max(lista,key))
+ma=max(l,key=lambda t:(t[2]))
+print(ma[2])
+
+---------------------------------------------------------------------------------------------
+
+#MATRICE SI VECTORI
+
+
+#1. Se citesc n, m și o matrice cu n linii si m coloane (numerele sunt date câte unul pe linie).
+#Să se ordoneze crescător elementele de pe prima coloana prin interschimbări de linii și să se
+#afișeze matricea obținută (fiecare element se va afișa pe 5 caractere)
+n=int(input())
+m=int(input())
+a=[]
+for i in range(n):
+    l=[]
+    for j in range(m):
+        x=int(input())
+        l.append(x)
+    a.append(l)
+l=sorted(a,key= lambda e:(e[0]))
+for x in l:
+    print(x)
+
+#2. Se da un număr natural n>2. Să se afișeze primele n linii din triunghiul lui Pascal (daca c
+#este numărul maxim de cifre ale unui număr din triunghi, toate numerele se vor afișa pe c+1
+#caractere)
+n=int(input())
+p=1
+#print(1)
+for j in range(0,n+1):
+    print(1,end=" ")
+    for i in range(1,j+1):
+        p=p*(j-i+1)//i
+        print(p,end=" ")
+    print()
+
+
+
+#4. Se citesc m, n și o matrice cu m linii și n coloane, elementele unei linii fiind date pe o linie
+#(elementele unei linii date pe o linie separate cu spațiu). Să se construiască în memorie și să
+#se afișeze matricea transpusă.
+
+n=int(input())
+m=int(input())
+a=[]
+for i in range(n):
+    s=input()
+    l=[int(x) for x in s.split()]
+    a.append(l)
+at=[]
+for i in range(m):
+    b=[]
+    for j in range(n):
+        b.append(a[j][i])
+    at.append(b)
+print(at)
+
+
+
+#5. Se citește un număr natural N.
+#a) Să se genereze și afișeze o matrice de dimensiune NxN, cu elementele de la 1 la N*N - în
+#ordine crescătoare, de la stânga la dreapta și de sus în jos.
+
+n=int(input())
+a=[[x+n*y+1 for x in range(n)]for y in range(n)]
+print(a)
+#b) Pentru a parcurge elementele matricei în spirală, pornind din colțul din stânga-sus (spre
+#dreapta, în jos, spre stânga, în sus, …), să se obțină întâi o listă având elemente de tip tuplu
+#(linie, coloană) care să reprezinte pozițiile care trebuie parcurse în această spirală.
+l=[]
+m=n-1
+k=0
+while k<m:
+    i=k
+    while i<m:
+        t=(k,i)
+        l.append(t)
+        i=i+1
+    i=k
+    while i<m:
+        t = (i, m)
+        l.append(t)
+        i = i + 1
+    i=m
+    while i>k:
+        t = (m, i)
+        l.append(t)
+        i = i-1
+    i=m
+    while i>k:
+        t = (i, k)
+        l.append(t)
+        i = i-1
+    k=k+1
+    m=m-1
+if m==k:
+    t=(k,k)
+    l.append(t)
+print(l)
+#c) Folosind lista de tupluri de mai sus, să se afișeze elementele din matrice aflate la acele
+#poziții.
+for x in l:
+    i=x[0]
+    j=x[1]
+    print(a[i][j],end=" ")
+
+
+
+
+#6. Ciurul lui Eratostene. Se dă un numar natural n. Să se creeze o listă cu numerele prime
+#mai mici sau egale cu n.
+
+n=int(input())
+import math
+v=[0]*(n+1)
+v[0]=1
+v[1]=1
+for i in range(2,int(math.sqrt(n))):
+    if v[i]==0:
+        for j in range(2,n//i):
+            v[i*j]=1
+l=[]
+for i in range(2,n):
+   if v[i]==0:
+       l.append(i)
+print(l)
+
+
+#7. Se dau două mulțimi cu elementele ordonate crescător (câte una pe linie). Să se determine
+#eficient reuniunea și intersecția celor două mulțimi (fără a folosi set).
+s=input()
+a=[int(x) for x in s.split()]
+p=input()
+b=[int(x) for x in p.split()]
+t=[]
+l=[]
+i=0
+j=0
+n=len(a)
+m=len(b)
+while i<n and j<m:
+    if a[i]<b[j]:
+        l.append(a[i])
+        i = i + 1
+    else:
+        if a[i]==b[j]:
+            l.append(a[i])
+            t.append(a[i])
+            i = i + 1
+            j = j + 1
+        else:
+            l.append(b[j])
+            j = j + 1
+while i<n:
+    l.append(a[i])
+    i = i + 1
+while j<m:
+    l.append(b[j])
+    j = j + 1
+print(l)
+print(t)
+
+
+
+#8. Se citesc: un număr natural n și un șir de n numere naturale.
+#a) Să se afișeze toate perechile distincte de elemente din șir cu suma 0 (2-SUM)
+n=int(input())
+s=input()
+l=[int(x) for x in s.split()]
+print(l)
+l=sorted(l,key=None)
+
+for i in range(n):
+    for j in range(i+1,n):
+        if l[i]+l[j]==0:
+            print(l[i],l[j])
+#b) Să se afișeze toate tripletele de elemente din șir cu suma 0
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if l[i] + l[j] + l[k] == 0:
+                print(l[i], l[j], l[k])
+
+#c) Să se afișeze toate tripletele distincte de elemente din șir cu suma 0 (3-SUM)
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            if l[i] + l[j] + l[k] == 0:
+                print(l[i], l[j], l[k])
+
+
+
+-------------------------------------------------------------------------------------------
+
+#SIRURI DE CARACTERE
+
+#1. Cifrul lui Cezar
+#a) Să se creeze în memorie o listă cu literele mici ale alfabetului și un cuvânt având ca litere
+#toate literele mici ale alfabetului
+
+l=[]
+cuv=""
+for x in range(26):
+    c=chr(ord('a')+x)
+    cuv=cuv+c
+    l.append(c)
+print(l)
+print(cuv)
+
+
+#b) Se citește un text și un număr natural k. Să se afișeze textul cifrat cu cifrul lui Cezar, prin
+#care fiecare literă (!doar literele) este înlocuită cu litera aflată peste 𝑘 poziții la dreapta în
+#alfabet în mod circular (valoarea 𝑘 reprezintă cheia secretă comună pe care trebuie să o
+#cunoască atât expeditorul, cât și destinatarul mesajului criptat).
+
+p=input()
+k=int(input())
+rez=""
+for i in range(0,len(p)):
+    if p[i].isalpha():
+        #print(chr((ord(p[i])+k)-(ord('z')-ord('a'))))
+        if ord(p[i])+k>=ord('z'):
+            rez=rez+chr((ord(p[i])+k)-(ord('z')-ord('a')+1))
+        else:
+            rez=rez+chr((ord(p[i])+k))
+    else:
+        rez=rez+p[i]
+print(rez)
+
+
+#b) Se citește un număr natural k și text criptat cu cifrul lui Cezar cu cheia k. Să se afișeze
+#textul decriptat
+
+p=input()
+k=int(input())
+rez=""
+for i in range(0,len(p)):
+    if p[i].isalpha():
+        #print(chr((ord(p[i])+k)-(ord('z')-ord('a'))))
+        if ord(p[i])-k<ord('a'):
+            rez=rez+chr((ord(p[i])-k)-ord('a')+(ord('z')+1))
+        else:
+            rez=rez+chr((ord(p[i])-k))
+    else:
+        rez=rez+p[i]
+print(rez)
+
+
+#2. Se dă o propoziție care conține cuvinte separate prin separatorii uzuali ( ,.;:). O parte din
+#cuvinte reprezintă numere naturale. Să se determine media aritmetică a cuvintelor din șir care
+#sunt numere. Mai exact, rezultatul va fi un șir de forma: “(nr1+...nr_k)/n=media”, unde
+#nr1,...,nrk sunt numerele care apar în șir și media este afișată cu 2 zecimale.
+
+s=input()
+l=[]
+n=len(s)
+i=0
+sum=0
+while i<n:
+    if s[i].isdigit():
+        nr=0
+        j=i
+        while j<n and s[j].isdigit():
+            nr = nr * 10 + ord(s[i])-ord('0')
+            j=j+1
+        l.append(s[i:j])
+        sum=sum+nr
+        i=j
+    else:
+        i=i+1
+numere=l
+print(numere)
+n=len(l)
+print("({})/{} = {:.2f}".format("+".join(numere),n,sum/n))
+
+
+
+#3. Se citesc doua cuvinte formate doar din litere mici. Să se verifice dacă sunt anagrame
+a=input()
+b=input()
+c=sorted(a,key=None)
+d=sorted(b,key=None)
+if c == d:
+    print(True)
+else:
+    print(False)
+
+
+# Fiind dat un astfel de text în limba păsărească, se poate obține textul original?
+#Dacă da, scrieți un program care primind un text în limba păsărească construiește în memorie
+#și afișează textul inițial.
+
+s=input()
+rez=""
+voc="aeiou"
+l=len(s)
+i=0
+while i < l:
+    if i>0 and s[i]=='p' and s[i-1]==s[i+1] and s[i-1] in voc:
+        i=i+2
+    else:
+        rez=rez+s[i]
+        i=i+1
+print(rez)
+

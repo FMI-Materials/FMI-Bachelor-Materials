@@ -1,0 +1,270 @@
+#1. Se citește un șir de caractere și un număr natural k. Să se șteargă din s caracterul de pe poziția
+#k (pozițiile numerotate de la 0) și să se afișeze șirul nou obținut.
+
+s=input()
+k=int(input())
+s=s[0:k]+s[(k+1):len(s)]
+print(s)
+
+
+#2. Se citește un cuvânt. Să se șteargă din cuvânt toate aparițiile primei litere. Se va afișa un
+#mesaj de forma: După ștergerea literei 'X' șirul obținut este "S" de lungime L folosind diferite
+#tipuri de formatare (cu parametri poziționali și f-stringuri)
+
+s=input()
+lit=s[0]
+rez=s.replace(lit,"")
+print(f"După ștergerea literei {lit} șirul obținut este {rez} de lungime {len(rez)}")
+
+
+#3. Se citește un cuvânt s de cel mult 10 de caractere. Sa se afișeze (folosind s[i:j]) pe câte o
+#linie cuvintele obținute succesiv din s tăind prima și ultima literă (afișate centrat pe 10 de
+#caractere):
+#algoritm
+# lgorit
+# gori
+# or
+
+s=input()
+i=0
+j=len(s)
+while i<j:
+    print(s[i:j].center(10))
+    i=i+1
+    j=j-1
+
+
+
+#4. Sir periodic Se citește un șir de caractere 𝑠. Să se verifice dacă există un șir t, diferit de 𝑠,
+#astfel încât 𝑠 să se poată obține prin concatenarea de un număr arbitrar de ori (𝑘>1) a șirului t
+#(adică să se verifice dacă șirul s este periodic). Dacă există mai multe astfel de șiruri t se va
+#determina cel mai lung.
+#s = "abbaabbaabbaabba" => t= abbaabba
+
+s=input()
+rez=""
+for i in range(1,len(s)//2+1):
+    if len(s)%i==0:
+        x=s[:i]
+        nr=len(s)//i
+        if x*nr==s:
+            rez=x
+if rez=="":
+    print("Nu e periodic")
+else:
+    print(rez)
+
+
+
+#5. Rime- Se citește un cuvânt w, un număr natural nenul 𝑝 și un sir de cuvinte separate prin
+#spațiu sau virgulă. Să se afișeze toate cuvintele care sunt 𝑝-rime cu 𝑤, adică ultimele 𝑝 caractere
+#coincid.
+import  re
+w=input()
+p=int(input())
+s=input()
+u=w[len(w)-p:]
+print(u)
+
+s=s.replace(",","")
+cuvinte=s.split()
+print(cuvinte)
+for x in cuvinte:
+    y=x[len(x)-p:]
+    if u == y:
+        print(x)
+
+
+--------------------
+#SAU
+
+
+w=input()
+p=int(input())
+s=input()
+u=w[len(w)-p:]
+print(u)
+
+import  re
+cuvinte=re.split('\?|\!|\.|,| ', s)  #face split si elimina carcaterele care au inainte \ si dupa |
+print(cuvinte)
+for x in cuvinte:
+    y=x[len(x)-p:]
+    if u == y:
+        print(x)
+
+
+
+#6. Într-o propoziție a fost efectuată, posibil de mai multe ori, aceeași greșeală de ortografie.
+#a) Scrieți un program care citește propoziția, șirul greșit și șirul corect, după care afișează
+#propoziția corectă. De exemplu, în propoziția "Problemele cu șiruri de caracteger nu sunt
+#ggerle!"greșeală constă în faptul că în loc de șirul “re” a fost scris șirul “ger”.
+#b) Modificați programul astfel încât să corecteze maxim 10 astfel de greșeli, iar dacă sunt mai
+#multe să afișeze mesajul: “textul contine prea multe greseli, doar 10 au fost corectate”
+
+s=input()
+a=input()
+b=input()
+rez=""
+p=s.split()
+for x in p:
+    if x.find(a):
+        y=x.replace(a,b)
+        if rez=="":
+            rez=y
+        else:
+            rez=rez+" "+y
+    else:
+        if rez=="":
+            rez=x
+        else:
+            rez=rez+" "+x
+
+print(rez)
+
+
+
+#7 a) Scrieți un program care citește de la tastatură un șir de caractere format din mai multe
+#cuvinte, separate printr-un spațiu și îl modifică astfel încât fiecare cuvânt să înceapă cu literă
+#mare
+#b)Scrieți un program care citește de la tastatură un șir de caractere format din mai multe
+#cuvinte, separate unul sau mai multe spații și îl modifică astfel încât fiecare cuvânt să înceapă
+#cu literă mare
+
+
+#merge si pt b)
+s=input()
+rez=""
+
+for i in range(len(s)):
+    if i == 0:
+        if s[i].isalpha():
+            rez=s[i].upper()
+        else:
+            rez=s[i]
+    else:
+        if i>0:
+            if s[i].isalpha():
+                if s[i-1]==' ':
+                    rez=rez+s[i].upper()
+                else:
+                    rez=rez+s[i]
+            else:
+                rez=rez+s[i]
+
+print(rez)
+
+
+
+#8. Se citește un text codificat după regula: În fata fiecărui caracter este scris un număr de cel
+#mult 2 cifre care reprezintă numărul de apariții consecutive ale acestui. Scrieți un program care
+#decodifica textul: 1G10o4l=>Goooooooooollll
+
+s=input()
+i=0
+while i<len(s):
+    if s[i].isdigit():
+        nr=0
+        j=i
+        while s[j].isdigit():
+            nr=nr*10+ord(s[j])-ord('0')
+            j=j+1
+        i=j
+    else:
+        for x in range(nr):
+            print(s[i],end="")
+        i=i+1
+
+
+
+#9. Scrieți un program care să înlocuiască într-o propoziție toate aparițiile unui cuvânt 𝑠 cu un
+#cuvânt 𝑡 (cuvintele sunt separate în propoziție printr-un spațiu).
+
+
+p=input()
+s=input()
+t=input()
+rez=""
+cuvinte=p.split()
+for x in cuvinte:
+    if x == s:
+        if rez=="":
+            rez=t
+        else:
+            rez=rez+" "+t
+    else:
+        if rez=="":
+            rez=x
+        else:
+            rez=rez+" "+x
+print(rez)
+
+
+#10. Jurnalul electronic al Anei conține, în fiecare zi, câte o frază cu informații despre
+#cheltuielile pe care ea le-a efectuat în ziua respectivă. Scrieți un program care să citească o
+#frază de acest tip din jurnalul Anei și apoi să afișeze suma totală cheltuită de ea în ziua
+#respectivă. De exemplu, pentru fraza “Astăzi am cumpărat pâine de 5 RON, pe lapte am dat 10
+#RON, iar de 15 RON am cumpărat niște cașcaval. De asemenea, mi-am cumpărat și niște papuci
+#cu 50 RON!”, programul trebuie să afișeze suma totală de 80 RON. Fraza se consideră corectă,
+#adică toate numerele care apar în ea sunt numere naturale reprezentând sume cheltuite de Ana
+#în ziua respectivă.
+
+s=input()
+sum=0
+i=0
+while i<len(s):
+    if s[i].isdigit():
+        nr=0
+        j=i
+        while s[j].isdigit():
+            nr=nr*10+ord(s[j])-ord('0')
+            j=j+1
+        i=j
+        sum=sum+nr
+    else:
+        i=i+1
+print(sum)
+
+
+
+#11. Scrieți un program care citește un șir de caractere și decide dacă acesta este un nume corect
+#al unei persoane. Se consideră că un nume este corect dacă respectă următoarele proprietăți:
+#Orice nume sau prenume conține doar litere și cel mult o cratimă.
+#• Orice nume sau prenume este format din cel puțin 3 litere.
+#• Orice nume sau prenume începe cu literă mare.
+#• persoana poate avea cel mult doua prenume, iar dacă sunt două atunci sunt despărțite
+#printr-o cratimă (‘-’). La fel și în cazul numelui
+
+p=str(input("p="))
+l=len(p)
+nr=0
+nrc=0
+cuv=0
+ok=0
+for i in range(0,l):
+    if i==0 and not(p[i].isupper()):
+        ok=1
+    else:
+        if p[i].isalpha():
+            nr=nr+1
+        else:
+            if p[i]=='-':
+                nrc=nrc+1
+                if p[i+1].isalpha() and not(p[i+1].isupper()):
+                    ok=1
+            else:
+                if nr>=3:
+                    cuv=cuv+1
+                else:
+                    ok=1
+                if not(p[i+1].isupper()):
+                    ok=1
+if nrc>1:
+    ok=1
+if ok==0:
+    print("corect")
+else:
+    print("gresit")
+
+
+

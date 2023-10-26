@@ -1,0 +1,30 @@
+f=open("date.in")
+n=int(f.readline())
+f.close()
+
+m=pow(2,n)
+a=[[0 for i in range(m)] for j in range(m)]
+val=1
+def matrice(a,x,y,m):
+    global val
+    if m==1:
+        a[x][y]=val
+        val=val+1
+    else:
+        matrice(a,x,y+m//2,m//2)
+        #print(x,y+m//2)
+        matrice(a,x+m//2,y,m//2)
+        #print(x+m//2,y)
+        matrice(a,x,y,m//2)
+        #print(x,y)
+        matrice(a,x+m//2,y+m//2,m//2)
+        #print(x+m//2,y+m//2)
+
+matrice(a,0,0,m)
+
+for i in range(m):
+    for j in range(m):
+        print(f"{a[i][j]:3}",end=" ")
+    print()
+g=open("date.out","w")
+g.close()

@@ -1,0 +1,66 @@
+Atomi : 
+    • secvente de litere, numere si _, care incep cu o litera mica  
+        ex : elefant, abcXYZ
+    • siruri intre apostrofuri 'Atom' 
+        ex : 'Acesta este un atom', '(@ *+ '
+    • anumite simboluri speciale 
+        ex : +
+
+Constante : 
+    • atomi 
+        ex : a, 'I am an atom', vINCENT, variable23, big_kahuna_burger, 'Jules', '_Jules'
+    • numere 
+        ex : 2, 2.5, -33
+
+Variabile :
+    • secvente de litere, numere si _, care incep cu litera mare sau cu _ 
+        ex : X, Animal, _x, X_1_2, Footmassage, Variable2000, _Jules
+    • variabila speciala _ (cand nu vrem sa folosim variabila respectiva)
+
+Termeni compusi :
+    • au forma p(t1, ..., tn), unde p este atom, iar t1, ..., tn sunt termeni
+        ex : is_bigger(horse, X), is_bigger(horse, cat), f(g(X, _), 7)
+
+Program :
+    • Regula = Head :- Body 
+        ex : griffin(X) :- father(Y,X), griffin(Y).
+    • Head = predicat, Body = secventa de predicate separate prin virgula
+    • Regulile fara Body se numesc fapte
+        ex : father(peter, meg).
+    • operatorul :- este implicatia logica <-
+        ex : comedy(X) :- griffin(X) (daca griffin(X) este adevarat, atunci comedy(X) este adevarat)
+    • virgula , este conjunctia ∧
+        ex : griffin(X) :- father(Y, X), griffin(Y) (daca father(Y, X) si griffin(Y) sunt adevarate, atunci griffin(X) este adevarat)
+    • semivirgula ; este disjunctia ∨
+    • mai multe reguli cu acelasi Head definesc acelasi predicat, intre definitii find un sau logic
+        ex : comedy(X) :- family_guy(X).
+             comedy(X) :- south park(X).
+             comedy(X) :- disenchantment(X). 
+             (daca family_guy(X) sau south_park(X) sau disenchantment(X) sunt adevarate, atunci comedy(X) este adevarat)
+    • Compararea termenilor
+        T = U reuseste daca exista o potrivire (termenii se unifica)
+            ex : ?- p(X, q(Z)) == p(Y, X) -> X = Y, Y = q(Z) 
+        T \= U reuseste daca nu exista o potrivire
+        T == U reuseste daca termenii sunt identici
+            ex : ?- p(X, Y) == p(X, Y) -> true 
+                 ?- 2 == 1 + 1 -> false
+        T \== U reuseste daca termenii sunt diferiti
+        T =:= reuseste daca termenii sunt identici prin fortarea evaluarii
+            ex : ?- 2 =:= 1 + 1 -> true
+    • Negarea unui predicat : \+
+        Clauzele din Prolog dau doar conditii suficiente (nu si necesare) pentru ca un predicat sa fie adevarat. Pentru a da un raspuns pozitiv la tinta, Prolog trebuie sa construiasca o "demonstratie" pentru a arata ca multimea de fapte si reguli din program implica acea tinta. Astfel, un raspuns false nu inseamna ca tinta nu este adevarata, ci doar ca Prolog nu a reusit sa gaseasca o demonstratie
+
+Definirea predicatelor :
+    • Predicatele cu acelasi nume dar cu aritati diferite sunt predicate diferite
+    • Scriem foo/n pentru a indica un predicat foo cu aritate n
+    • Predicatele pot avea aritatea 0 (nu au argumente); sunt predicate predefinite in limbaj (true, false)
+        ex : X = Y; X \= Y
+
+Exemple fapte si reguli :
+    • O regula are forma Head :- Body
+        ex : is_smaller(X, Y) :- is_bigger(Y, X).
+             aunt(Aunt, Child) :- sister(Aunt, Parent), parent(Parent, Child).
+    • Un fapt este o regula fara Body
+        ex : bigger(whale, _).
+             life_is_beautiful.
+    • Faptele si regulile trebuie grupate dupa atomii folositi in Head.

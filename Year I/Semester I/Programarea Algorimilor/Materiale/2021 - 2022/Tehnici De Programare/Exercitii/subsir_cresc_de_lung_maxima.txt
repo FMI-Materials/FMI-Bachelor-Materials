@@ -1,0 +1,34 @@
+f=open("sclm.in")
+n=f.readline()
+n=int(n)
+s=f.readline()
+v=[int(x) for x in s.split()]
+l=[0 for x in range(n)]
+f.close()
+for i in range(n-1,0,-1):
+    ma=0
+    for j in range(i+1,n):
+        if v[i]<v[j] and l[j]>ma:
+            ma=l[j]
+    l[i]=ma+1
+
+ma=0
+k=-1
+for i in range(0,n):
+    if l[i]>ma:
+        ma=l[i]
+        k=i
+g=open("sclm.out","w")
+g.write(str(ma))
+g.write("\n")
+g.write(str(k+1))
+g.write(" ")
+ma=ma-1
+for i in range(k+1,n):
+    if v[k]<v[i] and l[i]==ma:
+        ma=ma-1
+        g.write(str(i+1))
+        g.write(" ")
+
+
+

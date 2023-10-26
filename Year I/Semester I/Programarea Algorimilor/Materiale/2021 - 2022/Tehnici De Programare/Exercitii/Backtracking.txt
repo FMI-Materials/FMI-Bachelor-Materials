@@ -1,0 +1,222 @@
+#permutari
+
+n=int(input())
+x=[0 for i in range(n+1)]
+
+def permutari(k):
+    if k==n+1:
+        print(*x[1:],sep=", ")
+    else:
+        for i in range(1,n+1):
+            x[k]=i
+            if x[k] not in x[:k]:
+                permutari(k+1)
+permutari(1)
+
+
+
+#permutari cu puncte fixe
+
+n=int(input())
+x=[0 for i in range(n+1)]
+def puncte_fixe(x,k):
+    nr=0
+    for i in range(1,k+1):
+        if x[i]==i:
+            nr=nr+1
+    return nr
+def permutariPuncteFixe(k):
+    if k==n+1:
+        if puncte_fixe(x,n)==1:
+            print(*x[1:],sep=", ")
+    else:
+        for i in range(1,n+1):
+            x[k]=i
+            if x[k] not in x[:k]:
+                if puncte_fixe(x,k)<=1:
+                    permutariPuncteFixe(k+1)
+permutariPuncteFixe(1)
+
+
+#anagrame
+
+
+s=input()
+n=len(s)
+x=[0 for i in range(n+1)]
+rez=set()
+def anagrame(k):
+    if k==n+1:
+        sir="".join(s[x[i]-1] for i in range(1,k))
+        rez.add(sir)
+    else:
+        for i in range(1,n+1):
+            x[k]=i
+            if x[k] not in x[:k]:
+                anagrame(k+1)
+anagrame(1)
+print(rez)
+
+
+
+#aranjamente
+
+
+n=int(input())
+m=int(input())
+x=[0 for i in range(m+1)]
+
+def aranjamente(k):
+    if k==m+1:
+        print(*x[1:],sep=", ")
+    else:
+        for i in range(n+1):
+            x[k]=i
+            if x[k] not in x[:k]:
+                aranjamente(k+1)
+aranjamente(1)
+
+#combinari
+
+n=int(input())
+m=int(input())
+x=[0 for i in range(m+1)]
+
+def combinari(k):
+    if k==m+1:
+        print(*x[1:],sep=", ")
+    else:
+        for i in range(x[k-1]+1,n+1):
+            x[k]=i
+            combinari(k+1)
+print(combinari(1))
+
+#submultimi
+
+n=int(input())
+s=input()
+v=[int(x) for x in s.split()]
+x=[0 for i in range(n+1)]
+def submultimi(k):
+    if k==n+1:
+        for i in range(1,n+1):
+            if x[i]==1:
+                print(v[i-1],end=" ")
+        print()
+    else:
+        for i in range(0,2):
+            x[k]=i
+            submultimi(k+1)
+submultimi(1)
+
+
+#submultimi de suma M
+
+n=int(input())
+s=input()
+M=int(input())
+v=[int(x) for x in s.split()]
+x=[0 for i in range(n+1)]
+def suma(x,n):
+    s=0
+    for i in range(1,n+1):
+        if x[i]==1:
+            s=s+v[i-1]
+    return s
+def submultimiDeSumaM(k):
+    if k==n+1:
+        if suma(x,n)==M:
+            for i in range(1,n+1):
+                if x[i]==1:
+                    print(v[i-1],end=" ")
+            print()
+    else:
+        for i in range(0,2):
+            x[k]=i
+            if suma(x,k)<=M:
+                submultimiDeSumaM(k+1)
+submultimiDeSumaM(1)
+
+
+
+
+def submultimiDeSumaM2(k):
+    global s
+    if k==n+1:
+        if s==M:
+            for i in range(1,n+1):
+                if x[i]==1:
+                    print(v[i-1],end=" ")
+            print()
+    else:
+        for i in range(0,2):
+            x[k]=i
+            s=s+v[k-1]*i
+            if s<=M:
+                submultimiDeSumaM2(k+1)
+            s=s-v[k-1]*i
+submultimiDeSumaM2(1)
+
+#partitii
+
+n=int(input())
+x=[0 for i in range(n+1)]
+x[0]=1
+def partitii(k):
+    if sum(x[1:k])==n:
+        print(*x[1:k],sep="+")
+    else:
+        for i in range(x[k-1],n+1):
+            x[k]=i
+            if sum(x[1:k+1])<=n:
+                partitii(k+1)
+
+partitii(1)
+x[0]=1
+s=1
+def partitii2(k):
+    global s
+    if s==n:
+        print(*x[1:k],sep="+")
+    else:
+        for i in range(x[k-1],n+1):
+            x[k]=i
+            s=s+x[k]
+            if sum(x[1:k+1])<=n:
+                partitii(k+1)
+            s=s-x[k]
+partitii2(1)
+
+#toate subsirurile crescatoare de lungime maxima
+
+n=int(input())
+s=input()
+v=[int(x) for x in s.split()]
+l=[0 for i in range(n)]
+l[n-1]=1
+for i in range(n-1,-1,-1):
+    ma=0
+    for j in range(i+1,n):
+        if l[j]>ma and v[i]<v[j]:
+            ma=l[j]
+    l[i]=ma+1
+ma=max(l)
+x=[0 for i in range(n+1)]
+def afisSolutii():
+    for i in range(0,n):
+        if l[i]==ma:
+            x[1]=i
+            subsiruri(2)
+
+def subsiruri(k):
+    if k==ma+1:
+        for i in range(1,k):
+            print(v[x[i]],end=" ")
+        print()
+    else:
+        for j in range(x[k-1]+1,n):
+            x[k]=j
+            if v[x[k-1]]<v[x[k]] and l[x[k-1]]==1+l[x[k]]:
+                subsiruri(k+1)
+
+afisSolutii()

@@ -1,0 +1,38 @@
+bagof/3 :
+    • ?- bagof((X, Y), (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (2, 3), (..., ...)|...].
+    • ?- bagof(X, (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      Y = 2 | L = [1];
+      Y = 3 | L = [1, 2, 2, 2];
+      Y = 4 | L = [1, 2, 2, 2, 3];
+      Y = 5 | L = [1, 2, 2, 2, 3].
+    • ?- bagof(X, Y ^ (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [1, 1, 1, 1, 2, 2, 2, 2, 2|...].
+
+    • In al doilea exemplu, variabila Y este libera, asadar se cauta solutii atat pentru ea, cat si pentru L (simultan). 
+    • In al treilea exemplu, variabila Y este cuantificata existential, in sensul ca se cauta "toti X astfel incat exista Y astfel incat ...".
+
+setof/3 :
+    • ?- setof((X, Y), (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (..., ...)].
+    • ?- setof(X, (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      Y = 2 | L = [1];
+      Y = 3 | L = [1, 2];
+      Y = 4 | L = [1, 2, 3];
+      Y = 5 | L = [1, 2, 3]. 
+    • ?- setof(X, Y ^ (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [1, 2, 3].
+
+    • Comportamentul lui setof/3 este similar cu cel al lui bagof/3, cu deosebirea ca se incearca eliminarea duplicatelor.
+
+findall/3
+    • ?- findall(X, (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [1, 1, 1, 1, 2, 2, 2, 2, 2|...].
+    • ?- findall((X, Y), (member(X, [1, 2, 2, 2, 3]), member(Y, [0, 1, 2, 3, 4, 5]), X < Y), L).
+      L = [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (2, 3), (..., ...)|...].
+
+    • Comportamentul lui findall/3 este similar cu cel al lui bagof/3, cu doua deosebiri. In primul rand, semnul de cuantificare existentiala nu mai este permis si, in acelasi timp (sau chiar de aceea), orice variabila asa-zis libera va fi implicit cuantificata existential.
+
+    • In al doilea rand, cele doua metapredicate au un comportament diferit atunci cand nu exista solutii:
+        ?- bagof(X, (member(X, [1, 2, 2, 2, 3]), 0 is 1), L). -> false
+        ?- findall(X, (member(X, [1, 2, 2, 2, 3]), 0 is 1), L). -> L = []

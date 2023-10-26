@@ -1,0 +1,547 @@
+ #1.	Subsecvența de sumă maximă a unui șir:
+# Se dă un șir de numere (în fișier, separate prin spații).
+# Să se afișeze o subsecvenţă de sumă maximă a șirului (formată cu elemente consecutive) O(n) – v. seminar
+#1 -2 3 -1 5 2 -6 1 3
+
+f=open("date.in")
+l=[int(x) for x in f.readline().split()]
+s=[0 for x in range(len(l))]
+s[0]=l[0]
+nr=0
+ma=-1
+poz=-1
+nrc=0
+for i in range(1,len(l)):
+    if s[i-1]+l[i]>=l[i]:
+        s[i]=s[i-1]+l[i]
+        nr=nr+1
+        if s[i]>ma:
+            ma=s[i]
+            poz=i
+            nrc=nr
+    else:
+        s[i]=l[i]
+        nr=1
+        if s[i]>ma:
+            ma=s[i]
+            poz=i
+            nrc=nr
+
+i=poz-nrc+1
+g=open("date.out","w")
+while i<=poz:
+    g.write(str(l[i]))
+    g.write(" ")
+    i=i+1
+f.close()
+g.close()
+
+
+#2.	Se consideră o tablă de șah nxm (n,m date). Pe fiecare careul al tablei este plasat câte un obiect,
+# fiecare cu o anumită valoare (cunoscută, număr natural). Pe tablă se deplasează un robot astfel:
+# pornește de pe prima linie și prima coloană (un colț al tablei) 
+# și se poate deplasa numai în direcțiile sud și est. 
+# La parcurgerea unei celule robotul adună obiectul din celulă. 
+# Să se determine un traseu al robotului până în poziția (n, m) 
+# (până în colțul opus celui din care a plecat) astfel încât valoarea totală a obiectelor adunate să fie maximă. 
+# Se vor afişa valoarea totală obţinută şi traseul optim O(nm)   – v. seminar
+f=open("date.in")
+s=f.readline()
+n,m=s.split()
+n=int(n)
+m=int(m)
+a=[]
+s=f.readline()
+while s!="":
+    l=[int(x) for x in s.split()]
+    a.append(l)
+    s=f.readline()
+d=[[0 for i in range(m)] for j in range(n)]
+d[0][0]=a[0][0]
+for i in range(1,m):
+    d[0][i]=d[0][i-1]+a[0][i]
+for i in range(1,n):
+    d[i][0]=d[i-1][0]+a[i][0]
+for i in range(1,n):
+    for j in range(1,m):
+        d[i][j]=max(d[i][j-1],d[i-1][j])+a[i][j]
+g=open("date.out","w")
+g.write(str(d[n-1][m-1]))
+g.write('\n')
+
+def afis(x,y):
+    if x==0 and y==0:
+        g.write("1 1")
+        g.write('\n')
+    else:
+        if d[x][y]-a[x][y]==d[x-1][y]:
+            afis(x-1,y)
+            g.write(str(x+1))
+            g.write(" ")
+            g.write(str(y+1))
+            g.write('\n')
+        else:
+            if d[x][y]-a[x][y]==d[x][y-1]:
+                afis(x,y-1)
+                g.write(str(x + 1))
+                g.write(" ")
+                g.write(str(y + 1))
+                g.write('\n')
+afis(n-1,m-1)
+g.close()
+f.close()
+
+
+#3.	Se consideră un șir de n cuburi colorate (n dat),
+# pentru fiecare cub cunoscându-se lungimea laturii și culoarea sa, codificată cu un număr de la 1 la p (p dat). 
+# Să se determine un turn de înălțime maximă în care un cub nu poate fi așezat peste un cub de aceeași culoare
+# sau cu latură mai mică sau egală cu a sa.  Afișați și câte astfel de turnuri există. 
+# Structura fișierului de intrare: pe prima linie sunt n și p, pe următoarele linii lungimea laturii și culoarea câte unui cub. O(n2)  – v. seminar
+
+
+f=open("date.in")
+n,m=f.readline().split()
+n=int(n)
+m=int(m)
+s=f.readline()
+a=[]
+while s!="":
+    x,y=s.split()
+    x=int(x)
+    y=int(y)
+    t=(x,y)
+    a.append(t)
+    s=f.readline()
+a.sort(key=lambda e:(-e[0]))
+l=[0 for i in range(n)]
+l[0]=1
+for i in range(1,n):
+    ma=0
+    for j in range(0,i):
+        if l[j]>ma and a[j][0]>a[i][0] and a[j][1]!=a[i][1]:
+            ma=l[j]
+    if ma==0:
+        l[i]=1
+    else:
+        l[i]=ma+1
+print(l)
+ma=max(l)
+nra=l.count(ma)
+poz=l.index(ma)
+
+
+def afis(poz, ma, ant):
+    if poz>=0 and ma>0:
+        if poz==ant:
+            afis(poz-1,ma-1,ant)
+            print(a[poz][0],a[poz][1])
+        else:
+            if l[poz]==ma and a[poz][0]>a[ant][0] and a[poz][1]!=a[ant][1]:
+                afis(poz-1,ma-1,poz)
+                print(a[poz][0],a[poz][1])
+            else:
+                afis(poz-1,ma,ant)
+
+afis(poz,ma,poz)
+print(nra)
+f.close()
+
+
+#4.	Dat un șir de cuvinte formate cu litere mici, să se determine cel mai lung subșir al său
+# astfel încât pentru orice două cuvinte consecutive din subșir ultimele două litere din primul să coincidă
+# cu primele două litere din cel de al doilea.  Exemplu: Pentru șirul: seara, carte, teorema, temperatura, rar, mare, arbore
+#cel mai lung subşir care verifică cerinţele este - carte, temperatura, rar, arbore  O(n2) /O(n)
+#masa carte sac teatru tema rustic sare
+
+f=open("date.in")
+v=[x for x in f.readline().split()]
+l=[0 for x in range(len(v))]
+l[0]=1
+
+for i in range(1,len(v)):
+    ma=0
+    for j in range(0,i):
+        if l[j]>ma and v[i][0:2]==v[j][len(v[j])-2:len(v[j])]:
+            ma=l[j]
+    l[i]=ma+1
+print(l)
+ma=max(l)
+poz=l.index(ma)
+g=open("date.out","w")
+def afis(poz,ma, ant):
+    if poz>=0 and ma>=0:
+        if poz==ant:
+            afis(poz-1,ma-1,poz)
+            g.write(v[poz])
+            g.write("\n")
+        else:
+            if l[poz]==ma and  v[ant][0:2]==v[poz][len(v[poz])-2:len(v[poz])]:
+                afis(poz-1,ma-1,poz)
+                g.write(v[poz])
+                g.write("\n")
+            else:
+                afis(poz-1,ma,ant)
+afis(poz,ma,poz)
+g.close()
+f.close()
+
+#5.	Distanţa Levenstein https://en.wikipedia.org/wiki/Levenshtein_distance
+# Se dau două cuvinte a şi b. Asupra  primului cuvânt putem efectua următoarele 3 operaţii:
+#-	inserare: se adaugă în cuvânt un caracter pe o poziţie (oarecare) - cu costul c1
+#-	ştergere: se şterge o literă din cuvânt (de pe o poziţie, nu toate apariţiile) - cu costul c2
+#-	înlocuire: se înlocuieşte o literă de pe o poziţie din cuvânt cu altă literă -  cu costul c3
+#Costurile c1, c2 şi c3 sunt date de intrare. Distanţa de editare a celor două cuvinte este costul
+# minim al unui şir de operaţii care trebuie aplicate asupra primului cuvânt pentru a îl transforma
+# în cel de-al doilea (dacă c1=c2=c3, atunci distanța de editare este chiar numărul minim de operaţii care
+# trebuie aplicate asupra primului cuvânt pentru a îl transforma în cel de-al doilea).
+# Același tip de operaţie poate fi aplicat de mai multe ori. Să se determine distanța de editare a celor două cuvinte;
+# se vor afișa şi operaţiile care trebuie efectuate asupra primului cuvânt pentru a îl obţine pe al doilea.
+# Exemplu: pentru cuvintele carte şi antet, dacă c1=c2=c3=1,
+# distanța de editare este 3, operaţiile efectuate asupra primului cuvânt fiind:
+# ștergem litera c (de pe poziţia 1), înlocuim litera r (de pe poziția 3) cu n şi adăugam la sfârșit litera t
+# (v.  http://www.infoarena.ro/problema/edist)
+
+a=input()
+b=input()
+n=int(input())
+m=int(input())
+k=int(input())
+cost=[[0 for i in range(len(a)+1)] for j in range(len(b)+1)]
+for j in range(0,len(b)+1):
+    cost[0][j]=j
+for i in range(0,len(a)+1):
+    cost[i][0]=i
+for i in range(1,len(a)+1):
+    for j in range(1,len(b)+1):
+        if a[i-1]==b[j-1]:
+            cost[i][j]=cost[i-1][j-1]
+        else:
+            cost[i][j]=1+min(cost[i-1][j],cost[i][j-1],cost[i-1][j-1])
+print(cost[len(a)][len(b)])
+n1=len(a)
+n2=len(b)
+valoare=cost[n1][n2]
+obtin=""
+def afissol(n1, n2):
+    global obtin
+    if n1 > 0 and n2 > 0:
+        if a[n1-1] == b[n2-1]:
+            afissol(n1-1, n2-1);
+            obtin=obtin+a[n1-1]
+            print("salt "+a[n1-1]+"->"+obtin)
+            return
+        if cost[n1][n2] == 1 + cost[n1 - 1][n2]:
+            afissol(n1 - 1, n2)
+            print("sterg {s1[n1 - 1]} pozitia {n1 - 1} -> {obtin}")
+            return
+        if cost[n1][n2] == 1 + cost[n1][n2 - 1]:
+            afissol(n1, n2 - 1)
+            obtin = obtin + b[n2 - 1]
+            print(f"inserez {b[n2 - 1]} pozitia {n2} -> {obtin}")
+            return
+        if cost[n1][n2] == 1 + cost[n1 - 1][n2 - 1]:
+            afissol(n1 - 1, n2 - 1)
+            obtin = obtin + b[n2 - 1]
+            print(f"modific {a[n1 - 1]} <->{b[n2 - 1]} pozitia {n1 - 1} -> {obtin}")
+            return
+    if n1 > 0:
+        print(f"sterg primele {n1} din {a}")
+    if n2 > 0:
+        obtin=b[0:n2]
+        print(f"inserez primele {n2} din {b} -> {obtin} ")
+afissol(n1,n2)
+
+
+#6.	Date o mulțime de n numere naturale și un număr natural M,
+# M < 10000, să se determine, dacă există, o submulțime a mulțimii date de sumă M  O(nM) – v. seminar
+#6
+#12 1 3 4 5 7
+#14
+
+f=open("date.in")
+n=int(f.readline())
+l=[int(x) for x in f.readline().split()]
+M=int(f.readline())
+s=[0 for x in range(M+2)]
+v=[0 for x in range(M+2)]
+s[l[0]]=1
+v[l[0]]=0
+for i in range(1,n):
+    for j in range(M-l[i],0,-1):
+        if s[j]>0:
+            if s[j+l[i]]>s[j]+1:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]]=l[i]
+            if s[j+l[i]]==0:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]] = l[i]
+    if s[l[i]]==0:
+        s[l[i]]=1
+        v[l[i]] = l[i]
+print(s[M])
+p=M
+print(s)
+print(v)
+def afis(p):
+    if p>0:
+        afis(p-v[p])
+        print(v[p],end=" ")
+afis(p)
+f.close()
+
+
+#7.	Moș Crăciun a poposit la bradul a doi frați, unde și-a golit sacul.
+# Când s-au trezit, frații au intrat într-o mare dilemă:
+# cum își vor împărți ei cadourile moșului?
+# Știind că fiecare cadou are o valoare cuprinsă între 1 și 100 și că sunt maxim 100 de cadouri,
+# scrieți un program care să determine sumele cadourilor fraților precum și modul de împărțire,
+# astfel încât sumele obținute să fie cele mai apropiate posibil. Exemplu:
+# pentru 7 cadouri cu valorile 28, 7, 11, 8, 9, 7, 27 sumele sunt 48 și 49,
+# o împărțire a cadourilor fiind 28, 11, 9, respectiv 7, 8, 7, 27. (Indicație: problema se reduce
+# la a determina o submulțime de sumă maximă, care nu depășește însă valoarea
+# M =  jumătate din suma tuturor elementelor) O(nS), unde S=valoarea totală a cadourilor
+
+f=open("date.in")
+n=int(f.readline())
+l=[int(x) for x in f.readline().split()]
+
+M=sum(l)//2
+s=[0 for x in range(M+2)]
+v=[0 for x in range(M+2)]
+s[l[0]]=1
+v[l[0]]=0
+for i in range(1,n):
+    for j in range(M-l[i],0,-1):
+        if s[j]>0:
+            if s[j+l[i]]>s[j]+1:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]]=l[i]
+            if s[j+l[i]]==0:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]] = l[i]
+    if s[l[i]]==0:
+        s[l[i]]=1
+        v[l[i]] = l[i]
+p=0
+for i in range(M,0,-1):
+    if s[i]!=0:
+        p=i
+        print(p)
+        break
+print(s[28])
+print(v)
+a=[]
+while s[p]>=0:
+    a.append(v[p])
+    print(v[p])
+    p=p-v[p]
+    if s[p]==1:
+        a.append(p)
+        break
+b=[]
+for x in l:
+    if x not in a:
+        b.append(x)
+print(a)
+print(b)
+f.close()
+
+
+#8.	Problema monedelor (v.curs).
+# Având la dispoziție un număr nelimitat de monede de valori
+# date {v1,v2,...,vn}, să se determine o modalitate de a plăti
+# o sumă de bani S dată folosind un număr minim de astfel de monede
+# (dacă suma se poate plăti). Exemplu: pentru monede de valori
+# {7, 5, 1} şi S = 11 se vor da 3 monede: două monede de valoare
+# 5, o monedă de valoare 1.O(nS)
+
+f=open("date.in")
+n=int(f.readline())
+l=[int(x) for x in f.readline().split()]
+M=int(f.readline())
+s=[0 for x in range(M+2)]
+v=[0 for x in range(M+2)]
+s[l[0]]=1
+v[l[0]]=0
+for i in range(1,n):
+    if s[l[i]]==0:
+        s[l[i]]=1
+        v[l[i]] = l[i]
+    for j in range(M-l[i]+1):
+        if s[j]>0:
+            if s[j+l[i]]>s[j]+1:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]]=l[i]
+            if s[j+l[i]]==0:
+                s[j + l[i]] = s[j] + 1
+                v[j + l[i]] = l[i]
+    if s[l[i]]==0:
+        s[l[i]]=1
+        v[l[i]] = l[i]
+print(s[M])
+print(l)
+p=M
+while v[p]>0:
+    print(v[p])
+    p=p-v[p]
+
+
+
+
+#9.	Generalizarea problemei spectacolelor (planificării activităților)
+# discutată la curs la Greedy. Se dau n activități prin timpul de început,
+# timpul de sfârșit și profitul asociat desfășurării activității
+# (n intervale închise cu extremităţi numere reale care au asociate ponderi).
+# Să se determine o submulțime de activități compatibile (intervale disjuncte două câte două)
+# care au profitul total maxim. Se vor afişa profitul total şi activităţile O(n2)/O(nlog n)
+
+f=open("date.in")
+n=int(f.readline())
+a=[]
+for i in range(n):
+    s=f.readline()
+    x,y,z=s.split()
+    x=int(x)
+    y=int(y)
+    z=int(z)
+    t=(x,y,z)
+    a.append(t)
+l=[0 for x in range(n)]
+p=[0 for x in range(n)]
+l[0]=1
+p[0]=a[0][2]
+pozitie=[0 for x in range(n)]
+for i in range(1,n):
+    ma=0
+    lung=0
+    poz=0
+    for j in range(0,i):
+        if p[j]>ma and a[i][0]>a[j][1]:
+            print(i,j)
+            ma=p[j]
+            lung=l[j]
+            poz=j
+    l[i]=lung+1
+    pozitie[i]=poz
+    p[i]=ma+a[i][2]
+print(l)
+print(p)
+ma=0
+ma1=max(p)
+for i in range(len(l)-1,0,-1):
+    if ma<l[i] and ma1==p[i]:
+        ma=l[i]
+        poz=i
+        break
+
+def afis(poz,ma,ant):
+    if poz>=0 and ma>=0:
+        if poz==ant:
+            afis(poz-1,ma-1,poz)
+            print(a[poz][0], a[poz][1])
+        else:
+            if l[poz]==ma and a[poz][1]<a[ant][0]:
+                afis(poz-1,ma-1,poz)
+                print(a[poz][0],a[poz][1])
+            else:
+                afis(poz-1,ma,ant)
+afis(poz,ma,poz)
+f.close()
+
+
+#rucsac
+
+f=open("date.in")
+n=int(f.readline())
+Gmax=int(f.readline())
+g=[0 for i in range(n)]
+
+c=[0 for j in range(n)]
+
+for i in range(n):
+    a,b=f.readline().split()
+    a=int(a)
+    b=int(b)
+    g[i]=a
+    c[i]=b
+c=[0]+c
+g=[0]+g
+s=[[0 for i in range(Gmax+1)] for j in range(n+1)]
+for i in range(1, n + 1):
+    for gr in range(1, Gmax + 1):
+        if g[i] <= gr:
+            if c[i] + s[i - 1][gr - g[i]] > s[i - 1][gr]:
+                s[i][gr] = c[i] + s[i - 1][gr - g[i]]
+            else:
+                s[i][gr] = s[i - 1][gr]
+        else:
+            s[i][gr] = s[i - 1][gr]
+print(s[n][Gmax])
+val=s[n][Gmax]
+i=n
+j=Gmax
+def afis(i,j):
+    if s[i][j]==0:
+        return
+    else:
+        if s[i][j]==s[i-1][j]:
+            afis(i-1,j)
+        else:
+            afis(i-1,j-g[i])
+            print(i)
+afis(i,j)
+f.close()
+
+#sclm
+
+
+f=open("date.in")
+a=[int(x) for x in f.readline().split()]
+b=[int(x) for x in f.readline().split()]
+t=[[0 for i in range(len(b))]for j in range(len(a))]
+if a[0]==b[0]:
+    t[0][0]=1
+else:
+    t[0][0]=0
+for i in range(1,len(a)):
+    if a[i]==b[0]:
+        t[i][0]=1
+    else:
+        t[i][0]=t[i-1][0]
+for j in range(1,len(b)):
+    if a[0]==b[j]:
+        t[0][j]=1
+    else:
+        t[0][j]=t[0][j-1]
+for i in range(1,len(a)):
+    for j in range(1,len(b)):
+        if a[i]==b[j]:
+            t[i][j]=1+t[i-1][j-1]
+        else:
+            t[i][j]=max(t[i-1][j],t[i][j-1])
+for line in t:
+    print(line)
+print(t[len(a)-1][len(b)-1])
+n=len(a)
+m=len(b)
+def afis(i,j):
+    if a[i]==b[j]:
+        afis(i-1,j-1)
+        print(a[i],end=" ")
+    else:
+        if i>0:
+            if t[i][j]==t[i-1][j]:
+                afis(i-1,j)
+            else:
+                if j > 0:
+                    afis(i, j - 1)
+                else:
+                    return
+        else:
+            if j>0:
+                afis(i,j-1)
+            else:
+                return
+afis(n-1,m-1)
+
+f.close()

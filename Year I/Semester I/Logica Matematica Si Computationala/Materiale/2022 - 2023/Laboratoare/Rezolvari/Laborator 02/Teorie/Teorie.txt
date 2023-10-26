@@ -1,0 +1,36 @@
+?- 3 + 5 = +(3, 5). -> true
+?- 3 + 5 = +(5, 3). -> false
+?- 3 + 5 = 8. -> false
+
+Explicatii :
+    • 3 + 5 este un termen
+    • Prolog trebuie anuntat explicit pentru a il evalua ca o expresie aritmetica, folosind predicate definite in Prolog, cum sunt is/2, =:=/2, >/2
+
+Operatorul is :
+    • Primeste 2 argumente
+    • Al doilea argument trebuie sa fie o expresie aritmetica valida, cu toate variabilele initializate
+    • Primul argument trebuie sa fie un numar, fie o variabila
+    • Nu se recomanda folosirea lui is pentru a compara doua expresii aritmetice, ci operatorul =:=
+
+Operatorii artimetici :
+    • functii
+        ex : +, -, *, /, //, mod, **, min/2, abs/1, sqrt/1, sin/1
+    • relatii (predicate)
+        ex : =:=, =\=, <, >, =<, >=
+
+Diferenta dintre =:= si = :
+    • =:= compara doua expresii aritmetica
+    • = cauta un unificator
+
+Liste : 
+    • ex : [] (lista vida), [elephant, [], X, parent(X, tom), [a, b, c], f(22)]
+    • Primul element se numeste head, iar restul listei tail
+    • In Prolog exista o notatie utila pentru liste cu separatorul |, evidentiind primul element si restul listei
+        ex : ?- [1, 2, 3, 4, 5] = [Head | Tail]. -> Head = 1, Tail = [2, 3, 4, 5]
+             ?- [quod, licet, jovi, non, licet, bovi] = [ , X | ]. -> X = licet
+    • Functii predefinite pentru liste :
+        length/2 : al doilea argument intoarce lungimea listei date ca prim argument
+        member/2 : este adevarat daca primul argument se afla in lista data ca al doilea argument
+        append/3 : identic cu concat_lists/3
+        last/2 : este adevarat daca al doilea argument este identic cu ultimul element al listei date ca prim argument
+        reverse/2 : lista al doilea este lista data ca prim element in oglinda

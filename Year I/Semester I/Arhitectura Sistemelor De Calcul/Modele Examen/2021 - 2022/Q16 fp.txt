@@ -1,0 +1,96 @@
+::Q16_1:: Se dau 4 variable IEEE FP: a, b, c, d. Vrem sa calculam valoarea1 ~ a + b + c si valoare2 ~ b + c + d. La compilare, compilatorul observa ca (b + c) este o operatie care se repeta si in consecinta inlocuiesc codul anterior cu urmatorul: temp ~ b + c si valoare1 ~ a + temp si valoare2 ~ temp + d. Ce puteti spune despre valoare1 si valoare 2?
+{~noul calcul este mult mai lent
+~nu e garantat ca in varianta optimizata valorile calculate sunt aceleasi
+~e garantat ca in varianta optimizata valorile calcule sunt aceleasi
+~varianta optimizata ca numar de operatii consuma si mai putina memorie (sau mai putini registrii)
+~altceva}
+
+
+
+
+::Q16_2:: Avem 4 variabile IEEE FP: a, b, c, d. Toate aceste numere sunt foarte mari (aproximativ egale, dar nu identice). Cum calculam "cat mai" corect (a*b)/(c*d)? (aici ne intereseaza corectitudinea, nu neaparat eficienta)
+{~(a*b)/(c*d)
+~1/c*1/d*a*b
+~(a/c)*(b/d)
+~(a/b)*(c/d)
+~1/d*1/c*b*a
+~altceva}
+
+
+
+::Q16_3:: Avem 4 variabile IEEE FP: a, b, c, d. Variabilele a si b sunt numere foarte mari (aproximativ egale, dar nu identice) iar variabilele c si d sunt numere foarte mici (aproximativ egale, dar nu identice si aproximatib invers proportionale cu numerele mari a si b). Cum calculam "cat mai" corect (a*b*c*d)? (aici ne intereseaza corectitudinea, nu neaparat eficienta)
+{~(a*b*c*d)
+~(a*b)*(c*d)
+~(a*c)*(b*d)
+~(d*c*b*a)
+~(a*b*c)*d
+~altceva}
+
+
+
+::Q16_4:: Avem o variabila in care memoram cantitatea de bani pe care o banca o transfera in tranzactiile sale (variable este IEEE FP). In fiecare dimineata cand banca este deschisa variabila este initializata cu cantitatea de bani transferata pana in acel moment (de la inceputul anului, variabila este initializata cu zero o singura data la 1 ianuarie). Banca face in fiecare zi foarte multe tranzactii, dar fiecare tranzactie este relativ mica (cativa dolari, in media). In total, intr-o zi, banca face transferuri totale de milioane de dolari. Cum adunam toate valoarile astfel incat la sfarsitul anului sa avem un total cat mai apropiat de realitate (cu cat mai putine erori de rotunjire)?
+{~in fiecare zi varibila are valoare din ziua precedenta si adunam in continuare fiecare tranzactie separat
+~in fiecare zi pastram o noua variabila in care adunam doar tranzactiile din ziua respectiva si doar la sfarsitul zilei adunam cantitatea acumulata in timpul zilei la valoarea totala
+~ignoram complet totalul din zilele precedente si incepem cu "0" in fiecare zi, nu salvam niciunde suplimentar totalul (nici cel partial si cel global)
+~adunam doar tranzactii peste o anumita valoare prescrisa X
+~altceva}
+
+
+
+::Q16_5:: Fie eax un registru pe 32 de biti. Secventa (eax >> 31) AND 1 calculeaza (AND este pe biti)
+{~MSB
+~LSB
+~verifica daca eax are 32 de biti
+~verifica daca eax este 1
+~verifica daca eax este 0
+~altceva}
+
+
+::Q16_6:: Fie eax si ebx doi registrii pe 32 de biti (valorile din acesti registri sunt considerati numere intregi). Secventa not( ((eax >> 31) AND 1) XOR (ebx >> 31) AND 1 )
+{~verifica daca eax si ebx au acelasi semn
+~verifica daca eax si ebx au semne diferite
+~verifica daca eax si ebx sunt ambele zero
+~verifica daca eax si ebx sunt ambele diferite de zero
+~altceva}
+
+
+::Q16_7:: Fie eax si ebx doi registrii pe 32 de biti (valorile din acesti registri sunt considerati numere intregi). Secventa not( ((eax XOR ebx) >> 31) AND 1) )
+{~verifica daca eax si ebx au acelasi semn
+~verifica daca eax si ebx au semne diferite
+~verifica daca eax si ebx sunt ambele zero
+~verifica daca eax si ebx sunt ambele diferite de zero
+~altceva}
+
+
+::Q16_8:: In registrul eax avem un numar scris in formatul IEEE FP 32 de biti. Ce face secventa eax AND 0x80000000? (AND este operatia pe biti) 
+{~extrage semnul numarului
+~verifica daca numarul este zero
+~extrage exponentul
+~extrage mantisa (partea fractionara a numarului)
+~altceva}
+
+
+::Q16_9:: In registrul eax avem un numar scris in formatul IEEE FP 32 de biti. Ce face secventa (eax >> 23) AND 0x000000FF? (AND este operatia pe biti) 
+{~extrage semnul numarului
+~verifica daca numarul este zero
+~extrage exponentul
+~extrage mantisa (partea fractionara a numarului)
+~altceva}
+
+
+::Q16_10:: In registrul eax avem un numar scris in formatul IEEE FP 32 de biti. Ce face secventa eax AND 0x007FFFFF? (AND este operatia pe biti) 
+{~extrage semnul numarului
+~verifica daca numarul este zero
+~extrage exponentul
+~extrage mantisa (partea fractionara a numarului)
+~altceva}
+
+
+
+::Q16_11:: In registrul eax avem un numar scris in formatul IEEE FP 32 de biti. Ce face secventa (eax ~~ 0x00000000 OR eax ~~ 0x80000000)? (OR este operatia logica SAU, ~~ verifica egalitatea) 
+{~extrage semnul numarului
+~verifica daca numarul este zero
+~extrage exponentul
+~extrage mantisa (partea fractionara a numarului)
+~altceva}
+

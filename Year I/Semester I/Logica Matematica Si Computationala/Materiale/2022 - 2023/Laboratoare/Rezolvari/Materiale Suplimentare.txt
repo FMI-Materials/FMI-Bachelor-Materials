@@ -1,0 +1,30 @@
+ex1:
+
+srd(vid,[]).
+srd(arb(R,T,U),L) :- srd(T,L1), srd(U,L2), append(L1,[R|L2],L).
+
+bt_ins(N,vid,arb(N,vid,vid)).
+bt_ins(N,arb(R,T,U),arb(R,Z,U)) :- N < R, bt_ins(N,T,Z).
+bt_ins(N,arb(R,T,U),arb(R,T,Z)) :- N >= R, bt_ins(N,U,Z).
+
+bt_list([],vid).
+bt_list([H|T],U) :- bt_list(T,B), bt_ins(H,B,U).
+
+bt_sort(L,M) :- bt_list(L,T), srd(T,M).
+
+ex2:
+
+parA --> a, imparA.
+parA --> b, parA.
+parA --> [].
+imparA --> a, parA.
+imparA --> b, imparA.
+a --> [a].
+b --> [b].
+
+ex3:
+
+ex --> [].
+ex --> a, ex, b.
+a --> [a].
+b --> [b].

@@ -1,4 +1,4 @@
-# FMI Materials
+# [FMI Materials](https://github.com/FMI-Materials/FMI-Materials)
 
 ### [Year I](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I)
 | Semester | Discipline                                       | C | S | L | P | FE | Credits |

@@ -1,0 +1,221 @@
+
+#Probleme Biti
+
+#Să se interschimbe valorile a două variabile de tip întreg citite de la tastatură folosind
+#operatorul ^ (XOR/sau exclusiv pe biți).
+
+x=int(input())
+y=int(input())
+x=x^y
+y=x^y
+x=x^y
+print(x,y)
+
+
+
+
+#Să se verifice dacă un număr natural nenul x citit de la tastatură este de forma 2k
+#. În caz
+#afirmativ să se afișeze valoarea k (folosind operatori pe biți).
+
+
+x=int(input())
+print(x-1)
+print(x&(x-1))
+if x&(x-1)==0:
+    k=0
+    while x>1:
+        k+=1
+        x=x>>1
+    print(True,k)
+else:
+    print(False)
+
+
+
+#Se citește un șir format din n numere naturale cu proprietatea că fiecare valoare distinctă apare
+#de exact două ori în șir, mai puțin una care apare o singură dată. Să se afișeze valoarea care
+#apare o singură dată în șir
+
+n=int(input())
+val=0
+for i in range(n):
+    x=int(input())
+    if i == 0:
+        val = x
+    else:
+        val = val ^ x
+print(val)
+
+
+
+#Se citesc 2 numere naturale x și n (n< 16). Să se afișeze numărul obținut din x prin ștergerea
+#bitului n (din reprezentarea sa binară)
+
+x=int(input())
+n=int(input())
+print(bin(x))
+m=1<<(n-1)-1
+print(bin(m))
+y= x & m
+print(bin(y))
+x= x >> n
+print(bin(x))
+x=x<<(n-1)
+print(bin(x))
+x=x|y
+print(bin(x))
+
+
+
+#Scrieți un program care determină numărul de biți egali cu 1 din reprezentarea binară a unui
+#număr natural n citit de la tastatură.
+
+x=int(input())
+nr=0
+while x:
+    if x%2==1:
+        nr+=1
+    x=x>>1
+print(nr)
+
+
+
+
+#6. Să se genereze toate submulțimile mulțimii 𝐴 = {1,2, … , 𝑛}, unde numărul natural nenul 𝑛 ≤ 10
+#se citește de la tastatură (fără backtracking).
+
+n=int(input())
+max = 1<<n
+x=0
+while x!=max:
+    i=1
+    cx=x
+    while cx:
+        #print(f"cx={cx}")
+        if cx & 1:
+            print(i,end=" ")
+        cx=cx>>1
+        i=i+1
+    x=x+1
+    print()
+
+
+---------------------------------------------------------------------------------------------
+
+
+#Probleme limbaj
+
+
+#Se citește un număr natural n. Să se testeze dacă este palindrom
+
+x=int(input())
+inv=0
+aux=x
+while x:
+    c=x%10
+    x=x//10
+    inv=inv*10+c
+print((inv==aux))
+
+
+
+
+#Se citește un șir format din 𝑛 numere reale strict pozitive (𝑛≥2), reprezentând cursul de schimb
+#valutar RON/EURO din 𝑛 zile consecutive. Să se afișeze zilele între care a avut loc cea mai
+#mare creștere a cursului valutar, precum și cuantumul acesteia. De exemplu, pentru 𝑛=6 zile și
+#cursul valutar dat de șirul 4.25,4.05,4.25,4.48,4.30,4.40, cea mai mare creștere a fost de 0.23
+#RON, între zilele 3 și 4.
+
+n=int(input())
+x=float(input())
+ma=-1
+for i in range(1,n):
+    y=float(input())
+    dif = y - x
+    if dif<0:
+        dif=-dif
+    if dif>ma:
+        ma=dif
+print(ma)
+
+
+
+#Un meșter trebuie să paveze întreaga pardoseală a unei bucătării cu formă dreptunghiulară de
+#dimensiune 𝐿1×𝐿2 centimetri, cu plăci de gresie pătrate, toate cu aceeași dimensiune. Știind că
+#meșterul nu vrea să taie nici o placă de gresie și vrea să folosească un număr minim de plăci, să
+#se determine dimensiunea plăcilor de gresie de care are nevoie, precum și numărul lor. De
+#exemplu, dacă 𝐿1=440 cm și 𝐿2=280 cm, atunci meșterul are nevoie de 77 de plăci de gresie,
+#fiecare având latura de 40 cm.
+
+L=int(input())
+l=int(input())
+a=L
+b=l
+d=a%b
+while d:
+    a=b
+    b=d
+    d=a%b
+nrp=(l//b)*(L//b)
+print(nrp)
+
+
+
+
+#Se citesc coeficienții (numere întregi) a, b, c ai unei ecuații de gradul 2: ax2+bx+c. Să se afișeze
+#rădăcinile ecuației (două distincte/ una dublă/nu există)
+from math import sqrt
+a=int(input())
+b=int(input())
+c=int(input())
+delta=b*b-4*a*c
+if delta < 0:
+    print("Nu are solutii")
+elif delta == 0:
+    print(f"Solutie unica: {-b/(2*a)}")
+else:
+    print("Doua Solutii",end=" ")
+    delta=sqrt(delta)
+    x=(-b+delta)/(2*a)
+    y=(-b-delta)/(2*a)
+    print(x,y)
+
+
+
+
+#Se citesc două numere naturale a și b. Să se afișeze cel mai mare număr prim din intervalul
+#[a,b] folosind instrucțiunea break și clauza else (v. exp. curs)
+
+a=int(input())
+b=int(input())
+for x in range(b,a,-1):
+    d=2
+    while d*d<=x:
+        if x % d == 0:
+            break
+        d=d+1
+    if d*d>x & x>1:
+        print(x)
+        break
+
+
+
+
+
+#Se citește un număr n și un șir de n numere naturale. Să se afișeze cel mai mic și cel mai mare
+#număr din șir (folosind un număr minim de operații de comparare)
+
+n=int(input())
+ma=-1
+mi=999999999
+for i in range(n):
+    x=int(input())
+    if x>ma:
+        ma=x
+    if x<mi:
+        mi=x
+print(ma,mi)
+
+
+

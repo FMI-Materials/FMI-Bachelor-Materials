@@ -1,0 +1,22 @@
+#from random import randint
+def poz(l,p,u):
+    i=p
+    j=u
+    d1=0
+    d2=-1
+    while i<j:
+        if l[i]>l[j]:
+            l[i],l[j]=l[j],l[i]
+            d1,d2=-d2,-d1
+        i=i+d1
+        j=j+d2
+    return i
+def quick_sort(l,p,u):
+    if p>=u:
+        return
+    m=poz(l,p,u)
+    quick_sort(l,p,m-1)
+    quick_sort(l,m+1,u)
+l=[2,3,4,1,4]
+quick_sort(l,0,4)
+print(l)

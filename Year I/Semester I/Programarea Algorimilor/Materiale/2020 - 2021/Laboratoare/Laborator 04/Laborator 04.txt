@@ -1,0 +1,447 @@
+#1.a. Scrieți o funcție min_max care primește ca parametru o listă nevidă de numere întregi
+# și returneză două valori: valoarea minimă și valoarea maximă din lista primită ca parametru.
+# De exemplu, pentru lista [3, -3, 1, 7, 3, 2] funcția trebuie să returneze valorile -3 și 7. (1 p.)
+
+def min_max(l):
+    n=len(l)
+    ma=mi=l[0]
+    for i in range(1,n):
+        if l[i]>ma:
+            ma=l[i]
+        if l[i]<mi:
+            mi=l[i]
+    return mi,ma
+#b.	Considerăm un fișier text care conține pe fiecare linie câte un șir format din numere întregi.
+# Scrieți o funcție incarca_fisier care să încarce conținutul unui astfel de fișier text într-o listă,
+# astfel: fiecare element al listei va fi o listă conținând toate numerele de pe o linie a fișierului text.
+# Funcția va primi ca parametru numele fișierului text și va returna lista creată.
+# De exemplu, daca fișierul text este
+
+def incarca_fisier(nume):
+    f=open(nume)
+    l=[]
+    s=f.readline()
+    while s!="":
+        ll=[int(x) for x in s.split()]
+        l.append(ll)
+        s=f.readline()
+    f.close()
+    return l
+
+
+#c.	Folosind apeluri utile ale funcțiilor definite anterior,
+# scrieți un program care să citească de la tastatură numele unui fișier text de tipul descris mai sus și apoi să rezolve următoarele două cerințe:
+
+nume=input()
+
+
+
+#•	Să scrie în fișierul text egale.txt numerele de ordine ale liniilor din fișierul respectiv care conțin doar valori egale între ele.
+#În cazul în care nu există nicio linie cu proprietatea cerută, se va scrie în fișierul egale.txt mesajul "Nu există!".
+#Liniile fișierului text de intrare se consideră numerotate de la 0, de sus în jos.
+#De exemplu, pentru fișierul text de mai sus, în fișierul rezultat.txt  trebuie scrise, pe două linii, numerele 1 și 3.
+
+g=open("egale.txt","w")
+
+l=incarca_fisier(nume)
+ok=1
+for i in range(len(l)):
+    mi,ma=min_max(l[i])
+    if mi==ma:
+        ok=0
+        g.write(str(i))
+        g.write("\n")
+if ok == 1:
+    g.write("Nu există!")
+g.close()
+
+#•	Să afișeze pe ecran  două numere întregi a  și b  din fișierul text dat cu proprietatea că toate numerele din fișierul
+# text aparțin intervalului [a, b]. De exemplu, pentru fișierul text de mai sus, trebuie afișate numerele a = -30 și b = 210.
+
+mi,ma=min_max(l[0])
+for i in range(1,len(l)):
+    a,b=min_max(l[i])
+    if a<mi:
+        mi=a
+    if b>ma:
+        ma=b
+print(f"a = {mi} și b = {ma}")
+
+
+
+
+#2) a) Scrieți o funcție deviruseaza care primește ca parametru o propoziție modificată de un virus și returnează
+# propoziția corectată: virusul a acționat asupra propoziției inițiale (formată din cuvinte separate prin câte un spațiu)
+# astfel:
+# la fiecare cuvânt a interschimbat prima literă cu ultima,
+# apoi inversat ordinea în care cuvintele apar în propoziție (primul a devenit ultimul, a doilea penultimul etc).
+# De exemplu, pentru propoziția “aorectc aropozitip este aceasta” primita ca parametru funcția va returna
+# “aceasta este propozitia corecta”
+
+def deviruseaza(s):
+    l=[x for x in s.split()]
+    i=0
+    j=len(l)-1
+    while i<j:
+        l[i],l[j]=l[j],l[i]
+        i=i+1
+        j=j-1
+    rez=""
+    for i in range(len(l)):
+        ll=len(l[i])
+        if ll > 1:
+            p=l[i][0]
+            u=l[i][ll-1]
+            cuv= u + l[i][1:(ll-1)] + p
+        else:
+            cuv=l[i]
+        if rez == "":
+            rez = cuv
+        else:
+            rez = rez + " " + cuv
+    return rez
+
+print(deviruseaza("aorectc aropozitip este aceasta"))
+
+#b) Scrieți o funcție prime care primește ca parametru un număr natural n și un parametru numar_maxim cu
+# valoarea implicită 0 care returnează o listă cu numere  prime mai mici decât n.
+# Dacă se specifică o valoare nenulă pentru parametrul numar_maxim, atunci funcția
+# va returna doar primele numar_maxim numere prime mai mici decât n.
+
+def prime(n, numar_maxim):
+    l=[]
+    nr=0
+    for x in range(2,n):
+        ok=1
+        for d in range(2,x//2+1):
+            if x % d == 0:
+                ok=0
+                break
+        if ok == 1:
+            if numar_maxim==0:
+                l.append(x)
+            else:
+                if nr<numar_maxim:
+                    nr=nr+1
+                    l.append(x)
+                else:
+                    break
+    return l
+
+print(prime(12,0))
+
+
+#c) Se dă fișierul intrare.in în care fiecare linie reprezintă o propoziție în care cuvintele sunt separate prin câte un spațiu.
+# Propozițiile din acest fișier au fost modificate de un virus care acționează așa cum a fost descris la punctul a),
+# dar care a acționat doar asupra liniilor de indice prim din fișier (numerotarea liniilor începând de la 1).
+# Folosind apeluri ale funcțiilor de la a) si b) să se creeze fișierul intrare_devirusata.out cu propozițiile
+# din fișierul inițial, dar cu cele de pe poziții prime corectate.
+
+f=open("intrare.in")
+s=f.readline()
+list=[]
+while s!="":
+    list.append(s)
+    s=f.readline()
+f.close()
+n=len(list)
+ind=prime(n,0)
+g=open("intrare_devirusata.out","w")
+for i in range(n):
+    if i+1 in ind:
+        s=list[i]
+        s=deviruseaza(s)
+        g.write(s)
+        g.write("\n")
+    else:
+        s = list[i]
+        g.write(s)
+
+
+
+
+#3 a) Scrieți o funcție cifra_control care primește ca parametru un număr natural n și returnează cifra
+# de control a numărului n. Cifra de control a unui număr natural se obține efectuând suma cifrelor sale,
+# apoi suma cifrelor acestei sume, până când suma obținută este un număr format dintr-o singură cifră.
+
+def cifra_control(n):
+    return n%9
+
+#b) Scrieți o funcție insereaza_cifra_control care primește ca parametru o listă de numere naturale
+#și o modifică inserând după fiecare element din listă cifra sa de control
+#(!funcția modifică lista primita ca parametru, nu returnează lista modificată). Cifra de control a unui număr se va calcula folosind funcția de la a)
+
+def insereaza_cifra_control(l):
+    n=len(l)
+    i=0
+    while i<n:
+        l.insert(i+1,cifra_control(l[i]))
+        i=i+2
+        n=n+1
+
+l=[12,13,14]
+insereaza_cifra_control(l)
+print(l)
+
+#c) Scrieți o funcție egale care primește ca parametri un număr variabil de liste cu elemente numere naturale și întoarce
+# True dacă listele primite ca parametru sunt egale și False altfel.
+
+def egale(*ls):
+    l=[]
+    ok=1
+    for x in ls:
+        l.append(x)
+    for i in range(len(l)-1):
+        for j in range(i+1,len(l)):
+            if l[i] != l[j]:
+                ok=0
+                break
+    if ok==1:
+        return True
+    else:
+        return False
+
+print(egale([1,2,3],[1,2,3],[1,2,4]))
+
+#d) Se consideră fișierul numere.in care conține numere naturale separate prin spații.
+# Folosind funcția de la b) afișați pe ecran fiecare număr din fișier urmat de cifra sa de control.
+# După fiecare cifră de control afișată se va trece la linie nouă
+
+f=open("numere.in")
+s=f.readline()
+f.close()
+l=[int(x) for x in s.split()]
+insereaza_cifra_control(l)
+for i in range(0,len(l),2):
+    print(l[i],l[i+1])
+
+
+#e) Se dau două fișiere numere.in și numere2.in conținând numere naturale separate prin spații.
+# Asociem fiecărui fișier un șir de cifre de control astfel: considerăm numerele distincte din fișier
+# în ordine crescătoare și formăm un șir cu cifrele lor de control (în această ordine).
+# Spunem că cele două fișiere sunt similare dacă șirurile asociate celor două fișiere sunt egale.
+# Folosind funcțiile de la punctele b și c să se determine dacă cele două fișiere sunt similare si să se afișeze pe ecran un mesaj corespunzător da/nu
+
+f=open("numere.in")
+s=f.readline()
+a=[int(x) for x in s.split()]
+a.sort()
+for i in range(len(a)-2):
+    if a[i] in a[i+1:]:
+        del a[i]
+
+insereaza_cifra_control(a)
+sir1=[a[i] for i in range(1,len(a)-2,2)]
+
+f.close()
+f=open("numere2.in")
+s=f.readline()
+b=[int(x) for x in s.split()]
+b.sort()
+for i in range(len(b)-2):
+    if b[i] in b[i+1:]:
+        del b[i]
+
+insereaza_cifra_control(b)
+sir2=[b[i] for i in range(1,len(b)-2,2)]
+
+f.close()
+if egale(sir1,sir2)==True:
+    print("da")
+else:
+    print("nu")
+
+
+
+
+
+
+#4.Spiridușii lui Moș Crăciun au fiecare asociat câte un cod format din litere și cifre.
+# Până în luna noiembrie spiridușii au avut la dispoziție un fișier în care să completeze ce
+# jucării pot face până la Crăciun și câte bucăți. O linie din acest fișier conține codul spiridușului,
+# numărul de bucăți (număr natural) și numele jucăriei (numele este format din cuvinte separate prin câte un spațiu).
+# Un spiriduș poate adăuga de mai multe ori o linie în fișier, chiar și cu aceeași jucărie, dacă se hotărăște că poate face mai multe.
+#Un exemplu de fișier este:
+
+f=open("date.in")
+s=f.readline()
+d=dict()
+while s!="":
+    a,b,c=s.split(maxsplit=2)
+    print(a,b,c)
+    c=c.rsplit("\n")
+    c=c[0]
+    l=[int(b),c]
+    if a in d.keys():
+        ok=1
+        for x in d[a]:
+            if c==x[1]:
+                x[0]=x[0]+int(b)
+                ok=0
+        if ok==1:
+            d[a].append(l)
+    else:
+        d[a]=[l]
+    s=f.readline()
+f.close()
+print(d)
+
+#b) Dat codul unui spiriduș, care sunt jucăriile care le poate face și ce cantitate din fiecare?
+# Pentru aceasta scrieți o funcție despre_spiridus cu 2 parametri:
+# în primul parametru se transmite structura în care s-au memorat datele la punctul a)
+# iar al doilea este codul unui spiriduș. Funcția  returnează o lista cu elementele tupluri de 2 elemente
+# – primul fiind numele jucăriei, iar al doilea cantitatea – ordonată descrescător după cantitate și, în caz de egalitate,
+# crescător după nume. Apelați funcția pentru codul S1 și afișați lista returnata de funcție.
+# Pentru datele din fișierul exemplu se va afișa [('ponei', 10), ('trenulet', 10), ('papusa', 1)]
+
+def despre_spiridus(d,cod):
+    l=[]
+    for x in d[cod]:
+        jucarie=x[1]
+        cantitate=x[0]
+        t=(jucarie,cantitate)
+        l.append(t)
+    l.sort(key=lambda e:(-e[1],e[0]))
+    return l
+print(despre_spiridus(d,"S1"))
+
+
+#c) Care este mulțimea jucăriilor pe care spiridușii le pot produce?
+# Pentru aceasta scrieți o funcție jucarii care primește ca parametru structura în care s-au
+# memorat datele la punctul a) și returnează o mulțime cu numele jucăriilor care pot fi produse de spiriduși.
+# Apelați funcția și afișați pe ecran elementele mulțimii returnate (pe o linie, separate prin virgula).
+# Pentru datele din fișierul exemplu o posibilă ieșire este (jucăriile se pot afișa în orice ordine):
+# ponei,trenulet,masinuta,papusa
+
+
+def jucarii(d):
+    m=set()
+    for a in d.keys():
+        for x in d[a]:
+            m.add(x[1])
+    return m
+m=jucarii(d)
+for x in m:
+    print(x,end=" ")
+print()
+#d) Care este lista spiridușilor harnici: ordonați descrescător după numărul de jucării
+# diferite pe care le pot face și, în caz de egalitate, descrescător după cantitatea
+# de jucării pe care o vor produce și, în caz de egalitate, crescător după cod?
+# Pentru aceasta scrieți o funcție spiridusi care primește ca parametru structura în care
+# s-au memorat datele și returnează o lista cu elementele tupluri de 3 elemente
+# – primul fiind codul spiridușului,
+# al doilea numărul de jucării diferite pe care le poate produce,
+# iar al treilea numărul total de bucăți de jucării care le poate produce spiridușul
+# – ordonată după criteriile cerute de Moș Crăciun (precizate anterior).
+# Apelați funcția și afișați pe ecran elementele listei obținute,
+# fiecare tuplu din listă fiind afișat pe o linie separată. Pentru datele din fișierul exemplu se va afișa
+
+
+def spiridusi(d):
+    l=[]
+    for x in d.keys():
+        cod=x
+        numar=len(d[x])
+        cantitate=0
+        for x in d[x]:
+            cantitate=cantitate+x[0]
+        t=(cod,numar,cantitate)
+        l.append(t)
+    l.sort(key=lambda e:(-e[1],-e[2],e[0]))
+    return l
+
+l=spiridusi(d)
+for x in l:
+    print(x)
+
+#d) În caz că un spiriduș nu mai poate produce un tip de jucărie,
+# să se actualizeze informațiile asociate spiridușului.
+# Pentru aceasta scrieți o funcție actualizare care primește 3 parametri (în aceasta ordine):
+# structura în care s-au memorat datele, codul spiridușului și numele jucăriei.
+# Dacă spiridușul dat ca parametru produce cel puțin două tipuri de jucării,
+# funcția va șterge din structura de date informațiile despre jucăria cu numele dat ca parametru atașate spiridușului
+# cu codul dat ca parametru și va returna True. Altfel funcția va returna False .
+# Să se apeleze funcția pentru spiridușul cu cod S1 și jucăria trenulet, apoi să se afișeze informațiile rămase despre
+# S1 folosind funcția despre_spiridus de la punctul b. Pentru datele din fișierul exemplu se va afișa [('ponei', 10), ('papusa', 1)]
+
+def actualizare(d,cod,nume):
+    if len(d[cod])<2:
+        return False
+    else:
+        for x in d[cod]:
+            if x[1]==nume:
+                d[cod].remove(x)
+                return True
+print(actualizare(d,"S1","trenulet"))
+print(despre_spiridus(d,"S1"))
+
+
+#A)
+f=open("fisier.in")
+d={​​​​​​​}​​​​​​​
+for linie in f:
+    print(repr(linie))
+    l=linie.rstrip('\n').split(maxsplit=2)
+    if l[0] not in d:
+        d[l[0]]={​​​​​​​}​​​​​​​
+    """if l[2] in d[l[0]]:
+        d[l[0]][l[2]]=d[l[0]][l[2]] + int(l[1])
+    else:
+        d[l[0]][l[2]] = int(l[1])"""
+    d[l[0]][l[2]] = d[l[0]].get(l[2], 0) + int(l[1])
+print(d["S1"])
+print(d)
+
+#B)
+def cheie(x):
+    return (-x[1],x[0])
+def despre_spiridus(dictionar, cod):
+    if cod in dictionar:
+        l=dictionar[cod].items()
+        #l=sorted(l,key=lambda x:(-x[1],x[0]))
+        l=sorted(l,key=cheie)
+        return l
+    return []
+lista=despre_spiridus(d,"S7")
+print(lista)
+
+#C)
+def jucarii(d):
+    s=set()
+    for spiridus in d:
+        s= s | d[spiridus].keys()
+        #s=s.union(s,d[spiridus].keys())
+        #s.update(s, d[spiridus].keys())
+    return s
+s=jucarii(d)
+s=",".join(s)
+print(s)
+
+"""for jucarie in s:
+    print(jucarie, end=" ")"""
+#D)
+def spiridusi(dictionar):
+    lista=[]
+    for cod in dictionar:
+        print(dictionar[cod])
+        tuplu=(cod,len(dictionar[cod]),sum(dictionar[cod].values()))
+        print(dictionar[cod].values())
+        print(tuplu)
+        lista.append(tuplu)
+    sortare=sorted(lista,key=lambda x:(-x[1],-x[2],x[0]))
+    return sortare
+sortat=spiridusi(d)
+for tuplu in sortat:
+    print(tuplu)
+
+#E)
+def actualizare(d,cod,nume):
+    if len(d[cod])<2:
+        return False
+    else:
+        if nume in d[cod]:
+            del d[cod][nume]
+        #d[cod].pop(nume,0)
+        return True
+actualizare(d,"S1","trenulet")
+print(despre_spiridus(d,"S1"))

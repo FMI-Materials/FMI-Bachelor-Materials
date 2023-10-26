@@ -1,0 +1,20 @@
+f=open("date.in")
+n=int(f.readline())
+a=[int(x) for x in f.readline().split()]
+M=int(f.readline())
+a=[0]+a
+v=[None for i in range(M+1)]
+v[0]=-1
+for i in range(1,n+1):
+    if v[a[i]]==None:
+        v[a[i]]=i
+    for s in range(M,a[i]-1,-1):
+        if v[s]==None and v[s-a[i]]!=None:
+            v[s]=i
+if v[M]:
+    s=M
+    while s>0:
+        print(a[v[s]],end=" ")
+        s=s-a[v[s]]
+
+f.close()

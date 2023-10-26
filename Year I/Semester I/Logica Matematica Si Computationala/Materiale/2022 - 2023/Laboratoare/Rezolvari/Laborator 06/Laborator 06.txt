@@ -1,0 +1,17 @@
+ex1:
+
+flatten([],[]).
+flatten([H|T],[H|R]) :- not(is_list(H)), flatten(T,R).
+flatten([H|T],R) :- is_list(H), flatten(H,X), flatten(T,Y), append(X,Y,R).
+
+flattend(L,R) :- flattendh(L,(R,[])).
+flattendh([],(R,R)).
+flattendh([H|T], ([H|R],S)) :- not(is_list(H)), flattendh(T,(R,S)).
+flattendh([H|T],(R,S)) :- is_list(H), flattendh(H,(R,N)), flattendh(T,(N,S)).
+
+ex2:
+
+quicksortd(L,R) :- quicksortdh(L,(R,[])).
+quicksortdh([],(R,R)).
+quicksortdh([H|T],(R,S)) :- split(H,T,A,B), quicksortdh(A,(R,[H|N])),
+                                            quicksortdh(B,(N,S)).

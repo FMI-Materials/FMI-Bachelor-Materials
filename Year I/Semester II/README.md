@@ -8,4 +8,4 @@
 | [Programare Orientata Pe Obiecte (POO)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I/Semester%20II/Programare%20Orientata%20Pe%20Obiecte)                  | 2 | 1 | 2 | - | E  | 6       |
 | [Tehnici Web (TW)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I/Semester%20II/Tehnici%20Web)                                      | 2 | - | 1 | 1 | V  | 4       |
 | [Competente Specifice Intr-o Limba Straina (Engleza)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I/Semester%20II/Engleza)        | - | 1 | - | - | V  | 2       |
-| Educație Fizica                                  | - | 1 | - | - | V  | 2       | 
+| Educatie Fizica                                  | - | 1 | - | - | V  | 2       | 

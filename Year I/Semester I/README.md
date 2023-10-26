@@ -9,4 +9,3 @@
 | [Gandire Critica Si Etica Academica In Informatica (GCEA)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I/Semester%20I/Gandire%20Critica%20Si%20Etica%20Academica)| 2 | 1 | - | 1 | V  | 4       |
 | [Competente De Baza Intr-o Limba Straina (Engleza)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20I/Semester%20I/Engleza)          | - | 1 | - | - | V  | 2       |
 | Educatie Fizica                                  | - | 1 | - | - | V  | 2       |
-                           | - | 1 | - | - | V  | 2       | 

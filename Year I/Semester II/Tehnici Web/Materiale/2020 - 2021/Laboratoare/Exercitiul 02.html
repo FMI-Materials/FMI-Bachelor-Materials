@@ -1,0 +1,67 @@
+<!--
+     P2.Creati un document HTML fara continut (nu contine alte elemente in interiorul body-ului).
+Scrieti cod JavaScript pentru a rezolva urmatoarele:
+- la incarcarea paginii se vor crea dinamic N divuri, unde N este ora la care a fost deschisa
+pagina, fiecare div primind la creare clasa "patrat". Scrieti cod CSS astfel incat clasa "patrat" sa
+atribuie o latime si inaltime egale cu 10px si border negru de 2px. In plus, fiecare div va avea o
+culoare de background generata aleator dintr-un vector de culori (minim 5 culori) ales de voi iar
+divurile vor fi pozitionate toate pe acelasi rand.
+- fiecare click pe un div, va face ca acesta sa se deplaseze in jos cu 5px. La click pe body dar in
+afara divurilor, toate divurile revin la pozitia initiala. Click-ul pe un div nu ar trebui sa declanseze
+click-ul pe body. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercitiul 2</title>
+    <style>
+      .patrat {
+        width: 10px;
+        height: 10px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    window.onload = () => {
+      currentHour = new Date().getHours();
+      let body = document.getElementsByTagName("body")[0];
+      body.style.display = "flex";
+
+      const colors = ["red", "green", "blue", "orange", "magenta"];
+      for (let i = 0; i < currentHour; i++) {
+        let divElement = document.createElement("div");
+        divElement.classList.add("patrat");
+        divElement.style.marginTop = 0;
+        let rand = Math.floor(Math.random() * 5);
+        divElement.style.backgroundColor = colors[rand];
+        body.appendChild(divElement);
+      }
+
+      document.querySelectorAll(".patrat").forEach((div) => {
+        div.addEventListener("click", (e) => {
+          div.style.marginTop = parseInt(div.style.marginTop) + 5 + "px";
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        let clickedOnDiv = false;
+        for (let i = 0; i < currentHour; i++) {
+          currentDiv = document.getElementsByClassName("patrat")[i];
+          if (e.target === currentDiv) {
+            clickedOnDiv = true;
+            break;
+          }
+        }
+
+        if (!clickedOnDiv) {
+          for (let i = 0; i < currentHour; i++) {
+            currentDiv = document.getElementsByClassName("patrat")[i];
+            currentDiv.style.marginTop = 0;
+          }
+        }
+      });
+    };
+  </script>
+</html>

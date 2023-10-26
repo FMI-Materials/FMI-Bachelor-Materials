@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Node handle (C++17) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/container/node_handle","wgTitle":"cpp/container/node handle","wgCurRevisionId":123330,"wgArticleId":15660,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["conditionally noexcept"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/container/node_handle","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_container_node_handle skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Node handle <span class="t-mark-rev t-since-cxx17">(C++17)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../container.html" title="cpp/container">container</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../container.html" title="cpp/container"> Containers library</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Sequence</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="array.html" title="cpp/container/array"><span class="t-lines"><span>array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vector.html" title="cpp/container/vector"><span class="t-lines"><span>vector</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="deque.html" title="cpp/container/deque"><span class="t-lines"><span>deque</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="forward_list.html" title="cpp/container/forward list"><span class="t-lines"><span>forward_list</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="list.html" title="cpp/container/list"><span class="t-lines"><span>list</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Associative</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="set.html" title="cpp/container/set"><span class="t-lines"><span>set</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multiset.html" title="cpp/container/multiset"><span class="t-lines"><span>multiset</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="map.html" title="cpp/container/map"><span class="t-lines"><span>map</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="multimap.html" title="cpp/container/multimap"><span class="t-lines"><span>multimap</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Unordered associative</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unordered_set.html" title="cpp/container/unordered set"><span class="t-lines"><span>unordered_set</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unordered_multiset.html" title="cpp/container/unordered multiset"><span class="t-lines"><span>unordered_multiset</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unordered_map.html" title="cpp/container/unordered map"><span class="t-lines"><span>unordered_map</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="unordered_multimap.html" title="cpp/container/unordered multimap"><span class="t-lines"><span>unordered_multimap</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Adaptors</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="stack.html" title="cpp/container/stack"><span class="t-lines"><span>stack</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="queue.html" title="cpp/container/queue"><span class="t-lines"><span>queue</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="priority_queue.html" title="cpp/container/priority queue"><span class="t-lines"><span>priority_queue</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Views</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="span.html" title="cpp/container/span"><span class="t-lines"><span>span</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="coMULTI">/*unspecified*/</span><span class="sy1">&gt;</span><br>
+<span class="kw1">class</span> <span class="coMULTI">/*node-handle*/</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx17">(since C++17)</span> </td>
+</tr> 
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Associative containers <span class="t-lc"><a href="set.html" title="cpp/container/set">std::set</a></span>, <span class="t-lc"><a href="map.html" title="cpp/container/map">std::map</a></span>, <span class="t-lc"><a href="multiset.html" title="cpp/container/multiset">std::multiset</a></span>, <span class="t-lc"><a href="multimap.html" title="cpp/container/multimap">std::multimap</a></span>, <span class="t-lc"><a href="unordered_set.html" title="cpp/container/unordered set">std::unordered_set</a></span>, <span class="t-lc"><a href="unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span>, <span class="t-lc"><a href="unordered_multiset.html" title="cpp/container/unordered multiset">std::unordered_multiset</a></span>, <span class="t-lc"><a href="unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span> are node-based data structures, and their nodes can be extracted as an object of unspecified type known as <i>node handle</i>.
+</p><p>Node handle is a move-only type that owns and provides access to the element (the <code>value_type</code>) stored in the node, and provides non-const access to the key part of the element (the <code>key_type</code>) and the mapped part of the element (the <code>mapped_type</code>). If the node handle destructs while holding the node, the node is properly destructed using the appropriate allocator for the container. The node handle contains a copy of the container’s allocator. This is necessary so that the node handle can outlive the container.
+</p><p>The exact type of node handle (shown here as <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="coMULTI">/*node-handle*/</span></span></span>) is unspecified, but each container exposes its node handle type as the member <code>node_type</code>.
+</p><p>Node handles can be used to transfer ownership of an element between two associative containers with the same key, value, and allocator type (ignoring comparison or hash/equality), without invoking any copy/move operations on the container element (this kind of operation is known as "splicing"). Transfer between unique and non-unique containers is also permitted: a node handle from a <span class="t-lc"><a href="map.html" title="cpp/container/map">std::map</a></span> can be inserted into an <span class="t-lc"><a href="multimap.html" title="cpp/container/multimap">std::multimap</a></span>, but not into <span class="t-lc"><a href="unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span> or <span class="t-lc"><a href="set.html" title="cpp/container/set">std::set</a></span>.
+</p><p>A node handle may be empty, in which case it holds no element and no allocator. The default-constructed and moved-from node handle is empty. In addition, an empty node handle can be produced by a failed call to container member function <code>extract</code>.
+</p><p>Pointers and references to an element that are obtained while it is owned by a node handle are invalidated if the element is successfully inserted into a container.
+</p><p>For all map containers (<span class="t-lc"><a href="map.html" title="cpp/container/map">std::map</a></span>, <span class="t-lc"><a href="multimap.html" title="cpp/container/multimap">std::multimap</a></span>, <span class="t-lc"><a href="unordered_map.html" title="cpp/container/unordered map">std::unordered_map</a></span>, and <span class="t-lc"><a href="unordered_multimap.html" title="cpp/container/unordered multimap">std::unordered_multimap</a></span>) whose <code>key_type</code> is <code>K</code> and <code>mapped_type</code> is <code>T</code>, the behavior of operations involving node handles is undefined if a user-defined specialization of <span class="t-lc"><a href="../utility/pair.html" title="cpp/utility/pair">std::pair</a></span> exists for <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>K, T<span class="sy1">&gt;</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> K, T<span class="sy1">&gt;</span></span></span>.
+</p>
+<h3><span class="mw-headline" id="Member_types">Member types</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-hitem">
+<td>  Member type
+</td>
+<td>  Definition
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <code>key_type</code><span class="t-mark">(map containers only)</span>
+</td>
+<td>  the key stored in the node </td></tr>
+
+<tr class="t-dsc">
+<td>  <code>mapped_type</code><span class="t-mark">(map containers only)</span>
+</td>
+<td>  the mapped part of the element stored in the node </td></tr>
+
+<tr class="t-dsc">
+<td>  <code>value_type</code><span class="t-mark">(set containers only)</span>
+</td>
+<td>  the element stored in the node </td></tr>
+
+<tr class="t-dsc">
+<td>  <code>allocator_type</code>
+</td>
+<td>  the allocator to be used when destroying the element </td></tr>
+</table>
+<h3><span class="mw-headline" id="Member_functions">Member functions</span></h3>
+<div class="t-member">
+<h2> <span class="mw-headline" id="constructors"> constructors </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">constexpr</span> <span class="coMULTI">/*node-handle*/</span><span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="coMULTI">/*node-handle*/</span><span class="br0">(</span><span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;&amp;</span> nh<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> The default constructor initializes the node handle to the empty state.</div>
+<div class="t-li1"><span class="t-li">2)</span> The move constructor takes ownership of the container element from <code>nh</code>, move-constructs the member allocator, and leaves <code>nh</code> in the empty state.</div>
+<h3> <span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  nh
+</td>
+<td> -
+</td>
+<td>  a node handle with the same type (not necessarily the same container)
+</td></tr></table>
+<h3> <span class="mw-headline" id="Notes">Notes</span></h3>
+<p>Node handles are move-only, the copy constructor is not defined.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="operator.3D"> operator=</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;&amp;</span> nh<span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<ul><li> If the node handle is not empty, 
+</li></ul>
+<dl><dd><ul><li> destroys the <code>value_type</code> subobject in the container element object managed by this node handle by calling <code>std::allocator_traits&lt;allocator_type&gt;::destroy</code>;
+</li><li> deallocates the container element by calling <code>allocator_traits&lt;allocator_type&gt;::rebind_traits&lt;container-node-type&gt;::deallocate</code>;
+</li></ul>
+</dd></dl>
+<ul><li> Acquires ownership of the container element from <code>nh</code>;
+</li><li> If node handle was empty (and so did not contain an allocator) or if <code>allocator_traits&lt;allocator_type&gt;::propagate_on_container_move_assignment</code> is <code>true</code>, move-assigns the allocator from <code>nh</code>;
+</li><li> sets <code>nh</code> to the empty state.
+</li></ul>
+<p>The behavior is undefined if the node is not empty and <code>allocator_traits&lt;allocator_type&gt;::propagate_on_container_move_assignment</code> is <code>false</code> and the allocators do not compare equal.
+</p>
+<h3> <span class="mw-headline" id="Parameters_2">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  nh
+</td>
+<td> -
+</td>
+<td>  a node handle with the same type (not necessarily the same container)
+</td></tr></table>
+<h3> <span class="mw-headline" id="Return">Return</span></h3>
+<p><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>
+</p>
+<h3> <span class="mw-headline" id="Exceptions">Exceptions</span></h3>
+<p>Throws nothing.
+</p>
+<h3> <span class="mw-headline" id="Notes_2">Notes</span></h3>
+<p>Node handles are move-only, the copy assignment is not defined.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="destructor"> destructor </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">~<span class="coMULTI">/*node-handle*/</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<ul><li> If the node handle is not empty, 
+</li></ul>
+<dl><dd><ul><li> destroys the <code>value_type</code> subobject in the container element object managed by this node handle by calling <code>std::allocator_traits&lt;allocator_type&gt;::destroy</code>;
+</li><li> deallocates the container element by calling <code>allocator_traits&lt;allocator_type&gt;::rebind_traits&lt;container-node-type&gt;::deallocate</code>.
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="empty"> empty</span></h2>
+<table class="t-dcl-begin"><tbody>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-until-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span> empty<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx20">(until C++20)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="br0">[</span><span class="br0">[</span>nodiscard<span class="br0">]</span><span class="br0">]</span> <span class="kw4">bool</span> empty<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Returns <code>true</code> if the node handle is empty, <code>false</code> otherwise.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="operator_bool"> operator bool</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">explicit</span> operator <span class="kw4">bool</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Converts to <code>false</code> if the node handle is empty, <code>true</code> otherwise.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="get_allocator"> get_allocator</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">allocator_type get_allocator<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Returns a copy of the stored allocator (which is a copy of the allocator of the source container). The behavior is undefined if the node handle is empty.
+</p>
+<h3> <span class="mw-headline" id="Exceptions_2">Exceptions</span></h3>
+<p>Throws nothing.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="value"> value </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">value_type<span class="sy3">&amp;</span> value<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark">(set containers only)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Returns a reference to the <code>value_type</code> subobject in the container element object managed by this node handle. The behavior is undefined if the node handle is empty.
+</p>
+<h3> <span class="mw-headline" id="Exceptions_3">Exceptions</span></h3>
+<p>Throws nothing.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="key"> key </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">key_type<span class="sy3">&amp;</span> key<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark">(map containers only)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Returns a non-const reference to the <code>key_type</code> member of the <code>value_type</code> subobject in the container element object managed by this node handle. The behavior is undefined if the node handle is empty.
+</p>
+<h3> <span class="mw-headline" id="Exceptions_4">Exceptions</span></h3>
+<p>Throws nothing.
+</p>
+<h3> <span class="mw-headline" id="Notes_3">Notes</span></h3>
+<p>This function makes it possible to modify the key of a node extracted from a map, and then re-insert it into the map, without ever copying or moving the element.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="mapped"> mapped </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">mapped_type<span class="sy3">&amp;</span> mapped<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark">(map containers only)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Returns a reference to the <code>mapped_type</code> member of the <code>value_type</code> subobject in the container element object managed by this node handle. The behavior is undefined if the node handle is empty.
+</p>
+<h3> <span class="mw-headline" id="Exceptions_5">Exceptions</span></h3>
+<p>Throws nothing.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="swap"> swap </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span> swap<span class="br0">(</span><span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;</span> nh<span class="br0">)</span> <span class="kw1">noexcept</span><span class="br0">(</span><span class="coMULTI">/* see below */</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<ul><li> swaps ownership of container nodes;
+</li><li> if one node is empty or if both nodes are non-empty and <code>std::allocator_traits&lt;allocator_type&gt;::propagate_on_container_swap</code> is <code>true</code>, swaps the allocators as well.
+</li></ul>
+<p>The behavior is undefined if both nodes are not empty and <code>allocator_traits&lt;allocator_type&gt;::propagate_on_container_swap</code> is <code>false</code> and the allocators do not compare equal.
+</p>
+<h3> <span class="mw-headline" id="Exceptions_6">Exceptions</span></h3>
+<div class="t-noexcept-full"><a href="../language/noexcept_spec.html" title="cpp/language/noexcept spec"><tt>noexcept</tt></a> specification:  
+<div class="t-noexcept-box"><span class="t-cc"><span class="mw-geshi cpp source-cpp"><span class="kw1">noexcept</span><span class="br0">(</span><a href="../memory/allocator_traits.html"><span class="kw702">std::<span class="me2">allocator_traits</span></span></a><span class="sy1">&lt;</span>allocator_type<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">propagate_on_container_swap</span><span class="sy4">::</span><span class="me2">value</span> <span class="sy3">||</span><br>
+ <a href="../memory/allocator_traits.html"><span class="kw702">std::<span class="me2">allocator_traits</span></span></a><span class="sy1">&lt;</span>allocator_type<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">is_always_equal</span><span class="sy4">::</span><span class="me2">value</span><span class="br0">)</span></span></span></div></div>
+</div>
+<h3><span class="mw-headline" id="Non-member_functions">Non-member functions</span></h3>
+<div class="t-member">
+<h2> <span class="mw-headline" id="swap_2"> swap </span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">friend</span> <span class="kw4">void</span> swap<span class="br0">(</span><span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;</span> x, <span class="coMULTI">/*node-handle*/</span><span class="sy3">&amp;</span> y<span class="br0">)</span> <span class="kw1">noexcept</span><span class="br0">(</span><span class="kw1">noexcept</span><span class="br0">(</span>x.<span class="me1">swap</span><span class="br0">(</span>y<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Effectively executes <span class="t-c"><span class="mw-geshi cpp source-cpp">x.<span class="me1">swap</span><span class="br0">(</span>y<span class="br0">)</span></span></span>.
+</p><p>This function  is not visible to ordinary <a href="../language/unqualified_lookup.html" title="cpp/language/unqualified lookup">unqualified</a> or <a href="../language/qualified_lookup.html" title="cpp/language/qualified lookup">qualified lookup</a>, and can only be found by <a href="../language/adl.html" title="cpp/language/adl">argument-dependent lookup</a> when <code><i>node-handle</i></code> is an associated class of the arguments.
+</p>
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4474/1000000
+Preprocessor generated node count: 9461/1000000
+Post‐expand include size: 83644/2097152 bytes
+Template argument size: 20909/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:15660-0!*!0!!en!*!* and timestamp 20220410104542 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/container/node_handle&amp;oldid=123330">https://en.cppreference.com/mwiki/index.php?title=cpp/container/node_handle&amp;oldid=123330</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/container/node_handle">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 13 October 2020, at 18:57.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 64,734 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 2.142 secs. -->
+	</body>
+<!-- Cached 20220410104542 -->
+</html>

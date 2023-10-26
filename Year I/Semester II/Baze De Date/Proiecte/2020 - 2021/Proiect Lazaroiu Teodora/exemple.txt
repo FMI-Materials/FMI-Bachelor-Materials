@@ -1,0 +1,164 @@
+--- EXERCITIUL 11
+
+--- 1. Sa se afiseze numele pasagerilor, pretul total al biletelor rezervate de acestia, aeroportul de plecare
+--- si data si ora plecarii pentru pasagerii ce pleaca dintr-un oras din Muntenia sau Oltenia.
+--- Pretul total al biletului reprezinta pretul biletului plus pretul aditional al clasei, daca este cazul.
+--- Sa se ordoneze rezultatele dupa data plecarii.
+                    
+SELECT p.nume "Nume pasager", r.pret_bilet + NVL(cl.pret_aditional, 0) "Pret total bilet",
+c.cod_aeroport_plecare "Aeroport plecare", to_char(c.data_plecarii,'dd-mm-yyyy hh24:mi') "Data si ora plecarii"
+FROM PASAGERI p JOIN REZERVA r USING (id_pasager) JOIN CALATORII c USING (cod_calatorie) JOIN CLASE cl USING (cod_clasa)
+WHERE c.cod_aeroport_plecare IN (SELECT cod_IATA
+                                FROM AEROPORTURI a JOIN ORASE o USING (cod_postal) JOIN REGIUNI re USING (cod_regiune)
+                                WHERE INITCAP(re.nume) = 'Muntenia' or INITCAP(re.nume) = 'Oltenia')
+ORDER BY c.data_plecarii;
+
+--- Se foloseste functia NVL pentru a putea calcula pretul total: acolo unde pretul aditional pentru clasa
+--- este NULL se va aduna valoarea 0.
+--- In subcererea nesincronizata sunt selectate aeroporturi care se afla in regiunile Muntenia sau Oltenia
+--- Pentru a putea afisa toate cerintele se face JOIN pe 4 tabele
+--- Functia pentru siruri de caractere INITCAP se foloseste pentru a verifica numele regiunilor
+
+
+--- 2. Sa se afiseze angajatii din regiunea TRANSILVANIA care au salariul peste media tuturor angajatilor din
+--- acea regiune. Pentru fiecare angajat se va afisare id-ul, numele, prenumele, salariul si jobul
+--- (pilot sau insotitor) si sa se ordoneze crescator dupa salariu
+
+WITH angajati_transilvania AS ((SELECT p.id_pilot "ID_ANGAJAT", p.nume, p.prenume, p.salariu "SALARIU", 'pilot' AS "JOB"
+                            FROM PILOTI p JOIN AEROPORTURI a ON (a.cod_IATA = p.cod_aeroport)
+                            WHERE a.cod_postal IN (SELECT cod_postal
+                                                    FROM ORASE o JOIN REGIUNI r USING (cod_regiune)
+                                                    WHERE UPPER(r.nume) = 'TRANSILVANIA'))
+                                                    
+                                UNION
+                                                
+                             (SELECT i.id_insotitor_de_zbor "ID_ANGAJAT", i.nume, i.prenume, i.salariu "SALARIU", 'insotitor' AS "JOB"
+                            FROM INSOTITORI i JOIN AEROPORTURI a ON (a.cod_IATA = i.cod_aeroport)
+                            WHERE a.cod_postal IN (SELECT cod_postal
+                                                    FROM ORASE o JOIN REGIUNI r USING (cod_regiune)
+                                                    WHERE UPPER(r.nume) = 'TRANSILVANIA')))
+SELECT id_angajat, nume, prenume, salariu, job
+FROM angajati_transilvania
+WHERE salariu > (SELECT AVG(salariu)
+                FROM angajati_transilvania)
+ORDER BY salariu;
+
+--- Se va creea tabelul angajati_transilvania folosind clauza WITH pentru a cuprinde atat pilotii cat si
+--- insotitorii care lucreaza la un aeroport din Transilvania. Se foloseste operatorul UNION pentru a
+--- combina cele 2 categorii.
+--- Se foloseste o subcerere sincronizata pentru a compara salariile din noul tabel cu salariul mediu,
+--- calculat folosind functia grup AVG
+
+--- 3. Să se afișeze rezervările al căror preț depășește media prețurilor biletelor și să se ordoneze
+--- după numele clientului. Pentru fiecare rezervare se va afișa codul rezervării, numele și prenumele
+--- pasagerului pe aceiași coloană, numele clasei de zbor pe care acesta a ales-o, prețul biletului și
+--- dacă pasagerul are vârsta sub sau peste 25 de ani
+
+SELECT r.cod_rezervare "Cod rezervare", CONCAT(CONCAT(p.nume,' '),p.prenume) "Nume si prenume pasager", c.nume "Nume clasa", r.pret_bilet "Pret bilet",
+CASE WHEN MONTHS_BETWEEN(SYSDATE, data_nasterii)/12 > 25 THEN 'Peste 25 de ani'
+ELSE 'Sub 25 de ani'
+END AS "Varsta"
+FROM PASAGERI p JOIN REZERVA r USING (id_pasager) JOIN CLASE c USING (cod_clasa)
+WHERE pret_bilet > (SELECT AVG(pret_bilet)
+                    FROM REZERVA)
+ORDER BY p.nume;
+
+--- Se folosește expresia CASE pentru a afișa una dintre cele 2 variante de vârstă, adică sub sau
+--- peste 25 de ani. Se va face JOIN între cele 3 tabele pentru a putea accesa toate datele și se
+--- va folosi funcția grup AVG pentru a calcula prețul mediu al unui bilet.
+
+--- 4. Sa se afiseze codul IATA, numele aeroportului, numarul de piloti angajati si
+--- salariul maxim din acel aeroport pentru aeroporturile care au mai mult de un pilot
+
+SELECT a.cod_IATA "Cod IATA", a.nume "Nume",
+COUNT(*) "Numar piloti", MAX(p.salariu) "Salariu maxim"
+FROM AEROPORTURI a JOIN PILOTI p ON (cod_IATA = cod_aeroport)
+GROUP BY a.cod_IATA, a.nume
+HAVING COUNT(*) > 1;
+
+--- Se folosesc functiile grup COUNT și  MAX pentru a număra piloții angajați și pentru a afla
+--- salariul maxim al pilotilor din respectivul aeroport. Se face JOIN intre tabelele AEROPORTURI
+--- si PILOTI. Prin expresia HAVING se testeaza daca numarul de piloti angajati din respectivul
+--- aeroport este mai mare decat unu.
+
+--- 5. Sa se afiseze salariul maxim al pilotilor in aeroporturi cu codul OTP, CLJ si TSR si 
+--- salariul mediu din Romania al pilotilor
+
+SELECT 
+MAX(DECODE(cod_aeroport, 'OTP', salariu)) "Maxim OTP",
+MAX(DECODE(cod_aeroport, 'CLJ', salariu)) "Maxim CLJ",
+MAX(DECODE(cod_aeroport, 'TSR', salariu)) "Maxim TSR",
+ROUND(AVG(salariu)) "Salariu mediu pe tara"
+FROM PILOTI;
+
+--- Se folosesc functiile grup AVG și  MAX pentru a calcula salariul mediu si cel maxim. Comanda
+--- DECODE este folosita pentru a selecta codurile aeroporturilor.
+
+--- EXERCITIUL 12
+
+--- 1. Să se mărească salariul piloților care au fost cel puțin o dată piloți principali în cadrul unui
+--- zbor cu 20% din valoarea actuală.
+
+UPDATE PILOTI
+SET salariu = salariu * 1.2
+WHERE id_pilot IN (SELECT DISTINCT id_pilot_principal
+                    FROM CALATORII);
+
+--- 2. Să se crească prețul biletelor cu 100 de lei pentru rezervările făcute de pasagerii născuți
+--- după anul 2000, inclusiv
+
+UPDATE REZERVA
+SET pret_bilet = pret_bilet + 100
+WHERE id_pasager IN (SELECT id_pasager
+                    FROM PASAGERI
+                    WHERE EXTRACT(YEAR FROM data_nasterii) >= 2000);
+
+--- 3. Să se șteargă companiile care nu operează niciun avion folosit într-o călătorie
+
+DELETE FROM COMPANII
+WHERE cod_companie NOT IN (SELECT DISTINCT cod_companie
+                            FROM AVIOANE
+                            WHERE cod_avion IN (SELECT DISTINCT cod_avion
+                                                    FROM CALATORII));
+ROLLBACK;
+
+--- EXERCITIU 13
+
+--- secventa pentru incrementarea atributului ID_PILOT din tabelul PILOTI
+CREATE SEQUENCE SEQ_PILOTI
+INCREMENT by 10
+START WITH 120
+MAXVALUE 9990
+NOCYCLE;
+
+--- secventa pentru incrementarea atributului ID_insotitor_DE_ZBOR din tabelul INSOTITORI
+CREATE SEQUENCE SEQ_INSOTITORI
+INCREMENT by 10
+START WITH 10
+MAXVALUE 9990
+NOCYCLE;
+
+--- secventa pentru incrementarea atributului ID_PASAGER din tabelul PASAGERI
+CREATE SEQUENCE SEQ_PASAGERI
+INCREMENT by 1
+START WITH 1
+MAXVALUE 999999
+NOCYCLE;
+
+--- secventa pentru incrementarea atributului COD_CALATORIE din tabelul CALATORII
+CREATE SEQUENCE SEQ_CALATORII
+INCREMENT by 1
+START WITH 1001
+MAXVALUE 999999
+NOCYCLE;
+
+--- EXERCITIUL 16
+
+--- Sa se listeze pentru fiecare regiune numele insotitorilor de zbor si numelor aeroportului la care
+--- acestia lucreaza. Lista se va ordona alfabetic dupa numele regiunilor
+
+SELECT r.nume "Nume regiune", i.nume "Nume insotitor", a.nume "Nume aeroport"
+FROM INSOTITORI i FULL OUTER JOIN AEROPORTURI a ON (cod_IATA = cod_aeroport)
+FULL OUTER JOIN ORASE o ON (a.cod_postal = o.cod_postal)
+FULL OUTER JOIN REGIUNI r ON (r.cod_regiune = o.cod_regiune)
+ORDER BY r.nume;

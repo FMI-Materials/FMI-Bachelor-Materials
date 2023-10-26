@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Constraints and concepts (since C++20) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/constraints","wgTitle":"cpp/language/constraints","wgCurRevisionId":141072,"wgArticleId":17699,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/constraints","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_constraints skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Constraints and concepts <span class="t-mark-rev t-since-cxx20">(since C++20)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="templates.html" title="cpp/language/templates"> Templates</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_parameters.html" title="cpp/language/template parameters"> Parameters and arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_template.html" title="cpp/language/member template"> Class member templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variable_template.html" title="cpp/language/variable template"> Variable templates</a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_argument_deduction.html" title="cpp/language/template argument deduction"> Template argument deduction</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="deduction_guide.html" title="cpp/language/class template argument deduction"> Class template argument deduction</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Explicit (full) specialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="partial_specialization.html" title="cpp/language/partial specialization"> Partial specialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dependent_name.html" title="cpp/language/dependent name"> Dependent names</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="sizeof....html" title="cpp/language/sizeof..."> <code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="fold.html" title="cpp/language/fold"> Fold-expressions</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sfinae.html" title="cpp/language/sfinae"> SFINAE</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Constraints and concepts</strong> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="requires.html" title="cpp/language/requires"> Requires expression</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<dl><dd><i>This page describes the core language feature adopted for C++20. For named type requirements used in the specification of the standard library, see <a href="../named_req.html" title="cpp/named req">named requirements</a>. For the Concepts TS version of this feature, see <a href="../experimental/constraints.html" title="cpp/experimental/constraints">here</a>.</i>
+</dd></dl>
+<dl><dd><i> <b>Temporary notice</b>: the <span class="t-lc">requires</span> expression section has been moved to <a href="requires.html" title="cpp/language/requires">its own page</a></i>
+</dd></dl>
+<p><a href="class_template.html" title="cpp/language/class template">Class templates</a>, <a href="function_template.html" title="cpp/language/function template">function templates</a>, and non-template functions (typically members of class templates) may be associated with a <i>constraint</i>, which specifies the requirements on template arguments, which can be used to select the most appropriate function overloads and template specializations.
+</p><p>Named sets of such requirements are called <i>concepts</i>. Each concept is a predicate, evaluated at compile time, and becomes a part of the interface of a template where it is used as a constraint:
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;string&gt;</span>
+<span class="co2">#include &lt;cstddef&gt;</span>
+<span class="co2">#include &lt;concepts&gt;</span>
+ 
+<span class="co1">// Declaration of the concept "Hashable", which is satisfied by any type 'T'</span>
+<span class="co1">// such that for values 'a' of type 'T', the expression std::hash&lt;T&gt;{}(a)</span>
+<span class="co1">// compiles and its result is convertible to std::size_t</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept Hashable <span class="sy1">=</span> requires<span class="br0">(</span>T a<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">{</span> <a href="../utility/hash.html"><span class="kw1127">std::<span class="me2">hash</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">{</span><span class="br0">}</span><span class="br0">(</span>a<span class="br0">)</span> <span class="br0">}</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <a href="../concepts/convertible_to.html"><span class="kw2938">std::<span class="me2">convertible_to</span></span></a><span class="sy1">&lt;</span><a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a><span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> meow <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// Constrained C++20 function template:</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>Hashable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="co1">//</span>
+<span class="co1">// Alternative ways to apply the same constraint:</span>
+<span class="co1">// template&lt;typename T&gt;</span>
+<span class="co1">//     requires Hashable&lt;T&gt;</span>
+<span class="co1">// void f(T) {}</span>
+<span class="co1">//</span>
+<span class="co1">// template&lt;typename T&gt;</span>
+<span class="co1">// void f(T) requires Hashable&lt;T&gt; {}</span>
+<span class="co1">//</span>
+<span class="co1">// void f(Hashable auto /*parameterName*/) {}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">using</span> std<span class="sy4">::</span><span class="me2">operator</span><span class="st0">""</span>s<span class="sy4">;</span>
+ 
+    f<span class="br0">(</span><span class="st0">"abc"</span>s<span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// OK, std::string satisfies Hashable</span>
+    <span class="co1">// f(meow{}); // Error: meow does not satisfy Hashable</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<p>Violations of constraints are detected at compile time, early in the template instantiation process, which leads to easy to follow error messages:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../container/list.html"><span class="kw1278">std::<span class="me2">list</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> l <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">3</span>, <span class="sy2">-</span><span class="nu0">1</span>, <span class="nu0">10</span><span class="br0">}</span><span class="sy4">;</span>
+<a href="../algorithm/sort.html"><span class="kw1622">std::<span class="me2">sort</span></span></a><span class="br0">(</span>l.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, l.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> 
+<span class="co1">// Typical compiler diagnostic without concepts:</span>
+<span class="co1">// invalid operands to binary expression ('std::_List_iterator&lt;int&gt;' and</span>
+<span class="co1">// 'std::_List_iterator&lt;int&gt;')</span>
+<span class="co1">//                           std::__lg(__last - __first) * 2);</span>
+<span class="co1">//                                     ~~~~~~ ^ ~~~~~~~</span>
+<span class="co1">// ... 50 lines of output ...</span>
+<span class="co1">//</span>
+<span class="co1">// Typical compiler diagnostic with concepts:</span>
+<span class="co1">// error: cannot call std::sort with std::_List_iterator&lt;int&gt;</span>
+<span class="co1">// note:  concept RandomAccessIterator&lt;std::_List_iterator&lt;int&gt;&gt; was not satisfied</span></pre></div></div>
+<p>The intent of concepts is to model semantic categories (Number, Range, RegularFunction) rather than syntactic restrictions (HasPlus, Array). According to <a rel="nofollow" class="external text" href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#t20-avoid-concepts-without-meaningful-semantics">ISO C++ core guideline T.20</a>, "The ability to specify meaningful semantics is a defining characteristic of a true concept, as opposed to a syntactic constraint."
+</p>
+<h3><span class="mw-headline" id="Concepts">Concepts</span></h3>
+<p>A concept is a named set of requirements. The definition of a concept must appear at namespace scope.
+</p><p>The definition of a concept has the form
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>template</b></code> <code><b>&lt;</b></code> <span class="t-spar">template-parameter-list</span> <code><b>&gt;</b></code>
+<p><code><b>concept</b></code> <span class="t-spar">concept-name</span> <code><b>=</b></code> <span class="t-spar">constraint-expression</span><code><b>;</b></code>
+</p>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// concept</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+concept Derived <span class="sy1">=</span> <a href="../types/is_base_of.html"><span class="kw592">std::<span class="me2">is_base_of</span></span></a><span class="sy1">&lt;</span>U, T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span></pre></div></div>
+<p>Concepts cannot recursively refer to themselves and cannot be constrained:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept V <span class="sy1">=</span> V<span class="sy1">&lt;</span>T<span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// error: recursive concept</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept C1 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span>C1 T<span class="sy1">&gt;</span>
+concept Error1 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span> <span class="co1">// Error: C1 T attempts to constrain a concept definition</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> requires C1<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+concept Error2 <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span> <span class="co1">// Error: the requires-clause attempts to constrain a concept</span></pre></div></div>
+<p>Explicit instantiations, explicit specializations, or partial specializations of concepts are not allowed (the meaning of the original definition of a constraint cannot be changed).
+</p><p>Concepts can be named in an id-expression. The value of the id-expression is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> if the constraint expression is satisfied, and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span> otherwise.
+</p><p>Concepts can also be named in a type-constraint, as part of
+</p>
+<ul><li> <a href="template_parameters.html#Type_template_parameter" title="cpp/language/template parameters">type template parameter declaration</a>,
+</li><li> <a href="auto.html" title="cpp/language/auto">placeholder type specifier</a>,
+</li><li> <a href="constraints.html#Compound_Requirements">compound requirement</a>.
+</li></ul>
+<p>In a <span class="t-spar">type-constraint</span>, a concept takes one less template argument than its parameter list demands, because the contextually deduced type is implicitly used as the first argument of the concept.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+concept Derived <span class="sy1">=</span> <a href="../types/is_base_of.html"><span class="kw592">std::<span class="me2">is_base_of</span></span></a><span class="sy1">&lt;</span>U, T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Derived<span class="sy1">&lt;</span>Base<span class="sy1">&gt;</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// T is constrained by Derived&lt;T, Base&gt;</span></pre></div></div>
+<h3><span class="mw-headline" id="Constraints">Constraints</span></h3>
+<p>A constraint is a sequence of logical operations and operands that specifies requirements on template arguments. They can appear within <a href="requires.html" title="cpp/language/requires">requires expressions</a> or directly as bodies of concepts.
+</p><p>There are three types of constraints:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> conjunctions</div>
+<div class="t-li1"><span class="t-li">2)</span> disjunctions</div>
+<div class="t-li1"><span class="t-li">3)</span> atomic constraints</div>
+<p>The constraint associated with a declaration are determined by <a href="constraints.html#Constraint_normalization">normalizing</a> a logical AND expression whose operands are in the following order:
+</p>
+<ol><li> the constraint expression introduced for each constrained <a href="template_parameters.html#Type_template_parameter" title="cpp/language/template parameters">type template parameter</a> or non-type template parameter declared with a constrained <a href="auto.html" title="cpp/language/auto">placeholder type</a>, in order of appearance;
+</li><li> the constraint expression in the <i>requires</i> clause after the template parameter list;
+</li><li> the constraint expression introduced for each parameter with constrained <a href="auto.html" title="cpp/language/auto">placeholder type</a> in a <a href="function_template.html#Abbreviated_function_template" title="cpp/language/function template">abbreviated function template declaration</a>;
+</li><li> the constraint expression in the trailing <i>requires</i> clause.
+</li></ol>
+<p>This order determines the order in which constraints are instantiated when checking for satisfaction.
+</p><p>A constrained declaration may only be redeclared using the same syntactic form. No diagnostic is required:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span>Incrementable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span> requires Decrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Incrementable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span> requires Decrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// OK, redeclaration</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    requires Incrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> Decrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ill-formed, no diagnostic required</span>
+ 
+<span class="co1">// the following two declarations have different constraints:</span>
+<span class="co1">// the first declaration has Incrementable&lt;T&gt; &amp;&amp; Decrementable&lt;T&gt;</span>
+<span class="co1">// the second declaration has Decrementable&lt;T&gt; &amp;&amp; Incrementable&lt;T&gt;</span>
+<span class="co1">// Even though they are logically equivalent.</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Incrementable T<span class="sy1">&gt;</span> 
+<span class="kw4">void</span> g<span class="br0">(</span>T<span class="br0">)</span> requires Decrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Decrementable T<span class="sy1">&gt;</span> 
+<span class="kw4">void</span> g<span class="br0">(</span>T<span class="br0">)</span> requires Incrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// ill-formed, no diagnostic required</span></pre></div></div>
+<h4><span class="mw-headline" id="Conjunctions">Conjunctions</span></h4>
+<p>The conjunction of two constraints is formed by using the <code>&amp;&amp;</code> operator in the constraint expression:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Integral <span class="sy1">=</span> <a href="../types/is_integral.html"><span class="kw462">std::<span class="me2">is_integral</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept SignedIntegral <span class="sy1">=</span> Integral<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> <a href="../types/is_signed.html"><span class="kw522">std::<span class="me2">is_signed</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept UnsignedIntegral <span class="sy1">=</span> Integral<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> <span class="sy3">!</span>SignedIntegral<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span></pre></div></div>
+<p>A conjunction of two constraints is satisfied only if both constraints are satisfied. Conjunctions are evaluated left to right and short-circuited (if the left constraint is not satisfied, template argument substitution into the right constraint is not attempted: this prevents failures due to substitution outside of immediate context).
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> get_value<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> T<span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    requires <span class="br0">(</span>sizeof<span class="br0">(</span>T<span class="br0">)</span> <span class="sy1">&gt;</span> <span class="nu0">1</span> <span class="sy3">&amp;&amp;</span> get_value<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// #1</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="st0">'A'</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK, calls #2. When checking the constraints of #1,</span>
+            <span class="co1">// 'sizeof(char) &gt; 1' is not satisfied, so get_value&lt;T&gt;() is not checked</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Disjunctions">Disjunctions</span></h4>
+<p>The disjunction of two constraints is formed by using the <code>||</code> operator in the constraint expression.
+</p><p>A disjunction of two constraints is satisfied if either constraint is satisfied. Disjunctions are evaluated left to right and short-circuited (if the left constraint is satisfied, template argument substitution into the right constraint is not attempted). 
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span>
+    requires EqualityComparable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Same<span class="sy1">&lt;</span>T, <span class="kw4">void</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> equal_to<span class="sy4">;</span></pre></div></div>
+<h4><span class="mw-headline" id="Atomic_constraints">Atomic constraints</span></h4>
+<p>An atomic constraint consists of an expression <code>E</code> and a mapping from the template parameters that appear within <code>E</code> to template arguments involving the template parameters of the constrained entity, called its <i>parameter mapping</i>. 
+</p><p>Atomic constraints are formed during <a href="constraints.html#Constraint_normalization">constraint normalization</a>. <code>E</code> is never a logical AND or logical OR expression (those form conjunctions and disjunctions, respectively).
+</p><p>Satisfaction of an atomic constraint is checked by substituting the parameter mapping and template arguments into the expression <code>E</code>. If the substitution results in an invalid type or expression, the constraint is not satisfied. Otherwise, <code>E</code>, after any lvalue-to-rvalue conversion, shall be a prvalue constant expression of type <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> , and the constraint is satisfied if and only if it evaluates to <code>true</code>. 
+</p><p>The type of <code>E</code> after substitution must be exactly <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>. No conversion is permitted:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">constexpr</span> operator <span class="kw4">bool</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    requires <span class="br0">(</span>S<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">{</span><span class="br0">}</span><span class="br0">)</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// #1</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: S&lt;int&gt;{} does not have type bool when checking #1,</span>
+          <span class="co1">// even though #2 is a better match</span>
+<span class="br0">}</span></pre></div></div>
+<p>Two atomic constraints are considered <i>identical</i> if they are formed from the same expression at the source level and their parameter mappings are equivalent.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> is_meowable <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> is_cat <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Meowable <span class="sy1">=</span> is_meowable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept BadMeowableCat <span class="sy1">=</span> is_meowable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> is_cat<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept GoodMeowableCat <span class="sy1">=</span> Meowable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> is_cat<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Meowable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f1<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #1</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>BadMeowableCat T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f1<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Meowable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f2<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #3</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>GoodMeowableCat T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f2<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #4</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f1<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error, ambiguous:</span>
+           <span class="co1">// the is_meowable&lt;T&gt; in Meowable and BadMeowableCat forms distinct atomic</span>
+           <span class="co1">// constraints that are not identical (and so do not subsume each other)</span>
+ 
+    f2<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK, calls #4, more constrained than #3</span>
+           <span class="co1">// GoodMeowableCat got its is_meowable&lt;T&gt; from Meowable</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Constraint_normalization"> Constraint normalization </span></h4>
+<p><i>Constraint normalization</i> is the process that transforms a constraint expression into a sequence of conjunctions and disjunctions of atomic constraints. The <i>normal form</i> of an expression is defined as follows:
+</p>
+<ul><li> The normal form of an expression <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>E<span class="br0">)</span></span></span> is the normal form of <span class="t-c"><span class="mw-geshi cpp source-cpp">E</span></span>;
+</li><li> The normal form of an expression <span class="t-c"><span class="mw-geshi cpp source-cpp">E1 <span class="sy3">&amp;&amp;</span> E2</span></span> is the conjunction of the normal forms of <span class="t-c"><span class="mw-geshi cpp source-cpp">E1</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">E2</span></span>.
+</li><li> The normal form of an expression <span class="t-c"><span class="mw-geshi cpp source-cpp">E1 <span class="sy3">||</span> E2</span></span> is the disjunction of the normal forms of <span class="t-c"><span class="mw-geshi cpp source-cpp">E1</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">E2</span></span>.
+</li><li> The normal form of an expression <span class="t-c"><span class="mw-geshi cpp source-cpp">C<span class="sy1">&lt;</span>A1, A2, ... , AN<span class="sy1">&gt;</span></span></span>, where <code>C</code> names a concept, is the normal form of the constraint expression of <code>C</code>, after substituting A1, A2, ... , AN for <code>C</code>'s respective template parameters in the parameter mappings of each atomic constraint of C. If any such substitution into the parameter mappings results in an invalid type or expression, the program is ill-formed, no diagnostic required.
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept A <span class="sy1">=</span> T<span class="sy4">::</span><span class="me2">value</span> <span class="sy3">||</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> U<span class="sy1">&gt;</span>
+concept B <span class="sy1">=</span> A<span class="sy1">&lt;</span>U<span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// OK: normalized to the disjunction of </span>
+                   <span class="co1">// - T::value (with mapping T -&gt; U*) and</span>
+                   <span class="co1">// - true (with an empty mapping).</span>
+                   <span class="co1">// No invalid type in mapping even though</span>
+                   <span class="co1">// T::value is ill-formed for all pointer types</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> V<span class="sy1">&gt;</span>
+concept C <span class="sy1">=</span> B<span class="sy1">&lt;</span>V<span class="sy3">&amp;</span><span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// Normalizes to the disjunction of</span>
+                   <span class="co1">// - T::value (with mapping T-&gt; V&amp;*) and</span>
+                   <span class="co1">// - true (with an empty mapping).</span>
+                   <span class="co1">// Invalid type V&amp;* formed in mapping =&gt; ill-formed NDR</span></pre></div></div>
+<ul><li> The normal form of any other expression <span class="t-c"><span class="mw-geshi cpp source-cpp">E</span></span> is the atomic constraint whose expression is <span class="t-c"><span class="mw-geshi cpp source-cpp">E</span></span> and whose parameter mapping is the identity mapping. This includes all <a href="fold.html" title="cpp/language/fold">fold expressions</a>, even those folding over the <code>&amp;&amp;</code> or <code>||</code> operators.
+</li></ul>
+<p>User-defined overloads of <code>&amp;&amp;</code> or <code>||</code> have no effect on constraint normalization.
+</p>
+<h3><span class="mw-headline" id="Requires_clauses"> Requires clauses </span></h3>
+<p>The keyword <span class="t-c"><span class="mw-geshi cpp source-cpp">requires</span></span> is used to introduce a <i>requires-clause</i>, which specifies constraints on template arguments or on a function declaration.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="sy3">&amp;&amp;</span><span class="br0">)</span> requires Eq<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// can appear as the last element of a function declarator</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span> requires Addable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="co1">// or right after a template parameter list</span>
+T add<span class="br0">(</span>T a, T b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a <span class="sy2">+</span> b<span class="sy4">;</span> <span class="br0">}</span></pre></div></div>
+<p>In this case, the keyword <i>requires</i> must be followed by some constant expression (so it's possible to write <span class="t-c"><span class="mw-geshi cpp source-cpp">requires <span class="kw2">true</span></span></span>), but the intent is that a named concept (as in the example above) or a conjunction/disjunction of named concepts or a <i>requires-expression</i> is used.
+</p><p>The expression must have one of the following forms:
+</p>
+<ul><li> a <a href="expressions.html#Primary_expressions" title="cpp/language/expressions">primary expression</a>, e.g. <span class="t-c"><span class="mw-geshi cpp source-cpp">Swappable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/is_integral.html"><span class="kw462">std::<span class="me2">is_integral</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><a href="../types/is_object.html"><span class="kw493">std::<span class="me2">is_object_v</span></span></a><span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> ...<span class="br0">)</span></span></span>, or any parenthesized expression
+</li><li> a sequence of primary expressions joined with the operator <code>&amp;&amp;</code>
+</li><li> a sequence of aforementioned expressions joined with the operator <code>||</code>
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> is_meowable <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">constexpr</span> <span class="kw4">bool</span> is_purrable<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="kw2">true</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span> requires is_meowable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// OK</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>T<span class="br0">)</span> requires is_purrable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error, is_purrable&lt;T&gt;() is not a primary expression</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> h<span class="br0">(</span>T<span class="br0">)</span> requires <span class="br0">(</span>is_purrable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span></pre></div></div>
+<h3><span class="mw-headline" id="Partial_ordering_of_constraints">Partial ordering of constraints</span></h3>
+<p>Before any further analysis, constraints are <a href="constraints.html#Constraint_normalization">normalized</a> by substituting the body of every named concept and every requires expression until what is left is a sequence of conjunctions and disjunctions on atomic constraints.
+</p><p>A constraint <code>P</code> is said to <i>subsume</i> constraint <code>Q</code> if it can be proven that <code>P</code> <a href="https://en.wikipedia.org/wiki/Logical_consequence" class="extiw" title="enwiki:Logical consequence">implies</a> <code>Q</code> up to the identity of atomic constraints in P and Q. (Types and expressions are not analyzed for equivalence: <code>N &gt; 0</code> does not subsume <code>N &gt;= 0</code>).
+</p><p>Specifically, first <code>P</code> is converted to disjunctive normal form and <code>Q</code> is converted to conjunctive normal form. <code>P</code> subsumes <code>Q</code> if and only if:
+</p>
+<ul><li> every disjunctive clause in the disjunctive normal form of <code>P</code> subsumes every conjunctive clause in the conjunctive normal form of <code>Q</code>, where
+</li><li> a disjunctive clause subsumes a conjunctive clause if and only if there is an atomic constraint <code>U</code> in the disjunctive clause and an atomic constraint <code>V</code> in the conjunctive clause such that <code>U</code> subsumes <code>V</code>; 
+</li><li> an atomic constraint <code>A</code> subsumes an atomic constraint <code>B</code> if and only if they are identical using the rules described <a href="constraints.html#Atomic_constraints">above</a>.
+</li></ul>
+<p>Subsumption relationship defines partial order of constraints, which is used to determine:
+</p>
+<ul><li> the best viable candidate for a non-template function in <a href="overload_resolution.html" title="cpp/language/overload resolution">overload resolution</a>
+</li><li> the <a href="overloaded_address.html" title="cpp/language/overloaded address">address of a non-template function</a> in an overload set
+</li><li> the best match for a template template argument
+</li><li> partial ordering of class template specializations
+</li><li> <a href="function_template.html#Function_template_overloading" title="cpp/language/function template">partial ordering</a> of function templates
+</li></ul>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: backlinks from the above to here </td></tr></table>
+<p>If declarations <code>D1</code> and <code>D2</code> are constrained and <code>D1</code>'s associated constraints subsume <code>D2</code>'s associated constraints (or if <code>D2</code> is unconstrained), then <code>D1</code> is said to be <i>at least as constrained</i> as <code>D2</code>. If <code>D1</code> is at least as constrained as <code>D2</code>, and <code>D2</code> is not at least as constrained as <code>D1</code>, then <code>D1</code> is <i>more constrained</i> than <code>D2</code>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept Decrementable <span class="sy1">=</span> requires<span class="br0">(</span>T t<span class="br0">)</span> <span class="br0">{</span> <span class="sy2">--</span>t<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept RevIterator <span class="sy1">=</span> Decrementable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">&amp;&amp;</span> requires<span class="br0">(</span>T t<span class="br0">)</span> <span class="br0">{</span> <span class="sy2">*</span>t<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// RevIterator subsumes Decrementable, but not the other way around</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Decrementable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #1</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>RevIterator T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2, more constrained than #1</span>
+ 
+f<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// int only satisfies Decrementable, selects #1</span>
+f<span class="br0">(</span><span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// int* satisfies both constraints, selects #2 as more constrained</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #3 (unconstrained)</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Decrementable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #4</span>
+ 
+g<span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// bool does not satisfy Decrementable, selects #3</span>
+g<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// int satisfies Decrementable, selects #4 because it is more constrained</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+concept RevIterator2 <span class="sy1">=</span> requires<span class="br0">(</span>T t<span class="br0">)</span> <span class="br0">{</span> <span class="sy2">--</span>t<span class="sy4">;</span> <span class="sy2">*</span>t<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>Decrementable T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> h<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #5</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span>RevIterator2 T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> h<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #6</span>
+ 
+h<span class="br0">(</span><span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">//ambiguous</span></pre></div></div>
+<h3><span class="mw-headline" id="Keywords">Keywords</span></h3>
+<p><a href="../keyword/concept.html" title="cpp/keyword/concept"><tt>concept</tt></a>,
+<a href="../keyword/requires.html" title="cpp/keyword/requires"><tt>requires</tt></a>
+</p>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <a href="requires.html" title="cpp/language/requires"> Requires expression</a><span class="t-mark-rev t-since-cxx20">(C++20)</span>
+</td>
+<td>  yields a prvalue expression of type <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> that describes the constraints</td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 3733/1000000
+Preprocessor generated node count: 10823/1000000
+Post‐expand include size: 135535/2097152 bytes
+Template argument size: 23152/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:17699-0!*!0!!en!*!* and timestamp 20220714094645 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/constraints&amp;oldid=141072">https://en.cppreference.com/mwiki/index.php?title=cpp/language/constraints&amp;oldid=141072</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/constraints">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 14 July 2022, at 02:46.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 647,468 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.066 secs. -->
+	</body>
+<!-- Cached 20220714094856 -->
+</html>

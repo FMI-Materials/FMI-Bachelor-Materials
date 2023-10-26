@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Waiter</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <script defer src="/fontawesome/js/all.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="functions.js"></script>
+</head>
+<body onkeyup="key_up_action()" onkeydown="key_down_action()">
+<main>
+    <nav id="navbar" class="nav-container">
+        <button class="nav-toggle" onclick="toggle_expand_navbar()"><i class="fa fa-bars fa-2x"></i></button>
+        <div class="nav-content">
+            <div class="index-content">
+                <a href="/"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp; Inapoi la produse</a>
+            </div>
+            <div class="index-content">
+                <button onclick="toggle_bill_view(false)" id="bill-button"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Nota de plata <span id="bill-button-count"></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="site-overlay white" id="bill-overlay" hidden onclick="toggle_bill_view()"></div>
+
+    <section class="bill-container" id="bill-view" hidden>
+        <button onclick="toggle_bill_view()">
+            <i class="fa fa-times-circle fa-2x"></i>
+        </button>
+        <div class="bill-content" id="bill">
+        </div>
+    </section>
+
+    <section class="product-section" id="product-section">
+        <!-- To be filled when loaded -->
+    </section>
+
+    <div class="menu-container related-products">
+        <h1>Produse asemanatoare </h1>
+        <div class="menu-content" id="products">
+        </div>
+    </div>
+
+</main>
+<app-root hidden>
+
+    <!-- Bill -->
+    <div id="bill-item-template" class="bill-item">
+        <img src="[[image]]">
+        <div>
+            <h4>[[name]]</h4>
+            <p><b>[[price]] ron</b> x [[quantity]]</p>
+        </div>
+        <a onclick="remove_from_bill([[id]])"><i class="fa fa-times"></i></a>
+    </div>
+
+    <!-- Menu item -->
+    <div class="menu-item no-transition" id="product-template" hidden>
+        <!--ondblclick="open_page('/product/[[id]]')"-->
+        <img class="menu-item-image" onclick="open_link('/product?id=[[id]]')" src="[[image]]">
+        <h4 class="menu-item-title title">[[title]]</h4>
+        <p class="menu-item-description" onmouseup="update_product_markup([[id]])">[[description]]</p>
+        <div class="rating">
+            <span onclick="update_rating(1, [[id]])" class="star star-1 fa fa-star [[rating_1]]"></span>
+            <span onclick="update_rating(2, [[id]])" class="star star-2 fa fa-star [[rating_2]]"></span>
+            <span onclick="update_rating(3, [[id]])" class="star star-3 fa fa-star [[rating_3]]"></span>
+            <span onclick="update_rating(4, [[id]])" class="star star-4 fa fa-star [[rating_4]]"></span>
+            <span onclick="update_rating(5, [[id]])" class="star star-5 fa fa-star [[rating_5]]"></span>
+        </div>
+        <div class="index-content menu-item-price-container">
+            <span class="menu-item-price">[[price]] lei</span>
+            <button class="menu-item-button add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
+            <button class="menu-item-button added-bill-button success added-bill-button-[[id]]" onclick="toggle_bill_view(false)" hidden><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Adaugat</button>
+        </div>
+        <div class="admin-content menu-item-price-container"  oncontextmenu="" hidden>
+            <span class="menu-item-price">[[price]] lei</span>
+            <button class="menu-item-button add-bill-button" onclick="show_modal('edit-product-modal', function(template, callback){
+                    generate_product_details([[id]], template, callback, false);
+                })"><i class="fa fa-pen-nib"></i>&nbsp;&nbsp;Editeaza</button>
+        </div>
+    </div>
+
+    <!-- Product details template -->
+    <div class="product-details" id="product-details-template">
+        <div class="img">
+            <img src="[[image]]" alt="Nicio imagine">
+        </div>
+        <div class="details">
+            <div class="details-content">
+                <div>
+                    <h3>[[title]]</h3>
+                    <p class="ingredients"><b>Ingrediente: </b></p>
+                    <ul>[[ingredients]]</ul>
+                    <p class="price"><b>Pret: </b><i>[[price]] lei</i></p>
+                    <p class="type"><b>Produs vegan: </b><i>[[vegan]]</i></p>
+
+                    <p onmouseup="update_product_markup([[id]])" style="max-width: 400px"><i>[[description]]</i></p>
+                    <p><b>Rating total:</b></p>
+                    <div class="rating">
+                        <span onclick="update_rating(1, [[id]],null,true)" class="star star-1 fa fa-star [[rating_4_1]]"></span>
+                        <span onclick="update_rating(2, [[id]],null,true)" class="star star-2 fa fa-star [[rating_4_2]]"></span>
+                        <span onclick="update_rating(3, [[id]],null,true)" class="star star-3 fa fa-star [[rating_4_3]]"></span>
+                        <span onclick="update_rating(4, [[id]],null,true)" class="star star-4 fa fa-star [[rating_4_4]]"></span>
+                        <span onclick="update_rating(5, [[id]],null,true)" class="star star-5 fa fa-star [[rating_4_5]]"></span>
+                    </div>
+                    <p><b>Durata de preparare:</b></p>
+                    <div class="rating">
+                        <span onclick="update_rating(1, [[id]],1,true)" class="star star-1 fa fa-star [[rating_1_1]]"></span>
+                        <span onclick="update_rating(2, [[id]],1,true)" class="star star-2 fa fa-star [[rating_1_2]]"></span>
+                        <span onclick="update_rating(3, [[id]],1,true)" class="star star-3 fa fa-star [[rating_1_3]]"></span>
+                        <span onclick="update_rating(4, [[id]],1,true)" class="star star-4 fa fa-star [[rating_1_4]]"></span>
+                        <span onclick="update_rating(5, [[id]],1,true)" class="star star-5 fa fa-star [[rating_1_5]]"></span>
+                    </div>
+                    <p><b>Calitatea produsului</b></p>
+                    <div class="rating">
+                        <span onclick="update_rating(1, [[id]],2,true)" class="star star-1 fa fa-star [[rating_2_1]]"></span>
+                        <span onclick="update_rating(2, [[id]],2,true)" class="star star-2 fa fa-star [[rating_2_2]]"></span>
+                        <span onclick="update_rating(3, [[id]],2,true)" class="star star-3 fa fa-star [[rating_2_3]]"></span>
+                        <span onclick="update_rating(4, [[id]],2,true)" class="star star-4 fa fa-star [[rating_2_4]]"></span>
+                        <span onclick="update_rating(5, [[id]],2,true)" class="star star-5 fa fa-star [[rating_2_5]]"></span>
+                    </div>
+                    <p><b>Pret</b></p>
+                    <div class="rating">
+                        <span onclick="update_rating(1, [[id]],3,true)" class="star star-1 fa fa-star [[rating_3_1]]"></span>
+                        <span onclick="update_rating(2, [[id]],3,true)" class="star star-2 fa fa-star [[rating_3_2]]"></span>
+                        <span onclick="update_rating(3, [[id]],3,true)" class="star star-3 fa fa-star [[rating_3_3]]"></span>
+                        <span onclick="update_rating(4, [[id]],3,true)" class="star star-4 fa fa-star [[rating_3_4]]"></span>
+                        <span onclick="update_rating(5, [[id]],3,true)" class="star star-5 fa fa-star [[rating_3_5]]"></span>
+                    </div>
+                </div>
+                <button class="add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
+                <button class="added-bill-button success added-bill-button-[[id]]" onclick="hide_modal('details-modal');toggle_bill_view(false)" hidden><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Adaugat</button>
+            </div>
+        </div>
+    </div>
+</app-root>
+</body>
+<script src="general.js"></script>
+<script src="bill.js"></script>
+<script src="product.js"></script>
+</html>

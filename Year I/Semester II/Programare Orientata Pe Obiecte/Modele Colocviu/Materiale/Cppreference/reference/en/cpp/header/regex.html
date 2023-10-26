@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Standard library header &lt;regex&gt;Â (C++11) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/header/regex","wgTitle":"cpp/header/regex","wgCurRevisionId":141094,"wgArticleId":9734,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/header/regex","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_header_regex skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">Standard library header</span> &lt;regex&gt; <span class="t-mark-rev t-since-cxx11">(C++11)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../header.html" title="cpp/header">header</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../header.html" title="cpp/header"> Standard Library headers </a><div class="t-navbar-menu"><div>Note: a slash '/' in a revision mark means that the header was deprecated and/or removed.
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Language Support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csignal.html" title="cpp/header/csignal"><tt>&lt;csignal&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csetjmp.html" title="cpp/header/csetjmp"><tt>&lt;csetjmp&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concepts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Diagnostics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stdexcept.html" title="cpp/header/stdexcept"><tt>&lt;stdexcept&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cassert.html" title="cpp/header/cassert"><tt>&lt;cassert&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> General utilities</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="typeindex.html" title="cpp/header/typeindex"><tt>&lt;typeindex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ctime.html" title="cpp/header/ctime"><tt>&lt;ctime&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Strings</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cctype.html" title="cpp/header/cctype"><tt>&lt;cctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cwctype.html" title="cpp/header/cwctype"><tt>&lt;cwctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cuchar.html" title="cpp/header/cuchar"><tt>&lt;cuchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Localization</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="clocale.html" title="cpp/header/clocale"><tt>&lt;clocale&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a> <span class="t-mark">(C++11/17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Containers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iterators</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Numerics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="valarray.html" title="cpp/header/valarray"><tt>&lt;valarray&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfenv.html" title="cpp/header/cfenv"><tt>&lt;cfenv&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Input/Output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="iosfwd.html" title="cpp/header/iosfwd"><tt>&lt;iosfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="streambuf.html" title="cpp/header/streambuf"><tt>&lt;streambuf&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iostream.html" title="cpp/header/iostream"><tt>&lt;iostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdio.html" title="cpp/header/cstdio"><tt>&lt;cstdio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="strstream.html" title="cpp/header/strstream"><tt>&lt;strstream&gt;</tt></a> <span class="t-mark">(C++98/)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Regular expressions</td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"><tt>&lt;regex&gt;</tt></strong> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Filesystem support</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Thread support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="condition_variable.html" title="cpp/header/condition variable"><tt>&lt;condition_variable&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="future.html" title="cpp/header/future"><tt>&lt;future&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> C compatibility</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ccomplex.html" title="cpp/header/ccomplex"><tt>&lt;ccomplex&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ctgmath.html" title="cpp/header/ctgmath"><tt>&lt;ctgmath&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>This header is part of the <a href="../regex.html" title="cpp/regex">regular expressions</a> library.
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Includes">Includes</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="compare.html" title="cpp/header/compare"> <span class="t-lines"><span>&lt;compare&gt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>  <a href="../language/operator_comparison.html#Three-way_comparison" title="cpp/language/operator comparison">Three-way comparison operator</a> support </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="initializer_list.html" title="cpp/header/initializer list"> <span class="t-lines"><span>&lt;initializer_list&gt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>  <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span> class template </td></tr>
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Classes">Classes</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/basic_regex.html" title="cpp/regex/basic regex"> <span class="t-lines"><span>basic_regex</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   regular expression object  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/basic_regex.html" title="cpp/regex/basic regex">std::regex</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/basic_regex.html"><span class="kw2003">std::<span class="me2">basic_regex</span></span></a><span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/basic_regex.html" title="cpp/regex/basic regex">std::wregex</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/basic_regex.html"><span class="kw2003">std::<span class="me2">basic_regex</span></span></a><span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/sub_match.html" title="cpp/regex/sub match"> <span class="t-lines"><span>sub_match</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   identifies the sequence of characters matched by a sub-expression  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/sub_match.html" title="cpp/regex/sub match">std::csub_match</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/sub_match.html"><span class="kw2006">std::<span class="me2">sub_match</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/sub_match.html" title="cpp/regex/sub match">std::wcsub_match</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/sub_match.html"><span class="kw2006">std::<span class="me2">sub_match</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/sub_match.html" title="cpp/regex/sub match">std::ssub_match</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/sub_match.html"><span class="kw2006">std::<span class="me2">sub_match</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">string</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/sub_match.html" title="cpp/regex/sub match">std::wssub_match</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/sub_match.html"><span class="kw2006">std::<span class="me2">sub_match</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">wstring</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/match_results.html" title="cpp/regex/match results"> <span class="t-lines"><span>match_results</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   identifies one regular expression match, including all sub-expression matches  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/match_results.html" title="cpp/regex/match results">std::cmatch</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/match_results.html"><span class="kw2011">std::<span class="me2">match_results</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/match_results.html" title="cpp/regex/match results">std::wcmatch</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/match_results.html"><span class="kw2011">std::<span class="me2">match_results</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/match_results.html" title="cpp/regex/match results">std::smatch</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/match_results.html"><span class="kw2011">std::<span class="me2">match_results</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">string</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/match_results.html" title="cpp/regex/match results">std::wsmatch</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/match_results.html"><span class="kw2011">std::<span class="me2">match_results</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">wstring</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_iterator.html" title="cpp/regex/regex iterator"> <span class="t-lines"><span>regex_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   iterates through all regex matches within a character sequence  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_iterator.html" title="cpp/regex/regex iterator">std::cregex_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_iterator.html"><span class="kw2019">std::<span class="me2">regex_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_iterator.html" title="cpp/regex/regex iterator">std::wcregex_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_iterator.html"><span class="kw2019">std::<span class="me2">regex_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_iterator.html" title="cpp/regex/regex iterator">std::sregex_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_iterator.html"><span class="kw2019">std::<span class="me2">regex_iterator</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">string</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_iterator.html" title="cpp/regex/regex iterator">std::wsregex_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_iterator.html"><span class="kw2019">std::<span class="me2">regex_iterator</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">wstring</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_token_iterator.html" title="cpp/regex/regex token iterator"> <span class="t-lines"><span>regex_token_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   iterates through the specified sub-expressions within all regex matches in a given string or through unmatched substrings  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_token_iterator.html" title="cpp/regex/regex token iterator">std::cregex_token_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_token_iterator.html"><span class="kw2024">std::<span class="me2">regex_token_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_token_iterator.html" title="cpp/regex/regex token iterator">std::wcregex_token_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_token_iterator.html"><span class="kw2024">std::<span class="me2">regex_token_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_token_iterator.html" title="cpp/regex/regex token iterator">std::sregex_token_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_token_iterator.html"><span class="kw2024">std::<span class="me2">regex_token_iterator</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">string</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-lc"><a href="../regex/regex_token_iterator.html" title="cpp/regex/regex token iterator">std::wsregex_token_iterator</a></span>
+</td>
+<td>  <span class="mw-geshi cpp source-cpp"><a href="../regex/regex_token_iterator.html"><span class="kw2024">std::<span class="me2">regex_token_iterator</span></span></a><span class="sy1">&lt;</span>std<span class="sy4">::</span><span class="me2">wstring</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span></span> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_error.html" title="cpp/regex/regex error"> <span class="t-lines"><span>regex_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   reports errors generated by the regular expressions library  <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_traits.html" title="cpp/regex/regex traits"> <span class="t-lines"><span>regex_traits</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   provides metainformation about a character type, required by the regex library  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="regex_constant_types"> regex constant types </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std::regex_constants</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/syntax_option_type.html" title="cpp/regex/syntax option type"> <span class="t-lines"><span>syntax_option_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   general options controlling regex behavior  <br> <span class="t-mark">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/match_flag_type.html" title="cpp/regex/match flag type"> <span class="t-lines"><span>match_flag_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   options specific to matching  <br> <span class="t-mark">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/error_type.html" title="cpp/regex/error type"> <span class="t-lines"><span>error_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   describes different types of matching errors  <br> <span class="t-mark">(typedef)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Functions">Functions</span></h3>
+</td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Algorithm"> Algorithm </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_match.html" title="cpp/regex/regex match"> <span class="t-lines"><span>regex_match</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   attempts to match a regular expression to an entire character sequence  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_search.html" title="cpp/regex/regex search"> <span class="t-lines"><span>regex_search</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   attempts to match a regular expression to any part of a character sequence  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/regex_replace.html" title="cpp/regex/regex replace"> <span class="t-lines"><span>regex_replace</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   replaces occurrences of a regular expression with formatted replacement text  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Non-member_operations"> Non-member operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/basic_regex/swap2.html" title="cpp/regex/basic regex/swap2"> <span class="t-lines"><span>std::swap<span class="t-dsc-small">(std::basic_regex)</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   specializes the <span class="t-lc"><a href="../algorithm/swap.html" title="cpp/algorithm/swap">std::swap</a></span> algorithm <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/sub_match/operator_cmp.html" title="cpp/regex/sub match/operator cmp"> <span class="t-lines"><span>operator==</span><span>operator!=</span><span>operator&lt;</span><span>operator&lt;=</span><span>operator&gt;</span><span>operator&gt;=</span><span>operator&lt;=&gt;</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   compares a <code>sub_match</code> with another <code>sub_match</code>, a string, or a character  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/sub_match/operator_ltlt.html" title="cpp/regex/sub match/operator ltlt"> <span class="t-lines"><span>operator&lt;&lt;</span></span></a></div></div>
+</td>
+<td>   outputs the matched character subsequence <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/match_results/operator_cmp.html" title="cpp/regex/match results/operator cmp"> <span class="t-lines"><span>operator==</span><span>operator!=</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span></span></div></div>
+</td>
+<td>   lexicographically compares the values in the two match result  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../regex/match_results/swap2.html" title="cpp/regex/match results/swap2"> <span class="t-lines"><span>std::swap<span class="t-dsc-small">(std::match_results)</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   specializes the <a href="../algorithm/swap.html" title="cpp/algorithm/swap"><tt>std::swap</tt></a> algorithm <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Range_access"> Range access </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/begin.html" title="cpp/iterator/begin"> <span class="t-lines"><span>begin</span><span>cbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   returns an iterator to the beginning of a container or array <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/end.html" title="cpp/iterator/end"> <span class="t-lines"><span>end</span><span>cend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   returns an iterator to the end of a container or array  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/rbegin.html" title="cpp/iterator/rbegin"> <span class="t-lines"><span>rbegin</span><span>crbegin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   returns a reverse iterator to the beginning of a container or array <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/rend.html" title="cpp/iterator/rend"> <span class="t-lines"><span>rend</span><span>crend</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   returns a reverse end iterator for a container or array <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/size.html" title="cpp/iterator/size"> <span class="t-lines"><span>size</span><span>ssize</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   returns the size of a container or array <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/empty.html" title="cpp/iterator/empty"> <span class="t-lines"><span>empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the container is empty <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../iterator/data.html" title="cpp/iterator/data"> <span class="t-lines"><span>data</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   obtains the pointer to the underlying array <br> <span class="t-mark">(function template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Synopsis">Synopsis</span></h3>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;compare&gt;</span>
+<span class="co2">#include &lt;initializer_list&gt;</span>
+ 
+<span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="co1">// regex constants</span>
+  <span class="kw1">namespace</span> regex_constants <span class="br0">{</span>
+    <span class="kw1">using</span> syntax_option_type <span class="sy1">=</span> <span class="coMULTI">/*T1*/</span><span class="sy4">;</span>
+    <span class="kw1">using</span> match_flag_type <span class="sy1">=</span> <span class="coMULTI">/*T2*/</span><span class="sy4">;</span>
+    <span class="kw1">using</span> error_type <span class="sy1">=</span> <span class="coMULTI">/*T3*/</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+ 
+  <span class="co1">// class regex_error</span>
+  <span class="kw1">class</span> regex_error<span class="sy4">;</span>
+ 
+  <span class="co1">// class template regex_traits</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT<span class="sy1">&gt;</span> <span class="kw1">struct</span> regex_traits<span class="sy4">;</span>
+ 
+  <span class="co1">// class template basic_regex</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits <span class="sy1">=</span> regex_traits<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span> <span class="kw1">class</span> basic_regex<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> regex  <span class="sy1">=</span> basic_regex<span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wregex <span class="sy1">=</span> basic_regex<span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// basic_regex swap</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">void</span> swap<span class="br0">(</span>basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e1, basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e2<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template sub_match</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw1">class</span> sub_match<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> csub_match  <span class="sy1">=</span> sub_match<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wcsub_match <span class="sy1">=</span> sub_match<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> ssub_match  <span class="sy1">=</span> sub_match<span class="sy1">&lt;</span>string<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wssub_match <span class="sy1">=</span> sub_match<span class="sy1">&lt;</span>wstring<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// sub_match non-member operators</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span>
+      <span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+      <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span><span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span>, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+    <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span>
+      <span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+      <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span><span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span>, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+                    <span class="kw4">const</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy2">*</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+                     <span class="kw4">const</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy2">*</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+                    <span class="kw4">const</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> lhs,
+                     <span class="kw4">const</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> ST, <span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    basic_ostream<span class="sy1">&lt;</span>CharT, ST<span class="sy1">&gt;</span><span class="sy3">&amp;</span>
+      operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span>basic_ostream<span class="sy1">&lt;</span>CharT, ST<span class="sy1">&gt;</span><span class="sy3">&amp;</span> os, <span class="kw4">const</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template match_results</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt,
+           <span class="kw1">class</span> Allocator <span class="sy1">=</span> allocator<span class="sy1">&lt;</span>sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;&gt;&gt;</span>
+    <span class="kw1">class</span> match_results<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> cmatch  <span class="sy1">=</span> match_results<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wcmatch <span class="sy1">=</span> match_results<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> smatch  <span class="sy1">=</span> match_results<span class="sy1">&lt;</span>string<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wsmatch <span class="sy1">=</span> match_results<span class="sy1">&lt;</span>wstring<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// match_results comparisons</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> Allocator<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m1,
+                    <span class="kw4">const</span> match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m2<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// match_results swap</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> Allocator<span class="sy1">&gt;</span>
+    <span class="kw4">void</span> swap<span class="br0">(</span>match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m1, match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m2<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// function template regex_match</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span>BiIt first, BiIt last,
+                     match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span>BiIt first, BiIt last,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> str, match_results<span class="sy1">&lt;</span><span class="kw4">const</span> CharT<span class="sy2">*</span>, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                     match_results<span class="sy1">&lt;</span><span class="kw1">typename</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">const_iterator</span>,
+                                   Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;&amp;</span>,
+                     match_results<span class="sy1">&lt;</span><span class="kw1">typename</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">const_iterator</span>,
+                                   Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span>,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> str,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_match<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                     <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                     regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                       regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// function template regex_search</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span>BiIt first, BiIt last,
+                      match_results<span class="sy1">&lt;</span>BiIt, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span>BiItfirst, BiIt last,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> str,
+                      match_results<span class="sy1">&lt;</span><span class="kw4">const</span> CharT<span class="sy2">*</span>, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> str,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                      match_results<span class="sy1">&lt;</span><span class="kw1">typename</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">const_iterator</span>,
+                                    Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> m,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                        regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> Allocator, <span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+    <span class="kw4">bool</span> regex_search<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;&amp;</span>,
+                      match_results<span class="sy1">&lt;</span><span class="kw1">typename</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">const_iterator</span>,
+                                    Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span>,
+                      <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>,
+                      regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span>
+                        <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+ 
+  <span class="co1">// function template regex_replace</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> OutputIt, <span class="kw1">class</span> BiIt,
+            <span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+    OutputIt
+      regex_replace<span class="br0">(</span>OutputIt out,
+                    BiIt first, BiIt last,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> OutputIt, <span class="kw1">class</span> BiIt, <span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT<span class="sy1">&gt;</span>
+    OutputIt
+      regex_replace<span class="br0">(</span>OutputIt out,
+                    BiIt first, BiIt last,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> CharT<span class="sy2">*</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA, <span class="kw1">class</span> FST, <span class="kw1">class</span> FSA<span class="sy1">&gt;</span>
+    basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span>
+      regex_replace<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, FST, FSA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+    basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span>
+      regex_replace<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> CharT<span class="sy2">*</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+    basic_string<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span>
+      regex_replace<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> s,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Traits, <span class="kw1">class</span> CharT<span class="sy1">&gt;</span>
+    basic_string<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span>
+      regex_replace<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> s,
+                    <span class="kw4">const</span> basic_regex<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> e,
+                    <span class="kw4">const</span> CharT<span class="sy2">*</span> fmt,
+                    regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                      regex_constants<span class="sy4">::</span><span class="me2">match_default</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template regex_iterator</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt,
+            <span class="kw1">class</span> CharT <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span>,
+            <span class="kw1">class</span> Traits <span class="sy1">=</span> regex_traits<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span>
+    <span class="kw1">class</span> regex_iterator<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> cregex_iterator  <span class="sy1">=</span> regex_iterator<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wcregex_iterator <span class="sy1">=</span> regex_iterator<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> sregex_iterator  <span class="sy1">=</span> regex_iterator<span class="sy1">&lt;</span>string<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wsregex_iterator <span class="sy1">=</span> regex_iterator<span class="sy1">&lt;</span>wstring<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template regex_token_iterator</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt,
+            <span class="kw1">class</span> CharT <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span>,
+            <span class="kw1">class</span> Traits <span class="sy1">=</span> regex_traits<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span>
+    <span class="kw1">class</span> regex_token_iterator<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> cregex_token_iterator  <span class="sy1">=</span> regex_token_iterator<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wcregex_token_iterator <span class="sy1">=</span> regex_token_iterator<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> sregex_token_iterator  <span class="sy1">=</span> regex_token_iterator<span class="sy1">&lt;</span>string<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wsregex_token_iterator <span class="sy1">=</span> regex_token_iterator<span class="sy1">&lt;</span>wstring<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="kw1">namespace</span> pmr <span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+      <span class="kw1">using</span> match_results <span class="sy1">=</span>
+        <a href="../regex/match_results.html"><span class="kw2011">std::<span class="me2">match_results</span></span></a><span class="sy1">&lt;</span>BiIt, polymorphic_allocator<span class="sy1">&lt;</span>sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;&gt;&gt;</span><span class="sy4">;</span>
+ 
+    <span class="kw1">using</span> cmatch  <span class="sy1">=</span> match_results<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+    <span class="kw1">using</span> wcmatch <span class="sy1">=</span> match_results<span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+    <span class="kw1">using</span> smatch  <span class="sy1">=</span> match_results<span class="sy1">&lt;</span>string<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+    <span class="kw1">using</span> wsmatch <span class="sy1">=</span> match_results<span class="sy1">&lt;</span>wstring<span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Bitmask_type_std::regex_constants::syntax_option_type">Bitmask type <span class="t-lc"><a href="../regex/syntax_option_type.html" title="cpp/regex/syntax option type">std::regex_constants::syntax_option_type</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">regex_constants</span> <span class="br0">{</span>
+  <span class="kw1">using</span> syntax_option_type <span class="sy1">=</span> <span class="coMULTI">/*T1*/</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type icase <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type nosubs <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type optimize <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type collate <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type ECMAScript <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type basic <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type extended <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type awk <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type grep <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type egrep <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> syntax_option_type multiline <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Bitmask_type_std::regex_constants::match_flag_type">Bitmask type <span class="t-lc"><a href="../regex/match_flag_type.html" title="cpp/regex/match flag type">std::regex_constants::match_flag_type</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">regex_constants</span> <span class="br0">{</span>
+  <span class="kw1">using</span> match_flag_type <span class="sy1">=</span> <span class="coMULTI">/*T2*/</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_default <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_not_bol <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_not_eol <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_not_bow <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_not_eow <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_any <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_not_null <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_continuous <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type match_prev_avail <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type format_default <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type format_sed <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type format_no_copy <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> match_flag_type format_first_only <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Enumerated_type_std::regex_constants::error_type">Enumerated type <span class="t-lc"><a href="../regex/error_type.html" title="cpp/regex/error type">std::regex_constants::error_type</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">regex_constants</span> <span class="br0">{</span>
+  <span class="kw1">using</span> error_type <span class="sy1">=</span> <span class="coMULTI">/*T3*/</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_collate <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_ctype <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_escape <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_backref <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_brack <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_paren <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_brace <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_badbrace <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_range <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_space <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_badrepeat <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_complexity <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> error_type error_stack <span class="sy1">=</span> <span class="coMULTI">/* unspecified */</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::regex_error">Class <span class="t-lc"><a href="../regex/regex_error.html" title="cpp/regex/regex error">std::regex_error</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">class</span> regex_error <span class="sy4">:</span> <span class="kw1">public</span> runtime_error <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">explicit</span> regex_error<span class="br0">(</span>regex_constants<span class="sy4">::</span><span class="me2">error_type</span> ecode<span class="br0">)</span><span class="sy4">;</span>
+    regex_constants<span class="sy4">::</span><span class="me2">error_type</span> code<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::regex_traits">Class template <span class="t-lc"><a href="../regex/regex_traits.html" title="cpp/regex/regex traits">std::regex_traits</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT<span class="sy1">&gt;</span>
+    <span class="kw1">struct</span> regex_traits <span class="br0">{</span>
+      <span class="kw1">using</span> char_type       <span class="sy1">=</span> CharT<span class="sy4">;</span>
+      <span class="kw1">using</span> string_type     <span class="sy1">=</span> basic_string<span class="sy1">&lt;</span>char_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+      <span class="kw1">using</span> locale_type     <span class="sy1">=</span> locale<span class="sy4">;</span>
+      <span class="kw1">using</span> char_class_type <span class="sy1">=</span> <span class="coMULTI">/* bitmask-type */</span><span class="sy4">;</span>
+ 
+      regex_traits<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw4">static</span> size_t length<span class="br0">(</span><span class="kw4">const</span> char_type<span class="sy2">*</span> p<span class="br0">)</span><span class="sy4">;</span>
+      CharT translate<span class="br0">(</span>CharT c<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      CharT translate_nocase<span class="br0">(</span>CharT c<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+        string_type transform<span class="br0">(</span>ForwardIt first, ForwardIt last<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+        string_type transform_primary<span class="br0">(</span>ForwardIt first, ForwardIt last<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+        string_type lookup_collatename<span class="br0">(</span>ForwardIt first, ForwardIt last<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+        char_class_type lookup_classname<span class="br0">(</span>ForwardIt first, ForwardIt last,
+                                         <span class="kw4">bool</span> icase <span class="sy1">=</span> <span class="kw2">false</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw4">bool</span> isctype<span class="br0">(</span>CharT c, char_class_type f<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw4">int</span> value<span class="br0">(</span>CharT ch, <span class="kw4">int</span> radix<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      locale_type imbue<span class="br0">(</span>locale_type l<span class="br0">)</span><span class="sy4">;</span>
+      locale_type getloc<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::basic_regex">Class template <span class="t-lc"><a href="../regex/basic_regex.html" title="cpp/regex/basic regex">std::basic_regex</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits <span class="sy1">=</span> regex_traits<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;&gt;</span>
+    <span class="kw1">class</span> basic_regex <span class="br0">{</span>
+    <span class="kw1">public</span><span class="sy4">:</span>
+      <span class="co1">// types</span>
+      <span class="kw1">using</span> value_type  <span class="sy1">=</span>          CharT<span class="sy4">;</span>
+      <span class="kw1">using</span> Traits_type <span class="sy1">=</span>          Traits<span class="sy4">;</span>
+      <span class="kw1">using</span> string_type <span class="sy1">=</span> <span class="kw1">typename</span> Traits<span class="sy4">::</span><span class="me2">string_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> flag_type   <span class="sy1">=</span>          regex_constants<span class="sy4">::</span><span class="me2">syntax_option_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> locale_type <span class="sy1">=</span> <span class="kw1">typename</span> Traits<span class="sy4">::</span><span class="me2">locale_type</span><span class="sy4">;</span>
+ 
+      <span class="co1">// constants</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type icase <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">icase</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type nosubs <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">nosubs</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type optimize <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">optimize</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type collate <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">collate</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type ECMAScript <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type basic <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">basic</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type extended <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">extended</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type awk <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">awk</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type grep <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">grep</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type egrep <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">egrep</span><span class="sy4">;</span>
+      <span class="kw4">static</span> <span class="kw4">constexpr</span> flag_type multiline <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">multiline</span><span class="sy4">;</span>
+ 
+      <span class="co1">// construct/copy/destroy</span>
+      basic_regex<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">explicit</span> basic_regex<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> p, flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> p, size_t len, flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="br0">(</span><span class="kw4">const</span> basic_regex<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="br0">(</span>basic_regex<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+        <span class="kw1">explicit</span> basic_regex<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                             flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+        basic_regex<span class="br0">(</span>ForwardIt first, ForwardIt last,
+                    flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="br0">(</span>initializer_list<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span> il, flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+      ~basic_regex<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+      <span class="co1">// assign</span>
+      basic_regex<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> basic_regex<span class="sy3">&amp;</span> e<span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>basic_regex<span class="sy3">&amp;&amp;</span> e<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> p<span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>initializer_list<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span> il<span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+        basic_regex<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s<span class="br0">)</span><span class="sy4">;</span>
+ 
+      basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span><span class="kw4">const</span> basic_regex<span class="sy3">&amp;</span> e<span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span>basic_regex<span class="sy3">&amp;&amp;</span> e<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> p, flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span><span class="kw4">const</span> CharT<span class="sy2">*</span> p, size_t len,
+                          flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+        basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>CharT, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s,
+                            flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+        basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span>InputIt first, InputIt last,
+                            flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+      basic_regex<span class="sy3">&amp;</span> assign<span class="br0">(</span>initializer_list<span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span>,
+                          flag_type f <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+      <span class="co1">// const operations</span>
+      <span class="kw4">unsigned</span> mark_count<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      flag_type flags<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// locale</span>
+      locale_type imbue<span class="br0">(</span>locale_type loc<span class="br0">)</span><span class="sy4">;</span>
+      locale_type getloc<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// swap</span>
+      <span class="kw4">void</span> swap<span class="br0">(</span>basic_regex<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ForwardIt<span class="sy1">&gt;</span>
+    basic_regex<span class="br0">(</span>ForwardIt, ForwardIt,
+                regex_constants<span class="sy4">::</span><span class="me2">syntax_option_type</span> <span class="sy1">=</span> regex_constants<span class="sy4">::</span><span class="me2">ECMAScript</span><span class="br0">)</span>
+      <span class="sy2">-</span><span class="sy1">&gt;</span> basic_regex<span class="sy1">&lt;</span><span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>ForwardIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::sub_match">Class template <span class="t-lc"><a href="../regex/sub_match.html" title="cpp/regex/sub match">std::sub_match</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt<span class="sy1">&gt;</span>
+    <span class="kw1">class</span> sub_match <span class="sy4">:</span> <span class="kw1">public</span> pair<span class="sy1">&lt;</span>BiIt, BiIt<span class="sy1">&gt;</span> <span class="br0">{</span>
+    <span class="kw1">public</span><span class="sy4">:</span>
+      <span class="kw1">using</span> value_type      <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> difference_type <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">difference_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> iterator        <span class="sy1">=</span> BiIt<span class="sy4">;</span>
+      <span class="kw1">using</span> string_type     <span class="sy1">=</span> basic_string<span class="sy1">&lt;</span>value_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+      <span class="kw4">bool</span> matched<span class="sy4">;</span>
+ 
+      <span class="kw4">constexpr</span> sub_match<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+      difference_type length<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      operator string_type<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      string_type str<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> sub_match<span class="sy3">&amp;</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> string_type<span class="sy3">&amp;</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> value_type<span class="sy2">*</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::match_results">Class template <span class="t-lc"><a href="../regex/match_results.html" title="cpp/regex/match results">std::match_results</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> BiIt,
+           <span class="kw1">class</span> Allocator <span class="sy1">=</span> allocator<span class="sy1">&lt;</span>sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;&gt;&gt;</span>
+    <span class="kw1">class</span> match_results <span class="br0">{</span>
+    <span class="kw1">public</span><span class="sy4">:</span>
+      <span class="kw1">using</span> value_type      <span class="sy1">=</span> sub_match<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">;</span>
+      <span class="kw1">using</span> const_reference <span class="sy1">=</span> <span class="kw4">const</span> value_type<span class="sy3">&amp;</span><span class="sy4">;</span>
+      <span class="kw1">using</span> reference       <span class="sy1">=</span> value_type<span class="sy3">&amp;</span><span class="sy4">;</span>
+      <span class="kw1">using</span> const_iterator  <span class="sy1">=</span> <span class="coMULTI">/* implementation-defined */</span><span class="sy4">;</span>
+      <span class="kw1">using</span> iterator        <span class="sy1">=</span> const_iterator<span class="sy4">;</span>
+      <span class="kw1">using</span> difference_type <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">difference_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> size_type       <span class="sy1">=</span> <span class="kw1">typename</span> allocator_traits<span class="sy1">&lt;</span>Allocator<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">size_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> allocator_type  <span class="sy1">=</span> Allocator<span class="sy4">;</span>
+      <span class="kw1">using</span> char_type       <span class="sy1">=</span> <span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>BiIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value_type</span><span class="sy4">;</span>
+      <span class="kw1">using</span> string_type     <span class="sy1">=</span> basic_string<span class="sy1">&lt;</span>char_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+      <span class="co1">// construct/copy/destroy</span>
+      match_results<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> match_results<span class="br0">(</span>Allocator<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+      <span class="kw1">explicit</span> match_results<span class="br0">(</span><span class="kw4">const</span> Allocator<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+      match_results<span class="br0">(</span><span class="kw4">const</span> match_results<span class="sy3">&amp;</span> m<span class="br0">)</span><span class="sy4">;</span>
+      match_results<span class="br0">(</span>match_results<span class="sy3">&amp;&amp;</span> m<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+      match_results<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> match_results<span class="sy3">&amp;</span> m<span class="br0">)</span><span class="sy4">;</span>
+      match_results<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>match_results<span class="sy3">&amp;&amp;</span> m<span class="br0">)</span><span class="sy4">;</span>
+      ~match_results<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+      <span class="co1">// state</span>
+      <span class="kw4">bool</span> ready<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// size</span>
+      size_type size<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      size_type max_size<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="br0">[</span><span class="br0">[</span>nodiscard<span class="br0">]</span><span class="br0">]</span> <span class="kw4">bool</span> empty<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// element access</span>
+      difference_type length<span class="br0">(</span>size_type sub <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      difference_type position<span class="br0">(</span>size_type sub <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      string_type str<span class="br0">(</span>size_type sub <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_reference operator<span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>size_type n<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      const_reference prefix<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_reference suffix<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_iterator begin<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_iterator end<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_iterator cbegin<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      const_iterator cend<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// format</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> OutputIt<span class="sy1">&gt;</span>
+        OutputIt
+          format<span class="br0">(</span>OutputIt out,
+                 <span class="kw4">const</span> char_type<span class="sy2">*</span> fmt_first, <span class="kw4">const</span> char_type<span class="sy2">*</span> fmt_last,
+                 regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                   regex_constants<span class="sy4">::</span><span class="me2">format_default</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> OutputIt, <span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+        OutputIt
+          format<span class="br0">(</span>OutputIt out,
+                 <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>char_type, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> fmt,
+                 regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                   regex_constants<span class="sy4">::</span><span class="me2">format_default</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ST, <span class="kw1">class</span> SA<span class="sy1">&gt;</span>
+        basic_string<span class="sy1">&lt;</span>char_type, ST, SA<span class="sy1">&gt;</span>
+          format<span class="br0">(</span><span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>char_type, ST, SA<span class="sy1">&gt;</span><span class="sy3">&amp;</span> fmt,
+                 regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                   regex_constants<span class="sy4">::</span><span class="me2">format_default</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+      string_type
+        format<span class="br0">(</span><span class="kw4">const</span> char_type<span class="sy2">*</span> fmt,
+               regex_constants<span class="sy4">::</span><span class="me2">match_flag_type</span> flags <span class="sy1">=</span>
+                 regex_constants<span class="sy4">::</span><span class="me2">format_default</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// allocator</span>
+      allocator_type get_allocator<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+      <span class="co1">// swap</span>
+      <span class="kw4">void</span> swap<span class="br0">(</span>match_results<span class="sy3">&amp;</span> that<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 11239/1000000
+Preprocessor generated node count: 10816/1000000
+Postâexpand include size: 330562/2097152 bytes
+Template argument size: 84684/2097152 bytes
+Highest expansion depth: 23/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:9734-0!*!0!!en!*!* and timestamp 20220729235220 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/regex&amp;oldid=141094">https://en.cppreference.com/mwiki/index.php?title=cpp/header/regex&amp;oldid=141094</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/header/regex">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 14 July 2022, at 14:46.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 92,828 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 4.224 secs. -->
+	</body>
+<!-- Cached 20220729235220 -->
+</html>

@@ -1,0 +1,66 @@
+ -- (I)
+--1 -> (7)
+select count(*) from employees where lower(first_name) like 'k%';
+--2 -> (132 TJ Olson)
+select employee_id, first_name, last_name from (select employee_id, first_name, last_name from employees order by salary) where rownum = 1;
+--3 -> (114 Den | 100 Steven)
+select distinct employee_id, first_name from employees where employee_id in (select manager_id from employees where department_id = 30)
+order by first_name;
+--4
+select employee_id, first_name, last_name, (select count(*) from employees where manager_id = e.employee_id) as "Subalterni" from employees e;
+--5
+select employee_id, first_name, last_name from employees e where (select count(1) from employees where employee_id!=e.employee_id and last_name = e.last_name) > 0;
+--6
+select department_id, department_name from departments d where (select distinct count(1) from employees where department_id = d.department_id)>2;
+-- (II)
+--7 -> (100, 25, 2)
+select qty from orders_tbl join products_tbl using (prod_id) where lower(prod_desc) like '%plastic%';
+--8
+(SELECT last_name || ' ' || first_name "Nume", 'Angajat' "Tip" FROM employee_tbl
+UNION 
+SELECT cust_name "Nume", 'Client' "Tip"FROM customer_tbl) ORDER BY "Tip", "Nume";
+--9
+select prod_desc from orders_tbl o join products_tbl using (prod_id) where o.sales_rep in (select sales_rep from orders_tbl join products_tbl using (prod_id) where length(prod_desc)>2 and lower(prod_desc) like '% p%');
+--10 -> (WENDY WOLF, GAVINS PLACE)
+select cust_name from orders_tbl join customer_tbl using (cust_id) where to_char(ord_date, 'dd') = 17;
+--11 -> (Jacbo Glass 20000 1000)
+select first_name, last_name, salary, bonus from employee_tbl join employee_pay_tbl using (emp_id) where salary < 32000 and bonus*17 < 32000;
+--12 -> (Brandon 103)
+select e.first_name, sum(q.qty) as "Cantitate" from employee_tbl e, (select qty, sales_rep from orders_tbl) q where q.sales_rep = e.emp_id
+group by q.sales_rep, e.first_name
+having sum(q.qty)>50 or count(q.sales_rep) = 0;
+--13
+select first_name, salary, o."last_date" from employee_tbl join employee_pay_tbl using (emp_id), (select max(ord_date) as "last_date", sales_rep from orders_tbl group by sales_rep) o where o.sales_rep = emp_id;
+--14
+select prod_id, prod_desc from products_tbl where cost > (select avg(cost) from products_tbl); --15
+select last_name, first_name, salary, bonus, t."salariu_total", t."bonus_total" from employee_tbl join employee_pay_tbl using (emp_id),
+(select sum(salary) as "salariu_total", sum(bonus) as "bonus_total" from employee_pay_tbl) t; --16 -> (Whiteland si Indianapolis)
+
+ select city from employee_tbl e order by (select count(*) from orders_tbl where e.emp_id = sales_rep) desc;
+--17
+select ord_num, last_name,
+(select count(*) from orders_tbl where sales_rep = e.emp_id and to_char(ord_date, 'mm') = 9) as "Septembrie",
+(select count(*) from orders_tbl where sales_rep = e.emp_id and to_char(ord_date, 'mm') = 10) as "Octombrie"
+from employee_tbl e join orders_tbl on (emp_id = sales_rep);
+--18
+select cust_name, cust_city, cust_zip from customer_tbl c where cust_zip like '[0-9]%' and (select count(ord_num) from orders_tbl where cust_id = c.cust_id) = 0;
+select cust_name, cust_city, cust_zip from customer_tbl c where
+(select count(ord_num) from orders_tbl where cust_id = c.cust_id) = 0;
+--19
+select emp_id, last_name, city, c.cust_id, c.cust_name, c.cust_city from employee_tbl, (select cust_id, cust_name, cust_city from customer_tbl) c where c.cust_city != city; --20
+select avg(salary) as "Media salariilor" from employee_pay_tbl;
+--21
+--a -> DA
+SELECT CUST_ID, CUST_NAME FROM CUSTOMER_TBL
+WHERE CUST_ID =
+(SELECT CUST_ID
+FROM ORDERS_TBL
+WHERE ORD_NUM = '16C17');
+--b -> NU
+SELECT EMP_ID, SALARY
+FROM EMPLOYEE_PAY_TBL
+WHERE SALARY BETWEEN '20000'
+AND (SELECT SALARY FROM employee_pay_tbl
+WHERE SALARY = '40000');
+--22
+select first_name, pay_rate from employee_tbl join employee_pay_tbl using (emp_id) where pay_rate > (select max(pay_rate) from employee_tbl join employee_pay_tbl using (emp_id) where lower(last_name) like '%ll%');

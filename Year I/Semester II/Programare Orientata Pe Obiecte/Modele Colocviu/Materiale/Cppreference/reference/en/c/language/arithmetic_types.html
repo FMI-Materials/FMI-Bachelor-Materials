@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Arithmetic types - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/arithmetic_types","wgTitle":"c/language/arithmetic types","wgCurRevisionId":138916,"wgArticleId":13882,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/language/arithmetic_types","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_arithmetic_types skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Arithmetic types</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language"> C language</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">Basic concepts</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../keyword.html" title="c/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="statements.html" title="c/language/statements"> Statements</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html" title="c/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html" title="c/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="declarations.html" title="c/language/declarations"> Declarations</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functions.html" title="c/language/functions"> Functions</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Miscellaneous</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="c/language/history"> History of C</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental">Technical Specifications</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="basic_concepts.html" title="c/language/basic concepts"> Basic Concepts</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../comment.html" title="c/comment"> Comments</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ascii.html" title="c/language/ascii"> ASCII</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="translation_phases.html" title="c/language/translation phases"> Translation phases</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="punctuators.html" title="c/language/punctuators">Punctuation</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="identifier.html" title="c/language/identifier">Identifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scope.html" title="c/language/scope">Scope</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lifetime.html" title="c/language/lifetime">Lifetime</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="name_space.html" title="c/language/name space">Lookup and name spaces</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compatible_type.html" title="c/language/type">Type</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">Arithmetic types</strong></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="object.html" title="c/language/object">Objects and alignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="main_function.html" title="c/language/main function">The main() function</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="as_if.html" title="c/language/as if">The as-if rule</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="behavior.html" title="c/language/behavior">Undefined behavior</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_model.html" title="c/language/memory model">Memory model and data races</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p><small>(See also <a href="compatible_type.html" title="c/language/type">type</a> for type system overview and <a href="../types.html" title="c/types"> the list of type-related utilities</a> that are provided by the C library)</small>
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<h3> <span class="mw-headline" id="Boolean_type">Boolean type</span></h3>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c">_Bool</span></span> (also accessible as the macro <a href="../types.html" title="c/types"><tt>bool</tt></a>) - type, capable of holding one of the two values: 1 and 0 (also accessible as the macros <a href="../types.html" title="c/types"><tt>true</tt></a> and <a href="../types.html" title="c/types"><tt>false</tt></a>).
+</li></ul>
+</dd></dl>
+<p>Note that <a href="conversion.html" title="c/language/conversion">conversion</a> to _Bool does not work the same as conversion to other integer types: <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">(</span>bool<span class="br0">)</span><span class="nu16">0.5</span></span></span> evaluates to <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>, whereas <span class="t-c"><span class="mw-geshi c source-c"><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="nu16">0.5</span></span></span> evaluates to <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Character_types">Character types</span></h3>
+<dl><dd><ul><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span> - type for signed character representation.
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span></span> - type for unsigned character representation. Also used to inspect <a href="object.html" title="c/language/object">object representations</a> (raw memory).
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">char</span></span></span> - type for character representation. Equivalent to either <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span> or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span></span> (which one is implementation-defined and may be controlled by a compiler commandline switch), but <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">char</span></span></span> is a distinct type, different from both <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span></span>
+</li></ul>
+</dd></dl>
+<p>Note that the standard library also defines <a href="typedef.html" title="c/language/typedef">typedef</a> names <a href="../string/wide.html" title="c/string/wide"><tt>wchar_t</tt></a> <span class="t-rev-inl t-since-c11"><span>, <a href="../string/multibyte.html" title="c/string/multibyte"><tt>char16_t</tt></a>, and <a href="../string/multibyte.html" title="c/string/multibyte"><tt>char32_t</tt></a></span> <span><span class="t-mark-rev t-since-c11">(since C11)</span></span></span> to represent wide characters.
+</p>
+<h3><span class="mw-headline" id="Integer_types">Integer types</span></h3>
+<dl><dd><ul><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span></span></span>, may use the keyword <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span></span></span>)
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span></span></span>)
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">int</span></span></span>)
+</li></ul>
+<dl><dd> This is the most optimal integer type for the platform, and is guaranteed to be at least 16 bits. Most current systems use 32 bits (see Data models below).
+</dd></dl>
+<ul><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span></span></span>), the unsigned counterpart of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>,  implementing modulo arithmetic. Suitable for bit manipulations.
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span>)
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span></span></span>)
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<dl><dd><ul><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span></span></span>)
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> (also accessible as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span></span></span>)
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<p>Note: as with all type specifiers, any order is permitted: <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">int</span> <span class="kw4">unsigned</span> <span class="kw4">long</span></span></span> name the same type.
+</p><p>The following table summarizes all available integer types and their properties:
+</p>
+<table class="wikitable" style="text-align:center;">
+
+<tr>
+<th rowspan="2"> Type specifier
+</th>
+<th rowspan="2"> Equivalent type
+</th>
+<th colspan="5"> Width in bits by data model
+</th></tr>
+<tr>
+<th> C standard
+</th>
+<th> LP32
+</th>
+<th> ILP32
+</th>
+<th> LLP64
+</th>
+<th> LP64
+</th></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span></span></span></div>
+</td>
+<td rowspan="4"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span> <span class="kw4">int</span></span></span>
+</td>
+<td rowspan="6"> at least<br> <b>16</b>
+</td>
+<td rowspan="6"> <b>16</b>
+</td>
+<td rowspan="6"> <b>16</b>
+</td>
+<td rowspan="6"> <b>16</b>
+</td>
+<td rowspan="6"> <b>16</b>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">short</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">short</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span></span></span></div>
+</td>
+<td rowspan="2"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span> <span class="kw4">int</span></span></span>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span></div>
+</td>
+<td rowspan="3"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>
+</td>
+<td rowspan="5"> at least<br> <b>16</b>
+</td>
+<td rowspan="5"> <b>16</b>
+</td>
+<td rowspan="5"> <b>32</b>
+</td>
+<td rowspan="5"> <b>32</b>
+</td>
+<td rowspan="5"> <b>32</b>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span></span></span></div>
+</td>
+<td rowspan="2"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span></div>
+</td>
+<td rowspan="4"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">int</span></span></span>
+</td>
+<td rowspan="6"> at least<br> <b>32</b>
+</td>
+<td rowspan="6"> <b>32</b>
+</td>
+<td rowspan="6"> <b>32</b>
+</td>
+<td rowspan="6"> <b>32</b>
+</td>
+<td rowspan="6"> <b>64</b>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span></span></span></div>
+</td>
+<td rowspan="2"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span></span></span></div>
+</td>
+<td rowspan="4"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> <br> <span class="t-mark-rev t-since-c99">(C99)</span>
+</td>
+<td rowspan="6"> at least<br> <b>64</b>
+</td>
+<td rowspan="6"> <b>64</b>
+</td>
+<td rowspan="6"> <b>64</b>
+</td>
+<td rowspan="6"> <b>64</b>
+</td>
+<td rowspan="6"> <b>64</b>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span> <span class="kw4">long</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span></span></span></div>
+</td>
+<td rowspan="2"> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span> <br> <span class="t-mark-rev t-since-c99">(C99)</span>
+</td></tr>
+<tr>
+<td> <div style="text-align:left; width:auto; margin-left:auto; margin-right:auto;"><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+</td></tr></table>
+<p>Besides the minimal bit counts, the C Standard guarantees that
+</p>
+<dl><dd><span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span> <span class="sy1">==</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">char</span><span class="br0">)</span> <span class="sy1">&lt;=</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">short</span><span class="br0">)</span> <span class="sy1">&lt;=</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span> <span class="sy1">&lt;=</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">long</span><span class="br0">)</span> <span class="sy1">&lt;=</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">long</span> <span class="kw4">long</span><span class="br0">)</span></span></span>.
+</dd></dl>
+<p>Note: this allows the extreme case in which <a href="https://en.wikipedia.org/wiki/Byte" class="extiw" title="enwiki:Byte">bytes</a> are sized 64 bits, all types (including <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">char</span></span></span>) are 64 bits wide, and <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">sizeof</span></span></span> returns 1 for every type.
+</p><p>Note: integer arithmetic is defined differently for the signed and unsigned integer types. See <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a>, in particular  <a href="operator_arithmetic.html#Overflows" title="c/language/operator arithmetic">integer overflows</a>.
+</p>
+<h4><span class="mw-headline" id="Data_models">Data models</span></h4>
+<p>The choices made by each implementation about the sizes of the fundamental types are collectively known as <i>data model</i>. Four data models found wide acceptance:
+</p><p>32 bit systems:
+</p>
+<dl><dd><ul><li><b>LP32</b> or <b>2/4/4</b> (int is 16-bit, long and pointer are 32-bit)
+</li></ul>
+<dl><dd><ul><li> Win16 API
+</li></ul>
+</dd></dl>
+<ul><li><b>ILP32</b> or <b>4/4/4</b> (int, long, and pointer are 32-bit);
+</li></ul>
+<dl><dd><ul><li> Win32 API
+</li><li> Unix and Unix-like systems (Linux, Mac OS X)
+</li></ul>
+</dd></dl>
+</dd></dl>
+<p>64 bit systems:
+</p>
+<dl><dd><ul><li> <b>LLP64</b> or <b>4/4/8</b> (int and long are 32-bit, pointer is 64-bit)
+</li></ul>
+<dl><dd><ul><li> Win64 API
+</li></ul>
+</dd></dl>
+<ul><li> <b>LP64</b> or <b>4/8/8</b> (int is 32-bit, long and pointer are 64-bit)
+</li></ul>
+<dl><dd><ul><li> Unix and Unix-like systems (Linux, Mac OS X)
+</li></ul>
+</dd></dl>
+</dd></dl>
+<p>Other models are very rare. For example, <b>ILP64</b> (<b>8/8/8</b>: int, long, and pointer are 64-bit) only appeared in some early 64-bit Unix systems (e.g. Unicos on Cray).
+</p><p>Note that exact-width integer types are available in <a href="../types/integer.html" title="c/types/integer">&lt;stdint.h&gt;</a> since C99
+</p>
+<h3><span class="mw-headline" id="Real_floating_types">Real floating types</span></h3>
+<p>C has three <span class="t-rev-inl t-since-c23"><span>or six</span> <span><span class="t-mark-rev t-since-c23">(since C23)</span></span></span> types for representing real floating-point values:
+</p>
+<dl><dd><ul><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> - single precision floating point type. Matches <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" class="extiw" title="enwiki:Single-precision floating-point format">IEEE-754 binary32 format</a> if supported.
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> - double precision floating point type. Matches <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" class="extiw" title="enwiki:Double-precision floating-point format">IEEE-754 binary64 format</a> if supported.
+</li><li><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> - extended precision floating point type. Matches <a href="https://en.wikipedia.org/wiki/Quadruple-precision_floating-point_format" class="extiw" title="enwiki:Quadruple-precision floating-point format">IEEE-754 binary128 format</a> if supported, otherwise matches <a href="https://en.wikipedia.org/wiki/Extended_precision" class="extiw" title="enwiki:Extended precision">IEEE-754 binary64-extended format</a> if supported, otherwise matches some non-IEEE-754 extended floating-point format as long as its precision is better than binary64 and range is at least as good as binary64, otherwise matches IEEE-754 binary64 format.
+<ul><li> binary128 format is used by some HP-UX, SPARC, MIPS, ARM64, and z/OS implementations.
+</li><li> The most well known IEEE-754 binary64-extended format is 80-bit x87 extended precision format. It is used by many x86 and x86-64 implementations (a notable exception is MSVC, which implements <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> in the same format as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span>, i.e. binary64).
+</li></ul>
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c23"><td>
+<dl><dd> If the implementation predefines the macro constant <code>__STDC_IEC_60559_DFP__</code>, the following decimal floating-point types are also supported.
+<ul><li><span class="t-c"><span class="mw-geshi c source-c">_Decimal32</span></span> - Represents <a href="https://en.wikipedia.org/wiki/decimal32_floating-point_format" class="extiw" title="enwiki:decimal32 floating-point format">IEEE-754 decimal32 format</a>.
+</li><li><span class="t-c"><span class="mw-geshi c source-c">_Decimal64</span></span> - Represents <a href="https://en.wikipedia.org/wiki/decimal64_floating-point_format" class="extiw" title="enwiki:decimal64 floating-point format">IEEE-754 decimal64 format</a>.
+</li><li><span class="t-c"><span class="mw-geshi c source-c">_Decimal128</span></span> - Represents <a href="https://en.wikipedia.org/wiki/decimal128_floating-point_format" class="extiw" title="enwiki:decimal128 floating-point format">IEEE-754 decimal128 format</a>.
+</li></ul>
+</dd><dd> Otherwise, these decimal floating-point types are not supported.
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-c23">(since C23)</span></td></tr>
+</table>
+<p>Floating-point types may support special values:
+</p>
+<ul><li> <i>infinity</i> (positive and negative), see <a href="../numeric/math/INFINITY.html" title="c/numeric/math/INFINITY"><tt>INFINITY</tt></a>
+</li><li> the <i>negative zero</i>, <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">-</span><span class="nu16">0.0</span></span></span>. It compares equal to the positive zero, but is meaningful in some arithmetic operations, e.g. <span class="t-c"><span class="mw-geshi c source-c"><span class="nu16">1.0</span><span class="sy2">/</span><span class="nu16">0.0</span> <span class="sy1">==</span> INFINITY</span></span>, but <span class="t-c"><span class="mw-geshi c source-c"><span class="nu16">1.0</span><span class="sy2">/-</span><span class="nu16">0.0</span> <span class="sy1">==</span> <span class="sy2">-</span>INFINITY</span></span>)
+</li><li> <i>not-a-number</i> (NaN), which does not compare equal with anything (including itself). Multiple bit patterns represent NaNs, see <span class="t-lc"><a href="../numeric/math/nan.2.html" title="c/numeric/math/nan">nan</a></span>, <a href="../numeric/math/NAN.html" title="c/numeric/math/NAN"><tt>NAN</tt></a>. Note that C takes no special notice of signaling NaNs (specified by IEEE-754), and treats all NaNs as quiet.
+</li></ul>
+<p>Real floating-point numbers may be used with <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a> + - / * and various mathematical functions from <a href="../numeric/math.html" title="c/numeric/math"><tt>&lt;math.h&gt;</tt></a>. Both built-in operators and library functions may raise floating-point exceptions and set <span class="t-lc"><a href="../error/errno.html" title="c/error/errno">errno</a></span> as described in <a href="../numeric/math/math_errhandling.html" title="c/numeric/math/math errhandling"><tt>math_errhandling</tt></a>
+</p><p>Floating-point expressions may have greater range and precision than indicated by their types, see <span class="t-lc"><a href="../types/limits/FLT_EVAL_METHOD.html" title="c/types/limits/FLT EVAL METHOD">FLT_EVAL_METHOD</a></span>. <a href="operator_assignment.html" title="c/language/operator assignment">Assignment</a>, <a href="return.html" title="c/language/return">return</a>, and <a href="cast.html" title="c/language/cast">cast</a> force the range and precision to the one associated with the declared type. 
+</p><p>Floating-point expressions may also be <i>contracted</i>, that is, calculated as if all intermediate values have infinite range and precision, see <a href="../preprocessor/impl.html#Standard_pragmas" title="c/preprocessor/impl"><tt>
+#pragma STDC FP_CONTRACT</tt></a>.
+</p><p>Some operations on floating-point numbers are affected by and modify the state of <a href="../numeric/fenv.html" title="c/numeric/fenv">the floating-point environment</a> (most notably, the rounding direction)
+</p><p><a href="conversion.html" title="c/language/conversion">Implicit conversions</a> are defined between real floating types and integer, complex, and imaginary types.
+</p><p>See <a href="../types/limits.html#Limits_of_floating_point_types" title="c/types/limits">Limits of floating point types</a> and <a href="../numeric/math.html" title="c/numeric/math">the <code>math.h</code> library</a> for additional details, limits, and properties of the floating-point types.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<h3> <span class="mw-headline" id="Complex_floating_types">Complex floating types</span></h3>
+<p>Complex floating types model the mathematical <a href="https://en.wikipedia.org/wiki/Complex_number" class="extiw" title="enwiki:Complex number">complex numbers</a>, that is the numbers that can be written as a sum of a real number and a real number multiplied by the imaginary unit: <span class="texhtml" style="white-space: nowrap;">a + bi</span>
+</p><p>The three complex types are
+</p>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> _Complex</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> _Complex</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> _Complex</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li></ul>
+</dd></dl>
+<p>Note: as with all type specifiers, any order is permitted: <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> <span class="kw4">long</span> <span class="kw4">double</span></span></span>, and even <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> <span class="kw4">long</span></span></span> name the same type.
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;complex.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> z <span class="sy1">=</span> <span class="nu0">1</span> <span class="sy2">+</span> <span class="nu0">2</span><span class="sy2">*</span>I<span class="sy4">;</span>
+    z <span class="sy1">=</span> <span class="nu0">1</span><span class="sy2">/</span>z<span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"1/(1.0+2.0i) = %.1f%+.1fi<span class="es1">\n</span>"</span>, <a href="../numeric/complex/creal.html"><span class="kw754">creal</span></a><span class="br0">(</span>z<span class="br0">)</span>, <a href="../numeric/complex/cimag.html"><span class="kw751">cimag</span></a><span class="br0">(</span>z<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">1/(1.0+2.0i) = 0.2-0.4i</pre></div></div> 
+</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c11"><td>
+<p>If the macro constant <code>__STDC_NO_COMPLEX__</code> is defined by the implementation, the complex types (as well as the library header <code>&lt;complex.h&gt;</code>) are not provided.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c11">(since C11)</span></td></tr>
+</table>
+<p>Each complex type has the same <a href="object.html" title="c/language/object">object representation</a> and <a href="object.html" title="c/language/object">alignment requirements</a> as an <a href="array.html" title="c/language/array">array</a> of two elements of the corresponding real type (<span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>). The first element of the array holds the real part, and the second element of the array holds the imaginary component.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">float</span> a<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span><span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> z1, z2<span class="sy4">;</span>
+<a href="../string/byte/memcpy.html"><span class="kw572">memcpy</span></a><span class="br0">(</span><span class="sy3">&amp;</span>z1, a, <span class="kw4">sizeof</span> z1<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// z1 becomes 1.0 + 2.0i</span>
+<a href="../string/byte/memcpy.html"><span class="kw572">memcpy</span></a><span class="br0">(</span><span class="sy3">&amp;</span>z2, a<span class="sy2">+</span><span class="nu0">2</span>, <span class="kw4">sizeof</span> z2<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// z2 becomes 3.0 + 4.0i</span></pre></div></div>
+<p>Complex numbers may be used with <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a> + - * and /, possibly mixed with imaginary and real numbers. There are many mathematical functions defined for complex numbers in <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a>. Both built-in operators and library functions may raise floating-point exceptions and set <span class="t-lc"><a href="../error/errno.html" title="c/error/errno">errno</a></span> as described in <a href="../numeric/math/math_errhandling.html" title="c/numeric/math/math errhandling"><tt>math_errhandling</tt></a>
+</p><p>Increment and decrement are not defined for complex types
+</p><p>Relational operators are not defined for complex types (there is no notion of "less than")
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: review other ops, link library </td></tr></table><a href="conversion.html" title="c/language/conversion">Implicit conversions</a> are defined between complex types and other arithmetic types.
+<p>In order to support the one-infinity model of complex number arithmetic, C regards any complex value with at least one infinite part as an infinity even if its other part is a NaN, guarantees that all operators and functions honor basic properties of inifinities and provides <span class="t-lc"><a href="../numeric/complex/cproj.html" title="c/numeric/complex/cproj">cproj</a></span> to map all infinities to the canonical one (see <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a> for the exact rules)
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;complex.h&gt;</span>
+<span class="co2">#include &lt;math.h&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+   <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> z <span class="sy1">=</span> <span class="br0">(</span><span class="nu0">1</span> <span class="sy2">+</span> <span class="nu0">0</span><span class="sy2">*</span>I<span class="br0">)</span> <span class="sy2">*</span> <span class="br0">(</span>INFINITY <span class="sy2">+</span> I<span class="sy2">*</span>INFINITY<span class="br0">)</span><span class="sy4">;</span>
+<span class="co1">// textbook formula would give</span>
+<span class="co1">// (1+i0)(∞+i∞) ⇒ (1×∞ – 0×∞) + i(0×∞+1×∞) ⇒ NaN + I*NaN</span>
+<span class="co1">// but C gives a complex infinity</span>
+   <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"%f + i*%f<span class="es1">\n</span>"</span>, <a href="../numeric/complex/creal.html"><span class="kw754">creal</span></a><span class="br0">(</span>z<span class="br0">)</span>, <a href="../numeric/complex/cimag.html"><span class="kw751">cimag</span></a><span class="br0">(</span>z<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co1">// textbook formula would give</span>
+<span class="co1">// cexp(∞+iNaN) ⇒ exp(∞)×(cis(NaN)) ⇒ NaN + I*NaN</span>
+<span class="co1">// but C gives  ±∞+i*nan</span>
+   <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> y <span class="sy1">=</span> <a href="../numeric/complex/cexp.html"><span class="kw769">cexp</span></a><span class="br0">(</span>INFINITY <span class="sy2">+</span> I<span class="sy2">*</span>NAN<span class="br0">)</span><span class="sy4">;</span>
+   <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"%f + i*%f<span class="es1">\n</span>"</span>, <a href="../numeric/complex/creal.html"><span class="kw754">creal</span></a><span class="br0">(</span>y<span class="br0">)</span>, <a href="../numeric/complex/cimag.html"><span class="kw751">cimag</span></a><span class="br0">(</span>y<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">inf + i*inf 
+inf + i*nan</pre></div></div> 
+</div>
+<p>C also treats multiple infinities so as to preserve directional information where possible, despite the inherent limitations of the Cartesian representation:
+</p><p>multiplying the imaginary unit by real infinity gives the correctly-signed imaginary infinity: i × ∞ = i∞. Also, i × (∞ – i∞) = ∞ + i∞ indicates the reasonable quadrant
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: wording </td></tr></table>
+<h3> <span class="mw-headline" id="Imaginary_floating_types">Imaginary floating types</span></h3>
+<p>Imaginary floating types model the mathematical <a href="https://en.wikipedia.org/wiki/Imaginary_number" class="extiw" title="enwiki:Imaginary number">imaginary numbers</a>, that is numbers that can be written as a real number multiplied by the imaginary unit: <span class="texhtml" style="white-space: nowrap;">bi</span>
+The three imaginary types are
+</p>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> _Imaginary</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> _Imaginary</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> _Imaginary</span></span> (also available as <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> if <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a> is included)
+</li></ul>
+</dd></dl>
+<p>Note: as with all type specifiers, any order is permitted: <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> <span class="kw4">long</span> <span class="kw4">double</span></span></span>, and even <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> <span class="kw4">long</span></span></span> name the same type.
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;complex.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> z <span class="sy1">=</span> <span class="nu0">3</span><span class="sy2">*</span>I<span class="sy4">;</span>
+    z <span class="sy1">=</span> <span class="nu0">1</span><span class="sy2">/</span>z<span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"1/(3.0i) = %+.1fi<span class="es1">\n</span>"</span>, <a href="../numeric/complex/cimag.html"><span class="kw751">cimag</span></a><span class="br0">(</span>z<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">1/(3.0i) = -0.3i</pre></div></div> 
+</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-c11"><td>
+<p>An implementation that defines <code>__STDC_IEC_559_COMPLEX__</code> is recommended, but not required to support imaginary numbers. POSIX recommends checking if the macro <span class="t-lc"><a href="../numeric/complex/Imaginary_I.html" title="c/numeric/complex/Imaginary I">_Imaginary_I</a></span> is defined to identify imaginary number support.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-c11">(until C11)</span></td></tr>
+<tr class="t-rev t-since-c11"><td>
+<p>Imaginary numbers are supported if <span class="t-rev-inl t-until-c23"><span><code>__STDC_IEC_559_COMPLEX__</code></span> <span><span class="t-mark-rev t-until-c23">(until C23)</span></span></span><span class="t-rev-inl t-since-c23"><span><code>__STDC_IEC_60559_COMPLEX__</code></span> <span><span class="t-mark-rev t-since-c23">(since C23)</span></span></span> is defined.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c11">(since C11)</span></td></tr>
+</table>
+<p>Each of the three imaginary types has the same <a href="object.html" title="c/language/object">object representation</a> and <a href="object.html" title="c/language/object">alignment requirement</a> as its <i>corresponding real type</i> (<span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> for <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>). 
+</p><p>Note: despite that, imaginary types are distinct and <a href="compatible_type.html#Compatible_types" title="c/language/type">not compatible</a> with their corresponding real types, which prohibits aliasing.
+</p><p>Imaginary numbers may be used with <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a> + - * and /, possibly mixed with complex and real numbers. There are many mathematical functions defined for imaginary numbers in <a href="../numeric/complex.html" title="c/numeric/complex"><tt>&lt;complex.h&gt;</tt></a>. Both built-in operators and library functions may raise floating-point exceptions and set <span class="t-lc"><a href="../error/errno.html" title="c/error/errno">errno</a></span> as described in <a href="../numeric/math/math_errhandling.html" title="c/numeric/math/math errhandling"><tt>math_errhandling</tt></a>
+</p><p>Increment and decrement are not defined for imaginary types
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: review other ops, link library </td></tr></table><a href="conversion.html" title="c/language/conversion">Implicit conversions</a> are defined between imaginary types and other arithmetic types.
+<p>The imaginary numbers make it possible to express all complex numbers using the natural notation <span class="t-c"><span class="mw-geshi c source-c">x <span class="sy2">+</span> I<span class="sy2">*</span>y</span></span> (where <span class="t-lc">I</span> is defined as <span class="t-lc"><a href="../numeric/complex/Imaginary_I.html" title="c/numeric/complex/Imaginary I">_Imaginary_I</a></span>). Without imaginary types, certain special complex values cannot be created naturally. For example, if <span class="t-lc">I</span> is defined as <span class="t-lc"><a href="../numeric/complex/Complex_I.html" title="c/numeric/complex/Complex I">_Complex_I</a></span>, then writing <span class="t-c"><span class="mw-geshi c source-c"><span class="nu16">0.0</span> <span class="sy2">+</span> I<span class="sy2">*</span>INFINITY</span></span> gives NaN as the real part, and <span class="t-c"><span class="mw-geshi c source-c"><a href="../numeric/complex/CMPLX.html"><span class="kw748">CMPLX</span></a><span class="br0">(</span><span class="nu16">0.0</span>, INFINITY<span class="br0">)</span></span></span> must be used instead. Same goes for the numbers with the negative zero imaginary component, which are meaningful when working with the library functions with branch cuts, such as <span class="t-lc"><a href="../numeric/complex/csqrt.html" title="c/numeric/complex/csqrt">csqrt</a></span>: <span class="t-c"><span class="mw-geshi c source-c"><span class="nu16">1.0</span> <span class="sy2">-</span> <span class="nu16">0.0</span><span class="sy2">*</span>I</span></span> results in the positive zero imaginary component if <span class="t-lc">I</span> is defined as <span class="t-lc"><a href="../numeric/complex/Complex_I.html" title="c/numeric/complex/Complex I">_Complex_I</a></span> and the negative zero imaginary part requires the use of <span class="t-lc"><a href="../numeric/complex/CMPLX.html" title="c/numeric/complex/CMPLX">CMPLX</a></span> or <span class="t-lc"><a href="../numeric/complex/conj.html" title="c/numeric/complex/conj">conj</a></span>.
+</p><p>Imaginary types also simplify implementations; multiplication of an imaginary by a complex can be implemented straightforwardly with two multiplications if the imaginary types are supported, instead of four multiplications and two additions.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Keywords">Keywords</span></h3>
+<p><a href="../keyword/char.html" title="c/keyword/char"><tt>char</tt></a>, 
+<a href="../keyword/int.html" title="c/keyword/int"><tt>int</tt></a>,
+<a href="../keyword/short.html" title="c/keyword/short"><tt>short</tt></a>,
+<a href="../keyword/long.html" title="c/keyword/long"><tt>long</tt></a>,
+<a href="../keyword/signed.html" title="c/keyword/signed"><tt>signed</tt></a>,
+<a href="../keyword/unsigned.html" title="c/keyword/unsigned"><tt>unsigned</tt></a>,
+<a href="../keyword/float.html" title="c/keyword/float"><tt>float</tt></a>,
+<a href="../keyword/double.html" title="c/keyword/double"><tt>double</tt></a>.
+<a href="../keyword/_Bool.html" title="c/keyword/ Bool"><tt>_Bool</tt></a>,
+<a href="../keyword/_Complex.html" title="c/keyword/ Complex"><tt>_Complex</tt></a>,
+<a href="../keyword/_Imaginary.html" title="c/keyword/ Imaginary"><tt>_Imaginary</tt></a>,
+<a href="../keyword/_Decimal32.html" title="c/keyword/ Decimal32"><tt>_Decimal32</tt></a>,
+<a href="../keyword/_Decimal64.html" title="c/keyword/ Decimal64"><tt>_Decimal64</tt></a>,
+<a href="../keyword/_Decimal128.html" title="c/keyword/ Decimal128"><tt>_Decimal128</tt></a>
+</p>
+<h3><span class="mw-headline" id="Range_of_values">Range of values</span></h3>
+<p>The following table provides a reference for the limits of common numeric representations.
+</p><p>Prior to C23, the C Standard allowed any signed integer representation, and the minimum guaranteed range of N-bit signed integers was from <span class="mjax" style="display:none">\(\scriptsize -(2^{N-1}-1)\)</span><span class="mjax-fallback texhtml" style="white-space: nowrap;">-(2<span class="t-su">N-1<br></span>-1)</span> to <span class="mjax" style="display:none">\(\scriptsize +2^{N-1}-1\)</span><span class="mjax-fallback texhtml" style="white-space: nowrap;">+2<span class="t-su">N-1<br></span>-1</span> (e.g. <b>-127</b> to <b>127</b> for a signed 8-bit type), which corresponds to the limits of <a href="https://en.wikipedia.org/wiki/One%27s_complement" class="extiw" title="enwiki:One's complement">one's complement</a> or <a href="https://en.wikipedia.org/wiki/Signed_number_representations#Sign-and-magnitude_method" class="extiw" title="enwiki:Signed number representations">sign-and-magnitude</a>.
+</p><p>However, all popular data models (including all of ILP32, LP32, LP64, LLP64) and almost all C compilers use <a href="https://en.wikipedia.org/wiki/Two%27s_complement" class="extiw" title="enwiki:Two's complement">two's complement</a> representation (the only known exceptions are some compliers for UNISYS), and as of C23, it is the only representation allowed by the standard, with the guaranteed range from <span class="mjax" style="display:none">\(\scriptsize -2^{N-1}\)</span><span class="mjax-fallback texhtml" style="white-space: nowrap;">-2<span class="t-su">N-1<br></span></span> to <span class="mjax" style="display:none">\(\scriptsize +2^{N-1}-1\)</span><span class="mjax-fallback texhtml" style="white-space: nowrap;">+2<span class="t-su">N-1<br></span>-1</span> (e.g. <b>-128</b> to <b>127</b> for a signed 8-bit type).
+</p>
+<table class="wikitable" style="text-align:center;">
+
+<tr>
+<th rowspan="2"> Type
+</th>
+<th rowspan="2"> Size in bits
+</th>
+<th rowspan="2"> Format
+</th>
+<th colspan="2"> Value range
+</th></tr>
+<tr>
+<th> Approximate
+</th>
+<th> Exact
+</th></tr>
+<tr>
+<th rowspan="4"> character
+</th>
+<td rowspan="2"> 8
+</td>
+<td> signed
+</td>
+<td>
+</td>
+<td> <b>-128</b> to <b>127</b>
+</td></tr>
+<tr>
+<td> unsigned
+</td>
+<td>
+</td>
+<td> <b>0</b> to <b>255</b>
+</td></tr>
+
+<tr>
+<td> 16
+</td>
+<td> UTF-16
+</td>
+<td>
+</td>
+<td> <b>0</b> to <b>65535</b>
+</td></tr>
+
+<tr>
+<td> 32
+</td>
+<td> UTF-32
+</td>
+<td>
+</td>
+<td> <b>0</b> to <b>1114111</b> (<b>0x10ffff</b>)
+</td></tr>
+
+<tr>
+<th rowspan="6"> integer
+</th>
+<td rowspan="2"> 16
+</td>
+<td> signed
+</td>
+<td> <b>± 3.27 · 10<sup>4</sup></b>
+</td>
+<td> <b>-32768</b> to <b>32767</b>
+</td></tr>
+<tr>
+<td> unsigned
+</td>
+<td> <b>0</b> to <b>6.55 · 10<sup>4</sup></b>
+</td>
+<td> <b>0</b> to <b>65535</b>
+</td></tr>
+<tr>
+<td rowspan="2"> 32
+</td>
+<td> signed
+</td>
+<td> <b>± 2.14 · 10<sup>9</sup></b>
+</td>
+<td> <b>-2,147,483,648</b> to <b>2,147,483,647</b>
+</td></tr>
+<tr>
+<td> unsigned
+</td>
+<td> <b>0</b> to <b>4.29 · 10<sup>9</sup></b>
+</td>
+<td> <b>0</b> to <b>4,294,967,295</b>
+</td></tr>
+<tr>
+<td rowspan="2"> 64
+</td>
+<td> signed
+</td>
+<td> <b>± 9.22 · 10<sup>18</sup></b>
+</td>
+<td> <b>-9,223,372,036,854,775,808</b> to <b>9,223,372,036,854,775,807</b>
+</td></tr>
+<tr>
+<td> unsigned
+</td>
+<td> <b>0</b> to <b>1.84 · 10<sup>19</sup></b>
+</td>
+<td> <b>0</b> to <b>18,446,744,073,709,551,615</b>
+</td></tr>
+<tr>
+<th rowspan="4"> binary<br> floating<br> point
+</th>
+<td> 32
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" class="extiw" title="enwiki:Single-precision floating-point format">IEEE-754</a>
+</td>
+<td><div>
+<ul><li>min subnormal:<br><b>± 1.401,298,4 · 10<sup>-45</sup></b>
+</li><li>min normal:<br><b>± 1.175,494,3 · 10<sup>-38</sup></b>
+</li><li>max:<br><b>± 3.402,823,4 · 10<sup>38</sup></b>
+</li></ul>
+</div>
+</td>
+<td><div>
+<ul><li>min subnormal:<br><b>±0x1p-149</b>
+</li><li>min normal:<br><b>±0x1p-126</b>
+</li><li>max:<br><b>±0x1.fffffep+127</b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<td> 64
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" class="extiw" title="enwiki:Double-precision floating-point format">IEEE-754</a>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 4.940,656,458,412 · 10<sup>-324</sup></b>
+</li><li>min normal:<br><b>± 2.225,073,858,507,201,4 · 10<sup>-﻿308</sup></b>
+</li><li>max:<br><b>± 1.797,693,134,862,315,7 · 10<sup>308</sup></b>
+</li></ul>
+</div>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>±0x1p-1074</b>
+</li><li>min normal:<br><b>±0x1p-1022</b>
+</li><li>max:<br><b>±0x1.fffffffffffffp+1023</b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<td> 80<sup id="cite_ref-1" class="reference"><a href="arithmetic_types.html#cite_note-1">[note 1]</a></sup>
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/Extended_precision" class="extiw" title="enwiki:Extended precision">x86</a>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 3.645,199,531,882,474,602,528<br> · 10<sup>-4951</sup></b>
+</li><li>min normal:<br><b>± 3.362,103,143,112,093,506,263<br> · 10<sup>-4932</sup></b>
+</li><li>max:<br><b>± 1.189,731,495,357,231,765,021<br> · 10<sup>4932</sup></b>
+</li></ul>
+</div>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>±0x1p-16446</b>
+</li><li>min normal:<br><b>±0x1p-16382</b>
+</li><li>max:<br><b>±0x1.fffffffffffffffep+16383</b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<td> 128
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/Quadruple-precision_floating-point_format" class="extiw" title="enwiki:Quadruple-precision floating-point format">IEEE-754</a>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 6.475,175,119,438,025,110,924,<br>438,958,227,646,552,5 · 10<sup>-4966</sup></b>
+</li><li>min normal:<br><b>± 3.362,103,143,112,093,506,262,<br>677,817,321,752,602,6 · 10<sup>-4932</sup></b>
+</li><li>max:<br><b>± 1.189,731,495,357,231,765,085,<br>759,326,628,007,016,2 · 10<sup>4932</sup></b>
+</li></ul>
+</div>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>±0x1p-16494</b>
+</li><li>min normal:<br><b>±0x1p-16382</b>
+</li><li>max:<br><b>±0x1.ffffffffffffffffffffffffffff<br>p+16383</b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<th rowspan="3"> decimal<br> floating<br> point
+</th>
+<td> 32
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/decimal32_floating-point_format" class="extiw" title="enwiki:decimal32 floating-point format">IEEE-754</a>
+</td>
+<td>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 1 · 10<sup>-101</sup></b>
+</li><li>min normal:<br><b>± 1 · 10<sup>-95</sup></b>
+</li><li>max:<br><b>± 9.999'999 · 10<sup>96</sup></b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<td> 64
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/decimal64_floating-point_format" class="extiw" title="enwiki:decimal64 floating-point format">IEEE-754</a>
+</td>
+<td>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 1 · 10<sup>-398</sup></b>
+</li><li>min normal:<br><b>± 1 · 10<sup>-383</sup></b>
+</li><li>max:<br><b>± 9.999'999'999'999'999 · 10<sup>384</sup></b>
+</li></ul>
+</div>
+</td></tr>
+<tr>
+<td> 128
+</td>
+<td> <a href="https://en.wikipedia.org/wiki/decimal128_floating-point_format" class="extiw" title="enwiki:decimal128 floating-point format">IEEE-754</a>
+</td>
+<td>
+</td>
+<td> <div>
+<ul><li>min subnormal:<br><b>± 1 · 10<sup>-6176</sup></b>
+</li><li>min normal:<br><b>± 1 · 10<sup>-6143</sup></b>
+</li><li>max:<br><b>± 9.999'999'999'999'999'999'<br>999'999'999'999'999 · 10<sup>6144</sup></b>
+</li></ul>
+</div>
+</td></tr></table>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="arithmetic_types.html#cite_ref-1">↑</a></span> <span class="reference-text">The object representation usually occupies 96/128 bits on 32/64-bit platforms respectively.</span>
+</li>
+</ol>
+<p>Note: actual (as opposed to guaranteed minimal) ranges are available in the library headers <a href="../types/limits.html" title="c/types/limits"><code>&lt;limits.h&gt;</code> and <code>&lt;float.h&gt;</code></a>.
+</p>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6445/1000000
+Preprocessor generated node count: 13198/1000000
+Post‐expand include size: 101811/2097152 bytes
+Template argument size: 42468/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:13882-0!*!0!!en!*!* and timestamp 20220605010310 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/language/arithmetic_types&amp;oldid=138916">https://en.cppreference.com/mwiki/index.php?title=c/language/arithmetic_types&amp;oldid=138916</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/language/arithmetic_types">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 19 March 2022, at 12:36.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 132,582 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 2.480 secs. -->
+	</body>
+<!-- Cached 20220605010310 -->
+</html>

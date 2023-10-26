@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>std::experimental::propagate_const - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/experimental/propagate_const","wgTitle":"cpp/experimental/propagate const","wgCurRevisionId":131041,"wgArticleId":14268,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/experimental/propagate_const","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_experimental_propagate_const skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">std::experimental::</span>propagate_const</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../experimental.html" title="cpp/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="cpp/experimental"> Technical specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="fs.html" title="cpp/experimental/fs">Filesystem library</a> <span class="t-mark-rev t-since-fs-ts t-mark-ts">(filesystem TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/experimental/lib extensions">Library fundamentals</a> <span class="t-mark-rev t-since-libfund-ts t-mark-ts">(library fundamentals TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lib_extensions_2.html" title="cpp/experimental/lib extensions 2">Library fundamentals 2</a> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts">(library fundamentals TS v2)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lib_extensions_3.html" title="cpp/experimental/lib extensions 3">Library fundamentals 3</a> <span class="t-mark-rev t-since-libfund-ts-3 t-mark-ts">(library fundamentals TS v3)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parallelism.html" title="cpp/experimental/parallelism">Extensions for parallelism</a> <span class="t-mark-rev t-since-parallelism-ts t-mark-ts">(parallelism TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parallelism_2.html" title="cpp/experimental/parallelism 2">Extensions for parallelism 2</a> <span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concurrency.html" title="cpp/experimental/concurrency">Extensions for concurrency</a> <span class="t-mark-rev t-since-concurrency-ts t-mark-ts">(concurrency TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2 (page does not exist)">Extensions for concurrency 2</a> <span class="t-mark-rev t-since-concurrency-ts-2 t-mark-ts">(concurrency TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constraints.html" title="cpp/experimental/constraints">Concepts</a> <span class="t-mark-rev t-since-concepts-ts t-mark-ts">(concepts TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/experimental/ranges">Ranges</a> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reflect.html" title="cpp/experimental/reflect">Reflection</a> <span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="special_math.html" title="cpp/experimental/special functions">Mathematical special functions</a> <span class="t-mark-rev t-since-special-math-tr t-mark-ts">(special functions TR)</span></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="lib_extensions_2.html" title="cpp/experimental/lib extensions 2"> Library fundamentals v2</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>experimental::propagate_const</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="not_fn.html" title="cpp/experimental/not fn"><span class="t-lines"><span>experimental::not_fn</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="observer_ptr.html" title="cpp/experimental/observer ptr"><span class="t-lines"><span>experimental::observer_ptr</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="make_array.html" title="cpp/experimental/make array"><span class="t-lines"><span>experimental::make_array</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="to_array.html" title="cpp/experimental/to array"><span class="t-lines"><span>experimental::to_array</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ostream_joiner.html" title="cpp/experimental/ostream joiner"><span class="t-lines"><span>experimental::ostream_joiner</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gcd.html" title="cpp/experimental/gcd"><span class="t-lines"><span>experimental::gcd</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lcm.html" title="cpp/experimental/lcm"><span class="t-lines"><span>experimental::lcm</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="source_location.html" title="cpp/experimental/source location"><span class="t-lines"><span>experimental::source_location</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="randint.html" title="cpp/experimental/randint"><span class="t-lines"><span>experimental::randint</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_detected.html" title="cpp/experimental/is detected"><span class="t-lines"><span>detection idiom</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lib_extensions_2.html#Uniform_container_erasure" title="cpp/experimental/lib extensions 2"><span class="t-lines"><span>uniform container erasure</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lib_extensions_2.html#Logical_operator_type_traits" title="cpp/experimental/lib extensions 2"><span class="t-lines"><span>logical operator type traits</span></span></a></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"><tt>std::experimental::propagate_const</tt></strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Member functions</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/propagate_const.html" title="cpp/experimental/propagate const/propagate const"><span class="t-lines"><span>propagate_const::propagate_const</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/operator%3D.html" title="cpp/experimental/propagate const/operator="><span class="t-lines"><span>propagate_const::operator=</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/swap.html" title="cpp/experimental/propagate const/swap"><span class="t-lines"><span>propagate_const::swap</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Observers</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/get.html" title="cpp/experimental/propagate const/get"><span class="t-lines"><span>propagate_const::get</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/operator_bool.html" title="cpp/experimental/propagate const/operator bool"><span class="t-lines"><span>propagate_const::operator bool</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/operator_star_.html" title="cpp/experimental/propagate const/operator*"><span class="t-lines"><span>propagate_const::operator*</span><span>propagate_const::operator-&gt;</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/operator_element_type_star_.html" title="cpp/experimental/propagate const/operator element type*"><span class="t-lines"><span>propagate_const::operator element_type*</span><span>propagate_const::operator const element_type*</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Non-member functions</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/operator_cmp.html" title="cpp/experimental/propagate const/operator cmp"><span class="t-lines"><span>operator==</span><span>operator!=</span><span>operator&lt;</span><span>operator&gt;</span><span>operator&lt;=</span><span>operator&gt;</span><span>operator&gt;=</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/swap2.html" title="cpp/experimental/propagate const/swap2"><span class="t-lines"><span>swap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/get_underlying.html" title="cpp/experimental/propagate const/get underlying"><span class="t-lines"><span>get_underlying</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Helper classes</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/hash.html" title="cpp/experimental/propagate const/hash"><span class="t-lines"><span>std::hash</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="propagate_const/cmp_func.html" title="cpp/experimental/propagate const/cmp func"><span class="t-lines"><span>std::equal_to</span><span>std::not_equal_to</span><span>std::less</span><span>std::greater</span><span>std::less_equal</span><span>std::greater_equal</span></span></a></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/propagate_const&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/propagate const (page does not exist)">&lt;experimental/propagate_const&gt;</a></code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-libfund_ts_2">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span><br>
+<span class="kw1">class</span> propagate_const<span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts">(library fundamentals TS v2)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p><code>std::experimental::propagate_const</code> is a const-propagating wrapper for pointers and pointer-like objects. It treats the wrapped pointer as a pointer to <code>const</code> when accessed through a <code>const</code> access path, hence the name.
+</p><p>The class satisfies the requirements of <a href="../named_req/MoveConstructible.html" title="cpp/named req/MoveConstructible"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">MoveConstructible</span></a> and <a href="../named_req/MoveAssignable.html" title="cpp/named req/MoveAssignable"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">MoveAssignable</span></a> if the underlying pointer-like type satisfies the corresponding requirement, but <code>propagate_const</code> is neither <a href="../named_req/CopyConstructible.html" title="cpp/named req/CopyConstructible"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">CopyConstructible</span></a> nor <a href="../named_req/CopyAssignable.html" title="cpp/named req/CopyAssignable"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">CopyAssignable</span></a>.
+</p>
+<table class="t-par-begin">
+
+
+<tr class="t-par-hitem">
+<td colspan="3"> Type requirements
+</td></tr>
+<tr class="t-par-req">
+<td colspan="3"> -<div class="spacer"></div><code>T</code> must be an object pointer type or a pointer-like class type, as specified below. The program is ill-formed if <code>T</code> is an array type, reference type, pointer to function type, pointer to (possibly cv-qualified) <code>void</code>, or if <span class="t-c"><span class="mw-geshi cpp source-cpp">decltype<span class="br0">(</span><span class="sy2">*</span><a href="../utility/declval.html"><span class="kw1123">std::<span class="me2">declval</span></span></a><span class="sy1">&lt;</span>T<span class="sy3">&amp;</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span></span></span> is not an lvalue reference type.
+</td></tr></table>
+<h3><span class="mw-headline" id="Requirements_on_pointer-like_class_types"> Requirements on pointer-like class types </span></h3>
+<p>If <code>T</code> is a class type, it must satisfy the requirements in this subsection.
+</p><p>Given
+</p>
+<ul><li> <code>t</code>, a modifiable <a href="../language/value_category.html" title="cpp/language/value category">lvalue expression</a> of type <code>T</code>
+</li><li> <code>ct</code>, a <code>const T&amp;</code> bound to <code>T</code>
+</li><li> <code>element_type</code>, an object type
+</li></ul>
+<p>The following expressions must be valid and have their specified effects:
+</p>
+<table class="wikitable">
+
+<tr>
+<th>Expression</th>
+<th>Return type</th>
+<th>Pre-conditions</th>
+<th>Operational semantics
+</th></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td> <code>element_type*</code>
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td> <code>element_type*</code> or <code>const element_type*</code>
+</td>
+<td>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>t</span></span>
+</td>
+<td> <code>element_type&amp;</code>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td>
+<td> <code>*t</code> refers to the same object as <code>*(t.get())</code>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>ct</span></span>
+</td>
+<td> <code>element_type&amp;</code> or <code>const element_type&amp;</code>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td>
+<td> <code>*ct</code> refers to the same object as <code>*(ct.get())</code>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">operator</span><span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td> <code>element_type*</code>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">operator</span><span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">operator</span><span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td>
+<td> <code>element_type*</code> or <code>const element_type*</code>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">operator</span><span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span></span></span>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="kw4">bool</span><span class="br0">)</span>t</span></span>
+</td>
+<td> <code>bool</code>
+</td>
+<td>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="kw4">bool</span><span class="br0">)</span>t</span></span> is equivalent to <span class="t-c"><span class="mw-geshi cpp source-cpp">t.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td></tr>
+<tr>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="kw4">bool</span><span class="br0">)</span>ct</span></span>
+</td>
+<td> <code>bool</code>
+</td>
+<td>
+</td>
+<td> <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="kw4">bool</span><span class="br0">)</span>ct</span></span> is equivalent to <span class="t-c"><span class="mw-geshi cpp source-cpp">ct.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> nullptr</span></span>
+</td></tr></table>
+<p>Further, <code>T</code> and <code>const T</code> shall be contextually convertible to <code>bool</code>.
+</p><p>In addition, if <code>T</code> is implicitly convertible to <code>element_type*</code>, then <code>(element_type*)t</code> shall be equal to <code>t.get()</code>. Similarly, if <code>const T</code> is implicitly convertible to <code>const element_type*</code>, then <code>(const element_type*)ct</code> shall be equal to <code>ct.get()</code>.
+</p>
+<h3><span class="mw-headline" id="Member_types">Member types</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-hitem">
+<td>  Member type
+</td>
+<td>  Definition
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span class="t-c"><span class="mw-geshi cpp source-cpp">element_type</span></span>
+</td>
+<td>  <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/remove_reference.html"><span class="kw609">std::<span class="me2">remove_reference_t</span></span></a><span class="sy1">&lt;</span>decltype<span class="br0">(</span><span class="sy2">*</span><a href="../utility/declval.html"><span class="kw1123">std::<span class="me2">declval</span></span></a><span class="sy1">&lt;</span>T<span class="sy3">&amp;</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy1">&gt;</span></span></span>, the type of the object pointed to by <code>T</code>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Member_functions">Member functions</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div t-dsc-member-nobold-div"><div><a href="propagate_const/propagate_const.html" title="cpp/experimental/propagate const/propagate const"> <span class="t-lines"><span>(constructor)</span></span></a></div></div>
+</td>
+<td>  constructs a new <code>propagate_const</code> <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div t-dsc-member-nobold-div"><div><span class="t-lines"><span>(destructor)</span></span></div><div><span class="t-lines"><span><span class="t-mark">(implicitly declared)</span></span></span></div></div>
+</td>
+<td>  destructs an <code>propagate_const</code>, destroying the contained pointer <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/operator%3D.html" title="cpp/experimental/propagate const/operator="> <span class="t-lines"><span>operator=</span></span></a></div></div>
+</td>
+<td>   assigns the <code>propagate_const</code> object  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/swap.html" title="cpp/experimental/propagate const/swap"> <span class="t-lines"><span>swap</span></span></a></div></div>
+</td>
+<td>   swaps the wrapped pointer  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Observers">  Observers </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/get.html" title="cpp/experimental/propagate const/get"> <span class="t-lines"><span>get</span></span></a></div></div>
+</td>
+<td>   returns a pointer to the object pointed to by the wrapped pointer  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/operator_bool.html" title="cpp/experimental/propagate const/operator bool"> <span class="t-lines"><span>operator bool</span></span></a></div></div>
+</td>
+<td>   checks if the wrapped pointer is null  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/operator_star_.html" title="cpp/experimental/propagate const/operator*"> <span class="t-lines"><span>operator*</span><span>operator-&gt;</span></span></a></div></div>
+</td>
+<td>  dereferences the wrapped pointer  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/operator_element_type_star_.html" title="cpp/experimental/propagate const/operator element type*"> <span class="t-lines"><span>operator element_type*</span><span>operator const element_type*</span></span></a></div></div>
+</td>
+<td>   implicit conversion function to pointer  <br> <span class="t-mark">(public member function)</span> </td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Non-member_functions">Non-member functions</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/operator_cmp.html" title="cpp/experimental/propagate const/operator cmp"> <span class="t-lines"><span>operator==</span><span>operator!=</span><span>operator&lt;</span><span>operator&lt;=</span><span>operator&gt;</span><span>operator&gt;=</span></span></a></div></div>
+</td>
+<td>   compares to another <code>propagate_const</code>, another pointer, or with <span class="t-c"><span class="mw-geshi cpp source-cpp">nullptr</span></span>  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/swap2.html" title="cpp/experimental/propagate const/swap2"> <span class="t-lines"><span>std::experimental::swap<span class="t-dsc-small">(std::experimental::propagate_const)</span></span></span></a></div></div>
+</td>
+<td>   specializes the <code>swap</code> algorithm <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/get_underlying.html" title="cpp/experimental/propagate const/get underlying"> <span class="t-lines"><span>get_underlying</span></span></a></div></div>
+</td>
+<td>   Retrieves a reference to the wrapped pointer-like object <br> <span class="t-mark">(function template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Helper_classes">Helper classes</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/hash.html" title="cpp/experimental/propagate const/hash"> <span class="t-lines"><span>std::hash<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span></span></a></div></div>
+</td>
+<td>   hash support for <code>propagate_const</code>  <br> <span class="t-mark">(class template specialization)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="propagate_const/cmp_func.html" title="cpp/experimental/propagate const/cmp func"> <span class="t-lines"><span>std::equal_to<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span><span>std::not_equal_to<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span><span>std::less<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span><span>std::greater<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span><span>std::less_equal<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span><span>std::greater_equal<span class="t-dsc-small">&lt;std::experimental::propagate_const&gt;</span></span></span></a></div></div>
+</td>
+<td>   Specializations of the standard comparison function objects for <code>propagate_const</code>  <br> <span class="t-mark">(class template specialization)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;memory&gt;</span>
+<span class="co2">#include &lt;experimental/propagate_const&gt;</span>
+ 
+<span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"g (const)<span class="es1">\n</span>"</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"g (non-const)<span class="es1">\n</span>"</span><span class="sy4">;</span> <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> Y
+<span class="br0">{</span>
+    Y<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> m_ptrX<span class="br0">(</span><a href="../memory/unique_ptr/make_unique.html"><span class="kw736">std::<span class="me2">make_unique</span></span></a><span class="sy1">&lt;</span>X<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span> <span class="br0">}</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"f (const)<span class="es1">\n</span>"</span><span class="sy4">;</span>
+        m_ptrX<span class="sy2">-</span><span class="sy1">&gt;</span>g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"f (non-const)<span class="es1">\n</span>"</span><span class="sy4">;</span>
+        m_ptrX<span class="sy2">-</span><span class="sy1">&gt;</span>g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    std<span class="sy4">::</span><span class="me2">experimental</span><span class="sy4">::</span><span class="me2">propagate_const</span><span class="sy1">&lt;</span><a href="../memory/unique_ptr.html"><span class="kw734">std::<span class="me2">unique_ptr</span></span></a><span class="sy1">&lt;</span>X<span class="sy1">&gt;&gt;</span> m_ptrX<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Y y<span class="sy4">;</span>
+    y.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> Y cy<span class="sy4">;</span>
+    cy.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">f (non-const)
+g (non-const)
+f (const)
+g (const)</pre></div></div> 
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5525/1000000
+Preprocessor generated node count: 11755/1000000
+Post‐expand include size: 165952/2097152 bytes
+Template argument size: 36050/2097152 bytes
+Highest expansion depth: 22/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:14268-0!*!0!!en!*!* and timestamp 20220410102155 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/propagate_const&amp;oldid=131041">https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/propagate_const&amp;oldid=131041</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/experimental/propagate_const">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 2 July 2021, at 20:20.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 80,659 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 2.058 secs. -->
+	</body>
+<!-- Cached 20220410102155 -->
+</html>

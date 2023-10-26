@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Parallelized version of existing algorithms (parallelism TS) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/experimental/parallelism/existing","wgTitle":"cpp/experimental/parallelism/existing","wgCurRevisionId":86963,"wgArticleId":14364,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/experimental/parallelism/existing","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_experimental_parallelism_existing skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Parallelized version of existing algorithms <span class="t-mark-rev t-since-parallelism-ts t-mark-ts">(parallelism TS)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../experimental.html" title="cpp/experimental">experimental</a>‎ | <a href="../parallelism.html" title="cpp/experimental/parallelism">parallelism</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../experimental.html" title="cpp/experimental"> Technical specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../fs.html" title="cpp/experimental/fs">Filesystem library</a> <span class="t-mark-rev t-since-fs-ts t-mark-ts">(filesystem TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="cpp/experimental/lib extensions">Library fundamentals</a> <span class="t-mark-rev t-since-libfund-ts t-mark-ts">(library fundamentals TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../lib_extensions_2.html" title="cpp/experimental/lib extensions 2">Library fundamentals 2</a> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts">(library fundamentals TS v2)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../lib_extensions_3.html" title="cpp/experimental/lib extensions 3">Library fundamentals 3</a> <span class="t-mark-rev t-since-libfund-ts-3 t-mark-ts">(library fundamentals TS v3)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../parallelism.html" title="cpp/experimental/parallelism">Extensions for parallelism</a> <span class="t-mark-rev t-since-parallelism-ts t-mark-ts">(parallelism TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../parallelism_2.html" title="cpp/experimental/parallelism 2">Extensions for parallelism 2</a> <span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concurrency.html" title="cpp/experimental/concurrency">Extensions for concurrency</a> <span class="t-mark-rev t-since-concurrency-ts t-mark-ts">(concurrency TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2 (page does not exist)">Extensions for concurrency 2</a> <span class="t-mark-rev t-since-concurrency-ts-2 t-mark-ts">(concurrency TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../constraints.html" title="cpp/experimental/constraints">Concepts</a> <span class="t-mark-rev t-since-concepts-ts t-mark-ts">(concepts TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/experimental/ranges">Ranges</a> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../reflect.html" title="cpp/experimental/reflect">Reflection</a> <span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../special_math.html" title="cpp/experimental/special functions">Mathematical special functions</a> <span class="t-mark-rev t-since-special-math-tr t-mark-ts">(special functions TR)</span></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../parallelism.html" title="cpp/experimental/parallelism">Extensions for parallelism</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/parallelism/execution_policy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/parallelism/execution policy (page does not exist)">Execution policies</a></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/execution_policy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/execution policy (page does not exist)"><span class="t-lines"><span>parallel::execution_policy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../execution_policy_tag_t.html" title="cpp/experimental/execution policy tag t"><span class="t-lines"><span>parallel::sequential_execution_policy</span><span>parallel::parallel_execution_policy</span><span>parallel::parallel_vector_execution_policy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../execution_policy_tag.html" title="cpp/experimental/execution policy tag"><span class="t-lines"><span>parallel::seq</span><span>parallel::par</span><span>parallel::par_vec</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/parallelism/parallel_algorithms&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/parallelism/parallel algorithms (page does not exist)">Parallel algorithms</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Parallel exceptions </td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/exception_list&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/exception list (page does not exist)"><span class="t-lines"><span>parallel::exception_list</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <strong class="selflink">Parallelized version of existing algorithms</strong> </td></tr>
+<tr class="t-nv-h2"><td colspan="5"> New algorithms </td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/for_each&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/for each (page does not exist)"><span class="t-lines"><span>parallel::for_each</span><span>parallel::for_each_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../reduce.html" title="cpp/experimental/reduce"><span class="t-lines"><span>parallel::reduce</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/exclusive_scan&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/exclusive scan (page does not exist)"><span class="t-lines"><span>parallel::exclusive_scan</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/inclusive_scan&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/inclusive scan (page does not exist)"><span class="t-lines"><span>parallel::inclusive_scan</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../transform_reduce.html" title="cpp/experimental/transform reduce"><span class="t-lines"><span>parallel::transform_reduce</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/transform_exclusive_scan&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/transform exclusive scan (page does not exist)"><span class="t-lines"><span>parallel::transform_exclusive_scan</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/transform_inclusive_scan&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/transform inclusive scan (page does not exist)"><span class="t-lines"><span>parallel::transform_inclusive_scan</span></span></a></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>The C++ Extensions for Parallelism TS provides parallelized versions of the following 69 existing algorithms. Each of the following parallelized algorithms
+</p>
+<ul><li> is declared in the <code>std::experimental::parallel</code> namespace, 
+</li><li> does not participate in overload resolution unless <code>is_execution_policy&lt;std::decay_t&lt;ExecutionPolicy&gt;&gt;::value</code> is <code>true</code>, and
+</li><li> has the same semantics as the corresponding existing algorithm in the C++ standard library, except as noted in the page on <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/parallelism/parallel_algorithms&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/parallelism/parallel algorithms (page does not exist)">parallel algorithms</a>.
+</li></ul>
+<p><br>
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Non-modifying_sequence_operations">  Non-modifying sequence operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="all_of"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> all_of<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+             UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/all_any_none_of.html" title="cpp/algorithm/all any none of">std::all_of</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="any_of"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> any_of<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+             UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/all_any_none_of.html" title="cpp/algorithm/all any none of">std::any_of</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="none_of"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> none_of<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+              UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/all_any_none_of.html" title="cpp/algorithm/all any none of">std::none_of</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="count"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p><span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>InputIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">difference_type</span><br>
+    count<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last, <br>
+           <span class="kw4">const</span> T <span class="sy3">&amp;</span>value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/count_if.html" title="cpp/algorithm/count">std::count</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="count_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p><span class="kw1">typename</span> iterator_traits<span class="sy1">&lt;</span>InputIt<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">difference_type</span><br>
+    count_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+              UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/count_if.html" title="cpp/algorithm/count">std::count_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="mismatch"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<p><a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>InputIt1,InputIt2<span class="sy1">&gt;</span><br>
+    mismatch<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              InputIt1 first1, InputIt1 last1,<br>
+              InputIt2 first2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+<a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>InputIt1,InputIt2<span class="sy1">&gt;</span><br>
+    mismatch<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              InputIt1 first1, InputIt1 last1,<br>
+              InputIt2 first2, BinaryPred p <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>InputIt1,InputIt2<span class="sy1">&gt;</span><br>
+    mismatch<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              InputIt1 first1, InputIt1 last1,<br>
+              InputIt2 first2, InputIt2 last2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+<a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>InputIt1,InputIt2<span class="sy1">&gt;</span><br>
+    mismatch<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              InputIt1 first1, InputIt1 last1,<br>
+              InputIt2 first2, InputIt2 last2, BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/mismatch.html" title="cpp/algorithm/mismatch">std::mismatch</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="equal"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> equal<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+            InputIt1 first1, InputIt1 last1,<br>
+            InputIt2 first2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> equal<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+            InputIt1 first1, InputIt1 last1,<br>
+            InputIt2 first2, BinaryPred p <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> equal<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+            InputIt1 first1, InputIt1 last1,<br>
+            InputIt2 first2, InputIt2 last2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> equal<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+            InputIt1 first1, InputIt1 last1, <br>
+            InputIt2 first2, InputIt2 last2, BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/equal.html" title="cpp/algorithm/equal">std::equal</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="find"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>InputIt find<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+              <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/find_if_not.html" title="cpp/algorithm/find">std::find</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="find_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p>InputIt find_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+                 UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/find_if_not.html" title="cpp/algorithm/find">std::find_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="find_if_not"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p>InputIt find_if_not<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                     InputIt first, InputIt last, <br>
+                     UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/find_if_not.html" title="cpp/algorithm/find">std::find_if_not</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="find_end"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt1, <span class="kw1">class</span> ForwardIt2 <span class="sy1">&gt;</span><br>
+<p>ForwardIt1 find_end<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                     ForwardIt1 first, ForwardIt1 last,<br>
+                     ForwardIt2 s_first, ForwardIt2 s_last <span class="br0">)</span><span class="sy4">;</span><br>
+        <br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt1,<br>
+          <span class="kw1">class</span> ForwardIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+ForwardIt1 find_end<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                     ForwardIt1 first, ForwardIt1 last,<br>
+                     ForwardIt2 s_first, ForwardIt2 s_last,<br>
+                     BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/find_end.html" title="cpp/algorithm/find end">std::find_end</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="find_first_of"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>InputIt find_first_of<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                       InputIt first, InputIt last,<br>
+                       ForwardIt s_first, ForwardIt s_last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+          <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+InputIt find_first_of<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                       InputIt first, InputIt last,<br>
+                       ForwardIt s_first, ForwardIt s_last,<br>
+                       BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/find_first_of.html" title="cpp/algorithm/find first of">std::find_first_of</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="adjacent_find"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>ForwardIt adjacent_find<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                         ForwardIt first, ForwardIt last <span class="br0">)</span><span class="sy4">;</span><br>
+        <br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> BinaryPred<span class="sy1">&gt;</span><br>
+ForwardIt adjacent_find<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                         ForwardIt first, ForwardIt last,<br>
+                         BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/adjacent_find.html" title="cpp/algorithm/adjacent find">std::adjacent_find</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="search"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt1, <span class="kw1">class</span> ForwardIt2 <span class="sy1">&gt;</span><br>
+<p>ForwardIt1 search<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                   ForwardIt1 first, ForwardIt1 last,<br>
+                   ForwardIt2 s_first, ForwardIt2 s_last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt1,<br>
+          <span class="kw1">class</span> ForwardIt2, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+ForwardIt1 search<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                   ForwardIt1 first, ForwardIt1 last,<br>
+                   ForwardIt2 s_first, ForwardIt2 s_last,<br>
+                   BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/search.html" title="cpp/algorithm/search">std::search</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="search_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Size, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>ForwardIt search_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                    ForwardIt first, ForwardIt last,<br>
+                    Size count, <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span><br>
+        <br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt,<br>
+          <span class="kw1">class</span> Size, <span class="kw1">class</span> T, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+ForwardIt search_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                    ForwardIt first, ForwardIt last,<br>
+                    Size count, <span class="kw4">const</span> T<span class="sy3">&amp;</span> value, <br>
+                    BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/search_n.html" title="cpp/algorithm/search n">std::search_n</a></span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Modifying_sequence_operations">  Modifying sequence operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last, <br>
+               OutputIt d_first <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/copy.html" title="cpp/algorithm/copy">std::copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="copy_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+<p>          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+OutputIt copy_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+                  OutputIt d_first, UnaryPred pred <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/copy.html" title="cpp/algorithm/copy">std::copy_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="copy_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+<p>          <span class="kw1">class</span> Size, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt copy_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, Size count,<br>
+                 OutputIt result <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/copy_n.html" title="cpp/algorithm/copy n">std::copy_n</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="move"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt move<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, InputIt first, InputIt last,<br>
+               OutputIt d_first <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <a href="../../algorithm/move.html" title="cpp/algorithm/move"><tt>std::move</tt></a>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="fill"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> fill<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, ForwardIt first, ForwardIt last,<br>
+           <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/fill.html" title="cpp/algorithm/fill">std::fill</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="fill_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Size, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>OutputIt fill_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, OutputIt first, Size count,<br>
+                 <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/fill_n.html" title="cpp/algorithm/fill n">std::fill_n</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="transform"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <br>
+<p>          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> UnaryOp <span class="sy1">&gt;</span><br>
+OutputIt transform<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                    InputIt first1, InputIt last1, <br>
+                    OutputIt d_first, UnaryOp unary_op <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> BinaryOp <span class="sy1">&gt;</span><br>
+OutputIt transform<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                    InputIt1 first1, InputIt1 last1, <br>
+                    InputIt2 first2, OutputIt d_first,<br>
+                    BinaryOp binary_op <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/transform.html" title="cpp/algorithm/transform">std::transform</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="generate"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Generator <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> generate<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, ForwardIt first, ForwardIt last,<br>
+               Generator g <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/generate.html" title="cpp/algorithm/generate">std::generate</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="generate_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> OutputIt,<br>
+<p>          <span class="kw1">class</span> Size, <span class="kw1">class</span> Generator <span class="sy1">&gt;</span><br>
+OutputIt generate_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, OutputIt first,<br>
+                     Size count, Generator g <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/generate_n.html" title="cpp/algorithm/generate n">std::generate_n</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="remove"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>ForwardIt remove<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                  ForwardIt first, ForwardIt last, <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <a href="../../algorithm/remove.html" title="cpp/algorithm/remove"><tt>std::remove</tt></a>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="remove_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p>ForwardIt remove_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                     ForwardIt first, ForwardIt last, UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/remove.html" title="cpp/algorithm/remove">std::remove_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="remove_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>OutputIt remove_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                      InputIt first, InputIt last, <br>
+                      OutputIt d_first, <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/remove_copy.html" title="cpp/algorithm/remove copy">std::remove_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="remove_copy_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+<p>          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+OutputIt remove_copy_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                         InputIt first, InputIt last, <br>
+                         OutputIt d_first, UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/remove_copy.html" title="cpp/algorithm/remove copy">std::remove_copy_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="replace"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> replace<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              ForwardIt first, ForwardIt last,<br>
+              <span class="kw4">const</span> T<span class="sy3">&amp;</span> old_value, <span class="kw4">const</span> T<span class="sy3">&amp;</span> new_value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/replace.html" title="cpp/algorithm/replace">std::replace</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="replace_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt,<br>
+<p>          <span class="kw1">class</span> UnaryPred, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> replace_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                 ForwardIt first, ForwardIt last,<br>
+                 UnaryPred p, <span class="kw4">const</span> T<span class="sy3">&amp;</span> new_value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/replace.html" title="cpp/algorithm/replace">std::replace_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="replace_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>OutputIt replace_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                       InputIt first, InputIt last, OutputIt d_first,<br>
+                       <span class="kw4">const</span> T<span class="sy3">&amp;</span> old_value, <span class="kw4">const</span> T<span class="sy3">&amp;</span> new_value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/replace_copy_if.html" title="cpp/algorithm/replace copy">std::replace_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="replace_copy_if"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt,<br>
+<p>          <span class="kw1">class</span> UnaryPred, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+OutputIt replace_copy_if<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                          InputIt first, InputIt last, OutputIt d_first,<br>
+                          UnaryPred p, <span class="kw4">const</span> T<span class="sy3">&amp;</span> new_value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/replace_copy_if.html" title="cpp/algorithm/replace copy">std::replace_copy_if</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="swap_ranges"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt1, <span class="kw1">class</span> ForwardIt2 <span class="sy1">&gt;</span><br>
+<p>ForwardIt2 swap_ranges<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                        ForwardIt1 first1, ForwardIt1 last1,<br>
+                        ForwardIt2 first2 <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/swap_ranges.html" title="cpp/algorithm/swap ranges">std::swap_ranges</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="reverse"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> BidirIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> reverse<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, BidirIt first, BidirIt last <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/reverse.html" title="cpp/algorithm/reverse">std::reverse</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="reverse_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> BidirIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt reverse_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                       BidirIt first, BidirIt last, OutputIt d_first <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/reverse_copy.html" title="cpp/algorithm/reverse copy">std::reverse_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="rotate"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>ForwardIt rotate<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                  ForwardIt first, ForwardIt n_first, ForwardIt last <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/rotate.html" title="cpp/algorithm/rotate">std::rotate</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="rotate_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt rotate_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                      ForwardIt first, ForwardIt n_first, ForwardIt last,<br>
+                      OutputIt d_first <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/rotate_copy.html" title="cpp/algorithm/rotate copy">std::rotate_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="unique"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>ForwardIt unique<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                  ForwardIt first, ForwardIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+ForwardIt unique<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                  ForwardIt first, ForwardIt last, BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/unique.html" title="cpp/algorithm/unique">std::unique</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="unique_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt unique_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                      InputIt first, InputIt last,<br>
+                      OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> BinaryPred <span class="sy1">&gt;</span><br>
+OutputIt unique_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                      InputIt first, InputIt last,<br>
+                      OutputIt d_first, BinaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/unique_copy.html" title="cpp/algorithm/unique copy">std::unique_copy</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Partitioning_operations">  Partitioning operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="is_partitioned"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> is_partitioned<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                     InputIt first, InputIt last, UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/is_partitioned.html" title="cpp/algorithm/is partitioned">std::is_partitioned</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="partition"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p>ForwardIt partition<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                     ForwardIt first, ForwardIt last, UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/partition.html" title="cpp/algorithm/partition">std::partition</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="partition_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt1,<br>
+<p>          <span class="kw1">class</span> OutputIt2, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>OutputIt1, OutputIt2<span class="sy1">&gt;</span><br>
+     partition_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                     InputIt first, InputIt last,<br>
+                     OutputIt1 d_first_true, OutputIt2 d_first_false,<br>
+                     UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/partition_copy.html" title="cpp/algorithm/partition copy">std::partition_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="stable_partition"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> BidirIt, <span class="kw1">class</span> UnaryPred <span class="sy1">&gt;</span><br>
+<p>BidirIt stable_partition<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                          BidirIt first, BidirIt last, UnaryPred p <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/stable_partition.html" title="cpp/algorithm/stable partition">std::stable_partition</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Sorting_operations">  Sorting operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="is_sorted"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> is_sorted<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                ForwardIt first, ForwardIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> is_sorted<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                ForwardIt first, ForwardIt last, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/is_sorted.html" title="cpp/algorithm/is sorted">std::is_sorted</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="is_sorted_until"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>ForwardIt is_sorted_until<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                           ForwardIt first, ForwardIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+ForwardIt is_sorted_until<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                           ForwardIt first, ForwardIt last, <br>
+                           Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/is_sorted_until.html" title="cpp/algorithm/is sorted until">std::is_sorted_until</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="sort"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, RandomIt first, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+           RandomIt first, RandomIt last, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/sort.html" title="cpp/algorithm/sort">std::sort</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="partial_sort"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> partial_sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                   RandomIt first, RandomIt middle, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> partial_sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                   RandomIt first, RandomIt middle, RandomIt last,<br>
+                   Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/partial_sort.html" title="cpp/algorithm/partial sort">std::partial_sort</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="partial_sort_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p>RandomIt partial_sort_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                            InputIt first, InputIt last,<br>
+                            RandomIt d_first, RandomIt d_last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+          <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+RandomIt partial_sort_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                            InputIt first, InputIt last,<br>
+                            RandomIt d_first, RandomIt d_last,<br>
+                            Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/partial_sort_copy.html" title="cpp/algorithm/partial sort copy">std::partial_sort_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="stable_sort"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> stable_sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                  RandomIt first, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> stable_sort<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                  RandomIt first, RandomIt last, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/stable_sort.html" title="cpp/algorithm/stable sort">std::stable_sort</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="nth_element"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> nth_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                  RandomIt first, RandomIt nth, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> nth_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                  RandomIt first, RandomIt nth, RandomIt last,<br>
+                  Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/nth_element.html" title="cpp/algorithm/nth element">std::nth_element</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Set_operations_.28on_sorted_ranges.29">  Set operations (on sorted ranges)  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="merge"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt merge<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                InputIt1 first1, InputIt1 last1,<br>
+                InputIt2 first2, InputIt2 last2,<br>
+                OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Compare<span class="sy1">&gt;</span><br>
+OutputIt merge<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                InputIt1 first1, InputIt1 last1,<br>
+                InputIt2 first2, InputIt2 last2,<br>
+                OutputIt d_first, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/merge.html" title="cpp/algorithm/merge">std::merge</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="inplace_merge"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> BidirIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> inplace_merge<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                    BidirIt first, BidirIt middle, BidirIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> BidirIt, <span class="kw1">class</span> Compare<span class="sy1">&gt;</span><br>
+<span class="kw4">void</span> inplace_merge<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                    BidirIt first, BidirIt middle, BidirIt last,<br>
+                    Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/inplace_merge.html" title="cpp/algorithm/inplace merge">std::inplace_merge</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="includes"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> includes<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+               InputIt1 first1, InputIt1 last1,<br>
+               InputIt2 first2, InputIt2 last2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> includes<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+               InputIt1 first1, InputIt1 last1,<br>
+               InputIt2 first2, InputIt2 last2, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/includes.html" title="cpp/algorithm/includes">std::includes</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="set_difference"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt set_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                         InputIt1 first1, InputIt1 last1,<br>
+                         InputIt2 first2, InputIt2 last2,<br>
+                         OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+OutputIt set_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                         InputIt1 first1, InputIt1 last1,<br>
+                         InputIt2 first2, InputIt2 last2,<br>
+                         OutputIt d_first, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/set_difference.html" title="cpp/algorithm/set difference">std::set_difference</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="set_intersection"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt set_intersection<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                           InputIt1 first1, InputIt1 last1,<br>
+                           InputIt2 first2, InputIt2 last2,<br>
+                           OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+OutputIt set_intersection<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                           InputIt1 first1, InputIt1 last1,<br>
+                           InputIt2 first2, InputIt2 last2,<br>
+                           OutputIt d_first, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/set_intersection.html" title="cpp/algorithm/set intersection">std::set_intersection</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="set_symmetric_difference"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt set_symmetric_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                                   InputIt1 first1, InputIt1 last1,<br>
+                                   InputIt2 first2, InputIt2 last2,<br>
+                                   OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+OutputIt set_symmetric_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                                   InputIt1 first1, InputIt1 last1,<br>
+                                   InputIt2 first2, InputIt2 last2,<br>
+                                   OutputIt d_first, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/set_symmetric_difference.html" title="cpp/algorithm/set symmetric difference">std::set_symmetric_difference</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="set_union"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+OutputIt set_union<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                    InputIt1 first1, InputIt1 last1,<br>
+                    InputIt2 first2, InputIt2 last2,<br>
+                    OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+OutputIt set_union<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                    InputIt1 first1, InputIt1 last1,<br>
+                    InputIt2 first2, InputIt2 last2,<br>
+                    OutputIt d_first, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/set_union.html" title="cpp/algorithm/set union">std::set_union</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Heap_operations">  Heap operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="is_heap"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> is_heap<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              RandomIt first, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> is_heap<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+              RandomIt first, RandomIt last, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/is_heap.html" title="cpp/algorithm/is heap">std::is_heap</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="is_heap_until"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt <span class="sy1">&gt;</span><br>
+<p>RandomIt is_heap_until<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                        RandomIt first, RandomIt last <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> RandomIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+RandomIt is_heap_until<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                        RandomIt first, RandomIt last, Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/is_heap_until.html" title="cpp/algorithm/is heap until">std::is_heap_until</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Minimum.2Fmaximum_operations">  Minimum/maximum operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="max_element"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span> <br>
+<p>ForwardIt max_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                       ForwardIt first, ForwardIt last<span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+ForwardIt max_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                       ForwardIt first, ForwardIt last, Compare cmp<span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/max_element.html" title="cpp/algorithm/max element">std::max_element</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="min_element"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span> <br>
+<p>ForwardIt min_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                       ForwardIt first, ForwardIt last<span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+ForwardIt min_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                       ForwardIt first, ForwardIt last, Compare cmp<span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/min_element.html" title="cpp/algorithm/min element">std::min_element</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="minmax_element"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span> <br>
+<p><a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>ForwardIt,ForwardIt<span class="sy1">&gt;</span><br>
+    minmax_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                    ForwardIt first, ForwardIt last<span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<a href="../../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span>ForwardIt,ForwardIt<span class="sy1">&gt;</span> <br>
+    minmax_element<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                    ForwardIt first, ForwardIt last, Compare cmp<span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/minmax_element.html" title="cpp/algorithm/minmax element">std::minmax_element</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="lexicographical_compare"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2 <span class="sy1">&gt;</span><br>
+<p><span class="kw4">bool</span> lexicographical_compare<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                              InputIt1 first1, InputIt1 last1,<br>
+                              InputIt2 first2, InputIt2 last2 <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <br>
+          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> Compare <span class="sy1">&gt;</span><br>
+<span class="kw4">bool</span> lexicographical_compare<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                              InputIt1 first1, InputIt1 last1,<br>
+                              InputIt2 first2, InputIt2 last2,<br>
+                              Compare cmp <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/lexicographical_compare.html" title="cpp/algorithm/lexicographical compare">std::lexicographical_compare</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Numeric_operations">  Numeric operations  </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="adjacent_difference"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> OutputIt <span class="sy1">&gt;</span><br>
+<p>OutputIt adjacent_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                              InputIt first, InputIt last, <br>
+                              OutputIt d_first <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+          <span class="kw1">class</span> OutputIt, <span class="kw1">class</span> BinaryOp <span class="sy1">&gt;</span><br>
+OutputIt adjacent_difference<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                              InputIt first, InputIt last, <br>
+                              OutputIt d_first, BinaryOp op <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/adjacent_difference.html" title="cpp/algorithm/adjacent difference">std::adjacent_difference</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="inner_product"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1,<br>
+<p>          <span class="kw1">class</span> InputIt2, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+T inner_product<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                 InputIt1 first1, InputIt1 last1, InputIt2 first2,<br>
+                 T value <span class="br0">)</span><span class="sy4">;</span><br>
+<br>
+<span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt1, <span class="kw1">class</span> InputIt2,<br>
+          <span class="kw1">class</span> T, <span class="kw1">class</span> BinaryOp1, <span class="kw1">class</span> BinaryOp2<span class="sy1">&gt;</span> <br>
+T inner_product<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                 InputIt1 first1, InputIt1 last1, InputIt2 first2,<br>
+                 T value, BinaryOp1 op1, BinaryOp2 op2 <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../algorithm/inner_product.html" title="cpp/algorithm/inner product">std::inner_product</a></span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Operations_on_uninitialized_memory">  Operations on uninitialized memory </span></h5>
+</td></tr>
+
+<tr class="t-dsc-hitem">
+<td>  Parallelized algorithm
+</td>
+<td>  Existing algorithm
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="uninitialized_copy"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+<p>ForwardIt uninitialized_copy<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                              InputIt first, InputIt last,<br>
+                              ForwardIt d_first <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../memory/uninitialized_copy.html" title="cpp/memory/uninitialized copy">std::uninitialized_copy</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="uninitialized_copy_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> InputIt,<br>
+<p>          <span class="kw1">class</span> Size, <span class="kw1">class</span> ForwardIt <span class="sy1">&gt;</span><br>
+ForwardIt uninitialized_copy_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                                InputIt first, Size count, <br>
+                                ForwardIt d_first<span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../memory/uninitialized_copy_n.html" title="cpp/memory/uninitialized copy n">std::uninitialized_copy_n</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="uninitialized_fill"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p><span class="kw4">void</span> uninitialized_fill<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy, <br>
+                         ForwardIt first, ForwardIt last,<br>
+                         <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../memory/uninitialized_fill.html" title="cpp/memory/uninitialized fill">std::uninitialized_fill</a></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <span id="uninitialized_fill_n"></span><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <span class="kw1">class</span> ExecutionPolicy, <span class="kw1">class</span> ForwardIt, <span class="kw1">class</span> Size, <span class="kw1">class</span> T <span class="sy1">&gt;</span><br>
+<p>ForwardIt uninitialized_fill_n<span class="br0">(</span> ExecutionPolicy<span class="sy3">&amp;&amp;</span> policy,<br>
+                                ForwardIt first, Size count,<br>
+                                <span class="kw4">const</span> T<span class="sy3">&amp;</span> value <span class="br0">)</span><span class="sy4">;</span></p></span>
+
+</td>
+<td> <span class="t-lc"><a href="../../memory/uninitialized_fill_n.html" title="cpp/memory/uninitialized fill n">std::uninitialized_fill_n</a></span>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8267/1000000
+Preprocessor generated node count: 7051/1000000
+Post‐expand include size: 121693/2097152 bytes
+Template argument size: 76826/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:14364-0!*!0!!en!2!* and timestamp 20220410084355 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/parallelism/existing&amp;oldid=86963">https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/parallelism/existing&amp;oldid=86963</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/experimental/parallelism/existing">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 19 July 2016, at 06:53.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 51,993 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 5.371 secs. -->
+	</body>
+<!-- Cached 20220410084355 -->
+</html>

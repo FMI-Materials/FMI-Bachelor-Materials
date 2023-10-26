@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Floating-point extensions part 4: supplementary functions - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/experimental/fpext4","wgTitle":"c/experimental/fpext4","wgCurRevisionId":114957,"wgArticleId":16151,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/experimental/fpext4","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_experimental_fpext4 skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Floating-point extensions part 4: supplementary functions</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../experimental.html" title="c/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="c/experimental"> Technical Specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/embedded&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/embedded (page does not exist)"> Extensions for embedded processors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dynamic.html" title="c/experimental/dynamic"> Dynamic memory extensions</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fpext1.html" title="c/experimental/fpext1"> Floating-point extensions part 1: Binary floating-point</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Floating-point extensions part 4: Supplementary functions</strong> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"> Floating-point extensions part 4: Supplementary functions</strong><div class="t-navbar-menu"><div><a href="https://en.cppreference.com/mwiki/index.php?title=Template:c/experimental/fpext4/navbar_content&amp;action=edit&amp;redlink=1" class="new" title="Template:c/experimental/fpext4/navbar content (page does not exist)">Template:c/experimental/fpext4/navbar content</a><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Floating-point extensions for C - Part 4: Supplementary functions, ISO/IEC TS 18661-4:2015, defines the following new components for the C standard library, as recommended by ISO/IEC/IEEE 60559:2011 (the current revision of IEEE-754).
+</p><p>Supplemenatary mathematical functions listed below are merged into C2x standard.
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Predefined_feature_test_macros">  Predefined feature test macros </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>__STDC_IEC_60559_FUNCS__</span></span></div></div>
+</td>
+<td>   integer constant of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span> and value <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">201506L</span></span></span> <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Supplementary_mathematical_functions">  Supplementary mathematical functions </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;math.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp2m1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp2m1 (page does not exist)"> <span class="t-lines"><span>exp2m1 exp2m1f exp2m1l</span><span>exp2m1fN exp2m1fNx</span><span>exp2m1dN exp2m1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute <span class="texhtml" style="white-space: nowrap;">2<span class="t-su">x<br></span>-1</span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp10&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp10 (page does not exist)"> <span class="t-lines"><span>exp10 exp10f exp10l</span><span>exp10fN exp10fNx</span><span>exp10dN exp10dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute <span class="texhtml" style="white-space: nowrap;">10<span class="t-su">x<br></span></span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/exp10m1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/exp10m1 (page does not exist)"> <span class="t-lines"><span>exp10m1 exp10m1f exp10m1l</span><span>exp10m1fN exp10m1fNx</span><span>exp10m1dN exp10m1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute <span class="texhtml" style="white-space: nowrap;">10<span class="t-su">x<br></span>-1</span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/logp1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/logp1 (page does not exist)"> <span class="t-lines"><span>logp1 logp1f logp1l</span><span>logp1fN logp1fNx</span><span>logp1dN logp1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute ln(1+x) (same as <span class="t-lc"><a href="../numeric/math/log1p.html" title="c/numeric/math/log1p">log1p</a></span>) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/log2p1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/log2p1 (page does not exist)"> <span class="t-lines"><span>log2p1 log2p1f log2p1l</span><span>log2p1fN log2p1fNx</span><span>log2p1dN log2p1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute <span class="texhtml" style="white-space: nowrap;">log<span class="t-su t-su-b"><br>2</span>(1+x)</span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/log10p1&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/log10p1 (page does not exist)"> <span class="t-lines"><span>log10p1 log10p1f log10p1l</span><span>log10p1fN log10p1fNx</span><span>log10p1dN log10p1dNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute <span class="texhtml" style="white-space: nowrap;">log<span class="t-su t-su-b"><br>10</span>(1+x)</span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/rsqrt&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/rsqrt (page does not exist)"> <span class="t-lines"><span>rsqrt rsqrtf rsqrtl</span><span>rsqrtfN rsqrtfNx</span><span>rsqrtdN rsqrtdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the inverse square root <span class="texhtml" style="white-space: nowrap;">x<span class="t-su">-1/2<br></span></span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/compoundn&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/compoundn (page does not exist)"> <span class="t-lines"><span>compoundn compoundnf compoundnl</span><span>compoundnfN compoundnfNx</span><span>compoundndN compoundndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute compound interest, <span class="texhtml" style="white-space: nowrap;">(1+x)<span class="t-su">n<br></span></span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/rootn&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/rootn (page does not exist)"> <span class="t-lines"><span>rootn rootnf rootnl</span><span>rootnfN rootnfNx</span><span>rootndN rootndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the nth root of x, <span class="texhtml" style="white-space: nowrap;">x<span class="t-su">1/n<br></span></span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/pown&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/pown (page does not exist)"> <span class="t-lines"><span>pown pownf pownl</span><span>pownfN pownfNx</span><span>powndN powndNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute x raised to the nth power, where n is integer <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/powr&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/powr (page does not exist)"> <span class="t-lines"><span>powr powrf powrl</span><span>powrfN powrfNx</span><span>powrdN powrdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute x raised to the y power, <span class="texhtml" style="white-space: nowrap;">x<span class="t-su">y<br></span></span> <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/acospi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/acospi (page does not exist)"> <span class="t-lines"><span>acospi acospif acospil</span><span>acospifN acospifNx</span><span>acospidN acospidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute arccos(x)/π (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/asinpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/asinpi (page does not exist)"> <span class="t-lines"><span>asinpi asinpif asinpil</span><span>asinpifN asinpifNx</span><span>asinpidN asinpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute arcsin(x)/π (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/atanpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/atanpi (page does not exist)"> <span class="t-lines"><span>atanpi atanpif atanpil</span><span>atanpifN atanpifNx</span><span>atanpidN atanpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute arctan(x)/π (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/atan2pi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/atan2pi (page does not exist)"> <span class="t-lines"><span>atan2pi atan2pif atan2pil</span><span>atan2pifN atan2pifNx</span><span>atan2pidN atan2pidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute arctan(y/x)/π (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/cospi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/cospi (page does not exist)"> <span class="t-lines"><span>cospi cospif cospil</span><span>cospifN cospifNx</span><span>cospidN cospidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute cos(πx) (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/sinpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/sinpi (page does not exist)"> <span class="t-lines"><span>sinpi sinpif sinpil</span><span>sinpifN sinpifNx</span><span>sinpidN sinpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute sin(πx) (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/tanpi&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/tanpi (page does not exist)"> <span class="t-lines"><span>tanpi tanpif tanpil</span><span>tanpifN tanpifNx</span><span>tanpidN tanpidNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute tan(πx) (measuring the angle in half-revolutions) <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Reduction_functions">  Reduction functions </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;math.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sum&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sum (page does not exist)"> <span class="t-lines"><span>reduc_sum reduc_sumf reduc_suml</span><span>reduc_sumfN reduc_sumfNx</span><span>reduc_sumdN reduc_sumdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the sum of n members of an array <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumabs&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumabs (page does not exist)"> <span class="t-lines"><span>reduc_sumabs reduc_sumabsf reduc_sumabsl</span><span>reduc_sumabsfN reduc_sumabsfNx</span><span>reduc_sumabsdN reduc_sumabsdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the sum of the absolute values of n members of an array <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumsq&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumsq (page does not exist)"> <span class="t-lines"><span>reduc_sumsq reduc_sumsqf reduc_sumsql</span><span>reduc_sumsqfN reduc_sumsqfNx</span><span>reduc_sumsqdN reduc_sumsqdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the sum of squares of n members of an array <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/reduc_sumprod&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/reduc sumprod (page does not exist)"> <span class="t-lines"><span>reduc_sumprod reduc_sumprodf reduc_sumprodl</span><span>reduc_sumprodfN reduc_sumprodfNx</span><span>reduc_sumproddN reduc_sumproddNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the dot product between n members of two arrays <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_prod&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled prod (page does not exist)"> <span class="t-lines"><span>scaled_prod scaled_prodf scaled_prodl</span><span>scaled_prodfN scaled_prodfNx</span><span>scaled_proddN scaled_proddNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the product of n members of an array as a scaled value and a scale factor <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_prodsum&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled prodsum (page does not exist)"> <span class="t-lines"><span>scaled_prodsum scaled_prodsumf scaled_prodsuml</span><span>scaled_prodsumfN scaled_prodsumfNx</span><span>scaled_prodsumdN scaled_prodsumdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the dot product of n members of two arrays as a scaled value and a scale factor <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4/scaled_proddiff&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext4/scaled proddiff (page does not exist)"> <span class="t-lines"><span>scaled_proddiff scaled_proddifff scaled_proddiffl</span><span>scaled_proddifffN scaled_proddifffNx</span><span>scaled_proddiffdN scaled_proddiffdNx</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>  compute the product of the differences between corresponding n members of two arrays as a scaled value and a scale factor <br> <span class="t-mark">(function)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Correctly-rounded_version_of_functions">  Correctly-rounded version of functions </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;math.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/exp.html" title="c/numeric/math/exp">exp</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexpm1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/expm1.html" title="c/numeric/math/expm1">expm1</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp2<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/exp2.html" title="c/numeric/math/exp2">exp2</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp2m1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">exp2m1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp10<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">exp10</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crexp10m1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">exp10m1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/log.html" title="c/numeric/math/log">log</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog2<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">log2</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog10<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/log10.html" title="c/numeric/math/log10">log10</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog1p<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/log1p.html" title="c/numeric/math/log1p">log1p</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlogp1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">logp1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog2p1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">log2p1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crlog10p1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">log10p1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crrsqrt<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">rsqrt</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcompoundn<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">compoundn</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crrootn<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">rootn</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpown<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">pown</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpow<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/pow.html" title="c/numeric/math/pow">pow</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crpowr<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">powr</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsin<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/sin.html" title="c/numeric/math/sin">sin</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcos<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/cos.html" title="c/numeric/math/cos">cos</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtan<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/tan.html" title="c/numeric/math/tan">tan</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsinpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">sinpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcospi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">cospi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtanpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">tanpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasinpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">asinpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracospi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">acospi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracospi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">acospi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratanpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">atanpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan2pi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc">atan2pi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasin<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/asin.html" title="c/numeric/math/asin">asin</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracos<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/acos.html" title="c/numeric/math/acos">acos</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/atan.html" title="c/numeric/math/atan">atan</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratan2<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/atan2.html" title="c/numeric/math/atan2">atan2</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsinh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/sinh.html" title="c/numeric/math/sinh">sinh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crcosh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/cosh.html" title="c/numeric/math/cosh">cosh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crtanh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/tanh.html" title="c/numeric/math/tanh">tanh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crasinh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/asinh.html" title="c/numeric/math/asinh">asinh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cracosh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/acosh.html" title="c/numeric/math/acosh">acosh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cratanh<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/atanh.html" title="c/numeric/math/atanh">atanh</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crhypot<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   correctly-rounded version of <span class="t-lc"><a href="../numeric/math/hypot.html" title="c/numeric/math/hypot">hypot</a></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Complex_version_of_functions">  Complex version of functions </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;complex.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp2m1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">exp2m1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp10<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">exp10</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cexp10m1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">exp10m1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clogp1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">logp1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clog2p1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">log2p1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>clog10p1<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">log10p1</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crsqrt <span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">rsqrt</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ccompoundn <span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">compoundn</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>crootn<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">rootn</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cpown <span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">pown</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cpowr<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">powr</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>cacospi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">acospi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>casinpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">asinpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>catanpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">atanpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ccospi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">cospi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>csinpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">sinpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ctanpi<span class="t-mark">(optional)</span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext4-ts t-mark-ts">(FP Ext 4 TS)</span></span></span></div></div>
+</td>
+<td>   complex number version of <span class="t-lc">tanpi</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>All functions added to the C library by this extension are only declared if a macro <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_FUNCS_EXT__</span></span> is defined before math.h is included.
+</p><p>The decimal floating-point variants of every function are only defined if <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_DFP_EXT__</span></span> is also defined before math.h is included.
+</p><p>The extended precision variants of every function are only defined if <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_TYPES_EXT__</span></span> is defined before math.h is included.
+</p><p>The correctly-rounded versions of all functions (with the <span class="t-c"><span class="mw-geshi c source-c">cr<span class="sy2">-</span></span></span> prefix) are optional.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 9717/1000000
+Preprocessor generated node count: 11080/1000000
+Post‐expand include size: 354071/2097152 bytes
+Template argument size: 104871/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:16151-0!*!0!!en!*!* and timestamp 20220313110610 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4&amp;oldid=114957">https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext4&amp;oldid=114957</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/experimental/fpext4">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 11 January 2020, at 05:03.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 24,820 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.777 secs. -->
+	</body>
+<!-- Cached 20220313110610 -->
+</html>

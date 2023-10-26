@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Lambda expressions (since C++11) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/lambda","wgTitle":"cpp/language/lambda","wgCurRevisionId":141241,"wgArticleId":5059,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/lambda","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_lambda skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Lambda expressions <span class="t-mark-rev t-since-cxx11">(since C++11)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Lambda function expression</strong></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="functions.html" title="cpp/language/functions"> Functions</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Declarations </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> function declaration</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Parameter_list" title="cpp/language/function"> function parameter list</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Function_definition" title="cpp/language/function"> function definition</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="default_arguments.html" title="cpp/language/default arguments"> default arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variadic_arguments.html" title="cpp/language/variadic arguments"> variadic arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> inline specifier</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> lambda expression</strong> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="coroutines.html" title="cpp/language/coroutines"> coroutines </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Function calls </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="adl.html" title="cpp/language/adl"> argument-dependent lookup (ADL)</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other"> function-call operator</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject"> function objects</a> </td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Overloading </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="overload_resolution.html" title="cpp/language/overload resolution"> overload resolution</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> operator overloading</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="overloaded_address.html" title="cpp/language/overloaded address"> address of an overload set</a> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Constructs a <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)" class="extiw" title="enwiki:Closure (computer science)">closure</a>: an unnamed function object capable of capturing variables in scope.
+</p>
+<h3><span class="mw-headline" id="Syntax">Syntax</span></h3>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <code><b>(</b></code> <span class="t-spar">params</span> <code><b>)</b></code> <span class="t-spar">specs</span> <span class="t-spar">requires</span><span class="t-mark">(optional)</span> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-until-cxx23">(until C++23)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <span class="t-spar">specs</span> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23">(since C++23)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <code><b>&lt;</b></code> <span class="t-spar">tparams</span> <code><b>&gt;</b></code> <span class="t-spar">requires</span><span class="t-mark">(optional)</span> <code><b>(</b></code> <span class="t-spar">params</span> <code><b>)</b></code> <span class="t-spar">specs</span> <span class="t-spar">requires</span><span class="t-mark">(optional)</span> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <code><b>&lt;</b></code> <span class="t-spar">tparams</span> <code><b>&gt;</b></code> <span class="t-spar">requires</span><span class="t-mark">(optional)</span> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span><br><span class="t-mark-rev t-until-cxx23">(until C++23)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>[</b></code> <span class="t-spar">captures</span> <code><b>]</b></code> <code><b>&lt;</b></code> <span class="t-spar">tparams</span> <code><b>&gt;</b></code> <span class="t-spar">requires</span><span class="t-mark">(optional)</span>  <span class="t-spar">specs</span> <code><b>{</b></code> <span class="t-spar">body</span> <code><b>} </b></code>
+</td>
+<td> (4)
+</td>
+<td> <span class="t-mark-rev t-since-cxx23">(since C++23)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> Full form.</div>
+<div class="t-li1"><span class="t-li">2)</span> Omitted parameter list: function takes no arguments, as if the parameter list were <code><b>()</b></code>.</div>
+<div class="t-li1"><span class="t-li">3)</span> Same as 1), but specifies a generic lambda and explicitly provides a list of template parameters.</div>
+<div class="t-li1"><span class="t-li">4)</span> Same as 2), but specifies a generic lambda and explicitly provides a list of template parameters.</div>
+<h3><span class="mw-headline" id="Explanation">Explanation</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td> <span class="t-spar">captures</span>
+</td>
+<td> -
+</td>
+<td> a comma-separated list of zero or more <a href="lambda.html#Lambda_capture">captures</a>, optionally beginning with a <span class="t-spar">capture-default</span>.
+<p>See <a href="lambda.html#Lambda_capture">below</a> for the detailed description of captures.
+</p><p>A lambda expression can use a variable without capturing it if the variable
+</p>
+<ul><li> is a non-local variable or has static or thread local <a href="storage_duration.html" title="cpp/language/storage duration">storage duration</a> (in which case the variable cannot be captured), or
+</li><li> is a reference that has been initialized with a <a href="constant_expression.html#Constant_expression" title="cpp/language/constant expression">constant expression</a>.
+</li></ul>
+<p>A lambda expression can read the value of a variable without capturing it if the variable
+</p>
+<ul><li> has const non-volatile integral or enumeration type and has been initialized with a <a href="constant_expression.html#Constant_expression" title="cpp/language/constant expression">constant expression</a>, or
+</li><li> is <code>constexpr</code> and has no mutable members.
+</li></ul>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">tparams</span>
+</td>
+<td> -
+</td>
+<td> a non-empty comma-separated list of <a href="template_parameters.html" title="cpp/language/template parameters">template parameters</a>, used to provide names to the template parameters of a generic lambda (see <code>ClosureType::operator()</code> below).
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">params</span>
+</td>
+<td> -
+</td>
+<td> The list of parameters, as in <a href="function.html" title="cpp/language/function">named functions</a>.
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">specs</span>
+</td>
+<td> -
+</td>
+<td> consists of <span class="t-spar">specifiers</span>, <span class="t-spar">exception</span>, <span class="t-spar">attr</span> and <span class="t-spar">trailing-return-type</span> in that order; each of these components is optional
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">specifiers</span>
+</td>
+<td> -
+</td>
+<td> Optional sequence of specifiers. If not provided, the objects captured by copy are const in the lambda body. The following specifiers are allowed at most once in each sequence:
+<ul><li> <code><b>mutable</b></code>: allows <span class="t-spar">body</span> to modify the objects captured by copy, and to call their non-const member functions
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<ul><li> <code><b>constexpr</b></code>: explicitly specifies that the function call operator or any given operator template specialization is a <a href="constexpr.html" title="cpp/language/constexpr">constexpr</a> function. When this specifier is not present, the function call operator or any given operator template specialization will be <code>constexpr</code> anyway, if it happens to satisfy all constexpr function requirements
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> <code><b>consteval</b></code>: specifies that the function call operator or any given operator template specialization is an <a href="consteval.html" title="cpp/language/consteval">immediate function</a>. <code>consteval</code> and <code>constexpr</code> cannot be used at the same time.
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">exception</span>
+</td>
+<td> -
+</td>
+<td> provides<span class="t-rev-inl t-until-cxx20"><span> the <a href="except_spec.html" title="cpp/language/except spec">dynamic exception specification</a> or</span> <span><span class="t-mark-rev t-until-cxx20">(until C++20)</span></span></span> the <a href="noexcept_spec.html" title="cpp/language/noexcept spec">noexcept specifier</a> for <code>operator()</code> of the closure type
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">attr</span>
+</td>
+<td> -
+</td>
+<td> provides the <a href="attributes.html" title="cpp/language/attributes">attribute specification</a> for the type of the function call operator or operator template of the closure type. Any attribute so specified does not appertain to the function call operator or operator template itself, but its type. (For example, the <code>[[<a href="attributes/noreturn.html" title="cpp/language/attributes/noreturn">noreturn</a>]]</code> attribute cannot be used.)
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">trailing-return-type</span>
+</td>
+<td> -
+</td>
+<td> <code><b>-&gt;</b></code> <span class="t-spar">ret</span>, where <span class="t-spar">ret</span> specifies the return type. If <span class="t-spar">trailing-return-type</span> is not present, the return type of the closure's <code>operator()</code> is <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">deduced</a> from <a href="return.html" title="cpp/language/return">return</a> statements as if for a function whose <a href="function.html#Return_type_deduction" title="cpp/language/function">return type is declared auto</a>.
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">requires</span>
+</td>
+<td> -
+</td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span> adds <a href="constraints.html" title="cpp/language/constraints">constraints</a> to <code>operator()</code> of the closure type
+</td></tr>
+<tr class="t-par">
+<td> <span class="t-spar">body</span>
+</td>
+<td> -
+</td>
+<td> Function body
+</td></tr></table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>If <a href="auto.html" title="cpp/language/auto"><code>auto</code></a> is used as a type of a parameter<span class="t-rev-inl t-since-cxx20"><span> or an explicit template parameter list is provided</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>, the lambda is a <i>generic lambda</i>.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<p>A variable <span class="t-c"><span class="mw-geshi cpp source-cpp">__func__</span></span> is implicitly defined at the beginning of <span class="t-spar">body</span>, with semantics as described <a href="function.html#func" title="cpp/language/function">here</a>.
+</p><p>The lambda expression is a prvalue expression of unique unnamed non-union non-aggregate class type, known as <i>closure type</i>, which is declared (for the purposes of <a href="adl.html" title="cpp/language/adl">ADL</a>) in the smallest block scope, class scope, or namespace scope that contains the lambda expression. The closure type has the following members, they cannot be <span class="t-rev-inl t-since-cxx14"><span><a href="function_template.html#Explicit_instantiation" title="cpp/language/function template">explicitly instantiated</a>, <a href="template_specialization.html" title="cpp/language/template specialization">explicitly specialized</a>, or</span> <span><span class="t-mark-rev t-since-cxx14">(since C++14)</span></span></span> named in a <a href="friend.html" title="cpp/language/friend">friend declaration</a>:
+</p><p><span id="closure_type_fun_operator"></span>
+</p>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::operator.28.29.28params.29"><span style="font-size:0.7em; line-height:130%">ClosureType::</span>operator()(<span class="t-spar">params</span>)</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">ret operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> body <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark">(the keyword mutable was not used)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td> <div><span class="mw-geshi cpp source-cpp">ret operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span> <span class="br0">{</span> body <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark">(the keyword mutable was used)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx14">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><br>
+ret operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> body <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx14">(since C++14)</span> <br><span class="t-mark">(generic lambda)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx14">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><br>
+ret operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span> <span class="br0">{</span> body <span class="br0">}</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx14">(since C++14)</span> <br><span class="t-mark">(generic lambda, the keyword mutable was used)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Executes the body of the lambda-expression, when invoked. When accessing a variable, accesses its captured copy (for the entities captured by copy), or the original object (for the entities captured by reference). Unless the keyword <span class="t-c"><span class="mw-geshi cpp source-cpp">mutable</span></span> was used in the lambda-expression, the function-call operator or operator template is const-qualified and the objects that were captured by copy are non-modifiable from inside this <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span>. The function-call operator or operator template is never volatile-qualified and never virtual.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>The function-call operator or any given operator template specialization is always <code>constexpr</code> if it satisfies the requirements of a <a href="constexpr.html" title="cpp/language/constexpr">constexpr function</a>. It is also constexpr if the keyword constexpr was used in the lambda expression.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>The function-call operator or any given operator template specialization is an <a href="consteval.html" title="cpp/language/consteval">immediate function</a> if the keyword <code>consteval</code> was used in the lambda expression.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>For each parameter in <span class="t-spar">params</span> whose type is specified as <code>auto</code>, an invented template parameter is added to <span class="t-spar">template-params</span>, in order of appearance. The invented template parameter may be a <a href="parameter_pack.html" title="cpp/language/parameter pack">parameter pack</a> if the corresponding function member of <span class="t-spar">params</span> is a function parameter pack.
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// generic lambda, operator() is a template with two parameters</span>
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a, <span class="kw4">auto</span><span class="sy3">&amp;&amp;</span> b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a <span class="sy1">&lt;</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">bool</span> b <span class="sy1">=</span> glambda<span class="br0">(</span><span class="nu0">3</span>, <span class="nu16">3.14</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ok</span>
+ 
+<span class="co1">// generic lambda, operator() is a template with one parameter</span>
+<span class="kw4">auto</span> vglambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> printer<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span><span class="sy3">&amp;&amp;</span>... <span class="me1">ts</span><span class="br0">)</span> <span class="co1">// generic lambda, ts is a parameter pack</span>
+    <span class="br0">{</span> 
+        printer<span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>decltype<span class="br0">(</span>ts<span class="br0">)</span><span class="sy1">&gt;</span><span class="br0">(</span>ts<span class="br0">)</span>...<span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">return</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span> <span class="br0">{</span> printer<span class="br0">(</span>ts...<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// nullary lambda (takes no parameters)</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">auto</span> p <span class="sy1">=</span> vglambda<span class="br0">(</span><span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> v1, <span class="kw4">auto</span> v2, <span class="kw4">auto</span> v3<span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> v1 <span class="sy1">&lt;&lt;</span> v2 <span class="sy1">&lt;&lt;</span> v3<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">auto</span> q <span class="sy1">=</span> p<span class="br0">(</span><span class="nu0">1</span>, <span class="st0">'a'</span>, <span class="nu16">3.14</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// outputs 1a3.14</span>
+q<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>                      <span class="co1">// outputs 1a3.14</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>If the lambda definition uses an explicit template parameter list, that template parameter list is used with <code>operator()</code>. For each parameter in <span class="t-spar">params</span> whose type is specified as <code>auto</code>, an additional invented template parameter is appended to the end of that template parameter list:
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// generic lambda, operator() is a template with two parameters</span>
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span><span class="br0">(</span>T a, <span class="kw4">auto</span><span class="sy3">&amp;&amp;</span> b<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a <span class="sy1">&lt;</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// generic lambda, operator() is a template with one parameter pack</span>
+<span class="kw4">auto</span> f <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="sy1">&lt;</span><span class="kw1">typename</span>... <span class="me1">Ts</span><span class="sy1">&gt;</span><span class="br0">(</span>Ts<span class="sy3">&amp;&amp;</span>... <span class="me1">ts</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> foo<span class="br0">(</span><a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>Ts<span class="sy1">&gt;</span><span class="br0">(</span>ts<span class="br0">)</span>...<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p>the exception specification <span class="t-spar">exception</span> on the lambda-expression applies to the function-call operator or operator template.
+</p><p>For the purpose of <a href="lookup.html" title="cpp/language/lookup">name lookup</a>, determining the type and value of the <a href="this.html" title="cpp/language/this"><code>this</code> pointer</a> and for accessing non-static class members, the body of the closure type's function call operator or operator template is considered in the context of the lambda-expression.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">int</span> x, y<span class="sy4">;</span>
+    <span class="kw4">int</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// the context of the following lambda is the member function X::f</span>
+        <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span>this<span class="sy2">-</span><span class="sy1">&gt;</span>x <span class="sy2">+</span> y<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// X::operator()(this-&gt;x + (*this).y)</span>
+                                            <span class="co1">// this has type X*</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<h3> <span class="mw-headline" id="Dangling_references">Dangling references</span></h3>
+<p>If a non-reference entity is captured by reference, implicitly or explicitly, and the function call operator or a specialization of the function call operator template of the closure object is invoked after the entity's lifetime has ended, undefined behavior occurs. The C++ closures do not extend the lifetimes of objects captured by reference.
+</p><p>Same applies to the lifetime of the current <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> object captured via <code>this</code>.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::operator_ret.28.2A.29.28params.29.28.29"><span style="font-size:0.7em; line-height:130%">ClosureType::</span>operator <span class="t-spar">ret</span>(*)(<span class="t-spar">params</span>)()</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl-h">
+<td> <div>capture-less non-generic lambda</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-until-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span> F <span class="sy1">=</span> ret<span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span><span class="sy4">;</span><br>
+operator F<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx17">(until C++17)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">using</span> F <span class="sy1">=</span> ret<span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span>params<span class="br0">)</span><span class="sy4">;</span><br>
+<span class="kw4">constexpr</span> operator F<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx17">(since C++17)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-h">
+<td> <div>capture-less generic lambda</div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-since-cxx14 t-until-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span> <span class="kw1">using</span> fptr_t <span class="sy1">=</span> <span class="coMULTI">/*see below*/</span><span class="sy4">;</span><br>
+<p><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><br>
+</p>
+operator fptr_t<span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx14">(since C++14)</span> <br><span class="t-mark-rev t-until-cxx17">(until C++17)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx17">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span> <span class="kw1">using</span> fptr_t <span class="sy1">=</span> <span class="coMULTI">/*see below*/</span><span class="sy4">;</span><br>
+<p><span class="kw1">template</span><span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><br>
+</p>
+<span class="kw4">constexpr</span> operator fptr_t<span class="sy1">&lt;</span>template<span class="sy2">-</span>params<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx17">(since C++17)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>This <a href="cast_operator.html" title="cpp/language/cast operator">user-defined conversion function</a> is only defined if the capture list of the lambda-expression is empty. It is a public, <span class="t-rev-inl t-since-cxx17"><span>constexpr,</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span> non-virtual, non-explicit, const noexcept member function of the closure object.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>This function is an <a href="consteval.html" title="cpp/language/consteval">immediate function</a> if the function call operator (or specialization, for generic lambdas) is an immediate function.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p><br>
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>A generic captureless lambda has a user-defined conversion function template with the same invented template parameter list as the function-call operator template. If the return type is empty or auto, it is obtained by return type deduction on the function template specialization, which, in turn, is obtained by <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">template argument deduction</a> for conversion function templates.
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="kw4">void</span> f2<span class="br0">(</span><span class="kw4">char</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>  <span class="co1">// #1</span>
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">char</span> <span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">auto</span> glambda <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+f1<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+f2<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: not convertible</span>
+h<span class="br0">(</span>glambda<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// OK: calls #1 since #2 is not convertible</span>
+ 
+<span class="kw4">int</span><span class="sy3">&amp;</span> <span class="br0">(</span><span class="sy2">*</span>fpi<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span> <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span><span class="sy2">*</span> a<span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">auto</span><span class="sy3">&amp;</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy2">*</span>a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<p>The value returned by this conversion function <span class="t-rev-inl t-since-cxx14"><span>(template)</span> <span><span class="t-mark-rev t-since-cxx14">(since C++14)</span></span></span> is a pointer to a function with C++ <a href="language_linkage.html" title="cpp/language/language linkage">language linkage</a> that, when invoked, has the same effect as:
+</p>
+<ul><li> <span class="t-rev-inl t-since-cxx14"><span>for non-generic lambdas,</span> <span><span class="t-mark-rev t-since-cxx14">(since C++14)</span></span></span> invoking the closure type's function call operator on a default-constructed instance of the closure type.
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<ul><li> for generic lambdas, invoking the generic lambda's corresponding function call operator template specialization on a default-constructed instance of the closure type.
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<p><br>
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>This function is constexpr if the function call operator (or specialization, for generic lambdas) is constexpr.
+</p>
+<div style="text-align: left; width:45em" dir="ltr" class="mw-geshi"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">auto</span> Fwd <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">(</span><span class="sy2">*</span>fp<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span>, <span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw1">return</span> fp<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">auto</span> C <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw1">return</span> a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+static_assert<span class="br0">(</span>Fwd<span class="br0">(</span>C, <span class="nu0">3</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// OK</span>
+ 
+<span class="kw4">auto</span> NC <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span><span class="br0">{</span> <span class="kw4">static</span> <span class="kw4">int</span> s<span class="sy4">;</span> <span class="kw1">return</span> a<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+static_assert<span class="br0">(</span>Fwd<span class="br0">(</span>NC, <span class="nu0">3</span><span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: no specialization can be</span>
+                                <span class="co1">// constexpr because of static s</span></pre></div></div>
+<p>If the closure object's <code>operator()</code> has a non-throwing exception specification, then the pointer returned by this function has the type pointer to noexcept function.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::ClosureType.28.29"><span style="font-size:0.7em; line-height:130%">ClosureType::</span>ClosureType()</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span> <br><span class="t-mark">(only if no captures are specified)</span> </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="br0">(</span><span class="kw4">const</span> ClosureType<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="br0">(</span>ClosureType<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>Closure types are not <a href="../named_req/DefaultConstructible.html" title="cpp/named req/DefaultConstructible"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">DefaultConstructible</span></a>. Closure types have no default constructor.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>If no <span class="t-spar">captures</span> are specified, the closure type has a defaulted default constructor. Otherwise, it has no default constructor (this includes the case when there is a <span class="t-spar">capture-default</span>, even if it does not actually capture anything).
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p>The copy constructor and the move constructor are declared as defaulted and may be implicitly-defined according to the usual rules for <a href="copy_constructor.html" title="cpp/language/copy constructor">copy constructors</a> and <a href="move_constructor.html" title="cpp/language/move constructor">move constructors</a>.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::operator.3D.28const_ClosureType.26.29"><span style="font-size:0.7em; line-height:130%">ClosureType::</span>operator=(const ClosureType&amp;)</span></h2>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dcl t-until-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> ClosureType<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-cxx20">(until C++20)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> ClosureType<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span><br>
+ClosureType<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>ClosureType<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span> <br><span class="t-mark">(only if no captures are specified)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx20">
+<td> <div><span class="mw-geshi cpp source-cpp">ClosureType<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> ClosureType<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span> <br><span class="t-mark">(otherwise)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>The copy assignment operator is defined as deleted (and the move assignment operator is not declared). Closure types are not <a href="../named_req/CopyAssignable.html" title="cpp/named req/CopyAssignable"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">CopyAssignable</span></a>.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>If no <span class="t-spar">captures</span> are specified, the closure type has a defaulted copy assignment operator and a defaulted move assignment operator. Otherwise, it has a deleted copy assignment operator (this includes the case when there is a <span class="t-spar">capture-default</span>, even if it does not actually capture anything).
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::.7EClosureType.28.29"><span style="font-size:0.7em; line-height:130%">ClosureType::</span>~ClosureType()</span></h2>
+<table class="t-dcl-begin"><tbody>
+
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">~ClosureType<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>The destructor is implicitly-declared.
+</p>
+</div>
+<div class="t-member">
+<h2> <span class="mw-headline" id="ClosureType::Captures"><span style="font-size:0.7em; line-height:130%">ClosureType::</span><span class="t-spar">Captures</span></span></h2>
+<table class="t-dcl-begin"><tbody>
+
+<tr class="t-dcl">
+<td class="t-dcl-nopad"> <div><span class="mw-geshi cpp source-cpp">T1 a<span class="sy4">;</span><br>
+<p>T2 b<span class="sy4">;</span><br>
+</p>
+...</span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td class="t-dcl-nopad">  </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>If the lambda-expression captures anything by copy (either implicitly with capture clause <code><b>[=]</b></code> or explicitly with a capture that does not include the character &amp;, e.g. <code><b>[a, b, c]</b></code>), the closure type includes unnamed non-static data members, declared in unspecified order, that hold copies of all entities that were so captured.
+</p><p>Those data members that correspond to captures without initializers are <a href="direct_initialization.html" title="cpp/language/direct initialization">direct-initialized</a> when the lambda-expression is evaluated. Those that correspond to captures with initializers are initialized as the initializer requires (could be copy- or direct-initialization). If an array is captured, array elements are direct-initialized in increasing index order. The order in which the data members are initialized is the order in which they are declared (which is unspecified).
+</p><p>The type of each data member is the type of the corresponding captured entity, except if the entity has reference type (in that case, references to functions are captured as lvalue references to the referenced functions, and references to objects are captured as copies of the referenced objects).
+</p><p>For the entities that are captured by reference (with the default capture <code><b>[&amp;]</b></code> or when using the character &amp;, e.g. <code><b>[&amp;a, &amp;b, &amp;c]</b></code>), it is unspecified if additional data members are declared in the closure type<span class="t-rev-inl t-since-cxx17"><span>, but any such additional members must satisfy <a href="../named_req/LiteralType.html" title="cpp/named req/LiteralType"><span style="font-family: Georgia, 'DejaVu Serif', serif; font-style:italic">LiteralType</span></a></span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span>.
+</p>
+</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p><span id="Lambdas_in_unevaluated_contexts"></span>
+Lambda-expressions are not allowed in <a href="expressions.html#Unevaluated_expressions" title="cpp/language/expressions">unevaluated expressions</a>, <a href="template_parameters.html" title="cpp/language/template parameters">template arguments</a>, <a href="type_alias.html" title="cpp/language/type alias">alias declarations</a>, <a href="typedef.html" title="cpp/language/typedef">typedef declarations</a>, and anywhere in a function (or function template) declaration except the function body and the function's <a href="default_arguments.html" title="cpp/language/default arguments">default arguments</a>.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Lambda_capture">Lambda capture</span></h3>
+<p>The <span class="t-spar">captures</span> is a comma-separated list of zero or more <i>captures</i>, optionally beginning with the <span class="t-spar">capture-default</span>. The capture list defines the outside variables that are accessible from within the lambda function body. The only capture defaults are
+</p>
+<ul><li> <code><b>&amp;</b></code> (implicitly capture the used automatic variables by reference) and
+</li><li> <code><b>=</b></code> (implicitly capture the used automatic variables by copy).
+</li></ul>
+<p>The current object (<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>) can be implicitly captured if either capture default is present. If implicitly captured, it is always captured by reference, even if the capture default is <code>=</code>. <span class="t-rev-inl t-since-cxx20"><span>The implicit capture of <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> when the capture default is <code>=</code> is deprecated.</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>
+</p><p>The syntax of an individual capture in <span class="t-spar">captures</span> is
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">identifier</span>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">identifier</span> <code><b>...</b></code>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">identifier</span> <span class="t-spar">initializer</span>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-cxx14">(since C++14)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">identifier</span>
+</td>
+<td> (4)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">identifier</span> <code><b>...</b></code>
+</td>
+<td> (5)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <span class="t-spar">identifier</span> <span class="t-spar">initializer</span>
+</td>
+<td> (6)
+</td>
+<td> <span class="t-mark-rev t-since-cxx14">(since C++14)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>this</b></code>
+</td>
+<td> (7)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>*</b></code> <code><b>this</b></code>
+</td>
+<td> (8)
+</td>
+<td> <span class="t-mark-rev t-since-cxx17">(since C++17)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>...</b></code> <span class="t-spar">identifier</span> <span class="t-spar">initializer</span>
+</td>
+<td> (9)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>&amp;</b></code> <code><b>...</b></code> <span class="t-spar">identifier</span> <span class="t-spar">initializer</span>
+</td>
+<td> (10)
+</td>
+<td> <span class="t-mark-rev t-since-cxx20">(since C++20)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<div class="t-li1"><span class="t-li">1)</span> simple by-copy capture</div>
+<div class="t-li1"><span class="t-li">2)</span> simple by-copy capture that is a <a href="parameter_pack.html" title="cpp/language/parameter pack">pack expansion</a></div>
+<div class="t-li1"><span class="t-li">3)</span> by-copy capture with an <a href="initialization.html" title="cpp/language/initialization">initializer</a></div>
+<div class="t-li1"><span class="t-li">4)</span> simple by-reference capture</div>
+<div class="t-li1"><span class="t-li">5)</span> simple by-reference capture that is a <a href="parameter_pack.html" title="cpp/language/parameter pack">pack expansion</a></div>
+<div class="t-li1"><span class="t-li">6)</span> by-reference capture with an initializer</div>
+<div class="t-li1"><span class="t-li">7)</span> simple by-reference capture of the current object</div>
+<div class="t-li1"><span class="t-li">8)</span> simple by-copy capture of the current object</div>
+<div class="t-li1"><span class="t-li">9)</span> by-copy capture with an initializer that is a pack expansion</div>
+<div class="t-li1"><span class="t-li">10)</span> by-reference capture with an initializer that is a pack expansion</div>
+<p>If the capture-default is <code>&amp;</code>, subsequent simple captures must not begin with <code>&amp;</code>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>          <span class="co1">// OK: by-reference capture default</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, i<span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>       <span class="co1">// OK: by-reference capture, except i is captured by copy</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, <span class="sy3">&amp;</span>i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>     <span class="co1">// Error: by-reference capture when by-reference is the default</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>   <span class="co1">// OK, equivalent to [&amp;]</span>
+    <span class="br0">[</span><span class="sy3">&amp;</span>, this, i<span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK, equivalent to [&amp;, i]</span>
+<span class="br0">}</span></pre></div></div>
+<p>If the capture-default is <code>=</code>, subsequent simple captures must begin with <code>&amp;</code><span class="t-rev-inl t-since-cxx17"><span> or be <code>*this</code></span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span> <span class="t-rev-inl t-since-cxx20"><span>or <code>this</code></span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>        <span class="co1">// OK: by-copy capture default</span>
+    <span class="br0">[</span><span class="sy1">=</span>, <span class="sy3">&amp;</span>i<span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>    <span class="co1">// OK: by-copy capture, except i is captured by reference</span>
+    <span class="br0">[</span><span class="sy1">=</span>, <span class="sy2">*</span>this<span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// until C++17: Error: invalid syntax</span>
+                  <span class="co1">// since C++17: OK: captures the enclosing S2 by copy</span>
+    <span class="br0">[</span><span class="sy1">=</span>, this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// until C++20: Error: this when = is the default</span>
+                  <span class="co1">// since C++20: OK, same as [=]</span>
+<span class="br0">}</span></pre></div></div>
+<p>Any capture may appear only once, and its name must be different from any parameter name:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S2 <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> S2<span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="br0">[</span>i, i<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>        <span class="co1">// Error: i repeated</span>
+    <span class="br0">[</span>this, <span class="sy2">*</span>this<span class="br0">]</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// Error: "this" repeated (C++17)</span>
+ 
+    <span class="br0">[</span>i<span class="br0">]</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>   <span class="co1">// Error: parameter and capture have the same name</span>
+<span class="br0">}</span></pre></div></div>
+<p>Only lambda-expressions defined at block scope or in a <a href="data_members.html#Member_initialization" title="cpp/language/data members">default member initializer</a> may have a capture-default or captures without initializers. For such lambda-expression, the <i>reaching scope</i> is defined as the set of enclosing scopes up to and including the innermost enclosing function (and its parameters). This includes nested block scopes and the scopes of enclosing lambdas if this lambda is nested.
+</p><p>The <span class="t-spar">identifier</span> in any capture without an initializer (other than the <code>this</code>-capture) is looked up using usual <a href="lookup.html" title="cpp/language/lookup">unqualified name lookup</a> in the <i>reaching scope</i> of the lambda. The result of the lookup must be a <a href="objects.html" title="cpp/language/object">variable</a> with automatic storage duration declared in the reaching scope<span class="t-rev-inl t-since-cxx20"><span>, or a <a href="structured_binding.html" title="cpp/language/structured binding">structured binding</a> whose corresponding variable satisfies such requirements</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>. The entity is <i>explicitly captured</i>.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>A capture with an initializer acts as if it declares and explicitly captures a variable declared with type <a href="auto.html" title="cpp/language/auto"><code>auto</code></a>, whose declarative region is the body of the lambda expression (that is, it is not in scope within its initializer), except that:
+</p>
+<ul><li> if the capture is by-copy, the non-static data member of the closure object is another way to refer to that auto variable.
+</li><li> if the capture is by-reference, the reference variable's lifetime ends when the lifetime of the closure object ends
+</li></ul>
+<p>This is used to capture move-only types with a capture such as <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">=</span> std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>x<span class="br0">)</span></span></span>.
+</p><p>This also makes it possible to capture by const reference, with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span>cr <span class="sy1">=</span> <a href="../utility/as_const.html"><span class="kw1124">std::<span class="me2">as_const</span></span></a><span class="br0">(</span>x<span class="br0">)</span></span></span> or similar.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span>
+ 
+<span class="kw4">auto</span> y <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span>r <span class="sy1">=</span> x, x <span class="sy1">=</span> x <span class="sy2">+</span> <span class="nu0">1</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+<span class="br0">{</span>
+    r <span class="sy2">+</span><span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+    <span class="kw1">return</span> x <span class="sy2">*</span> x<span class="sy4">;</span>
+<span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// updates ::x to 6 and initializes y to 25.</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<p>If a capture list has a capture-default and does not explicitly capture the enclosing object (as <code>this</code> or <code>*this</code>), or an automatic variable that is <a href="definition.html#ODR-use" title="cpp/language/definition">odr-usable</a> in the lambda body<span class="t-rev-inl t-since-cxx20"><span>, or a <a href="structured_binding.html" title="cpp/language/structured binding">structured binding</a> whose corresponding variable has atomic storage duration</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>, it captures it <i>implicitly</i> if
+</p>
+<ul><li> the body of the lambda <a href="definition.html#ODR-use" title="cpp/language/definition">odr-uses</a> the entity
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<ul><li> or the entity is named in a potentially-evaluated expression within an expression<span class="t-rev-inl t-until-cxx17"><span> that depends on a generic lambda parameter</span> <span><span class="t-mark-rev t-until-cxx17">(until C++17)</span></span></span> (including when the implicit <span class="t-c"><span class="mw-geshi cpp source-cpp">this<span class="sy2">-</span><span class="sy1">&gt;</span></span></span> is added before a use of non-static class member). For this purpose, the operand of <a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a> is always considered potentially-evaluated. <span class="t-rev-inl t-since-cxx17"><span>Entities might be implicitly captured even if they are only named within a <a href="if.html#Constexpr_if" title="cpp/language/if">discarded statement</a>.</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span>
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span>, <span class="kw4">const</span> <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>   <span class="co1">// #1</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;</span>, <span class="kw4">const</span> <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// #2</span>
+ 
+<span class="kw4">void</span> test<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">17</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> g0 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// OK: calls #1, does not capture x</span>
+ 
+    <span class="kw4">auto</span> g1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span> <span class="br0">{</span> f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// does not capture x in C++14, captures x in C++17</span>
+                                     <span class="co1">// the capture can be optimized away</span>
+    <span class="kw4">auto</span> g2 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> selector<span class="br0">[</span>sizeof<span class="br0">(</span>a<span class="br0">)</span> <span class="sy1">==</span> <span class="nu0">1</span> <span class="sy4">?</span> <span class="nu0">1</span> <span class="sy4">:</span> <span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+        f<span class="br0">(</span>x, selector<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: is a dependent expression, so captures x</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> g3 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> a<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">typeid</span><span class="br0">(</span>a <span class="sy2">+</span> x<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// captures x regardless of</span>
+                        <span class="co1">// whether a + x is an unevaluated operand</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<p>If the body of a lambda <a href="definition.html#ODR-use" title="cpp/language/definition">odr-uses</a> an entity captured by copy, the member of the closure type is accessed. If it is not odr-using the entity, the access is to the original object:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> N <span class="sy1">=</span> <span class="nu0">10</span><span class="sy4">;</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span> 
+        <span class="kw4">int</span> arr<span class="br0">[</span>N<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// not an odr-use: refers to g's const int N</span>
+        f<span class="br0">(</span><span class="sy3">&amp;</span>N<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// odr-use: causes N to be captured (by copy)</span>
+               <span class="co1">// &amp;N is the address of the closure object's member N, not g's N</span>
+    <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>If a lambda odr-uses a reference that is captured by reference, it is using the object referred-to by the original reference, not the captured reference itself:
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">auto</span> make_function<span class="br0">(</span><span class="kw4">int</span><span class="sy3">&amp;</span> x<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> x <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> f <span class="sy1">=</span> make_function<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// the use of x in f binds directly to i</span>
+    i <span class="sy1">=</span> <span class="nu0">5</span><span class="sy4">;</span>
+    f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: prints 5</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<p>Within the body of a lambda with capture default <code>=</code>, the type of any capturable entity is as if it were captured (and thus const-qualification is often added if the lambda is not <code>mutable</code>), even though the entity is in an unevaluated operand and not captured (e.g. in <a href="decltype.html" title="cpp/language/decltype"><code>decltype</code></a>):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f3<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">float</span> x, <span class="sy3">&amp;</span>r <span class="sy1">=</span> x<span class="sy4">;</span>
+    <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span> <span class="co1">// x and r are not captured (appearance in a decltype operand is not an odr-use)</span>
+        decltype<span class="br0">(</span>x<span class="br0">)</span> y1<span class="sy4">;</span>        <span class="co1">// y1 has type float</span>
+        decltype<span class="br0">(</span><span class="br0">(</span>x<span class="br0">)</span><span class="br0">)</span> y2 <span class="sy1">=</span> y1<span class="sy4">;</span> <span class="co1">// y2 has type float const&amp; because this lambda</span>
+                               <span class="co1">// is not mutable and x is an lvalue</span>
+        decltype<span class="br0">(</span>r<span class="br0">)</span> r1 <span class="sy1">=</span> y1<span class="sy4">;</span>   <span class="co1">// r1 has type float&amp; (transformation not considered)</span>
+        decltype<span class="br0">(</span><span class="br0">(</span>r<span class="br0">)</span><span class="br0">)</span> r2 <span class="sy1">=</span> y2<span class="sy4">;</span> <span class="co1">// r2 has type float const&amp;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Any entity captured by a lambda (implicitly or explicitly) is odr-used by the lambda-expression (therefore, implicit capture by a nested lambda triggers implicit capture in the enclosing lambda).
+</p><p>All implicitly-captured variables must be declared within the <i>reaching scope</i> of the lambda.
+</p><p>If a lambda captures the enclosing object (as <code>this</code> or <code>*this</code>), either the nearest enclosing function must be a non-static member function or the lambda must be in a <a href="data_members.html#Member_initialization" title="cpp/language/data members">default member initializer</a>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> s2
+<span class="br0">{</span>
+    <span class="kw4">double</span> ohseven <span class="sy1">=</span> <span class="nu18">.007</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> f<span class="br0">(</span><span class="br0">)</span> <span class="co1">// nearest enclosing function for the following two lambdas</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">[</span>this<span class="br0">]</span>      <span class="co1">// capture the enclosing s2 by reference</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> <span class="br0">[</span><span class="sy2">*</span>this<span class="br0">]</span> <span class="co1">// capture the enclosing s2 by copy (C++17)</span>
+            <span class="br0">{</span>
+                <span class="kw1">return</span> ohseven<span class="sy4">;</span> <span class="co1">// OK</span>
+            <span class="br0">}</span>
+        <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">auto</span> g<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> <span class="br0">[</span><span class="br0">]</span> <span class="co1">// capture nothing</span>
+        <span class="br0">{</span> 
+            <span class="kw1">return</span> <span class="br0">[</span><span class="sy2">*</span>this<span class="br0">]</span><span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// error: *this not captured by outer lambda-expression</span>
+        <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>If a lambda expression <span class="t-rev-inl t-since-cxx14"><span>(or an instantiation of a generic lambda's function call operator)</span> <span><span class="t-mark-rev t-since-cxx14">(since C++14)</span></span></span> ODR-uses <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> or any variable with automatic storage duration, it must be captured by the lambda expression.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> <span class="kw4">const</span> N <span class="sy1">=</span> <span class="nu0">20</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> m1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> <span class="kw4">const</span> M <span class="sy1">=</span> <span class="nu0">30</span><span class="sy4">;</span>
+        <span class="kw4">auto</span> m2 <span class="sy1">=</span> <span class="br0">[</span>i<span class="br0">]</span>
+        <span class="br0">{</span>
+            <span class="kw4">int</span> x<span class="br0">[</span>N<span class="br0">]</span><span class="br0">[</span>M<span class="br0">]</span><span class="sy4">;</span> <span class="co1">// N and M are not odr-used </span>
+                         <span class="co1">// (ok that they are not captured)</span>
+            x<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> i<span class="sy4">;</span> <span class="co1">// i is explicitly captured by m2</span>
+                         <span class="co1">// and implicitly captured by m1</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">struct</span> s1 <span class="co1">// local class within f1()</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> f<span class="sy4">;</span>
+        <span class="kw4">void</span> work<span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="co1">// non-static member function</span>
+        <span class="br0">{</span>
+            <span class="kw4">int</span> m <span class="sy1">=</span> n <span class="sy2">*</span> n<span class="sy4">;</span>
+            <span class="kw4">int</span> j <span class="sy1">=</span> <span class="nu0">40</span><span class="sy4">;</span>
+            <span class="kw4">auto</span> m3 <span class="sy1">=</span> <span class="br0">[</span>this, m<span class="br0">]</span>
+            <span class="br0">{</span>
+                <span class="kw4">auto</span> m4 <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span>, j<span class="br0">]</span> <span class="co1">// error: j is not captured by m3</span>
+                <span class="br0">{</span>
+                    <span class="kw4">int</span> x <span class="sy1">=</span> n<span class="sy4">;</span> <span class="co1">// error: n is implicitly captured by m4</span>
+                               <span class="co1">// but not captured by m3</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> m<span class="sy4">;</span>    <span class="co1">// OK: m is implicitly captured by m4</span>
+                               <span class="co1">// and explicitly captured by m3</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> i<span class="sy4">;</span>    <span class="co1">// error: i is outside of the reaching scope</span>
+                               <span class="co1">// (which ends at work())</span>
+                    x <span class="sy2">+</span><span class="sy1">=</span> f<span class="sy4">;</span>    <span class="co1">// OK: this is captured implicitly by m4</span>
+                               <span class="co1">// and explicitly captured by m3</span>
+                <span class="br0">}</span><span class="sy4">;</span>
+            <span class="br0">}</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Class members cannot be captured explicitly by a capture without initializer (as mentioned above, only <a href="objects.html" title="cpp/language/object">variables</a> are permitted in the capture list):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+    <span class="co1">//  auto l1 = [i, x]{ use(i, x); };    // error: x is not a variable</span>
+        <span class="kw4">auto</span> l2 <span class="sy1">=</span> <span class="br0">[</span>i, x<span class="sy1">=</span>x<span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// OK, copy capture</span>
+        i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> l2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// calls use(0,0)</span>
+        <span class="kw4">auto</span> l3 <span class="sy1">=</span> <span class="br0">[</span>i, <span class="sy3">&amp;</span>x<span class="sy1">=</span>x<span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK, reference capture</span>
+        i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l3<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// calls use(1,2)</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>When a lambda captures a member using implicit by-copy capture, it does not make a copy of that member variable: the use of a member variable <code>m</code> is treated as an expression <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span>.<span class="me1">m</span></span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> is always implicitly captured by reference:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+        <span class="kw4">auto</span> l1 <span class="sy1">=</span> <span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// captures a copy of i and</span>
+                                     <span class="co1">// a copy of the this pointer</span>
+        i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> l1<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>          <span class="co1">// calls use(0, 1), as if</span>
+                                     <span class="co1">// i by copy and x by reference</span>
+ 
+        <span class="kw4">auto</span> l2 <span class="sy1">=</span> <span class="br0">[</span>i, this<span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// same as above, made explicit</span>
+        i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>          <span class="co1">// calls use(1, 2), as if</span>
+                                     <span class="co1">// i by copy and x by reference</span>
+ 
+        <span class="kw4">auto</span> l3 <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// captures i by reference and</span>
+                                     <span class="co1">// a copy of the this pointer</span>
+        i <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> l3<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>          <span class="co1">// calls use(3, 2), as if</span>
+                                     <span class="co1">// i and x are both by reference</span>
+ 
+        <span class="kw4">auto</span> l4 <span class="sy1">=</span> <span class="br0">[</span>i, <span class="sy2">*</span>this<span class="br0">]</span><span class="br0">{</span> use<span class="br0">(</span>i, x<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// makes a copy of *this,</span>
+                                            <span class="co1">// including a copy of x</span>
+        i <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> x <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> l4<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>          <span class="co1">// calls use(3, 2), as if</span>
+                                     <span class="co1">// i and x are both by copy</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>If a lambda expression appears in a <a href="default_arguments.html" title="cpp/language/default arguments">default argument</a>, it cannot explicitly or implicitly capture anything<span class="t-rev-inl t-since-cxx14"><span>, unless all captures have initializers which satisfy the constraints of an expression appearing in a default argument</span> <span><span class="t-mark-rev t-since-cxx14">(since C++14)</span></span></span>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f2<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> g1<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: captures something</span>
+    <span class="kw4">void</span> g2<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: captures something</span>
+    <span class="kw4">void</span> g3<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: captures something</span>
+ 
+    <span class="kw4">void</span> g4<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span><span class="sy1">=</span><span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// OK: capture-less</span>
+    <span class="kw4">void</span> g5<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span><span class="br0">]</span><span class="br0">{</span> <span class="kw1">return</span> sizeof i<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: capture-less</span>
+ 
+    <span class="co1">// C++14</span>
+    <span class="kw4">void</span> g6<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span>x <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: 1 can appear</span>
+                                              <span class="co1">//     in a default argument</span>
+    <span class="kw4">void</span> g7<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="br0">(</span><span class="br0">[</span>x <span class="sy1">=</span> i<span class="br0">]</span> <span class="br0">{</span> <span class="kw1">return</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: i cannot appear</span>
+                                              <span class="co1">//        in a default argument</span>
+<span class="br0">}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<p>Members of <a href="union.html" title="cpp/language/union">anonymous unions</a> members cannot be captured. <a href="bitfield.html" title="cpp/language/bit field">Bit-fields</a> can only captured by copy.
+</p><p>If a nested lambda <code>m2</code> captures something that is also captured by the immediately enclosing lambda <code>m1</code>, then <code>m2</code>'s capture is transformed as follows:
+</p>
+<ul><li> if the enclosing lambda <code>m1</code> captures by copy, <code>m2</code> is capturing the non-static member of <code>m1</code>'s closure type, not the original variable or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>; if <code>m1</code> is not mutable, the non-static data member is considered to be const-qualified.
+</li><li> if the enclosing lambda <code>m1</code> captures by reference, <code>m2</code> is capturing the original variable or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span>.
+</li></ul>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">1</span>, b <span class="sy1">=</span> <span class="nu0">1</span>, c <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+ 
+    <span class="kw4">auto</span> m1 <span class="sy1">=</span> <span class="br0">[</span>a, <span class="sy3">&amp;</span>b, <span class="sy3">&amp;</span>c<span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> mutable
+    <span class="br0">{</span>
+        <span class="kw4">auto</span> m2 <span class="sy1">=</span> <span class="br0">[</span>a, b, <span class="sy3">&amp;</span>c<span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> mutable
+        <span class="br0">{</span>
+            <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> a <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> c <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+            a <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">4</span><span class="sy4">;</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+        a <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">3</span><span class="sy4">;</span>
+        m2<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    a <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> b <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> c <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+ 
+    m1<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>                             <span class="co1">// calls m2() and prints 123</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> a <span class="sy1">&lt;&lt;</span> b <span class="sy1">&lt;&lt;</span> c <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// prints 234</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><p>This example shows how to pass a lambda to a generic algorithm and how objects resulting from a lambda expression can be stored in <span class="t-lc"><a href="../utility/functional/function.html" title="cpp/utility/functional/function">std::function</a></span> objects.</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;vector&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;algorithm&gt;</span>
+<span class="co2">#include &lt;functional&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> c <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span>, <span class="nu0">5</span>, <span class="nu0">6</span>, <span class="nu0">7</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">5</span><span class="sy4">;</span>
+    c.<span class="me1">erase</span><span class="br0">(</span><a href="../algorithm/remove.html"><span class="kw1596">std::<span class="me2">remove_if</span></span></a><span class="br0">(</span>c.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <span class="br0">[</span>x<span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> n <span class="sy1">&lt;</span> x<span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"c: "</span><span class="sy4">;</span>
+    <a href="../algorithm/for_each.html"><span class="kw1572">std::<span class="me2">for_each</span></span></a><span class="br0">(</span>c.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, c.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span><span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="co1">// the type of a closure cannot be named, but can be inferred with auto</span>
+    <span class="co1">// since C++14, lambda could own default arguments</span>
+    <span class="kw4">auto</span> func1 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">6</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i <span class="sy2">+</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"func1: "</span> <span class="sy1">&lt;&lt;</span> func1<span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="co1">// like all callable objects, closures can be captured in std::function</span>
+    <span class="co1">// (this may incur unnecessary overhead)</span>
+    <a href="../utility/functional/function.html"><span class="kw1064">std::<span class="me2">function</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy1">&gt;</span> func2 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> i <span class="sy2">+</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"func2: "</span> <span class="sy1">&lt;&lt;</span> func2<span class="br0">(</span><span class="nu0">6</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> <span class="kw4">int</span> fib_max <span class="br0">{</span><span class="nu0">8</span><span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Emulate `recursive lambda` calls:<span class="es1">\n</span>Fibonacci numbers: "</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../utility/functional/function.html"><span class="kw1064">std::<span class="me2">function</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="br0">(</span><span class="kw4">int</span>, <span class="kw4">int</span>, <span class="kw4">int</span><span class="br0">)</span><span class="sy1">&gt;</span> fib <span class="sy1">=</span> <span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> n, <span class="kw4">int</span> a, <span class="kw4">int</span> b<span class="br0">)</span>
+        <span class="br0">{</span>
+            <span class="kw1">return</span> n <span class="sy4">?</span> fib<span class="br0">(</span>n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+        <span class="br0">}</span><span class="sy4">;</span>
+        <span class="kw1">return</span> fib<span class="br0">(</span>n, <span class="nu0">0</span>, <span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci<span class="br0">(</span>i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Alternative approach to lambda recursion:<span class="es1">\n</span>Fibonacci numbers: "</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci2 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">auto</span> self, <span class="kw4">int</span> n, <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">0</span>, <span class="kw4">int</span> b <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> <span class="kw4">int</span>
+    <span class="br0">{</span>
+        <span class="kw1">return</span> n <span class="sy4">?</span> self<span class="br0">(</span>self, n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci2<span class="br0">(</span>nth_fibonacci2, i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+<span class="co2">#ifdef __cpp_explicit_this_parameter</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"C++23 approach to lambda recursion:<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw4">auto</span> nth_fibonacci3 <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span>this <span class="kw4">auto</span> self, <span class="kw4">int</span> n, <span class="kw4">int</span> a <span class="sy1">=</span> <span class="nu0">0</span>, <span class="kw4">int</span> b <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span>
+    <span class="br0">{</span>
+         <span class="kw1">return</span> n <span class="sy4">?</span> self<span class="br0">(</span>n <span class="sy2">-</span> <span class="nu0">1</span>, a <span class="sy2">+</span> b, a<span class="br0">)</span> <span class="sy4">:</span> b<span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> fib_max<span class="sy4">;</span> <span class="sy2">++</span>i<span class="br0">)</span>
+    <span class="br0">{</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> nth_fibonacci3<span class="br0">(</span>i<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>i <span class="sy1">&lt;</span> fib_max <span class="sy4">?</span> <span class="st0">", "</span> <span class="sy4">:</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="co2">#endif</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">c: 5 6 7
+func1: 10
+func2: 10
+Emulate `recursive lambda` calls:
+Fibonacci numbers: 0, 1, 1, 2, 3, 5, 8, 13
+Alternative approach to lambda recursion:
+Fibonacci numbers: 0, 1, 1, 2, 3, 5, 8, 13</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="Defect_reports">Defect reports</span></h3>
+<p>The following behavior-changing defect reports were applied retroactively to previously published C++ standards.
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> DR
+</th>
+<th> Applied to
+</th>
+<th> Behavior as published
+</th>
+<th> Correct behavior
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/974.html">CWG 974</a>
+</td>
+<td> C++11
+</td>
+<td> default argument was not allowed in the<br>parameter list of a lambda expression
+</td>
+<td> allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/975.html">CWG 975</a>
+</td>
+<td> C++11
+</td>
+<td> the return type of closure's <code>operator()</code> was only<br>deduced if lambda body contains a single return
+</td>
+<td> deduced as if for C++14<br>auto-returning function
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1249.html">CWG 1249</a>
+</td>
+<td> C++11
+</td>
+<td> it is not clear that whether the captured member of the<br>enclosing non-mutable lambda is considered <code>const</code> or not
+</td>
+<td> considered <code>const</code>
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1557.html">CWG 1557</a>
+</td>
+<td> C++11
+</td>
+<td> the language linkage of the returned function type of<br>the closure type's conversion function was not specified
+</td>
+<td> it has C++<br>language linkage
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1607.html">CWG 1607</a>
+</td>
+<td> C++11
+</td>
+<td> lambda expressions could appear in<br>function and function template signatures
+</td>
+<td> not allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1612.html">CWG 1612</a>
+</td>
+<td> C++11
+</td>
+<td> members of anonymous unions could be captured
+</td>
+<td> not allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1722.html">CWG 1722</a>
+</td>
+<td> C++11
+</td>
+<td> the conversion function for captureless lambdas<br>had unspecified exception specification
+</td>
+<td> conversion function<br>is noexcept
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1772.html">CWG 1772</a>
+</td>
+<td> C++11
+</td>
+<td> the semantic of <span class="t-c"><span class="mw-geshi cpp source-cpp">__func__</span></span> in lambda body was not clear
+</td>
+<td> it refers to the closure<br>class's operator()
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1780.html">CWG 1780</a>
+</td>
+<td> C++14
+</td>
+<td> it was unclear whether the members of the closure types of generic<br>lambdas can be explicitly instantiated or explicitly specialized
+</td>
+<td> neither is allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1891.html">CWG 1891</a>
+</td>
+<td> C++11
+</td>
+<td> closure had a deleted default constructor<br>and implicit copy/move constructors
+</td>
+<td> no default and defaulted<br>copy/move constructors
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1937.html">CWG 1937</a>
+</td>
+<td> C++11
+</td>
+<td> as for the effect of invoking the result of the conversion function, it was<br>unspecified on which object calling its operator() has the same effect
+</td>
+<td> on a default-constructed<br>instance of the closure type
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2011.html">CWG 2011</a>
+</td>
+<td> C++11
+</td>
+<td> for a reference captured by reference, it was unspecified<br>which entity the identifier of the capture refers to
+</td>
+<td> it refers to the originally<br>referenced entity
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2095.html">CWG 2095</a>
+</td>
+<td> C++11
+</td>
+<td> the behavior of capturing rvalue references<br>to functions by copy was not clear
+</td>
+<td> made clear
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2211.html">CWG 2211</a>
+</td>
+<td> C++11
+</td>
+<td> the behavior was unspecified if a capture<br>has the same name as a parameter
+</td>
+<td> the program is ill-<br>formed in this case
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2358.html">CWG 2358</a>
+</td>
+<td> C++14
+</td>
+<td> lambda expressions appearing in default arguments had<br>to be capture-less even if all captures are initialized with<br>expressions which can appear in default arguments
+</td>
+<td> allow such lambda<br>expressions with captures
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2509.html">CWG 2509</a>
+</td>
+<td> C++17
+</td>
+<td> each specifier could have multiple<br>occurences in the specifier sequence
+</td>
+<td> each specifier can only<br>appear at most once in<br>the specifier sequence
+</td></tr></table>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <a href="auto.html" title="cpp/language/auto"> <code>auto</code> specifier </a><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</td>
+<td>  specifies a type deduced from an expression </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/functional/function.html" title="cpp/utility/functional/function"> <span class="t-lines"><span>function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   wraps callable object of any copy constructible type with specified function call signature  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/functional/move_only_function.html" title="cpp/utility/functional/move only function"> <span class="t-lines"><span>move_only_function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div>
+</td>
+<td>   wraps callable object of any type with specified function call signature  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="External_links">External links</span></h3>
+<ul><li> <a href="https://en.wikipedia.org/wiki/Nested_function" class="extiw" title="enwiki:Nested function">Nested function</a> - a function which is defined within another (<i>enclosing</i>) function.
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 10532/1000000
+Preprocessor generated node count: 20922/1000000
+Post‐expand include size: 233977/2097152 bytes
+Template argument size: 87046/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:5059-0!*!0!!en!*!* and timestamp 20220728052348 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/lambda&amp;oldid=141241">https://en.cppreference.com/mwiki/index.php?title=cpp/language/lambda&amp;oldid=141241</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/lambda">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 27 July 2022, at 22:23.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 3,951,948 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.031 secs. -->
+	</body>
+<!-- Cached 20220728052358 -->
+</html>

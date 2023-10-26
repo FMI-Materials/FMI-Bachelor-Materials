@@ -1,0 +1,31 @@
+# calculates the addition of 2 numbers
+
+States:
+    q1,S
+    q2
+    q3
+    qa,A
+    qr,R
+End
+
+Sigma:
+    a
+    #
+End
+
+Gamma:
+    a
+    #
+    _
+End
+
+Transitions:
+    q1,a,a = q1,a,a,N,R
+    q1,a,# = q1,a,#,N,R
+    q1,a,_ = q2,a,#,N,R
+    q2,a,_ = q2,a,a,R,R
+    q2,#,_ = q3,#,_,R,N
+    q2,_,_ = qr,_,_,N,N
+    q3,a,_ = q3,a,a,R,R
+    q3,#,_ = qa,#,_,N,N
+End

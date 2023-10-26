@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>strftime - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/chrono/strftime","wgTitle":"c/chrono/strftime","wgCurRevisionId":133647,"wgArticleId":6165,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/chrono/strftime","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_chrono_strftime skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">strftime</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../chrono.html" title="c/chrono">chrono</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../chrono.html" title="c/chrono"> Date and time utilities</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Functions</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Time manipulation</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="difftime.html" title="c/chrono/difftime"><span class="t-lines"><span>difftime</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time.html" title="c/chrono/time"><span class="t-lines"><span>time</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock.html" title="c/chrono/clock"><span class="t-lines"><span>clock</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_get.html" title="c/chrono/timespec get"><span class="t-lines"><span>timespec_get</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec_getres.html" title="c/chrono/timespec getres"><span class="t-lines"><span>timespec_getres</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c23">(C23)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Format conversions</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="asctime.html" title="c/chrono/asctime"><span class="t-lines"><span>asctime</span><span>asctime_r</span><span>asctime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ctime.html" title="c/chrono/ctime"><span class="t-lines"><span>ctime</span><span>ctime_r</span><span>ctime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>strftime</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="wcsftime.html" title="c/chrono/wcsftime"><span class="t-lines"><span>wcsftime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gmtime.html" title="c/chrono/gmtime"><span class="t-lines"><span>gmtime</span><span>gmtime_r</span><span>gmtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="localtime.html" title="c/chrono/localtime"><span class="t-lines"><span>localtime</span><span>localtime_r</span><span>localtime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mktime.html" title="c/chrono/mktime"><span class="t-lines"><span>mktime</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Constants</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="CLOCKS_PER_SEC.html" title="c/chrono/CLOCKS PER SEC"><span class="t-lines"><span>CLOCKS_PER_SEC</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tm.html" title="c/chrono/tm"><span class="t-lines"><span>tm</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="time_t.html" title="c/chrono/time t"><span class="t-lines"><span>time_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clock_t.html" title="c/chrono/clock t"><span class="t-lines"><span>clock_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="timespec.html" title="c/chrono/timespec"><span class="t-lines"><span>timespec</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code>&lt;time.h&gt;</code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev">
+<tr class="t-dcl t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a> strftime<span class="br0">(</span> <span class="kw4">char</span> <span class="sy2">*</span>         str, <a href="../types/size_t.html"><span class="kw100">size_t</span></a> count, <br>
+                 <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>         format, <span class="kw4">const</span> <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a> <span class="sy2">*</span>         <a href="time.html"><span class="kw513">time</span></a> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-until-c99">(until C99)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a> strftime<span class="br0">(</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> str, <a href="../types/size_t.html"><span class="kw100">size_t</span></a> count, <br>
+                 <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, <span class="kw4">const</span> <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a> <span class="sy2">*</span><span class="kw4">restrict</span> <a href="time.html"><span class="kw513">time</span></a> <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Converts the date and time information from a given calendar time <code>time</code> to a null-terminated multibyte character string <code>str</code> according to <a href="strftime.html#Format_string">format string</a> <code>format</code>. Up to <code>count</code> bytes are written.
+</p>
+<h3><span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  str
+</td>
+<td> -
+</td>
+<td>  pointer to the first element of the char array for output
+</td></tr>
+<tr class="t-par">
+<td>  count
+</td>
+<td> -
+</td>
+<td>  maximum number of bytes to write
+</td></tr>
+<tr class="t-par">
+<td>  format
+</td>
+<td> -
+</td>
+<td>  pointer to a null-terminated multibyte character string specifying the <a href="strftime.html#Format_string">format of conversion</a>
+</td></tr>
+<tr class="t-par">
+<td>  time
+</td>
+<td> -
+</td>
+<td>  pointer to a struct tm object specifying the time to format
+</td></tr></table>
+<h3><span class="mw-headline" id="Format_string">Format string</span></h3>
+<p>The format string consists of zero or more conversion specifiers and ordinary characters (except <code>%</code>). All ordinary characters, including the terminating null character, are copied to the output string without modification. Each conversion specification begins with <code>%</code> character, optionally followed by <code>E</code> or <code>O</code> modifier (ignored if unsupported by the locale), followed by the character that determines the behavior of the specifier. The following format specifiers are available:
+</p>
+<table class="wikitable" style="font-size:85%; max-width:90em;">
+
+<tr>
+<th> Conversion<br> specifier
+</th>
+<th> Explanation
+</th>
+<th> Used fields
+</th></tr>
+<tr>
+<th> <code>%</code>
+</th>
+<td> writes literal <code>%</code>. The full conversion specification must be <code>%%</code>.
+</td>
+<td>
+</td></tr>
+<tr>
+<th> <code>n</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes newline character
+</td>
+<td>
+</td></tr>
+<tr>
+<th> <code>t</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes horizontal tab character
+</td>
+<td>
+</td></tr>
+<tr>
+<th colspan="3"> Year
+</th></tr>
+<tr>
+<th> <code>Y</code>
+</th>
+<td> writes <b>year</b> as a decimal number, e.g. 2017
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>EY</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>year</b> in the alternative representation, e.g.平成23年 (year Heisei 23) instead of 2011年 (year 2011) in ja_JP locale
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>y</code>
+</th>
+<td> writes last 2 digits of <b>year</b> as a decimal number (range <code>[00,99]</code>)
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>Oy</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes last 2 digits of <b>year</b> using the alternative numeric system, e.g. 十一 instead of 11 in ja_JP locale
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>Ey</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>year</b> as offset from locale's alternative calendar period <code>%EC</code> (locale-dependent)
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>C</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes first 2 digits of <b>year</b> as a decimal number (range <code>[00,99]</code>)
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>EC</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes name of the <b>base year (period)</b> in the locale's alternative representation, e.g. 平成 (Heisei era) in ja_JP
+</td>
+<td> <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>G</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>ISO 8601 week-based year</b>, i.e. the year that contains the specified week.
+<p>In IS0 8601 weeks begin with Monday and the first week of the year must satisfy the following requirements:
+</p>
+<ul><li> Includes January 4
+</li><li> Includes first Thursday of the year
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>g</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes last 2 digits of <b>ISO 8601 week-based year</b>, i.e. the year that contains the specified week (range <code>[00,99]</code>).
+<p>In IS0 8601 weeks begin with Monday and the first week of the year must satisfy the following requirements:
+</p>
+<ul><li> Includes January 4
+</li><li> Includes first Thursday of the year 
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Month
+</th></tr>
+<tr>
+<th> <code>b</code>
+</th>
+<td> writes <b>abbreviated month</b> name, e.g. <code>Oct</code> (locale dependent)
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>Ob</code><br><span class="t-mark-rev t-since-c23">(C23)</span>
+</th>
+<td> writes <b>abbreviated month</b> name in the locale's alternative representation
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>h</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> synonym of <code>b</code>
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>B</code>
+</th>
+<td> writes <b>full month</b> name, e.g. <code>October</code> (locale dependent)
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>OB</code><br><span class="t-mark-rev t-since-c23">(C23)</span>
+</th>
+<td> writes appropriate <b>full month</b> name in the locale's alternative representation
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>m</code>
+</th>
+<td> writes <b>month</b> as a decimal number (range <code>[01,12]</code>)
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th> <code>Om</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>month</b> using the alternative numeric system, e.g. 十二 instead of 12 in ja_JP locale
+</td>
+<td> <code><b>tm_mon</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Week
+</th></tr>
+<tr>
+<th> <code>U</code>
+</th>
+<td> writes <b>week of the year</b> as a decimal number (Sunday is the first day of the week) (range <code>[00,53]</code>)
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OU</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>week of the year</b>, as by <code>%U</code>, using the alternative numeric system, e.g. 五十二 instead of 52 in ja_JP locale
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>W</code>
+</th>
+<td> writes <b>week of the year</b> as a decimal number (Monday is the first day of the week) (range <code>[00,53]</code>)
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OW</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>week of the year</b>, as by <code>%W</code>, using the alternative numeric system, e.g. 五十二 instead of 52 in ja_JP locale
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>V</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>ISO 8601 week of the year</b> (range <code>[01,53]</code>).
+<p>In IS0 8601 weeks begin with Monday and the first week of the year must satisfy the following requirements:
+</p>
+<ul><li> Includes January 4
+</li><li> Includes first Thursday of the year 
+</li></ul>
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>OV</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>week of the year</b>, as by <code>%V</code>, using the alternative numeric system, e.g. 五十二 instead of 52 in ja_JP locale
+</td>
+<td> <code><b>tm_year</b></code>, <code><b>tm_wday</b></code>, <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Day of the year/month
+</th></tr>
+<tr>
+<th> <code>j</code>
+</th>
+<td> writes <b>day of the year</b> as a decimal number (range <code>[001,366]</code>)
+</td>
+<td> <code><b>tm_yday</b></code>
+</td></tr>
+<tr>
+<th> <code>d</code>
+</th>
+<td> writes <b>day of the month</b> as a decimal number (range <code>[01,31]</code>)
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>Od</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes zero-based <b>day of the month</b> using the alternative numeric system, e.g 二十七 instead of 27 in ja_JP locale
+<p>Single character is preceded by a space.
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>e</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>day of the month</b> as a decimal number (range <code>[1,31]</code>).
+<p>Single digit is preceded by a space.
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th> <code>Oe</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes one-based <b>day of the month</b> using the alternative numeric system, e.g. 二十七 instead of 27 in ja_JP locale
+<p>Single character is preceded by a space.
+</p>
+</td>
+<td> <code><b>tm_mday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Day of the week
+</th></tr>
+<tr>
+<th> <code>a</code>
+</th>
+<td> writes <b>abbreviated weekday</b> name, e.g. <code>Fri</code> (locale dependent)
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>A</code>
+</th>
+<td> writes <b>full weekday</b> name, e.g. <code>Friday</code> (locale dependent)
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>w</code>
+</th>
+<td> writes <b>weekday</b> as a decimal number, where Sunday is <code>0</code> (range <code>[0-6]</code>)
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>Ow</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>weekday</b>, where Sunday is <code>0</code>, using the alternative numeric system, e.g. 二 instead of 2 in ja_JP locale
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>u</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>weekday</b> as a decimal number, where Monday is <code>1</code> (ISO 8601 format) (range <code>[1-7]</code>)
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th> <code>Ou</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>weekday</b>, where Monday is <code>1</code>, using the alternative numeric system, e.g. 二 instead of 2 in ja_JP locale
+</td>
+<td> <code><b>tm_wday</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Hour, minute, second
+</th></tr>
+<tr>
+<th> <code>H</code>
+</th>
+<td> writes <b>hour</b> as a decimal number, 24 hour clock (range <code>[00-23]</code>)
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>OH</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>hour</b> from 24-hour clock using the alternative numeric system, e.g. 十八 instead of 18 in ja_JP locale
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>I</code>
+</th>
+<td> writes <b>hour</b> as a decimal number, 12 hour clock (range <code>[01,12]</code>)
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>OI</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>hour</b> from 12-hour clock using the alternative numeric system, e.g. 六 instead of 06 in ja_JP locale
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>M</code>
+</th>
+<td> writes <b>minute</b> as a decimal number (range <code>[00,59]</code>)
+</td>
+<td> <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>OM</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>minute</b> using the alternative numeric system, e.g. 二十五 instead of 25 in ja_JP locale
+</td>
+<td> <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>S</code>
+</th>
+<td> writes <b>second</b> as a decimal number (range <code>[00,60]</code>)
+</td>
+<td> <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>OS</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>second</b> using the alternative numeric system, e.g. 二十四 instead of 24 in ja_JP locale
+</td>
+<td> <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th colspan="3"> Other
+</th></tr>
+<tr>
+<th> <code>c</code>
+</th>
+<td> writes <b>standard date and time string</b>, e.g. <code>Sun Oct 17 04:41:13 2010</code> (locale dependent)
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>Ec</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>alternative date and time string</b>, e.g. using 平成23年 (year Heisei 23) instead of 2011年 (year 2011) in ja_JP locale
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>x</code>
+</th>
+<td> writes localized <b>date representation</b> (locale dependent)
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>Ex</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>alternative date representation</b>, e.g. using 平成23年 (year Heisei 23) instead of 2011年 (year 2011) in ja_JP locale
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>X</code>
+</th>
+<td> writes localized <b>time representation</b>, e.g. 18:40:20 or 6:40:20 PM (locale dependent)
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>EX</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>alternative time representation</b> (locale dependent)
+</td>
+<td> all
+</td></tr>
+<tr>
+<th> <code>D</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> equivalent to <b>"%m/%d/%y"</b>
+</td>
+<td> <code><b>tm_mon</b></code>, <code><b>tm_mday</b></code>, <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>F</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> equivalent to <b>"%Y-%m-%d"</b> (the ISO 8601 date format)
+</td>
+<td> <code><b>tm_mon</b></code>, <code><b>tm_mday</b></code>, <code><b>tm_year</b></code>
+</td></tr>
+<tr>
+<th> <code>r</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes localized <b>12-hour clock</b> time (locale dependent)
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>, <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>R</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> equivalent to <b>"%H:%M"</b>
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>
+</td></tr>
+<tr>
+<th> <code>T</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> equivalent to <b>"%H:%M:%S"</b> (the ISO 8601 time format)
+</td>
+<td> <code><b>tm_hour</b></code>, <code><b>tm_min</b></code>, <code><b>tm_sec</b></code>
+</td></tr>
+<tr>
+<th> <code>p</code>
+</th>
+<td> writes localized <b>a.m. or p.m.</b> (locale dependent)
+</td>
+<td> <code><b>tm_hour</b></code>
+</td></tr>
+<tr>
+<th> <code>z</code><br><span class="t-mark-rev t-since-c99">(C99)</span>
+</th>
+<td> writes <b>offset from UTC</b> in the ISO 8601 format (e.g. <code>-0430</code>), or no characters if the time zone information is not available
+</td>
+<td> <code><b>tm_isdst</b></code>
+</td></tr>
+<tr>
+<th> <code>Z</code>
+</th>
+<td> writes locale-dependent <b>time zone name or abbreviation</b>, or no characters if the time zone information is not available
+</td>
+<td> <code><b>tm_isdst</b></code>
+</td></tr></table>
+<h3><span class="mw-headline" id="Return_value">Return value</span></h3>
+<p>The number of bytes written into the character array pointed to by <code>str</code> not including the terminating <span class="t-c"><span class="mw-geshi c source-c"><span class="st0">'<span class="es5">\0</span>'</span></span></span> on success. If <code>count</code> was reached before the entire string could be stored, <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> is returned and the contents are undefined.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+<span class="co2">#include &lt;locale.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">char</span> buff<span class="br0">[</span><span class="nu0">70</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw1">struct</span> <a href="tm.html"><span class="kw522">tm</span></a> my_time <span class="sy1">=</span> <span class="br0">{</span> .<span class="me1">tm_year</span><span class="sy1">=</span><span class="nu0">112</span>, <span class="co1">// = year 2012</span>
+                          .<span class="me1">tm_mon</span><span class="sy1">=</span><span class="nu0">9</span>,    <span class="co1">// = 10th month</span>
+                          .<span class="me1">tm_mday</span><span class="sy1">=</span><span class="nu0">9</span>,   <span class="co1">// = 9th day</span>
+                          .<span class="me1">tm_hour</span><span class="sy1">=</span><span class="nu0">8</span>,   <span class="co1">// = 8 hours</span>
+                          .<span class="me1">tm_min</span><span class="sy1">=</span><span class="nu0">10</span>,   <span class="co1">// = 10 minutes</span>
+                          .<span class="me1">tm_sec</span><span class="sy1">=</span><span class="nu0">20</span>    <span class="co1">// = 20 secs</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>strftime<span class="br0">(</span>buff, <span class="kw4">sizeof</span> buff, <span class="st0">"%A %c"</span>, <span class="sy3">&amp;</span>my_time<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span>buff<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span><span class="st0">"strftime failed"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <a href="../locale/setlocale.html"><span class="kw900">setlocale</span></a><span class="br0">(</span><a href="../locale/LC_categories.html"><span class="kw908">LC_TIME</span></a>, <span class="st0">"el_GR.utf8"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw1">if</span> <span class="br0">(</span>strftime<span class="br0">(</span>buff, <span class="kw4">sizeof</span> buff, <span class="st0">"%A %c"</span>, <span class="sy3">&amp;</span>my_time<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span>buff<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+        <a href="../io/puts.html"><span class="kw835">puts</span></a><span class="br0">(</span><span class="st0">"strftime failed"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Sunday Sun Oct  9 08:10:20 2012
+Κυριακή Κυρ 09 Οκτ 2012 08:10:20 πμ EST</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 standard (ISO/IEC 9899:2018): 
+</li></ul>
+<dl><dd><ul><li> 7.27.3.5 The strftime function (p: 288-291)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 7.27.3.5 The strftime function (p: 394-397)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 7.23.3.5 The strftime function (p: 343-347)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 standard (ISO/IEC 9899:1990): 
+</li></ul>
+<dl><dd><ul><li> 4.12.3.5 The strftime function 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="asctime.html" title="c/chrono/asctime"> <span class="t-lines"><span>asctime</span><span>asctime_r</span><span>asctime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div>
+</td>
+<td>   converts a <span class="t-lc"><a href="tm.html" title="c/chrono/tm">tm</a></span> object to a textual representation <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="ctime.html" title="c/chrono/ctime"> <span class="t-lines"><span>ctime</span><span>ctime_r</span><span>ctime_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c23">(C23)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div>
+</td>
+<td>   converts a <span class="t-lc"><a href="time_t.html" title="c/chrono/time t">time_t</a></span> object to a textual representation <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="wcsftime.html" title="c/chrono/wcsftime"> <span class="t-lines"><span>wcsftime</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div>
+</td>
+<td>   converts a <span class="t-lc"><a href="tm.html" title="c/chrono/tm">tm</a></span> object to custom wide string textual representation <br> <span class="t-mark">(function)</span> </td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 3687/1000000
+Preprocessor generated node count: 11062/1000000
+Post‐expand include size: 92216/2097152 bytes
+Template argument size: 16200/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:6165-0!*!0!!en!*!* and timestamp 20220313091726 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/chrono/strftime&amp;oldid=133647">https://en.cppreference.com/mwiki/index.php?title=c/chrono/strftime&amp;oldid=133647</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/chrono/strftime">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 15 September 2021, at 10:37.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 122,471 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.484 secs. -->
+	</body>
+<!-- Cached 20220313091727 -->
+</html>

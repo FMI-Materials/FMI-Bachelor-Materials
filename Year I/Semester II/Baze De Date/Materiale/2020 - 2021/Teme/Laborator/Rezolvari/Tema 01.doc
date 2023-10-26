@@ -1,0 +1,67 @@
+-- Ex1. se converteste data angajari in variabila de tip char si se selecteaza ziua
+
+SELECT last_name ||' '|| first_name "Nume si prenume", job_id, hire_date
+FROM employees
+WHERE hire_date BETWEEN '03-JAN-90' and '07-DEC-94'
+and hire_date != '03-JAN-90' and hire_date != '07-DEC-94'
+ORDER BY  TO_CHAR(hire_date,'DD') desc;
+
+-- Ex2. se foloseste operatoriu LIKE pentru a vedea daca numele are 2 caractere 'a'
+
+SELECT last_name "Angajat", salary "Salariu lunar"
+FROM employees
+WHERE salary > 1500 and department_id in (10,30)
+and last_name LIKE ('%a%a%');
+
+-- Ex3. se foloseste operatoriu LIKE pentru a vedea daca jobul contine 'CLERK' sau 'REP'
+-- se foloseste operatorul NOT IN pentru a vedea daca salariu nu e egaul cu 1000,2000 sau 3000
+
+SELECT last_name, job_id, salary
+FROM employees
+WHERE job_id LIKE ('%CLERK%') or job_id LIKE ('%REP%')
+and salary not in (1000,2000,3000);
+
+-- Ex4. se foloseste operatorul "||" pentru a concatena sirul
+
+SELECT first_name||' '||last_name||' castiga '||salary||' lunar dar doreste '||salary*3
+FROM employees;
+
+-- Ex5. transformam sirul first_name in litere mici pentru a nu fi case-sensitive
+-- prin utilizarea functiilor RTRIM si LTRIM sunt eliminate blank-urile din prenume
+
+SELECT employee_id, last_name, RTRIM(LTRIM(first_name)), department_id
+FROM employees
+WHERE lower(first_name) = 'steven';
+
+-- Ex6. prin functia RPAD se adauga la dreapta caracterul 'X' pentru a se ajunge la
+-- 20 de caractere
+
+SELECT last_name "Nume angajat", RPAD(hire_date,20,'X') "Data angajarii",
+commission_pct "Comision"
+FROM employees
+WHERE commission_pct IS NOT NULL;
+
+-- Ex7. Se foloseste “round” pentru a afisa rezultatul cu 2 zecimale si se foloseste “to_date” pentru a convertita data in formatul cerut
+
+SELECT round(TO_DATE('31-12-2021', 'DD-MM-YYYY') - sysdate, 2) "Numar_Zile"
+FROM DUAL;
+
+-- Ex8.
+
+SELECT department_id, department_name, manager_id
+FROM departments;
+SELECT 'Departamentul '||department_id||' nu are manager'
+FROM departments
+WHERE manager_id IS NULL;
+
+-- Ex9.
+
+SELECT a.last_name "Nume angajat", a.department_id "Departament", b.last_name "Colegi departament"
+FROM employees a, employees b
+WHERE a.department_id = b.department_id and a.employee_id != b.employee_id;
+
+-- Ex10. 
+
+SELECT employees.last_name, employees.job_id, jobs.job_title,
+departments.department_name, employees.salary
+FROM employees, jobs, departments;

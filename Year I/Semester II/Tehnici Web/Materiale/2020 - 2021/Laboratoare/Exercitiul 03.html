@@ -1,0 +1,67 @@
+<!--P3. Scrieti un document HTML care sa contina un input de tip text cu id-ul “data” si un element
+select avand optiunile "red", "green", "blue" avand initial selectata prima optiune. Scrieti cod
+JavaScript pentru a rezolva cerintele:
+a) la incarcarea paginii se va afisa in input data curenta iar la fiecare 3s se va selecta automat
+cate o optiune din select incepand cu prima iar textul din input (data curenta) se va colora in
+culoarea optiunii selectate. Dupa ultima optiune, selectia se va relua de la inceput.
+b) in situatia de la punctul a), daca se apasa tasta "s", selectia se va opri iar la reincarcarea
+paginii continutul inputului sa apara colorat in culoarea ultimei optiuni selectate inainte de
+refresh.
+-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Exercitiul 3</title>
+    </head>
+    <body>
+    <script>
+        window.onload = () =>{
+        const dataCurenta = new Date();
+        const textInput = document.getElementById('data');
+        const selectInput = document.getElementById('color');
+        let poz = -1;
+
+        const culoareDefault = localStorage.getItem('culoare');
+        textInput.value = dataCurenta;
+        if(culoareDefault){
+            selectInput.value = culoareDefault;
+            textInput.style.color = culoareDefault;
+        } 
+        else{
+            
+            selectInput.value = "red";
+            textInput.style.color = "red";
+        }
+
+        const schimbaCuloarea = (event) => {
+            const options = document.querySelectorAll('option');
+
+            poz = (poz + 1) % 3;
+            selectInput.value = options[poz].value;
+            textInput.style.color = options[poz].value;
+
+        }
+       
+        const interval = setInterval(schimbaCuloarea, 3000);
+
+        const opresteSelectia = (event) => {
+            if(event.key === 's'){
+                clearInterval(interval);
+                localStorage.setItem('culoare', selectInput.value);
+            }
+        }
+
+        document.addEventListener('keydown', opresteSelectia);
+    }
+    </script>
+   
+        <input type="text" id="data" name="data">
+
+        <select id = 'color' name = 'color'>
+            <option value = 'red'>red</option>
+            <option value = 'green'>green</option>
+            <option value = 'blue'>blue</option>
+        </select>
+    </body>
+</html>

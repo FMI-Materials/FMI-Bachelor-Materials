@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Data-parallel vector library - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/experimental/simd","wgTitle":"cpp/experimental/simd","wgCurRevisionId":111588,"wgArticleId":16752,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo without reason","Todo no example"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/experimental/simd","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_experimental_simd skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Data-parallel vector library</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../experimental.html" title="cpp/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="cpp/experimental"> Technical specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="fs.html" title="cpp/experimental/fs">Filesystem library</a> <span class="t-mark-rev t-since-fs-ts t-mark-ts">(filesystem TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/experimental/lib extensions">Library fundamentals</a> <span class="t-mark-rev t-since-libfund-ts t-mark-ts">(library fundamentals TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lib_extensions_2.html" title="cpp/experimental/lib extensions 2">Library fundamentals 2</a> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts">(library fundamentals TS v2)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lib_extensions_3.html" title="cpp/experimental/lib extensions 3">Library fundamentals 3</a> <span class="t-mark-rev t-since-libfund-ts-3 t-mark-ts">(library fundamentals TS v3)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parallelism.html" title="cpp/experimental/parallelism">Extensions for parallelism</a> <span class="t-mark-rev t-since-parallelism-ts t-mark-ts">(parallelism TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parallelism_2.html" title="cpp/experimental/parallelism 2">Extensions for parallelism 2</a> <span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concurrency.html" title="cpp/experimental/concurrency">Extensions for concurrency</a> <span class="t-mark-rev t-since-concurrency-ts t-mark-ts">(concurrency TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2 (page does not exist)">Extensions for concurrency 2</a> <span class="t-mark-rev t-since-concurrency-ts-2 t-mark-ts">(concurrency TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constraints.html" title="cpp/experimental/constraints">Concepts</a> <span class="t-mark-rev t-since-concepts-ts t-mark-ts">(concepts TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/experimental/ranges">Ranges</a> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reflect.html" title="cpp/experimental/reflect">Reflection</a> <span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="special_math.html" title="cpp/experimental/special functions">Mathematical special functions</a> <span class="t-mark-rev t-since-special-math-tr t-mark-ts">(special functions TR)</span></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="parallelism_2.html" title="cpp/experimental/parallelism 2">Extensions for parallelism v2</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Parallel exceptions </td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/exception_list&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/exception list (page does not exist)"><span class="t-lines"><span>exception_list</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Additional execution policies</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/vector_policy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/vector policy (page does not exist)"><span class="t-lines"><span>execution::vector_policy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/unsequenced_policy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/unsequenced policy (page does not exist)"><span class="t-lines"><span>execution::unsequenced_policy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/induction&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/induction (page does not exist)"><span class="t-lines"><span>induction</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reduction&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reduction (page does not exist)"><span class="t-lines"><span>reduction</span><span>reduction_plus</span><span>reduction_minus</span><span>reduction_multiplies</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5">                                        </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reduction&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reduction (page does not exist)"><span class="t-lines"><span>reduction_bit_and</span><span>reduction_bit_or</span><span>reduction_bit_xor</span><span>reduction_min</span><span>reduction_max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5">                                        </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/for_loop&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/for loop (page does not exist)"><span class="t-lines"><span>for_loop</span><span>for_loop_strided</span><span>for_loop_n</span><span>for_loop_n_strided</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/no_vec&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/no vec (page does not exist)"><span class="t-lines"><span>execution::no_vec</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ordered_update_t&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ordered update t (page does not exist)"><span class="t-lines"><span>execution::ordered_update_t</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Task blocks</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/task_block&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/task block (page does not exist)"><span class="t-lines"><span>task_block</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/task_cancelled_exception&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/task cancelled exception (page does not exist)"><span class="t-lines"><span>task_cancelled_exception</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/define_task_block&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/define task block (page does not exist)"><span class="t-lines"><span>define_task_block</span><span>define_task_block_restore_thread</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <strong class="selflink">Data-parallel vectors</strong></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"> Data-parallel vector library</strong><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Main classes </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/simd.html" title="cpp/experimental/simd/simd"><span class="t-lines"><span>simd</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/simd_mask.html" title="cpp/experimental/simd/simd mask"><span class="t-lines"><span>simd_mask</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> ABI tags </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/scalar.html" title="cpp/experimental/simd/scalar"><span class="t-lines"><span>simd_abi::scalar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/fixed_size.html" title="cpp/experimental/simd/fixed size"><span class="t-lines"><span>simd_abi::fixed_size</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/native.html" title="cpp/experimental/simd/native"><span class="t-lines"><span>simd_abi::native</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/compatible.html" title="cpp/experimental/simd/compatible"><span class="t-lines"><span>simd_abi::compatible</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/max_fixed_size.html" title="cpp/experimental/simd/max fixed size"><span class="t-lines"><span>simd_abi::max_fixed_size</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/deduce.html" title="cpp/experimental/simd/deduce"><span class="t-lines"><span>simd_abi::deduce</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Alignment tags </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/element_aligned.html" title="cpp/experimental/simd/element aligned"><span class="t-lines"><span>element_aligned_tag</span><span>element_aligned</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/vector_aligned.html" title="cpp/experimental/simd/vector aligned"><span class="t-lines"><span>vector_aligned_tag</span><span>vector_aligned</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/overaligned.html" title="cpp/experimental/simd/overaligned"><span class="t-lines"><span>overaligned_tag</span><span>overaligned</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Where expression </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/where.html" title="cpp/experimental/simd/where"><span class="t-lines"><span>where</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/where_expression.html" title="cpp/experimental/simd/where expression"><span class="t-lines"><span>where_expression</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/const_where_expression.html" title="cpp/experimental/simd/const where expression"><span class="t-lines"><span>const_where_expression</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/simd_cast.html" title="cpp/experimental/simd/simd cast"><span class="t-lines"><span>simd_cast</span><span>static_simd_cast</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/abi_cast.html" title="cpp/experimental/simd/abi cast"><span class="t-lines"><span>to_fixed_size</span><span>to_compatible</span><span>to_native</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/split.html" title="cpp/experimental/simd/split"><span class="t-lines"><span>split</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/concat.html" title="cpp/experimental/simd/concat"><span class="t-lines"><span>concat</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/min.html" title="cpp/experimental/simd/min"><span class="t-lines"><span>min</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/max.html" title="cpp/experimental/simd/max"><span class="t-lines"><span>max</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/minmax.html" title="cpp/experimental/simd/minmax"><span class="t-lines"><span>minmax</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/clamp.html" title="cpp/experimental/simd/clamp"><span class="t-lines"><span>clamp</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Reduction </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/hmin&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/hmin (page does not exist)"><span class="t-lines"><span>hmin</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/hmax&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/hmax (page does not exist)"><span class="t-lines"><span>hmax</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/reduce.html" title="cpp/experimental/simd/reduce"><span class="t-lines"><span>reduce</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Mask reduction </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/all_of&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/all of (page does not exist)"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span><span>some_of</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/popcount&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/popcount (page does not exist)"><span class="t-lines"><span>popcount</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/find_first_set&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/find first set (page does not exist)"><span class="t-lines"><span>find_first_set</span><span>find_last_set</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Traits </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/is_simd.html" title="cpp/experimental/simd/is simd"><span class="t-lines"><span>is_simd</span><span>is_simd_mask</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/is_abi_tag.html" title="cpp/experimental/simd/is abi tag"><span class="t-lines"><span>is_abi_tag</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/is_simd_flag_type.html" title="cpp/experimental/simd/is simd flag type"><span class="t-lines"><span>is_simd_flag_type</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/simd_size&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/simd size (page does not exist)"><span class="t-lines"><span>simd_size</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/memory_alignment&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/memory alignment (page does not exist)"><span class="t-lines"><span>memory_alignment</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="simd/rebind_simd.html" title="cpp/experimental/simd/rebind simd"><span class="t-lines"><span>rebind_simd</span><span>resize_simd</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Math functions </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code><a href="../header/experimental/simd.html" title="cpp/header/experimental/simd">&lt;experimental/simd&gt;</a></code> </div>
+</td></tr>
+</table>
+<h3><span class="mw-headline" id="Main_classes">Main classes</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/simd.html" title="cpp/experimental/simd/simd"> <span class="t-lines"><span>simd</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   data-parallel vector type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/simd_mask.html" title="cpp/experimental/simd/simd mask"> <span class="t-lines"><span>simd_mask</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   data-parallel type with the element type bool  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="ABI_tags">ABI tags</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std::experimental::simd_abi</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/scalar.html" title="cpp/experimental/simd/scalar"> <span class="t-lines"><span>scalar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type for storing a single element  <br> <span class="t-mark">(typedef)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/fixed_size.html" title="cpp/experimental/simd/fixed size"> <span class="t-lines"><span>fixed_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type for storing specified number of elements  <br> <span class="t-mark">(alias template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/compatible.html" title="cpp/experimental/simd/compatible"> <span class="t-lines"><span>compatible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type that ensures ABI compatibility  <br> <span class="t-mark">(alias template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/native.html" title="cpp/experimental/simd/native"> <span class="t-lines"><span>native</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type that is most efficient  <br> <span class="t-mark">(alias template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/max_fixed_size.html" title="cpp/experimental/simd/max fixed size"> <span class="t-lines"><span>max_fixed_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   the maximum number of elements guaranteed to be supported by fixed  <br> <span class="t-mark">(constant)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/deduce.html" title="cpp/experimental/simd/deduce"> <span class="t-lines"><span>deduce </span><span> deduce_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   obtains an ABI type for given element type and number of elements  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Alignment_tags">Alignment tags</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/element_aligned.html" title="cpp/experimental/simd/element aligned"> <span class="t-lines"><span>element_aligned_tag </span><span> element_aligned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type that indicates the alignment of the elements  <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/vector_aligned.html" title="cpp/experimental/simd/vector aligned"> <span class="t-lines"><span>vector_aligned_tag </span><span> vector_aligned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type that indicates the alignment of the vector type  <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/overaligned.html" title="cpp/experimental/simd/overaligned"> <span class="t-lines"><span>overaligned_tag </span><span> overaligned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   tag type that indicates the specified alignment  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Where_expression">Where expression</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/const_where_expression.html" title="cpp/experimental/simd/const where expression"> <span class="t-lines"><span>const_where_expression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   selected elements with non-mutating operations  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/where_expression.html" title="cpp/experimental/simd/where expression"> <span class="t-lines"><span>where_expression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   selected elements with mutating operations  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/where.html" title="cpp/experimental/simd/where"> <span class="t-lines"><span>where</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   produces const_where_expression and where_expression  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Casts">Casts</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/simd_cast.html" title="cpp/experimental/simd/simd cast"> <span class="t-lines"><span>simd_cast </span><span> static_simd_cast</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise static_cast  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/abi_cast.html" title="cpp/experimental/simd/abi cast"> <span class="t-lines"><span>to_fixed_size </span><span> to_compatible </span><span> to_native</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise ABI cast  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/split.html" title="cpp/experimental/simd/split"> <span class="t-lines"><span>split</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   splits single simd object to multiple ones  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/concat.html" title="cpp/experimental/simd/concat"> <span class="t-lines"><span>concat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   concatenates multiple simd objects to a single one  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Algorithms">Algorithms</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/min.html" title="cpp/experimental/simd/min"> <span class="t-lines"><span>min</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise min operation  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/max.html" title="cpp/experimental/simd/max"> <span class="t-lines"><span>max</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise max operation  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/minmax.html" title="cpp/experimental/simd/minmax"> <span class="t-lines"><span>minmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise minmax operation  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/clamp.html" title="cpp/experimental/simd/clamp"> <span class="t-lines"><span>clamp</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   element-wise clamp operation  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Reduction">Reduction</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/reduce.html" title="cpp/experimental/simd/reduce"> <span class="t-lines"><span>reduce</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   reduces the vector to a single element  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/hmin&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/hmin (page does not exist)"> <span class="t-lines"><span>hmin</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   returns the minimum element  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/hmax&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/hmax (page does not exist)"> <span class="t-lines"><span>hmax</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   returns the maximum element  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Mask_reduction">Mask reduction</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/all_of&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/all of (page does not exist)"> <span class="t-lines"><span>all_of </span><span> any_of </span><span> none_of </span><span> some_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   predicates on the number of true values  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/popcount&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/popcount (page does not exist)"> <span class="t-lines"><span>popcount</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   returns the number of true values  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/find_first_set&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/find first set (page does not exist)"> <span class="t-lines"><span>find_first_set </span><span> find_last_set</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   returns the position of the first or last true value  <br> <span class="t-mark">(function template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Traits">Traits</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/is_simd.html" title="cpp/experimental/simd/is simd"> <span class="t-lines"><span>is_simd </span><span> is_simd_mask</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <a href="simd/simd.html" title="cpp/experimental/simd/simd"><tt>simd</tt></a> or <a href="simd/simd_mask.html" title="cpp/experimental/simd/simd mask"><tt>simd_mask</tt></a> type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/is_abi_tag.html" title="cpp/experimental/simd/is abi tag"> <span class="t-lines"><span>is_abi_tag</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an ABI tag type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/is_simd_flag_type.html" title="cpp/experimental/simd/is simd flag type"> <span class="t-lines"><span>is_simd_flag_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a simd flag type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/simd_size&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/simd size (page does not exist)"> <span class="t-lines"><span>simd_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   obtains the number of elements of a given element type and ABI  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd/memory_alignment&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/simd/memory alignment (page does not exist)"> <span class="t-lines"><span>memory_alignment</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   obtains an appropriate alignment for vector_aligned  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="simd/rebind_simd.html" title="cpp/experimental/simd/rebind simd"> <span class="t-lines"><span>rebind_simd </span><span> resize_simd</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span></span></span></div></div>
+</td>
+<td>   change element type or the number of elements of <a href="simd/simd.html" title="cpp/experimental/simd/simd"><tt>simd</tt></a> or <a href="simd/simd_mask.html" title="cpp/experimental/simd/simd mask"><tt>simd_mask</tt></a>  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Math_functions">Math functions</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete </td></tr></table>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: no example </td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8142/1000000
+Preprocessor generated node count: 11899/1000000
+Post‐expand include size: 283102/2097152 bytes
+Template argument size: 58720/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:16752-0!*!0!!en!*!* and timestamp 20220410091757 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd&amp;oldid=111588">https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/simd&amp;oldid=111588</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/experimental/simd">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 July 2019, at 00:42.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 15,377 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.686 secs. -->
+	</body>
+<!-- Cached 20220410091757 -->
+</html>

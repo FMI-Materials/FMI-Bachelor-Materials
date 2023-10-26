@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Undefined behavior - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/behavior","wgTitle":"c/language/behavior","wgCurRevisionId":140017,"wgArticleId":15689,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/language/behavior","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_behavior skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Undefined behavior</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language"> C language</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">Basic concepts</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../keyword.html" title="c/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="statements.html" title="c/language/statements"> Statements</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html" title="c/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html" title="c/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="declarations.html" title="c/language/declarations"> Declarations</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functions.html" title="c/language/functions"> Functions</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Miscellaneous</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="c/language/history"> History of C</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental">Technical Specifications</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="basic_concepts.html" title="c/language/basic concepts"> Basic Concepts</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../comment.html" title="c/comment"> Comments</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ascii.html" title="c/language/ascii"> ASCII</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="translation_phases.html" title="c/language/translation phases"> Translation phases</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="punctuators.html" title="c/language/punctuators">Punctuation</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="identifier.html" title="c/language/identifier">Identifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scope.html" title="c/language/scope">Scope</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lifetime.html" title="c/language/lifetime">Lifetime</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="name_space.html" title="c/language/name space">Lookup and name spaces</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compatible_type.html" title="c/language/type">Type</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="arithmetic_types.html" title="c/language/arithmetic types">Arithmetic types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="object.html" title="c/language/object">Objects and alignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="main_function.html" title="c/language/main function">The main() function</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="as_if.html" title="c/language/as if">The as-if rule</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">Undefined behavior</strong></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_model.html" title="c/language/memory model">Memory model and data races</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>The C language standard precisely specifies the <a href="as_if.html" title="c/language/as if">observable behavior</a> of C language programs, except for the ones in the following categories:
+</p>
+<ul><li> <i>undefined behavior</i> - there are no restrictions on the behavior of the program. Examples of undefined behavior are memory accesses outside of array bounds, signed integer overflow, null pointer dereference, modification of the same scalar <a href="eval_order.html" title="c/language/eval order">more than once</a> in an expression without sequence points, access to an object through a pointer of a different type, etc. Compilers are not required to diagnose undefined behavior (although many simple situations are diagnosed), and the compiled program is not required to do anything meaningful.
+</li></ul>
+<ul><li> <i>unspecified behavior</i> - two or more behaviors are permitted and the implementation is not required to document the effects of each behavior. For example, <a href="eval_order.html" title="c/language/eval order">order of evaluation</a>, whether identical <a href="string_literal.html" title="c/language/string literal">string literals</a> are distinct, etc. Each unspecified behavior results in one of a set of valid results and may produce a different result when repeated in the same program.
+</li></ul>
+<ul><li> <i>implementation-defined behavior</i> - unspecified behavior where each implementation documents how the choice is made. For example, number of bits in a byte, or whether signed integer right shift is arithmetic or logical.
+</li></ul>
+<ul><li> <i>locale-specific behavior</i> - implementation-defined behavior that depends on the <a href="../locale/setlocale.html" title="c/locale/setlocale">currently chosen locale</a>. For example, whether <span class="t-lc"><a href="../string/byte/islower.html" title="c/string/byte/islower">islower</a></span> returns true for any character other than the 26 lowercase Latin letters.
+</li></ul>
+<p>(Note: <a href="conformance.html" title="c/language/conformance">Strictly conforming</a> programs do not depend on any unspecified, undefined, or implementation-defined behavior)
+</p><p>The compilers are required to issue diagnostic messages (either errors or warnings) for any programs that violates any C syntax rule or semantic constraint, even if its behavior is specified as undefined or implementation-defined or if the compiler provides a language extension that allows it to accept such program. Diagnostics for undefined behavior are not otherwise required.
+</p>
+<h3><span class="mw-headline" id="UB_and_optimization">UB and optimization</span></h3>
+<p>Because correct C programs are free of undefined behavior, compilers may produce unexpected results when a program that actually has UB is compiled with optimization enabled:
+</p><p>For example, 
+</p>
+<h4><span class="mw-headline" id="Signed_overflow">Signed overflow</span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> foo<span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">return</span> x<span class="sy2">+</span><span class="nu0">1</span> <span class="sy1">&gt;</span> x<span class="sy4">;</span> <span class="co1">// either true or UB due to signed overflow</span>
+<span class="br0">}</span></pre></div></div>
+<p>may be compiled as (<a rel="nofollow" class="external text" href="https://godbolt.org/z/D249FL">demo</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">foo<span class="sy4">:</span>
+        movl    $<span class="nu19">1</span>, <span class="sy2">%</span>eax
+        ret</pre></div></div>
+<h4><span class="mw-headline" id="Access_out_of_bounds">Access out of bounds</span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> table<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">int</span> exists_in_table<span class="br0">(</span><span class="kw4">int</span> v<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="co1">// return true in one of the first 4 iterations or UB due to out-of-bounds access</span>
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> i <span class="sy1">&lt;=</span> <span class="nu0">4</span><span class="sy4">;</span> i<span class="sy2">++</span><span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span>table<span class="br0">[</span>i<span class="br0">]</span> <span class="sy1">==</span> v<span class="br0">)</span> <span class="kw1">return</span> <span class="nu0">1</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>May be compiled as (<a rel="nofollow" class="external text" href="https://godbolt.org/z/qoD2uP">demo</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">exists_in_table<span class="sy4">:</span>
+        movl    $<span class="nu19">1</span>, <span class="sy2">%</span>eax
+        ret</pre></div></div>
+<h4><span class="mw-headline" id="Uninitialized_scalar">Uninitialized scalar</span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">_Bool p<span class="sy4">;</span> <span class="co1">// uninitialized local variable</span>
+<span class="kw1">if</span><span class="br0">(</span>p<span class="br0">)</span> <span class="co1">// UB access to uninitialized scalar</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"p is true"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw1">if</span><span class="br0">(</span><span class="sy3">!</span>p<span class="br0">)</span> <span class="co1">// UB access to uninitialized scalar</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"p is false"</span><span class="br0">)</span><span class="sy4">;</span></pre></div></div>
+<p>May produce the following output (observed with an older version of gcc):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">p is <span class="kw2">true</span>
+p is <span class="kw2">false</span></pre></div></div>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><a href="../types/size_t.html"><span class="kw100">size_t</span></a> f<span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../types/size_t.html"><span class="kw100">size_t</span></a> a<span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span>x<span class="br0">)</span> <span class="co1">// either x nonzero or UB</span>
+        a <span class="sy1">=</span> <span class="nu0">42</span><span class="sy4">;</span>
+    <span class="kw1">return</span> a<span class="sy4">;</span> 
+<span class="br0">}</span></pre></div></div>
+</div>
+<p>May be compiled as (<a rel="nofollow" class="external text" href="https://godbolt.org/z/u9lBlY">demo</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">f<span class="sy4">:</span>
+        mov     eax, <span class="nu0">42</span>
+        ret</pre></div></div>
+<h4><span class="mw-headline" id="Invalid_scalar">Invalid scalar</span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span> <span class="br0">{</span>
+  _Bool b <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+  <span class="kw4">unsigned</span> <span class="kw4">char</span><span class="sy2">*</span> p <span class="sy1">=</span><span class="br0">(</span><span class="kw4">unsigned</span> <span class="kw4">char</span><span class="sy2">*</span><span class="br0">)</span><span class="sy3">&amp;</span>b<span class="sy4">;</span>
+  <span class="sy2">*</span>p <span class="sy1">=</span> <span class="nu0">10</span><span class="sy4">;</span>
+  <span class="co1">// reading from b is now UB</span>
+  <span class="kw1">return</span> b <span class="sy1">==</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>May be compiled as (<a rel="nofollow" class="external text" href="https://gcc.godbolt.org/z/JGG6uI">demo</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">f<span class="br0">(</span><span class="br0">)</span><span class="sy4">:</span>
+        movl    $<span class="nu19">11</span>, <span class="sy2">%</span>eax
+        ret</pre></div></div>
+<h4><span class="mw-headline" id="Null_pointer_dereference">Null pointer dereference</span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> foo<span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span> p<span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> <span class="sy2">*</span>p<span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><span class="sy3">!</span>p<span class="br0">)</span> <span class="kw1">return</span> x<span class="sy4">;</span> <span class="co1">// Either UB above or this branch is never taken</span>
+    <span class="kw1">else</span> <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="kw4">int</span> bar<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> <a href="../types/NULL.html"><span class="kw103">NULL</span></a><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span>p<span class="sy4">;</span>       <span class="co1">// Unconditional UB</span>
+<span class="br0">}</span></pre></div></div>
+<p>may be compiled as (<a rel="nofollow" class="external text" href="https://godbolt.org/z/W6nz9j">foo with gcc, bar with clang</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">foo<span class="sy4">:</span>
+        xorl    <span class="sy2">%</span>eax, <span class="sy2">%</span>eax
+        ret
+bar<span class="sy4">:</span>
+        retq</pre></div></div>
+<h4><span class="mw-headline" id="Access_to_pointer_passed_to_realloc">Access to pointer passed to realloc</span></h4>
+<div class="t-example"><p>Choose clang to observe the output shown</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stdlib.h&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw4">int</span> <span class="sy2">*</span>p <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><a href="../memory/malloc.html"><span class="kw403">malloc</span></a><span class="br0">(</span><span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">int</span> <span class="sy2">*</span>q <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><a href="../memory/realloc.html"><span class="kw405">realloc</span></a><span class="br0">(</span>p, <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="sy2">*</span>p <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span> <span class="co1">// UB access to a pointer that was passed to realloc</span>
+    <span class="sy2">*</span>q <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>p <span class="sy1">==</span> q<span class="br0">)</span> <span class="co1">// UB access to a pointer that was passed to realloc</span>
+        <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"%d%d<span class="es1">\n</span>"</span>, <span class="sy2">*</span>p, <span class="sy2">*</span>q<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">12</pre></div></div> 
+</div>
+<h4><span class="mw-headline" id="Infinite_loop_without_side-effects">Infinite loop without side-effects</span></h4>
+<div class="t-example"><p>Choose clang to observe the output shown</p><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+ 
+<span class="kw4">int</span> fermat<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw4">const</span> <span class="kw4">int</span> MAX <span class="sy1">=</span> <span class="nu0">1000</span><span class="sy4">;</span>
+  <span class="kw4">int</span> a<span class="sy1">=</span><span class="nu0">1</span>,b<span class="sy1">=</span><span class="nu0">1</span>,c<span class="sy1">=</span><span class="nu0">1</span><span class="sy4">;</span>
+  <span class="co1">// Endless loop with no side effects is UB</span>
+  <span class="kw1">while</span> <span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="br0">(</span><span class="br0">(</span>a<span class="sy2">*</span>a<span class="sy2">*</span>a<span class="br0">)</span> <span class="sy1">==</span> <span class="br0">(</span><span class="br0">(</span>b<span class="sy2">*</span>b<span class="sy2">*</span>b<span class="br0">)</span><span class="sy2">+</span><span class="br0">(</span>c<span class="sy2">*</span>c<span class="sy2">*</span>c<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span> <span class="kw1">return</span> <span class="nu0">1</span><span class="sy4">;</span>
+    a<span class="sy2">++</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>a<span class="sy1">&gt;</span>MAX<span class="br0">)</span> <span class="br0">{</span> a<span class="sy1">=</span><span class="nu0">1</span><span class="sy4">;</span> b<span class="sy2">++</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw1">if</span> <span class="br0">(</span>b<span class="sy1">&gt;</span>MAX<span class="br0">)</span> <span class="br0">{</span> b<span class="sy1">=</span><span class="nu0">1</span><span class="sy4">;</span> c<span class="sy2">++</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw1">if</span> <span class="br0">(</span>c<span class="sy1">&gt;</span>MAX<span class="br0">)</span> <span class="br0">{</span> c<span class="sy1">=</span><span class="nu0">1</span><span class="sy4">;</span><span class="br0">}</span>
+  <span class="br0">}</span>
+  <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">if</span> <span class="br0">(</span>fermat<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"Fermat's Last Theorem has been disproved."</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">else</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span><span class="st0">"Fermat's Last Theorem has not been disproved."</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Fermat's Last Theorem has been disproved.</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 standard (ISO/IEC 9899:2018): 
+</li></ul>
+<dl><dd><ul><li> 3.4 Behavior (p: 3-4)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4 Conformance (p: 8)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 3.4 Behavior (p: 3-4)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4/2 Undefined behavior (p: 8)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 3.4 Behavior (p: 3-4)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 4/2 Undefined behavior (p: 7)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 standard (ISO/IEC 9899:1990): 
+</li></ul>
+<dl><dd><ul><li> 1.6 DEFINITIONS OF TERMS 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="External_links">External links</span></h3>
+<ul><li> <a rel="nofollow" class="external text" href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html">What Every C Programmer Should Know About Undefined Behavior #1/3</a>
+</li><li> <a rel="nofollow" class="external text" href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_14.html">What Every C Programmer Should Know About Undefined Behavior #2/3</a>
+</li><li> <a rel="nofollow" class="external text" href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know_21.html">What Every C Programmer Should Know About Undefined Behavior #3/3</a>
+</li><li> <a rel="nofollow" class="external text" href="http://blogs.msdn.com/b/oldnewthing/archive/2014/06/27/10537746.aspx">Undefined behavior can result in time travel (among other things, but time travel is the funkiest)</a>
+</li><li> <a rel="nofollow" class="external text" href="http://www.cs.utah.edu/~regehr/papers/overflow12.pdf">Understanding Integer Overflow in C/C++</a>
+</li><li> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20201108094235/https://kukuruku.co/post/undefined-behavior-and-fermats-last-theorem/">Undefined Behavior and Fermat’s Last Theorem</a>
+</li><li> <a rel="nofollow" class="external text" href="http://lwn.net/Articles/342330/">Fun with NULL pointers, part 1</a> (local exploit in Linux 2.6.30 caused by UB due to null pointer dereference)
+</li></ul>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 1212/1000000
+Preprocessor generated node count: 3840/1000000
+Post‐expand include size: 34370/2097152 bytes
+Template argument size: 6956/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:15689-0!*!0!!en!*!* and timestamp 20220605025947 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/language/behavior&amp;oldid=140017">https://en.cppreference.com/mwiki/index.php?title=c/language/behavior&amp;oldid=140017</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/language/behavior">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 2 June 2022, at 08:51.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 27,024 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.471 secs. -->
+	</body>
+<!-- Cached 20220605025947 -->
+</html>

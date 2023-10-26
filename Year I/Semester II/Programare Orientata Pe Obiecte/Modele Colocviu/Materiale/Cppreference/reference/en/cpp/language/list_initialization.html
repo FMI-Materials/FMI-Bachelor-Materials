@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>List-initialization (since C++11) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/list_initialization","wgTitle":"cpp/language/list initialization","wgCurRevisionId":140926,"wgArticleId":8868,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/list_initialization","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_list_initialization skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">List-initialization <span class="t-mark-rev t-since-cxx11">(since C++11)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> List initialization</strong> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="initialization.html" title="cpp/language/initialization"> Initialization</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initializer </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization">Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">List initialization</strong> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization">Reference initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_elision.html" title="cpp/language/copy elision">Copy elision</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html#Static_initialization" title="cpp/language/initialization"> Static initialization </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization">Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization">Constant initialization</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html#Dynamic_initialization" title="cpp/language/initialization"> Dynamic non-local initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html#Dynamic_initialization" title="cpp/language/initialization"> Ordered dynamic initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html#Dynamic_initialization" title="cpp/language/initialization">Unordered dynamic initialization</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class member initialization </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/initializer list" class="mw-redirect">Member initializer list</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="data_members.html#Member_initialization" title="cpp/language/data members">Default member initializer</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Initializes an object from <span class="t-spar">braced-init-list</span>.
+</p>
+<h3><span class="mw-headline" id="Syntax">Syntax</span></h3>
+<h4><span class="mw-headline" id="Direct-list-initialization">Direct-list-initialization</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">T object</span> <code><b>{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>};</b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">T</span> <code><b>{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>new</b></code> <span class="t-spar">T</span> <code><b>{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}</b></code>
+</td>
+<td> (3)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">Class</span> <code><b>{</b></code> <span class="t-spar">T member</span> <code><b>{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}; };</b></code>
+</td>
+<td> (4)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">Class</span><code><b>::</b></code><span class="t-spar">Class</span><code><b>() :</b></code> <span class="t-spar">member</span> <code><b>{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>} {...</b></code>
+</td>
+<td> (5)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<h4><span class="mw-headline" id="Copy-list-initialization">Copy-list-initialization</span></h4>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">T object</span> <code><b>= {</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>};</b></code>
+</td>
+<td> (6)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">function</span> <code><b>({</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>})</b></code>
+</td>
+<td> (7)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>return {</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>};</b></code>
+</td>
+<td> (8)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">object</span> <code><b>[{</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}]</b></code>
+</td>
+<td> (9)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">object</span> <code><b>= {</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}</b></code>
+</td>
+<td> (10)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">U</span> <code><b>({</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>})</b></code>
+</td>
+<td> (11)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">Class</span> <code><b>{</b></code> <span class="t-spar">T member</span> <code><b>= {</b></code> <span class="t-spar">arg1, arg2, ...</span> <code><b>}; };</b></code>
+</td>
+<td> (12)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p>List initialization is performed in the following situations:
+</p>
+<ul><li> direct-list-initialization (both explicit and non-explicit constructors are considered)
+</li></ul>
+<div class="t-li1"><span class="t-li">1)</span> initialization of a named variable with a <span class="t-spar">braced-init-list</span> (that is, a possibly empty brace-enclosed list of expressions or nested braced-init-lists)</div>
+<div class="t-li1"><span class="t-li">2)</span> initialization of an unnamed temporary with a <span class="t-spar">braced-init-list</span></div>
+<div class="t-li1"><span class="t-li">3)</span> initialization of an object with dynamic storage duration with a <a href="new.html" title="cpp/language/new">new-expression</a>, where the initializer is a <span class="t-spar">braced-init-list</span></div>
+<div class="t-li1"><span class="t-li">4)</span> in a non-static <a href="data_members.html#Member_initialization" title="cpp/language/data members">data member initializer</a> that does not use the equals sign</div>
+<div class="t-li1"><span class="t-li">5)</span> in a <a href="initializer_list.html" title="cpp/language/initializer list" class="mw-redirect">member initializer list</a> of a constructor if <span class="t-spar">braced-init-list</span> is used</div>
+<ul><li> copy-list-initialization (both explicit and non-explicit constructors are considered, but only non-explicit constructors may be called)
+</li></ul>
+<div class="t-li1"><span class="t-li">6)</span> initialization of a named variable with a <span class="t-spar">braced-init-list</span> after an equals sign</div>
+<div class="t-li1"><span class="t-li">7)</span> in a function call expression, with <span class="t-spar">braced-init-list</span> used as an argument and list-initialization initializes the function parameter</div>
+<div class="t-li1"><span class="t-li">8)</span> in a <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">return</span></span></span> statement with <span class="t-spar">braced-init-list</span> used as the return expression and list-initialization initializes the returned object</div>
+<div class="t-li1"><span class="t-li">9)</span> in a <a href="operator_member_access.html#Built-in_subscript_operator" title="cpp/language/operator member access">subscript expression</a> with a user-defined <code>operator[]</code>, where list-initialization initializes the parameter of the overloaded operator</div>
+<div class="t-li1"><span class="t-li">10)</span> in an <a href="operator_assignment.html" title="cpp/language/operator assignment">assignment expression</a>, where list-initialization initializes the parameter of the overloaded operator</div>
+<div class="t-li1"><span class="t-li">11)</span> <a href="explicit_cast.html" title="cpp/language/explicit cast">functional cast expression</a> or other constructor invocations, where <span class="t-spar">braced-init-list</span> is used in place of a constructor argument. Copy-list-initialization initializes the constructor's parameter (note; the type U in this example is not the type that's being list-initialized; U's constructor's parameter is)</div>
+<div class="t-li1"><span class="t-li">12)</span> in a non-static <a href="data_members.html#Member_initialization" title="cpp/language/data members">data member initializer</a> that uses the equals sign</div>
+<h3><span class="mw-headline" id="Explanation">Explanation</span></h3>
+<p>The effects of list-initialization of an object of type <code>T</code> are:
+</p>
+<ul><li> If <code>T</code> is an aggregate class and the <span class="t-spar">braced-init-list</span> has a single element of the same or derived type (possibly cv-qualified), the object is initialized from that element (by <a href="copy_initialization.html" title="cpp/language/copy initialization">copy-initialization</a> for copy-list-initialization, or by <a href="direct_initialization.html" title="cpp/language/direct initialization">direct-initialization</a> for direct-list-initialization).
+</li><li> Otherwise, if <code>T</code> is a character array and the <span class="t-spar">braced-init-list</span> has a single element that is an appropriately-typed string literal, the array is  <a href="aggregate_initialization.html#Character_arrays" title="cpp/language/aggregate initialization">initialized from the string literal as usual</a>.
+</li></ul>
+<ul><li> Otherwise, if <code>T</code> is an <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate type</a>, <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate initialization</a> is performed.
+</li></ul>
+<ul><li> Otherwise, if the <span class="t-spar">braced-init-list</span> is empty and <code>T</code> is a class type with a default constructor, <a href="value_initialization.html" title="cpp/language/value initialization">value-initialization</a> is performed.
+</li></ul>
+<ul><li> Otherwise, if <code>T</code> is a specialization of <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span>, the <code>T</code> object is direct-initialized or copy-initialized, depending on context, from <span class="t-rev-inl t-until-cxx17"><span>a prvalue of the same type initialized from</span> <span><span class="t-mark-rev t-until-cxx17">(until C++17)</span></span></span> the <span class="t-spar">braced-init-list</span>.
+</li></ul>
+<ul><li> Otherwise, the constructors of <code>T</code> are considered, in two phases:
+</li></ul>
+<dl><dd><ul><li> All constructors that take <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span> as the only argument, or as the first argument if the remaining arguments have default values, are examined, and matched by <a href="overload_resolution.html" title="cpp/language/overload resolution">overload resolution</a> against a single argument of type <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span>
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> If the previous stage does not produce a match, all constructors of <code>T</code> participate in <a href="overload_resolution.html#Implicit_conversion_sequence_in_list-initialization" title="cpp/language/overload resolution">overload resolution</a> against the set of arguments that consists of the elements of the <span class="t-spar">braced-init-list</span>, with the restriction that only non-narrowing conversions are allowed. If this stage produces an explicit constructor as the best match for a copy-list-initialization, compilation fails (note, in simple copy-initialization, explicit constructors are not considered at all).
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<ul><li> Otherwise, if：
+<ul><li> <code>T</code> is an <a href="enum_class.html" title="cpp/language/enum">enumeration type</a> that with fixed underlying type <code>U</code> (which is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">int</span></span></span> if the enumeration is scoped and its underlying type is not manually specified), and
+</li><li> the initialization is direct-list-initialization, and
+</li><li> the <span class="t-spar">braced-init-list</span> has only one initializer <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> that is implicitly convertible to <code>U</code>, and
+</li><li> the conversion from <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> to <code>U</code> is non-narrowing,
+</li></ul>
+</li></ul>
+<dl><dd> then the enumeration is initialized with the result of converting <span class="t-c"><span class="mw-geshi cpp source-cpp">v</span></span> to <code>U</code>.
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<ul><li> Otherwise (if <code>T</code> is not a class type), if the <span class="t-spar">braced-init-list</span> has only one element and either <code>T</code> is not a reference type or is a reference type whose referenced type is same as or is a base class of the type of the element, <code>T</code> is <a href="direct_initialization.html" title="cpp/language/direct initialization">direct-initialized</a> (in direct-list-initialization) or <a href="copy_initialization.html" title="cpp/language/copy initialization">copy-initialized</a> (in copy-list-initialization), except that narrowing conversions are not allowed.
+</li></ul>
+<ul><li> Otherwise, if <code>T</code> is a reference type that is not compatible with the type of the element:
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<dl><dd><ul><li> a prvalue temporary of the type referenced by <code>T</code> is copy-list-initialized, and the reference is bound to that temporary (this fails if the reference is a non-const lvalue reference).
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-until-cxx17">(until C++17)</span></td></tr>
+<tr class="t-rev t-since-cxx17"><td>
+<dl><dd><ul><li> a prvalue is generated. The prvalue initializes its result object by copy-list-initialization. The prvalue is then used to direct-initialize the reference (this fails if the reference is a non-const lvalue reference). The type of the temporary is the type referenced by <code>T</code><span class="t-rev-inl t-since-cxx20"><span>, unless <code>T</code> is “reference to array of unknown bound of <code>U</code>”, in which case the type of the temporary is the type of <span class="t-c"><span class="mw-geshi cpp source-cpp">x</span></span> in the declaration <span class="t-c"><span class="mw-geshi cpp source-cpp">U x<span class="br0">[</span><span class="br0">]</span> H</span></span>, where <code>H</code> is the initializer list</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>.
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<ul><li> Otherwise, if the <span class="t-spar">braced-init-list</span> has no elements, <code>T</code> is <a href="value_initialization.html" title="cpp/language/value initialization">value-initialized</a>.
+</li></ul>
+<h3><span class="mw-headline" id="Narrowing_conversions">Narrowing conversions</span></h3>
+<p>List-initialization limits the allowed <a href="implicit_cast.html" title="cpp/language/implicit conversion">implicit conversions</a> by prohibiting the following:
+</p>
+<ul><li> conversion from a floating-point type to an integer type
+</li></ul>
+<ul><li> conversion from a <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">long</span> <span class="kw4">double</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">double</span></span></span> or to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span></span> and conversion from <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">double</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">float</span></span></span>, except where the source is a <a href="constant_expression.html" title="cpp/language/constant expression">constant expression</a> and overflow does not occur
+</li></ul>
+<ul><li> conversion from an integer type to a floating-point type, except where the source is a constant expression whose value can be stored exactly in the target type
+</li></ul>
+<ul><li> conversion from integer or unscoped enumeration type to integer type that cannot represent all values of the original, except where source is a constant expression whose value can be stored exactly in the target type
+</li></ul>
+<ul><li> conversion from a pointer type or pointer-to-member type to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>
+</li></ul>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>Every initializer clause is <a href="eval_order.html" title="cpp/language/eval order">sequenced before</a> any initializer clause that follows it in the <span class="t-spar">braced-init-list</span>. This is in contrast with the arguments of a <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other">function call expression</a>, which are <span class="t-rev-inl t-until-cxx17"><span><a href="eval_order.html" title="cpp/language/eval order">unsequenced</a></span> <span><span class="t-mark-rev t-until-cxx17">(until C++17)</span></span></span><span class="t-rev-inl t-since-cxx17"><span><a href="eval_order.html" title="cpp/language/eval order">indeterminately sequenced</a></span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span>.
+</p><p>A <span class="t-spar">braced-init-list</span> is not an expression and therefore has no type, e.g. <span class="t-c"><span class="mw-geshi cpp source-cpp">decltype<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>,<span class="nu0">2</span><span class="br0">}</span><span class="br0">)</span></span></span> is ill-formed. Having no type implies that template type deduction cannot deduce a type that matches a <span class="t-spar">braced-init-list</span>, so given the declaration <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span></span></span> the expression <span class="t-lc">f({1,2,3})</span> is ill-formed. However, the template parameter can otherwise be deduced, as is the case for <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> v<span class="br0">(</span><a href="../iterator/istream_iterator.html"><span class="kw670">std::<span class="me2">istream_iterator</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">(</span><a href="../io/cin.html"><span class="kw1760">std::<span class="me2">cin</span></span></a><span class="br0">)</span>, <span class="br0">{</span><span class="br0">}</span><span class="br0">)</span></span></span>, where the iterator type is deduced by the first argument but also used in the second parameter position. A special exception is made for <a href="template_argument_deduction.html#Other_contexts" title="cpp/language/template argument deduction">type deduction using the keyword <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span></span> </a>, which deduces any <span class="t-spar">braced-init-list</span> as <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span> in copy-list-initialization.
+</p><p>Also because a <span class="t-spar">braced-init-list</span> has no type, <a href="overload_resolution.html#Implicit_conversion_sequence_in_list-initialization" title="cpp/language/overload resolution">special rules for overload resolution</a> apply when it is used as an argument to an overloaded function call.
+</p><p>Aggregates copy/move initialize directly from single-element <span class="t-spar">braced-init-list</span> of the same type, but non-aggregates consider initializer_list constructors first:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// aggregate</span>
+ 
+<span class="kw1">struct</span> Q     <span class="co1">// non-aggregate</span>
+<span class="br0">{</span>
+    Q<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    Q<span class="br0">(</span>Q <span class="kw4">const</span><span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    Q<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>Q<span class="sy1">&gt;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    X x<span class="sy4">;</span>
+    X x2 <span class="sy1">=</span> X<span class="br0">{</span>x<span class="br0">}</span><span class="sy4">;</span> <span class="co1">// copy-constructor (not aggregate initialization)</span>
+ 
+    Q q<span class="sy4">;</span>
+    Q q2 <span class="sy1">=</span> Q<span class="br0">{</span>q<span class="br0">}</span><span class="sy4">;</span> <span class="co1">// initializer-list constructor (not copy constructor)</span>
+<span class="br0">}</span></pre></div></div>
+<p>Some compilers (e.g., gcc 10) only consider conversion from a pointer or a pointer-to-member to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> narrowing in C++20 mode.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;vector&gt;</span>
+<span class="co2">#include &lt;map&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw1">struct</span> Foo
+<span class="br0">{</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> mem <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// list-initialization of a non-static member</span>
+    <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> mem2<span class="sy4">;</span>
+ 
+    Foo<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> mem2<span class="br0">{</span><span class="sy2">-</span><span class="nu0">1</span>, <span class="sy2">-</span><span class="nu0">2</span>, <span class="sy2">-</span><span class="nu0">3</span><span class="br0">}</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// list-initialization of a member in constructor</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>, <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span> f<span class="br0">(</span><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>, <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span> p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> <span class="br0">{</span>p.<span class="me1">second</span>, p.<span class="me1">first</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// list-initialization in return statement</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> n0<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// value-initialization (to zero)</span>
+    <span class="kw4">int</span> n1<span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// direct-list-initialization</span>
+ 
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s1<span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span>, <span class="st0">'c'</span>, <span class="st0">'d'</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// initializer-list constructor call</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s2<span class="br0">{</span>s1, <span class="nu0">2</span>, <span class="nu0">2</span><span class="br0">}</span><span class="sy4">;</span>           <span class="co1">// regular constructor call</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s3<span class="br0">{</span><span class="nu12">0x61</span>, <span class="st0">'a'</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// initializer-list ctor is preferred to (int, char)</span>
+ 
+    <span class="kw4">int</span> n2 <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// copy-list-initialization</span>
+    <span class="kw4">double</span> d <span class="sy1">=</span> <span class="kw4">double</span><span class="br0">{</span><span class="nu16">1.2</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// list-initialization of a prvalue, then copy-init</span>
+    <span class="kw4">auto</span> s4 <span class="sy1">=</span> <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="br0">{</span><span class="st0">"HelloWorld"</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// same as above, no temporary created since C++17</span>
+ 
+    <a href="../container/map.html"><span class="kw1284">std::<span class="me2">map</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span>, <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span> m <span class="sy1">=</span> <span class="co1">// nested list-initialization</span>
+    <span class="br0">{</span>
+        <span class="br0">{</span><span class="nu0">1</span>, <span class="st0">"a"</span><span class="br0">}</span>,
+        <span class="br0">{</span><span class="nu0">2</span>, <span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span>, <span class="st0">'c'</span><span class="br0">}</span><span class="br0">}</span>,
+        <span class="br0">{</span><span class="nu0">3</span>, s1<span class="br0">}</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> f<span class="br0">(</span><span class="br0">{</span><span class="st0">"hello"</span>, <span class="st0">"world"</span><span class="br0">}</span><span class="br0">)</span>.<span class="me1">first</span> <span class="co1">// list-initialization in function call</span>
+              <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> <span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span>ar<span class="br0">)</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// binds a lvalue reference to a temporary array</span>
+    <span class="kw4">int</span><span class="sy3">&amp;&amp;</span> r1 <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// binds a rvalue reference to a temporary int</span>
+<span class="co1">//  int&amp; r2 = {2}; // error: cannot bind rvalue to a non-const lvalue ref</span>
+ 
+<span class="co1">//  int bad{1.0}; // error: narrowing conversion</span>
+    <span class="kw4">unsigned</span> <span class="kw4">char</span> uc1<span class="br0">{</span><span class="nu0">10</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// okay</span>
+<span class="co1">//  unsigned char uc2{-1}; // error: narrowing conversion</span>
+ 
+    Foo f<span class="sy4">;</span>
+ 
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> n0 <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> n1 <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> n2 <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>
+              <span class="sy1">&lt;&lt;</span> s1 <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> s2 <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> s3 <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="kw1">for</span><span class="br0">(</span><span class="kw4">auto</span> p<span class="sy4">:</span> m<span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> p.<span class="me1">first</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">second</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="kw1">for</span><span class="br0">(</span><span class="kw4">auto</span> n<span class="sy4">:</span> f.<span class="me1">mem</span><span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span>
+    <span class="kw1">for</span><span class="br0">(</span><span class="kw4">auto</span> n<span class="sy4">:</span> f.<span class="me1">mem2</span><span class="br0">)</span>
+        <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> n <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">world
+0 1 1
+abcd cd aa
+1 a
+2 abc
+3 abcd
+1 2 3 -1 -2 -3</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="Defect_reports">Defect reports</span></h3>
+<p>The following behavior-changing defect reports were applied retroactively to previously published C++ standards.
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> DR
+</th>
+<th> Applied to
+</th>
+<th> Behavior as published
+</th>
+<th> Correct behavior
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1288.html">CWG 1288</a>
+</td>
+<td> C++11
+</td>
+<td> list-initializing a reference with a single-element<br><span class="t-spar">braced-init-list</span> always bound the reference to a temporary
+</td>
+<td> bind to that<br>element if valid
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1324.html">CWG 1324</a>
+</td>
+<td> C++11
+</td>
+<td> initialization considered first for initialization from <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">{</span><span class="br0">}</span></span></span>
+</td>
+<td> aggregate initialization<br>considered first
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1467.html">CWG 1467</a>
+</td>
+<td> C++11
+</td>
+<td> same-type initialization of aggregates and character<br>arrays was prohibited; initializer-list constructors had<br>priority over copy constructors for single-element lists
+</td>
+<td> same-type initialization<br>allowed; single-element<br>lists initialize directly
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1494.html">CWG 1494</a>
+</td>
+<td> C++11
+</td>
+<td> when list-initializing a reference with an element of an<br>incompatible type, it was unspecified whether the temporary<br>created is direct-list-initialized or copy-list-initialized
+</td>
+<td> it depends on the<br>kind of initialization<br>for the reference
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2137.html">CWG 2137</a>
+</td>
+<td> C++11
+</td>
+<td> initializer-list constructors lost to copy<br>constructors when list-initializing X from <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">{</span>X<span class="br0">}</span></span></span>
+</td>
+<td> non-aggregates consider<br>initializer-lists first
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2267.html">CWG 2267</a>
+</td>
+<td> C++11
+</td>
+<td> the resolution of <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1494.html">CWG issue 1494</a> made clear<br>that temporaries could be direct-list-initialized
+</td>
+<td> they are copy-list-initialized<br>when list-initializing references
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2374.html">CWG 2374</a>
+</td>
+<td> C++17
+</td>
+<td> direct-list-initialization of an enum allowed too many source types
+</td>
+<td> restricted
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://wg21.link/P1957R2">P1957R2</a>
+</td>
+<td> C++11
+</td>
+<td> conversion from a pointer/pointer-to<br>-member to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span> was not narrowing
+</td>
+<td> made narrowing
+</td></tr></table>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<ul><li> <a href="initializer_list.html" title="cpp/language/constructor">constructor</a>
+</li><li> <a href="converting_constructor.html" title="cpp/language/converting constructor">converting constructor</a>
+</li><li> <a href="as_operator.html" title="cpp/language/copy assignment">copy assignment</a>
+</li><li> <a href="copy_constructor.html" title="cpp/language/copy constructor">copy constructor</a>
+</li><li> <a href="copy_elision.html" title="cpp/language/copy elision">copy elision</a>
+</li><li> <a href="default_constructor.html" title="cpp/language/default constructor">default constructor</a>
+</li><li> <a href="explicit.html" title="cpp/language/explicit"><code>explicit</code></a>
+</li><li> <a href="initialization.html" title="cpp/language/initialization">initialization</a>
+<ul><li> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate initialization</a>
+</li><li> <a href="constant_initialization.html" title="cpp/language/constant initialization">constant initialization</a>
+</li><li> <a href="copy_initialization.html" title="cpp/language/copy initialization">copy initialization</a>
+</li><li> <a href="direct_initialization.html" title="cpp/language/direct initialization">direct initialization</a>
+</li><li> <a href="reference_initialization.html" title="cpp/language/reference initialization">reference initialization</a>
+</li><li> <a href="value_initialization.html" title="cpp/language/value initialization">value initialization</a>
+</li><li> <a href="zero_initialization.html" title="cpp/language/zero initialization">zero initialization</a>
+</li></ul>
+</li><li> <a href="move_operator.html" title="cpp/language/move assignment">move assignment</a>
+</li><li> <a href="move_constructor.html" title="cpp/language/move constructor">move constructor</a>
+</li><li> <a href="new.html" title="cpp/language/new"><code>new</code></a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 5178/1000000
+Preprocessor generated node count: 10784/1000000
+Post‐expand include size: 153772/2097152 bytes
+Template argument size: 32110/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:8868-0!*!0!!en!*!* and timestamp 20220715110229 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/list_initialization&amp;oldid=140926">https://en.cppreference.com/mwiki/index.php?title=cpp/language/list_initialization&amp;oldid=140926</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/list_initialization">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 15 July 2022, at 04:02.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 1,045,161 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.064 secs. -->
+	</body>
+<!-- Cached 20220715110511 -->
+</html>

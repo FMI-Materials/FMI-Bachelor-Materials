@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>std::experimental::ranges::find_end - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/experimental/ranges/algorithm/find_end","wgTitle":"cpp/experimental/ranges/algorithm/find end","wgCurRevisionId":106780,"wgArticleId":17933,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo no example"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/experimental/ranges/algorithm/find_end","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_experimental_ranges_algorithm_find_end skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">std::experimental::ranges::</span>find_end</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../../experimental.html" title="cpp/experimental">experimental</a>‎ | <a href="../../ranges.html" title="cpp/experimental/ranges">ranges</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../../../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../experimental.html" title="cpp/experimental"> Technical specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../../fs.html" title="cpp/experimental/fs">Filesystem library</a> <span class="t-mark-rev t-since-fs-ts t-mark-ts">(filesystem TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../memory.html" title="cpp/experimental/lib extensions">Library fundamentals</a> <span class="t-mark-rev t-since-libfund-ts t-mark-ts">(library fundamentals TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../lib_extensions_2.html" title="cpp/experimental/lib extensions 2">Library fundamentals 2</a> <span class="t-mark-rev t-since-libfund-ts-2 t-mark-ts">(library fundamentals TS v2)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../lib_extensions_3.html" title="cpp/experimental/lib extensions 3">Library fundamentals 3</a> <span class="t-mark-rev t-since-libfund-ts-3 t-mark-ts">(library fundamentals TS v3)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../parallelism.html" title="cpp/experimental/parallelism">Extensions for parallelism</a> <span class="t-mark-rev t-since-parallelism-ts t-mark-ts">(parallelism TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../parallelism_2.html" title="cpp/experimental/parallelism 2">Extensions for parallelism 2</a> <span class="t-mark-rev t-since-parallelism-ts-2 t-mark-ts">(parallelism TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../concurrency.html" title="cpp/experimental/concurrency">Extensions for concurrency</a> <span class="t-mark-rev t-since-concurrency-ts t-mark-ts">(concurrency TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/concurrency_2&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/concurrency 2 (page does not exist)">Extensions for concurrency 2</a> <span class="t-mark-rev t-since-concurrency-ts-2 t-mark-ts">(concurrency TS v2)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../constraints.html" title="cpp/experimental/constraints">Concepts</a> <span class="t-mark-rev t-since-concepts-ts t-mark-ts">(concepts TS)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../ranges.html" title="cpp/experimental/ranges">Ranges</a> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../reflect.html" title="cpp/experimental/reflect">Reflection</a> <span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../special_math.html" title="cpp/experimental/special functions">Mathematical special functions</a> <span class="t-mark-rev t-since-special-math-tr t-mark-ts">(special functions TR)</span></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../ranges.html" title="cpp/experimental/ranges"> Ranges</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../ranges.html#Concepts" title="cpp/experimental/ranges"><span class="t-lines"><span>Concepts</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../ranges.html#General_utilities" title="cpp/experimental/ranges"><span class="t-lines"><span>General utilities</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../ranges.html#Iterators" title="cpp/experimental/ranges"><span class="t-lines"><span>Iterators</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../ranges.html#Ranges" title="cpp/experimental/ranges"><span class="t-lines"><span>Ranges</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../../ranges.html#Algorithms" title="cpp/experimental/ranges"><span class="t-lines"><span>Algorithms</span></span></a></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../ranges.html#Algorithms" title="cpp/experimental/ranges">Algorithms library</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Non-modifying sequence operations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="all_any_none_of.html" title="cpp/experimental/ranges/algorithm/all any none of"><span class="t-lines"><span>all_of</span><span>any_of</span><span>none_of</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="count.html" title="cpp/experimental/ranges/algorithm/count"><span class="t-lines"><span>count</span><span>count_if</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find.html" title="cpp/experimental/ranges/algorithm/find"><span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>find_end</span></span></strong></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="find_first_of.html" title="cpp/experimental/ranges/algorithm/find first of"><span class="t-lines"><span>find_first_of</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="adjacent_find.html" title="cpp/experimental/ranges/algorithm/adjacent find"><span class="t-lines"><span>adjacent_find</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="search.html" title="cpp/experimental/ranges/algorithm/search"><span class="t-lines"><span>search</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="search_n.html" title="cpp/experimental/ranges/algorithm/search n"><span class="t-lines"><span>search_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="mismatch.html" title="cpp/experimental/ranges/algorithm/mismatch"><span class="t-lines"><span>mismatch</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5">                              </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="equal.html" title="cpp/experimental/ranges/algorithm/equal"><span class="t-lines"><span>equal</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="for_each.html" title="cpp/experimental/ranges/algorithm/for each"><span class="t-lines"><span>for_each</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="lexicographical_compare.html" title="cpp/experimental/ranges/algorithm/lexicographical compare"><span class="t-lines"><span>lexicographical_compare</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Modifying sequence operations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="copy.html" title="cpp/experimental/ranges/algorithm/copy"><span class="t-lines"><span>copy</span><span>copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/copy_n&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/copy n (page does not exist)"><span class="t-lines"><span>copy_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/copy_backward&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/copy backward (page does not exist)"><span class="t-lines"><span>copy_backward</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/move&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/move (page does not exist)"><span class="t-lines"><span>move</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/move_backward&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/move backward (page does not exist)"><span class="t-lines"><span>move_backward</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5">                              </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/fill&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/fill (page does not exist)"><span class="t-lines"><span>fill</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/fill_n&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/fill n (page does not exist)"><span class="t-lines"><span>fill_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/generate&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/generate (page does not exist)"><span class="t-lines"><span>generate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/generate_n&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/generate n (page does not exist)"><span class="t-lines"><span>generate_n</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/swap_ranges&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/swap ranges (page does not exist)"><span class="t-lines"><span>swap_ranges</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/shuffle&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/shuffle (page does not exist)"><span class="t-lines"><span>shuffle</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/transform&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/transform (page does not exist)"><span class="t-lines"><span>transform</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/remove&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/remove (page does not exist)"><span class="t-lines"><span>remove</span><span>remove_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/replace&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/replace (page does not exist)"><span class="t-lines"><span>replace</span><span>replace_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/reverse&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/reverse (page does not exist)"><span class="t-lines"><span>reverse</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/rotate&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/rotate (page does not exist)"><span class="t-lines"><span>rotate</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/unique&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/unique (page does not exist)"><span class="t-lines"><span>unique</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/remove_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/remove copy (page does not exist)"><span class="t-lines"><span>remove_copy</span><span>remove_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/replace_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/replace copy (page does not exist)"><span class="t-lines"><span>replace_copy</span><span>replace_copy_if</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/reverse_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/reverse copy (page does not exist)"><span class="t-lines"><span>reverse_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/rotate_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/rotate copy (page does not exist)"><span class="t-lines"><span>rotate_copy</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/unique_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/unique copy (page does not exist)"><span class="t-lines"><span>unique_copy</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Partitioning operations</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/is_partitioned&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/is partitioned (page does not exist)"><span class="t-lines"><span>is_partitioned</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/partition_point&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/partition point (page does not exist)"><span class="t-lines"><span>partition_point</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/partition&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/partition (page does not exist)"><span class="t-lines"><span>partition</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/partition_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/partition copy (page does not exist)"><span class="t-lines"><span>partition_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/stable_partition&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/stable partition (page does not exist)"><span class="t-lines"><span>stable_partition</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Sorting operations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/is_sorted&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/is sorted (page does not exist)"><span class="t-lines"><span>is_sorted</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/is_sorted_until&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/is sorted until (page does not exist)"><span class="t-lines"><span>is_sorted_until</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sort.html" title="cpp/experimental/ranges/algorithm/sort"><span class="t-lines"><span>sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/stable_sort&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/stable sort (page does not exist)"><span class="t-lines"><span>stable_sort</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/partial_sort&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/partial sort (page does not exist)"><span class="t-lines"><span>partial_sort</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/partial_sort_copy&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/partial sort copy (page does not exist)"><span class="t-lines"><span>partial_sort_copy</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/nth_element&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/nth element (page does not exist)"><span class="t-lines"><span>nth_element</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Binary search operations</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/lower_bound&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/lower bound (page does not exist)"><span class="t-lines"><span>lower_bound</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/upper_bound&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/upper bound (page does not exist)"><span class="t-lines"><span>upper_bound</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/binary_search&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/binary search (page does not exist)"><span class="t-lines"><span>binary_search</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/equal_range&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/equal range (page does not exist)"><span class="t-lines"><span>equal_range</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Set operations (on sorted ranges) </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/merge&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/merge (page does not exist)"><span class="t-lines"><span>merge</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/inplace_merge&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/inplace merge (page does not exist)"><span class="t-lines"><span>inplace_merge</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/includes&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/includes (page does not exist)"><span class="t-lines"><span>includes</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5">                              </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/set_difference&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/set difference (page does not exist)"><span class="t-lines"><span>set_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/set_intersection&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/set intersection (page does not exist)"><span class="t-lines"><span>set_intersection</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/set_symmetric_difference&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/set symmetric difference (page does not exist)"><span class="t-lines"><span>set_symmetric_difference</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/set_union&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/set union (page does not exist)"><span class="t-lines"><span>set_union</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Heap operations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/is_heap&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/is heap (page does not exist)"><span class="t-lines"><span>is_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/is_heap_until&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/is heap until (page does not exist)"><span class="t-lines"><span>is_heap_until</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/make_heap&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/make heap (page does not exist)"><span class="t-lines"><span>make_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/sort_heap&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/sort heap (page does not exist)"><span class="t-lines"><span>sort_heap</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/push_heap&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/push heap (page does not exist)"><span class="t-lines"><span>push_heap</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/pop_heap&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/pop heap (page does not exist)"><span class="t-lines"><span>pop_heap</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Minimum/maximum operations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/max&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/max (page does not exist)"><span class="t-lines"><span>max</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/max_element&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/max element (page does not exist)"><span class="t-lines"><span>max_element</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/min&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/min (page does not exist)"><span class="t-lines"><span>min</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/min_element&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/min element (page does not exist)"><span class="t-lines"><span>min_element</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/minmax&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/minmax (page does not exist)"><span class="t-lines"><span>minmax</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/minmax_element&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/minmax element (page does not exist)"><span class="t-lines"><span>minmax_element</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Permutations </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="is_permutation.html" title="cpp/experimental/ranges/algorithm/is permutation"><span class="t-lines"><span>is_permutation</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/next_permutation&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/next permutation (page does not exist)"><span class="t-lines"><span>next_permutation</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/prev_permutation&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/prev permutation (page does not exist)"><span class="t-lines"><span>prev_permutation</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code><a href="../../../header/experimental/ranges/algorithm.html" title="cpp/header/experimental/ranges/algorithm">&lt;experimental/ranges/algorithm&gt;</a></code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-ranges">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> ForwardIterator I1, Sentinel<span class="sy1">&lt;</span>I1<span class="sy1">&gt;</span> S1, ForwardIterator I2, Sentinel<span class="sy1">&lt;</span>I2<span class="sy1">&gt;</span> S2,<br>
+<p>          <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../functional/identity.html"><span class="kw2842">ranges::<span class="me2">identity</span></span></a>,<br>
+          IndirectRelation<span class="sy1">&lt;</span>I2, <a href="../iterator/projected.html"><span class="kw2681">projected</span></a><span class="sy1">&lt;</span>I1, Proj<span class="sy1">&gt;&gt;</span> Pred <span class="sy1">=</span> <a href="../functional/equal_to.html"><span class="kw2844">ranges::<span class="me2">equal_to</span></span></a><span class="sy1">&lt;&gt;</span> <span class="sy1">&gt;</span><br>
+I1 find_end<span class="br0">(</span>I1 first1, S1 last1, I2 first2, S2 last2,<br>
+</p>
+            Pred pred <span class="sy1">=</span> Pred<span class="br0">{</span><span class="br0">}</span>, Proj proj <span class="sy1">=</span> Proj<span class="br0">{</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span> </td>
+</tr>
+<tr class="t-dcl t-since-ranges">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> ForwardRange R1, ForwardRange R2, <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../functional/identity.html"><span class="kw2842">ranges::<span class="me2">identity</span></span></a>,<br>
+<p>          IndirectRelation<span class="sy1">&lt;</span><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/iterator_t"><span class="kw2893">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R2<span class="sy1">&gt;</span>,<br>
+                           <a href="../iterator/projected.html"><span class="kw2681">projected</span></a><span class="sy1">&lt;</span><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/iterator_t"><span class="kw2893">ranges::<span class="me2">iterator_t</span></span></a><span class="sy1">&lt;</span>R1<span class="sy1">&gt;</span>, Proj<span class="sy1">&gt;&gt;</span> Pred <span class="sy1">=</span> <a href="../functional/equal_to.html"><span class="kw2844">ranges::<span class="me2">equal_to</span></span></a><span class="sy1">&lt;&gt;</span> <span class="sy1">&gt;</span><br>
+<a href="../iterator/dangling.html"><span class="kw2857">ranges::<span class="me2">safe_iterator_t</span></span></a><span class="sy1">&lt;</span>R1<span class="sy1">&gt;</span> find_end<span class="br0">(</span>Rng1<span class="sy3">&amp;&amp;</span> rng1, Rng2<span class="sy3">&amp;&amp;</span> rng2, <br>
+</p>
+                                     Pred pred <span class="sy1">=</span> Pred<span class="br0">{</span><span class="br0">}</span>, Proj proj <span class="sy1">=</span> Proj<span class="br0">{</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-ranges-ts t-mark-ts">(ranges TS)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="t-li1"><span class="t-li">1)</span> Searches for the last occurrence of the sequence <code>[first2, last2)</code> in the range <code>[first1, last1)</code> (after projection with <span class="t-c"><span class="mw-geshi cpp source-cpp">proj</span></span>). </div>
+<div class="t-li1"><span class="t-li">2)</span> Same as <span class="t-v">(1)</span>, but uses <code>r1</code> as the first source range and <code>r2</code> as the second source range, as if using <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2885">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>r1<span class="br0">)</span></span></span> as <code>first1</code>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/end"><span class="kw2887">ranges::<span class="me2">end</span></span></a><span class="br0">(</span>r1<span class="br0">)</span></span></span> as <code>last1</code>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/begin"><span class="kw2885">ranges::<span class="me2">begin</span></span></a><span class="br0">(</span>r2<span class="br0">)</span></span></span> as <code>first2</code>, and <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../../../../../http:/en.cppreference.com/w/cpp/ranges-ranges-placeholder/end"><span class="kw2887">ranges::<span class="me2">end</span></span></a><span class="br0">(</span>r2<span class="br0">)</span></span></span> as <code>last2</code>.</div>
+<p>Notwithstanding the declarations depicted above, the actual number and order of template parameters for algorithm declarations is unspecified. Thus, if explicit template arguments are used when calling an algorithm, the program is probably non-portable.
+</p>
+<h3><span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  first1, last1
+</td>
+<td> -
+</td>
+<td>  the range of elements to examine
+</td></tr>
+<tr class="t-par">
+<td>  r1
+</td>
+<td> -
+</td>
+<td>  the range of elements to examine
+</td></tr>
+<tr class="t-par">
+<td>  first2, last2
+</td>
+<td> -
+</td>
+<td>  the range of elements to search for
+</td></tr>
+<tr class="t-par">
+<td>  r2
+</td>
+<td> -
+</td>
+<td>  the range of elements to search for
+</td></tr>
+<tr class="t-par">
+<td>  pred
+</td>
+<td> -
+</td>
+<td>  predicate to compare the elements
+</td></tr>
+<tr class="t-par">
+<td>  proj
+</td>
+<td> -
+</td>
+<td>  projection to apply to the elements in the first range
+</td></tr></table>
+<h3><span class="mw-headline" id="Return_value">Return value</span></h3>
+<p>Iterator to the beginning of last occurrence of the sequence <code>[first2, last2)</code> in range <code>[first1, last1)</code> (after projection with <span class="t-c"><span class="mw-geshi cpp source-cpp">proj</span></span>).
+</p><p>If <code>[first2, last2)</code> is empty or if no such sequence is found, an iterator that compares equal to <code>last1</code> is returned.
+</p>
+<h3><span class="mw-headline" id="Complexity">Complexity</span></h3>
+<p>At most <code>S*(N-S+1)</code> applications of the predicate and projection, where <span class="t-c"><span class="mw-geshi cpp source-cpp">S <span class="sy1">=</span> last2 <span class="sy2">-</span> first2</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">N <span class="sy1">=</span> last1 <span class="sy2">-</span> first1</span></span>.
+</p>
+<h3><span class="mw-headline" id="Notes"> Notes </span></h3>
+<p>The projection is only applied to the range <code>[first1, last1)</code>.
+</p>
+<h3><span class="mw-headline" id="Possible_implementation">Possible implementation</span></h3>
+<table class="eq-fun-cpp-table">
+
+
+<tr>
+<td>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span> ForwardIterator I1, Sentinel<span class="sy1">&lt;</span>I1<span class="sy1">&gt;</span> S1, ForwardIterator I2, Sentinel<span class="sy1">&lt;</span>I2<span class="sy1">&gt;</span> S2,
+          <span class="kw1">class</span> Proj <span class="sy1">=</span> <a href="../functional/identity.html"><span class="kw2842">ranges::<span class="me2">identity</span></span></a>,
+          IndirectRelation<span class="sy1">&lt;</span>I2, <a href="../iterator/projected.html"><span class="kw2681">projected</span></a><span class="sy1">&lt;</span>I1, Proj<span class="sy1">&gt;&gt;</span> Pred <span class="sy1">=</span> <a href="../functional/equal_to.html"><span class="kw2844">ranges::<span class="me2">equal_to</span></span></a><span class="sy1">&lt;&gt;</span> <span class="sy1">&gt;</span>
+I1 find_end<span class="br0">(</span>I1 first1, S1 last1, I2 first2, S2 last2,
+            Pred pred <span class="sy1">=</span> Pred<span class="br0">{</span><span class="br0">}</span>, Proj proj <span class="sy1">=</span> Proj<span class="br0">{</span><span class="br0">}</span><span class="br0">)</span>
+<span class="br0">{</span>
+    I1 result <span class="sy1">=</span> <a href="../../../iterator/ranges/next.html"><span class="kw3146">ranges::<span class="me2">next</span></span></a><span class="br0">(</span>first1, last1<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>first2 <span class="sy1">==</span> last2<span class="br0">)</span>
+        <span class="kw1">return</span> result<span class="sy4">;</span>
+    <span class="kw1">while</span> <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span> <span class="br0">{</span>
+        I1 new_result <span class="sy1">=</span> <a href="../../../algorithm/ranges/search.html"><span class="kw3058">ranges::<span class="me2">search</span></span></a><span class="br0">(</span>first1, last1, first2, last2, pred, proj<span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">if</span> <span class="br0">(</span>new_result <span class="sy1">==</span> last1<span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw1">break</span><span class="sy4">;</span>
+        <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+            result <span class="sy1">=</span> new_result<span class="sy4">;</span>
+            first1 <span class="sy1">=</span> result<span class="sy4">;</span>
+            <span class="sy2">++</span>first1<span class="sy4">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> result<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+</td></tr></table>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: no example </td></tr></table>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../../algorithm/find_end.html" title="cpp/algorithm/find end"> <span class="t-lines"><span>find_end</span></span></a></div></div>
+</td>
+<td>   finds the last sequence of elements in a certain range  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="search.html" title="cpp/experimental/ranges/algorithm/search"> <span class="t-lines"><span>search</span></span></a></div></div>
+</td>
+<td>   searches for a range of elements  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/includes&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/ranges/algorithm/includes (page does not exist)"> <span class="t-lines"><span>includes</span></span></a></div></div>
+</td>
+<td>   returns true if one set is a subset of another  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="adjacent_find.html" title="cpp/experimental/ranges/algorithm/adjacent find"> <span class="t-lines"><span>adjacent_find</span></span></a></div></div>
+</td>
+<td>   finds the first two adjacent items that are equal (or satisfy a given predicate)  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="find.html" title="cpp/experimental/ranges/algorithm/find"> <span class="t-lines"><span>find</span><span>find_if</span><span>find_if_not</span></span></a></div></div>
+</td>
+<td>   finds the first element satisfying specific criteria <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="find_first_of.html" title="cpp/experimental/ranges/algorithm/find first of"> <span class="t-lines"><span>find_first_of</span></span></a></div></div>
+</td>
+<td>   searches for any one of a set of elements  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="search_n.html" title="cpp/experimental/ranges/algorithm/search n"> <span class="t-lines"><span>search_n</span></span></a></div></div>
+</td>
+<td>   searches for a number consecutive copies of an element in a range  <br> <span class="t-mark">(function template)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6986/1000000
+Preprocessor generated node count: 12640/1000000
+Post‐expand include size: 211350/2097152 bytes
+Template argument size: 38315/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:17933-0!*!0!!en!*!* and timestamp 20220410115841 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/find_end&amp;oldid=106780">https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ranges/algorithm/find_end&amp;oldid=106780</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/experimental/ranges/algorithm/find_end">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 31 October 2018, at 16:15.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 3,638 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 1.222 secs. -->
+	</body>
+<!-- Cached 20220410115841 -->
+</html>

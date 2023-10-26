@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Standard library header &lt;filesystem&gt;Â (C++17) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/header/filesystem","wgTitle":"cpp/header/filesystem","wgCurRevisionId":140999,"wgArticleId":15780,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/header/filesystem","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_header_filesystem skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">Standard library header</span> &lt;filesystem&gt; <span class="t-mark-rev t-since-cxx17">(C++17)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../header.html" title="cpp/header">header</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../header.html" title="cpp/header"> Standard Library headers </a><div class="t-navbar-menu"><div>Note: a slash '/' in a revision mark means that the header was deprecated and/or removed.
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Language Support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csignal.html" title="cpp/header/csignal"><tt>&lt;csignal&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csetjmp.html" title="cpp/header/csetjmp"><tt>&lt;csetjmp&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concepts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Diagnostics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stdexcept.html" title="cpp/header/stdexcept"><tt>&lt;stdexcept&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cassert.html" title="cpp/header/cassert"><tt>&lt;cassert&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> General utilities</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="typeindex.html" title="cpp/header/typeindex"><tt>&lt;typeindex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ctime.html" title="cpp/header/ctime"><tt>&lt;ctime&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Strings</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cctype.html" title="cpp/header/cctype"><tt>&lt;cctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cwctype.html" title="cpp/header/cwctype"><tt>&lt;cwctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cuchar.html" title="cpp/header/cuchar"><tt>&lt;cuchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Localization</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="clocale.html" title="cpp/header/clocale"><tt>&lt;clocale&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a> <span class="t-mark">(C++11/17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Containers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iterators</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Numerics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="valarray.html" title="cpp/header/valarray"><tt>&lt;valarray&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfenv.html" title="cpp/header/cfenv"><tt>&lt;cfenv&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Input/Output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="iosfwd.html" title="cpp/header/iosfwd"><tt>&lt;iosfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="streambuf.html" title="cpp/header/streambuf"><tt>&lt;streambuf&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iostream.html" title="cpp/header/iostream"><tt>&lt;iostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdio.html" title="cpp/header/cstdio"><tt>&lt;cstdio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="strstream.html" title="cpp/header/strstream"><tt>&lt;strstream&gt;</tt></a> <span class="t-mark">(C++98/)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Regular expressions</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="regex.html" title="cpp/header/regex"><tt>&lt;regex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Filesystem support</td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"><tt>&lt;filesystem&gt;</tt></strong> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Thread support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="condition_variable.html" title="cpp/header/condition variable"><tt>&lt;condition_variable&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="future.html" title="cpp/header/future"><tt>&lt;future&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> C compatibility</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ccomplex.html" title="cpp/header/ccomplex"><tt>&lt;ccomplex&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ctgmath.html" title="cpp/header/ctgmath"><tt>&lt;ctgmath&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>This header is part of the <a href="../filesystem.html" title="cpp/filesystem">filesystem support</a> library.
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Includes">Includes</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="compare.html" title="cpp/header/compare"> <span class="t-lines"><span>&lt;compare&gt;</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>  <a href="../language/operator_comparison.html#Three-way_comparison" title="cpp/language/operator comparison">Three-way comparison operator</a> support </td></tr>
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Classes">Classes</span></h3>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std::filesystem</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/path.html" title="cpp/filesystem/path"> <span class="t-lines"><span>path</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   represents a path  <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/filesystem_error.html" title="cpp/filesystem/filesystem error"> <span class="t-lines"><span>filesystem_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   an exception thrown on file system errors <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/directory_entry.html" title="cpp/filesystem/directory entry"> <span class="t-lines"><span>directory_entry</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   a directory entry <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/directory_iterator.html" title="cpp/filesystem/directory iterator"> <span class="t-lines"><span>directory_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   an iterator to the contents of the directory <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/recursive_directory_iterator.html" title="cpp/filesystem/recursive directory iterator"> <span class="t-lines"><span>recursive_directory_iterator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   an iterator to the contents of a directory and its subdirectories <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/file_status.html" title="cpp/filesystem/file status"> <span class="t-lines"><span>file_status</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   represents file type and permissions <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/space_info.html" title="cpp/filesystem/space info"> <span class="t-lines"><span>space_info</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   information about free and available space on the filesystem <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/file_type.html" title="cpp/filesystem/file type"> <span class="t-lines"><span>file_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   the type of a file <br> <span class="t-mark">(enum)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/perms.html" title="cpp/filesystem/perms"> <span class="t-lines"><span>perms</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   identifies file system permissions <br> <span class="t-mark">(enum)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/perm_options.html" title="cpp/filesystem/perm options"> <span class="t-lines"><span>perm_options</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   specifies semantics of permissions operations <br> <span class="t-mark">(enum)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/copy_options.html" title="cpp/filesystem/copy options"> <span class="t-lines"><span>copy_options</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   specifies semantics of copy operations <br> <span class="t-mark">(enum)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/directory_options.html" title="cpp/filesystem/directory options"> <span class="t-lines"><span>directory_options</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   options for iterating directory contents <br> <span class="t-mark">(enum)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/file_time_type.html" title="cpp/filesystem/file time type"> <span class="t-lines"><span>file_time_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   represents file time values <br> <span class="t-mark">(typedef)</span> </td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/path/hash.html" title="cpp/filesystem/path/hash"> <span class="t-lines"><span>std::hash<span class="t-dsc-small">&lt;std::filesystem::path&gt;</span></span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   hash support for <span class="t-lc"><a href="../filesystem/path.html" title="cpp/filesystem/path">std::filesystem::path</a></span>  <br> <span class="t-mark">(class template specialization)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Forward_declarations">  Forward declarations </span></h5>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code><a href="functional.html" title="cpp/header/functional">&lt;functional&gt;</a></code> </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/hash.html" title="cpp/utility/hash"> <span class="t-lines"><span>hash</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   hash function object  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Functions">Functions</span></h3>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std::filesystem</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/path/u8path.html" title="cpp/filesystem/path/u8path"> <span class="t-lines"><span>u8path</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span><span class="t-mark-rev t-deprecated-cxx20">(deprecated in C++20)</span></span></span></div></div>
+</td>
+<td>   creates a <code>path</code> from a UTF-8 encoded source  <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/absolute.html" title="cpp/filesystem/absolute"> <span class="t-lines"><span>absolute</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>  composes an absolute path <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/canonical.html" title="cpp/filesystem/canonical"> <span class="t-lines"><span>canonical</span><span>weakly_canonical</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   composes a canonical path <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/relative.html" title="cpp/filesystem/relative"> <span class="t-lines"><span>relative</span><span>proximate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   composes a relative path <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/copy.html" title="cpp/filesystem/copy"> <span class="t-lines"><span>copy</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   copies files or directories <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/copy_file.html" title="cpp/filesystem/copy file"> <span class="t-lines"><span>copy_file</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   copies file contents <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/copy_symlink.html" title="cpp/filesystem/copy symlink"> <span class="t-lines"><span>copy_symlink</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   copies a symbolic link <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/create_directory.html" title="cpp/filesystem/create directory"> <span class="t-lines"><span>create_directory</span><span>create_directories</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   creates new directory <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/create_hard_link.html" title="cpp/filesystem/create hard link"> <span class="t-lines"><span>create_hard_link</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   creates a hard link <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/create_symlink.html" title="cpp/filesystem/create symlink"> <span class="t-lines"><span>create_symlink</span><span>create_directory_symlink</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   creates a symbolic link <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/current_path.html" title="cpp/filesystem/current path"> <span class="t-lines"><span>current_path</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   returns or sets the current working directory <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/exists.html" title="cpp/filesystem/exists"> <span class="t-lines"><span>exists</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether path refers to existing file system object <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/equivalent.html" title="cpp/filesystem/equivalent"> <span class="t-lines"><span>equivalent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether two paths refer to the same file system object <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/file_size.html" title="cpp/filesystem/file size"> <span class="t-lines"><span>file_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   returns the size of a file <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/hard_link_count.html" title="cpp/filesystem/hard link count"> <span class="t-lines"><span>hard_link_count</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   returns the number of hard links referring to the specific file <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/last_write_time.html" title="cpp/filesystem/last write time"> <span class="t-lines"><span>last_write_time</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   gets or sets the time of the last data modification <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/permissions.html" title="cpp/filesystem/permissions"> <span class="t-lines"><span>permissions</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   modifies file access permissions <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/read_symlink.html" title="cpp/filesystem/read symlink"> <span class="t-lines"><span>read_symlink</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   obtains the target of a symbolic link <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/remove.html" title="cpp/filesystem/remove"> <span class="t-lines"><span>remove</span><span>remove_all</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   removes a file or empty directory<br>removes a file or directory and all its contents, recursively <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/rename.html" title="cpp/filesystem/rename"> <span class="t-lines"><span>rename</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   moves or renames a file or directory <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/resize_file.html" title="cpp/filesystem/resize file"> <span class="t-lines"><span>resize_file</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   changes the size of a regular file by truncation or zero-fill <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/space.html" title="cpp/filesystem/space"> <span class="t-lines"><span>space</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   determines available free space on the file system <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/status.html" title="cpp/filesystem/status"> <span class="t-lines"><span>status</span><span>symlink_status</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>  determines file attributes<br>determines file attributes, checking the symlink target <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/temp_directory_path.html" title="cpp/filesystem/temp directory path"> <span class="t-lines"><span>temp_directory_path</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   returns a directory suitable for temporary files <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="File_types">  File types </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_block_file.html" title="cpp/filesystem/is block file"> <span class="t-lines"><span>is_block_file</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the given path refers to block device <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_character_file.html" title="cpp/filesystem/is character file"> <span class="t-lines"><span>is_character_file</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the given path refers to a character device <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_directory.html" title="cpp/filesystem/is directory"> <span class="t-lines"><span>is_directory</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the given path refers to a directory <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_empty.html" title="cpp/filesystem/is empty"> <span class="t-lines"><span>is_empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the given path refers to an empty file or directory <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_fifo.html" title="cpp/filesystem/is fifo"> <span class="t-lines"><span>is_fifo</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the given path refers to a named pipe <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_other.html" title="cpp/filesystem/is other"> <span class="t-lines"><span>is_other</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the argument refers to an <i>other</i> file <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_regular_file.html" title="cpp/filesystem/is regular file"> <span class="t-lines"><span>is_regular_file</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the argument refers to a regular file <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_socket.html" title="cpp/filesystem/is socket"> <span class="t-lines"><span>is_socket</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the argument refers to a named IPC socket <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/is_symlink.html" title="cpp/filesystem/is symlink"> <span class="t-lines"><span>is_symlink</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether the argument refers to a symbolic link <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../filesystem/status_known.html" title="cpp/filesystem/status known"> <span class="t-lines"><span>status_known</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks whether file status is known <br> <span class="t-mark">(function)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Synopsis">Synopsis</span></h3>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;compare&gt;</span>
+ 
+<span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="co1">// paths</span>
+  <span class="kw1">class</span> path<span class="sy4">;</span>
+ 
+  <span class="co1">// path non-member functions</span>
+  <span class="kw4">void</span> swap<span class="br0">(</span>path<span class="sy3">&amp;</span> lhs, path<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  size_t hash_value<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="co1">// filesystem errors</span>
+  <span class="kw1">class</span> filesystem_error<span class="sy4">;</span>
+ 
+  <span class="co1">// directory entries</span>
+  <span class="kw1">class</span> directory_entry<span class="sy4">;</span>
+ 
+  <span class="co1">// directory iterators</span>
+  <span class="kw1">class</span> directory_iterator<span class="sy4">;</span>
+ 
+  <span class="co1">// range access for directory iterators</span>
+  directory_iterator begin<span class="br0">(</span>directory_iterator iter<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  directory_iterator end<span class="br0">(</span>directory_iterator<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="co1">// recursive directory iterators</span>
+  <span class="kw1">class</span> recursive_directory_iterator<span class="sy4">;</span>
+ 
+  <span class="co1">// range access for recursive directory iterators</span>
+  recursive_directory_iterator begin<span class="br0">(</span>recursive_directory_iterator iter<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  recursive_directory_iterator end<span class="br0">(</span>recursive_directory_iterator<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="co1">// file status</span>
+  <span class="kw1">class</span> file_status<span class="sy4">;</span>
+ 
+  <span class="kw1">struct</span> space_info <span class="br0">{</span>
+    uintmax_t capacity<span class="sy4">;</span>
+    uintmax_t free<span class="sy4">;</span>
+    uintmax_t available<span class="sy4">;</span>
+ 
+    <span class="kw1">friend</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> space_info<span class="sy3">&amp;</span>, <span class="kw4">const</span> space_info<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+ 
+  <span class="co1">// enumerations</span>
+  <span class="kw2">enum</span> <span class="kw1">class</span> file_type<span class="sy4">;</span>
+  <span class="kw2">enum</span> <span class="kw1">class</span> perms<span class="sy4">;</span>
+  <span class="kw2">enum</span> <span class="kw1">class</span> perm_options<span class="sy4">;</span>
+  <span class="kw2">enum</span> <span class="kw1">class</span> copy_options<span class="sy4">;</span>
+  <span class="kw2">enum</span> <span class="kw1">class</span> directory_options<span class="sy4">;</span>
+ 
+  <span class="kw1">using</span> file_time_type <span class="sy1">=</span> chrono<span class="sy4">::</span><span class="me2">time_point</span><span class="sy1">&lt;</span>chrono<span class="sy4">::</span><span class="me2">file_clock</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// filesystem operations</span>
+  path absolute<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  path absolute<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  path canonical<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  path canonical<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> copy<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> copy<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> copy<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, copy_options options<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> copy<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, copy_options options,
+            error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> copy_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> copy_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> copy_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, copy_options option<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> copy_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, copy_options option,
+                 error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> copy_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> existing_symlink, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> copy_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> existing_symlink, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink,
+                    error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> create_directories<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> create_directories<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> create_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> create_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> create_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> attributes<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> create_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> attributes,
+                        error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> create_directory_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> create_directory_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink,
+                                error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> create_hard_link<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_hard_link<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> create_hard_link<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_hard_link,
+                        error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> create_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> create_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> to, <span class="kw4">const</span> path<span class="sy3">&amp;</span> new_symlink,
+                      error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  path current_path<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+  path current_path<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> current_path<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> current_path<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> equivalent<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p1, <span class="kw4">const</span> path<span class="sy3">&amp;</span> p2<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> equivalent<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p1, <span class="kw4">const</span> path<span class="sy3">&amp;</span> p2, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> exists<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> exists<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> exists<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  uintmax_t file_size<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  uintmax_t file_size<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  uintmax_t hard_link_count<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  uintmax_t hard_link_count<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_block_file<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_block_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_block_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_character_file<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_character_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_character_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_directory<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_directory<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_empty<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_empty<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_fifo<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_fifo<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_fifo<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_other<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_other<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_other<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_regular_file<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_regular_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_regular_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_socket<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_socket<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_socket<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> is_symlink<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> is_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  file_time_type last_write_time<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  file_time_type last_write_time<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">void</span> last_write_time<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, file_time_type new_time<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> last_write_time<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, file_time_type new_time,
+                       error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> permissions<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, perms prms, perm_options opts<span class="sy1">=</span>perm_options<span class="sy4">::</span><span class="me2">replace</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> permissions<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, perms prms, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw4">void</span> permissions<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, perms prms, perm_options opts, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  path proximate<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+  path proximate<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> base <span class="sy1">=</span> current_path<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+  path proximate<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> base, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  path read_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  path read_symlink<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  path relative<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+  path relative<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> base <span class="sy1">=</span> current_path<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+  path relative<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, <span class="kw4">const</span> path<span class="sy3">&amp;</span> base, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> remove<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> remove<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  uintmax_t remove_all<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  uintmax_t remove_all<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> rename<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> rename<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> from, <span class="kw4">const</span> path<span class="sy3">&amp;</span> to, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> resize_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, uintmax_t size<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">void</span> resize_file<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, uintmax_t size, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  space_info space<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  space_info space<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  file_status status<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  file_status status<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="kw4">bool</span> status_known<span class="br0">(</span>file_status s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  file_status symlink_status<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  file_status symlink_status<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  path temp_directory_path<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+  path temp_directory_path<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+  path weakly_canonical<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  path weakly_canonical<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// hash support</span>
+<span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> hash<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;&gt;</span> <span class="kw1">struct</span> hash<span class="sy1">&lt;</span>filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">ranges</span> <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;&gt;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> enable_borrowed_range<span class="sy1">&lt;</span>filesystem<span class="sy4">::</span><span class="me2">directory_iterator</span><span class="sy1">&gt;</span> <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;&gt;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span>
+    enable_borrowed_range<span class="sy1">&lt;</span>filesystem<span class="sy4">::</span><span class="me2">recursive_directory_iterator</span><span class="sy1">&gt;</span> <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;&gt;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> enable_view<span class="sy1">&lt;</span>filesystem<span class="sy4">::</span><span class="me2">directory_iterator</span><span class="sy1">&gt;</span> <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;&gt;</span>
+  <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> enable_view<span class="sy1">&lt;</span>filesystem<span class="sy4">::</span><span class="me2">recursive_directory_iterator</span><span class="sy1">&gt;</span> <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// deprecated</span>
+<span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+    path u8path<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIterator<span class="sy1">&gt;</span>
+    path u8path<span class="br0">(</span>InputIt first, InputIt last<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::path">Class <span class="t-lc"><a href="../filesystem/path.html" title="cpp/filesystem/path">std::filesystem::path</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> path <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">using</span> value_type  <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>
+    <span class="kw1">using</span> string_type <span class="sy1">=</span> basic_string<span class="sy1">&lt;</span>value_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+    <span class="kw4">static</span> <span class="kw4">constexpr</span> value_type preferred_separator <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>
+ 
+    <span class="co1">// enumeration format</span>
+    <span class="kw2">enum</span> format<span class="sy4">;</span>
+ 
+    <span class="co1">// constructors and destructor</span>
+    path<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    path<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="br0">(</span>path<span class="sy3">&amp;&amp;</span> p<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    path<span class="br0">(</span>string_type<span class="sy3">&amp;&amp;</span> source, format fmt <span class="sy1">=</span> auto_format<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source, format fmt <span class="sy1">=</span> auto_format<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+      path<span class="br0">(</span>InputIt first, InputIt last, format fmt <span class="sy1">=</span> auto_format<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, format fmt <span class="sy1">=</span> auto_format<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+      path<span class="br0">(</span>InputIt first, InputIt last, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, format fmt <span class="sy1">=</span> auto_format<span class="br0">)</span><span class="sy4">;</span>
+    ~path<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// assignments</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>path<span class="sy3">&amp;&amp;</span> p<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>string_type<span class="sy3">&amp;&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> assign<span class="br0">(</span>string_type<span class="sy3">&amp;&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> assign<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> assign<span class="br0">(</span>InputIt first, InputIt last<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// appends</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">/</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> operator<span class="sy2">/</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> append<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> source<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> append<span class="br0">(</span>InputIt first, InputIt last<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// concatenation</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> x<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> string_type<span class="sy3">&amp;</span> x<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span>basic_string_view<span class="sy1">&lt;</span>value_type<span class="sy1">&gt;</span> x<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> value_type<span class="sy2">*</span> x<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span>value_type x<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> x<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ECharT<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> operator<span class="sy2">+</span><span class="sy1">=</span><span class="br0">(</span>ECharT x<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Source<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> concat<span class="br0">(</span><span class="kw4">const</span> Source<span class="sy3">&amp;</span> x<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> InputIt<span class="sy1">&gt;</span>
+      path<span class="sy3">&amp;</span> concat<span class="br0">(</span>InputIt first, InputIt last<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// modifiers</span>
+    <span class="kw4">void</span>  clear<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> make_preferred<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> remove_filename<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> replace_filename<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> replacement<span class="br0">)</span><span class="sy4">;</span>
+    path<span class="sy3">&amp;</span> replace_extension<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> replacement <span class="sy1">=</span> path<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span>  swap<span class="br0">(</span>path<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="co1">// non-member operators</span>
+    <span class="kw1">friend</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> path<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw1">friend</span> strong_ordering operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> path<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw1">friend</span> path operator<span class="sy2">/</span> <span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> path<span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// native format observers</span>
+    <span class="kw4">const</span> string_type<span class="sy3">&amp;</span> native<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">const</span> value_type<span class="sy2">*</span>  c_str<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    operator string_type<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ECharT, <span class="kw1">class</span> Traits <span class="sy1">=</span> char_traits<span class="sy1">&lt;</span>ECharT<span class="sy1">&gt;</span>,
+             <span class="kw1">class</span> Allocator <span class="sy1">=</span> allocator<span class="sy1">&lt;</span>ECharT<span class="sy1">&gt;&gt;</span>
+      basic_string<span class="sy1">&lt;</span>ECharT, Traits, Allocator<span class="sy1">&gt;</span>
+        string<span class="br0">(</span><span class="kw4">const</span> Allocator<span class="sy3">&amp;</span> a <span class="sy1">=</span> Allocator<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>    string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1235">std::<span class="me2">wstring</span></span></a>   wstring<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw3266">std::<span class="me2">u8string</span></span></a>  u8string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1237">std::<span class="me2">u16string</span></span></a> u16string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1239">std::<span class="me2">u32string</span></span></a> u32string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// generic format observers</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> ECharT, <span class="kw1">class</span> Traits <span class="sy1">=</span> char_traits<span class="sy1">&lt;</span>ECharT<span class="sy1">&gt;</span>,
+             <span class="kw1">class</span> Allocator <span class="sy1">=</span> allocator<span class="sy1">&lt;</span>ECharT<span class="sy1">&gt;&gt;</span>
+      basic_string<span class="sy1">&lt;</span>ECharT, Traits, Allocator<span class="sy1">&gt;</span>
+        generic_string<span class="br0">(</span><span class="kw4">const</span> Allocator<span class="sy3">&amp;</span> a <span class="sy1">=</span> Allocator<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>    generic_string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1235">std::<span class="me2">wstring</span></span></a>   generic_wstring<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw3266">std::<span class="me2">u8string</span></span></a>  generic_u8string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1237">std::<span class="me2">u16string</span></span></a> generic_u16string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1239">std::<span class="me2">u32string</span></span></a> generic_u32string<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// compare</span>
+    <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> string_type<span class="sy3">&amp;</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">int</span> compare<span class="br0">(</span>basic_string_view<span class="sy1">&lt;</span>value_type<span class="sy1">&gt;</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">int</span> compare<span class="br0">(</span><span class="kw4">const</span> value_type<span class="sy2">*</span> s<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// decomposition</span>
+    path root_name<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path root_directory<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path root_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path relative_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path parent_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path filename<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path stem<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path extension<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// query</span>
+    <span class="br0">[</span><span class="br0">[</span>nodiscard<span class="br0">]</span><span class="br0">]</span> <span class="kw4">bool</span> empty<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_root_name<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_root_directory<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_root_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_relative_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_parent_path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_filename<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_stem<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> has_extension<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_absolute<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_relative<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// generation</span>
+    path lexically_normal<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path lexically_relative<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> base<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    path lexically_proximate<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> base<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// iterators</span>
+    <span class="kw1">class</span> iterator<span class="sy4">;</span>
+    <span class="kw1">using</span> const_iterator <span class="sy1">=</span> iterator<span class="sy4">;</span>
+ 
+    iterator begin<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    iterator end<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// path inserter and extractor</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+      <span class="kw1">friend</span> basic_ostream<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>
+        operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span>basic_ostream<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> os, <span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> CharT, <span class="kw1">class</span> Traits<span class="sy1">&gt;</span>
+      <span class="kw1">friend</span> basic_istream<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>
+        operator<span class="sy1">&gt;&gt;</span><span class="br0">(</span>basic_istream<span class="sy1">&lt;</span>CharT, Traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> is, path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::filesystem_error">Class <span class="t-lc"><a href="../filesystem/filesystem_error.html" title="cpp/filesystem/filesystem error">std::filesystem::filesystem_error</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> filesystem_error <span class="sy4">:</span> <span class="kw1">public</span> system_error <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    filesystem_error<span class="br0">(</span><span class="kw4">const</span> string<span class="sy3">&amp;</span> what_arg, error_code ec<span class="br0">)</span><span class="sy4">;</span>
+    filesystem_error<span class="br0">(</span><span class="kw4">const</span> string<span class="sy3">&amp;</span> what_arg,
+                     <span class="kw4">const</span> path<span class="sy3">&amp;</span> p1, error_code ec<span class="br0">)</span><span class="sy4">;</span>
+    filesystem_error<span class="br0">(</span><span class="kw4">const</span> string<span class="sy3">&amp;</span> what_arg,
+                     <span class="kw4">const</span> path<span class="sy3">&amp;</span> p1, <span class="kw4">const</span> path<span class="sy3">&amp;</span> p2, error_code ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> path<span class="sy3">&amp;</span> path1<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">const</span> path<span class="sy3">&amp;</span> path2<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> what<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span> override<span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::directory_entry">Class <span class="t-lc"><a href="../filesystem/directory_entry.html" title="cpp/filesystem/directory entry">std::filesystem::directory_entry</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> directory_entry <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="co1">// constructors and destructor</span>
+    directory_entry<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    directory_entry<span class="br0">(</span><span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    directory_entry<span class="br0">(</span>directory_entry<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    <span class="kw1">explicit</span> directory_entry<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    directory_entry<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    ~directory_entry<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// assignments</span>
+    directory_entry<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    directory_entry<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>directory_entry<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+ 
+    <span class="co1">// modifiers</span>
+    <span class="kw4">void</span> assign<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> assign<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> replace_filename<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> replace_filename<span class="br0">(</span><span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> refresh<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> refresh<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="co1">// observers</span>
+    <span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span> path<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    operator <span class="kw4">const</span> filesystem<span class="sy4">::</span><span class="me2">path</span><span class="sy3">&amp;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> exists<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> exists<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_block_file<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_block_file<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_character_file<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_character_file<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_directory<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_directory<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_fifo<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_fifo<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_other<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_other<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_regular_file<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_regular_file<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_socket<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_socket<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_symlink<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span> is_symlink<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    uintmax_t file_size<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    uintmax_t file_size<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    uintmax_t hard_link_count<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    uintmax_t hard_link_count<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    file_time_type last_write_time<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    file_time_type last_write_time<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    file_status status<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    file_status status<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    file_status symlink_status<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    file_status symlink_status<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    strong_ordering operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="co1">// inserter</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> charT, <span class="kw1">class</span> traits<span class="sy1">&gt;</span>
+      <span class="kw1">friend</span> basic_ostream<span class="sy1">&lt;</span>charT, traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span>
+        operator<span class="sy1">&lt;&lt;</span><span class="br0">(</span>basic_ostream<span class="sy1">&lt;</span>charT, traits<span class="sy1">&gt;</span><span class="sy3">&amp;</span> os, <span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span> d<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">private</span><span class="sy4">:</span>
+    filesystem<span class="sy4">::</span><span class="me2">path</span> pathobject<span class="sy4">;</span>        <span class="co1">// exposition only</span>
+    <span class="kw1">friend</span> <span class="kw1">class</span> directory_iterator<span class="sy4">;</span>    <span class="co1">// exposition only</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::directory_iterator">Class <span class="t-lc"><a href="../filesystem/directory_iterator.html" title="cpp/filesystem/directory iterator">std::filesystem::directory_iterator</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> directory_iterator <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">using</span> iterator_category <span class="sy1">=</span> input_iterator_tag<span class="sy4">;</span>
+    <span class="kw1">using</span> value_type        <span class="sy1">=</span> directory_entry<span class="sy4">;</span>
+    <span class="kw1">using</span> difference_type   <span class="sy1">=</span> ptrdiff_t<span class="sy4">;</span>
+    <span class="kw1">using</span> pointer           <span class="sy1">=</span> <span class="kw4">const</span> directory_entry<span class="sy2">*</span><span class="sy4">;</span>
+    <span class="kw1">using</span> reference         <span class="sy1">=</span> <span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span><span class="sy4">;</span>
+ 
+    <span class="co1">// member functions</span>
+    directory_iterator<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw1">explicit</span> directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, directory_options options<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, directory_options options,
+                       error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="br0">(</span><span class="kw4">const</span> directory_iterator<span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="br0">(</span>directory_iterator<span class="sy3">&amp;&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    ~directory_iterator<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    directory_iterator<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> directory_iterator<span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>directory_iterator<span class="sy3">&amp;&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span> operator<span class="sy2">*</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">const</span> directory_entry<span class="sy2">*</span> operator<span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    directory_iterator<span class="sy3">&amp;</span>    operator<span class="sy2">++</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    directory_iterator<span class="sy3">&amp;</span>    increment<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// other members as required by input iterators</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::recursive_directory_iterator">Class <span class="t-lc"><a href="../filesystem/recursive_directory_iterator.html" title="cpp/filesystem/recursive directory iterator">std::filesystem::recursive_directory_iterator</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> recursive_directory_iterator <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">using</span> iterator_category <span class="sy1">=</span> input_iterator_tag<span class="sy4">;</span>
+    <span class="kw1">using</span> value_type        <span class="sy1">=</span> directory_entry<span class="sy4">;</span>
+    <span class="kw1">using</span> difference_type   <span class="sy1">=</span> ptrdiff_t<span class="sy4">;</span>
+    <span class="kw1">using</span> pointer           <span class="sy1">=</span> <span class="kw4">const</span> directory_entry<span class="sy2">*</span><span class="sy4">;</span>
+    <span class="kw1">using</span> reference         <span class="sy1">=</span> <span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span><span class="sy4">;</span>
+ 
+    <span class="co1">// constructors and destructor</span>
+    recursive_directory_iterator<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw1">explicit</span> recursive_directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, directory_options options<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, directory_options options,
+                                 error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="br0">(</span><span class="kw4">const</span> path<span class="sy3">&amp;</span> p, error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="br0">(</span><span class="kw4">const</span> recursive_directory_iterator<span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="br0">(</span>recursive_directory_iterator<span class="sy3">&amp;&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    ~recursive_directory_iterator<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// observers</span>
+    directory_options  options<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">int</span>                depth<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">bool</span>               recursion_pending<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="kw4">const</span> directory_entry<span class="sy3">&amp;</span> operator<span class="sy2">*</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <span class="kw4">const</span> directory_entry<span class="sy2">*</span> operator<span class="sy2">-</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// modifiers</span>
+    recursive_directory_iterator<span class="sy3">&amp;</span>
+      operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> recursive_directory_iterator<span class="sy3">&amp;</span> rhs<span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="sy3">&amp;</span>
+      operator<span class="sy1">=</span><span class="br0">(</span>recursive_directory_iterator<span class="sy3">&amp;&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    recursive_directory_iterator<span class="sy3">&amp;</span> operator<span class="sy2">++</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    recursive_directory_iterator<span class="sy3">&amp;</span> increment<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">void</span> pop<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> pop<span class="br0">(</span>error_code<span class="sy3">&amp;</span> ec<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> disable_recursion_pending<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// other members as required by input iterators</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::filesystem::file_status">Class <span class="t-lc"><a href="../filesystem/file_status.html" title="cpp/filesystem/file status">std::filesystem::file_status</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">filesystem</span> <span class="br0">{</span>
+  <span class="kw1">class</span> file_status <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="co1">// constructors and destructor</span>
+    file_status<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy4">:</span> file_status<span class="br0">(</span>file_type<span class="sy4">::</span><span class="me2">none</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="kw1">explicit</span> file_status<span class="br0">(</span>file_type ft,
+                         perms prms <span class="sy1">=</span> perms<span class="sy4">::</span><span class="me2">unknown</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    file_status<span class="br0">(</span><span class="kw4">const</span> file_status<span class="sy3">&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    file_status<span class="br0">(</span>file_status<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    ~file_status<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// assignments</span>
+    file_status<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> file_status<span class="sy3">&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+    file_status<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span>file_status<span class="sy3">&amp;&amp;</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+ 
+    <span class="co1">// modifiers</span>
+    <span class="kw4">void</span>       type<span class="br0">(</span>file_type ft<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">void</span>       permissions<span class="br0">(</span>perms prms<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="co1">// observers</span>
+    file_type  type<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    perms      permissions<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw1">friend</span> <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> file_status<span class="sy3">&amp;</span> lhs, <span class="kw4">const</span> file_status<span class="sy3">&amp;</span> rhs<span class="br0">)</span> <span class="kw1">noexcept</span>
+      <span class="br0">{</span> <span class="kw1">return</span> lhs.<span class="me1">type</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> rhs.<span class="me1">type</span><span class="br0">(</span><span class="br0">)</span> <span class="sy3">&amp;&amp;</span> lhs.<span class="me1">permissions</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">==</span> rhs.<span class="me1">permissions</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 12894/1000000
+Preprocessor generated node count: 10951/1000000
+Postâexpand include size: 427593/2097152 bytes
+Template argument size: 94946/2097152 bytes
+Highest expansion depth: 23/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:15780-0!*!0!!en!*!* and timestamp 20220730001703 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/filesystem&amp;oldid=140999">https://en.cppreference.com/mwiki/index.php?title=cpp/header/filesystem&amp;oldid=140999</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/header/filesystem">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 July 2022, at 08:08.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 236,777 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 3.059 secs. -->
+	</body>
+<!-- Cached 20220730001703 -->
+</html>

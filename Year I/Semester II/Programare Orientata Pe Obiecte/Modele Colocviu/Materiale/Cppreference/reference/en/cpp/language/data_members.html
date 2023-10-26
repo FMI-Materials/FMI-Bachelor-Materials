@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Non-static data members - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/data_members","wgTitle":"cpp/language/data members","wgCurRevisionId":139916,"wgArticleId":9910,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with unreviewed CWG DR marker"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/data_members","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_data_members skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Non-static data members</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="classes.html" title="cpp/language/classes"> Classes</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> General </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Overview</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> <code>class</code>/<code>struct</code> types</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> <code>union</code> types</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="injected-class-name.html" title="cpp/language/injected-class-name"> Injected-class-name</a> </td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Members </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">Data members</strong></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static">Static members</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this">The <code>this</code> pointer</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="nested_classes.html" title="cpp/language/nested classes" class="mw-redirect">Nested classes</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_template.html" title="cpp/language/member template">Member templates</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bitfield.html" title="cpp/language/bit field">Bit fields</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="using_declaration.html" title="cpp/language/using declaration"><code>using</code>-declarations</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_functions.html" title="cpp/language/member functions">Member functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access">Member access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor">Constructors and member initializer lists</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="data_members.html#Member_initialization" title="cpp/language/data members">Default member initializer</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"><code>friend</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><code>explicit</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="converting_constructor.html" title="cpp/language/converting constructor">Converting constructor</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor">Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor">Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor">Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/copy assignment">Copy assignment operator</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move assignment">Move assignment operator</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor">Destructor</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Inheritance </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="derived_class.html" title="cpp/language/derived class">Base and derived classes</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ebo.html" title="cpp/language/ebo">Empty base optimization (EBO)</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual">Virtual member functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="abstract_class.html" title="cpp/language/abstract class">Pure virtual functions and abstract classes</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"><tt>override</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"><tt>final</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Non-static data members are declared in a <a href="class.html" title="cpp/language/class">member specification</a> of a class.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> n<span class="sy4">;</span>              <span class="co1">// non-static data member</span>
+    <span class="kw4">int</span><span class="sy3">&amp;</span> r<span class="sy4">;</span>             <span class="co1">// non-static data member of reference type</span>
+    <span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// non-static data member with default member initializer (C++11)</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s, <span class="sy2">*</span>ps<span class="sy4">;</span> <span class="co1">// two non-static data members</span>
+ 
+    <span class="kw1">struct</span> NestedS
+    <span class="br0">{</span>
+        <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="sy4">;</span>
+    <span class="br0">}</span> d5<span class="sy4">;</span>               <span class="co1">// non-static data member of nested type</span>
+ 
+    <span class="kw4">char</span> bit <span class="sy4">:</span> <span class="nu0">2</span><span class="sy4">;</span>       <span class="co1">// two-bit bitfield</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>Any <a href="declarations.html" title="cpp/language/declarations">simple declarations</a> are allowed, except
+</p>
+<ul><li> <a href="../keyword/extern.html" title="cpp/keyword/extern"><tt>extern</tt></a> and <a href="../keyword/register.html" title="cpp/keyword/register"><tt>register</tt></a> storage class specifiers are not allowed;
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<ul><li> <a href="../keyword/thread_local.html" title="cpp/keyword/thread local"><tt>thread_local</tt></a> storage class specifier is not allowed (but it is allowed for <a href="static.html" title="cpp/language/static">static</a> data members);
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<ul><li> <a href="incomplete_type.html" title="cpp/language/incomplete type" class="mw-redirect">incomplete types</a>, <a href="abstract_class.html" title="cpp/language/abstract class">abstract class types</a>, and arrays thereof are not allowed: in particular, a class <code>C</code> cannot have a non-static data member of type <code>C</code>, although it can have a non-static data member of type <code>C&amp;</code> (reference to C) or <code>C*</code> (pointer to C);
+</li><li> a non-static data member cannot have the same name as the name of the class if at least one user-declared constructor is present;
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<ul><li> the <a href="auto.html" title="cpp/language/auto"><code>auto</code> specifier</a> cannot be used in a non-static data member declaration (although it is allowed for static data members that are <a href="static.html#Constant_static_members" title="cpp/language/static">initialized in the class definition</a>).
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<p>In addition, <a href="bitfield.html" title="cpp/language/bit field">bit field declarations</a> are allowed.
+</p>
+<h3><span class="mw-headline" id="Layout">Layout</span></h3>
+<p>When an object of some class <code>C</code> is created, each non-static data member of non-reference type is allocated in some part of the object representation of <code>C</code>. Whether reference members occupy any storage is implementation-defined, but their <a href="storage_duration.html" title="cpp/language/storage duration">storage duration</a> is the same as that of the object in which they are members.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx23"><td>
+<p>For non-<a href="union.html" title="cpp/language/union">union</a> class types, <span class="t-rev-inl t-since-cxx20"><span><a href="objects.html#Subobjects" title="cpp/language/object">non-zero-sized</a></span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span> members <span class="t-rev-inl t-until-cxx11"><span>not separated by an <a href="access.html" title="cpp/language/access">access specifier</a></span> <span><span class="t-mark-rev t-until-cxx11">(until C++11)</span></span></span><span class="t-rev-inl t-since-cxx11"><span>with the same <a href="access.html" title="cpp/language/access">member access</a></span> <span><span class="t-mark-rev t-since-cxx11">(since C++11)</span></span></span> are always allocated so that the members declared later have higher addresses within a class object. Members <span class="t-rev-inl t-until-cxx11"><span>separated by an access specifier</span> <span><span class="t-mark-rev t-until-cxx11">(until C++11)</span></span></span><span class="t-rev-inl t-since-cxx11"><span>with different access control</span> <span><span class="t-mark-rev t-since-cxx11">(since C++11)</span></span></span> are allocated in unspecified order (the compiler may group them together).
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx23">(until C++23)</span></td></tr>
+<tr class="t-rev t-since-cxx23"><td>
+<p>For non-<a href="union.html" title="cpp/language/union">union</a> class types, <a href="objects.html#Subobjects" title="cpp/language/object">non-zero-sized</a> members are always allocated so that the members declared later have higher addresses within a class object. Note that access control of member still affects the standard-layout property (see below).
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx23">(since C++23)</span></td></tr>
+</table>
+<p>Alignment requirements may necessitate padding between members, or after the last member of a class.
+</p>
+<h3><span class="mw-headline" id="Standard-layout">Standard-layout</span></h3>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx11"><td>
+<p>A class is considered to be standard-layout and to have properties described below if and only if it is a <a href="classes.html#POD_class" title="cpp/language/classes">POD class</a>.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx11">(until C++11)</span></td></tr>
+<tr class="t-rev t-since-cxx11"><td>
+<p>A class where all non-static data members have the same access control and certain other conditions are satisfied is known as <i>standard-layout class</i> (see <a href="classes.html#Standard-layout_class" title="cpp/language/classes">standard-layout class</a> for the list of requirements).
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<p>Two standard-layout non-union class types may have a <i>common initial sequence</i> of non-static data members and bit-fields, for a sequence of one or more initial members (in order of declaration), if the members have layout-compatible types<span class="t-rev-inl t-since-cxx20"><span> either both declared with <code>[[<a href="attributes/no_unique_address.html" title="cpp/language/attributes/no unique address">no_unique_address</a>]]</code> attribute or declared without the attribute</span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>, and either neither member is a bit-field or both are bit-fields with the same widths.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> <span class="kw4">int</span> a<span class="sy4">;</span> <span class="kw4">char</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span> <span class="kw4">const</span> <span class="kw4">int</span> b1<span class="sy4">;</span> <span class="kw4">volatile</span> <span class="kw4">char</span> b2<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> 
+<span class="co1">// A and B's common initial sequence is A.a, A.b and B.b1, B.b2</span>
+ 
+<span class="kw1">struct</span> C <span class="br0">{</span> <span class="kw4">int</span> c<span class="sy4">;</span> <span class="kw4">unsigned</span> <span class="sy4">:</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="kw4">char</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// A and C's common initial sequence is A.a and C.c</span>
+ 
+<span class="kw1">struct</span> D <span class="br0">{</span> <span class="kw4">int</span> d<span class="sy4">;</span> <span class="kw4">char</span> b <span class="sy4">:</span> <span class="nu0">4</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// A and D's common initial sequence is A.a and D.d</span>
+ 
+<span class="kw1">struct</span> E <span class="br0">{</span> <span class="kw4">unsigned</span> <span class="kw4">int</span> e<span class="sy4">;</span> <span class="kw4">char</span> b<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// A and E's common initial sequence is empty</span></pre></div></div>
+<p>Two standard-layout non-union class types are called <i>layout-compatible</i> if they are the same type ignoring cv-qualifiers, if any, are layout-compatible <a href="enum_class.html" title="cpp/language/enum">enumerations</a> (i.e. enumerations with the same underlying type), or if their <i>common initial sequence</i> consists of every non-static data member and bit field (in the example above, <code>A</code> and <code>B</code> are layout-compatible)
+</p><p>Two standard-layout unions are called <i>layout-compatible</i> if they have the same number of non-static data members and corresponding non-static data members (in any order) have layout-compatible types.
+</p><p>Standard-layout types have the following special properties:
+</p>
+<dl><dd><ul><li> In a standard-layout union with an active member of non-union class type <code>T1</code>, it is permitted to read a non-static data member <code>m</code> of another union member of non-union class type <code>T2</code> provided <code>m</code> is part of the common initial sequence of <code>T1</code> and <code>T2</code> (except that reading a volatile member through non-volatile glvalue is undefined).
+</li><li> A pointer to an object of standard-layout class type can be <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast">reinterpret_cast</a> to pointer to its first non-static non-bitfield data member (if it has non-static data members) or otherwise any of its base class subobjects (if it has any), and vice versa. In other words, padding is not allowed before the first data member of a standard-layout type. Note that <a href="reinterpret_cast.html#Type_aliasing" title="cpp/language/reinterpret cast">strict aliasing</a> rules still apply to the result of such cast.
+</li><li> The macro <span class="t-lc"><a href="../types/offsetof.html" title="cpp/types/offsetof">offsetof</a></span> may be used to determine the offset of any member from the beginning of a standard-layout class.
+</li></ul>
+</dd></dl>
+<h3><span class="mw-headline" id="Member_initialization">Member initialization</span></h3>
+<p>Non-static data members may be initialized in one of two ways:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> In the <a href="initializer_list.html" title="cpp/language/constructor">member initializer list</a> of the constructor.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> n<span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="sy4">;</span>
+    S<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> n<span class="br0">(</span><span class="nu0">7</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// direct-initializes n, default-initializes s</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">2)</span> Through a <i>default member initializer</i>, which is a brace or equals <a href="initialization.html" title="cpp/language/initialization">initializer</a> included in the member declaration and is used if the member is omitted from the member initializer list of a constructor.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">7</span><span class="sy4">;</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span>, <span class="st0">'c'</span><span class="br0">}</span><span class="sy4">;</span>
+    S<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// default member initializer will copy-initialize n, list-initialize s</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<p>If a member has a default member initializer and also appears in the member initialization list in a constructor, the default member initializer is ignored for that constructor.
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> n <span class="sy1">=</span> <span class="sy2">++</span>x<span class="sy4">;</span>
+    S<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>                 <span class="co1">// uses default member initializer</span>
+    S<span class="br0">(</span><span class="kw4">int</span> arg<span class="br0">)</span> <span class="sy4">:</span> n<span class="br0">(</span>arg<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// uses member initializer </span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> x <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// prints 0</span>
+    S s1<span class="sy4">;</span>                   <span class="co1">// default initializer ran</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> x <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// prints 1</span>
+    S s2<span class="br0">(</span><span class="nu0">7</span><span class="br0">)</span><span class="sy4">;</span>                <span class="co1">// default initializer did not run</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> x <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// prints 1</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>Default member initializers are not allowed for <a href="bitfield.html" title="cpp/language/bit field">bit field</a> members.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+</table>
+<p>Members of array type cannot deduce their size from member initializers:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X
+<span class="br0">{</span>
+    <span class="kw4">int</span> a<span class="br0">[</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="sy4">;</span>  <span class="co1">// error</span>
+    <span class="kw4">int</span> b<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>Default member initializers are not allowed to cause the implicit definition of a defaulted <a href="default_constructor.html" title="cpp/language/default constructor">default constructor</a> for the enclosing class or the exception specification of that constructor :
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> node
+<span class="br0">{</span>
+    node<span class="sy2">*</span> p <span class="sy1">=</span> new node<span class="sy4">;</span> <span class="co1">// error: use of implicit or defaulted node::node() </span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>Reference members cannot be bound to temporaries in a default member initializer (note; same rule exists for <a href="initializer_list.html#Explanation" title="cpp/language/constructor">member initializer lists</a>)
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    A<span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>     <span class="co1">// OK</span>
+    A<span class="br0">(</span><span class="kw4">int</span> v<span class="br0">)</span> <span class="sy4">:</span> v<span class="br0">(</span>v<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// OK</span>
+    <span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;</span> v <span class="sy1">=</span> <span class="nu0">42</span><span class="sy4">;</span> <span class="co1">// OK</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+A a1<span class="sy4">;</span>    <span class="co1">// error: ill-formed binding of temporary to reference</span>
+A a2<span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK (default member initializer ignored because v appears in a constructor)</span>
+         <span class="co1">// however a2.v is a dangling reference</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>It is an error if a default member initializer has a subexpression that would execute aggregate initialization which would use the same initializer:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A<span class="sy4">;</span>
+<span class="kw4">extern</span> A a<span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw4">const</span> A<span class="sy3">&amp;</span> a1<span class="br0">{</span>A<span class="br0">{</span>a, a<span class="br0">}</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    <span class="kw4">const</span> A<span class="sy3">&amp;</span> a2<span class="br0">{</span>A<span class="br0">{</span><span class="br0">}</span><span class="br0">}</span><span class="sy4">;</span>     <span class="co1">// error</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+A a<span class="br0">{</span>a, a<span class="br0">}</span><span class="sy4">;</span>                <span class="co1">// OK</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Usage">Usage</span></h3>
+<p>The name of a non-static data member or a non-static member function can only appear in the following three situations:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> As a part of class member access expression, in which the class either has this member or is derived from a class that has this member, including the implicit <span class="t-c"><span class="mw-geshi cpp source-cpp">this<span class="sy2">-</span><span class="sy1">&gt;</span></span></span> member access expressions that appear when a non-static member name is used in any of the contexts where <a href="this.html" title="cpp/language/this"><code>this</code></a> is allowed (inside member function bodies, in member initializer lists, in the in-class default member initializers).
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> m<span class="sy4">;</span>
+    <span class="kw4">int</span> n<span class="sy4">;</span>
+    <span class="kw4">int</span> x <span class="sy1">=</span> m<span class="sy4">;</span>            <span class="co1">// OK: implicit this-&gt; allowed in default initializers (C++11)</span>
+ 
+    S<span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="sy4">:</span> m<span class="br0">(</span>i<span class="br0">)</span>, n<span class="br0">(</span>m<span class="br0">)</span> <span class="co1">// OK: implicit this-&gt; allowed in member initializer lists</span>
+    <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>        <span class="co1">// explicit member access expression</span>
+        f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>              <span class="co1">// implicit this-&gt; allowed in member function bodies</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">2)</span> To form a <a href="pointer.html" title="cpp/language/pointer">pointer to non-static member</a>.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> m<span class="sy4">;</span>
+    <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> S<span class="sy4">::</span><span class="sy2">*</span>p <span class="sy1">=</span> <span class="sy3">&amp;</span>S<span class="sy4">::</span><span class="me2">m</span><span class="sy4">;</span>       <span class="co1">// OK: use of m to make a pointer to member</span>
+<span class="kw4">void</span> <span class="br0">(</span>S<span class="sy4">::</span><span class="sy2">*</span>fp<span class="br0">)</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">=</span> <span class="sy3">&amp;</span>S<span class="sy4">::</span><span class="me2">f</span><span class="sy4">;</span> <span class="co1">// OK: use of f to make a pointer to member</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">3)</span> (for data members only, not member functions) When used in <a href="expressions.html#Unevaluated_expressions" title="cpp/language/expressions">unevaluated operands</a>.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> S
+<span class="br0">{</span>
+    <span class="kw4">int</span> m<span class="sy4">;</span>
+    <span class="kw4">static</span> <span class="kw4">const</span> <a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a> sz <span class="sy1">=</span> sizeof m<span class="sy4">;</span> <span class="co1">// OK: m in unevaluated operand</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a> j <span class="sy1">=</span> sizeof<span class="br0">(</span>S<span class="sy4">::</span><span class="me2">m</span> <span class="sy2">+</span> <span class="nu0">42</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: even though there is no "this" object for m</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li"></span> Notes: such uses are allowed via the resolution of <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/613.html">CWG issue 613</a> in <a rel="nofollow" class="external text" href="https://wg21.link/N2253">N2253</a>, which is treated as a change in C++11 by some compilers (e.g. clang).</div>
+<h3><span class="mw-headline" id="Defect_reports">Defect reports</span></h3>
+<p>The following behavior-changing defect reports were applied retroactively to previously published C++ standards.
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> DR
+</th>
+<th> Applied to
+</th>
+<th> Behavior as published
+</th>
+<th> Correct behavior
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/80.html">CWG 80</a>
+</td>
+<td> C++98
+</td>
+<td> all data members cannot have the same name<br>as the name of the class (breaks C compatibility)
+</td>
+<td> allow non-static data members<br>share the class name if there is<br>no user-declared constructor
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/190.html">CWG 190</a>
+</td>
+<td> C++98
+</td>
+<td> when determining layout compatibility,<br>all members were considered
+</td>
+<td> only consider non-static data members
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/613.html">CWG 613</a>
+</td>
+<td> C++98
+</td>
+<td> unevaluated uses of non-static data members not allowed
+</td>
+<td> such uses are allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/645.html">CWG 645</a>
+</td>
+<td> C++98
+</td>
+<td> it was unspecified whether bit-field and<br>non-bit-field members are layout compatible
+</td>
+<td> not layout compatible
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1397.html">CWG 1397</a>
+</td>
+<td> C++11
+</td>
+<td> class was regarded as complete<br>in the default member initializers
+</td>
+<td> default member init cannot trigger<br>definition of default constructor
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1425.html">CWG 1425</a>
+</td>
+<td> C++98
+</td>
+<td> it was unclear whether a standard-layout object<br>shares the same address with the first non-static<br>data member or the first base class subobject
+</td>
+<td> non-static data member if present,<br>otherwise base class subobject if present
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1696.html">CWG 1696</a>
+</td>
+<td> C++98
+</td>
+<td> reference members could be initialized to temporaries<br>(whose lifetime would end at the end of constructor)
+</td>
+<td> such init is ill-formed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1719.html">CWG 1719</a>
+</td>
+<td> C++98
+</td>
+<td> differently cv-qualified types weren't layout-compatible
+</td>
+<td> cv-quals ignored, spec improved
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2254.html">CWG 2254</a>
+</td>
+<td> C++11
+</td>
+<td> pointer to standard-layout class with no data<br>members can be reinterpret_cast to its first base class
+</td>
+<td> can be reinterpret_cast<br>to any of its base classes
+</td></tr></table>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td colspan="2"> <a href="classes.html" title="cpp/language/classes">classes</a>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td colspan="2"> <a href="static.html" title="cpp/language/static">static members</a>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td colspan="2"> <a href="member_functions.html" title="cpp/language/member functions">non-static member functions</a>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_standard_layout.html" title="cpp/types/is standard layout"> <span class="t-lines"><span>is_standard_layout</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <a href="data_members.html#Standard_layout" title="cpp/language/data members">standard-layout</a> type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/offsetof.html" title="cpp/types/offsetof"> <span class="t-lines"><span>offsetof</span></span></a></div></div>
+</td>
+<td>   byte offset from the beginning of a standard-layout type to specified member <br> <span class="t-mark">(function macro)</span> </td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4324/1000000
+Preprocessor generated node count: 10685/1000000
+Post‐expand include size: 164678/2097152 bytes
+Template argument size: 31003/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:9910-0!*!0!!en!*!* and timestamp 20220630221331 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/data_members&amp;oldid=139916">https://en.cppreference.com/mwiki/index.php?title=cpp/language/data_members&amp;oldid=139916</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/data_members">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 30 May 2022, at 02:27.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 424,244 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 2.023 secs. -->
+	</body>
+<!-- Cached 20220630221331 -->
+</html>

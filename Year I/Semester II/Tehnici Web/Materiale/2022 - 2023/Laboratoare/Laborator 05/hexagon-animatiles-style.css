@@ -1,0 +1,48 @@
+.main {
+    display: flex;
+    --s: 100px;
+    --m: 4px;
+    --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
+}
+
+.container {
+    font-size: 0;
+}
+
+.container div {
+    width: var(--s);
+    margin: var(--m);
+    height: calc(var(--s)*1.1547);
+    background-color: #fff;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    margin-bottom: calc(var(--m) - var(--s)*0.2885);
+    display: inline-block;
+    font-size: initial;
+    transition: 2s;
+}
+
+.container div:hover {
+    transition: 0s;
+    background-color: #fff00f;
+    animation: animatiles 4s linear infinite;
+}
+
+
+@keyframes animatiles {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.container::before {
+    content: "";
+    width: calc(var(--s)/2 + var(--m));
+    float: left;
+    height: 120%;
+    shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px),
+        #000 0 var(--f));
+}

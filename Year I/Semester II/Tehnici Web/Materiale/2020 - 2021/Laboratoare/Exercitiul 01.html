@@ -1,0 +1,82 @@
+<!--
+    P1. Creati un div cu id-ul "container" (scrieti o regula css pentru divul cu acest id, astfel incat
+inaltimea sa fie un sfert din inaltimea ecranului, latimea de 250px si border albastru punctat de
+2px) in care se vor gasi alte 5 divuri. Realizati (eventual folosind tehnica grid din CSS) urmatorul
+mod de afisare al divurilor. Scrieti o regula css astfel incat divurile din interiorul elementului cu
+id-ul "container" sa aiba border negru, dublu, de 6px si dimensiunea fontului de 10px.
+Scrieti un media query pentru latimea ferestrei sub 600px si inaltimea sub 500px cu efectele:
+a) divurile copil sa nu se mai afiseze in grid, ci in formatul default, unul sub altul, intinse pe
+toata latimea containerului
+b) cand aducem cursorul pe oricare din ele sa creasca treptat dimensiunea fontului (timp de 3
+secunde) la 20px (tranzitie).
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercitiul 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    #container {
+        width: 250px;
+        height: 25vh;
+        margin: 0 auto;
+        border: dotted 2px blue;
+        display: grid;
+        grid-template-areas: "el3 . el2" ". el4 ." "el5 . el1";
+    }
+
+    #container>div {
+        border: double 6px black;
+        font-size: 10px;
+    }
+
+    #container>div:nth-of-type(1) {
+        grid-area: el1;
+    }
+
+    #container>div:nth-of-type(2) {
+        grid-area: el2;
+    }
+
+    #container>div:nth-of-type(3) {
+        grid-area: el3;
+    }
+
+    #container>div:nth-of-type(4) {
+        grid-area: el4;
+    }
+
+    #container>div:nth-of-type(5) {
+        grid-area: el5;
+    }
+
+    #container>div:hover {
+        transition: 3s all;
+        font-size: 20px;
+    }
+
+
+    @media screen and (max-width:800px) and (max-height:500px) {
+        #container {
+            grid-template-areas: 'el1'  'el2' 'el3' 'el4' 'el5';
+            
+        }
+
+        div {
+            font-size: 10px;
+            width: 95%;
+        }
+    }
+</style>
+<body>
+	<div id="container">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+</body>
+
+</html>

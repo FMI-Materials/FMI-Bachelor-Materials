@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Struct and union initialization - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/struct_initialization","wgTitle":"c/language/struct initialization","wgCurRevisionId":139690,"wgArticleId":13916,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/language/struct_initialization","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_struct_initialization skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Struct and union initialization</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language"> C language</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">Basic concepts</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../keyword.html" title="c/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="statements.html" title="c/language/statements"> Statements</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html" title="c/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html" title="c/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="declarations.html" title="c/language/declarations"> Declarations</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functions.html" title="c/language/functions"> Functions</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Miscellaneous</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="c/language/history"> History of C</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental">Technical Specifications</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="initialization.html" title="c/language/initialization"> Initialization</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html#Explicit_initialization" title="c/language/initialization"> Explicit initialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html#Implicit_initialization" title="c/language/initialization"> Implicit initialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html#Empty_initialization" title="c/language/initialization"> Empty initialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scalar_initialization.html" title="c/language/scalar initialization"> Scalar initialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="array_initialization.html" title="c/language/array initialization"> Array initialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Struct and union initialization</strong> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>When <a href="initialization.html" title="c/language/initialization">initializing</a> an object of <a href="struct.html" title="c/language/struct">struct</a> or <a href="union.html" title="c/language/union">union</a> type, the initializer must be a <span class="t-rev-inl t-until-c23"><span>non-empty,</span> <span><span class="t-mark-rev t-until-c23">(until C23)</span></span></span> brace-enclosed, comma-separated list of initializers for the members:
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>=</b></code> <code><b>{</b></code> <span class="t-spar">expression</span> <code><b>,</b></code> <code><b>...</b></code> <code><b>}</b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>=</b></code> <code><b>{</b></code> <span class="t-spar">designator</span> <span class="t-spar">expression</span> <code><b>,</b></code> <code><b>...</b></code> <code><b>}</b></code>
+</td>
+<td> (2)
+</td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>=</b></code> <code><b>{</b></code> <code><b>}</b></code>
+</td>
+<td> (3)
+</td>
+<td> <span class="t-mark-rev t-since-c23">(since C23)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p>where the <span class="t-spar">designator</span> is a sequence (whitespace-separated or adjacent) of individual member designators of the form <code><b>.</b></code> <span class="t-spar">member</span> and <a href="array_initialization.html" title="c/language/array initialization">array designators</a> of the form <code><b>[</b></code> <span class="t-spar">index</span> <code><b>]</b></code>.
+</p><p>All members that are not initialized explicitly are <a href="initialization.html#Empty_initialization" title="c/language/initialization">empty-initialized</a>.
+</p>
+<h3><span class="mw-headline" id="Explanation">Explanation</span></h3>
+<p>When initializing a <a href="union.html" title="c/language/union">union</a>, the initializer list must have only one member, which initializes the first member of the union<span class="t-rev-inl t-since-c99"><span> unless a designated initializer is used</span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">union</span> <span class="br0">{</span> <span class="kw4">int</span> x<span class="sy4">;</span> <span class="kw4">char</span> c<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span><span class="sy4">;</span> <span class="br0">}</span>
+  u <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span>,           <span class="co1">// makes u.x active with value 1</span>
+ u2 <span class="sy1">=</span> <span class="br0">{</span> .<span class="me1">c</span><span class="sy1">=</span><span class="br0">{</span><span class="st0">'<span class="es5">\1</span>'</span><span class="br0">}</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// makes u2.c active with value {'\1','\0','\0','\0'}</span></pre></div></div>
+<p>When initializing a <a href="struct.html" title="c/language/struct">struct</a>, the first initializer in the list initializes the first declared member<span class="t-rev-inl t-since-c99"><span> (unless a designator is specified)</span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>, and all subsequent initializers <span class="t-rev-inl t-since-c99"><span>without designators </span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>initialize the struct members declared after the one initialized by the previous expression.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> point <span class="br0">{</span><span class="kw4">double</span> x,y,z<span class="sy4">;</span><span class="br0">}</span> p <span class="sy1">=</span> <span class="br0">{</span><span class="nu16">1.2</span>, <span class="nu16">1.3</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// p.x=1.2, p.y=1.3, p.z=0.0</span>
+div_t answer <span class="sy1">=</span> <span class="br0">{</span>.<span class="me1">quot</span> <span class="sy1">=</span> <span class="nu0">2</span>, .<span class="me1">rem</span> <span class="sy1">=</span> <span class="sy2">-</span><span class="nu0">1</span> <span class="br0">}</span><span class="sy4">;</span>      <span class="co1">// order of elements in div_t may vary</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<p>A designator causes the following initializer to initialize the struct member described by the designator. Initialization then continues forward in order of declaration, beginning with the next element declared after the one described by the designator.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">int</span> sec,min,hour,day,mon,year<span class="sy4">;</span><span class="br0">}</span> z
+   <span class="sy1">=</span> <span class="br0">{</span>.<span class="me1">day</span><span class="sy1">=</span><span class="nu0">31</span>,<span class="nu0">12</span>,<span class="nu0">2014</span>,.<span class="me1">sec</span><span class="sy1">=</span><span class="nu0">30</span>,<span class="nu0">15</span>,<span class="nu0">17</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// initializes z to {30,15,17,31,12,2014}</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<p>It's an error to provide more initializers than members.
+</p>
+<h3><span class="mw-headline" id="Nested_initialization">Nested initialization</span></h3>
+<p>If the members of the struct or union are arrays, structs, or unions, the corresponding initializers in the brace-enclosed list of initializers are any initializers that are valid for those members, except that their braces may be omitted as follows:
+</p><p>If the nested initializer begins with an opening brace, the entire nested initializer up to its closing brace initializes the corresponding member object. Each left opening brace establishes a new <i>current object</i>. The members of the current object are initialized in their natural order<span class="t-rev-inl t-since-c99"><span>, unless designators are used</span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>: array elements in subscript order, struct members in declaration order, only the first declared member of any union. The subobjects within the current object that are not explicitly initialized by the closing brace are <a href="initialization.html#Empty_initialization" title="c/language/initialization">empty-initialized</a>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> example <span class="br0">{</span>
+    <span class="kw1">struct</span> addr_t <span class="br0">{</span>
+       <a href="../types/integer.html"><span class="kw122">uint32_t</span></a> port<span class="sy4">;</span>
+    <span class="br0">}</span> addr<span class="sy4">;</span>
+    <span class="kw1">union</span> <span class="br0">{</span>
+       <a href="../types/integer.html"><span class="kw120">uint8_t</span></a> a8<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span><span class="sy4">;</span>
+       <a href="../types/integer.html"><span class="kw121">uint16_t</span></a> a16<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="br0">}</span> in_u<span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> example ex <span class="sy1">=</span> <span class="br0">{</span> <span class="co1">// start of initializer list for struct example</span>
+                     <span class="br0">{</span> <span class="co1">// start of initializer list for ex.addr</span>
+                        <span class="nu0">80</span> <span class="co1">// initialized struct's only member</span>
+                     <span class="br0">}</span>, <span class="co1">// end of initializer list for ex.addr</span>
+                     <span class="br0">{</span> <span class="co1">// start of initializer-list for ex.in_u</span>
+                        <span class="br0">{</span><span class="nu0">127</span>,<span class="nu0">0</span>,<span class="nu0">0</span>,<span class="nu0">1</span><span class="br0">}</span> <span class="co1">// initializes first element of the union</span>
+                     <span class="br0">}</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>If the nested initializer does not begin with an opening brace, only enough initializers from the list are taken to account for the elements or members of the member array, struct or union; any remaining initializers are left to initialize the next struct member:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> example ex <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">80</span>, <span class="nu0">127</span>, <span class="nu0">0</span>, <span class="nu0">0</span>, <span class="nu0">1</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// 80 initializes ex.addr.port</span>
+                                        <span class="co1">// 127 initializes ex.in_u.a8[0]</span>
+                                        <span class="co1">// 0 initializes ex.in_u.a8[1]</span>
+                                        <span class="co1">// 0 initializes ex.in_u.a8[2]</span>
+                                        <span class="co1">// 1 initializes ex.in_u.a8[3]</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<p>When designators are nested, the designators for the members follow the designators for the enclosing structs/unions/arrays. Within any nested bracketed initializer list, the outermost designator refers to the <i>current object</i> and selects the subobject to be initialized within the <i>current object</i> only.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> example ex2 <span class="sy1">=</span> <span class="br0">{</span> <span class="co1">// current object is ex2, designators are for members of example</span>
+                       .<span class="me1">in_u</span>.<span class="me1">a8</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy1">=</span><span class="nu0">127</span>, <span class="nu0">0</span>, <span class="nu0">0</span>, <span class="nu0">1</span>, .<span class="me1">addr</span><span class="sy1">=</span><span class="nu0">80</span><span class="br0">}</span><span class="sy4">;</span> 
+<span class="kw1">struct</span> example ex3 <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">80</span>, .<span class="me1">in_u</span><span class="sy1">=</span><span class="br0">{</span> <span class="co1">// changes current object to the union ex.in_u</span>
+                           <span class="nu0">127</span>,
+                           .<span class="me1">a8</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy1">=</span><span class="nu0">1</span> <span class="co1">// this designator refers to the member of in_u</span>
+                      <span class="br0">}</span> <span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>If any subobject is explicitly initialized twice (which may happen when designators are used), the initializer that appears later in the list is the one used (the earlier initializer may not be evaluated):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">int</span> n<span class="sy4">;</span><span class="br0">}</span> s <span class="sy1">=</span> <span class="br0">{</span><a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"a<span class="es1">\n</span>"</span><span class="br0">)</span>, <span class="co1">// this may be printed or skipped</span>
+                     .<span class="me1">n</span><span class="sy1">=</span><a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"b<span class="es1">\n</span>"</span><span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// always printed</span></pre></div></div>
+<p>Although any non-initialized subobjects are initialized implicitly, implicit initialization of a subobject never overrides explicit initialization of the same subobject if it appeared earlier in the initializer list (choose clang to observe the correct output):
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="kw1">typedef</span> <span class="kw1">struct</span> <span class="br0">{</span> <span class="kw4">int</span> k<span class="sy4">;</span> <span class="kw4">int</span> l<span class="sy4">;</span> <span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy4">;</span> <span class="br0">}</span> T<span class="sy4">;</span>
+<span class="kw1">typedef</span> <span class="kw1">struct</span> <span class="br0">{</span> <span class="kw4">int</span> i<span class="sy4">;</span>  T t<span class="sy4">;</span> <span class="br0">}</span> S<span class="sy4">;</span>
+T x <span class="sy1">=</span> <span class="br0">{</span>.<span class="me1">l</span> <span class="sy1">=</span> <span class="nu0">43</span>, .<span class="me1">k</span> <span class="sy1">=</span> <span class="nu0">42</span>, .<span class="me1">a</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">19</span>, .<span class="me1">a</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">18</span> <span class="br0">}</span><span class="sy4">;</span>
+ <span class="co1">// x initialized to {42, 43, {18, 19} }</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    S l <span class="sy1">=</span> <span class="br0">{</span> <span class="nu0">1</span>,          <span class="co1">// initializes l.i to 1</span>
+           .<span class="me1">t</span> <span class="sy1">=</span> x,      <span class="co1">// initializes l.t to {42, 43, {18, 19} }</span>
+           .<span class="me1">t</span>.<span class="me1">l</span> <span class="sy1">=</span> <span class="nu0">41</span>,   <span class="co1">// changes l.t to {42, 41, {18, 19} }</span>
+           .<span class="me1">t</span>.<span class="me1">a</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="sy1">=</span> <span class="nu0">17</span> <span class="co1">// changes l.t to {42, 41, {18, 17} }</span>
+          <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"l.t.k is %d<span class="es1">\n</span>"</span>, l.<span class="me1">t</span>.<span class="me1">k</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// .t = x sets l.t.k to 42 explicitly</span>
+                                    <span class="co1">// .t.l = 41 would zero out l.t.k implicitly</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">l.t.k is 42</pre></div></div> 
+</div>
+<p>However, when an initializer begins with a left open brace, its <i>current object</i> is fully re-initialized and any prior explicit initializers for any of its subobjects are ignored:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> fred <span class="br0">{</span> <span class="kw4">char</span> s<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span><span class="sy4">;</span> <span class="kw4">int</span> n<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> fred x<span class="br0">[</span> <span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span> <span class="br0">{</span> <span class="br0">{</span> <span class="st0">"abc"</span> <span class="br0">}</span>, <span class="nu0">1</span> <span class="br0">}</span>, <span class="co1">// inits x[0] to { {'a','b','c','\0'}, 1 }</span>
+                      <span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me1">s</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> <span class="st0">'q'</span>   <span class="co1">// changes x[0] to { {'q','b','c','\0'}, 1 }</span>
+                   <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> fred y<span class="br0">[</span> <span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span> <span class="br0">{</span> <span class="br0">{</span> <span class="st0">"abc"</span> <span class="br0">}</span>, <span class="nu0">1</span> <span class="br0">}</span>, <span class="co1">// inits y[0] to { {'a','b','c','\0'}, 1 }</span>
+                     <span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> <span class="br0">{</span> <span class="co1">// current object is now the entire y[0] object</span>
+                             .<span class="me1">s</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy1">=</span> <span class="st0">'q'</span> 
+                            <span class="br0">}</span> <span class="co1">// replaces y[0] with { {'q','\0','\0','\0'}, 0 }</span>
+                    <span class="br0">}</span><span class="sy4">;</span></pre></div></div> 
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>The initializer list may have a trailing comma, which is ignored.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">double</span> x,y<span class="sy4">;</span><span class="br0">}</span> p <span class="sy1">=</span> <span class="br0">{</span><span class="nu16">1.0</span>,
+                          <span class="nu16">2.0</span>, <span class="co1">// trailing comma OK</span>
+                          <span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-c23"><td>
+<p>In C, the braced list of initializers cannot be empty (note that C++ allows empty lists, and also note that a <a href="struct.html" title="c/language/struct">struct</a> in C cannot be empty):
+</p>
+</td>
+<td><span class="t-mark-rev t-until-c23">(until C23)</span></td></tr>
+<tr class="t-rev t-since-c23"><td>
+<p>The initializer list can be empty in C as in C++:
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c23">(since C23)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">int</span> n<span class="sy4">;</span><span class="br0">}</span> s <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// OK</span>
+<span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">int</span> n<span class="sy4">;</span><span class="br0">}</span> s <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// Error until C23: initializer-list cannot be empty</span>
+                        <span class="co1">// OK since C23: s.n is initialized to 0</span>
+<span class="kw1">struct</span> <span class="br0">{</span><span class="br0">}</span> s <span class="sy1">=</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// Error: struct cannot be empty</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-c99"><td>
+<p>Every expression in the initializer list must be a <a href="constant_expression.html" title="c/language/constant expression">constant expression</a> when initializing aggregates of any storage duration.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-c99">(until C99)</span></td></tr>
+<tr class="t-rev t-since-c99"><td>
+<p>As with all other <a href="initialization.html" title="c/language/initialization">initialization</a>, every expression in the initializer list must be a <a href="constant_expression.html" title="c/language/constant expression">constant expression</a> when initializing aggregates of static<span class="t-rev-inl t-since-c11"><span> or thread-local</span> <span><span class="t-mark-rev t-since-c11">(since C11)</span></span></span> <a href="storage_duration.html" title="c/language/storage duration">storage duration</a>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">static</span> <span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">char</span><span class="sy2">*</span> p<span class="br0">}</span> s <span class="sy1">=</span> <span class="br0">{</span><a href="../memory/malloc.html"><span class="kw403">malloc</span></a><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// error</span></pre></div></div>
+<p>The <a href="eval_order.html" title="c/language/eval order">order of evaluation</a> of the subexpressions in any initializer is indeterminately sequenced (but not in C++ since C++11):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+<span class="kw1">struct</span> <span class="br0">{</span><span class="kw4">int</span> x,y<span class="sy4">;</span><span class="br0">}</span> p <span class="sy1">=</span> <span class="br0">{</span>n<span class="sy2">++</span>, n<span class="sy2">++</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// unspecified, but well-defined behavior:</span>
+                                  <span class="co1">// n is incremented twice in arbitrary order</span>
+                                  <span class="co1">// p equal {1,2} and {2,1} are both valid</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: more practical examples, perhaps initialize some socket structs </td></tr></table>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">char</span> buff<span class="br0">[</span><span class="nu0">70</span><span class="br0">]</span><span class="sy4">;</span>
+    <span class="co1">// designated initializers simplify the use of structs whose</span>
+    <span class="co1">// order of members is unspecified</span>
+    <span class="kw1">struct</span> <a href="../chrono/tm.html"><span class="kw523">tm</span></a> my_time <span class="sy1">=</span> <span class="br0">{</span> .<span class="me1">tm_year</span><span class="sy1">=</span><span class="nu0">2012</span><span class="sy2">-</span><span class="nu0">1900</span>, .<span class="me1">tm_mon</span><span class="sy1">=</span><span class="nu0">9</span>, .<span class="me1">tm_mday</span><span class="sy1">=</span><span class="nu0">9</span>,
+                          .<span class="me1">tm_hour</span><span class="sy1">=</span><span class="nu0">8</span>, .<span class="me1">tm_min</span><span class="sy1">=</span><span class="nu0">10</span>, .<span class="me1">tm_sec</span><span class="sy1">=</span><span class="nu0">20</span> <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../chrono/strftime.html"><span class="kw517">strftime</span></a><span class="br0">(</span>buff, <span class="kw4">sizeof</span> buff, <span class="st0">"%A %c"</span>, <span class="sy3">&amp;</span>my_time<span class="br0">)</span><span class="sy4">;</span>
+    <a href="../io/puts.html"><span class="kw836">puts</span></a><span class="br0">(</span>buff<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Sunday Sun Oct  9 08:10:20 2012</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 standard (ISO/IEC 9899:2018): 
+</li></ul>
+<dl><dd><ul><li> 6.7.9/12-39 Initialization (p: 101-105)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 6.7.9/12-38 Initialization (p: 140-144)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 6.7.8/12-38 Initialization (p: 126-130)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 standard (ISO/IEC 9899:1990): 
+</li></ul>
+<dl><dd><ul><li> 6.5.7 Initialization 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 2245/1000000
+Preprocessor generated node count: 9281/1000000
+Post‐expand include size: 46987/2097152 bytes
+Template argument size: 17853/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:13916-0!*!0!!en!*!* and timestamp 20220516145514 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/language/struct_initialization&amp;oldid=139690">https://en.cppreference.com/mwiki/index.php?title=c/language/struct_initialization&amp;oldid=139690</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/language/struct_initialization">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 16 May 2022, at 07:55.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 918,884 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.043 secs. -->
+	</body>
+<!-- Cached 20220516145613 -->
+</html>

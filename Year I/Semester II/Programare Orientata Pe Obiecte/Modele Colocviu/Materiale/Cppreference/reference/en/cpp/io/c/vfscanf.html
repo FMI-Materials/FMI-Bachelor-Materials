@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>std::vscanf, std::vfscanf, std::vsscanf - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/io/c/vfscanf","wgTitle":"cpp/io/c/vfscanf","wgCurRevisionId":125685,"wgArticleId":605,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/io/c/vfscanf","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_io_c_vfscanf skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">std::</span>vscanf, <span style="font-size:0.7em; line-height:130%">std::</span>vfscanf, <span style="font-size:0.7em; line-height:130%">std::</span>vsscanf</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../io.html" title="cpp/io">io</a>‎ | <a href="../c.html" title="cpp/io/c">c</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../io.html" title="cpp/io"> Input/output library</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../manip.html" title="cpp/io/manip"> I/O manipulators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../c.html" title="cpp/io/c"> C-style I/O</a></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Buffers</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_streambuf.html" title="cpp/io/basic streambuf"><span class="t-lines"><span>basic_streambuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_filebuf.html" title="cpp/io/basic filebuf"><span class="t-lines"><span>basic_filebuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_stringbuf.html" title="cpp/io/basic stringbuf"><span class="t-lines"><span>basic_stringbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_spanbuf.html" title="cpp/io/basic spanbuf"><span class="t-lines"><span>basic_spanbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../strstreambuf.html" title="cpp/io/strstreambuf"><span class="t-lines"><span>strstreambuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98">(deprecated in C++98)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_syncbuf.html" title="cpp/io/basic syncbuf"><span class="t-lines"><span>basic_syncbuf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Streams</td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Abstractions</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ios_base.html" title="cpp/io/ios base"><span class="t-lines"><span>ios_base</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ios.html" title="cpp/io/basic ios"><span class="t-lines"><span>basic_ios</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_istream.html" title="cpp/io/basic istream"><span class="t-lines"><span>basic_istream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ostream.html" title="cpp/io/basic ostream"><span class="t-lines"><span>basic_ostream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_iostream.html" title="cpp/io/basic iostream"><span class="t-lines"><span>basic_iostream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> File I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ifstream.html" title="cpp/io/basic ifstream"><span class="t-lines"><span>basic_ifstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ofstream.html" title="cpp/io/basic ofstream"><span class="t-lines"><span>basic_ofstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_fstream.html" title="cpp/io/basic fstream"><span class="t-lines"><span>basic_fstream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> String I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_istringstream.html" title="cpp/io/basic istringstream"><span class="t-lines"><span>basic_istringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ostringstream.html" title="cpp/io/basic ostringstream"><span class="t-lines"><span>basic_ostringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_stringstream.html" title="cpp/io/basic stringstream"><span class="t-lines"><span>basic_stringstream</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Array I/O</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ispanstream.html" title="cpp/io/basic ispanstream"><span class="t-lines"><span>basic_ispanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_ospanstream.html" title="cpp/io/basic ospanstream"><span class="t-lines"><span>basic_ospanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_spanstream.html" title="cpp/io/basic spanstream"><span class="t-lines"><span>basic_spanstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../istrstream.html" title="cpp/io/istrstream"><span class="t-lines"><span>istrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98">(deprecated in C++98)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../ostrstream.html" title="cpp/io/ostrstream"><span class="t-lines"><span>ostrstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98">(deprecated in C++98)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../strstream.html" title="cpp/io/strstream"><span class="t-lines"><span>strstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-deprecated-cxx98">(deprecated in C++98)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Synchronized Output</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../basic_osyncstream.html" title="cpp/io/basic osyncstream"><span class="t-lines"><span>basic_osyncstream</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../streamoff.html" title="cpp/io/streamoff"><span class="t-lines"><span>streamoff</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../streamsize.html" title="cpp/io/streamsize"><span class="t-lines"><span>streamsize</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../fpos.html" title="cpp/io/fpos"><span class="t-lines"><span>fpos</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Error category interface</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../iostream_category.html" title="cpp/io/iostream category"><span class="t-lines"><span>iostream_category</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="../io_errc.html" title="cpp/io/io errc"><span class="t-lines"><span>io_errc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../c.html" title="cpp/io/c"> C-style I/O</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Types and objects</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FILE.html" title="cpp/io/c/FILE"><span class="t-lines"><span>FILE</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fpos_t.html" title="cpp/io/c/fpos t"><span class="t-lines"><span>fpos_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="std_streams.html" title="cpp/io/c/std streams"><span class="t-lines"><span>stdin</span><span>stdout</span><span>stderr</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> File access</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fopen.html" title="cpp/io/c/fopen"><span class="t-lines"><span>fopen</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="freopen.html" title="cpp/io/c/freopen"><span class="t-lines"><span>freopen</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fclose.html" title="cpp/io/c/fclose"><span class="t-lines"><span>fclose</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fflush.html" title="cpp/io/c/fflush"><span class="t-lines"><span>fflush</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwide.html" title="cpp/io/c/fwide"><span class="t-lines"><span>fwide</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setbuf.html" title="cpp/io/c/setbuf"><span class="t-lines"><span>setbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setvbuf.html" title="cpp/io/c/setvbuf"><span class="t-lines"><span>setvbuf</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Direct input/output</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fread.html" title="cpp/io/c/fread"><span class="t-lines"><span>fread</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwrite.html" title="cpp/io/c/fwrite"><span class="t-lines"><span>fwrite</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Unformatted input/output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetc.html" title="cpp/io/c/fgetc"><span class="t-lines"><span>fgetc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgets.html" title="cpp/io/c/fgets"><span class="t-lines"><span>fgets</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputc.html" title="cpp/io/c/fputc"><span class="t-lines"><span>fputc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputs.html" title="cpp/io/c/fputs"><span class="t-lines"><span>fputs</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getchar.html" title="cpp/io/c/getchar"><span class="t-lines"><span>getchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gets.html" title="cpp/io/c/gets"><span class="t-lines"><span>gets</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-cxx14">(until C++14)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putchar.html" title="cpp/io/c/putchar"><span class="t-lines"><span>putchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="puts.html" title="cpp/io/c/puts"><span class="t-lines"><span>puts</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetc.html" title="cpp/io/c/ungetc"><span class="t-lines"><span>ungetc</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetwc.html" title="cpp/io/c/fgetwc"><span class="t-lines"><span>fgetwc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetws.html" title="cpp/io/c/fgetws"><span class="t-lines"><span>fgetws</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputwc.html" title="cpp/io/c/fputwc"><span class="t-lines"><span>fputwc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputws.html" title="cpp/io/c/fputws"><span class="t-lines"><span>fputws</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getwchar.html" title="cpp/io/c/getwchar"><span class="t-lines"><span>getwchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putwchar.html" title="cpp/io/c/putwchar"><span class="t-lines"><span>putwchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetwc.html" title="cpp/io/c/ungetwc"><span class="t-lines"><span>ungetwc</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Formatted input</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="scanf.html" title="cpp/io/c/fscanf"><span class="t-lines"><span>scanf</span><span>fscanf</span><span>sscanf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>vscanf</span><span>vfscanf</span><span>vsscanf</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwscanf.html" title="cpp/io/c/fwscanf"><span class="t-lines"><span>wscanf</span><span>fwscanf</span><span>swscanf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwscanf.html" title="cpp/io/c/vfwscanf"><span class="t-lines"><span>vwscanf</span><span>vfwscanf</span><span>vswscanf</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Formatted output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="printf.html" title="cpp/io/c/fprintf"><span class="t-lines"><span>printf</span><span>fprintf</span><span>sprintf</span><span>snprintf</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfprintf.html" title="cpp/io/c/vfprintf"><span class="t-lines"><span>vprintf</span><span>vfprintf</span><span>vsprintf</span><span>vsnprintf</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwprintf.html" title="cpp/io/c/fwprintf"><span class="t-lines"><span>wprintf</span><span>fwprintf</span><span>swprintf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwprintf.html" title="cpp/io/c/vfwprintf"><span class="t-lines"><span>vwprintf</span><span>vfwprintf</span><span>vswprintf</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> File positioning</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ftell.html" title="cpp/io/c/ftell"><span class="t-lines"><span>ftell</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetpos.html" title="cpp/io/c/fgetpos"><span class="t-lines"><span>fgetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fseek.html" title="cpp/io/c/fseek"><span class="t-lines"><span>fseek</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fsetpos.html" title="cpp/io/c/fsetpos"><span class="t-lines"><span>fsetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rewind.html" title="cpp/io/c/rewind"><span class="t-lines"><span>rewind</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Error handling</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clearerr.html" title="cpp/io/c/clearerr"><span class="t-lines"><span>clearerr</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feof.html" title="cpp/io/c/feof"><span class="t-lines"><span>feof</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ferror.html" title="cpp/io/c/ferror"><span class="t-lines"><span>ferror</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="perror.html" title="cpp/io/c/perror"><span class="t-lines"><span>perror</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Operations on files</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="remove.html" title="cpp/io/c/remove"><span class="t-lines"><span>remove</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rename.html" title="cpp/io/c/rename"><span class="t-lines"><span>rename</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpfile.html" title="cpp/io/c/tmpfile"><span class="t-lines"><span>tmpfile</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpnam.html" title="cpp/io/c/tmpnam"><span class="t-lines"><span>tmpnam</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code><a href="../../header/cstdio.html" title="cpp/header/cstdio">&lt;cstdio&gt;</a></code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">int</span> vscanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> format, <span class="kw4">va_list</span> vlist <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-cxx11">(since C++11)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">int</span> vfscanf<span class="br0">(</span> <a href="FILE.html"><span class="kw1878">std::<span class="me2">FILE</span></span></a><span class="sy2">*</span> stream, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> format, <span class="kw4">va_list</span> vlist <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-cxx11">(since C++11)</span> </td>
+</tr>
+<tr class="t-dcl t-since-cxx11">
+<td> <div><span class="mw-geshi cpp source-cpp"><span class="kw4">int</span> vsscanf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> buffer, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> format, <span class="kw4">va_list</span> vlist <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (3) </td>
+<td> <span class="t-mark-rev t-since-cxx11">(since C++11)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Reads data from the a variety of sources, interprets it according to <code>format</code> and stores the results into locations defined by <code>vlist</code>.
+</p>
+<div class="t-li1"><span class="t-li">1)</span> Reads the data from <span class="t-lc"><a href="std_streams.html" title="cpp/io/c/std streams">stdin</a></span>.</div>
+<div class="t-li1"><span class="t-li">2)</span> Reads the data from file stream <code>stream</code>.</div>
+<div class="t-li1"><span class="t-li">3)</span> Reads the data from null-terminated character string <code>buffer</code>.</div>
+<h3><span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  stream
+</td>
+<td> -
+</td>
+<td>  input file stream to read from
+</td></tr>
+<tr class="t-par">
+<td>  buffer
+</td>
+<td> -
+</td>
+<td>  pointer to a null-terminated character string to read from
+</td></tr>
+<tr class="t-par">
+<td>  format
+</td>
+<td> -
+</td>
+<td>  pointer to a null-terminated character string specifying how to read the input
+</td></tr>
+<tr class="t-par">
+<td>  vlist
+</td>
+<td> -
+</td>
+<td>  variable argument list containing the receiving arguments.
+</td></tr></table>
+<p><br>
+The <b>format</b> string consists of
+</p>
+<ul><li> non-whitespace multibyte characters except <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span></span></span>: each such character in the format string consumes exactly one identical character from the input stream, or causes the function to fail if the next character on the stream does not compare equal.
+</li><li> whitespace characters: any single whitespace character in the format string consumes all available consecutive whitespace characters from the input (determined as if by calling <a href="../../string/byte/isspace.html" title="cpp/string/byte/isspace"><tt>isspace</tt></a> in a loop). Note that there is no difference between <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"<span class="es1">\n</span>"</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">" "</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"<span class="es1">\t</span><span class="es1">\t</span>"</span></span></span>, or other whitespace in the format string.
+</li><li> conversion specifications. Each conversion specification has the following format:
+</li></ul>
+<dl><dd><ul><li> introductory <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span></span></span> character
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> assignment-suppressing character <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span></span></span>. If this option is present, the function does not assign the result of the conversion to any receiving argument.
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> integer number (greater than zero) that specifies <i>maximum field width</i>, that is, the maximum number of characters that the function is allowed to consume when doing the conversion specified by the current conversion specification. Note that <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>s</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span><span class="br0">[</span></span></span> may lead to buffer overflow if the width is not provided.
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> <i>length modifier</i> that specifies the size of the receiving argument, that is, the actual destination type. This affects the conversion accuracy and overflow rules. The default destination type is different for each conversion type (see table below).
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> conversion format specifier
+</li></ul>
+</dd></dl>
+<p>The following format specifiers are available:
+</p>
+<table class="wikitable" style="text-align:center; font-size:85%; max-width:90em;">
+
+<tr>
+<th rowspan="1"> Conversion<br> specifier
+</th>
+<th rowspan="1"> Explanation
+</th>
+<th colspan="9"> Argument type
+</th></tr>
+<tr>
+<th colspan="2" style="text-align:right; font-weight:normal;"> <div style="display:inline-block; vertical-align:middle; text-align:center"><b>Length modifier →</b></div>
+</th>
+<th> <code>hh</code>
+<p><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</p>
+</th>
+<th> <code>h</code>
+</th>
+<th style="font-weight:normal;"> (none)
+</th>
+<th> <code><b>l</b></code>
+</th>
+<th> <code><b>ll</b></code>
+<p><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</p>
+</th>
+<th> <code><b>j</b></code>
+<p><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</p>
+</th>
+<th> <code><b>z</b></code>
+<p><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</p>
+</th>
+<th> <code><b>t</b></code>
+<p><span class="t-mark-rev t-since-cxx11">(C++11)</span>
+</p>
+</th>
+<th> <code><b>L</b></code>
+</th></tr>
+<tr>
+<th> <code>%</code>
+</th>
+<td style="text-align:left;"> matches literal <code><b>%</b></code>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>c</code>
+</th>
+<td style="text-align:left;">
+<dl><dd> matches a <b>character</b> or a sequence of <b>characters</b>
+</dd></dl>
+<p>If a width specifier is used, matches exactly <i>width</i>  characters (the argument must be a pointer to an array with sufficient room). Unlike %s and %[, does not append the null character to the array.
+</p>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">char</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">wchar_t</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="3" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>s</code>
+</th>
+<td style="text-align:left;">
+<dl><dd> matches a sequence of non-whitespace characters (a <b>string</b>)
+</dd></dl>
+<p>If width specifier is used, matches up to <i>width</i> or until the first whitespace character, whichever appears first. Always stores a null character in addition to the characters matched (so the argument array must have room for at least <i>width+1</i> characters)
+</p>
+</td></tr>
+<tr>
+<th> <code>[</code><span class="t-spar">set</span><code>]</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches a non-empty sequence of character from <span class="t-spar">set</span> of characters.
+</dd></dl>
+<p>If the first character of the set is <code><b>^</b></code>, then all characters not in the set are matched. If the set begins with <code><b>]</b></code> or <code><b>^]</b></code> then the <code><b>]</b></code> character is also included into the set. It is implementation-defined whether the character <code><b>-</b></code> in the non-initial position in the scanset may be indicating a range, as in <code><b>[0-9]</b></code>. If width specifier is used, matches only up to <i>width</i>. Always stores a null character in addition to the characters matched (so the argument array must have room for at least <i>width+1</i> characters)
+</p>
+</td></tr>
+<tr>
+<th> <code>d</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches a <b>decimal integer</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtol.html" title="cpp/string/byte/strtol"><tt>strtol</tt></a> with the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">10</span></span></span> for the <code>base</code> argument
+</p>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">signed</span> <span class="kw4">char</span><span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">char</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">signed</span> <span class="kw4">short</span><span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">short</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">signed</span> <span class="kw4">int</span><span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">int</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">signed</span> <span class="kw4">long</span><span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">long</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">signed</span> <span class="kw4">long</span> <span class="kw4">long</span><span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp">intmax_t<span class="sy2">*</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">uintmax_t<span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp">size_t<span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp">ptrdiff_t<span class="sy2">*</span></span></span></div></div>
+</td>
+<td rowspan="6" style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>i</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches an <b>integer</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtol.html" title="cpp/string/byte/strtol"><tt>strtol</tt></a> with the value <span class="t-c"><span class="mw-geshi cpp source-cpp">​<span class="nu0">0</span>​</span></span> for the <code>base</code> argument (base is determined by the first characters parsed)
+</p>
+</td></tr>
+<tr>
+<th> <code>u</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches an unsigned <b>decimal integer</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtoul.html" title="cpp/string/byte/strtoul"><tt>strtoul</tt></a> with the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">10</span></span></span> for the <code>base</code> argument.
+</p>
+</td></tr>
+<tr>
+<th> <code>o</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches an unsigned <b>octal integer</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtoul.html" title="cpp/string/byte/strtoul"><tt>strtoul</tt></a> with the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">8</span></span></span> for the <code>base</code> argument
+</p>
+</td></tr>
+<tr>
+<th> <code>x</code>, <code>X</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches an unsigned <b>hexadecimal integer</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtoul.html" title="cpp/string/byte/strtoul"><tt>strtoul</tt></a> with the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">16</span></span></span> for the <code>base</code> argument
+</p>
+</td></tr>
+<tr>
+<th> <code>n</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>returns the <b>number of characters read so far</b>.
+</dd></dl>
+<p>No input is consumed. Does not increment the assignment count. If the specifier has assignment-suppressing operator defined, the behavior is undefined
+</p>
+</td></tr>
+<tr>
+<th> <code>a</code>, <code>A</code><span class="t-mark-rev t-since-cxx11">(C++11)</span><br> <code>e</code>, <code>E</code><br> <code>f</code>, <code>F</code><br> <code>g</code>, <code>G</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches a <b>floating-point number</b>.
+</dd></dl>
+<p>The format of the number is the same as expected by <a href="../../string/byte/strtof.html" title="cpp/string/byte/strtof"><tt>strtof</tt></a>
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">float</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">double</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">long</span> <span class="kw4">double</span><span class="sy2">*</span></span></span></div></div>
+</td></tr>
+<tr>
+<th> <code>p</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>matches implementation defined character sequence defining a <b>pointer</b>.
+</dd></dl>
+<p><code>printf</code> family of functions should produce the same sequence using <code><b>%p</b></code> format specifier
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="sy2">**</span></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr></table>
+<p>For every conversion specifier other than <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span>, the longest sequence of input characters which does not exceed any specified ﬁeld width and which either is exactly what the conversion specifier expects or is a prefix of a sequence it would expect, is what's consumed from the stream. The ﬁrst character, if any, after this consumed sequence remains unread. If the consumed sequence has length zero or if the consumed sequence cannot be converted as specified above, the matching failure occurs unless end-of-ﬁle, an encoding error, or a read error prevented input from the stream, in which case it is an input failure.
+</p><p>All conversion specifiers other than <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">[</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">c</span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">n</span></span> consume and discard all leading whitespace characters (determined as if by calling <a href="../../string/byte/isspace.html" title="cpp/string/byte/isspace"><tt>isspace</tt></a>) before attempting to parse the input. These consumed characters do not count towards the specified maximum field width.
+</p><p>The conversion specifiers <span class="t-c"><span class="mw-geshi cpp source-cpp">lc</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">ls</span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">l<span class="br0">[</span></span></span> perform multibyte-to-wide character conversion as if by calling <a href="../../string/multibyte/mbrtowc.html" title="cpp/string/multibyte/mbrtowc"><tt>mbrtowc</tt></a> with an <a href="../../string/multibyte/mbstate_t.html" title="cpp/string/multibyte/mbstate t"><tt>mbstate_t</tt></a> object initialized to zero before the first character is converted.
+</p><p>The conversion specifiers <span class="t-c"><span class="mw-geshi cpp source-cpp">s</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">[</span></span></span> always store the null terminator in addition to the matched characters. The size of the destination array must be at least one greater than the specified field width. The use of <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>s</span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span><span class="br0">[</span></span></span>, without specifying the destination array size, is as unsafe as <span class="t-lc"><a href="gets.html" title="cpp/io/c/gets">std::gets</a></span>.
+</p><p>The correct conversion specifications for the <a href="../../types/integer.html" title="cpp/types/integer">fixed-width integer types</a> (<span class="t-lc">int8_t</span>, etc) are defined in the header <a href="../../header/cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> (although <a href="../../types/integer.html" title="cpp/types/integer"><tt>SCNdMAX</tt></a>, <a href="../../types/integer.html" title="cpp/types/integer"><tt>SCNuMAX</tt></a>, etc is synonymous with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>jd</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>ju</span></span>, etc).
+</p><p>There is a <a href="../../language/eval_order.html" title="cpp/language/eval order">sequence point</a> after the action of each conversion specifier; this permits storing multiple fields in the same "sink" variable.
+</p><p>When parsing an incomplete floating-point value that ends in the exponent with no digits, such as parsing <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"100er"</span></span></span> with the conversion specifier <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">%</span>f</span></span>, the sequence <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"100e"</span></span></span> (the longest prefix of a possibly valid floating-point number) is consumed, resulting in a matching error (the consumed sequence cannot be converted to a floating-point number), with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"r"</span></span></span> remaining. Some existing implementations do not follow this rule and roll back to consume only <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"100"</span></span></span>, leaving <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="st0">"er"</span></span></span>, e.g. <a rel="nofollow" class="external text" href="https://sourceware.org/bugzilla/show_bug.cgi?id=1765">glibc bug 1765</a>
+</p>
+<h3><span class="mw-headline" id="Return_value">Return value</span></h3>
+<p>Number of arguments successfully read, or <span class="t-lc"><a href="../c.html" title="cpp/io/c">EOF</a></span> if failure occurs.
+</p>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>All these functions invoke <span class="t-lc"><a href="../../utility/variadic/va_arg.html" title="cpp/utility/variadic/va arg">va_arg</a></span> at least once, the value of <code>arg</code> is indeterminate after the return. These functions to not invoke <span class="t-lc"><a href="../../utility/variadic/va_end.html" title="cpp/utility/variadic/va end">va_end</a></span>, and it must be done by the caller.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;cstdio&gt;</span>
+<span class="co2">#include &lt;cstdarg&gt;</span>
+<span class="co2">#include &lt;stdexcept&gt;</span>
+ 
+<span class="kw4">void</span> checked_sscanf<span class="br0">(</span><span class="kw4">int</span> count, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> buf, <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>fmt, ...<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">va_list</span> ap<span class="sy4">;</span>
+    <a href="../../utility/variadic/va_start.html"><span class="kw962">va_start</span></a><span class="br0">(</span>ap, fmt<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span>std<span class="sy4">::</span><span class="me2">vsscanf</span><span class="br0">(</span>buf, fmt, ap<span class="br0">)</span> <span class="sy3">!</span><span class="sy1">=</span> count<span class="br0">)</span>
+        <span class="kw1">throw</span> <a href="../../error/runtime_error.html"><span class="kw771">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"parsing error"</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../utility/variadic/va_end.html"><span class="kw965">va_end</span></a><span class="br0">(</span>ap<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">try</span> <span class="br0">{</span>
+        <span class="kw4">int</span> n, m<span class="sy4">;</span>
+        <a href="../cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Parsing '1 2'..."</span><span class="sy4">;</span>
+        checked_sscanf<span class="br0">(</span><span class="nu0">2</span>, <span class="st0">"1 2"</span>, <span class="st0">"%d %d"</span>, <span class="sy3">&amp;</span>n, <span class="sy3">&amp;</span>m<span class="br0">)</span><span class="sy4">;</span>
+        <a href="../cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"success<span class="es1">\n</span>"</span><span class="sy4">;</span>
+        <a href="../cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Parsing '1 a'..."</span><span class="sy4">;</span>
+        checked_sscanf<span class="br0">(</span><span class="nu0">2</span>, <span class="st0">"1 a"</span>, <span class="st0">"%d %d"</span>, <span class="sy3">&amp;</span>n, <span class="sy3">&amp;</span>m<span class="br0">)</span><span class="sy4">;</span>
+        <a href="../cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"success<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="br0">}</span> <span class="kw1">catch</span><span class="br0">(</span><span class="kw4">const</span> <a href="../../error/exception.html"><span class="kw765">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span> e<span class="br0">)</span> <span class="br0">{</span>
+        <a href="../cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> e.<span class="me1">what</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Parsing '1 2'...success
+Parsing '1 a'...parsing error</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="scanf.html" title="cpp/io/c/fscanf"> <span class="t-lines"><span>scanf</span><span>fscanf</span><span>sscanf</span></span></a></div></div>
+</td>
+<td>   reads formatted input from <span class="t-lc"><a href="std_streams.html" title="cpp/io/c/std streams">stdin</a></span>, a file stream or a buffer <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="vfprintf.html" title="cpp/io/c/vfprintf"> <span class="t-lines"><span>vprintf</span><span>vfprintf</span><span>vsprintf</span><span>vsnprintf</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   prints formatted output to <span class="t-lc"><a href="std_streams.html" title="cpp/io/c/std streams">stdout</a></span>, a file stream or a buffer<br> using variable argument list  <br> <span class="t-mark">(function)</span> </td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8574/1000000
+Preprocessor generated node count: 11800/1000000
+Post‐expand include size: 207023/2097152 bytes
+Template argument size: 32702/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:605-0!*!0!!en!*!* and timestamp 20220704203006 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/io/c/vfscanf&amp;oldid=125685">https://en.cppreference.com/mwiki/index.php?title=cpp/io/c/vfscanf&amp;oldid=125685</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/io/c/vfscanf">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 8 January 2021, at 16:38.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 33,722 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 5.739 secs. -->
+	</body>
+<!-- Cached 20220704203006 -->
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Overload resolution - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/overload_resolution","wgTitle":"cpp/language/overload resolution","wgCurRevisionId":141099,"wgArticleId":12784,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with unreviewed CWG DR marker"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/overload_resolution","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_overload_resolution skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Overload resolution</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="functions.html" title="cpp/language/functions"> Functions</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Declarations </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> function declaration</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Parameter_list" title="cpp/language/function"> function parameter list</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Function_definition" title="cpp/language/function"> function definition</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="default_arguments.html" title="cpp/language/default arguments"> default arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variadic_arguments.html" title="cpp/language/variadic arguments"> variadic arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> inline specifier</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> lambda expression</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="coroutines.html" title="cpp/language/coroutines"> coroutines </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Function calls </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="adl.html" title="cpp/language/adl"> argument-dependent lookup (ADL)</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other"> function-call operator</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject"> function objects</a> </td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Overloading </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> overload resolution</strong> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> operator overloading</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="overloaded_address.html" title="cpp/language/overloaded address"> address of an overload set</a> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>In order to compile a function call, the compiler must first perform <a href="lookup.html" title="cpp/language/lookup">name lookup</a>, which, for functions, may involve <a href="adl.html" title="cpp/language/adl">argument-dependent lookup</a>, and for function templates may be followed by <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">template argument deduction</a>. If these steps produce more than one <i>candidate function</i>, then <i>overload resolution</i> is performed to select the function that will actually be called.
+</p><p>In general, the candidate function whose parameters match the arguments most closely is the one that is called.
+</p><p>For other contexts where overloaded function names can appear, see <a href="overloaded_address.html" title="cpp/language/overloaded address">Address of an overloaded function</a>.
+</p><p>If a function cannot be selected by overload resolution (e.g. it is a <a href="templates.html#Templated_entity" title="cpp/language/templates">templated entity</a> with a failed <a href="constraints.html" title="cpp/language/constraints">constraint</a>), it cannot be named or otherwise used.
+</p>
+<h3><span class="mw-headline" id="Details">Details</span></h3>
+<p>Before overload resolution begins, the functions selected by name lookup and template argument deduction are combined to form the set of <i>candidate functions</i> (the exact criteria depend on the context in which overload resolution takes place, see below).
+</p><p>For function templates, <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">template argument deduction</a> and checking of any explicit template arguments are performed to find the template argument values (if any) that can be used in this case:
+</p>
+<ul><li> if both succeeds, the template arguments are used to synthesize declarations of the corresponding function template specializations, which are added to the candidate set, and such specializations are treated just like non-template functions except where specified otherwise in the tie-breaker rules;
+</li><li> if argument deduction fails or the synthesized function template specialization would be ill-formed, no such function is added to the candidate set.
+</li></ul>
+<p>If a name refers to one or more function templates and also to a set of overloaded non-template functions, those functions and the specializations generated from the templates are all candidates.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>If a constructor template or conversion function template has a <a href="explicit.html" title="cpp/language/explicit">conditional explicit specifier</a> which happens to be <a href="dependent_name.html#Value-dependent_expressions" title="cpp/language/dependent name">value-dependent</a>, after deduction, if the context requires a candidate that is not explicit and the generated specialization is explicit, it is removed from the candidate set.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p><br>
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>Defaulted <a href="move_constructor.html" title="cpp/language/move constructor">move constructor</a> and <a href="move_operator.html" title="cpp/language/move assignment">move assignment</a> that are defined as deleted are never included in the list of candidate functions.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<p>Inherited copy and move constructors are not included in the list of candidate functions when constructing a derived class object.
+</p>
+<h4><span class="mw-headline" id="Implicit_object_parameter">Implicit object parameter</span></h4>
+<p>If any candidate function is a <a href="member_functions.html" title="cpp/language/member functions">member function</a> (static or non-static)<span class="t-rev-inl t-since-cxx23"><span> that does not have an <a href="member_functions.html#Explicit_object_parameter" title="cpp/language/member functions">explicit object parameter</a></span> <span><span class="t-mark-rev t-since-cxx23">(since C++23)</span></span></span>, but not a constructor, it is treated as if it has an extra parameter (<i>implicit object parameter</i>) which represents the object for which they are called and appears before the first of the actual parameters.
+</p><p>Similarly, the object on which a member function is being called is prepended to the argument list as the <i>implied object argument</i>.
+</p><p>For member functions of class <code>X</code>, the type of the implicit object parameter is affected by cv-qualifications and ref-qualifications of the member function as described in <a href="member_functions.html" title="cpp/language/member functions">member functions</a>.
+</p><p>The user-defined conversion functions are considered to be members of the <i>implied object argument</i> for the purpose of determining the type of the <i>implicit object parameter</i>.
+</p><p>The member functions introduced by a using-declaration into a derived class are considered to be members of the derived class for the purpose of defining the type of the <i>implicit</i>
+object parameter<i>.</i>
+</p><p>For the static member functions, the <i>implicit object parameter</i> is considered to match any
+object: its type is not examined and no conversion sequence is attempted for it.
+</p><p>For the rest of overload resolution, the <i>implied object argument</i> is indistinguishable from other arguments, but the following special rules apply to the <i>implicit object parameter</i>:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> user-defined conversions cannot be applied to the implicit object parameter</div>
+<div class="t-li1"><span class="t-li">2)</span> rvalues can be bound to non-const implicit object parameter <span class="t-rev-inl t-since-cxx11"><span>(unless this is for a ref-qualified member function)</span> <span><span class="t-mark-rev t-since-cxx11">(since C++11)</span></span></span> and do not affect the ranking of the implicit conversions.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> B <span class="br0">{</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> A <span class="br0">{</span> operator B<span class="sy3">&amp;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+A a<span class="sy4">;</span>
+a.<span class="me1">B</span><span class="sy4">::</span><span class="me2">f</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// Error: user-defined conversions cannot be applied</span>
+           <span class="co1">// to the implicit object parameter</span>
+<span class="kw1">static_cast</span><span class="sy1">&lt;</span>B<span class="sy3">&amp;</span><span class="sy1">&gt;</span><span class="br0">(</span>a<span class="br0">)</span>.<span class="me1">f</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span></pre></div></div></div>
+<h3><span class="mw-headline" id="Candidate_functions">Candidate functions</span></h3>
+<p>The set of candidate functions and the list of arguments is prepared in a unique way for each of the contexts where overload resolution is used:
+</p>
+<h4><span class="mw-headline" id="Call_to_a_named_function">Call to a named function</span></h4>
+<p>If <code>E</code> in a <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other">function call expression</a> <code>E(args)</code> names a set of overloaded functions and/or function templates (but not callable objects), the following rules are followed:
+</p>
+<ul><li> If the expression <code>E</code> has the form <code>PA-&gt;B</code> or <code>A.B</code> (where A has class type cv T), then <code>B</code> is <a href="lookup.html" title="cpp/language/lookup">looked up</a> as a member function of <code>T</code>. The function declarations found by that lookup are the candidate functions. The argument list for the purpose of overload resolution has the implied object argument of type cv T.
+</li><li> If the expression <code>E</code> is a <a href="expressions.html#Primary_expressions" title="cpp/language/expressions">primary expression</a>, the name is <a href="lookup.html" title="cpp/language/lookup">looked up</a> following normal rules for function calls (which may involve <a href="adl.html" title="cpp/language/adl">ADL</a>). The function declarations found by this lookup are (due to the way lookup works) either:
+</li></ul>
+<dl><dd>a) all non-member functions (in which case the argument list for the purpose of overload resolution is exactly the argument list used in the function call expression)
+</dd><dd>b) all member functions of some class <code>T</code>, in which case, if <a href="this.html" title="cpp/language/this">this</a> is in scope and is a pointer to <code>T</code> or to a derived class of <code>T</code>, <code>*this</code> is used as the implied object argument. Otherwise (if <code>this</code> is not in scope or does not point to <code>T</code>), a fake object of type <code>T</code> is used as the implied object argument, and if overload resolution subsequently selects a non-static member function, the program is ill-formed.
+</dd></dl>
+<h4><span class="mw-headline" id="Call_to_a_class_object">Call to a class object</span></h4>
+<p>If <code>E</code> in a <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other">function call expression</a> <code>E(args)</code> has class type cv <code>T</code>, then
+</p>
+<ul><li> The function-call operators of T are obtained by ordinary <a href="lookup.html" title="cpp/language/lookup">lookup</a> of the name <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="br0">(</span><span class="br0">)</span></span></span> in the context of the expression <code>(E).operator()</code>, and every declaration found is added to the set of candidate functions. 
+</li><li> For each non-explicit <a href="cast_operator.html" title="cpp/language/cast operator">user-defined conversion function</a> in <code>T</code> or in a base of <code>T</code> (unless hidden), whose cv-qualifiers are the same or greater than <code>T</code>'s cv-qualifiers, and where the conversion function converts to:
+</li></ul>
+<dl><dd><ul><li> pointer-to-function
+</li><li> reference-to-pointer-to-function
+</li><li> reference-to-function
+</li></ul>
+</dd><dd>then a <i>surrogate call function</i> with a unique name whose first parameter is the result of the conversion, the remaining parameters are the parameter-list accepted by the result of the conversion, and the return type is the return type of the result of the conversion, is added to the set of candidate functions. If this surrogate function is selected by the subsequent overload resolution, then the user-defined conversion function will be called and then the result of the conversion will be called.
+</dd></dl>
+<p>In any case, the argument list for the purpose of overload resolution is the argument list of the function call expression preceded by the implied object argument <code>E</code> (when matching against the surrogate function, the user-defined conversion will automatically convert the implied object argument to the first argument of the surrogate function).
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> f1<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> f2<span class="br0">(</span><span class="kw4">float</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">using</span> fp1 <span class="sy1">=</span> <span class="kw4">int</span><span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+    operator fp1<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> f1<span class="sy4">;</span> <span class="br0">}</span> <span class="co1">// conversion function to pointer to function</span>
+    <span class="kw1">using</span> fp2 <span class="sy1">=</span> <span class="kw4">int</span><span class="br0">(</span><span class="sy2">*</span><span class="br0">)</span><span class="br0">(</span><span class="kw4">float</span><span class="br0">)</span><span class="sy4">;</span>
+    operator fp2<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> f2<span class="sy4">;</span> <span class="br0">}</span> <span class="co1">// conversion function to pointer to function</span>
+<span class="br0">}</span> a<span class="sy4">;</span>
+ 
+<span class="kw4">int</span> i <span class="sy1">=</span> a<span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// calls f1 via pointer returned from conversion function</span></pre></div></div>
+<h4><span class="mw-headline" id="Call_to_an_overloaded_operator">Call to an overloaded operator</span></h4>
+<p>If at least one of the arguments to an operator in an expression has a class type or an enumeration type, both <a href="expressions.html#Operators" title="cpp/language/expressions">builtin operators</a> and <a href="operators.html" title="cpp/language/operators">user-defined operator overloads</a> participate in overload resolution, with the set of candidate functions selected as follows:
+</p><p>For a unary operator <code><b>@</b></code> whose argument has type <code>T1</code> (after removing cv-qualifications), or binary operator <code><b>@</b></code> whose left operand has type <code>T1</code> and right operand of type <code>T2</code> (after removing cv-qualifications), the following sets of candidate functions are prepared:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> <i>member candidates</i>: if <code>T1</code> is a complete class or a class currently being defined, the set of member candidates is the result of <a href="lookup.html" title="cpp/language/lookup">qualified name lookup</a> of <code>T1::operator@</code>. In all other cases, the set of member candidates is empty. </div>
+<div class="t-li1"><span class="t-li">2)</span> <i>non-member candidates</i>: For the operators where <a href="operators.html" title="cpp/language/operators">operator overloading</a> permits non-member forms, all declarations found by <a href="lookup.html" title="cpp/language/lookup">unqualified name lookup</a> of <code>operator@</code> in the context of the expression (which may involve <a href="adl.html" title="cpp/language/adl">ADL</a>), except that member function declarations are ignored and do not prevent the lookup from continuing into the next enclosing scope. If both operands of a binary operator or the only operand of a unary operator has enumeration type, the only functions from the lookup set that become non-member candidates are the ones whose parameter has that enumeration type (or reference to that enumeration type)</div>
+<div class="t-li1"><span class="t-li">3)</span> <i>built-in candidates</i>: For <span class="t-c"><span class="mw-geshi cpp source-cpp">operator,</span></span>, the unary <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span></span>, and the <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy2">-</span><span class="sy1">&gt;</span></span></span>, the set of built-in candidates is empty. For other operators built-in candidates are the ones listed in <a href="expressions.html#Operators" title="cpp/language/expressions">built-in operator pages</a> as long as all operands can be implicitly converted to their parameters. If any built-in candidate has the same parameter list as a non-member candidate that isn't a function template specialization, it is not added to the list of built-in candidates. When the built-in assignment operators are considered, the conversions from their left-hand arguments are restricted: user-defined conversions are not considered.</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<div class="t-li1"><span class="t-li">4)</span> <i>rewritten candidates</i>:
+<dl><dd><ul><li> For the four relational operator expressions <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&lt;</span>y</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&lt;=</span>y</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&gt;</span>y</span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&gt;=</span>y</span></span>, all member, non-member, and built-in <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span>'s found are added to the set.
+</li><li> For the four relational operator expressions <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&lt;</span>y</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&lt;=</span>y</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&gt;</span>y</span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&gt;=</span>y</span></span> as well as the three-way comparison expression <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">&lt;=&gt;</span>y</span></span>, a synthesized candidate with the order of the two parameters reversed is added for each member, non-member, and built-in <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span>'s found.
+</li><li> For <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy3">!</span><span class="sy1">=</span>y</span></span>, all member, non-member, and built-in <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span>'s found are added to the set.
+</li><li> For equality operator expressions <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy1">==</span>y</span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">x<span class="sy3">!</span><span class="sy1">=</span>y</span></span>,  a synthesized candidate with the order of the two parameters reversed is added for each member, non-member, and built-in <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span>'s found.
+</li></ul>
+</dd></dl>
+<p>In all cases, rewritten candidates are not considered in the context of the rewritten expression. For all other operators, the rewritten candidate set is empty.
+</p>
+</div></td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p>The set of candidate functions to be submitted for overload resolution is a union of the sets above. The argument list for the purpose of overload resolution consists of the operands of the operator except for <code>operator-&gt;</code>, where the second operand is not an argument for the function call (see <a href="operator_member_access.html#Built-in_member_access_operators" title="cpp/language/operator member access">member access operator</a>). 
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    operator <span class="kw4">int</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>              <span class="co1">// user-defined conversion</span>
+<span class="br0">}</span><span class="sy4">;</span>
+A operator<span class="sy2">+</span><span class="br0">(</span><span class="kw4">const</span> A<span class="sy3">&amp;</span>, <span class="kw4">const</span> A<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// non-member user-defined operator</span>
+ 
+<span class="kw4">void</span> m<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    A a, b<span class="sy4">;</span>
+    a <span class="sy2">+</span> b<span class="sy4">;</span> <span class="co1">// member-candidates: none</span>
+           <span class="co1">// non-member candidates: operator+(a, b)</span>
+           <span class="co1">// built-in candidates: int(a) + int(b)</span>
+           <span class="co1">// overload resolution chooses operator+(a, b)</span>
+<span class="br0">}</span></pre></div></div>
+<p>If the overload resolution selects a built-in candidate, the <a href="implicit_cast.html" title="cpp/language/implicit cast" class="mw-redirect">user-defined conversion sequence</a> from an operand of class type is not allowed to have a second standard conversion sequence: the user-defined conversion function must give the expected operand type directly:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> Y <span class="br0">{</span> operator <span class="kw4">int</span><span class="sy2">*</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// Y is convertible to int*</span>
+<span class="kw4">int</span> <span class="sy2">*</span>a <span class="sy1">=</span> Y<span class="br0">(</span><span class="br0">)</span> <span class="sy2">+</span> <span class="nu16">100.0</span><span class="sy4">;</span>          <span class="co1">// error: no operator+ between pointer and double</span></pre></div></div>
+<p>For <span class="t-c"><span class="mw-geshi cpp source-cpp">operator,</span></span>, the unary <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy3">&amp;</span></span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy2">-</span><span class="sy1">&gt;</span></span></span>, if there are no viable functions (see below) in the set of candidate functions, then the operator is reinterpreted as a built-in.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>If a rewritten <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> candidate is selected by overload resolution for an operator <code>@</code>, <span class="t-c"><span class="mw-geshi cpp source-cpp">x @ y</span></span> is interpreted as the rewritten expression: <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">0</span> @ <span class="br0">(</span>y <span class="sy1">&lt;=&gt;</span> x<span class="br0">)</span></span></span> if the selected candidate is a synthesized candidate with reversed order of parameters, or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">(</span>x <span class="sy1">&lt;=&gt;</span> y<span class="br0">)</span> @ <span class="nu0">0</span></span></span> otherwise, using the selected rewritten <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> candidate.
+</p><p>If a rewritten <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> candidate is selected by overload resolution for an operator <code>@</code> (which is either <code>==</code> or <code>!=</code>), its return type must be (possibly cv-qualified) <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>, and <span class="t-c"><span class="mw-geshi cpp source-cpp">x @ y</span></span> is interpreted as the rewritten expression: <span class="t-c"><span class="mw-geshi cpp source-cpp">y <span class="sy1">==</span> x</span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="br0">(</span>y <span class="sy1">==</span> x<span class="br0">)</span></span></span> if the selected candidate is a synthesized candidate with reversed order of parameters, or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="br0">(</span>x <span class="sy1">==</span> y<span class="br0">)</span></span></span> otherwise, using the selected rewritten <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> candidate.
+</p><p>Overload resolution in this case has a final tiebreaker preferring non-rewritten candidates to rewritten candidates, and preferring non-synthesized rewritten candidates to synthesized rewritten candidates.
+</p><p>This lookup with the reversed arguments order makes it possible to write just <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="br0">)</span></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span><span class="br0">(</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="br0">)</span></span></span> to generate all comparisons between <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span></span></span>, both ways. See <a href="default_comparisons.html" title="cpp/language/default comparisons">default comparisons</a> for more detail.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id="Initialization_by_constructor">Initialization by constructor</span></h4>
+<p>When an object of class type is <a href="direct_initialization.html" title="cpp/language/direct initialization">direct-initialized</a> or <a href="default_initialization.html" title="cpp/language/default initialization">default-initialized</a> outside a <a href="copy_initialization.html" title="cpp/language/copy initialization">copy-initialization</a> context, the candidate functions are all constructors of the class being initialized. The argument list is the expression list of the initializer.
+</p><p>When an object of class type is copy-initialized from an object of the same or derived class type, or default-initialized in a copy-initialization context, the candidate functions are all <a href="converting_constructor.html" title="cpp/language/converting constructor">converting constructors</a> of the class being initialized. The argument list is the expression of the initializer.
+</p>
+<h4><span class="mw-headline" id="Copy-initialization_by_conversion">Copy-initialization by conversion</span></h4>
+<p>If <a href="copy_initialization.html" title="cpp/language/copy initialization">copy-initialization</a> of an object of class type requires that a user-defined conversion is called to convert the initializer expression of type cv <code>S</code> to the type cv <code>T</code> of the object being initialized, the following functions are candidate functions:
+</p>
+<ul><li> all <a href="converting_constructor.html" title="cpp/language/converting constructor">converting constructors</a> of <code>T</code>
+</li><li> the non-explicit conversion functions from <code>S</code> and its base classes (unless hidden) to <code>T</code> or class derived from <code>T</code> or a reference to such. If this copy-initialization is part of the direct-initialization sequence of <i>cv</i> <code>T</code> (initializing a reference to be bound to the first parameter of a constructor that takes a reference to cv <code>T</code>), then explicit conversion functions are also considered.
+</li></ul>
+<p>Either way, the argument list for the purpose of overload resolution consists of a single argument which is the initializer expression, which will be compared against the first argument of the constructor or against the implicit object argument of the conversion function.
+</p>
+<h4><span class="mw-headline" id="Non-class_initialization_by_conversion">Non-class initialization by conversion</span></h4>
+<p>When initialization of an object of non-class type cv1 <code>T</code> requires a <a href="cast_operator.html" title="cpp/language/cast operator">user-defined conversion function</a> to convert from an initializer expression of class type cv <code>S</code>, the following functions are candidates:
+</p>
+<ul><li> the non-explicit user-defined conversion functions of <code>S</code> and its base classes (unless hidden) that produce type <code>T</code> or a type convertible to <code>T</code> by a <a href="implicit_cast.html" title="cpp/language/implicit cast" class="mw-redirect">standard conversion sequence</a>, or a reference to such type. cv qualifiers on the returned type are ignored for the purpose of selecting candidate functions.
+</li><li> if this is <a href="direct_initialization.html" title="cpp/language/direct initialization">direct-initialization</a>, the explicit user-defined conversion functions of <code>S</code> and its base classes (unless hidden) that produce type <code>T</code> or a type convertible to <code>T</code> by a <a href="implicit_cast.html" title="cpp/language/implicit cast" class="mw-redirect">qualification conversion</a>, or a reference to such type, are also considered.
+</li></ul>
+<p>Either way, the argument list for the purpose of overload resolution consists of a single argument which is the initializer expression, which will be compared against the implicit object argument of the conversion function.
+</p>
+<h4><span class="mw-headline" id="Reference_initialization_by_conversion">Reference initialization by conversion</span></h4>
+<p>During <a href="reference_initialization.html" title="cpp/language/reference initialization">reference initialization</a>, where the reference to cv1 <code>T</code> is bound to the lvalue or rvalue result of a conversion from the initializer expression from the class type cv2 <code>S</code>, the following functions are selected for the candidate set:
+</p>
+<ul><li> the non-explicit user-defined conversion functions of <code>S</code> and its base classes (unless hidden) to the type
+</li></ul>
+<dl><dd><ul><li> (when initializing lvalue reference or rvalue reference to function) lvalue reference to cv2 <code>T2</code>
+</li><li> (when initializing rvalue reference or lvalue reference to function) cv2 <code>T2</code> or rvalue reference to cv2 <code>T2</code>
+</li></ul>
+</dd><dd>where cv2 T2 is reference-compatible with cv1 T
+</dd></dl>
+<ul><li> for direct initializaton, the explicit user-defined conversion functions are also considered if T2 is the same type as T or can be converted to type T with a qualification conversion.
+</li></ul>
+<p>Either way, the argument list for the purpose of overload resolution consists of a single argument which is the initializer expression, which will be compared against the implicit object argument of the conversion function.
+</p>
+<h4><span class="mw-headline" id="List-initialization">List-initialization</span></h4>
+<p>When an object of non-aggregate class type <code>T</code> is <a href="list_initialization.html" title="cpp/language/list initialization">list-initialized</a>, two-phase overload resolution takes place.
+</p>
+<ul><li> at phase 1, the candidate functions are all initializer-list constructors of <code>T</code> and the argument list for the purpose of overload resolution consists of a single initializer list argument
+</li><li> if overload resolution fails at phase 1, phase 2 is entered, where the candidate functions are all constructors of <code>T</code> and the argument list for the purpose of overload resolution consists of the individual elements of the initializer list. 
+</li></ul>
+<p>If the initializer list is empty and <code>T</code> has a default constructor, phase 1 is skipped.
+</p><p>In copy-list-initialization, if phase 2 selects an explicit constructor, the initialization is ill-formed (as opposed to all over copy-initializations where explicit constructors are not even considered).
+</p>
+<h3><span class="mw-headline" id="Viable_functions">Viable functions</span></h3>
+<p>Given the set of candidate functions, constructed as described above, the next step of overload resolution is examining arguments and parameters to reduce the set to the set of <i>viable functions</i>
+</p><p>To be included in the set of viable functions, the candidate function must satisfy the following:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> If there are <code>M</code> arguments, the candidate function that has exactly <code>M</code> parameters is viable</div>
+<div class="t-li1"><span class="t-li">2)</span> If the candidate function has less than <code>M</code> parameters, but has an <a href="variadic_arguments.html" title="cpp/language/variadic arguments">ellipsis parameter</a>, it is viable.</div>
+<div class="t-li1"><span class="t-li">3)</span> If the candidate function has more than <code>M</code> parameters and the <code>M+1</code>'st parameter and all parameters that follow have default arguments, it is viable. For the rest of overload resolution, the parameter list is truncated at M.</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<div class="t-li1"><span class="t-li">4)</span> If the function has an associated <a href="constraints.html" title="cpp/language/constraints">constraint</a>, it must be satisfied</div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<div class="t-li1"><span class="t-li">5)</span> For every argument there must be at least one implicit conversion sequence that converts it to the corresponding parameter.</div>
+<div class="t-li1"><span class="t-li">6)</span> If any parameter has reference type, reference binding is accounted for at this step: if an rvalue argument corresponds to non-const lvalue reference parameter or an lvalue argument corresponds to rvalue reference parameter, the function is not viable.</div>
+<p>User-defined conversions (both converting constructors and user-defined conversion functions) are prohibited from taking part in implicit conversion sequence where it would make it possible to apply more than one user-defined conversion. Specifically, they are not considered if the target of the conversion is the first parameter of a constructor or the implicit object parameter of a user-defined conversion function, and that constructor/user-defined conversion is a candidate for
+</p>
+<ul><li> <a href="overload_resolution.html#Copy-initialization_by_conversion">copy-initialization of a class by user-defined conversion</a>,
+</li><li> <a href="overload_resolution.html#Non-class_initialization_by_conversion">initialization of a non-class type by a conversion function</a>,
+</li><li> <a href="overload_resolution.html#Reference_initialization_by_conversion">initialization by conversion function for direct reference binding</a>,
+</li><li> <a href="overload_resolution.html#Initialization_by_constructor">initialization by constructor</a> during the second (direct-initialization) step of class <a href="copy_initialization.html" title="cpp/language/copy initialization">copy-initialization</a>,
+</li><li>  initialization by list-initialization where the initializer list has exactly one element that is itself an initializer list, and the target is the first parameter of a constructor of class X, and the conversion is to X or reference to (possibly cv-qualified) X
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> A<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span> B<span class="br0">(</span>A<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+B b<span class="br0">{</span> <span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// list-init of B</span>
+ 
+<span class="co1">// candidates: B(const B&amp;), B(B&amp;&amp;), B(A)</span>
+<span class="co1">// {0} -&gt; B&amp;&amp; not viable: would have to call B(A)</span>
+<span class="co1">// {0} -&gt; const B&amp;: not viable: would have to bind to rvalue, would have to call B(A)</span>
+<span class="co1">// {0} -&gt; A viable. Calls A(int): user-defined conversion to A is not banned</span></pre></div></div>
+<h3><span class="mw-headline" id="Best_viable_function">Best viable function</span></h3>
+<p>For each pair of viable function <code>F1</code> and <code>F2</code>, the implicit conversion sequences from the <code>i</code>-th argument to <code>i</code>-th parameter are ranked to determine which one is better (except the first argument, the <i>implicit object argument</i> for static member functions has no effect on the ranking)
+</p><p><code>F1</code> is determined to be a better function than <code>F2</code> if implicit conversions for all arguments of F1 are <i>not worse</i> than the implicit conversions for all arguments of F2, and
+</p>
+<div class="t-li1"><span class="t-li">1)</span> there is at least one argument of F1 whose implicit conversion is <i>better</i> than the corresponding implicit conversion for that argument of F2</div>
+<div class="t-li1"><span class="t-li">2)</span> or, if not that, (only in context of non-class initialization by conversion), the standard conversion sequence from the return type of F1 to the type being initialized is <i>better</i> than the standard conversion sequence from the return type of F2</div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">3)</span> or, if not that, (only in context of initialization by conversion function for direct reference binding of a reference to function type), the return type of F1 is the same kind of reference (lvalue or rvalue) as the reference being initialized, and the return type of F2 is not</div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<div class="t-li1"><span class="t-li">4)</span> or, if not that, F1 is a non-template function while F2 is a template specialization</div>
+<div class="t-li1"><span class="t-li">5)</span> or, if not that, F1 and F2 are both template specializations and F1 is <i>more specialized</i> according to the <a href="function_template.html#Function_template_overloading" title="cpp/language/function template">partial ordering rules for template specializations</a></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<div class="t-li1"><span class="t-li">6)</span> or, if not that, F1 and F2 are non-template functions with the same parameter-type-lists, and F1 is more constrained than F2 according to the <a href="constraints.html" title="cpp/language/constraints">partial ordering of constraints</a></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">7)</span> or, if not that, F1 is a constructor for a class D, F2 is a constructor for a base class B of D, and for all arguments the corresponding parameters of F1 and F2 have the same type:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    A<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> B<span class="sy4">:</span> A
+<span class="br0">{</span>
+    <span class="kw1">using</span> A<span class="sy4">::</span><span class="me2">A</span><span class="sy4">;</span>
+ 
+    B<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+B b<span class="sy4">;</span> <span class="co1">// OK, B::B()</span></pre></div></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<div class="t-li1"><span class="t-li">8)</span> or, if not that, F2 is a rewritten candidate and F1 is not,</div>
+<div class="t-li1"><span class="t-li">9)</span> or, if not that, F1 and F2 are both rewritten candidates, and F2 is a synthesized rewritten candidate with reversed order of parameters and F1 is not,</div>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<div class="t-li1"><span class="t-li">10)</span> or, if not that, F1 is generated from a <a href="deduction_guide.html" title="cpp/language/deduction guide" class="mw-redirect">user-defined deduction-guide</a> and F2 is not</div>
+<div class="t-li1"><span class="t-li">11)</span> or, if not that, F1 is the <a href="deduction_guide.html" title="cpp/language/deduction guide" class="mw-redirect">copy deduction candidate</a> and F2 is not</div>
+<div class="t-li1"><span class="t-li">12)</span> or, if not that, F1 is generated from a non-template constructor and F2 is generated from a constructor template:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">using</span> value_type <span class="sy1">=</span> T<span class="sy4">;</span>
+    A<span class="br0">(</span>value_type<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// #1</span>
+    A<span class="br0">(</span><span class="kw4">const</span> A<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// #2</span>
+    A<span class="br0">(</span>T, T, <span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// #3</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    A<span class="br0">(</span><span class="kw4">int</span>, T, U<span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// #4</span>
+<span class="br0">}</span><span class="sy4">;</span>                  <span class="co1">// #5 is A(A), the copy deduction candidate</span>
+ 
+A x <span class="br0">(</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// uses #3, generated from a non-template constructor</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+A<span class="br0">(</span>T<span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>       <span class="co1">// #6, less specialized than #5</span>
+ 
+A a <span class="br0">(</span><span class="nu0">42</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// uses #6 to deduce A&lt;int&gt; and #1 to initialize</span>
+A b <span class="sy1">=</span> a<span class="sy4">;</span>  <span class="co1">// uses #5 to deduce A&lt;int&gt; and #2 to initialize</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+A<span class="br0">(</span>A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> A<span class="sy1">&lt;</span>A<span class="sy1">&lt;</span>T<span class="sy1">&gt;&gt;</span><span class="sy4">;</span> <span class="co1">// #7, as specialized as #5</span>
+A b2 <span class="sy1">=</span> a<span class="sy4">;</span> <span class="co1">// uses #7 to deduce A&lt;A&lt;int&gt;&gt; and #1 to initialize</span></pre></div></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<p>These pair-wise comparisons are applied to all viable functions. If exactly one viable function is better than all others, overload resolution succeeds and this function is called. Otherwise, compilation fails.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> Fcn<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span>, <span class="kw4">short</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #1</span>
+<span class="kw4">void</span> Fcn<span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span>, <span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>         <span class="co1">// overload #2</span>
+ 
+<span class="kw4">int</span> i<span class="sy4">;</span>
+<span class="kw4">short</span> s <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span> 
+<span class="br0">{</span>
+    Fcn<span class="br0">(</span><span class="sy3">&amp;</span>i, <span class="nu0">1L</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// 1st argument: &amp;i -&gt; int* is better than &amp;i -&gt; const int*</span>
+                  <span class="co1">// 2nd argument: 1L -&gt; short and 1L -&gt; int are equivalent</span>
+                  <span class="co1">// calls Fcn(int*, int)</span>
+ 
+    Fcn<span class="br0">(</span><span class="sy3">&amp;</span>i, <span class="st0">'c'</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// 1st argument: &amp;i -&gt; int* is better than &amp;i -&gt; const int*</span>
+                  <span class="co1">// 2nd argument: 'c' -&gt; int is better than 'c' -&gt; short</span>
+                  <span class="co1">// calls Fcn(int*, int)</span>
+ 
+    Fcn<span class="br0">(</span><span class="sy3">&amp;</span>i, s<span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// 1st argument: &amp;i -&gt; int* is better than &amp;i -&gt; const int*</span>
+                  <span class="co1">// 2nd argument: s -&gt; short is better than s -&gt; int</span>
+                  <span class="co1">// no winner, compilation error</span>
+<span class="br0">}</span></pre></div></div>
+<p>If the best viable function resolves to a function for which multiple declarations were found, and if any two of these declarations inhabit different scopes and specify a default argument that made the function viable, the program is ill-formed.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> A
+<span class="br0">{</span>
+    <span class="kw4">extern</span> <span class="st0">"C"</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="nu0">5</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">namespace</span> B
+<span class="br0">{</span>
+    <span class="kw4">extern</span> <span class="st0">"C"</span> <span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> <span class="sy1">=</span> <span class="nu0">5</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">using</span> A<span class="sy4">::</span><span class="me2">f</span><span class="sy4">;</span>
+<span class="kw1">using</span> B<span class="sy4">::</span><span class="me2">f</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> use<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK, default argument was not used for viability</span>
+    f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// error: found default argument twice</span>
+<span class="br0">}</span></pre></div></div>
+<h3><span class="mw-headline" id="Ranking_of_implicit_conversion_sequences">Ranking of implicit conversion sequences</span></h3>
+<p>The argument-parameter implicit conversion sequences considered by overload resolution correspond to <a href="implicit_cast.html" title="cpp/language/implicit conversion">implicit conversions</a> used in <a href="copy_initialization.html" title="cpp/language/copy initialization">copy initialization</a> (for non-reference parameters), except that when considering conversion to the implicit object parameter or to the left-hand side of assignment operator, conversions that create temporary objects are not considered.
+</p><p>Each <a href="implicit_cast.html" title="cpp/language/implicit conversion">type of standard conversion sequence</a> is assigned one of three ranks:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> <b>Exact match</b>: no conversion required, lvalue-to-rvalue conversion, qualification conversion, <span class="t-rev-inl t-since-cxx17"><span>function pointer conversion,</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span> user-defined conversion of class type to the same class</div>
+<div class="t-li1"><span class="t-li">2)</span> <b>Promotion</b>: integral promotion, floating-point promotion</div>
+<div class="t-li1"><span class="t-li">3)</span> <b>Conversion</b>: integral conversion, floating-point conversion, floating-integral conversion, pointer conversion, pointer-to-member conversion, boolean conversion, user-defined conversion of a derived class to its base</div>
+<p>The rank of the standard conversion sequence is the worst of the ranks of the standard conversions it holds (there may be up to <a href="implicit_cast.html" title="cpp/language/implicit conversion">three conversions</a>)
+</p><p>Binding of a reference parameter directly to the argument expression is either Identity or a derived-to-base Conversion:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> Base <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> Derived <span class="sy4">:</span> Base <span class="br0">{</span><span class="br0">}</span> d<span class="sy4">;</span>
+ 
+<span class="kw4">int</span> f<span class="br0">(</span>Base<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// overload #1</span>
+<span class="kw4">int</span> f<span class="br0">(</span>Derived<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #2</span>
+ 
+<span class="kw4">int</span> i <span class="sy1">=</span> f<span class="br0">(</span>d<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// d -&gt; Derived&amp; has rank Exact Match</span>
+              <span class="co1">// d -&gt; Base&amp; has rank Conversion</span>
+              <span class="co1">// calls f(Derived&amp;)</span></pre></div></div>
+<p>Since ranking of conversion sequences operates with types and value categories only, a <a href="bitfield.html" title="cpp/language/bit field">bit field</a> can bind to a reference argument for the purpose of ranking, but if that function gets selected, it will be ill-formed.
+</p>
+<div class="t-li1"><span class="t-li">1)</span> A standard conversion sequence is always <i>better</i> than a user-defined conversion sequence or an ellipsis conversion sequence.</div>
+<div class="t-li1"><span class="t-li">2)</span> A user-defined conversion sequence is always <i>better</i> than an <a href="variadic_arguments.html" title="cpp/language/variadic arguments">ellipsis conversion</a> sequence</div>
+<div class="t-li1"><span class="t-li">3)</span> A standard conversion sequence <code>S1</code> is <i>better</i> than a standard conversion sequence <code>S2</code> if</div>
+<div class="t-li2"><span class="t-li">a)</span> <code>S1</code> is a subsequence of <code>S2</code>, excluding lvalue transformations. The identity conversion sequence is considered a subsequence of any other conversion</div>
+<div class="t-li2"><span class="t-li">b)</span> Or, if not that, the rank of <code>S1</code> is better than the rank of <code>S2</code></div>
+<div class="t-li2"><span class="t-li">c)</span> or, if not that, both <code>S1</code> and <code>S2</code> are binding to a reference parameter to something other than the implicit object parameter of a ref-qualified member function, and <code>S1</code> binds an rvalue reference to an rvalue while <code>S2</code> binds an lvalue reference to an rvalue
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> i<span class="sy4">;</span>
+<span class="kw4">int</span> f1<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// overload #1</span>
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #2</span>
+ 
+<span class="kw4">int</span> j <span class="sy1">=</span> g<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// lvalue int -&gt; const int&amp; is the only valid conversion</span>
+<span class="kw4">int</span> k <span class="sy1">=</span> g<span class="br0">(</span>f1<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// rvalue int -&gt; const int&amp;&amp; better than rvalue int -&gt; const int&amp;</span></pre></div></div></div>
+<div class="t-li2"><span class="t-li">d)</span> or, if not that, both <code>S1</code> and <code>S2</code> are binding to a reference parameter and <code>S1</code> binds an lvalue reference to function while <code>S2</code> binds an rvalue reference to function.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">void</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// overload #1</span>
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">void</span><span class="br0">(</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #2</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> i1 <span class="sy1">=</span> f<span class="br0">(</span>g<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// calls #1</span></pre></div></div></div>
+<div class="t-li2"><span class="t-li">e)</span> or, if not that, both <code>S1</code> and <code>S2</code> are binding to a reference parameters only different in top-level cv-qualification, and <code>S1</code>'s type is <i>less</i> cv-qualified than <code>S2</code>'s.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span> <span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #1</span>
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">int</span> <span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// overload #2 (both references)</span>
+ 
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span> <span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #1</span>
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>         <span class="co1">// overload #2</span>
+ 
+<span class="kw4">int</span> i<span class="sy4">;</span>
+<span class="kw4">int</span> j <span class="sy1">=</span> f<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// lvalue i -&gt; int&amp; is better than lvalue int -&gt; const int&amp;</span>
+              <span class="co1">// calls f(int&amp;)</span>
+<span class="kw4">int</span> k <span class="sy1">=</span> g<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// lvalue i -&gt; const int&amp; ranks Exact Match</span>
+              <span class="co1">// lvalue i -&gt; rvalue int ranks Exact Match</span>
+              <span class="co1">// ambiguous overload: compilation error</span></pre></div></div></div>
+<div class="t-li2"><span class="t-li">f)</span> Or, if not that, S1 and S2 only differ in qualification conversion, and
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx20"><td>
+<p>the cv-qualification of the result of <code>S1</code> is a proper subset of the cv-qualification of the result of <code>S2</code><span class="t-rev-inl t-until-cxx11"><span>, and S1 is not the <a href="string_literal.html#Notes" title="cpp/language/string literal">deprecated string literal array-to-pointer conversion</a></span> <span><span class="t-mark-rev t-until-cxx11">(until C++11)</span></span></span>.
+</p>
+</td>
+<td><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<p>the result of <code>S1</code> can be converted to the result of <code>S2</code> by a qualification conversion.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> i<span class="sy4">;</span>
+<span class="kw4">int</span> j <span class="sy1">=</span> f<span class="br0">(</span><span class="sy3">&amp;</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// &amp;i -&gt; int* is better than &amp;i -&gt; const int*, calls f(int*)</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">4)</span> A user-defined conversion sequence <code>U1</code> is <i>better</i> than a user-defined conversion sequence <code>U2</code> if they call the same constructor/user-defined conversion function or initialize the same class with aggregate-initialization, and in either case the second standard conversion sequence in <code>U1</code> is better than the second standard conversion sequence in <code>U2</code>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    operator <span class="kw4">short</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// user-defined conversion function</span>
+<span class="br0">}</span> a<span class="sy4">;</span>
+ 
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// overload #1</span>
+<span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">float</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #2</span>
+ 
+<span class="kw4">int</span> i <span class="sy1">=</span> f<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// A -&gt; short, followed by short -&gt; int (rank Promotion)</span>
+              <span class="co1">// A -&gt; short, followed by short -&gt; float (rank Conversion)</span>
+              <span class="co1">// calls f(int)</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">5)</span> A list-initialization sequence <code>L1</code> is <i>better</i> than list-initialization sequence <code>L2</code> if <code>L1</code> initializes an <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a></span></span> parameter, while <code>L2</code> does not.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>                                 <span class="co1">// #1</span>
+<span class="kw4">void</span> f1<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span><span class="kw4">long</span><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>         <span class="co1">// #2</span>
+<span class="kw4">void</span> g1<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> f1<span class="br0">(</span><span class="br0">{</span><span class="nu0">42</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>                       <span class="co1">// chooses #2</span>
+ 
+<span class="kw4">void</span> f2<span class="br0">(</span><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a><span class="sy1">&lt;</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span>, <span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #3</span>
+<span class="kw4">void</span> f2<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// #4</span>
+<span class="kw4">void</span> g2<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> f2<span class="br0">(</span><span class="br0">{</span><span class="st0">"foo"</span>, <span class="st0">"bar"</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>             <span class="co1">// chooses #4</span></pre></div></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11 t-until-cxx20"><td>
+<div class="t-li1"><span class="t-li">6)</span> A list-initialization sequence <code>L1</code> is <i>better</i> than list-initialization sequence <code>L2</code> if the corresponding parameters are references to arrays, and L1 converts to type "array of N1 T," L2 converts to type "array of N2 T", and N1 is smaller than N2.
+</div></td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span><br><span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-rev t-since-cxx20"><td>
+<div class="t-li1"><span class="t-li">6)</span> A list-initialization sequence <code>L1</code> is <i>better</i> than list-initialization sequence <code>L2</code> if the corresponding parameters are references to arrays, and L1 and L2 convert to arrays of same element type, and either
+<ul><li> the number of elements N1 initialized by L1 is less than the number of elements N2 initialized by L2, or
+</li><li> N1 is equal to N2 and L2 converts to an array of unknown bound and L1 does not.
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span>    <span class="br0">(</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="br0">]</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #1</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">double</span> <span class="br0">(</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="br0">]</span> <span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #2</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span>    <span class="br0">(</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// overload #3</span>
+ 
+f<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>        <span class="co1">// #1: Better than #2 due to conversion, better than #3 due to bounds</span>
+f<span class="br0">(</span><span class="br0">{</span><span class="nu16">1.0</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>      <span class="co1">// #2: double -&gt; double is better than double -&gt; int</span>
+f<span class="br0">(</span><span class="br0">{</span><span class="nu16">1.0</span>, <span class="nu16">2.0</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2: double -&gt; double is better than double -&gt; int</span>
+f<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// #3: -&gt; int[2] is better than -&gt; int[], </span>
+               <span class="co1">//     and int -&gt; int is better than int -&gt; double</span></pre></div></div>
+</div></td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<p>If two conversion sequences are indistinguishable because they have the same rank, the following additional rules apply:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> Conversion that involves pointer to bool or pointer-to-member to bool is worse than the one that doesn't. </div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">2)</span> Conversion that promotes an <a href="enum_class.html" title="cpp/language/enum">enumeration</a> whose underlying type is fixed to its underlying type is better than one that promotes to the promoted underlying type, if the two types are different.
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw2">enum</span> num <span class="sy4">:</span> <span class="kw4">char</span> <span class="br0">{</span> one <span class="sy1">=</span> <span class="st0">'0'</span> <span class="br0">}</span><span class="sy4">;</span>
+<a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> num<span class="sy4">::</span><span class="me2">one</span><span class="sy4">;</span> <span class="co1">// '0', not 48</span></pre></div></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<div class="t-li1"><span class="t-li">3)</span> Conversion that converts pointer-to-derived to pointer-to-base is better than the conversion of pointer-to-derived to pointer-to-void, and conversion of pointer-to-base to void is better than pointer-to-derived to void.</div>
+<div class="t-li1"><span class="t-li">4)</span> If <code>Mid</code> is derived (directly or indirectly) from <code>Base</code>, and <code>Derived</code> is derived (directly or indirectly) from <code>Mid</code></div>
+<div class="t-li2"><span class="t-li">a)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy2">*</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy2">*</span></span></span></div>
+<div class="t-li2"><span class="t-li">b)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy3">&amp;</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy3">&amp;&amp;</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;&amp;</span></span></span></div>
+<div class="t-li2"><span class="t-li">c)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy4">::</span><span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy4">::</span><span class="sy2">*</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy4">::</span><span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy4">::</span><span class="sy2">*</span></span></span></div>
+<div class="t-li2"><span class="t-li">d)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid</span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base</span></span></div>
+<div class="t-li2"><span class="t-li">e)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy2">*</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy2">*</span></span></span></div>
+<div class="t-li2"><span class="t-li">f)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;&amp;</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy3">&amp;&amp;</span></span></span></div>
+<div class="t-li2"><span class="t-li">g)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid<span class="sy4">::</span><span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy4">::</span><span class="sy2">*</span></span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Base<span class="sy4">::</span><span class="sy2">*</span></span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived<span class="sy4">::</span><span class="sy2">*</span></span></span></div>
+<div class="t-li2"><span class="t-li">h)</span> <span class="t-c"><span class="mw-geshi cpp source-cpp">Mid</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base</span></span> is better than <span class="t-c"><span class="mw-geshi cpp source-cpp">Derived</span></span> to <span class="t-c"><span class="mw-geshi cpp source-cpp">Base</span></span></div>
+<p>Ambiguous conversion sequences are ranked as user-defined conversion sequences because multiple conversion sequences for an argument can exist only if they involve different user-defined conversions:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> B<span class="sy4">;</span>
+ 
+<span class="kw1">class</span> A <span class="br0">{</span> A <span class="br0">(</span>B<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span><span class="br0">}</span><span class="sy4">;</span>         <span class="co1">// converting constructor</span>
+<span class="kw1">class</span> B <span class="br0">{</span> operator A <span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span> <span class="co1">// user-defined conversion function</span>
+<span class="kw1">class</span> C <span class="br0">{</span> C <span class="br0">(</span>B<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>        <span class="co1">// converting constructor</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span>A<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// overload #1</span>
+<span class="kw4">void</span> f<span class="br0">(</span>C<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// overload #2</span>
+ 
+B b<span class="sy4">;</span>
+f<span class="br0">(</span>b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// B -&gt; A via ctor or B -&gt; A via function (ambiguous conversion)</span>
+      <span class="co1">// b -&gt; C via ctor (user-defined conversion)</span>
+      <span class="co1">// the conversions for overload #1 and for overload #2</span>
+      <span class="co1">// are indistinguishable; compilation fails</span></pre></div></div>
+<h3><span class="mw-headline" id="Implicit_conversion_sequence_in_list-initialization">Implicit conversion sequence in list-initialization</span></h3>
+<p>In <a href="list_initialization.html" title="cpp/language/list initialization">list initialization</a>, the argument is a <span class="t-spar">braced-init-list</span>, which isn't an expression, so the implicit conversion sequence into the parameter type for the purpose of overload resolution is decided by the following special rules:
+</p>
+<ul><li> If the parameter type is some aggregate <code>X</code> and the initializer list consists of exactly one element of same or derived class (possibly cv-qualified), the implicit conversion sequence is the one required to convert the element to the parameter type.
+</li><li> Otherwise, if the parameter type is a reference to character array and the initializer list has a single element that is an appropriately-typed string literal, the implicit conversion sequence is the identity conversion.
+</li><li> Otherwise, if the parameter type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>X<span class="sy1">&gt;</span></span></span>, and there is an non-narrowing implicit conversion from every element of the initializer list to <code>X</code>, the implicit conversion sequence for the purpose of overload resolution is the worst conversion necessary. If the braced-init-list is empty, the conversion sequence is the identity conversion.
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    A<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>          <span class="co1">// #1</span>
+    A<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>complex<span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;&gt;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+    A<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// #3</span>
+<span class="br0">}</span><span class="sy4">;</span>
+A a<span class="br0">{</span><span class="nu16">1.0</span>, <span class="nu16">2.0</span><span class="br0">}</span><span class="sy4">;</span>     <span class="co1">// selects #1 (rvalue double -&gt; double: identity conv)</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span>A<span class="br0">)</span><span class="sy4">;</span>
+g<span class="br0">(</span><span class="br0">{</span><span class="st0">"foo"</span>, <span class="st0">"bar"</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// selects #3 (lvalue const char[4] -&gt; std::string: user-def conv)</span></pre></div></div>
+<ul><li> Otherwise, if the parameter type is "array of N T" (this only happens for references to arrays), the initializer list must have N or less elements, and the worst implicit conversion necessary to convert every element of the list (or the empty pair of braces <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="br0">{</span><span class="br0">}</span></span></span> if the list is shorter than N) to <code>T</code> is the one used.
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<ul><li> Otherwise, if the parameter type is "array of unknown bound of T" (this only happens for references to arrays), the worst implicit conversion necessary to convert every element of the list to <code>T</code> is the one used.
+</li></ul>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">typedef</span> <span class="kw4">int</span> IA<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">const</span> IA<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">void</span> g<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+h<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// int-&gt;int identity conversion</span>
+g<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// same as above since C++20</span></pre></div></div>
+<ul><li> Otherwise, if the parameter type is a non-aggregate class type <code>X</code>, overload resolution picks the constructor C of X to initialize from the argument initializer list
+</li></ul>
+<dl><dd><ul><li> If C is not an initializer-list constructor and the initializer list has a single element of possibly cv-qualified X, the implicit conversion sequence has Exact Match rank. If the initializer list has a single element of possibly cv-qualified type derived from X, the implicit conversion sequence has Conversion rank. (note the difference from aggregates: aggregates initialize directly from single-element init lists before considering <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate initialization</a>, non-aggregates consider initializer_list constructors before any other constructors)
+</li><li> otherwise, the implicit conversion sequence is a user-defined conversion sequence with the second standard conversion sequence an identity conversion.
+</li></ul>
+</dd></dl>
+<p>If multiple constructors are viable but none is better than the others, the implicit conversion sequence is the ambiguous conversion sequence.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> A<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>A<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> B <span class="br0">{</span> B<span class="br0">(</span><span class="kw4">int</span>, <span class="kw4">double</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>B<span class="br0">)</span><span class="sy4">;</span>
+ 
+g<span class="br0">(</span><span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// calls g(B(int, double)), user-defined conversion</span>
+<span class="co1">// g({1.0, 1,0}); // error: double-&gt;int is narrowing, not allowed in list-init</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span>B<span class="br0">)</span><span class="sy4">;</span>
+<span class="co1">// f({'a', 'b'}); // f(A) and f(B) both user-defined conversions</span></pre></div></div>
+<ul><li> Otherwise, if the parameter type is an aggregate which can be initialized from the initializer list according by <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate initialization</a>, the implicit conversion sequence is a user-defined conversion sequence with the second standard conversion sequence an identity conversion.
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> <span class="kw4">int</span> m1<span class="sy4">;</span> <span class="kw4">double</span> m2<span class="sy4">;</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span>A<span class="br0">)</span><span class="sy4">;</span>
+f<span class="br0">(</span><span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// calls f(A(int, double)), user-defined conversion</span></pre></div></div>
+<ul><li> Otherwise, if the parameter is a reference, reference initialization rules apply
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> <span class="kw4">int</span> m1<span class="sy4">;</span> <span class="kw4">double</span> m2<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> A<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+f<span class="br0">(</span><span class="br0">{</span><span class="st0">'a'</span>, <span class="st0">'b'</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// temporary created, f(A(int, double)) called. User-defined conversion</span></pre></div></div>
+<ul><li> Otherwise, if the parameter type is not a class and the initializer list has one element, the implicit conversion sequence is the one required to convert the element to the parameter type
+</li><li> Otherwise, if the parameter type is not a class type and if the initializer list has no elements, the implicit conversion sequence is the identity conversion.
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx20"><td>
+<p>If the argument is a designated initializer list, a conversion is only possible if the parameter
+has an aggregate type that can be initialized from that initializer list according to the rules for <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization">aggregate initialization</a>, in which case the implicit conversion sequence is a
+user-defined conversion sequence whose second standard conversion sequence is an identity
+conversion.
+</p><p>If, after overload resolution, the order of declaration of the aggregate's members does not match for the selected overload, the initialization of the parameter will be ill-formed.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A <span class="br0">{</span> <span class="kw4">int</span> x, y<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span> <span class="kw4">int</span> y, x<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span>A a, <span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #1</span>
+<span class="kw4">void</span> f<span class="br0">(</span>B b, ...<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #2</span>
+<span class="kw4">void</span> g<span class="br0">(</span>A a<span class="br0">)</span><span class="sy4">;</span>      <span class="co1">// #3</span>
+<span class="kw4">void</span> g<span class="br0">(</span>B b<span class="br0">)</span><span class="sy4">;</span>      <span class="co1">// #4</span>
+ 
+<span class="kw4">void</span> h<span class="br0">(</span><span class="br0">)</span> 
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="br0">{</span>.<span class="me1">x</span> <span class="sy1">=</span> <span class="nu0">1</span>, .<span class="me1">y</span> <span class="sy1">=</span> <span class="nu0">2</span><span class="br0">}</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK; calls #1</span>
+    f<span class="br0">(</span><span class="br0">{</span>.<span class="me1">y</span> <span class="sy1">=</span> <span class="nu0">2</span>, .<span class="me1">x</span> <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">}</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: selects #1, initialization of a fails</span>
+                            <span class="co1">// due to non-matching member order</span>
+    g<span class="br0">(</span><span class="br0">{</span>.<span class="me1">x</span> <span class="sy1">=</span> <span class="nu0">1</span>, .<span class="me1">y</span> <span class="sy1">=</span> <span class="nu0">2</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// error: ambiguous between #3 and #4</span>
+<span class="br0">}</span></pre></div></div>
+<p><br>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx20">(since C++20)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Defect_reports">Defect reports</span></h3>
+<p>The following behavior-changing defect reports were applied retroactively to previously published C++ standards.
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> DR
+</th>
+<th> Applied to
+</th>
+<th> Behavior as published
+</th>
+<th> Correct behavior
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1.html">CWG 1</a>
+</td>
+<td> C++98
+</td>
+<td> the behavior was unspecified when the same function with possibly<br>different default arguments (from different scopes) is selected
+</td>
+<td> the program is ill-formed in this case
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/83.html">CWG 83</a>
+</td>
+<td> C++98
+</td>
+<td> the conversion sequence from a string literal to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">char</span><span class="sy2">*</span></span></span> was better<br>than that to <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span></span></span> even though the former is deprecated
+</td>
+<td> the rank of the deprecated conversion<br>is lowered (it was removed in C++11)
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/162.html">CWG 162</a>
+</td>
+<td> C++98
+</td>
+<td> it was invalid if the overload set named by <code>F</code> contains<br>a non-static member function in the case of <code>&amp;F(args)</code>
+</td>
+<td> only invalid if overload resolution selects<br>a non-static member function in this case
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/280.html">CWG 280</a>
+</td>
+<td> C++98
+</td>
+<td> surrogate call functions were not added to<br>the set of candidate functions for conversion<br>functions declared in inaccessible base classes
+</td>
+<td> removed the accessibility constraint, the<br>program is ill-formed if a surrogate call<br>function is selected and the corresponding<br>conversion function cannot be called
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/415.html">CWG 415</a>
+</td>
+<td> C++98
+</td>
+<td> when a function template is selected as a candidate, its<br>specializations were instantiated using template argument deduction
+</td>
+<td> no instantiation will occur in this case,<br>their declarations will be synthesized
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/495.html">CWG 495</a>
+</td>
+<td> C++98
+</td>
+<td> when the implicit conversions for arguments are equally<br>good, a non-template conversion function was always<br>better than a conversion function template, even if the<br>latter may have a better standard conversion sequence
+</td>
+<td> standard conversion sequences are<br>compared before specialization levels
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1307.html">CWG 1307</a>
+</td>
+<td> C++11
+</td>
+<td> overload resolution based on size of arrays was not specified
+</td>
+<td> a shorter array is better when possible
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1328.html">CWG 1328</a>
+</td>
+<td> C++11
+</td>
+<td> the determination of the candidate functions when<br>binding a reference to a conversion result was not clear
+</td>
+<td> made clear
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1374.html">CWG 1374</a>
+</td>
+<td> C++98
+</td>
+<td> qualification conversion was checked before reference<br>binding when comparing standard conversion sequences
+</td>
+<td> reversed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1385.html">CWG 1385</a>
+</td>
+<td> C++11
+</td>
+<td> a non-explicit user-defined conversion function declared with<br>a ref-qualifier did not have a corresponding surrogate function
+</td>
+<td> it has a corresponding<br>surrogate function
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1467.html">CWG 1467</a>
+</td>
+<td> C++11
+</td>
+<td> same-type list-initialization of aggregates and arrays was omitted
+</td>
+<td> initialization defined
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1601.html">CWG 1601</a>
+</td>
+<td> C++11
+</td>
+<td> conversion from enum to its underlying type<br>did not prefer the fixed underlying type
+</td>
+<td> fixed type is preferred to<br>what it promotes to
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1608.html">CWG 1608</a>
+</td>
+<td> C++98
+</td>
+<td> the set of member candidates of a unary operator <code>@</code> whose argument<br>has type <code>T1</code> was empty if <code>T1</code> is a class currently being defined
+</td>
+<td> the set is the result of qualified name<br>lookup of <code>T1::operator@</code> in this case
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1687.html">CWG 1687</a>
+</td>
+<td> C++98
+</td>
+<td> when a built-in candidate is selected by overload resolution,<br>the operands would undergo conversion without restriction
+</td>
+<td> only convert class type operands,<br>and disabled the second<br>standard conversion sequence
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2052.html">CWG 2052</a>
+</td>
+<td> C++98
+</td>
+<td> ill-formed synthesized function template specializations could<br>be added to the candidate set, making the program ill-formed
+</td>
+<td> they are not added<br>to the candidate set
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2137.html">CWG 2137</a>
+</td>
+<td> C++11
+</td>
+<td> initializer list constructors lost to copy<br>constructors when list-initializing X from {X}
+</td>
+<td> non-aggregates consider<br>initializer lists first
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2273.html">CWG 2273</a>
+</td>
+<td> C++11
+</td>
+<td> there was no tiebreaker between<br>inherited and non-inherited constructors
+</td>
+<td> non-inherited constructor wins
+</td></tr></table>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-c++20">
+<ul><li> C++20 standard (ISO/IEC 14882:2020): 
+</li></ul>
+<dl><dd><ul><li> 12.4 Overload resolution [over.match] 
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++17">
+<ul><li> C++17 standard (ISO/IEC 14882:2017): 
+</li></ul>
+<dl><dd><ul><li> 16.3 Overload resolution [over.match] 
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++14">
+<ul><li> C++14 standard (ISO/IEC 14882:2014): 
+</li></ul>
+<dl><dd><ul><li> 13.3 Overload resolution [over.match] 
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++11">
+<ul><li> C++11 standard (ISO/IEC 14882:2011): 
+</li></ul>
+<dl><dd><ul><li> 13.3 Overload resolution [over.match] 
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c++03">
+<ul><li> C++03 standard (ISO/IEC 14882:2003): 
+</li></ul>
+<dl><dd><ul><li> 13.3 Overload resolution [over.match] 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<ul><li> <a href="lookup.html" title="cpp/language/lookup">Name lookup</a> 
+</li><li> <a href="adl.html" title="cpp/language/adl">Argument-dependent lookup</a> 
+</li><li> <a href="template_argument_deduction.html" title="cpp/language/template argument deduction">Template argument deduction</a>
+</li><li> <a href="sfinae.html" title="cpp/language/sfinae">SFINAE</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 7748/1000000
+Preprocessor generated node count: 14627/1000000
+Post‐expand include size: 177770/2097152 bytes
+Template argument size: 46957/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:12784-0!*!0!!en!*!* and timestamp 20220715091455 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/overload_resolution&amp;oldid=141099">https://en.cppreference.com/mwiki/index.php?title=cpp/language/overload_resolution&amp;oldid=141099</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/overload_resolution">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 15 July 2022, at 02:14.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 338,418 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.039 secs. -->
+	</body>
+<!-- Cached 20220715091849 -->
+</html>

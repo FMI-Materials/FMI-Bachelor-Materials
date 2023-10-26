@@ -1,0 +1,34 @@
+.main {
+    display: flex;
+    --s: 100px;
+    --m: 4px;
+    --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
+}
+
+.container {
+    font-size: 0;
+}
+
+.container div {
+    width: var(--s);
+    margin: var(--m);
+    height: calc(var(--s)*1.1547);
+    background: black;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    display: inline-block;
+    margin-bottom: calc(var(--m) - var(--s)*0.2885);
+    font-size: initial;
+}
+
+.container div:nth-child(odd) {
+    background: #fff00f;
+}
+
+.container::before {
+    content: "";
+    width: calc(var(--s)/2 + var(--m));
+    float: left;
+    height: 120%;
+    shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px),
+        #000 0 var(--f));
+}

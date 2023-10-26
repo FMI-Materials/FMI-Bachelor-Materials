@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Standard library header &lt;type_traits&gt;Â (C++11) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/header/type_traits","wgTitle":"cpp/header/type traits","wgCurRevisionId":140971,"wgArticleId":9746,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/header/type_traits","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_header_type_traits skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">Standard library header</span> &lt;type_traits&gt; <span class="t-mark-rev t-since-cxx11">(C++11)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../header.html" title="cpp/header">header</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../header.html" title="cpp/header"> Standard Library headers </a><div class="t-navbar-menu"><div>Note: a slash '/' in a revision mark means that the header was deprecated and/or removed.
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Language Support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csignal.html" title="cpp/header/csignal"><tt>&lt;csignal&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csetjmp.html" title="cpp/header/csetjmp"><tt>&lt;csetjmp&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concepts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Diagnostics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stdexcept.html" title="cpp/header/stdexcept"><tt>&lt;stdexcept&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cassert.html" title="cpp/header/cassert"><tt>&lt;cassert&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> General utilities</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"><tt>&lt;type_traits&gt;</tt></strong> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="typeindex.html" title="cpp/header/typeindex"><tt>&lt;typeindex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ctime.html" title="cpp/header/ctime"><tt>&lt;ctime&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Strings</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cctype.html" title="cpp/header/cctype"><tt>&lt;cctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cwctype.html" title="cpp/header/cwctype"><tt>&lt;cwctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cuchar.html" title="cpp/header/cuchar"><tt>&lt;cuchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Localization</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="clocale.html" title="cpp/header/clocale"><tt>&lt;clocale&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a> <span class="t-mark">(C++11/17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Containers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iterators</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Numerics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="valarray.html" title="cpp/header/valarray"><tt>&lt;valarray&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfenv.html" title="cpp/header/cfenv"><tt>&lt;cfenv&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Input/Output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="iosfwd.html" title="cpp/header/iosfwd"><tt>&lt;iosfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="streambuf.html" title="cpp/header/streambuf"><tt>&lt;streambuf&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iostream.html" title="cpp/header/iostream"><tt>&lt;iostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdio.html" title="cpp/header/cstdio"><tt>&lt;cstdio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="strstream.html" title="cpp/header/strstream"><tt>&lt;strstream&gt;</tt></a> <span class="t-mark">(C++98/)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Regular expressions</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="regex.html" title="cpp/header/regex"><tt>&lt;regex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Filesystem support</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Thread support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="condition_variable.html" title="cpp/header/condition variable"><tt>&lt;condition_variable&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="future.html" title="cpp/header/future"><tt>&lt;future&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> C compatibility</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ccomplex.html" title="cpp/header/ccomplex"><tt>&lt;ccomplex&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ctgmath.html" title="cpp/header/ctgmath"><tt>&lt;ctgmath&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>This header is part of the <a href="../meta.html" title="cpp/meta">metaprogramming</a> library.
+</p>
+<table class="t-dsc-begin">
+
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Classes"> Classes</span></h3>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Helper_Classes">  Helper Classes </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/integral_constant.html" title="cpp/types/integral constant"> <span class="t-lines"><span>integral_constant</span><span>bool_constant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   compile-time constant of specified type with specified value   <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <code>true_type</code>
+</td>
+<td>  <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/integral_constant.html"><span class="kw649">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw2">true</span><span class="sy1">&gt;</span></span></span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <code>false_type</code>
+</td>
+<td>  <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/integral_constant.html"><span class="kw649">std::<span class="me2">integral_constant</span></span></a><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw2">false</span><span class="sy1">&gt;</span></span></span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Primary_type_categories">  Primary type categories </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_void.html" title="cpp/types/is void"> <span class="t-lines"><span>is_void</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span></span></span>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_null_pointer.html" title="cpp/types/is null pointer"> <span class="t-lines"><span>is_null_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   checks if a type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../types/nullptr_t.html"><span class="kw108">std::<span class="me2">nullptr_t</span></span></a></span></span>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_integral.html" title="cpp/types/is integral"> <span class="t-lines"><span>is_integral</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an integral type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_floating_point.html" title="cpp/types/is floating point"> <span class="t-lines"><span>is_floating_point</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a floating-point type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_array.html" title="cpp/types/is array"> <span class="t-lines"><span>is_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an array type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_enum.html" title="cpp/types/is enum"> <span class="t-lines"><span>is_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an enumeration type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_union.html" title="cpp/types/is union"> <span class="t-lines"><span>is_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an union type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_class.html" title="cpp/types/is class"> <span class="t-lines"><span>is_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a non-union class type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_function.html" title="cpp/types/is function"> <span class="t-lines"><span>is_function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a function type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_pointer.html" title="cpp/types/is pointer"> <span class="t-lines"><span>is_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a pointer type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_lvalue_reference.html" title="cpp/types/is lvalue reference"> <span class="t-lines"><span>is_lvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <i>lvalue reference</i>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_rvalue_reference.html" title="cpp/types/is rvalue reference"> <span class="t-lines"><span>is_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <i>rvalue reference</i>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_member_object_pointer.html" title="cpp/types/is member object pointer"> <span class="t-lines"><span>is_member_object_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a pointer to a non-static member object  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_member_function_pointer.html" title="cpp/types/is member function pointer"> <span class="t-lines"><span>is_member_function_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a pointer to a non-static member function  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Composite_type_categories">  Composite type categories </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_fundamental.html" title="cpp/types/is fundamental"> <span class="t-lines"><span>is_fundamental</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a fundamental type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_arithmetic.html" title="cpp/types/is arithmetic"> <span class="t-lines"><span>is_arithmetic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an arithmetic type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_scalar.html" title="cpp/types/is scalar"> <span class="t-lines"><span>is_scalar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a scalar type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_object.html" title="cpp/types/is object"> <span class="t-lines"><span>is_object</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an object type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_compound.html" title="cpp/types/is compound"> <span class="t-lines"><span>is_compound</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a compound type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_reference.html" title="cpp/types/is reference"> <span class="t-lines"><span>is_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is either a <i>lvalue reference</i> or <i>rvalue reference</i>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_member_pointer.html" title="cpp/types/is member pointer"> <span class="t-lines"><span>is_member_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a pointer to an non-static member function or object  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Type_properties">  Type properties </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_const.html" title="cpp/types/is const"> <span class="t-lines"><span>is_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is const-qualified  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_volatile.html" title="cpp/types/is volatile"> <span class="t-lines"><span>is_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is volatile-qualified  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_trivial.html" title="cpp/types/is trivial"> <span class="t-lines"><span>is_trivial</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is trivial  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_trivially_copyable.html" title="cpp/types/is trivially copyable"> <span class="t-lines"><span>is_trivially_copyable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is trivially copyable  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_standard_layout.html" title="cpp/types/is standard layout"> <span class="t-lines"><span>is_standard_layout</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <a href="../language/data_members.html#Standard_layout" title="cpp/language/data members">standard-layout</a> type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_pod.html" title="cpp/types/is pod"> <span class="t-lines"><span>is_pod</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span><span class="t-mark">(deprecated in C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a plain-old data (POD) type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_literal_type.html" title="cpp/types/is literal type"> <span class="t-lines"><span>is_literal_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-deprecated-cxx17">(deprecated in C++17)</span></span><span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a literal type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/has_unique_object_representations.html" title="cpp/types/has unique object representations"> <span class="t-lines"><span>has_unique_object_representations</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks if every bit in the type's object representation contributes to its value  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_empty.html" title="cpp/types/is empty"> <span class="t-lines"><span>is_empty</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a class (but not union) type and has no non-static data members  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_polymorphic.html" title="cpp/types/is polymorphic"> <span class="t-lines"><span>is_polymorphic</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a polymorphic class type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_abstract.html" title="cpp/types/is abstract"> <span class="t-lines"><span>is_abstract</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an abstract class type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_final.html" title="cpp/types/is final"> <span class="t-lines"><span>is_final</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx14">(C++14)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a final class type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_aggregate.html" title="cpp/types/is aggregate"> <span class="t-lines"><span>is_aggregate</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an aggregate type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_signed.html" title="cpp/types/is signed"> <span class="t-lines"><span>is_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a signed arithmetic type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_unsigned.html" title="cpp/types/is unsigned"> <span class="t-lines"><span>is_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an unsigned arithmetic type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_bounded_array.html" title="cpp/types/is bounded array"> <span class="t-lines"><span>is_bounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an array type of known bound  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_unbounded_array.html" title="cpp/types/is unbounded array"> <span class="t-lines"><span>is_unbounded_array</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type is an array type of unknown bound  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_scoped_enum.html" title="cpp/types/is scoped enum"> <span class="t-lines"><span>is_scoped_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx23">(C++23)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a scoped enumeration type  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Supported_operations">  Supported operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_constructible.html" title="cpp/types/is constructible"> <span class="t-lines"><span>is_constructible</span><span>is_trivially_constructible</span><span>is_nothrow_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a constructor for specific arguments  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_default_constructible.html" title="cpp/types/is default constructible"> <span class="t-lines"><span>is_default_constructible</span><span>is_trivially_default_constructible</span><span>is_nothrow_default_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a default constructor  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_copy_constructible.html" title="cpp/types/is copy constructible"> <span class="t-lines"><span>is_copy_constructible</span><span>is_trivially_copy_constructible</span><span>is_nothrow_copy_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a copy constructor  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_move_constructible.html" title="cpp/types/is move constructible"> <span class="t-lines"><span>is_move_constructible</span><span>is_trivially_move_constructible</span><span>is_nothrow_move_constructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type can be constructed from an rvalue reference  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_assignable.html" title="cpp/types/is assignable"> <span class="t-lines"><span>is_assignable</span><span>is_trivially_assignable</span><span>is_nothrow_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a assignment operator for a specific argument  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_copy_assignable.html" title="cpp/types/is copy assignable"> <span class="t-lines"><span>is_copy_assignable</span><span>is_trivially_copy_assignable</span><span>is_nothrow_copy_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a copy assignment operator  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_move_assignable.html" title="cpp/types/is move assignable"> <span class="t-lines"><span>is_move_assignable</span><span>is_trivially_move_assignable</span><span>is_nothrow_move_assignable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a move assignment operator  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_destructible.html" title="cpp/types/is destructible"> <span class="t-lines"><span>is_destructible</span><span>is_trivially_destructible</span><span>is_nothrow_destructible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a non-deleted destructor  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/has_virtual_destructor.html" title="cpp/types/has virtual destructor"> <span class="t-lines"><span>has_virtual_destructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type has a virtual destructor  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_swappable.html" title="cpp/types/is swappable"> <span class="t-lines"><span>is_swappable_with</span><span>is_swappable</span><span>is_nothrow_swappable_with</span><span>is_nothrow_swappable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks if objects of a type can be swapped with objects of same or different type <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Property_queries">  Property queries </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/alignment_of.html" title="cpp/types/alignment of"> <span class="t-lines"><span>alignment_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   obtains the type's alignment requirements  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/rank.html" title="cpp/types/rank"> <span class="t-lines"><span>rank</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   obtains the number of dimensions of an array type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/extent.html" title="cpp/types/extent"> <span class="t-lines"><span>extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   obtains the size of an array type along a specified dimension  <br> <span class="t-mark">(class template)</span> </td></tr>
+</table>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Type_relationships">  Type relationships </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_same.html" title="cpp/types/is same"> <span class="t-lines"><span>is_same</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if two types are the same  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_base_of.html" title="cpp/types/is base of"> <span class="t-lines"><span>is_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   checks if a type is derived from the other type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_convertible.html" title="cpp/types/is convertible"> <span class="t-lines"><span>is_convertible</span><span>is_nothrow_convertible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type can be converted to the other type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_layout_compatible.html" title="cpp/types/is layout compatible"> <span class="t-lines"><span>is_layout_compatible</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if two types are <a href="../language/data_members.html#Standard_layout" title="cpp/language/data members"><i>layout-compatible</i></a>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_pointer_interconvertible_base_of.html" title="cpp/types/is pointer interconvertible base of"> <span class="t-lines"><span>is_pointer_interconvertible_base_of</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if a type is a <i>pointer-interconvertible</i> (initial) base of another type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_invocable.html" title="cpp/types/is invocable"> <span class="t-lines"><span>is_invocable</span><span>is_invocable_r</span><span>is_nothrow_invocable</span><span>is_nothrow_invocable_r</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   checks if a type can be invoked (as if by <span class="t-lc"><a href="../utility/functional/invoke.html" title="cpp/utility/functional/invoke">std::invoke</a></span>) with the given argument types  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Const-volatility_specifiers">  Const-volatility specifiers </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_cv.html" title="cpp/types/remove cv"> <span class="t-lines"><span>remove_cv</span><span>remove_const</span><span>remove_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   removes <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span></span> or/and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></span> specifiers from the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/add_cv.html" title="cpp/types/add cv"> <span class="t-lines"><span>add_cv</span><span>add_const</span><span>add_volatile</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   adds <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span></span> or/and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></span> specifiers to the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="References">  References </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_reference.html" title="cpp/types/remove reference"> <span class="t-lines"><span>remove_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   removes a reference from the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/add_reference.html" title="cpp/types/add reference"> <span class="t-lines"><span>add_lvalue_reference</span><span>add_rvalue_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   adds a <i>lvalue</i> or <i>rvalue</i> reference to the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Pointers">  Pointers </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_pointer.html" title="cpp/types/remove pointer"> <span class="t-lines"><span>remove_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   removes a pointer from the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/add_pointer.html" title="cpp/types/add pointer"> <span class="t-lines"><span>add_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   adds a pointer to the given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Sign_modifiers">  Sign modifiers </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/make_signed.html" title="cpp/types/make signed"> <span class="t-lines"><span>make_signed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   makes the given integral type signed  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/make_unsigned.html" title="cpp/types/make unsigned"> <span class="t-lines"><span>make_unsigned</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   makes the given integral type unsigned  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Arrays">  Arrays </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_extent.html" title="cpp/types/remove extent"> <span class="t-lines"><span>remove_extent</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   removes one extent from the given array type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_all_extents.html" title="cpp/types/remove all extents"> <span class="t-lines"><span>remove_all_extents</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   removes all extents from the given array type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Miscellaneous_transformations">  Miscellaneous transformations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/aligned_storage.html" title="cpp/types/aligned storage"> <span class="t-lines"><span>aligned_storage</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span><span class="t-mark-rev t-deprecated-cxx23">(deprecated in C++23)</span></span></span></div></div>
+</td>
+<td>   defines the type suitable for use as uninitialized storage for types of given size  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/aligned_union.html" title="cpp/types/aligned union"> <span class="t-lines"><span>aligned_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span><span class="t-mark-rev t-deprecated-cxx23">(deprecated in C++23)</span></span></span></div></div>
+</td>
+<td>   defines the type suitable for use as uninitialized storage for all given types  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/decay.html" title="cpp/types/decay"> <span class="t-lines"><span>decay</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   applies type transformations as when passing a function argument by value  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/remove_cvref.html" title="cpp/types/remove cvref"> <span class="t-lines"><span>remove_cvref</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   combines <span class="t-lc"><a href="../types/remove_cv.html" title="cpp/types/remove cv">std::remove_cv</a></span> and <span class="t-lc"><a href="../types/remove_reference.html" title="cpp/types/remove reference">std::remove_reference</a></span>  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/enable_if.html" title="cpp/types/enable if"> <span class="t-lines"><span>enable_if</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   conditionally <a href="../language/sfinae.html" title="cpp/language/sfinae">removes</a> a function overload or template specialization from overload resolution  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/conditional.html" title="cpp/types/conditional"> <span class="t-lines"><span>conditional</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   chooses one type or another based on compile-time boolean  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/common_type.html" title="cpp/types/common type"> <span class="t-lines"><span>common_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   determines the common type of a group of types  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/common_reference.html" title="cpp/types/common reference"> <span class="t-lines"><span>common_reference</span><span>basic_common_reference</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   determines the common reference type of a group of types  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/underlying_type.html" title="cpp/types/underlying type"> <span class="t-lines"><span>underlying_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span></span></span></div></div>
+</td>
+<td>   obtains the underlying integer type for a given enumeration type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/result_of.html" title="cpp/types/result of"> <span class="t-lines"><span>result_of</span><span>invoke_result</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx11">(C++11)</span><span class="t-mark-rev t-until-cxx20">(removed in C++20)</span></span><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   deduces the result type of invoking a callable object with a set of arguments  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/void_t.html" title="cpp/types/void t"> <span class="t-lines"><span>void_t</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   void variadic alias template  <br> <span class="t-mark">(alias template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/type_identity.html" title="cpp/types/type identity"> <span class="t-lines"><span>type_identity</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   returns the type argument unchanged  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Operations_on_traits">  Operations on traits </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/conjunction.html" title="cpp/types/conjunction"> <span class="t-lines"><span>conjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   variadic logical AND metafunction  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/disjunction.html" title="cpp/types/disjunction"> <span class="t-lines"><span>disjunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   variadic logical OR metafunction  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/negation.html" title="cpp/types/negation"> <span class="t-lines"><span>negation</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx17">(C++17)</span></span></span></div></div>
+</td>
+<td>   logical NOT metafunction  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Functions"> Functions</span></h3>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Member_relationships">  Member relationships </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_pointer_interconvertible_with_class.html" title="cpp/types/is pointer interconvertible with class"> <span class="t-lines"><span>is_pointer_interconvertible_with_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if objects of a type are pointer-interconvertible with the specified subobject of that type  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_corresponding_member.html" title="cpp/types/is corresponding member"> <span class="t-lines"><span>is_corresponding_member</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   checks if two specified members correspond to each other in the common initial subsequence of two specified types <br> <span class="t-mark">(function template)</span> </td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Constant_evaluation_context">  Constant evaluation context </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../types/is_constant_evaluated.html" title="cpp/types/is constant evaluated"> <span class="t-lines"><span>is_constant_evaluated</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   detects whether the call occurs within a constant-evaluated context  <br> <span class="t-mark">(function)</span> </td></tr>
+</table>
+<p><br>
+</p>
+<h3><span class="mw-headline" id="Synopsis">Synopsis</span></h3>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="co1">// helper class</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, T v<span class="sy1">&gt;</span> <span class="kw1">struct</span> integral_constant<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">bool</span> B<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> bool_constant <span class="sy1">=</span> integral_constant<span class="sy1">&lt;</span><span class="kw4">bool</span>, B<span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> true_type  <span class="sy1">=</span> bool_constant<span class="sy1">&lt;</span><span class="kw2">true</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> false_type <span class="sy1">=</span> bool_constant<span class="sy1">&lt;</span><span class="kw2">false</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// primary type categories</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_void<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_null_pointer<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_integral<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_floating_point<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_array<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_pointer<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_lvalue_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_rvalue_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_member_object_pointer<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_member_function_pointer<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_enum<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_union<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_class<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_function<span class="sy4">;</span>
+ 
+  <span class="co1">// composite type categories</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_arithmetic<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_fundamental<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_object<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_scalar<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_compound<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_member_pointer<span class="sy4">;</span>
+ 
+  <span class="co1">// type properties</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_const<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_volatile<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivial<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_copyable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_standard_layout<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_empty<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_polymorphic<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_abstract<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_final<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_aggregate<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_signed<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_unsigned<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_bounded_array<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_unbounded_array<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_scoped_enum<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_default_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_copy_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_move_constructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_copy_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_move_assignable<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_swappable_with<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_swappable<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_destructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_default_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_copy_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_move_constructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_copy_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_move_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_trivially_destructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_default_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_copy_constructible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_move_constructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_copy_assignable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_move_assignable<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_swappable_with<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_swappable<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_destructible<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> has_virtual_destructor<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> has_unique_object_representations<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> reference_constructs_from_temporary<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> reference_converts_from_temporary<span class="sy4">;</span>
+ 
+  <span class="co1">// type property queries</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> alignment_of<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> rank<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">unsigned</span> I <span class="sy1">=</span> <span class="nu0">0</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> extent<span class="sy4">;</span>
+ 
+  <span class="co1">// type relations</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_same<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Base, <span class="kw1">class</span> Derived<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_base_of<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> From, <span class="kw1">class</span> To<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_convertible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> From, <span class="kw1">class</span> To<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_convertible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_layout_compatible<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Base, <span class="kw1">class</span> Derived<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_pointer_interconvertible_base_of<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_invocable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> R, <span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_invocable_r<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_invocable<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> R, <span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> is_nothrow_invocable_r<span class="sy4">;</span>
+ 
+  <span class="co1">// const-volatile modifications</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_const<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_volatile<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_cv<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_const<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_volatile<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_cv<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_const_t    <span class="sy1">=</span> <span class="kw1">typename</span> remove_const<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_volatile_t <span class="sy1">=</span> <span class="kw1">typename</span> remove_volatile<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_cv_t       <span class="sy1">=</span> <span class="kw1">typename</span> remove_cv<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_const_t       <span class="sy1">=</span> <span class="kw1">typename</span> add_const<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_volatile_t    <span class="sy1">=</span> <span class="kw1">typename</span> add_volatile<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_cv_t          <span class="sy1">=</span> <span class="kw1">typename</span> add_cv<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+  <span class="co1">// reference modifications</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_lvalue_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_rvalue_reference<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_reference_t     <span class="sy1">=</span> <span class="kw1">typename</span> remove_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_lvalue_reference_t <span class="sy1">=</span> <span class="kw1">typename</span> add_lvalue_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_rvalue_reference_t <span class="sy1">=</span> <span class="kw1">typename</span> add_rvalue_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+  <span class="co1">// sign modifications</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> make_signed<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> make_unsigned<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> make_signed_t   <span class="sy1">=</span> <span class="kw1">typename</span> make_signed<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> make_unsigned_t <span class="sy1">=</span> <span class="kw1">typename</span> make_unsigned<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+  <span class="co1">// array modifications</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_extent<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_all_extents<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_extent_t      <span class="sy1">=</span> <span class="kw1">typename</span> remove_extent<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_all_extents_t <span class="sy1">=</span> <span class="kw1">typename</span> remove_all_extents<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+  <span class="co1">// pointer modifications</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_pointer<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> add_pointer<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_pointer_t <span class="sy1">=</span> <span class="kw1">typename</span> remove_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> add_pointer_t    <span class="sy1">=</span> <span class="kw1">typename</span> add_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+  <span class="co1">// other transformations</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> type_identity<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> remove_cvref<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> decay<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw1">class</span> T <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> enable_if<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">bool</span>, <span class="kw1">class</span> T, <span class="kw1">class</span> F<span class="sy1">&gt;</span> <span class="kw1">struct</span> conditional<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">T</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> common_type<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U, <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw1">class</span> TQual, <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw1">class</span> UQual<span class="sy1">&gt;</span>
+    <span class="kw1">struct</span> basic_common_reference <span class="br0">{</span> <span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">T</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> common_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> underlying_type<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> invoke_result<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> unwrap_reference<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">struct</span> unwrap_ref_decay<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> type_identity_t    <span class="sy1">=</span> <span class="kw1">typename</span> type_identity<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> remove_cvref_t     <span class="sy1">=</span> <span class="kw1">typename</span> remove_cvref<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> decay_t            <span class="sy1">=</span> <span class="kw1">typename</span> decay<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">bool</span> b, <span class="kw1">class</span> T <span class="sy1">=</span> <span class="kw4">void</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> enable_if_t        <span class="sy1">=</span> <span class="kw1">typename</span> enable_if<span class="sy1">&lt;</span>b, T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">bool</span> b, <span class="kw1">class</span> T, <span class="kw1">class</span> F<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> conditional_t      <span class="sy1">=</span> <span class="kw1">typename</span> conditional<span class="sy1">&lt;</span>b, T, F<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">T</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> common_type_t      <span class="sy1">=</span> <span class="kw1">typename</span> common_type<span class="sy1">&lt;</span>T...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">T</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> common_reference_t <span class="sy1">=</span> <span class="kw1">typename</span> common_reference<span class="sy1">&lt;</span>T...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> underlying_type_t  <span class="sy1">=</span> <span class="kw1">typename</span> underlying_type<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> invoke_result_t    <span class="sy1">=</span> <span class="kw1">typename</span> invoke_result<span class="sy1">&lt;</span>Fn, ArgTypes...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> unwrap_reference_t <span class="sy1">=</span> <span class="kw1">typename</span> unwrap_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> unwrap_ref_decay_t <span class="sy1">=</span> <span class="kw1">typename</span> unwrap_ref_decay<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>...<span class="sy1">&gt;</span>
+    <span class="kw1">using</span> void_t             <span class="sy1">=</span> <span class="kw4">void</span><span class="sy4">;</span>
+ 
+  <span class="co1">// logical operator traits</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">B</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> conjunction<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">B</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> disjunction<span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> B<span class="sy1">&gt;</span> <span class="kw1">struct</span> negation<span class="sy4">;</span>
+ 
+  <span class="co1">// primary type categories</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_void_v <span class="sy1">=</span> is_void<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_null_pointer_v <span class="sy1">=</span> is_null_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_integral_v <span class="sy1">=</span> is_integral<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_floating_point_v <span class="sy1">=</span> is_floating_point<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_array_v <span class="sy1">=</span> is_array<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_pointer_v <span class="sy1">=</span> is_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_lvalue_reference_v <span class="sy1">=</span> is_lvalue_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_rvalue_reference_v <span class="sy1">=</span> is_rvalue_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_member_object_pointer_v <span class="sy1">=</span> is_member_object_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_member_function_pointer_v <span class="sy1">=</span> is_member_function_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_enum_v <span class="sy1">=</span> is_enum<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_union_v <span class="sy1">=</span> is_union<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_class_v <span class="sy1">=</span> is_class<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_function_v <span class="sy1">=</span> is_function<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// composite type categories</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_reference_v <span class="sy1">=</span> is_reference<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_arithmetic_v <span class="sy1">=</span> is_arithmetic<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_fundamental_v <span class="sy1">=</span> is_fundamental<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_object_v <span class="sy1">=</span> is_object<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_scalar_v <span class="sy1">=</span> is_scalar<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_compound_v <span class="sy1">=</span> is_compound<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_member_pointer_v <span class="sy1">=</span> is_member_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// type properties</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_const_v <span class="sy1">=</span> is_const<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_volatile_v <span class="sy1">=</span> is_volatile<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivial_v <span class="sy1">=</span> is_trivial<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_copyable_v <span class="sy1">=</span> is_trivially_copyable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_standard_layout_v <span class="sy1">=</span> is_standard_layout<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_empty_v <span class="sy1">=</span> is_empty<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_polymorphic_v <span class="sy1">=</span> is_polymorphic<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_abstract_v <span class="sy1">=</span> is_abstract<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_final_v <span class="sy1">=</span> is_final<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_aggregate_v <span class="sy1">=</span> is_aggregate<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_signed_v <span class="sy1">=</span> is_signed<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_unsigned_v <span class="sy1">=</span> is_unsigned<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_bounded_array_v <span class="sy1">=</span> is_bounded_array<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_unbounded_array_v <span class="sy1">=</span> is_unbounded_array<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_scoped_enum_v <span class="sy1">=</span> is_scoped_enum<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_constructible_v <span class="sy1">=</span> is_constructible<span class="sy1">&lt;</span>T, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_default_constructible_v <span class="sy1">=</span> is_default_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_copy_constructible_v <span class="sy1">=</span> is_copy_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_move_constructible_v <span class="sy1">=</span> is_move_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_assignable_v <span class="sy1">=</span> is_assignable<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_copy_assignable_v <span class="sy1">=</span> is_copy_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_move_assignable_v <span class="sy1">=</span> is_move_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_swappable_with_v <span class="sy1">=</span> is_swappable_with<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_swappable_v <span class="sy1">=</span> is_swappable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_destructible_v <span class="sy1">=</span> is_destructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_constructible_v
+      <span class="sy1">=</span> is_trivially_constructible<span class="sy1">&lt;</span>T, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_default_constructible_v
+      <span class="sy1">=</span> is_trivially_default_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_copy_constructible_v
+      <span class="sy1">=</span> is_trivially_copy_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_move_constructible_v
+      <span class="sy1">=</span> is_trivially_move_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_assignable_v <span class="sy1">=</span> is_trivially_assignable<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_copy_assignable_v
+      <span class="sy1">=</span> is_trivially_copy_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_move_assignable_v
+      <span class="sy1">=</span> is_trivially_move_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_trivially_destructible_v <span class="sy1">=</span> is_trivially_destructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_constructible_v
+      <span class="sy1">=</span> is_nothrow_constructible<span class="sy1">&lt;</span>T, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_default_constructible_v
+      <span class="sy1">=</span> is_nothrow_default_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_copy_constructible_v
+      <span class="sy1">=</span> is_nothrow_copy_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_move_constructible_v
+      <span class="sy1">=</span> is_nothrow_move_constructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_assignable_v <span class="sy1">=</span> is_nothrow_assignable<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_copy_assignable_v <span class="sy1">=</span> is_nothrow_copy_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_move_assignable_v <span class="sy1">=</span> is_nothrow_move_assignable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_swappable_with_v <span class="sy1">=</span> is_nothrow_swappable_with<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_swappable_v <span class="sy1">=</span> is_nothrow_swappable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_destructible_v <span class="sy1">=</span> is_nothrow_destructible<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> has_virtual_destructor_v <span class="sy1">=</span> has_virtual_destructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> has_unique_object_representations_v
+      <span class="sy1">=</span> has_unique_object_representations<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> reference_constructs_from_temporary_v
+      <span class="sy1">=</span> reference_constructs_from_temporary<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> reference_converts_from_temporary_v
+      <span class="sy1">=</span> reference_converts_from_temporary<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// type property queries</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> size_t alignment_of_v <span class="sy1">=</span> alignment_of<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> size_t rank_v <span class="sy1">=</span> rank<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">unsigned</span> I <span class="sy1">=</span> <span class="nu0">0</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> size_t extent_v <span class="sy1">=</span> extent<span class="sy1">&lt;</span>T, I<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// type relations</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_same_v <span class="sy1">=</span> is_same<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Base, <span class="kw1">class</span> Derived<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_base_of_v <span class="sy1">=</span> is_base_of<span class="sy1">&lt;</span>Base, Derived<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> From, <span class="kw1">class</span> To<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_convertible_v <span class="sy1">=</span> is_convertible<span class="sy1">&lt;</span>From, To<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> From, <span class="kw1">class</span> To<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_convertible_v <span class="sy1">=</span> is_nothrow_convertible<span class="sy1">&lt;</span>From, To<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> U<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_layout_compatible_v <span class="sy1">=</span> is_layout_compatible<span class="sy1">&lt;</span>T, U<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Base, <span class="kw1">class</span> Derived<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_pointer_interconvertible_base_of_v
+      <span class="sy1">=</span> is_pointer_interconvertible_base_of<span class="sy1">&lt;</span>Base, Derived<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_invocable_v <span class="sy1">=</span> is_invocable<span class="sy1">&lt;</span>Fn, ArgTypes...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> R, <span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_invocable_r_v <span class="sy1">=</span> is_invocable_r<span class="sy1">&lt;</span>R, Fn, ArgTypes...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_invocable_v <span class="sy1">=</span> is_nothrow_invocable<span class="sy1">&lt;</span>Fn, ArgTypes...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> R, <span class="kw1">class</span> Fn, <span class="kw1">class</span>... <span class="me1">ArgTypes</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_nothrow_invocable_r_v
+      <span class="sy1">=</span> is_nothrow_invocable_r<span class="sy1">&lt;</span>R, Fn, ArgTypes...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// logical operator traits</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">B</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> conjunction_v <span class="sy1">=</span> conjunction<span class="sy1">&lt;</span>B...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">B</span><span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> disjunction_v <span class="sy1">=</span> disjunction<span class="sy1">&lt;</span>B...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> B<span class="sy1">&gt;</span>
+    <span class="kw1">inline</span> <span class="kw4">constexpr</span> <span class="kw4">bool</span> negation_v <span class="sy1">=</span> negation<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+  <span class="co1">// member relationships</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> S, <span class="kw1">class</span> M<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_pointer_interconvertible_with_class<span class="br0">(</span>M S<span class="sy4">::</span><span class="sy2">*</span>m<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> S1, <span class="kw1">class</span> S2, <span class="kw1">class</span> M1, <span class="kw1">class</span> M2<span class="sy1">&gt;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_corresponding_member<span class="br0">(</span>M1 S1<span class="sy4">::</span><span class="sy2">*</span>m1, M2 S2<span class="sy4">::</span><span class="sy2">*</span>m2<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+  <span class="co1">// constant evaluation context</span>
+  <span class="kw4">constexpr</span> <span class="kw4">bool</span> is_constant_evaluated<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::integral_constant">Class template <span class="t-lc"><a href="../types/integral_constant.html" title="cpp/types/integral constant">std::integral_constant</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T, T v<span class="sy1">&gt;</span>
+  <span class="kw1">struct</span> integral_constant <span class="br0">{</span>
+    <span class="kw4">static</span> <span class="kw4">constexpr</span> T value <span class="sy1">=</span> v<span class="sy4">;</span>
+    <span class="kw1">using</span> value_type <span class="sy1">=</span> T<span class="sy4">;</span>
+    <span class="kw1">using</span> type <span class="sy1">=</span> integral_constant<span class="sy1">&lt;</span>T, v<span class="sy1">&gt;</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> operator value_type<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> value<span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">constexpr</span> value_type operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> value<span class="sy4">;</span> <span class="br0">}</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 17341/1000000
+Preprocessor generated node count: 13174/1000000
+Postâexpand include size: 665646/2097152 bytes
+Template argument size: 145383/2097152 bytes
+Highest expansion depth: 22/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:9746-0!*!0!!en!*!* and timestamp 20220729235501 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/type_traits&amp;oldid=140971">https://en.cppreference.com/mwiki/index.php?title=cpp/header/type_traits&amp;oldid=140971</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/header/type_traits">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 July 2022, at 07:10.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 959,965 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 3.088 secs. -->
+	</body>
+<!-- Cached 20220729235501 -->
+</html>

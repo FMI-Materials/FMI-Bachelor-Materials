@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Experimental library header &lt;experimental/reflect&gt; - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/header/experimental/reflect","wgTitle":"cpp/header/experimental/reflect","wgCurRevisionId":129455,"wgArticleId":20115,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/header/experimental/reflect","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_header_experimental_reflect skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">Experimental library header</span> &lt;experimental/reflect&gt;</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a>‎ | <a href="../../header.html" title="cpp/header">header</a>‎ | <a href="../experimental.html" title="cpp/header/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../header.html" title="cpp/header"> Standard Library headers </a><div class="t-navbar-menu"><div>Note: a slash '/' in a revision mark means that the header was deprecated and/or removed.
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Language Support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../csignal.html" title="cpp/header/csignal"><tt>&lt;csignal&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../csetjmp.html" title="cpp/header/csetjmp"><tt>&lt;csetjmp&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concepts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Diagnostics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../stdexcept.html" title="cpp/header/stdexcept"><tt>&lt;stdexcept&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cassert.html" title="cpp/header/cassert"><tt>&lt;cassert&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> General utilities</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../typeindex.html" title="cpp/header/typeindex"><tt>&lt;typeindex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ctime.html" title="cpp/header/ctime"><tt>&lt;ctime&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Strings</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../format.html" title="cpp/header/format"><tt>&lt;format&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cctype.html" title="cpp/header/cctype"><tt>&lt;cctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cwctype.html" title="cpp/header/cwctype"><tt>&lt;cwctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cuchar.html" title="cpp/header/cuchar"><tt>&lt;cuchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Localization</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../clocale.html" title="cpp/header/clocale"><tt>&lt;clocale&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a> <span class="t-mark">(C++11/17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Containers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iterators</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Numerics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../valarray.html" title="cpp/header/valarray"><tt>&lt;valarray&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cfenv.html" title="cpp/header/cfenv"><tt>&lt;cfenv&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Input/Output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../iosfwd.html" title="cpp/header/iosfwd"><tt>&lt;iosfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../streambuf.html" title="cpp/header/streambuf"><tt>&lt;streambuf&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iostream.html" title="cpp/header/iostream"><tt>&lt;iostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cstdio.html" title="cpp/header/cstdio"><tt>&lt;cstdio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../strstream.html" title="cpp/header/strstream"><tt>&lt;strstream&gt;</tt></a> <span class="t-mark">(C++98/)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Regular expressions</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/header/regex"><tt>&lt;regex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Filesystem support</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Thread support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../condition_variable.html" title="cpp/header/condition variable"><tt>&lt;condition_variable&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../future.html" title="cpp/header/future"><tt>&lt;future&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> C compatibility</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ccomplex.html" title="cpp/header/ccomplex"><tt>&lt;ccomplex&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../ctgmath.html" title="cpp/header/ctgmath"><tt>&lt;ctgmath&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="cpp/header/experimental"> Experimental library headers</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Filesystem TS</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="filesystem.html" title="cpp/header/experimental/filesystem"><tt>&lt;experimental/filesystem&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Parallelism TS (v1, v2)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/algorithm&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/algorithm (page does not exist)"><tt>&lt;experimental/algorithm&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/execution_policy&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/execution policy (page does not exist)"><tt>&lt;experimental/execution_policy&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/exception_list&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/exception list (page does not exist)"><tt>&lt;experimental/exception_list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/numeric&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/numeric (page does not exist)"><tt>&lt;experimental/numeric&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="simd.html" title="cpp/header/experimental/simd"><tt>&lt;experimental/simd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/task_block&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/task block (page does not exist)"><tt>&lt;experimental/task_block&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Library Fundamentals TS (v1, v2, v3)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/algorithm&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/algorithm (page does not exist)"><tt>&lt;experimental/algorithm&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="any.html" title="cpp/header/experimental/any"><tt>&lt;experimental/any&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/array&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/array (page does not exist)"><tt>&lt;experimental/array&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/chrono&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/chrono (page does not exist)"><tt>&lt;experimental/chrono&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/deque&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/deque (page does not exist)"><tt>&lt;experimental/deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/forward_list&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/forward list (page does not exist)"><tt>&lt;experimental/forward_list&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functional.html" title="cpp/header/experimental/functional"><tt>&lt;experimental/functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/future&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/future (page does not exist)"><tt>&lt;experimental/future&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/iterator&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/iterator (page does not exist)"><tt>&lt;experimental/iterator&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/list&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/list (page does not exist)"><tt>&lt;experimental/list&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/map&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/map (page does not exist)"><tt>&lt;experimental/map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/memory&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/memory (page does not exist)"><tt>&lt;experimental/memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_resource.html" title="cpp/header/experimental/memory resource"><tt>&lt;experimental/memory_resource&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/numeric&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/numeric (page does not exist)"><tt>&lt;experimental/numeric&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="optional.html" title="cpp/header/experimental/optional"><tt>&lt;experimental/optional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/propagate_const&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/propagate const (page does not exist)"><tt>&lt;experimental/propagate_const&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/random&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/random (page does not exist)"><tt>&lt;experimental/random&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/ratio&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/ratio (page does not exist)"><tt>&lt;experimental/ratio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/regex&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/regex (page does not exist)"><tt>&lt;experimental/regex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/scope&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/scope (page does not exist)"><tt>&lt;experimental/scope&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/set&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/set (page does not exist)"><tt>&lt;experimental/set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/source_location&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/source location (page does not exist)"><tt>&lt;experimental/source_location&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/string&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/string (page does not exist)"><tt>&lt;experimental/string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_view.html" title="cpp/header/experimental/string view"><tt>&lt;experimental/string_view&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/system_error&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/system error (page does not exist)"><tt>&lt;experimental/system_error&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/tuple&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/tuple (page does not exist)"><tt>&lt;experimental/tuple&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/type_traits&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/type traits (page does not exist)"><tt>&lt;experimental/type_traits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/unordered_map&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/unordered map (page does not exist)"><tt>&lt;experimental/unordered_map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/unordered_set&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/unordered set (page does not exist)"><tt>&lt;experimental/unordered_set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/utility&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/utility (page does not exist)"><tt>&lt;experimental/utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/vector&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/vector (page does not exist)"><tt>&lt;experimental/vector&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concurrency TS</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/atomic&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/atomic (page does not exist)"><tt>&lt;experimental/atomic&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/barrier&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/barrier (page does not exist)"><tt>&lt;experimental/barrier&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/future&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/future (page does not exist)"><tt>&lt;experimental/future&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/latch&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/latch (page does not exist)"><tt>&lt;experimental/latch&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges TS</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ranges/algorithm.html" title="cpp/header/experimental/ranges/algorithm"><tt>&lt;experimental/ranges/algorithm&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/concepts.html" title="cpp/header/experimental/ranges/concepts"><tt>&lt;experimental/ranges/concepts&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/functional.html" title="cpp/header/experimental/ranges/functional"><tt>&lt;experimental/ranges/functional&gt;</tt></a>     </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/iterator.html" title="cpp/header/experimental/ranges/iterator"><tt>&lt;experimental/ranges/iterator&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ranges/random.html" title="cpp/header/experimental/ranges/random"><tt>&lt;experimental/ranges/random&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/tuple.html" title="cpp/header/experimental/ranges/tuple"><tt>&lt;experimental/ranges/tuple&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/type_traits.html" title="cpp/header/experimental/ranges/type traits"><tt>&lt;experimental/ranges/type_traits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges/utility.html" title="cpp/header/experimental/ranges/utility"><tt>&lt;experimental/ranges/utility&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Coroutines TS</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/coroutine&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/coroutine (page does not exist)"><tt>&lt;experimental/coroutine&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Networking TS</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/buffer&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/buffer (page does not exist)"><tt>&lt;experimental/buffer&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/executor&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/executor (page does not exist)"><tt>&lt;experimental/executor&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/internet&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/internet (page does not exist)"><tt>&lt;experimental/internet&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/io_context&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/io context (page does not exist)"><tt>&lt;experimental/io_context&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="net.html" title="cpp/header/experimental/net"><tt>&lt;experimental/net&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/netfwd&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/netfwd (page does not exist)"><tt>&lt;experimental/netfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/socket&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/socket (page does not exist)"><tt>&lt;experimental/socket&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/timer&amp;action=edit&amp;redlink=1" class="new" title="cpp/header/experimental/timer (page does not exist)"><tt>&lt;experimental/timer&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Reflection TS</td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"><tt>&lt;experimental/reflect&gt;</tt></strong></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>This header is part of the <a href="../../experimental/reflect.html" title="cpp/experimental/reflect">Reflection TS</a>.
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in  namespace <code>std::experimental::reflect</code> </div>
+</td></tr>
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in inline namespace <code>std::experimental::reflect::v1</code> </div>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Concepts"> Concepts</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Object.html" title="cpp/experimental/reflect/Object"> <span class="t-lines"><span>Object</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a type is a meta-object type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/ObjectSequence.html" title="cpp/experimental/reflect/ObjectSequence"> <span class="t-lines"><span>ObjectSequence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type is a meta-object sequence type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/TemplateParameterScope&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/TemplateParameterScope (page does not exist)"> <span class="t-lines"><span>TemplateParameterScope</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a template parameter scope <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Named.html" title="cpp/experimental/reflect/Named"> <span class="t-lines"><span>Named</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a entity or alias with an associated (possibly empty) name <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Alias.html" title="cpp/experimental/reflect/Alias"> <span class="t-lines"><span>Alias</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a type alias, namespace alias, or an alias introduced by a using-declaration <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/RecordMember.html" title="cpp/experimental/reflect/RecordMember"> <span class="t-lines"><span>RecordMember</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a <span class="t-spar">member-declaration</span> of a class <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Enumerator.html" title="cpp/experimental/reflect/Enumerator"> <span class="t-lines"><span>Enumerator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an enumerator <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Variable.html" title="cpp/experimental/reflect/Variable"> <span class="t-lines"><span>Variable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a variable or data member <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/ScopeMember.html" title="cpp/experimental/reflect/ScopeMember"> <span class="t-lines"><span>ScopeMember</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type satisfies <code>RecordMember</code>, <code>Enumerator</code>, or <code>Variable</code>, or reflects a namespace other than the global namespace <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Typed.html" title="cpp/experimental/reflect/Typed"> <span class="t-lines"><span>Typed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an entity with a type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Namespace.html" title="cpp/experimental/reflect/Namespace"> <span class="t-lines"><span>Namespace</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a namespace <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/GlobalScope.html" title="cpp/experimental/reflect/GlobalScope"> <span class="t-lines"><span>GlobalScope</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects the global namespace <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Class.html" title="cpp/experimental/reflect/Class"> <span class="t-lines"><span>Class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a non-union class type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Enum.html" title="cpp/experimental/reflect/Enum"> <span class="t-lines"><span>Enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an enumeration type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Record.html" title="cpp/experimental/reflect/Record"> <span class="t-lines"><span>Record</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a class type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Scope.html" title="cpp/experimental/reflect/Scope"> <span class="t-lines"><span>Scope</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a namespace, class, enumeration, function, closure type, a template parameter scope <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Type.html" title="cpp/experimental/reflect/Type"> <span class="t-lines"><span>Type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a type <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Constant.html" title="cpp/experimental/reflect/Constant"> <span class="t-lines"><span>Constant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an enumerator or a constexpr variable <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Base.html" title="cpp/experimental/reflect/Base"> <span class="t-lines"><span>Base</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a direct base class obtained from <code>get_base_classes</code>  <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/FunctionParameter.html" title="cpp/experimental/reflect/FunctionParameter"> <span class="t-lines"><span>FunctionParameter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a function parameter <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Callable.html" title="cpp/experimental/reflect/Callable"> <span class="t-lines"><span>Callable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a function (including constructors and destructors) <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Expression.html" title="cpp/experimental/reflect/Expression"> <span class="t-lines"><span>Expression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an expression <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/ParenthesizedExpression.html" title="cpp/experimental/reflect/ParenthesizedExpression"> <span class="t-lines"><span>ParenthesizedExpression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a parenthesized expression <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/FunctionCallExpression.html" title="cpp/experimental/reflect/FunctionCallExpression"> <span class="t-lines"><span>FunctionCallExpression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a <span class="t-spar">function-call-expression</span> <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/FunctionalTypeConversion.html" title="cpp/experimental/reflect/FunctionalTypeConversion"> <span class="t-lines"><span>FunctionalTypeConversion</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a <span class="t-spar">functional-type-conv-expression</span> <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Function.html" title="cpp/experimental/reflect/Function"> <span class="t-lines"><span>Function</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a function (excluding constructors and destructors) <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/MemberFunction.html" title="cpp/experimental/reflect/MemberFunction"> <span class="t-lines"><span>MemberFunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a member function (excluding constructors and destructors) <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/SpecialMemberFunction.html" title="cpp/experimental/reflect/SpecialMemberFunction"> <span class="t-lines"><span>SpecialMemberFunction</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a special member function <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Constructor.html" title="cpp/experimental/reflect/Constructor"> <span class="t-lines"><span>Constructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a constructor <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Destructor.html" title="cpp/experimental/reflect/Destructor"> <span class="t-lines"><span>Destructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a destructor <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Operator.html" title="cpp/experimental/reflect/Operator"> <span class="t-lines"><span>Operator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects an operator function or a conversion function <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/ConversionOperator.html" title="cpp/experimental/reflect/ConversionOperator"> <span class="t-lines"><span>ConversionOperator</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a conversion function <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/Lambda.html" title="cpp/experimental/reflect/Lambda"> <span class="t-lines"><span>Lambda</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects the closure type of a non-generic lambda <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/LambdaCapture.html" title="cpp/experimental/reflect/LambdaCapture"> <span class="t-lines"><span>LambdaCapture</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   specifies that a meta-object type reflects a lambda capture <br> <span class="t-mark">(concept)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Classes"> Classes</span></h3>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Object_operations">  <code>Object</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/reflects_same&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/reflects same (page does not exist)"> <span class="t-lines"><span>reflects_same</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if two meta-object types reflect the same entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/get_source_line.html" title="cpp/experimental/reflect/get source line"> <span class="t-lines"><span>get_source_line</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the presumed line number of the declaration of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../../experimental/reflect/get_source_column.html" title="cpp/experimental/reflect/get source column"> <span class="t-lines"><span>get_source_column</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the implementation-defined column number of the declaration of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_source_file_name&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get source file name (page does not exist)"> <span class="t-lines"><span>get_source_file_name</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the presumed file name of the declaration of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="ObjectSequence_operations">  <code>ObjectSequence</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_size&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get size (page does not exist)"> <span class="t-lines"><span>get_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the size of a meta-object sequence <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_element&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get element (page does not exist)"> <span class="t-lines"><span>get_element</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type with specified index in a sequence <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/unpack_sequence&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/unpack sequence (page does not exist)"> <span class="t-lines"><span>unpack_sequence</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   applies a template to the meta-object sequence <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Named_operations">  <code>Named</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_unnamed&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is unnamed (page does not exist)"> <span class="t-lines"><span>is_unnamed</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected entity or alias is named <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_name&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get name (page does not exist)"> <span class="t-lines"><span>get_name</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the unqualified name of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_display_name&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get display name (page does not exist)"> <span class="t-lines"><span>get_display_name</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the implementation-defined display name of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Alias_operations">  <code>Alias</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_alias&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get alias (page does not exist)"> <span class="t-lines"><span>get_alias</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the associated entity of the reflected alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Type_operations">  <code>Type</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_type&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get type (page does not exist)"> <span class="t-lines"><span>get_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the type of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_reflected_type&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get reflected type (page does not exist)"> <span class="t-lines"><span>get_reflected_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the type of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_enum&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is enum (page does not exist)"> <span class="t-lines"><span>is_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the meta-object type reflects an enumeration type <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_union&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is union (page does not exist)"> <span class="t-lines"><span>is_union</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the meta-object type reflects a union type <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/uses_key&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/uses key (page does not exist)"> <span class="t-lines"><span>uses_class_key</span><span>uses_struct_key</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the meta-object type reflects a non-union class type whose declaration uses <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">class</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">struct</span></span></span> respectively <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="ScopeMember_operations">  <code>ScopeMember</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_scope&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get scope (page does not exist)"> <span class="t-lines"><span>get_scope</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the scope of the reflected entity or alias <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Base_operations">  <code>Base</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_class&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get class (page does not exist)"> <span class="t-lines"><span>get_class</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the base class in the given base class relationship <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="RecordMember_and_Base_operations">  <code>RecordMember</code> and <code>Base</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_public&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is public (page does not exist)"> <span class="t-lines"><span>is_public</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member or base class is public <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_protected&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is protected (page does not exist)"> <span class="t-lines"><span>is_protected</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member or base class is protected <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_private&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is private (page does not exist)"> <span class="t-lines"><span>is_private</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member or base class is private <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Record_operations">  <code>Record</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_data_members&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get data members (page does not exist)"> <span class="t-lines"><span>get_public_data_members</span><span>get_accessible_data_members</span><span>get_data_members</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect public, accessible, or all data members of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_member_functions&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get member functions (page does not exist)"> <span class="t-lines"><span>get_public_member_functions</span><span>get_accessible_member_functions</span><span>get_member_functions</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect public, accessible, or all member functions of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_constructors&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get constructors (page does not exist)"> <span class="t-lines"><span>get_constructors</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect all constructors of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_operators&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get operators (page does not exist)"> <span class="t-lines"><span>get_operators</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect all operator functions and conversion functions declared in the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_destructor&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get destructor (page does not exist)"> <span class="t-lines"><span>get_destructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the destructor of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_member_types&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get member types (page does not exist)"> <span class="t-lines"><span>get_public_member_types</span><span>get_accessible_member_types</span><span>get_member_types</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect public, accessible, or all nested type or member typedefs of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_base_classes&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get base classes (page does not exist)"> <span class="t-lines"><span>get_public_base_classes</span><span>get_accessible_base_classes</span><span>get_base_classes</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect public, accessible, or all base classes of the reflected class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Enum_operations">  <code>Enum</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_scoped_enum&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is scoped enum (page does not exist)"> <span class="t-lines"><span>is_scoped_enum</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the reflected enumeration is scoped <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_enumerators&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get enumerators (page does not exist)"> <span class="t-lines"><span>get_enumerators</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflects the enumerators of the reflected enumeration <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_underlying_type&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get underlying type (page does not exist)"> <span class="t-lines"><span>get_underlying_type</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the underlying type of the reflected enumeration <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Variable_operations">  <code>Variable</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_constant&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get constant (page does not exist)"> <span class="t-lines"><span>get_constant</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the value of the reflected variable which is a constant expression <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_thread_local&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is thread local (page does not exist)"> <span class="t-lines"><span>is_thread_local</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the variable is declared with <span class="t-c"><span class="mw-geshi cpp source-cpp">thread_local</span></span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="FunctionParameter_operations">  <code>FunctionParameter</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/has_default_argument&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/has default argument (page does not exist)"> <span class="t-lines"><span>has_default_argument</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the reflected parameter has a default argument <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Callable_operations">  <code>Callable</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_parameters&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get parameters (page does not exist)"> <span class="t-lines"><span>get_parameters</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflects the parameters of the reflected function <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_vararg&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is vararg (page does not exist)"> <span class="t-lines"><span>is_vararg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the parameter list of the reflected function contains an ellipsis parameter <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_noexcept&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is noexcept (page does not exist)"> <span class="t-lines"><span>is_noexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the reflected function is non-throwing <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_deleted&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is deleted (page does not exist)"> <span class="t-lines"><span>is_deleted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the reflected function is deleted <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Variable_and_Callable_operations">  <code>Variable</code> and <code>Callable</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_constexpr&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is constexpr (page does not exist)"> <span class="t-lines"><span>is_constexpr</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected variable or function is constexpr <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Namespace_and_Callable_operations">  <code>Namespace</code> and <code>Callable</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_inline&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is inline (page does not exist)"> <span class="t-lines"><span>is_inline</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks whether the reflected namespace or function is inline <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="ParenthesizedExpression_operations">  <code>ParenthesizedExpression</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_subexpression&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get subexpression (page does not exist)"> <span class="t-lines"><span>get_subexpression</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the unparenthesized expression of the reflected parethesized expression <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="FunctionCallExpression_operations">  <code>FunctionCallExpression</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_callable&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get callable (page does not exist)"> <span class="t-lines"><span>get_callable</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the function in the reflected <span class="t-spar">function-call-expression</span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="FunctionalTypeConversion_operations">  <code>FunctionalTypeConversion</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_constructor&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get constructor (page does not exist)"> <span class="t-lines"><span>get_constructor</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains the meta-object type reflecting the constructor in reflected <span class="t-spar">functional-type-conv-expression</span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Variable_and_Function_operations">  <code>Variable</code> and <code>Function</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_pointer&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get pointer (page does not exist)"> <span class="t-lines"><span>get_pointer</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   get the address of the reflected variable or function, or the pointer-to-member value to the reflected non-static member <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="MemberFunction_operations">  <code>MemberFunction</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_qualified&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is qualified (page does not exist)"> <span class="t-lines"><span>is_const</span><span>is_volatile</span><span>has_lvalueref_qualifier</span><span>has_rvalueref_qualifier</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member function is declared with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">volatile</span></span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;</span></span></span>, or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">&amp;&amp;</span></span></span> qualifier respectively <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_override&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is override (page does not exist)"> <span class="t-lines"><span>is_override</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member function overrides a member function of base class <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Record_and_MemberFunction_operations">  <code>Record</code> and <code>MemberFunction</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_final&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is final (page does not exist)"> <span class="t-lines"><span>is_final</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected class or member function is marked with <span class="t-c"><span class="mw-geshi cpp source-cpp">final</span></span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Variable_and_MemberFunction_operations">  <code>Variable</code> and <code>MemberFunction</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_static&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is static (page does not exist)"> <span class="t-lines"><span>is_static</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected variable is of static storage duration, or the reflected member function is static <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="SpecialMemberFunction_operations">  <code>SpecialMemberFunction</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_implicitly_declared&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is implicitly declared (page does not exist)"> <span class="t-lines"><span>is_implicitly_declared</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected special member function is implicitly declared <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_defaulted&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is defaulted (page does not exist)"> <span class="t-lines"><span>is_defaulted</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected special member function is defaulted in its first declaration <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Constructor_and_ConversionOperator_operations">  <code>Constructor</code> and <code>ConversionOperator</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_explicit&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is explicit (page does not exist)"> <span class="t-lines"><span>is_explicit</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected constructor or conversion function is declared with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">explicit</span></span></span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="MemberFunction_and_Destructor_operations">  <code>MemberFunction</code> and <code>Destructor</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_virtual&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is virtual (page does not exist)"> <span class="t-lines"><span>is_virtual</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member function is virtual <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_pure_virtual&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is pure virtual (page does not exist)"> <span class="t-lines"><span>is_pure_virtual</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected member function is pure virtual <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Lambda_operations">  <code>Lambda</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/get_captures&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/get captures (page does not exist)"> <span class="t-lines"><span>get_captures</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   obtains a meta-object sequence type whose elements reflect the captures of the reflected closure type <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/uses_default_capture&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/uses default capture (page does not exist)"> <span class="t-lines"><span>uses_default_copy_capture</span><span>uses_default_reference_capture</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the capture-default of the lambda expression of the reflected closure type is <code>=</code> or <code>&amp;</code> respectively <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_call_operator_const&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is call operator const (page does not exist)"> <span class="t-lines"><span>is_call_operator_const</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the <code>operator()</code> of the reflected closure type is declared with <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">const</span></span></span>  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="LambdaCapture_operations">  <code>LambdaCapture</code> operations </span></h5>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_explictly_captured&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is explictly captured (page does not exist)"> <span class="t-lines"><span>is_explictly_captured</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected lambda capture is explicitly captured  <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/reflect/is_init_capture&amp;action=edit&amp;redlink=1" class="new" title="cpp/experimental/reflect/is init capture (page does not exist)"> <span class="t-lines"><span>is_init_capture</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-reflection-ts t-mark-ts">(reflection TS)</span></span></span></div></div>
+</td>
+<td>   checks if the reflected lambda capture is an init-capture <br> <span class="t-mark">(class template)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Synopsis">Synopsis</span></h3>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std<span class="sy4">::</span><span class="me2">experimental</span><span class="sy4">::</span><span class="me2">reflect</span> <span class="br0">{</span>
+<span class="kw1">inline</span> <span class="kw1">namespace</span> v1 <span class="br0">{</span>
+ 
+<span class="co1">// 21.12.3 Concepts for meta-object types</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Object <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept ObjectSequence <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept TemplateParameterScope <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Scope</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Named <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>          <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Alias <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>          <span class="co1">// refines Named and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept RecordMember <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>   <span class="co1">// refines ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Enumerator <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>     <span class="co1">// refines Constant</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Variable <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>       <span class="co1">// refines Typed and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept ScopeMember <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>    <span class="co1">// refines Named</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Typed <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>          <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Namespace <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>      <span class="co1">// refines Named and Scope</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept GlobalScope <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>    <span class="co1">// refines Namespace</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Class <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>          <span class="co1">// refines Record</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Enum <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>           <span class="co1">// refines Type, Scope, and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Record <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>         <span class="co1">// refines Type, Scope, and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Scope <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>          <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Type <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>           <span class="co1">// refines Named</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Constant <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>       <span class="co1">// refines Typed and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Base <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>           <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept FunctionParameter <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Typed and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Callable <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>       <span class="co1">// refines Scope and ScopeMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Expression <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>     <span class="co1">// refines Object</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept ParenthesizedExpression <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Expression</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept FunctionCallExpression <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Expression</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept FunctionalTypeConversion <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines Expression</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Function <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>       <span class="co1">// refines Typed and Callable</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept MemberFunction <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines RecordMember and Function</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept SpecialMemberFunction <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines RecordMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Constructor <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>    <span class="co1">// refines Callable and RecordMember</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Destructor <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>     <span class="co1">// refines Callable and SpecialMemberFunction</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Operator <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>       <span class="co1">// refines Function</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept ConversionOperator <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span> <span class="co1">// refines MemberFunction and Operator</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept Lambda <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>         <span class="co1">// refines Type and Scope</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+concept LambdaCapture <span class="sy1">=</span> <span class="coMULTI">/* see description */</span><span class="sy4">;</span>  <span class="co1">// refines Variable</span>
+ 
+<span class="co1">// 21.12.4 Meta-object operations</span>
+<span class="co1">// Multi-concept operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_public<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_protected<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_private<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_constexpr<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_static<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_final<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_explicit<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_inline<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_virtual<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_pure_virtual<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_pointer<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires RecordMember<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Base<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_public_v <span class="sy1">=</span> is_public<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires RecordMember<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Base<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_protected_v <span class="sy1">=</span> is_protected<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires RecordMember<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Base<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_private_v <span class="sy1">=</span> is_private<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Variable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Callable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_constexpr_v <span class="sy1">=</span> is_constexpr<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Variable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> MemberFunction<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_static_v <span class="sy1">=</span> is_static<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Class<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> MemberFunction<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_final_v <span class="sy1">=</span> is_final<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Constructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> ConversionOperator<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_explicit_v <span class="sy1">=</span> is_explicit<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Namespace<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Callable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_inline_v <span class="sy1">=</span> is_inline<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Base<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> MemberFunction<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Destructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_virtual_v <span class="sy1">=</span> is_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires MemberFunction<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Destructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_pure_virtual_v <span class="sy1">=</span> is_pure_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+requires Variable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="sy3">||</span> Function<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_pointer_v <span class="sy1">=</span> get_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.1 Object operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T1, Object T2<span class="sy1">&gt;</span> <span class="kw1">struct</span> reflects_same<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_source_line<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_source_column<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_source_file_name<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Object T1, Object T2<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> reflects_same_v <span class="sy1">=</span> reflects_same<span class="sy1">&lt;</span>T1, T2<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_source_line_v <span class="sy1">=</span> get_source_line<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_source_column_v <span class="sy1">=</span> get_source_column<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_source_file_name_v <span class="sy1">=</span> get_source_file_name<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.2 ObjectSequence operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ObjectSequence T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_size<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>size_t I, ObjectSequence T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_element<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span>...<span class="sy1">&gt;</span> <span class="kw1">class</span> Tpl, ObjectSequence T<span class="sy1">&gt;</span>
+  <span class="kw1">struct</span> unpack_sequence<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ObjectSequence T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_size_v <span class="sy1">=</span> get_size<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>size_t I, ObjectSequence T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_element_t <span class="sy1">=</span> <span class="kw1">typename</span> get_element<span class="sy1">&lt;</span>I, T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">template</span> <span class="sy1">&lt;</span><span class="kw1">class</span>...<span class="sy1">&gt;</span> <span class="kw1">class</span> Tpl, ObjectSequence T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> unpack_sequence_t <span class="sy1">=</span> <span class="kw1">typename</span> unpack_sequence<span class="sy1">&lt;</span>Tpl, T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.3 Named operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_unnamed<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_name<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_display_name<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_unnamed_v <span class="sy1">=</span> is_unnamed<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_name_v <span class="sy1">=</span> get_name<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Named T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_display_name_v <span class="sy1">=</span> get_display_name<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.4 Alias operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Alias T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_aliased<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Alias T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_aliased_t <span class="sy1">=</span> <span class="kw1">typename</span> get_aliased<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.5 Type operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Typed T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_type<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_reflected_type<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_enum<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> uses_class_key<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> uses_struct_key<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_union<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Typed T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_type_t <span class="sy1">=</span> <span class="kw1">typename</span> get_type<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_reflected_type_t <span class="sy1">=</span> <span class="kw1">typename</span> get_reflected_type<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_enum_v <span class="sy1">=</span> is_enum<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> uses_class_key_v <span class="sy1">=</span> uses_class_key<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> uses_struct_key_v <span class="sy1">=</span> uses_struct_key<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Type T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_union_v <span class="sy1">=</span> is_union<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.6 Member operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ScopeMember T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_scope<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>RecordMember T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_public<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>RecordMember T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_protected<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>RecordMember T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_private<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ScopeMember T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_scope_t <span class="sy1">=</span> <span class="kw1">typename</span> get_scope<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.7 Record operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_public_data_members<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_accessible_data_members<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_data_members<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_public_member_functions<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_accessible_member_functions<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_member_functions<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_public_member_types<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_accessible_member_types<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_member_types<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_constructors<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_destructor<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_operators<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_public_base_classes<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_accessible_base_classes<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_base_classes<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_final<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_public_data_members_t <span class="sy1">=</span> <span class="kw1">typename</span> get_public_data_members<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_accessible_data_members_t <span class="sy1">=</span> <span class="kw1">typename</span> get_accessible_data_members<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_data_members_t <span class="sy1">=</span> <span class="kw1">typename</span> get_data_members<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_public_member_functions_t <span class="sy1">=</span> <span class="kw1">typename</span> get_public_member_functions<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_accessible_member_functions_t <span class="sy1">=</span> <span class="kw1">typename</span> get_accessible_member_functions<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_member_functions_t <span class="sy1">=</span> <span class="kw1">typename</span> get_member_functions<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_public_member_types_t <span class="sy1">=</span> <span class="kw1">typename</span> get_public_member_types<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_accessible_member_types_t <span class="sy1">=</span> <span class="kw1">typename</span> get_accessible_member_types<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_member_types_t <span class="sy1">=</span> <span class="kw1">typename</span> get_member_types<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_constructors_t <span class="sy1">=</span> <span class="kw1">typename</span> get_constructors<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_destructor_t <span class="sy1">=</span> <span class="kw1">typename</span> get_destructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Record T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_operators_t <span class="sy1">=</span> <span class="kw1">typename</span> get_operators<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_public_base_classes_t <span class="sy1">=</span> <span class="kw1">typename</span> get_public_base_classes<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_accessible_base_classes_t <span class="sy1">=</span> <span class="kw1">typename</span> get_accessible_base_classes<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Class T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_base_classes_t <span class="sy1">=</span> <span class="kw1">typename</span> get_base_classes<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.8 Enum operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_scoped_enum<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_enumerators<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_underlying_type<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_scoped_enum_v <span class="sy1">=</span> is_scoped_enum<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_enumerators_t <span class="sy1">=</span> <span class="kw1">typename</span> get_enumerators<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Enum T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_underlying_type_t <span class="sy1">=</span> <span class="kw1">typename</span> get_underlying_type<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.9 Value operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Constant T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_constant<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Variable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_constexpr<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Variable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_static<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Variable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_thread_local<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Variable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Constant T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> get_constant_v <span class="sy1">=</span> get_constant<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Variable T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_thread_local_v <span class="sy1">=</span> is_thread_local<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.10 Base operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_class<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_public<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_protected<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_private<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Base T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_class_t <span class="sy1">=</span> <span class="kw1">typename</span> get_class<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.11 Namespace operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Namespace T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_inline<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.12 FunctionParameter operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionParameter T<span class="sy1">&gt;</span> <span class="kw1">struct</span> has_default_argument<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionParameter T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> has_default_argument_v <span class="sy1">=</span> has_default_argument<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.13 Callable operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_parameters<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_vararg<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_constexpr<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_noexcept<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_inline<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_deleted<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_parameters_t <span class="sy1">=</span> <span class="kw1">typename</span> get_parameters<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_vararg_v <span class="sy1">=</span> is_vararg<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Callable T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_deleted_v <span class="sy1">=</span> is_deleted<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.14 ParenthesizedExpression operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ParenthesizedExpression T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_subexpression<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ParenthesizedExpression T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_subexpression_t <span class="sy1">=</span> <span class="kw1">typename</span> get_subexpression<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.15 FunctionCallExpression operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionCallExpression T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_callable<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionCallExpression T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_callable_t <span class="sy1">=</span> <span class="kw1">typename</span> get_callable<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.16 FunctionalTypeConversion operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionalTypeConversion T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_constructor<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>FunctionalTypeConversion T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_constructor_t <span class="sy1">=</span> <span class="kw1">typename</span> get_constructor<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.17 Function operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Function T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_pointer<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.18 MemberFunction operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_static<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_const<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_volatile<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> has_lvalueref_qualifier<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> has_rvalueref_qualifier<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_pure_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_override<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_final<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_const_v <span class="sy1">=</span> is_const<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_volatile_v <span class="sy1">=</span> is_volatile<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> has_lvalueref_qualifier_v <span class="sy1">=</span> has_lvalueref_qualifier<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> has_rvalueref_qualifier_v <span class="sy1">=</span> has_rvalueref_qualifier<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>MemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_override_v <span class="sy1">=</span> is_override<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.19 SpecialMemberFunction operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>SpecialMemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_implicitly_declared<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>SpecialMemberFunction T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_defaulted<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>SpecialMemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_implicitly_declared_v <span class="sy1">=</span> is_implicitly_declared<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>SpecialMemberFunction T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_defaulted_v <span class="sy1">=</span> is_defaulted<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.20 Constructor operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Constructor T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_explicit<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.21 Destructor operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Destructor T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Destructor T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_pure_virtual<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.22 ConversionOperator operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>ConversionOperator T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_explicit<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.23 Lambda operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span> <span class="kw1">struct</span> get_captures<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span> <span class="kw1">struct</span> uses_default_copy_capture<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span> <span class="kw1">struct</span> uses_default_reference_capture<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_call_operator_const<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span>
+  <span class="kw1">using</span> get_captures_t <span class="sy1">=</span> <span class="kw1">typename</span> get_captures<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> uses_default_copy_capture_v <span class="sy1">=</span> uses_default_copy_capture<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> uses_default_reference_capture_v <span class="sy1">=</span> uses_default_reference_capture<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>Lambda T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_call_operator_const_v <span class="sy1">=</span> is_call_operator_const<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="co1">// 21.12.4.24 LambdaCapture operations</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>LambdaCapture T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_explicitly_captured<span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>LambdaCapture T<span class="sy1">&gt;</span> <span class="kw1">struct</span> is_init_capture<span class="sy4">;</span>
+ 
+<span class="kw1">template</span> <span class="sy1">&lt;</span>LambdaCapture T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_explicitly_captured_v <span class="sy1">=</span> is_explicitly_captured<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+<span class="kw1">template</span> <span class="sy1">&lt;</span>LambdaCapture T<span class="sy1">&gt;</span>
+  <span class="kw4">constexpr</span> <span class="kw4">auto</span> is_init_capture_v <span class="sy1">=</span> is_init_capture<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">value</span><span class="sy4">;</span>
+ 
+<span class="br0">}</span> <span class="co1">// inline namespace v1</span>
+<span class="br0">}</span> <span class="co1">// namespace std::experimental::reflect</span></pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 19627/1000000
+Preprocessor generated node count: 15123/1000000
+Post‐expand include size: 513550/2097152 bytes
+Template argument size: 175556/2097152 bytes
+Highest expansion depth: 19/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:20115-0!*!0!!en!*!* and timestamp 20220730074355 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/reflect&amp;oldid=129455">https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimental/reflect&amp;oldid=129455</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/header/experimental/reflect">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 5 June 2021, at 23:54.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 3,667 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 3.168 secs. -->
+	</body>
+<!-- Cached 20220730074355 -->
+</html>

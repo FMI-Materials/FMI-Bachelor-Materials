@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>wprintf, fwprintf, swprintf, wprintf_s, fwprintf_s, swprintf_s, snwprintf_s - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/io/fwprintf","wgTitle":"c/io/fwprintf","wgCurRevisionId":141128,"wgArticleId":6228,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/io/fwprintf","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_io_fwprintf skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">wprintf, fwprintf, swprintf, wprintf_s, fwprintf_s, swprintf_s, snwprintf_s</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../io.html" title="c/io">io</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../io.html" title="c/io"> File input/output</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Types and objects</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FILE.html" title="c/io/FILE"><span class="t-lines"><span>FILE</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fpos_t.html" title="c/io/fpos t"><span class="t-lines"><span>fpos_t</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="std_streams.html" title="c/io/std streams"><span class="t-lines"><span>stdin</span><span>stdout</span><span>stderr</span></span></a></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> File access</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fopen.html" title="c/io/fopen"><span class="t-lines"><span>fopen</span><span>fopen_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="freopen.html" title="c/io/freopen"><span class="t-lines"><span>freopen</span><span>freopen_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwide.html" title="c/io/fwide"><span class="t-lines"><span>fwide</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setbuf.html" title="c/io/setbuf"><span class="t-lines"><span>setbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="setvbuf.html" title="c/io/setvbuf"><span class="t-lines"><span>setvbuf</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fclose.html" title="c/io/fclose"><span class="t-lines"><span>fclose</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fflush.html" title="c/io/fflush"><span class="t-lines"><span>fflush</span></span></a></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Direct input/output</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fread.html" title="c/io/fread"><span class="t-lines"><span>fread</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwrite.html" title="c/io/fwrite"><span class="t-lines"><span>fwrite</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Unformatted input/output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetc.html" title="c/io/fgetc"><span class="t-lines"><span>fgetc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgets.html" title="c/io/fgets"><span class="t-lines"><span>fgets</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputc.html" title="c/io/fputc"><span class="t-lines"><span>fputc</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputs.html" title="c/io/fputs"><span class="t-lines"><span>fputs</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getchar.html" title="c/io/getchar"><span class="t-lines"><span>getchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="gets.html" title="c/io/gets"><span class="t-lines"><span>gets</span><span>gets_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-until-c11">(until C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putchar.html" title="c/io/putchar"><span class="t-lines"><span>putchar</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="puts.html" title="c/io/puts"><span class="t-lines"><span>puts</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetc.html" title="c/io/ungetc"><span class="t-lines"><span>ungetc</span></span></a></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetwc.html" title="c/io/fgetwc"><span class="t-lines"><span>fgetwc</span><span>getwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetws.html" title="c/io/fgetws"><span class="t-lines"><span>fgetws</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputwc.html" title="c/io/fputwc"><span class="t-lines"><span>fputwc</span><span>putwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fputws.html" title="c/io/fputws"><span class="t-lines"><span>fputws</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="getwchar.html" title="c/io/getwchar"><span class="t-lines"><span>getwchar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="putwchar.html" title="c/io/putwchar"><span class="t-lines"><span>putwchar</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ungetwc.html" title="c/io/ungetwc"><span class="t-lines"><span>ungetwc</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Formatted input</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fscanf.html" title="c/io/fscanf"><span class="t-lines"><span>scanf</span><span>fscanf</span><span>sscanf</span><span>scanf_s</span><span>fscanf_s</span><span>sscanf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fwscanf.html" title="c/io/fwscanf"><span class="t-lines"><span>wscanf</span><span>fwscanf</span><span>swscanf</span><span>wscanf_s</span><span>fwscanf_s</span><span>swscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfscanf.html" title="c/io/vfscanf"><span class="t-lines"><span>vscanf</span><span>vfscanf</span><span>vsscanf</span><span>vscanf_s</span><span>vfscanf_s</span><span>vsscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwscanf.html" title="c/io/vfwscanf"><span class="t-lines"><span>vwscanf</span><span>vfwscanf</span><span>vswscanf</span><span>vwscanf_s</span><span>vfwscanf_s</span><span>vswscanf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span>     </span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Formatted output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fprintf.html" title="c/io/fprintf"><span class="t-lines"><span>printf</span><span>fprintf</span><span>sprintf</span><span>snprintf</span><span>printf_s</span><span>fprintf_s</span><span>sprintf_s</span><span>snprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>wprintf</span><span>fwprintf</span><span>swprintf</span><span>wprintf_s</span><span>fwprintf_s</span><span>swprintf_s</span><span>snwprintf_s</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfprintf.html" title="c/io/vfprintf"><span class="t-lines"><span>vprintf</span><span>vfprintf</span><span>vsprintf</span><span>vsnprintf</span><span>vprintf_s</span><span>vfprintf_s</span><span>vsprintf_s</span><span>vsnprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="vfwprintf.html" title="c/io/vfwprintf"><span class="t-lines"><span>vwprintf</span><span>vfwprintf</span><span>vswprintf</span><span>vwprintf_s</span><span>vfwprintf_s</span><span>vswprintf_s</span><span>vsnwprintf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> File positioning</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ftell.html" title="c/io/ftell"><span class="t-lines"><span>ftell</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fgetpos.html" title="c/io/fgetpos"><span class="t-lines"><span>fgetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fseek.html" title="c/io/fseek"><span class="t-lines"><span>fseek</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fsetpos.html" title="c/io/fsetpos"><span class="t-lines"><span>fsetpos</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rewind.html" title="c/io/rewind"><span class="t-lines"><span>rewind</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Error handling</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="clearerr.html" title="c/io/clearerr"><span class="t-lines"><span>clearerr</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feof.html" title="c/io/feof"><span class="t-lines"><span>feof</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="ferror.html" title="c/io/ferror"><span class="t-lines"><span>ferror</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="perror.html" title="c/io/perror"><span class="t-lines"><span>perror</span></span></a></div></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Operations on files</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="remove.html" title="c/io/remove"><span class="t-lines"><span>remove</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="rename.html" title="c/io/rename"><span class="t-lines"><span>rename</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpfile.html" title="c/io/tmpfile"><span class="t-lines"><span>tmpfile</span><span>tmpfile_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="tmpnam.html" title="c/io/tmpnam"><span class="t-lines"><span>tmpnam</span><span>tmpnam_s</span></span></a></div><div><span class="t-lines"><span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code>&lt;wchar.h&gt;</code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(1)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-c95 t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> wprintf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span>format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c95">(since C95)</span> <br><span class="t-mark-rev t-until-c99">(until C99)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> wprintf<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(2)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-c95 t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fwprintf<span class="br0">(</span> <a href="FILE.html"><span class="kw881">FILE</span></a> <span class="sy2">*</span>stream, <span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c95">(since C95)</span> <br><span class="t-mark-rev t-until-c99">(until C99)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fwprintf<span class="br0">(</span> <a href="FILE.html"><span class="kw881">FILE</span></a> <span class="sy2">*</span><span class="kw4">restrict</span> stream,<br>
+              <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+</tbody><tbody>
+</tbody>
+<tbody class="t-dcl-rev t-dcl-rev-num"><tr class="t-dcl-rev-aux">
+<td></td>
+<td rowspan="142">(3)</td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-c95 t-until-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> swprintf<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span>buffer, <a href="../types/size_t.html"><span class="kw100">size_t</span></a> bufsz,<br>
+              <span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c95">(since C95)</span> <br><span class="t-mark-rev t-until-c99">(until C99)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> swprintf<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> buffer, <a href="../types/size_t.html"><span class="kw100">size_t</span></a> bufsz,<br>
+              <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td class="t-dcl-nopad">  </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+</tbody><tbody>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> wprintf_s<span class="br0">(</span> <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (4) </td>
+<td> <span class="t-mark-rev t-since-c11">(since C11)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fwprintf_s<span class="br0">(</span> <a href="FILE.html"><span class="kw881">FILE</span></a> <span class="sy2">*</span><span class="kw4">restrict</span> stream,<br>
+                <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (5) </td>
+<td> <span class="t-mark-rev t-since-c11">(since C11)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> swprintf_s<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span><span class="kw4">restrict</span> buffer, rsize_t bufsz,<br>
+                <span class="kw4">const</span> <span class="kw4">wchar_t</span><span class="sy2">*</span> <span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (6) </td>
+<td> <span class="t-mark-rev t-since-c11">(since C11)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c11">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> snwprintf_s<span class="br0">(</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span> <span class="kw4">restrict</span> s, rsize_t n,<br>
+                 <span class="kw4">const</span> <span class="kw4">wchar_t</span> <span class="sy2">*</span> <span class="kw4">restrict</span> format, ... <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (7) </td>
+<td> <span class="t-mark-rev t-since-c11">(since C11)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>Loads the data from the given locations, converts them to wide string equivalents and writes the results to a variety of sinks.
+</p>
+<div class="t-li1"><span class="t-li">1)</span> Writes the results to <span class="t-lc"><a href="std_streams.html" title="c/io/std streams">stdout</a></span>.</div>
+<div class="t-li1"><span class="t-li">2)</span> Writes the results to a file stream <code>stream</code>.</div>
+<div class="t-li1"><span class="t-li">3)</span> If <code>bufsz</code> is greater than zero, writes the results to a wide string <code>buffer</code>. At most <span class="t-c"><span class="mw-geshi c source-c">bufsz<span class="sy2">-</span><span class="nu0">1</span></span></span> wide characters are written followed by null wide character. If <code>bufsz</code> is zero, nothing is written (and <code>buffer</code> may be a null pointer), however the return value (number of wide characters that would be written) is still calculated and returned.</div>
+<div class="t-li1"><span class="t-li">4-6)</span> Same as <span class="t-v">(1-3)</span>, except that the following errors are detected at runtime and call the currently installed <a href="../error/set_constraint_handler_s.html" title="c/error/set constraint handler s">constraint handler</a> function:
+<dl><dd><ul><li> the conversion specifier <code>%n</code> is present in <code>format</code>
+</li><li> any of the arguments corresponding to <code>%s</code> is a null pointer
+</li><li> <code>format</code> or <code>buffer</code> is a null pointer
+</li><li> <code>bufsz</code> is zero or greater than <code>RSIZE_MAX/sizeof(wchar_t)</code>
+</li><li> encoding errors occur in any of string and character conversion specifiers
+</li><li> (only for <code>swprintf_s</code>) the number of wide characters to be written, including the null, would exceed <code>bufsz</code>.</li></ul></dd></dl></div>
+
+
+<div class="t-li1"><span class="t-li">7)</span> Same as <span class="t-v">(6)</span>, except it will truncate the result to fit within the array pointed to by s.
+<dl><dd>As with all bounds-checked functions, <code>wprintf_s</code> , <code>fwprintf_s</code>, <code>swprintf_s</code>, and <code>snwprintf_s</code> are only guaranteed to be available if <span class="t-c"><span class="mw-geshi c source-c">__STDC_LIB_EXT1__</span></span> is defined by the implementation and if the user defines <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_LIB_EXT1__</span></span> to the integer constant <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span> before including <code>&lt;stdio.h&gt;</code>.</dd></dl></div>
+
+<h3><span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  stream
+</td>
+<td> -
+</td>
+<td>  output file stream to write to
+</td></tr>
+<tr class="t-par">
+<td>  buffer
+</td>
+<td> -
+</td>
+<td>  pointer to a wide character string to write to
+</td></tr>
+<tr class="t-par">
+<td>  bufsz
+</td>
+<td> -
+</td>
+<td>  up to <code>bufsz-1</code> wide characters may be written, plus the null terminator
+</td></tr>
+<tr class="t-par">
+<td>  format
+</td>
+<td> -
+</td>
+<td>  pointer to a null-terminated wide string specifying how to interpret the data
+</td></tr>
+<tr class="t-par">
+<td>  ...
+</td>
+<td> -
+</td>
+<td>  arguments specifying data to print. If any argument after <a href="../language/conversion.html#Default_argument_promotions" title="c/language/conversion">default argument promotions</a> is not the type expected by the corresponding conversion specifier, or if there are fewer arguments than required by <code>format</code>, the behavior is undefined. If there are more arguments than required by <code>format</code>, the extraneous arguments are evaluated and ignored.
+</td></tr></table>
+<p><br>
+The <b>format</b> string consists of ordinary wide characters (except <code><b>%</b></code>), which are copied unchanged into the output stream, and conversion specifications. Each conversion specification has the following format:
+</p>
+<dl><dd><ul><li> introductory <code><b>%</b></code> character
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> one or more flags that modify the behavior of the conversion:
+</li></ul>
+<dl><dd><ul><li> <code><b>-</b></code>: the result of the conversion is left-justified within the field (by default it is right-justified)
+</li><li> <code><b>+</b></code>: the sign of signed conversions is always prepended to the result of the conversion (by default the result is preceded by minus only when it is negative)
+</li><li> <i>space</i>: if the result of a signed conversion does not start with a sign character, or is empty, space is prepended to the result. It is ignored if <code>+</code> flag is present.
+</li><li> <code><b>#</b></code> : <i>alternative form</i> of the conversion is performed. See the table below for exact effects otherwise the behavior is undefined.
+</li><li> <code><b>0</b></code> : for integer and floating point number conversions, leading zeros are used to pad the field instead of <i>space</i> characters. For integer numbers it is ignored if the precision is explicitly specified. For other conversions using this flag results in undefined behavior. It is ignored if <code>-</code> flag is present.
+</li></ul>
+</dd></dl>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> integer value or <code>*</code> that specifies minimum field width. The result is padded with <i>space</i> characters (by default), if required, on the left when right-justified, or on the right if left-justified. In the case when <code>*</code> is used, the width is specified by an additional argument of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>, which appears before the argument to be converted and the argument supplying precision if one is supplied. If the value of the argument is negative, it results with the <code>-</code> flag specified and positive field width. (Note: This is the minimum width: The value is never truncated.)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> <code><b>.</b></code> followed by integer number or <code><b>*</b></code>, or neither that specifies <i>precision</i> of the conversion. In the case when <code>*</code> is used, the <i>precision</i> is specified by an additional argument of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>, which appears before the argument to be converted, but after the argument supplying minimum field width if one is supplied. If the value of this argument is negative, it is ignored. If neither a number nor <code><b>*</b></code> is used, the precision is taken as zero. See the table below for exact effects of <i>precision</i>. 
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> <span class="t-mark">(optional)</span> <i>length modifier</i> that specifies the size of the argument (in combination with the conversion format specifier, it specifies the type of the corresponding argument)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> conversion format specifier
+</li></ul>
+</dd></dl>
+<p>The following format specifiers are available:
+</p>
+<table class="wikitable" style="text-align:center; font-size:85%; max-width:90em;">
+
+<tr>
+<th rowspan="1"> Conversion<br>Specifier
+</th>
+<th rowspan="1"> Explanation
+</th>
+<th colspan="9"> Expected<br>Argument Type
+</th></tr>
+<tr>
+<th colspan="2" style="text-align:right; font-weight:normal;"> <div style="display:inline-block; vertical-align:middle; text-align:center"><b>Length<br>Modifier</b></div><b>→</b>
+</th>
+<th> <code>hh</code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<th> <code>h</code>
+</th>
+<th style="font-weight:normal;"> (none)
+</th>
+<th> <code><b>l</b></code>
+</th>
+<th> <code><b>ll</b></code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<th> <code><b>j</b></code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<th> <code><b>z</b></code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<th> <code><b>t</b></code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<th> <code><b>L</b></code>
+</th></tr>
+<tr>
+<th> <code>%</code>
+</th>
+<td style="text-align:left;"> writes literal <code><b>%</b></code>. The full conversion specification must be <code><b>%%</b></code>.
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>c</code>
+</th>
+<td style="text-align:left;">
+<dl><dd> writes a <b>single character</b>.
+</dd></dl>
+<p>The argument is first converted to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span></span></span> as if by calling <span class="t-lc"><a href="../string/multibyte/btowc.html" title="c/string/multibyte/btowc">btowc</a></span>.
+If the <b>l</b> modifier is used, the <code>wint_t</code> argument is first converted to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span></span></span>.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c">wint_t</span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>s</code>
+</th>
+<td style="text-align:left;">
+<dl><dd> writes a <b>character string</b>
+</dd></dl>
+<p>The argument must be a pointer to the initial element of a character array containing a multibyte character sequence beginning in the initial shift state, which is converted to wide character array as if by a call to <span class="t-lc"><a href="../string/multibyte/mbrtowc.html" title="c/string/multibyte/mbrtowc">mbrtowc</a></span> with zero-initialized conversion state.
+<i>Precision</i> specifies the maximum number of wide characters to be written. If <i>Precision</i> is not specified, writes every wide characters up to and not including the first null terminator.
+If the <b>l</b> specifier is used, the argument must be a pointer to the initial element of an array of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span></span></span>.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">char</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">wchar_t</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>d</code><br> <code>i</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts a <b>signed integer</b> into decimal representation <i>[-]dddd</i>.
+</dd></dl>
+<p><i>Precision</i> specifies the minimum number of digits to appear. The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>.<br> 
+If both the converted value and the precision are <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> the conversion results in no characters.
+</p>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/integer.html"><span class="kw118">intmax_t</span></a></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div>signed <span class="t-c"><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a></span></span></div></div>
+</td>
+<td rowspan="1"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/ptrdiff_t.html"><span class="kw101">ptrdiff_t</span></a></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>o</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts an <b>unsigned integer</b> into octal representation <i>oooo</i>.
+</dd></dl>
+<p><i>Precision</i> specifies the minimum number of digits to appear. The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>. 
+If both the converted value and the precision are <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> the conversion results in no characters.
+In the <i>alternative implementation</i> precision is increased if necessary, to write one leading zero.
+In that case if both the converted value and the precision are <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>, single <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> is written.
+</p>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">short</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/integer.html"><span class="kw132">uintmax_t</span></a></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a></span></span></div></div>
+</td>
+<td rowspan="3"> <div class="t-vertical"><div>unsigned version of <span class="t-c"><span class="mw-geshi c source-c"><a href="../types/ptrdiff_t.html"><span class="kw101">ptrdiff_t</span></a></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>x</code><br> <code>X</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts an <b>unsigned integer</b> into hexadecimal representation <i>hhhh</i>.
+</dd></dl>
+<p>For the <code><b>x</b></code> conversion letters <code>abcdef</code> are used.<br>
+For the <code><b>X</b></code> conversion letters <code>ABCDEF</code> are used.<br>
+<i>Precision</i> specifies the minimum number of digits to appear. The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>.
+If both the converted value and the precision are <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> the conversion results in no characters.
+In the <i>alternative implementation</i> <code><b>0x</b></code> or <code><b>0X</b></code> is prefixed to results if the converted value is nonzero.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>u</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts an <b>unsigned integer</b> into decimal representation <i>dddd</i>.
+</dd></dl>
+<p><i>Precision</i> specifies the minimum number of digits to appear. 
+The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>. 
+If both the converted value and the precision are <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> the conversion results in no characters.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>f</code><br> <code>F</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts <b>floating-point number</b> to the decimal notation in the style <i>[-]ddd.ddd</i>.
+</dd></dl>
+<p><i>Precision</i> specifies the exact number of digits to appear after the decimal point character. 
+The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">6</span></span></span>.
+In the <i>alternative implementation</i> decimal point character is written even if no digits follow it.
+For infinity and not-a-number conversion style see notes.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="4"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span></div></div>
+</td>
+<td rowspan="4"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> <span class="t-mark-rev t-since-c99">(C99)</span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td rowspan="4"> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span></div></div>
+</td></tr>
+<tr>
+<th> <code>e</code><br> <code>E</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts <b>floating-point number</b> to the decimal exponent notation.
+</dd></dl>
+<p>For the <code><b>e</b></code> conversion style <i>[-]d.ddd</i><code><b>e</b></code><i>±dd</i> is used.<br>
+For the <code><b>E</b></code> conversion style <i>[-]d.ddd</i><code><b>E</b></code><i>±dd</i> is used.<br>
+The exponent contains at least two digits, more digits are used only if necessary. 
+If the value is <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>, the exponent is also <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>.
+<i>Precision</i> specifies the exact number of digits to appear after the decimal point character. 
+The default precision is <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">6</span></span></span>.
+In the <i>alternative implementation</i> decimal point character is written even if no digits follow it.
+For infinity and not-a-number conversion style see notes.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>a</code><br> <code>A</code>
+<p><span class="t-mark-rev t-since-c99">(C99)</span>
+</p>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts <b>floating-point number</b> to the hexadecimal exponent notation.
+</dd></dl>
+<p>For the <code><b>a</b></code> conversion style <i>[-]</i><code><b>0x</b></code><i>h.hhh</i><code><b>p</b></code><i>±d</i> is used.<br>
+For the <code><b>A</b></code> conversion style <i>[-]</i><code><b>0X</b></code><i>h.hhh</i><code><b>P</b></code><i>±d</i> is used.<br>
+The first hexadecimal digit is not <code>0</code> if the argument is a normalized floating point value.
+If the value is <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>, the exponent is also <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>.
+<i>Precision</i> specifies the exact number of digits to appear after the hexadecimal point character. 
+The default precision is sufficient for exact representation of the value.
+In the <i>alternative implementation</i> decimal point character is written even if no digits follow it.
+For infinity and not-a-number conversion style see notes.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>g</code><br> <code>G</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>converts <b>floating-point number</b> to decimal or decimal exponent notation depending on the value and the <i>precision</i>.
+</dd></dl>
+<p>For the <code><b>g</b></code> conversion style conversion with style <code><b>e</b></code> or <code><b>f</b></code> will be performed.<br>
+For the <code><b>G</b></code> conversion style conversion with style <code><b>E</b></code> or <code><b>F</b></code> will be performed.<br>
+Let <code>P</code> equal the precision if nonzero, <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">6</span></span></span> if the precision is not specified, or <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span> if the precision is <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>. Then, if a conversion with style <code>E</code> would have an exponent of <code>X</code>:
+</p>
+<ul><li> if <i>P &gt; X ≥ −4</i>, the conversion is with style <code><b>f</b></code> or <code><b>F</b></code> and precision <i>P − 1 − X</i>.
+</li><li> otherwise, the conversion is with style <code><b>e</b></code> or <code><b>E</b></code> and precision <i>P − 1</i>.
+</li></ul>
+<p>Unless <i>alternative representation</i> is requested the trailing zeros are removed, also the decimal point character is removed if no fractional part is left.
+For infinity and not-a-number conversion style see notes.
+</p>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>n</code>
+</th>
+<td style="text-align:left;">
+<dl><dd>returns the <b>number of characters written</b> so far by this call to the function.
+</dd></dl>
+<p>The result is <i>written</i> to the value pointed to by the argument. 
+The specification may not contain any <i>flag</i>, <i>field width</i>, or <i>precision</i>.
+</p>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/integer.html"><span class="kw118">intmax_t</span></a><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div>signed <span class="t-c"><span class="mw-geshi c source-c"><a href="../types/size_t.html"><span class="kw100">size_t</span></a><span class="sy2">*</span></span></span></div></div>
+</td>
+<td> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><a href="../types/ptrdiff_t.html"><span class="kw101">ptrdiff_t</span></a><span class="sy2">*</span></span></span></div></div>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr>
+<tr>
+<th> <code>p</code>
+</th>
+<td style="text-align:left;"> writes an implementation defined character sequence defining a <b>pointer</b>.
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">void</span><span class="sy2">*</span></span></span>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td>
+<td style="background: #ececec; color: grey; vertical-align: middle; text-align: center;" class="table-na"> <small>N/A</small>
+</td></tr></table>
+<p>The floating point conversion functions convert infinity to <code>inf</code> or <code>infinity</code>. Which one is used is implementation defined.
+</p><p>Not-a-number is converted to <code>nan</code> or <code>nan(<i>char_sequence</i>)</code>. Which one is used is implementation defined.
+</p><p>The conversions <code><b>F</b></code>, <code><b>E</b></code>, <code><b>G</b></code>, <code><b>A</b></code> output <code>INF</code>, <code>INFINITY</code>, <code>NAN</code> instead.
+</p><p>Even though <code>%c</code> expects <code>int</code> argument, it is safe to pass a <code>char</code> because of the integer promotion that takes place when a variadic function is called.
+</p><p>The correct conversion specifications for the fixed-width character types (<span class="t-lc"><a href="../types/integer.html" title="c/types/integer">int8_t</a></span>, etc) are defined in the header <a href="../types/integer.html" title="c/types/integer"><code>&lt;inttypes.h&gt;</code></a> (although <span class="t-lc"><a href="../types/integer.html" title="c/types/integer">PRIdMAX</a></span>, <span class="t-lc"><a href="../types/integer.html" title="c/types/integer">PRIuMAX</a></span>, etc is synonymous with <code>%jd</code>, <code>%ju</code>, etc).
+</p><p>The memory-writing conversion specifier <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>n</span></span> is a common target of security exploits where format strings depend on user input and is not supported by the bounds-checked <code>printf_s</code> family of functions.
+</p><p>There is a <a href="../language/eval_order.html" title="c/language/eval order">sequence point</a> after the action of each conversion specifier; this permits storing multiple <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>n</span></span> results in the same variable or, as an edge case, printing a string modified by an earlier <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">%</span>n</span></span> within the same call.
+</p><p>If a conversion specification is invalid, the behavior is undefined.
+</p>
+<h3><span class="mw-headline" id="Return_value">Return value</span></h3>
+<div class="t-li1"><span class="t-li">1,2)</span> Number of wide characters written if successful or negative value if an error occurred.</div>
+<div class="t-li1"><span class="t-li">3)</span> Number of wide characters written (not counting the terminating null wide character) if successful or negative value if an encoding error occurred or if the number of characters to be generated was equal or greater than <code>size</code> (including when <code>size</code> is zero).</div>
+<div class="t-li1"><span class="t-li">4,5)</span> Number of wide characters written if successful or negative value if an error occurred.</div>
+<div class="t-li1"><span class="t-li">6)</span> Number of wide characters (not counting the terminating null) that were written to <code>buffer</code>. Returns a negative value on encoding errors and on overflow. Returns zero on all other errors.</div>
+<div class="t-li1"><span class="t-li">7)</span> Number of wide characters (not counting the terminating null) that would have been written to <code>buffer</code> had <code>bufsz</code> been sufficiently large, or a negative value if an error occurs. (meaning, write was successful and complete only if the return is nonnegative and less than <code>bufsz</code>)</div>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>While narrow strings provide <span class="t-lc"><a href="fprintf.html" title="c/io/fprintf">snprintf</a></span>, which makes it possible to determine the required output buffer size, there is no equivalent for wide strings (until C11's <code>snwprintf_s</code>), and in order to determine the buffer size, the program may need to call <span class="t-lc"><strong class="selflink">swprintf</strong></span>, check the result value, and reallocate a larger buffer, trying again until successful.
+</p><p><code>snwprintf_s</code>, unlike <code>swprintf_s</code>, will truncate the result to fit within the array pointed to by <code>buffer</code>, even though truncation is treated as an error by most bounds-checked functions.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;locale.h&gt;</span>
+<span class="co2">#include &lt;wchar.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">char</span> narrow_str<span class="br0">[</span><span class="br0">]</span> <span class="sy1">=</span> <span class="st0">"z<span class="es3">\u00df</span><span class="es3">\u6c34</span><span class="es4">\U0001f34c</span>"</span><span class="sy4">;</span>
+                    <span class="co1">// or "zß水🍌"</span>
+                    <span class="co1">// or "\x7a\xc3\x9f\xe6\xb0\xb4\xf0\x9f\x8d\x8c";</span>
+    <span class="kw4">wchar_t</span> warr<span class="br0">[</span><span class="nu0">29</span><span class="br0">]</span><span class="sy4">;</span> <span class="co1">// the expected string is 28 characters plus 1 null terminator</span>
+    <a href="../locale/setlocale.html"><span class="kw898">setlocale</span></a><span class="br0">(</span><a href="../locale/LC_categories.html"><span class="kw901">LC_ALL</span></a>, <span class="st0">"en_US.utf8"</span><span class="br0">)</span><span class="sy4">;</span>
+    swprintf<span class="br0">(</span>warr, <span class="kw4">sizeof</span> warr<span class="sy2">/</span><span class="kw4">sizeof</span> <span class="sy2">*</span>warr,
+              L<span class="st0">"Converted from UTF-8: '%s'"</span>, narrow_str<span class="br0">)</span><span class="sy4">;</span>
+    wprintf<span class="br0">(</span>L<span class="st0">"%ls<span class="es1">\n</span>"</span>, warr<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Converted from UTF-8: 'zß水🍌'</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 7.29.2.1 The fwprintf function (p: 403-410)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.29.2.3 The swprintf function (p: 416)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.29.2.11 The wprintf function (p: 421)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9.1.1 The fwprintf_s function (p: 628)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9.1.4 The swprintf_s function (p: 630-631)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> K.3.9.1.13 The wprintf_s function (p: 637-638)
+</li></ul>
+</dd></dl>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 7.24.2.1 The fwprintf function (p: 349-356)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.24.2.3 The swprintf function (p: 362)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.24.2.11 The wprintf function (p: 366)
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fprintf.html" title="c/io/fprintf"> <span class="t-lines"><span>printf</span><span>fprintf</span><span>sprintf</span><span>snprintf</span><span>printf_s</span><span>fprintf_s</span><span>sprintf_s</span><span>snprintf_s</span></span></a></div><div><span class="t-lines"><span></span><span></span><span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div>
+</td>
+<td>   prints formatted output to <span class="t-lc"><a href="std_streams.html" title="c/io/std streams">stdout</a></span>, a file stream or a buffer  <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="vfwprintf.html" title="c/io/vfwprintf"> <span class="t-lines"><span>vwprintf</span><span>vfwprintf</span><span>vswprintf</span><span>vwprintf_s</span><span>vfwprintf_s</span><span>vswprintf_s</span><span>vsnwprintf_s</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c95">(C95)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div>
+</td>
+<td>   prints formatted wide character output to <span class="t-lc"><a href="std_streams.html" title="c/io/std streams">stdout</a></span>, a file stream<br> or a buffer using variable argument list <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fputws.html" title="c/io/fputws"> <span class="t-lines"><span>fputws</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c95">(C95)</span></span></span></div></div>
+</td>
+<td>   writes a wide string to a file stream <br> <span class="t-mark">(function)</span> </td></tr>
+
+</table></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 9091/1000000
+Preprocessor generated node count: 14156/1000000
+Post‐expand include size: 234241/2097152 bytes
+Template argument size: 42755/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:6228-0!*!0!!en!*!* and timestamp 20220717004915 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/io/fwprintf&amp;oldid=141128">https://en.cppreference.com/mwiki/index.php?title=c/io/fwprintf&amp;oldid=141128</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/io/fwprintf">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 16 July 2022, at 17:49.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 51,004 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.037 secs. -->
+	</body>
+<!-- Cached 20220717023753 -->
+</html>

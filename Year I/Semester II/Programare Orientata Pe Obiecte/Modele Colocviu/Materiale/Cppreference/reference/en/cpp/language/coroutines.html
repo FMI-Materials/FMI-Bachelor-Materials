@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Coroutines (C++20) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/coroutines","wgTitle":"cpp/language/coroutines","wgCurRevisionId":140683,"wgArticleId":18439,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/coroutines","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_coroutines skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Coroutines <span class="t-mark-rev t-since-cxx20">(C++20)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="functions.html" title="cpp/language/functions"> Functions</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Declarations </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> function declaration</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Parameter_list" title="cpp/language/function"> function parameter list</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html#Function_definition" title="cpp/language/function"> function definition</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="default_arguments.html" title="cpp/language/default arguments"> default arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variadic_arguments.html" title="cpp/language/variadic arguments"> variadic arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> inline specifier</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> lambda expression</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> coroutines </strong> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Function calls </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="adl.html" title="cpp/language/adl"> argument-dependent lookup (ADL)</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_other.html#Built-in_function_call_operator" title="cpp/language/operator other"> function-call operator</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req/FunctionObject.html" title="cpp/named req/FunctionObject"> function objects</a> </td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Overloading </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="overload_resolution.html" title="cpp/language/overload resolution"> overload resolution</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> operator overloading</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="overloaded_address.html" title="cpp/language/overloaded address"> address of an overload set</a> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>A coroutine is a function that can suspend execution to be resumed later. Coroutines are stackless: they suspend execution by returning to the caller and the data that is required to resume execution is stored separately from the stack. This allows for sequential code that executes asynchronously (e.g. to handle non-blocking I/O without explicit callbacks), and also supports algorithms on lazy-computed infinite sequences and other uses.
+</p><p>A function is a coroutine if its definition does any of the following:
+</p>
+<ul><li> uses the <span class="t-lc">co_await</span> operator to suspend execution until resumed
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">task<span class="sy1">&lt;&gt;</span> tcp_echo_server<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw4">char</span> data<span class="br0">[</span><span class="nu0">1024</span><span class="br0">]</span><span class="sy4">;</span>
+  <span class="kw1">while</span> <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span> <span class="br0">{</span>
+    size_t n <span class="sy1">=</span> co_await socket.<span class="me1">async_read_some</span><span class="br0">(</span>buffer<span class="br0">(</span>data<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    co_await async_write<span class="br0">(</span>socket, buffer<span class="br0">(</span>data, n<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<ul><li> uses the keyword <span class="t-lc">co_yield</span> to suspend execution returning a value
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">generator<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> iota<span class="br0">(</span><span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">while</span><span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span>
+    co_yield n<span class="sy2">++</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<ul><li> uses the keyword <span class="t-lc">co_return</span> to complete execution returning a value
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">lazy<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> f<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  co_return <span class="nu0">7</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Every coroutine must have a return type that satisfies a number of requirements, noted below.
+</p>
+<h3><span class="mw-headline" id="Restrictions"> Restrictions </span></h3>
+<p>Coroutines cannot use <a href="variadic_arguments.html" title="cpp/language/variadic arguments">variadic arguments</a>, plain <a href="return.html" title="cpp/language/return">return</a> statements, or <a href="function.html" title="cpp/language/function">placeholder return types</a> (<a href="auto.html" title="cpp/language/auto"><code>auto</code></a> or <code>Concept</code>).
+</p><p><a href="constexpr.html" title="cpp/language/constexpr">Constexpr functions</a>, <a href="initializer_list.html" title="cpp/language/constructor">constructors</a>, <a href="destructor.html" title="cpp/language/destructor">destructors</a>, and the <a href="main_function.html" title="cpp/language/main function">main function</a> cannot be coroutines.
+</p>
+<h3><span class="mw-headline" id="Execution"> Execution </span></h3>
+<p>Each coroutine is associated with
+</p>
+<ul><li> the <i>promise object</i>, manipulated from inside the coroutine. The coroutine submits its result or exception through this object.
+</li><li> the <i>coroutine handle</i>, manipulated from outside the coroutine. This is a non-owning handle used to resume execution of the coroutine or to destroy the coroutine frame.
+</li><li> the <i>coroutine state</i>, which is an internal, heap-allocated (unless the allocation is optimized out), object that contains
+</li></ul>
+<dl><dd><ul><li> the promise object
+</li><li> the parameters (all copied by value)
+</li><li> some representation of the current suspension point, so that resume knows where to continue and destroy knows what local variables were in scope
+</li><li> local variables and temporaries whose lifetime spans the current suspension point
+</li></ul>
+</dd></dl>
+<p>When a coroutine begins execution, it performs the following:
+</p>
+<ul><li> allocates the coroutine state object using <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> (see below)
+</li><li> copies all function parameters to the coroutine state: by-value parameters are moved or copied, by-reference parameters remain references (and so may become dangling if the coroutine is resumed after the lifetime of referred object ends)
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">struct</span> promise<span class="sy4">;</span>
+<span class="kw1">struct</span> coroutine <span class="sy4">:</span> <a href="../coroutine/coroutine_handle.html"><span class="kw3209">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;</span>promise<span class="sy1">&gt;</span>
+<span class="br0">{</span> <span class="kw1">using</span> promise_type <span class="sy1">=</span> <span class="kw1">struct</span> promise<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> promise <span class="br0">{</span>
+  coroutine get_return_object<span class="br0">(</span><span class="br0">)</span>
+  <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span>coroutine<span class="sy4">::</span><span class="me2">from_promise</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+  <a href="../coroutine/suspend_always.html"><span class="kw3261">std::<span class="me2">suspend_always</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+  <a href="../coroutine/suspend_always.html"><span class="kw3261">std::<span class="me2">suspend_always</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+  <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+  <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> S <span class="br0">{</span>
+  <span class="kw4">int</span> i<span class="sy4">;</span>
+  coroutine f<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+    co_return<span class="sy4">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> bad1<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  coroutine h <span class="sy1">=</span> S<span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span>.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="co1">// S{0} destroyed</span>
+  h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// resumed coroutine executes std::cout &lt;&lt; i, uses S::i after free</span>
+  h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+coroutine bad2<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  S s<span class="br0">{</span><span class="nu0">0</span><span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">return</span> s.<span class="me1">f</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// returned coroutine can't be resumed without committing use after free</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> bad3<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  coroutine h <span class="sy1">=</span> <span class="br0">[</span>i <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">]</span><span class="br0">(</span><span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> coroutine <span class="br0">{</span> <span class="co1">// a lambda that's also a coroutine</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+    co_return<span class="sy4">;</span>
+  <span class="br0">}</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// immediately invoked</span>
+  <span class="co1">// lambda destroyed</span>
+  h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// uses (anonymous lambda type)::i after free</span>
+  h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> good<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  coroutine h <span class="sy1">=</span> <span class="br0">[</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="sy2">-</span><span class="sy1">&gt;</span> coroutine <span class="br0">{</span> <span class="co1">// make i a coroutine parameter</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> i<span class="sy4">;</span>
+    co_return<span class="sy4">;</span>
+  <span class="br0">}</span><span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="co1">// lambda destroyed</span>
+  h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// no problem, i has been copied to the coroutine frame as a by-value parameter</span>
+  h.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<ul><li> calls the constructor for the promise object. If the promise type has a constructor that takes all coroutine parameters, that constructor is called, with post-copy coroutine arguments. Otherwise the default constructor is called.
+</li><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">get_return_object</span><span class="br0">(</span><span class="br0">)</span></span></span> and keeps the result in a local variable. The result of that call will be returned to the caller when the coroutine first suspends. Any exceptions thrown up to and including this step propagate back to the caller, not placed in the promise.
+</li><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">initial_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await</span></span>s its result. Typical Promise types either return a <span class="t-c"><span class="mw-geshi cpp source-cpp">suspend_always</span></span>, for lazily-started coroutines, or <span class="t-c"><span class="mw-geshi cpp source-cpp">suspend_never</span></span>, for eagerly-started coroutines.
+</li><li> when <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await promise.<span class="me1">initial_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> resumes, starts executing the body of the coroutine
+</li></ul>
+<p>When a coroutine reaches a suspension point
+</p>
+<ul><li> the return object obtained earlier is returned to the caller/resumer, after implicit conversion to the return type of the coroutine, if necessary.
+</li></ul>
+<p>When a coroutine reaches the <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return</span></span> statement, it performs the following:
+</p>
+<ul><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">return_void</span><span class="br0">(</span><span class="br0">)</span></span></span> for
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return<span class="sy4">;</span></span></span>
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return expr</span></span> where expr has type void
+</li><li> falling off the end of a void-returning coroutine. The behavior is undefined if the Promise type has no <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">return_void</span><span class="br0">(</span><span class="br0">)</span></span></span> member function in this case.
+</li></ul>
+</dd></dl>
+<ul><li> or calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">return_value</span><span class="br0">(</span>expr<span class="br0">)</span></span></span> for <span class="t-c"><span class="mw-geshi cpp source-cpp">co_return expr</span></span> where expr has non-void type
+</li><li> destroys all variables with automatic storage duration in reverse order they were created.
+</li><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">final_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await</span></span>s the result.
+</li></ul>
+<p>If the coroutine ends with an uncaught exception, it performs the following:
+</p>
+<ul><li> catches the exception and calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">unhandled_exception</span><span class="br0">(</span><span class="br0">)</span></span></span> from within the catch-block
+</li><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">final_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await</span></span>s the result (e.g. to resume a continuation or publish a result). It's undefined behavior to resume a coroutine from this point.
+</li></ul>
+<p>When the coroutine state is destroyed either because it terminated via co_return or uncaught exception, or because it was destroyed via its handle, it does the following:
+</p>
+<ul><li> calls the destructor of the promise object.
+</li><li> calls the destructors of the function parameter copies.
+</li><li> calls <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_delete.html"><span class="kw691">operator delete</span></a></span></span> to free the memory used by the coroutine state
+</li><li> transfers execution back to the caller/resumer.
+</li></ul>
+<h3><span class="mw-headline" id="Heap_allocation"> Heap allocation </span></h3>
+<p>coroutine state is allocated on the heap via non-array <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span>.
+</p><p>If the <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise</span></span> type defines a class-level replacement, it will be used, otherwise global <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> will be used.
+</p><p>If the <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise</span></span> type defines a placement form of <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> that takes additional parameters, and they match an argument list where the first argument is the size requested (of type <span class="t-lc"><a href="../types/size_t.html" title="cpp/types/size t">std::size_t</a></span>) and the rest are the coroutine function arguments, those arguments will be passed to <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> (this makes it possible to use <a href="../memory/uses_allocator.html#Uses-allocator_construction" title="cpp/memory/uses allocator">leading-allocator-convention</a> for coroutines)
+</p><p>The call to <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> can be optimized out (even if custom allocator is used) if
+</p>
+<ul><li> The lifetime of the coroutine state is strictly nested within the lifetime of the caller, and
+</li><li> the size of coroutine frame is known at the call site
+</li></ul>
+<p>in that case, coroutine state is embedded in the caller's stack frame (if the caller is an ordinary function) or coroutine state (if the caller is a coroutine)
+</p><p>If allocation fails, the coroutine throws <span class="t-lc"><a href="../memory/new/bad_alloc.html" title="cpp/memory/new/bad alloc">std::bad_alloc</a></span>, unless the Promise type defines the member function <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">get_return_object_on_allocation_failure</span><span class="br0">(</span><span class="br0">)</span></span></span>. If that member function is defined, allocation uses the <span class="t-c"><span class="mw-geshi cpp source-cpp">nothrow</span></span> form of <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a></span></span> and on allocation failure, the coroutine immediately returns the object obtained from <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">get_return_object_on_allocation_failure</span><span class="br0">(</span><span class="br0">)</span></span></span> to the caller.
+</p>
+<h3><span class="mw-headline" id="Promise"> Promise </span></h3>
+<p>The Promise type is determined by the compiler from the return type of the coroutine using <span class="t-lc"><a href="../coroutine/coroutine_traits.html" title="cpp/coroutine/coroutine traits">std::coroutine_traits</a></span>.
+</p><p>Formally, let <code>R</code> and <code>Args...</code> denote the return type and parameter type list of a coroutine respectively, <code>ClassT</code> and <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="coMULTI">/*cv-qual*/</span></span></span> (if any) denote the class type to which the coroutine belongs and its cv-qualification respectively if it is defined as a non-static member function, its <code>Promise</code> type is determined by:
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>, if the coroutine is not defined as a non-static member function,
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R, ClassT <span class="coMULTI">/*cv-qual*/</span><span class="sy3">&amp;</span>, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>, if the coroutine is defined as a non-static member function that is not rvalue-reference-qualified,
+</li><li> <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>R, ClassT <span class="coMULTI">/*cv-qual*/</span><span class="sy3">&amp;&amp;</span>, Args...<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>, if the coroutine is defined as a non-static member function that is rvalue-reference-qualified.
+</li></ul>
+<p>For example:
+</p>
+<ul><li> If the coroutine is defined as <span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">float</span><span class="sy1">&gt;</span> foo<span class="br0">(</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> x, <span class="kw4">bool</span> flag<span class="br0">)</span><span class="sy4">;</span></span></span>, then its <code>Promise</code> type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">float</span><span class="sy1">&gt;</span>, <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a>, <span class="kw4">bool</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>.
+</li><li> If the coroutine is defined as <span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> my_class<span class="sy4">::</span><span class="me2">method1</span><span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span></span></span>, its <code>Promise</code> type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span>, <span class="kw4">const</span> my_class<span class="sy3">&amp;</span>, <span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>.
+</li><li> If the coroutine is defined as <span class="t-c"><span class="mw-geshi cpp source-cpp">task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span> my_class<span class="sy4">::</span><span class="me2">method1</span><span class="br0">(</span><span class="kw4">int</span> x<span class="br0">)</span> <span class="sy3">&amp;&amp;</span><span class="sy4">;</span></span></span>, its <code>Promise</code> type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../coroutine/coroutine_traits.html"><span class="kw3210">std::<span class="me2">coroutine_traits</span></span></a><span class="sy1">&lt;</span>task<span class="sy1">&lt;</span><span class="kw4">void</span><span class="sy1">&gt;</span>, my_class<span class="sy3">&amp;&amp;</span>, <span class="kw4">int</span><span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">promise_type</span></span></span>.
+</li></ul>
+<h3><span class="mw-headline" id="co_await"> co_await </span></h3>
+<p>The unary operator <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await</span></span> suspends a coroutine and returns control to the caller. Its operand is an expression whose type must either define <span class="t-c"><span class="mw-geshi cpp source-cpp">operator co_await</span></span>, or be convertible to such type by means of the current coroutine's <span class="t-c"><span class="mw-geshi cpp source-cpp">Promise<span class="sy4">::</span><span class="me2">await_transform</span></span></span>
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_await</b></code> <span class="t-spar">expr</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p>First, <span class="t-spar">expr</span> is converted to an awaitable as follows:
+</p>
+<ul><li> if <span class="t-spar">expr</span> is produced by an initial suspend point, a final suspend point, or a yield expression, the awaitable is <span class="t-spar">expr</span>, as-is.
+</li><li> otherwise, if the current coroutine's Promise type has the member function <span class="t-c"><span class="mw-geshi cpp source-cpp">await_transform</span></span>, then the awaitable is <span class="t-c"><span class="mw-geshi cpp source-cpp">promise.<span class="me1">await_transform</span><span class="br0">(</span>expr<span class="br0">)</span></span></span>
+</li><li> otherwise, the awaitable is <span class="t-spar">expr</span>, as-is.
+</li></ul>
+<p>Then, the awaiter object is obtained, as follows:
+</p>
+<ul><li> if overload resolution for <span class="t-c"><span class="mw-geshi cpp source-cpp">operator co_await</span></span> gives a single best overload, the awaiter is the result of that call (<span class="t-c"><span class="mw-geshi cpp source-cpp">awaitable.<span class="me1">operator</span> co_await<span class="br0">(</span><span class="br0">)</span></span></span> for member overload, <span class="t-c"><span class="mw-geshi cpp source-cpp">operator co_await<span class="br0">(</span><span class="kw1">static_cast</span><span class="sy1">&lt;</span>Awaitable<span class="sy3">&amp;&amp;</span><span class="sy1">&gt;</span><span class="br0">(</span>awaitable<span class="br0">)</span><span class="br0">)</span></span></span> for the non-member overload)
+</li><li> otherwise, if overload resolution finds no operator co_await, the awaiter is awaitable, as-is
+</li><li> otherwise, if overload resolution is ambiguous, the program is ill-formed
+</li></ul>
+<p>If the expression above is a prvalue, the awaiter object is a temporary <a href="implicit_cast.html#Temporary_materialization" title="cpp/language/implicit conversion">materialized</a> from it. Otherwise, if the expression above is an glvalue, the awaiter object is the object to which it refers.
+</p><p>Then, <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_ready</span><span class="br0">(</span><span class="br0">)</span></span></span> is called (this is a short-cut to avoid the cost of suspension if it's known that the result is ready or can be completed synchronously). If its result, contextually-converted to bool is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span> then
+</p>
+<dl><dd> The coroutine is suspended (its coroutine state is populated with local variables and current suspension point).
+</dd><dd> <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_suspend</span><span class="br0">(</span>handle<span class="br0">)</span></span></span> is called, where handle is the coroutine handle representing the current coroutine. Inside that function, the suspended coroutine state is observable via that handle, and it's this function's responsibility to schedule it to resume on some executor, or to be destroyed (returning false counts as scheduling)
+<ul><li> if await_suspend returns void, control is immediately returned to the caller/resumer of the current coroutine (this coroutine remains suspended), otherwise
+</li><li> if await_suspend returns bool,
+</li></ul>
+<dl><dd><ul><li> the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">true</span></span></span> returns control to the caller/resumer of the current coroutine
+</li><li> the value <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw2">false</span></span></span> resumes the current coroutine.
+</li></ul>
+</dd></dl>
+<ul><li> if await_suspend returns a coroutine handle for some other coroutine, that handle is resumed (by a call to <span class="t-c"><span class="mw-geshi cpp source-cpp">handle.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span></span></span>) (note this may chain to eventually cause the current coroutine to resume)
+</li><li> if await_suspend throws an exception, the exception is caught, the coroutine is resumed, and the exception is immediately re-thrown
+</li></ul>
+</dd></dl>
+<p>Finally, <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_resume</span><span class="br0">(</span><span class="br0">)</span></span></span> is called (whether the coroutine was suspended or not), and its result is the result of the whole <span class="t-c"><span class="mw-geshi cpp source-cpp">co_await expr</span></span> expression.
+</p><p>If the coroutine was suspended in the co_await expression, and is later resumed, the resume point is immediately before the call to <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_resume</span><span class="br0">(</span><span class="br0">)</span></span></span>.
+</p><p>Note that because the coroutine is fully suspended before entering <span class="t-c"><span class="mw-geshi cpp source-cpp">awaiter.<span class="me1">await_suspend</span><span class="br0">(</span><span class="br0">)</span></span></span>, that function is free to transfer the coroutine handle across threads, with no additional synchronization. For example, it can put it inside a callback, scheduled to run on a threadpool when async I/O operation completes. In that case, since the current coroutine may have been resumed and thus executed the awaiter object's destructor, all concurrently as <code>await_suspend()</code> continues its execution on the current thread, <code>await_suspend()</code> should treat <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span></span> as destroyed and not access it after the handle was published to other threads.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;stdexcept&gt;</span>
+<span class="co2">#include &lt;thread&gt;</span>
+ 
+<span class="kw4">auto</span> switch_to_new_thread<span class="br0">(</span><a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out<span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">struct</span> awaitable <span class="br0">{</span>
+    <a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a><span class="sy2">*</span> p_out<span class="sy4">;</span>
+    <span class="kw4">bool</span> await_ready<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">void</span> await_suspend<span class="br0">(</span><a href="../coroutine/coroutine_handle.html"><span class="kw3209">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;&gt;</span> h<span class="br0">)</span> <span class="br0">{</span>
+      <a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out <span class="sy1">=</span> <span class="sy2">*</span>p_out<span class="sy4">;</span>
+      <span class="kw1">if</span> <span class="br0">(</span>out.<span class="me1">joinable</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>
+        <span class="kw1">throw</span> <a href="../error/runtime_error.html"><span class="kw771">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"Output jthread parameter not empty"</span><span class="br0">)</span><span class="sy4">;</span>
+      out <span class="sy1">=</span> <a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a><span class="br0">(</span><span class="br0">[</span>h<span class="br0">]</span> <span class="br0">{</span> h.<span class="me1">resume</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="co1">// Potential undefined behavior: accessing potentially destroyed *this</span>
+      <span class="co1">// std::cout &lt;&lt; "New thread ID: " &lt;&lt; p_out-&gt;get_id() &lt;&lt; '\n';</span>
+      <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"New thread ID: "</span> <span class="sy1">&lt;&lt;</span> out.<span class="me1">get_id</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// this is OK</span>
+    <span class="br0">}</span>
+    <span class="kw4">void</span> await_resume<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">return</span> awaitable<span class="br0">{</span><span class="sy3">&amp;</span>out<span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">struct</span> task<span class="br0">{</span>
+  <span class="kw1">struct</span> promise_type <span class="br0">{</span>
+    task get_return_object<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <a href="../coroutine/suspend_never.html"><span class="kw3262">std::<span class="me2">suspend_never</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <a href="../coroutine/suspend_never.html"><span class="kw3262">std::<span class="me2">suspend_never</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+    <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+task resuming_on_new_thread<span class="br0">(</span><a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a><span class="sy3">&amp;</span> out<span class="br0">)</span> <span class="br0">{</span>
+  <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Coroutine started on thread: "</span> <span class="sy1">&lt;&lt;</span> <a href="../thread/get_id.html"><span class="kw2152">std::<span class="me2">this_thread</span><span class="sy4">::</span><span class="me2">get_id</span></span></a><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+  co_await switch_to_new_thread<span class="br0">(</span>out<span class="br0">)</span><span class="sy4">;</span>
+  <span class="co1">// awaiter destroyed here</span>
+  <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Coroutine resumed on thread: "</span> <span class="sy1">&lt;&lt;</span> <a href="../thread/get_id.html"><span class="kw2152">std::<span class="me2">this_thread</span><span class="sy4">::</span><span class="me2">get_id</span></span></a><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  <a href="../thread/jthread.html"><span class="kw3240">std::<span class="me2">jthread</span></span></a> out<span class="sy4">;</span>
+  resuming_on_new_thread<span class="br0">(</span>out<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Possible output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">Coroutine started on thread: 139972277602112
+New thread ID: 139972267284224
+Coroutine resumed on thread: 139972267284224</pre></div></div> 
+</div>
+<p>Note: the awaiter object is part of coroutine state (as a temporary whose lifetime crosses a suspension point) and is destroyed before the co_await expression finishes. It can be used to maintain per-operation state as required by some async I/O APIs without resorting to additional heap allocations.
+</p><p>The standard library defines two trivial awaitables: <span class="t-lc"><a href="../coroutine/suspend_always.html" title="cpp/coroutine/suspend always">std::suspend_always</a></span> and <span class="t-lc"><a href="../coroutine/suspend_never.html" title="cpp/coroutine/suspend never">std::suspend_never</a></span>.
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: examples </td></tr></table>
+<h3><span class="mw-headline" id="co_yield"> co_yield </span></h3>
+<p>Yield-expression returns a value to the caller and suspends the current coroutine: it is the common building block of resumable generator functions
+</p>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_yield</b></code> <span class="t-spar">expr</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td class="t-sdsc-nopad"> <code><b>co_yield</b></code> <span class="t-spar">braced-init-list</span>
+</td>
+<td class="t-sdsc-nopad">
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<p>It is equivalent to
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">co_await promise.<span class="me1">yield_value</span><span class="br0">(</span>expr<span class="br0">)</span></pre></div></div>
+<p>A typical generator's <code>yield_value</code> would store (copy/move or just store the address of, since the argument's lifetime crosses the suspension point inside the <span class="t-lc">co_await</span>) its argument into the generator object and return <span class="t-lc"><a href="../coroutine/suspend_always.html" title="cpp/coroutine/suspend always">std::suspend_always</a></span>, transferring control to the caller/resumer.
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;coroutine&gt;</span>
+<span class="co2">#include &lt;exception&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Generator <span class="br0">{</span>
+   <span class="co1">// The class name 'Generator' is our choice and it is not required for coroutine magic.</span>
+   <span class="co1">// Compiler recognizes coroutine by the presence of 'co_yield' keyword.</span>
+   <span class="co1">// You can use name 'MyGenerator' (or any other name) instead as long as you include</span>
+   <span class="co1">// nested struct promise_type with 'MyGenerator get_return_object()' method.</span>
+   <span class="co1">// Note: You need to adjust class constructor/destructor names too when choosing to</span>
+   <span class="co1">// rename class.</span>
+ 
+  <span class="kw1">struct</span> promise_type<span class="sy4">;</span>
+  <span class="kw1">using</span> handle_type <span class="sy1">=</span> <a href="../coroutine/coroutine_handle.html"><span class="kw3209">std::<span class="me2">coroutine_handle</span></span></a><span class="sy1">&lt;</span>promise_type<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="kw1">struct</span> promise_type <span class="br0">{</span> <span class="co1">// required</span>
+    T value_<span class="sy4">;</span>
+    <a href="../error/exception_ptr.html"><span class="kw777">std::<span class="me2">exception_ptr</span></span></a> exception_<span class="sy4">;</span>
+ 
+    Generator get_return_object<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+      <span class="kw1">return</span> Generator<span class="br0">(</span>handle_type<span class="sy4">::</span><span class="me2">from_promise</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <a href="../coroutine/suspend_always.html"><span class="kw3261">std::<span class="me2">suspend_always</span></span></a> initial_suspend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <a href="../coroutine/suspend_always.html"><span class="kw3261">std::<span class="me2">suspend_always</span></span></a> final_suspend<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">void</span> unhandled_exception<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> exception_ <span class="sy1">=</span> <a href="../error/current_exception.html"><span class="kw779">std::<span class="me2">current_exception</span></span></a><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span> <span class="co1">// saving</span>
+                                                                          <span class="co1">// exception</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><a href="../concepts/convertible_to.html"><span class="kw2938">std::<span class="me2">convertible_to</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> From<span class="sy1">&gt;</span> <span class="co1">// C++20 concept</span>
+    <a href="../coroutine/suspend_always.html"><span class="kw3261">std::<span class="me2">suspend_always</span></span></a> yield_value<span class="br0">(</span>From <span class="sy3">&amp;&amp;</span>from<span class="br0">)</span> <span class="br0">{</span>
+      value_ <span class="sy1">=</span> <a href="../utility/forward.html"><span class="kw1120">std::<span class="me2">forward</span></span></a><span class="sy1">&lt;</span>From<span class="sy1">&gt;</span><span class="br0">(</span>from<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// caching the result in promise</span>
+      <span class="kw1">return</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw4">void</span> return_void<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+ 
+  handle_type h_<span class="sy4">;</span>
+ 
+  Generator<span class="br0">(</span>handle_type h<span class="br0">)</span> <span class="sy4">:</span> h_<span class="br0">(</span>h<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+  ~Generator<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> h_.<span class="me1">destroy</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+  <span class="kw1">explicit</span> operator <span class="kw4">bool</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    fill<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// The only way to reliably find out whether or not we finished coroutine,</span>
+            <span class="co1">// whether or not there is going to be a next value generated (co_yield) in</span>
+            <span class="co1">// coroutine via C++ getter (operator () below) is to execute/resume coroutine</span>
+            <span class="co1">// until the next co_yield point (or let it fall off end).</span>
+            <span class="co1">// Then we store/cache result in promise to allow getter (operator() below to</span>
+            <span class="co1">// grab it without executing coroutine).</span>
+    <span class="kw1">return</span> <span class="sy3">!</span>h_.<span class="me1">done</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+  T operator<span class="br0">(</span><span class="br0">)</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    fill<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    full_ <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span> <span class="co1">// we are going to move out previously cached</span>
+                   <span class="co1">// result to make promise empty again</span>
+    <span class="kw1">return</span> std<span class="sy4">::</span><span class="me2">move</span><span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">value_</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+ 
+<span class="kw1">private</span><span class="sy4">:</span>
+  <span class="kw4">bool</span> full_ <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span>
+ 
+  <span class="kw4">void</span> fill<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">if</span> <span class="br0">(</span><span class="sy3">!</span>full_<span class="br0">)</span> <span class="br0">{</span>
+      h_<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+      <span class="kw1">if</span> <span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">exception_</span><span class="br0">)</span>
+        <a href="../error/rethrow_exception.html"><span class="kw780">std::<span class="me2">rethrow_exception</span></span></a><span class="br0">(</span>h_.<span class="me1">promise</span><span class="br0">(</span><span class="br0">)</span>.<span class="me1">exception_</span><span class="br0">)</span><span class="sy4">;</span>
+        <span class="co1">// propagate coroutine exception in called context</span>
+ 
+      full_ <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+  <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+Generator<span class="sy1">&lt;</span>uint64_t<span class="sy1">&gt;</span>
+fibonacci_sequence<span class="br0">(</span><span class="kw4">unsigned</span> n<span class="br0">)</span>
+<span class="br0">{</span>
+ 
+  <span class="kw1">if</span> <span class="br0">(</span>n<span class="sy1">==</span><span class="nu0">0</span><span class="br0">)</span>
+    co_return<span class="sy4">;</span>
+ 
+  <span class="kw1">if</span> <span class="br0">(</span>n<span class="sy1">&gt;</span><span class="nu0">94</span><span class="br0">)</span>
+    <span class="kw1">throw</span> <a href="../error/runtime_error.html"><span class="kw771">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">"Too big Fibonacci sequence. Elements would overflow."</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  co_yield <span class="nu0">0</span><span class="sy4">;</span>
+ 
+  <span class="kw1">if</span> <span class="br0">(</span>n<span class="sy1">==</span><span class="nu0">1</span><span class="br0">)</span>
+    co_return<span class="sy4">;</span>
+ 
+  co_yield <span class="nu0">1</span><span class="sy4">;</span>
+ 
+  <span class="kw1">if</span> <span class="br0">(</span>n<span class="sy1">==</span><span class="nu0">2</span><span class="br0">)</span>
+    co_return<span class="sy4">;</span>
+ 
+  uint64_t a<span class="sy1">=</span><span class="nu0">0</span><span class="sy4">;</span>
+  uint64_t b<span class="sy1">=</span><span class="nu0">1</span><span class="sy4">;</span>
+ 
+  <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">unsigned</span> i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span> i <span class="sy1">&lt;</span> n<span class="sy4">;</span> i<span class="sy2">++</span><span class="br0">)</span>
+  <span class="br0">{</span>
+    uint64_t s<span class="sy1">=</span>a<span class="sy2">+</span>b<span class="sy4">;</span>
+    co_yield s<span class="sy4">;</span>
+    a<span class="sy1">=</span>b<span class="sy4">;</span>
+    b<span class="sy1">=</span>s<span class="sy4">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">try</span> <span class="br0">{</span>
+ 
+    <span class="kw4">auto</span> gen <span class="sy1">=</span> fibonacci_sequence<span class="br0">(</span><span class="nu0">10</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// max 94 before uint64_t overflows</span>
+ 
+    <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">int</span> j<span class="sy1">=</span><span class="nu0">0</span><span class="sy4">;</span> gen<span class="sy4">;</span> j<span class="sy2">++</span><span class="br0">)</span>
+      <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"fib("</span><span class="sy1">&lt;&lt;</span>j <span class="sy1">&lt;&lt;</span><span class="st0">")="</span> <span class="sy1">&lt;&lt;</span> gen<span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+ 
+  <span class="br0">}</span>
+  <span class="kw1">catch</span> <span class="br0">(</span><span class="kw4">const</span> <a href="../error/exception.html"><span class="kw765">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span> ex<span class="br0">)</span>
+  <span class="br0">{</span>
+    <a href="../io/cerr.html"><span class="kw1764">std::<span class="me2">cerr</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Exception: "</span> <span class="sy1">&lt;&lt;</span> ex.<span class="me1">what</span><span class="br0">(</span><span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+  <span class="kw1">catch</span> <span class="br0">(</span>...<span class="br0">)</span>
+  <span class="br0">{</span>
+    <a href="../io/cerr.html"><span class="kw1764">std::<span class="me2">cerr</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Unknown exception.<span class="es1">\n</span>"</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">fib(0)=0
+fib(1)=1
+fib(2)=1
+fib(3)=2
+fib(4)=3
+fib(5)=5
+fib(6)=8
+fib(7)=13
+fib(8)=21
+fib(9)=34</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="Notes"> Notes </span></h3>
+<table class="wikitable">
+<tr>
+<td> <a href="../feature_test.html#Library_features" title="cpp/feature test">Feature-test</a> macro:
+</td>
+<td> <a href="../utility/feature_test.html" title="cpp/utility/feature test"><tt>__cpp_lib_coroutine</tt></a>
+</td></tr></table>
+<h3><span class="mw-headline" id="Library_support"> Library support </span></h3>
+<p><a href="../coroutine.html" title="cpp/coroutine">Coroutine support library</a> defines several types providing compile and run-time support for coroutines.
+</p>
+<h3><span class="mw-headline" id="External_links"> External links </span></h3>
+<ul><li> David Mazières, 2021 - <a rel="nofollow" class="external text" href="https://www.scs.stanford.edu/~dm/blog/c++-coroutines.html">Tutorial on C++20 coroutines</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4398/1000000
+Preprocessor generated node count: 10469/1000000
+Post‐expand include size: 136442/2097152 bytes
+Template argument size: 31364/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:18439-0!*!0!!en!*!* and timestamp 20220723202504 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/coroutines&amp;oldid=140683">https://en.cppreference.com/mwiki/index.php?title=cpp/language/coroutines&amp;oldid=140683</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/coroutines">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 28 June 2022, at 10:05.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 477,006 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 8.779 secs. -->
+	</body>
+<!-- Cached 20220723202504 -->
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Type-generic math - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/numeric/tgmath","wgTitle":"c/numeric/tgmath","wgCurRevisionId":140573,"wgArticleId":6422,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/numeric/tgmath","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_numeric_tgmath skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Type-generic math</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../numeric.html" title="c/numeric">numeric</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../numeric.html" title="c/numeric"> Numerics</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="math.html" title="c/numeric/math">Common mathematical functions</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fenv.html" title="c/numeric/fenv">Floating-point environment</a> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="random.html" title="c/numeric/random">Pseudo-random number generation</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="complex.html" title="c/numeric/complex">Complex number arithmetics</a> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">Type-generic math</strong> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>The header <code>&lt;tgmath.h&gt;</code> includes the headers <code>&lt;math.h&gt;</code> and <code>&lt;complex.h&gt;</code> and defines several type-generic macros that determine which real or, when applicable, complex function to call based on the types of the arguments.
+</p><p>For each macro, the parameters whose corresponding real type in the unsuffixed math.h function is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> are known as <i>generic parameters</i> (for example, both parameters of <span class="t-lc"><a href="math/pow.html" title="c/numeric/math/pow">pow</a></span> are generic parameters, but only the first parameter of <span class="t-lc"><a href="math/scalbn.html" title="c/numeric/math/scalbn">scalbn</a></span> is a generic parameter).
+</p><p>When a <code>&lt;tgmath.h&gt;</code> macro is used the types of the arguments passed to the generic parameters determine which function is selected by the macro as described below. If the types of the arguments are not <a href="../language/compatible_type.html#Compatible_types" title="c/language/type">compatible</a> with the parameter types of the selected function, the behavior is undefined (e.g. if a complex argument is passed into a real-only <code>&lt;tgmath.h&gt;</code>'s macro: <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="complex/complex.html"><span class="kw743">complex</span></a> fc<span class="sy4">;</span> <a href="math/ceil.html"><span class="kw686">ceil</span></a><span class="br0">(</span>fc<span class="br0">)</span><span class="sy4">;</span></span></span> or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="complex/complex.html"><span class="kw743">complex</span></a> dc<span class="sy4">;</span> <span class="kw4">double</span> d<span class="sy4">;</span> <a href="math/fmax.html"><span class="kw651">fmax</span></a><span class="br0">(</span>dc, d<span class="br0">)</span><span class="sy4">;</span></span></span> are examples of undefined behavior).
+</p><p>Note: type-generic macros were implemented in implementation-defined manner in C99, but C11 keyword <a href="../keyword/_Generic.html" title="c/keyword/ Generic"><tt>_Generic</tt></a> makes it possible to implement these macros in portable manner.
+</p>
+<h3><span class="mw-headline" id="Complex.2Freal_type-generic_macros">Complex/real type-generic macros</span></h3>
+<p>For all functions that have both real and complex counterparts, a type-generic macro <code>XXX</code> exists, which calls either of:
+</p>
+<ul><li> real function:
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> variant <code>XXXf</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> variant <code>XXX</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> variant <code>XXXl</code>
+</li></ul>
+</dd></dl>
+<ul><li> complex function:
+</li></ul>
+<dl><dd><ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> variant <code>cXXXf</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> variant <code>cXXX</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> variant <code>cXXXl</code>
+</li></ul>
+</dd></dl>
+<p>An exception to the above rule is the <code>fabs</code> macro (see the table below).
+</p><p>The function to call is determined as follows:
+</p>
+<ul><li> If any of the arguments for the generic parameters is imaginary, the behavior is specified on each function reference page individually (in particular, <code>sin</code>, <code>cos</code>, <code>tag</code>, <code>cosh</code>, <code>sinh</code>, <code>tanh</code>, <code>asin</code>, <code>atan</code>, <code>asinh</code>, and <code>atanh</code> call <i>real</i> functions, the return types of <code>sin</code>, <code>tan</code>, <code>sinh</code>, <code>tanh</code>, <code>asin</code>, <code>atan</code>, <code>asinh</code>, and <code>atanh</code> are imaginary, and the return types of <code>cos</code> and <code>cosh</code> are real).
+</li><li> If any of the arguments for the generic parameters is complex, then the complex function is called, otherwise the real function is called.
+</li><li> If any of the arguments for the generic parameters is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span>, then the <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> variant is called. Otherwise, if any of the parameters is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> or integer, then the <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> variant is called. Otherwise, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> variant is called.
+</li></ul>
+<p>The type-generic macros are as follows:
+</p>
+<table class="wikitable">
+
+<tr>
+<th> Type-generic macro
+</th>
+<th colspan="3"> Real function <br> variants
+</th>
+<th colspan="3"> Complex function <br> variants
+</th></tr>
+<tr>
+<th style="height: 8em;">  
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span></div></div>
+</th></tr>
+<tr>
+<th> fabs
+</th>
+<td> <a href="math/fabs.html" title="c/numeric/math/fabs"><tt>fabsf</tt></a>
+</td>
+<td> <a href="math/fabs.html" title="c/numeric/math/fabs"><tt>fabs</tt></a>
+</td>
+<td> <a href="math/fabs.html" title="c/numeric/math/fabs"><tt>fabsl</tt></a>
+</td>
+<td> <a href="complex/cabs.html" title="c/numeric/complex/cabs"><tt>cabsf</tt></a>
+</td>
+<td> <a href="complex/cabs.html" title="c/numeric/complex/cabs"><tt>cabs</tt></a>
+</td>
+<td> <a href="complex/cabs.html" title="c/numeric/complex/cabs"><tt>cabsl</tt></a>
+</td></tr>
+<tr>
+<th> exp
+</th>
+<td> <a href="math/exp.html" title="c/numeric/math/exp"><tt>expf</tt></a>
+</td>
+<td> <a href="math/exp.html" title="c/numeric/math/exp"><tt>exp</tt></a>
+</td>
+<td> <a href="math/exp.html" title="c/numeric/math/exp"><tt>expl</tt></a>
+</td>
+<td> <a href="complex/cexp.html" title="c/numeric/complex/cexp"><tt>cexpf</tt></a>
+</td>
+<td> <a href="complex/cexp.html" title="c/numeric/complex/cexp"><tt>cexp</tt></a>
+</td>
+<td> <a href="complex/cexp.html" title="c/numeric/complex/cexp"><tt>cexpl</tt></a>
+</td></tr>
+<tr>
+<th> log
+</th>
+<td> <a href="math/log.html" title="c/numeric/math/log"><tt>logf</tt></a>
+</td>
+<td> <a href="math/log.html" title="c/numeric/math/log"><tt>log</tt></a>
+</td>
+<td> <a href="math/log.html" title="c/numeric/math/log"><tt>logl</tt></a>
+</td>
+<td> <a href="complex/clog.html" title="c/numeric/complex/clog"><tt>clogf</tt></a>
+</td>
+<td> <a href="complex/clog.html" title="c/numeric/complex/clog"><tt>clog</tt></a>
+</td>
+<td> <a href="complex/clog.html" title="c/numeric/complex/clog"><tt>clogl</tt></a>
+</td></tr>
+<tr>
+<th> pow
+</th>
+<td> <a href="math/pow.html" title="c/numeric/math/pow"><tt>powf</tt></a>
+</td>
+<td> <a href="math/pow.html" title="c/numeric/math/pow"><tt>pow</tt></a>
+</td>
+<td> <a href="math/pow.html" title="c/numeric/math/pow"><tt>powl</tt></a>
+</td>
+<td> <a href="complex/cpow.html" title="c/numeric/complex/cpow"><tt>cpowf</tt></a>
+</td>
+<td> <a href="complex/cpow.html" title="c/numeric/complex/cpow"><tt>cpow</tt></a>
+</td>
+<td> <a href="complex/cpow.html" title="c/numeric/complex/cpow"><tt>cpowl</tt></a>
+</td></tr>
+<tr>
+<th> sqrt
+</th>
+<td> <a href="math/sqrt.html" title="c/numeric/math/sqrt"><tt>sqrtf</tt></a>
+</td>
+<td> <a href="math/sqrt.html" title="c/numeric/math/sqrt"><tt>sqrt</tt></a>
+</td>
+<td> <a href="math/sqrt.html" title="c/numeric/math/sqrt"><tt>sqrtl</tt></a>
+</td>
+<td> <a href="complex/csqrt.html" title="c/numeric/complex/csqrt"><tt>csqrtf</tt></a>
+</td>
+<td> <a href="complex/csqrt.html" title="c/numeric/complex/csqrt"><tt>csqrt</tt></a>
+</td>
+<td> <a href="complex/csqrt.html" title="c/numeric/complex/csqrt"><tt>csqrtl</tt></a>
+</td></tr>
+<tr>
+<th> sin
+</th>
+<td> <a href="math/sin.html" title="c/numeric/math/sin"><tt>sinf</tt></a>
+</td>
+<td> <a href="math/sin.html" title="c/numeric/math/sin"><tt>sin</tt></a>
+</td>
+<td> <a href="math/sin.html" title="c/numeric/math/sin"><tt>sinl</tt></a>
+</td>
+<td> <a href="complex/csin.html" title="c/numeric/complex/csin"><tt>csinf</tt></a>
+</td>
+<td> <a href="complex/csin.html" title="c/numeric/complex/csin"><tt>csin</tt></a>
+</td>
+<td> <a href="complex/csin.html" title="c/numeric/complex/csin"><tt>csinl</tt></a>
+</td></tr>
+<tr>
+<th> cos
+</th>
+<td> <a href="math/cos.html" title="c/numeric/math/cos"><tt>cosf</tt></a>
+</td>
+<td> <a href="math/cos.html" title="c/numeric/math/cos"><tt>cos</tt></a>
+</td>
+<td> <a href="math/cos.html" title="c/numeric/math/cos"><tt>cosl</tt></a>
+</td>
+<td> <a href="complex/ccos.html" title="c/numeric/complex/ccos"><tt>ccosf</tt></a>
+</td>
+<td> <a href="complex/ccos.html" title="c/numeric/complex/ccos"><tt>ccos</tt></a>
+</td>
+<td> <a href="complex/ccos.html" title="c/numeric/complex/ccos"><tt>ccosl</tt></a>
+</td></tr>
+<tr>
+<th> tan
+</th>
+<td> <a href="math/tan.html" title="c/numeric/math/tan"><tt>tanf</tt></a>
+</td>
+<td> <a href="math/tan.html" title="c/numeric/math/tan"><tt>tan</tt></a>
+</td>
+<td> <a href="math/tan.html" title="c/numeric/math/tan"><tt>tanl</tt></a>
+</td>
+<td> <a href="complex/ctan.html" title="c/numeric/complex/ctan"><tt>ctanf</tt></a>
+</td>
+<td> <a href="complex/ctan.html" title="c/numeric/complex/ctan"><tt>ctan</tt></a>
+</td>
+<td> <a href="complex/ctan.html" title="c/numeric/complex/ctan"><tt>ctanl</tt></a>
+</td></tr>
+<tr>
+<th> asin
+</th>
+<td> <a href="math/asin.html" title="c/numeric/math/asin"><tt>asinf</tt></a>
+</td>
+<td> <a href="math/asin.html" title="c/numeric/math/asin"><tt>asin</tt></a>
+</td>
+<td> <a href="math/asin.html" title="c/numeric/math/asin"><tt>asinl</tt></a>
+</td>
+<td> <a href="complex/casin.html" title="c/numeric/complex/casin"><tt>casinf</tt></a>
+</td>
+<td> <a href="complex/casin.html" title="c/numeric/complex/casin"><tt>casin</tt></a>
+</td>
+<td> <a href="complex/casin.html" title="c/numeric/complex/casin"><tt>casinl</tt></a>
+</td></tr>
+<tr>
+<th> acos
+</th>
+<td> <a href="math/acos.html" title="c/numeric/math/acos"><tt>acosf</tt></a>
+</td>
+<td> <a href="math/acos.html" title="c/numeric/math/acos"><tt>acos</tt></a>
+</td>
+<td> <a href="math/acos.html" title="c/numeric/math/acos"><tt>acosl</tt></a>
+</td>
+<td> <a href="complex/cacos.html" title="c/numeric/complex/cacos"><tt>cacosf</tt></a>
+</td>
+<td> <a href="complex/cacos.html" title="c/numeric/complex/cacos"><tt>cacos</tt></a>
+</td>
+<td> <a href="complex/cacos.html" title="c/numeric/complex/cacos"><tt>cacosl</tt></a>
+</td></tr>
+<tr>
+<th> atan
+</th>
+<td> <a href="math/atan.html" title="c/numeric/math/atan"><tt>atanf</tt></a>
+</td>
+<td> <a href="math/atan.html" title="c/numeric/math/atan"><tt>atan</tt></a>
+</td>
+<td> <a href="math/atan.html" title="c/numeric/math/atan"><tt>atanl</tt></a>
+</td>
+<td> <a href="complex/catan.html" title="c/numeric/complex/catan"><tt>catanf</tt></a>
+</td>
+<td> <a href="complex/catan.html" title="c/numeric/complex/catan"><tt>catan</tt></a>
+</td>
+<td> <a href="complex/catan.html" title="c/numeric/complex/catan"><tt>catanl</tt></a>
+</td></tr>
+<tr>
+<th> sinh
+</th>
+<td> <a href="math/sinh.html" title="c/numeric/math/sinh"><tt>sinhf</tt></a>
+</td>
+<td> <a href="math/sinh.html" title="c/numeric/math/sinh"><tt>sinh</tt></a>
+</td>
+<td> <a href="math/sinh.html" title="c/numeric/math/sinh"><tt>sinhl</tt></a>
+</td>
+<td> <a href="complex/csinh.html" title="c/numeric/complex/csinh"><tt>csinhf</tt></a>
+</td>
+<td> <a href="complex/csinh.html" title="c/numeric/complex/csinh"><tt>csinh</tt></a>
+</td>
+<td> <a href="complex/csinh.html" title="c/numeric/complex/csinh"><tt>csinhl</tt></a>
+</td></tr>
+<tr>
+<th> cosh
+</th>
+<td> <a href="math/cosh.html" title="c/numeric/math/cosh"><tt>coshf</tt></a>
+</td>
+<td> <a href="math/cosh.html" title="c/numeric/math/cosh"><tt>cosh</tt></a>
+</td>
+<td> <a href="math/cosh.html" title="c/numeric/math/cosh"><tt>coshl</tt></a>
+</td>
+<td> <a href="complex/ccosh.html" title="c/numeric/complex/ccosh"><tt>ccoshf</tt></a>
+</td>
+<td> <a href="complex/ccosh.html" title="c/numeric/complex/ccosh"><tt>ccosh</tt></a>
+</td>
+<td> <a href="complex/ccosh.html" title="c/numeric/complex/ccosh"><tt>ccoshl</tt></a>
+</td></tr>
+<tr>
+<th> tanh
+</th>
+<td> <a href="math/tanh.html" title="c/numeric/math/tanh"><tt>tanhf</tt></a>
+</td>
+<td> <a href="math/tanh.html" title="c/numeric/math/tanh"><tt>tanh</tt></a>
+</td>
+<td> <a href="math/tanh.html" title="c/numeric/math/tanh"><tt>tanhl</tt></a>
+</td>
+<td> <a href="complex/ctanh.html" title="c/numeric/complex/ctanh"><tt>ctanhf</tt></a>
+</td>
+<td> <a href="complex/ctanh.html" title="c/numeric/complex/ctanh"><tt>ctanh</tt></a>
+</td>
+<td> <a href="complex/ctanh.html" title="c/numeric/complex/ctanh"><tt>ctanhl</tt></a>
+</td></tr>
+<tr>
+<th> asinh
+</th>
+<td> <a href="math/asinh.html" title="c/numeric/math/asinh"><tt>asinhf</tt></a>
+</td>
+<td> <a href="math/asinh.html" title="c/numeric/math/asinh"><tt>asinh</tt></a>
+</td>
+<td> <a href="math/asinh.html" title="c/numeric/math/asinh"><tt>asinhl</tt></a>
+</td>
+<td> <a href="complex/casinh.html" title="c/numeric/complex/casinh"><tt>casinhf</tt></a>
+</td>
+<td> <a href="complex/casinh.html" title="c/numeric/complex/casinh"><tt>casinh</tt></a>
+</td>
+<td> <a href="complex/casinh.html" title="c/numeric/complex/casinh"><tt>casinhl</tt></a>
+</td></tr>
+<tr>
+<th> acosh
+</th>
+<td> <a href="math/acosh.html" title="c/numeric/math/acosh"><tt>acoshf</tt></a>
+</td>
+<td> <a href="math/acosh.html" title="c/numeric/math/acosh"><tt>acosh</tt></a>
+</td>
+<td> <a href="math/acosh.html" title="c/numeric/math/acosh"><tt>acoshl</tt></a>
+</td>
+<td> <a href="complex/cacosh.html" title="c/numeric/complex/cacosh"><tt>cacoshf</tt></a>
+</td>
+<td> <a href="complex/cacosh.html" title="c/numeric/complex/cacosh"><tt>cacosh</tt></a>
+</td>
+<td> <a href="complex/cacosh.html" title="c/numeric/complex/cacosh"><tt>cacoshl</tt></a>
+</td></tr>
+<tr>
+<th> atanh
+</th>
+<td> <a href="math/atanh.html" title="c/numeric/math/atanh"><tt>atanhf</tt></a>
+</td>
+<td> <a href="math/atanh.html" title="c/numeric/math/atanh"><tt>atanh</tt></a>
+</td>
+<td> <a href="math/atanh.html" title="c/numeric/math/atanh"><tt>atanhl</tt></a>
+</td>
+<td> <a href="complex/catanh.html" title="c/numeric/complex/catanh"><tt>catanhf</tt></a>
+</td>
+<td> <a href="complex/catanh.html" title="c/numeric/complex/catanh"><tt>catanh</tt></a>
+</td>
+<td> <a href="complex/catanh.html" title="c/numeric/complex/catanh"><tt>catanhl</tt></a>
+</td></tr></table>
+<h3><span class="mw-headline" id="Real-only_functions">Real-only functions</span></h3>
+<p>For all functions that do not have complex counterparts, with the exception of <code>modf</code>, a type-generic macro <code>XXX</code> exists, which calls either of the variants of a real function:
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> variant <code>XXXf</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> variant <code>XXX</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> variant <code>XXXl</code>
+</li></ul>
+<p>The function to call is determined as follows:
+</p>
+<ul><li> If any of the arguments for the generic parameters is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span>, then the <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span> variant is called. Otherwise, if any of the arguments for the generic parameters is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span>, then the <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span> variant is called. Otherwise, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> variant is called.
+</li></ul>
+<table class="wikitable">
+
+<tr>
+<th> Type-generic macro
+</th>
+<th colspan="3"> Real function <br> variants
+</th></tr>
+<tr>
+<th style="height: 8em;">  
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span></div></div>
+</th></tr>
+<tr>
+<th> atan2
+</th>
+<td> <a href="math/atan2.html" title="c/numeric/math/atan2"><tt>atan2f</tt></a>
+</td>
+<td> <a href="math/atan2.html" title="c/numeric/math/atan2"><tt>atan2</tt></a>
+</td>
+<td> <a href="math/atan2.html" title="c/numeric/math/atan2"><tt>atan2l</tt></a>
+</td></tr>
+<tr>
+<th> cbrt
+</th>
+<td> <a href="math/cbrt.html" title="c/numeric/math/cbrt"><tt>cbrtf</tt></a>
+</td>
+<td> <a href="math/cbrt.html" title="c/numeric/math/cbrt"><tt>cbrt</tt></a>
+</td>
+<td> <a href="math/cbrt.html" title="c/numeric/math/cbrt"><tt>cbrtl</tt></a>
+</td></tr>
+<tr>
+<th> ceil
+</th>
+<td> <a href="math/ceil.html" title="c/numeric/math/ceil"><tt>ceilf</tt></a>
+</td>
+<td> <a href="math/ceil.html" title="c/numeric/math/ceil"><tt>ceil</tt></a>
+</td>
+<td> <a href="math/ceil.html" title="c/numeric/math/ceil"><tt>ceill</tt></a>
+</td></tr>
+<tr>
+<th> copysign
+</th>
+<td> <a href="math/copysign.html" title="c/numeric/math/copysign"><tt>copysignf</tt></a>
+</td>
+<td> <a href="math/copysign.html" title="c/numeric/math/copysign"><tt>copysign</tt></a>
+</td>
+<td> <a href="math/copysign.html" title="c/numeric/math/copysign"><tt>copysignl</tt></a>
+</td></tr>
+<tr>
+<th> erf
+</th>
+<td> <a href="math/erf.html" title="c/numeric/math/erf"><tt>erff</tt></a>
+</td>
+<td> <a href="math/erf.html" title="c/numeric/math/erf"><tt>erf</tt></a>
+</td>
+<td> <a href="math/erf.html" title="c/numeric/math/erf"><tt>erfl</tt></a>
+</td></tr>
+<tr>
+<th> erfc
+</th>
+<td> <a href="math/erfc.html" title="c/numeric/math/erfc"><tt>erfcf</tt></a>
+</td>
+<td> <a href="math/erfc.html" title="c/numeric/math/erfc"><tt>erfc</tt></a>
+</td>
+<td> <a href="math/erfc.html" title="c/numeric/math/erfc"><tt>erfcl</tt></a>
+</td></tr>
+<tr>
+<th> exp2
+</th>
+<td> <a href="math/exp2.html" title="c/numeric/math/exp2"><tt>exp2f</tt></a>
+</td>
+<td> <a href="math/exp2.html" title="c/numeric/math/exp2"><tt>exp2</tt></a>
+</td>
+<td> <a href="math/exp2.html" title="c/numeric/math/exp2"><tt>exp2l</tt></a>
+</td></tr>
+<tr>
+<th> expm1
+</th>
+<td> <a href="math/expm1.html" title="c/numeric/math/expm1"><tt>expm1f</tt></a>
+</td>
+<td> <a href="math/expm1.html" title="c/numeric/math/expm1"><tt>expm1</tt></a>
+</td>
+<td> <a href="math/expm1.html" title="c/numeric/math/expm1"><tt>expm1l</tt></a>
+</td></tr>
+<tr>
+<th> fdim
+</th>
+<td> <a href="math/fdim.html" title="c/numeric/math/fdim"><tt>fdimf</tt></a>
+</td>
+<td> <a href="math/fdim.html" title="c/numeric/math/fdim"><tt>fdim</tt></a>
+</td>
+<td> <a href="math/fdim.html" title="c/numeric/math/fdim"><tt>fdiml</tt></a>
+</td></tr>
+<tr>
+<th> floor
+</th>
+<td> <a href="math/floor.html" title="c/numeric/math/floor"><tt>floorf</tt></a>
+</td>
+<td> <a href="math/floor.html" title="c/numeric/math/floor"><tt>floor</tt></a>
+</td>
+<td> <a href="math/floor.html" title="c/numeric/math/floor"><tt>floorl</tt></a>
+</td></tr>
+<tr>
+<th> fma
+</th>
+<td> <a href="math/fma.html" title="c/numeric/math/fma"><tt>fmaf</tt></a>
+</td>
+<td> <a href="math/fma.html" title="c/numeric/math/fma"><tt>fma</tt></a>
+</td>
+<td> <a href="math/fma.html" title="c/numeric/math/fma"><tt>fmal</tt></a>
+</td></tr>
+<tr>
+<th> fmax
+</th>
+<td> <a href="math/fmax.html" title="c/numeric/math/fmax"><tt>fmaxf</tt></a>
+</td>
+<td> <a href="math/fmax.html" title="c/numeric/math/fmax"><tt>fmax</tt></a>
+</td>
+<td> <a href="math/fmax.html" title="c/numeric/math/fmax"><tt>fmaxl</tt></a>
+</td></tr>
+<tr>
+<th> fmin
+</th>
+<td> <a href="math/fmin.html" title="c/numeric/math/fmin"><tt>fminf</tt></a>
+</td>
+<td> <a href="math/fmin.html" title="c/numeric/math/fmin"><tt>fmin</tt></a>
+</td>
+<td> <a href="math/fmin.html" title="c/numeric/math/fmin"><tt>fminl</tt></a>
+</td></tr>
+<tr>
+<th> fmod
+</th>
+<td> <a href="math/fmod.html" title="c/numeric/math/fmod"><tt>fmodf</tt></a>
+</td>
+<td> <a href="math/fmod.html" title="c/numeric/math/fmod"><tt>fmod</tt></a>
+</td>
+<td> <a href="math/fmod.html" title="c/numeric/math/fmod"><tt>fmodl</tt></a>
+</td></tr>
+<tr>
+<th> frexp
+</th>
+<td> <a href="math/frexp.html" title="c/numeric/math/frexp"><tt>frexpf</tt></a>
+</td>
+<td> <a href="math/frexp.html" title="c/numeric/math/frexp"><tt>frexp</tt></a>
+</td>
+<td> <a href="math/frexp.html" title="c/numeric/math/frexp"><tt>frexpl</tt></a>
+</td></tr>
+<tr>
+<th> hypot
+</th>
+<td> <a href="math/hypot.html" title="c/numeric/math/hypot"><tt>hypotf</tt></a>
+</td>
+<td> <a href="math/hypot.html" title="c/numeric/math/hypot"><tt>hypot</tt></a>
+</td>
+<td> <a href="math/hypot.html" title="c/numeric/math/hypot"><tt>hypotl</tt></a>
+</td></tr>
+<tr>
+<th> ilogb
+</th>
+<td> <a href="math/ilogb.html" title="c/numeric/math/ilogb"><tt>ilogbf</tt></a>
+</td>
+<td> <a href="math/ilogb.html" title="c/numeric/math/ilogb"><tt>ilogb</tt></a>
+</td>
+<td> <a href="math/ilogb.html" title="c/numeric/math/ilogb"><tt>ilogbl</tt></a>
+</td></tr>
+<tr>
+<th> ldexp
+</th>
+<td> <a href="math/ldexp.html" title="c/numeric/math/ldexp"><tt>ldexpf</tt></a>
+</td>
+<td> <a href="math/ldexp.html" title="c/numeric/math/ldexp"><tt>ldexp</tt></a>
+</td>
+<td> <a href="math/ldexp.html" title="c/numeric/math/ldexp"><tt>ldexpl</tt></a>
+</td></tr>
+<tr>
+<th> lgamma
+</th>
+<td> <a href="math/lgamma.html" title="c/numeric/math/lgamma"><tt>lgammaf</tt></a>
+</td>
+<td> <a href="math/lgamma.html" title="c/numeric/math/lgamma"><tt>lgamma</tt></a>
+</td>
+<td> <a href="math/lgamma.html" title="c/numeric/math/lgamma"><tt>lgammal</tt></a>
+</td></tr>
+<tr>
+<th> llrint
+</th>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>llrintf</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>llrint</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>llrintl</tt></a>
+</td></tr>
+<tr>
+<th> llround
+</th>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>llroundf</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>llround</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>llroundl</tt></a>
+</td></tr>
+<tr>
+<th> log10
+</th>
+<td> <a href="math/log10.html" title="c/numeric/math/log10"><tt>log10f</tt></a>
+</td>
+<td> <a href="math/log10.html" title="c/numeric/math/log10"><tt>log10</tt></a>
+</td>
+<td> <a href="math/log10.html" title="c/numeric/math/log10"><tt>log10l</tt></a>
+</td></tr>
+<tr>
+<th> log1p
+</th>
+<td> <a href="math/log1p.html" title="c/numeric/math/log1p"><tt>log1pf</tt></a>
+</td>
+<td> <a href="math/log1p.html" title="c/numeric/math/log1p"><tt>log1p</tt></a>
+</td>
+<td> <a href="math/log1p.html" title="c/numeric/math/log1p"><tt>log1pl</tt></a>
+</td></tr>
+<tr>
+<th> log2
+</th>
+<td> <a href="math/log2.html" title="c/numeric/math/log2"><tt>log2f</tt></a>
+</td>
+<td> <a href="math/log2.html" title="c/numeric/math/log2"><tt>log2</tt></a>
+</td>
+<td> <a href="math/log2.html" title="c/numeric/math/log2"><tt>log2l</tt></a>
+</td></tr>
+<tr>
+<th> logb
+</th>
+<td> <a href="math/logb.html" title="c/numeric/math/logb"><tt>logbf</tt></a>
+</td>
+<td> <a href="math/logb.html" title="c/numeric/math/logb"><tt>logb</tt></a>
+</td>
+<td> <a href="math/logb.html" title="c/numeric/math/logb"><tt>logbl</tt></a>
+</td></tr>
+<tr>
+<th> lrint
+</th>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>lrintf</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>lrint</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>lrintl</tt></a>
+</td></tr>
+<tr>
+<th> lround
+</th>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>lroundf</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>lround</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>lroundl</tt></a>
+</td></tr>
+<tr>
+<th> nearbyint
+</th>
+<td> <a href="math/nearbyint.html" title="c/numeric/math/nearbyint"><tt>nearbyintf</tt></a>
+</td>
+<td> <a href="math/nearbyint.html" title="c/numeric/math/nearbyint"><tt>nearbyint</tt></a>
+</td>
+<td> <a href="math/nearbyint.html" title="c/numeric/math/nearbyint"><tt>nearbyintl</tt></a>
+</td></tr>
+<tr>
+<th> nextafter
+</th>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nextafterf</tt></a>
+</td>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nextafter</tt></a>
+</td>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nextafterl</tt></a>
+</td></tr>
+<tr>
+<th> nexttoward
+</th>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nexttowardf</tt></a>
+</td>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nexttoward</tt></a>
+</td>
+<td> <a href="math/nexttoward.html" title="c/numeric/math/nextafter"><tt>nexttowardl</tt></a>
+</td></tr>
+<tr>
+<th> remainder
+</th>
+<td> <a href="math/remainder.html" title="c/numeric/math/remainder"><tt>remainderf</tt></a>
+</td>
+<td> <a href="math/remainder.html" title="c/numeric/math/remainder"><tt>remainder</tt></a>
+</td>
+<td> <a href="math/remainder.html" title="c/numeric/math/remainder"><tt>remainderl</tt></a>
+</td></tr>
+<tr>
+<th> remquo
+</th>
+<td> <a href="math/remquo.html" title="c/numeric/math/remquo"><tt>remquof</tt></a>
+</td>
+<td> <a href="math/remquo.html" title="c/numeric/math/remquo"><tt>remquo</tt></a>
+</td>
+<td> <a href="math/remquo.html" title="c/numeric/math/remquo"><tt>remquol</tt></a>
+</td></tr>
+<tr>
+<th> rint
+</th>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>rintf</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>rint</tt></a>
+</td>
+<td> <a href="math/rint.html" title="c/numeric/math/rint"><tt>rintl</tt></a>
+</td></tr>
+<tr>
+<th> round
+</th>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>roundf</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>round</tt></a>
+</td>
+<td> <a href="math/round.html" title="c/numeric/math/round"><tt>roundl</tt></a>
+</td></tr>
+<tr>
+<th> scalbln
+</th>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalblnf</tt></a>
+</td>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalbln</tt></a>
+</td>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalblnl</tt></a>
+</td></tr>
+<tr>
+<th> scalbn
+</th>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalbnf</tt></a>
+</td>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalbn</tt></a>
+</td>
+<td> <a href="math/scalbn.html" title="c/numeric/math/scalbn"><tt>scalbnl</tt></a>
+</td></tr>
+<tr>
+<th> tgamma
+</th>
+<td> <a href="math/tgamma.html" title="c/numeric/math/tgamma"><tt>tgammaf</tt></a>
+</td>
+<td> <a href="math/tgamma.html" title="c/numeric/math/tgamma"><tt>tgamma</tt></a>
+</td>
+<td> <a href="math/tgamma.html" title="c/numeric/math/tgamma"><tt>tgammal</tt></a>
+</td></tr>
+<tr>
+<th> trunc
+</th>
+<td> <a href="math/trunc.html" title="c/numeric/math/trunc"><tt>truncf</tt></a>
+</td>
+<td> <a href="math/trunc.html" title="c/numeric/math/trunc"><tt>trunc</tt></a>
+</td>
+<td> <a href="math/trunc.html" title="c/numeric/math/trunc"><tt>truncl</tt></a>
+</td></tr></table>
+<h3><span class="mw-headline" id="Complex-only_functions">Complex-only functions</span></h3>
+<p>For all complex number functions that do not have real counterparts, a type-generic macro <code>cXXX</code> exists, which calls either of the variants of a complex function:
+</p>
+<ul><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="complex/complex.html"><span class="kw743">complex</span></a></span></span> variant <code>cXXXf</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="complex/complex.html"><span class="kw743">complex</span></a></span></span> variant <code>cXXX</code>
+</li><li> <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="complex/complex.html"><span class="kw743">complex</span></a></span></span> variant <code>cXXXl</code>
+</li></ul>
+<p>The function to call is determined as follows:
+</p>
+<ul><li> If any of the arguments for the generic parameters is real, complex, or imaginary, then the appropriate complex function is called.
+</li></ul>
+<table class="wikitable">
+
+<tr>
+<th> Type-generic macro
+</th>
+<th colspan="3"> Complex function <br> variants
+</th></tr>
+<tr>
+<th style="height: 8em;">  
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span></div></div>
+</th>
+<th> <div class="t-vertical"><div><span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span></div></div>
+</th></tr>
+<tr>
+<th> carg
+</th>
+<td> <a href="complex/carg.html" title="c/numeric/complex/carg"><tt>cargf</tt></a>
+</td>
+<td> <a href="complex/carg.html" title="c/numeric/complex/carg"><tt>carg</tt></a>
+</td>
+<td> <a href="complex/carg.html" title="c/numeric/complex/carg"><tt>cargl</tt></a>
+</td></tr>
+<tr>
+<th> conj
+</th>
+<td> <a href="complex/conj.html" title="c/numeric/complex/conj"><tt>conjf</tt></a>
+</td>
+<td> <a href="complex/conj.html" title="c/numeric/complex/conj"><tt>conj</tt></a>
+</td>
+<td> <a href="complex/conj.html" title="c/numeric/complex/conj"><tt>conjl</tt></a>
+</td></tr>
+<tr>
+<th> creal
+</th>
+<td> <a href="complex/creal.html" title="c/numeric/complex/creal"><tt>crealf</tt></a>
+</td>
+<td> <a href="complex/creal.html" title="c/numeric/complex/creal"><tt>creal</tt></a>
+</td>
+<td> <a href="complex/creal.html" title="c/numeric/complex/creal"><tt>creall</tt></a>
+</td></tr>
+<tr>
+<th> cimag
+</th>
+<td> <a href="complex/cimag.html" title="c/numeric/complex/cimag"><tt>cimagf</tt></a>
+</td>
+<td> <a href="complex/cimag.html" title="c/numeric/complex/cimag"><tt>cimag</tt></a>
+</td>
+<td> <a href="complex/cimag.html" title="c/numeric/complex/cimag"><tt>cimagl</tt></a>
+</td></tr>
+<tr>
+<th> cproj
+</th>
+<td> <a href="complex/cproj.html" title="c/numeric/complex/cproj"><tt>cprojf</tt></a>
+</td>
+<td> <a href="complex/cproj.html" title="c/numeric/complex/cproj"><tt>cproj</tt></a>
+</td>
+<td> <a href="complex/cproj.html" title="c/numeric/complex/cproj"><tt>cprojl</tt></a>
+</td></tr></table>
+<h3><span class="mw-headline" id="Example"> Example </span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;tgmath.h&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> <span class="nu0">2</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"sqrt(2) = %f<span class="es1">\n</span>"</span>, <a href="math/sqrt.html"><span class="kw665">sqrt</span></a><span class="br0">(</span>i<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// argument type is int, calls sqrt</span>
+ 
+    <span class="kw4">float</span> f <span class="sy1">=</span> <span class="nu16">0.5</span><span class="sy4">;</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"sin(0.5f) = %f<span class="es1">\n</span>"</span>, <a href="math/sin.html"><span class="kw669">sin</span></a><span class="br0">(</span>f<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>   <span class="co1">// argument type is float, calls sinf</span>
+ 
+    <span class="kw4">float</span> <a href="complex/complex.html"><span class="kw743">complex</span></a> dc <span class="sy1">=</span> <span class="nu0">1</span> <span class="sy2">+</span> <span class="nu16">0.5</span><span class="sy2">*</span>I<span class="sy4">;</span>
+    <span class="kw4">float</span> <a href="complex/complex.html"><span class="kw743">complex</span></a> z <span class="sy1">=</span> <a href="math/sqrt.html"><span class="kw665">sqrt</span></a><span class="br0">(</span>dc<span class="br0">)</span><span class="sy4">;</span>      <span class="co1">// argument type is float complex, calls csqrtf</span>
+    <a href="../io/fprintf.html"><span class="kw851">printf</span></a><span class="br0">(</span><span class="st0">"sqrt(1 + 0.5i) = %f+%fi<span class="es1">\n</span>"</span>,
+           <a href="complex/creal.html"><span class="kw754">creal</span></a><span class="br0">(</span>z<span class="br0">)</span>,  <span class="co1">// argument type is float complex, calls crealf</span>
+           <a href="complex/cimag.html"><span class="kw751">cimag</span></a><span class="br0">(</span>z<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// argument type is float complex, calls cimagf</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">sqrt(2) = 1.414214
+sin(0.5f) = 0.479426
+sqrt(1 + 0.5i) = 1.029086+0.242934i</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 standard (ISO/IEC 9899:2018): 
+</li></ul>
+<dl><dd><ul><li> 7.25 Type-generic math &lt;tgmath.h&gt; (p: 272-273)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 7.25 Type-generic math &lt;tgmath.h&gt; (p: 373-375)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 7.22 Type-generic math &lt;tgmath.h&gt; (p: 335-337)
+</li></ul>
+</dd></dl>
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 7568/1000000
+Preprocessor generated node count: 10815/1000000
+Post‐expand include size: 56443/2097152 bytes
+Template argument size: 23359/2097152 bytes
+Highest expansion depth: 13/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:6422-0!*!0!!en!*!* and timestamp 20220624230841 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/numeric/tgmath&amp;oldid=140573">https://en.cppreference.com/mwiki/index.php?title=c/numeric/tgmath&amp;oldid=140573</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/numeric/tgmath">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 24 June 2022, at 16:08.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 86,008 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.035 secs. -->
+	</body>
+<!-- Cached 20220625003616 -->
+</html>

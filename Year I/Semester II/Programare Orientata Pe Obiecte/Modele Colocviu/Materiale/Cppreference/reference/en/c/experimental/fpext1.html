@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Floating-point extensions part 1: binary floating-point arithmetic - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/experimental/fpext1","wgTitle":"c/experimental/fpext1","wgCurRevisionId":124001,"wgArticleId":16219,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/experimental/fpext1","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_experimental_fpext1 skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Floating-point extensions part 1: binary floating-point arithmetic</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../experimental.html" title="c/experimental">experimental</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../experimental.html" title="c/experimental"> Technical Specifications</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/embedded&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/embedded (page does not exist)"> Extensions for embedded processors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dynamic.html" title="c/experimental/dynamic"> Dynamic memory extensions</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Floating-point extensions part 1: Binary floating-point</strong> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fpext4.html" title="c/experimental/fpext4"> Floating-point extensions part 4: Supplementary functions</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><strong class="selflink"> Floating-point extensions part 1: Binary floating-point</strong><div class="t-navbar-menu"><div><a href="https://en.cppreference.com/mwiki/index.php?title=Template:c/experimental/fpext1/navbar_content&amp;action=edit&amp;redlink=1" class="new" title="Template:c/experimental/fpext1/navbar content (page does not exist)">Template:c/experimental/fpext1/navbar content</a><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Floating-point extensions for C - Part 1: Binary floating-point arithmetic, ISO/IEC TS 18661-1:2014, defines the following new components for the C standard library, as recommended by ISO/IEC/IEEE 60559:2011 (the current revision of IEEE-754)
+</p>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>__STDC_IEC_60559_BFP__</span></span></div></div>
+</td>
+<td>   integer constant of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span> and value <span class="t-c"><span class="mw-geshi c source-c">201ymmL</span></span>, replaces <span class="t-lc">__STDC_IEC_559__</span> <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>__STDC_IEC_60559_COMPLEX__</span></span></div></div>
+</td>
+<td>   integer constant of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span> and value <span class="t-c"><span class="mw-geshi c source-c">201ymmL</span></span>, replaces <span class="t-lc">__STDC_IEC_559_COMPLEX__</span> <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;limits.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>CHAR_WIDTH SCHAR_WIDTH UCHAR_WIDTH</span><span>SHRT_WIDTH USHRT_WIDTH</span><span>INT_WIDTH UINT_WIDTH</span><span>LONG_WIDTH ULONG_WIDTH</span><span>LLONG_WIDTH ULLONG_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  width, in bits, of the corresponding type <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;float.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/CR_DECIMAL_DIG&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/CR DECIMAL DIG (page does not exist)"> <span class="t-lines"><span>CR_DECIMAL_DIG</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  conversions between all supported binary floating-point types and character sequences with at most CR_DECIMAL_DIG significant decimal digits are correctly rounded (this is at least DECIMAL_DIG + 3) <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;fenv.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>femode_t</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  collection of dynamic floating-point control modes supported by the implementation, including the dynamic rounding direction mode <br> <span class="t-mark">(typedef)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FE_DFL_MODE</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  pointer to the default femode_t  <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FE_SNANS_ALWAYS_SIGNAL</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   defined (as integer constant 1) if sNaN arguments cause the functions that suppress qNaNs, like <span class="t-lc"><a href="../numeric/math/hypot.html" title="c/numeric/math/hypot">hypot</a></span> or <span class="t-lc"><a href="../numeric/math/fmax.html" title="c/numeric/math/fmax">fmax</a></span>, to raise FE_INVALID and return a qNaN <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fesetexcept&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fesetexcept (page does not exist)"> <span class="t-lines"><span>fesetexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  sets the specified floating-point exception flags without causing any side-effects that raising them would <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fetestexceptflag&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fetestexceptflag (page does not exist)"> <span class="t-lines"><span>fetestexceptflag</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  tests if given flags are in a saved representation of the floating-point exception flags <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fegetmode_fesetmode&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fegetmode fesetmode (page does not exist)"> <span class="t-lines"><span>fegetmode</span><span>fesetmode</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  gets and sets  all the implementation’s dynamic floating-point control modes collectively <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;stdint.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>INTn_WIDTH UINTn_WIDTH</span><span>INT_LEASTn_WIDTH UINT_LEASTn_WIDTH</span><span>INT_FASTn_WIDTH UINT_FASTn_WIDTH</span><span>INTPTR_WIDTH UINTPTR_WIDTH</span><span>INTMAX_WIDTH  UINTMAX_WIDTH</span><span>PTRDIFF_WIDTH</span><span>SIG_ATOMIC_WIDTH</span><span>SIZE_WIDTH</span><span>WCHAR_WIDTH WINT_WIDTH</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  width, in bits, of the corresponding type <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;stdlib.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/strfromf&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/strfromf (page does not exist)"> <span class="t-lines"><span>strfromd</span><span>strfromf</span><span>strfroml</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  convert a single foating-point number to string using the specified snprintf format <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;math.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FP_INT_UPWARD</span><span>FP_INT_DOWNWARD</span><span>FP_INT_TOWARDZERO</span><span>
+FP_INT_TONEARESTFROMZERO</span><span>FP_INT_TONEAREST</span><span></span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   rounding direction for the functions ceil, floor, trunc, round, and roundeven, suitable for use with fromfp family of functions <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FP_LLOGB0</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  value returned by <span class="t-lc">llogb</span> if the argument is zero <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FP_LLOGBNAN</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  value returned by <span class="t-lc">llogb</span> if the argument is NaN <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/SNAN&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/SNAN (page does not exist)"> <span class="t-lines"><span>SNANF</span><span>SNAN</span><span>SNANL</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  represents a signalling NaN for float, double, long double respectively <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>FP_FAST_FADD FP_FAST_FADDL FP_FAST_DADDL</span><span>FP_FAST_FSUB FP_FAST_FSUBL FP_FAST_DSUBL</span><span>FP_FAST_FMUL FP_FAST_FMULL FP_FAST_DMULL</span><span>FP_FAST_FDIV FP_FAST_FDIVL FP_FAST_DDIVL</span><span>FP_FAST_FFMA FP_FAST_FFMAL FP_FAST_DFMAL</span><span>FP_FAST_FSQRT FP_FAST_FSQRTL FP_FAST_DSQRTL</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  if defined, indicates that the corresponding function executes faster than the equivalent function in a larger type followed by a cast to target type <br> <span class="t-mark">(macro constant)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>iseqsig</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   <br> <span class="t-mark">(function macro)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>iscanonical</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  tests if the floating-point value is canonical <br> <span class="t-mark">(function macro)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>issignaling</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  tests if the floating-point value is a signalling NaN <br> <span class="t-mark">(function macro)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>issubnormal</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  tests if the floating-point value is subnormal <br> <span class="t-mark">(function macro)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>iszero</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  tests if the floating-point value is a zero (positive, negative, unsigned) <br> <span class="t-mark">(function macro)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fromfp&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fromfp (page does not exist)"> <span class="t-lines"><span>fromfp</span><span>fromfpf</span><span>fromfpl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  round to signed integer using the specified rounding direction <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/ufromfp&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/ufromfp (page does not exist)"> <span class="t-lines"><span>ufromfp</span><span>ufromfpf</span><span>ufromfpl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  round to unsigned integer using the specified rounding direction <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fromfpx&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fromfpx (page does not exist)"> <span class="t-lines"><span>fromfpx</span><span>fromfpxf</span><span>fromfpxl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  round to signed integer using the specified rounding direction, reporting inexactness <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/ufromfpx&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/ufromfpx (page does not exist)"> <span class="t-lines"><span>ufromfpx</span><span>ufromfpxf</span><span>ufromfpxl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  round to unsigned integer using the specified rounding direction, reporting inexactness <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/roundeven&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/roundeven (page does not exist)"> <span class="t-lines"><span>roundeven</span><span>roundevenf</span><span>roundevenl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  rounds to nearest, halfway cases to even <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/llogb&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/llogb (page does not exist)"> <span class="t-lines"><span>llogb</span><span>llogbf</span><span>llogbl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  equivalent to <span class="t-lc"><a href="../numeric/math/logb.html" title="c/numeric/math/logb">logb</a></span> except the return type is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span></span></span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fmaxmag&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fmaxmag (page does not exist)"> <span class="t-lines"><span>fmaxmag</span><span>fmaxmagf</span><span>fmaxmagl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  returns the value of their argument of maximum magnitude <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fminmag&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fminmag (page does not exist)"> <span class="t-lines"><span>fminmag</span><span>fminmagf</span><span>fminmagl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  returns the value of their argument of minimum magnitude <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="fpext1/nextup.html" title="c/experimental/fpext1/nextup"> <span class="t-lines"><span>nextup</span><span>nextupf</span><span>nextupl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  returns the next greater representable floating-point value <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/nextdown&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/nextdown (page does not exist)"> <span class="t-lines"><span>nextdown</span><span>nextdownf</span><span>nextdown l</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  returns the next smaller representable floating-point value <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fadd&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fadd (page does not exist)"> <span class="t-lines"><span>fadd</span><span>faddl</span><span>daddl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates x+y as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fsub&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fsub (page does not exist)"> <span class="t-lines"><span>fsub</span><span>fsubl</span><span>dsubl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates x-y as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fmul&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fmul (page does not exist)"> <span class="t-lines"><span>fmul</span><span>fmull</span><span>dmull</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates x*y as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fdiv&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fdiv (page does not exist)"> <span class="t-lines"><span>fdiv</span><span>fdivl</span><span>ddivl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates x/y as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/ffma&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/ffma (page does not exist)"> <span class="t-lines"><span>ffma</span><span>ffmal</span><span>dfmal</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates the same as <span class="t-lc"><a href="../numeric/math/fma.html" title="c/numeric/math/fma">fma</a></span> as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/fsqrt&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/fsqrt (page does not exist)"> <span class="t-lines"><span>fsqrt</span><span>fsqrtl</span><span>dsqrtl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  calculates the same as <span class="t-lc"><a href="../numeric/math/sqrt.html" title="c/numeric/math/sqrt">sqrt</a></span> as if in infinite precision and rounded once to target type <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/totalorder&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/totalorder (page does not exist)"> <span class="t-lines"><span>totalorder</span><span>totalorderf</span><span>totalorderl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  orders two floating-point values using the ISO 60559 total order relation <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/totalordermag&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/totalordermag (page does not exist)"> <span class="t-lines"><span>totalordermag</span><span>totalordermagf</span><span>totalordermagl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  orders the magnitudes of two floating-point values using the ISO 60559 total order relation <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/canonicalize&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/canonicalize (page does not exist)"> <span class="t-lines"><span>canonicalize</span><span>canonicalizef</span><span>canonicalizel</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  obtains the ISO 60559 canonical binary encoding of the given floating-point value <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/getpayload&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/getpayload (page does not exist)"> <span class="t-lines"><span>getpayload</span><span>getpayloadf</span><span>getpayloadl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  extracts the payload from the given NaN value <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/setpayload&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/setpayload (page does not exist)"> <span class="t-lines"><span>setpayload</span><span>setpayloadf</span><span>setpayloadl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  creates a quiet NaN with the specified payload <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1/setpayloadsig&amp;action=edit&amp;redlink=1" class="new" title="c/experimental/fpext1/setpayloadsig (page does not exist)"> <span class="t-lines"><span>setpayloadsig</span><span>setpayloadsigf</span><span>setpayloadsigl</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>  creates a signalling NaN with the specified payload <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc-header">
+<td colspan="2"> <div>Defined in header <code>&lt;tgmath.h&gt;</code> </div>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>roundeven</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">roundeven</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>llogb</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">llogb</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fmaxmag</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fmaxmag</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fminmag</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fminmag</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>nextup</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">nextup</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>nextdown</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">nextdown</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fromfp</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fromfp</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ufromfp</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">ufromfp</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fromfpx</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fromfpx</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ufromfpx</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">ufromfpx</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>nextdown</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">nextdown</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>totalorder</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">totalorder</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>totalordermag</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">totalordermag</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fadd</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fadd</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>dadd</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">dadd</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fsub</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fsub</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>dsub</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">dsub</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fmul</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fmul</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>dmul</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">dmul</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fdiv</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fdiv</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ddiv</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">ddiv</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>ffma</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">ffma</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>dfma</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">dfma</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>fsqrt</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">fsqrt</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><span class="t-lines"><span>dsqrt</span></span></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-fpext1-ts t-mark-ts">(FP Ext 1 TS)</span></span></span></div></div>
+</td>
+<td>   generic overload of <span class="t-lc">dsqrt</span> <br> <span class="t-mark">(function)</span>
+</td></tr>
+
+</table>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>The standard C macros <span class="t-lc">__STDC_IEC_559__</span> and <span class="t-lc">__STDC_IEC_559_COMPLEX__</span> are made obsolete by this technical specification.
+</p><p>All functions and macros added to the C library by this extension are only declared if a macro <span class="t-c"><span class="mw-geshi c source-c">__STDC_WANT_IEC_60559_BFP_EXT__</span></span> is defined before the corresponding header is included.
+</p><p>Besides additions to the standard library, ISO/IEC TS 18661-1:2014 makes a number of changes to the core language, notably splitting floating-point control between static (controlled by the new <span class="t-c"><span class="mw-geshi c source-c"><span class="co2">#pragma STDC FENV_ROUND</span></span></span>), and dynamic (controlled by <span class="t-lc"><a href="../numeric/fenv/feround.html" title="c/numeric/fenv/feround">fesetround</a></span>). Most math.h functions respect the static rounding mode, if set, over the dynamic rounding mode.
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: add to the pragma page or describe the pragma in full here? </td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 7787/1000000
+Preprocessor generated node count: 12205/1000000
+Post‐expand include size: 207348/2097152 bytes
+Template argument size: 75610/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:16219-0!*!0!*!*!2!* and timestamp 20220313134501 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1&amp;oldid=124001">https://en.cppreference.com/mwiki/index.php?title=c/experimental/fpext1&amp;oldid=124001</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/experimental/fpext1">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 November 2020, at 12:53.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 29,630 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.733 secs. -->
+	</body>
+<!-- Cached 20220313134501 -->
+</html>

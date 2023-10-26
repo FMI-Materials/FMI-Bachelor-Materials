@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Default comparisons (since C++20) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/default_comparisons","wgTitle":"cpp/language/default comparisons","wgCurRevisionId":139189,"wgArticleId":16800,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/default_comparisons","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_default_comparisons skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Default comparisons <span class="t-mark-rev t-since-cxx20">(since C++20)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="cpp/language/expressions"> Expressions</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> General </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> value categories</a> (lvalue, rvalue, xvalue)</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> order of evaluation</a> (sequence points)</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_expression.html" title="cpp/language/constant expression"> constant expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html#Unevaluated_expressions" title="cpp/language/expressions"> unevaluated expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html#Primary_expressions" title="cpp/language/expressions"> primary expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda">lambda-expression</a><span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Literals </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="integer_literal.html" title="cpp/language/integer literal">integer literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="floating_literal.html" title="cpp/language/floating literal">floating-point literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal">boolean literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal">character literals</a> including <a href="escape.html" title="cpp/language/escape">escape sequences</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_literal.html" title="cpp/language/string literal">string literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="nullptr.html" title="cpp/language/nullptr">null pointer literal</a><span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal">user-defined literal</a><span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Operators </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_assignment.html" title="cpp/language/operator assignment"> Assignment operators</a>: 
+<code>a=b</code>, <code>a+=b</code>, <code>a-=b</code>, <code>a*=b</code>, <code>a/=b</code>, <code>a%=b</code>, <code>a&amp;=b</code>, <code>a|=b</code>, <code>a^=b</code>, <code>a&lt;&lt;=b</code>, <code>a&gt;&gt;=b</code></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_incdec.html" title="cpp/language/operator incdec"> Increment and decrement</a>: <code>++a</code>, <code>--a</code>, <code>a++</code>, <code>a--</code></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_arithmetic.html" title="cpp/language/operator arithmetic"> Arithmetic operators</a>:
+<code>+a</code>, <code>-a</code>, <code>a+b</code>, <code>a-b</code>, <code>a*b</code>, <code>a/b</code>, <code>a%b</code>, <code>~a</code>, <code>a&amp;b</code>, <code>a|b</code>, <code>a^b</code>, <code>a&lt;&lt;b</code>, <code>a&gt;&gt;b</code> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_logical.html" title="cpp/language/operator logical"> Logical operators</a>: <code>a||b</code>, <code>a&amp;&amp;b</code>, <code>!a</code></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_comparison.html" title="cpp/language/operator comparison"> Comparison operators</a>: <code>a==b</code>, <code>a!=b</code>, <code>a&lt;b</code>, <code>a&gt;b</code>, <code>a&lt;=b</code>, <code>a&gt;=b</code>, <code>a&lt;=&gt;b</code><span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_member_access.html" title="cpp/language/operator member access"> Member access operators</a>: <code>a[b]</code>, <code>*a</code>, <code>&amp;a</code>, <code>a-&gt;b</code>, <code>a.b</code>, <code>a-&gt;*b</code>, <code>a.*b</code></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_other.html" title="cpp/language/operator other"> Other operators</a>: <code>a(...)</code>, <code>a,b</code>, <code>a?b:c</code> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new">new-expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete">delete-expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw">throw-expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignof.html" title="cpp/language/alignof"><code>alignof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sizeof.html" title="cpp/language/sizeof"><code>sizeof</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sizeof....html" title="cpp/language/sizeof..."><code>sizeof...</code></a><span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typeid.html" title="cpp/language/typeid"><code>typeid</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept.html" title="cpp/language/noexcept"><code>noexcept</code></a><span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fold.html" title="cpp/language/fold">Fold expression</a><span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative">Alternative representations of operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence">Precedence and associativity</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators">Operator overloading</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">Default comparisons</strong><span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conversions </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion">Implicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><code>const_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><code>static_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><code>reinterpret_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><code>dynamic_cast</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="explicit_cast.html" title="cpp/language/explicit cast">Explicit conversions</a> <code>(T)a</code>, <code>T(a)</code></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cast_operator.html" title="cpp/language/cast operator">User-defined conversion</a></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>Provides a way to request the compiler to generate consistent comparison operators for a class.
+</p>
+<h3><span class="mw-headline" id="Syntax">Syntax</span></h3>
+<table class="t-sdsc-begin">
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <span class="t-spar">return-type</span> <span class="t-spar">class-name</span><code><b>::operator</b></code><span class="t-spar">op</span><code><b>(</b></code> <code><b>const</b></code> <span class="t-spar">class-name</span> <code><b>&amp;</b></code> <code><b>) const</b></code> <code><b>&amp;</b></code><span class="t-mark">(optional)</span> <code><b>= default;</b></code>
+</td>
+<td> (1)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>friend</b></code> <span class="t-spar">return-type</span> <code><b>operator</b></code><span class="t-spar">op</span><code><b>(</b></code> <code><b>const</b></code> <span class="t-spar">class-name</span> <code><b>&amp;</b></code><code><b>,</b></code> <code><b>const</b></code> <span class="t-spar">class-name</span> <code><b>&amp;</b></code> <code><b>) = default;</b></code>
+</td>
+<td> (2)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr>
+<tr class="t-sdsc">
+<td> <code><b>friend</b></code> <span class="t-spar">return-type</span> <code><b>operator</b></code><span class="t-spar">op</span><code><b>(</b></code> <span class="t-spar">class-name</span><code><b>,</b></code> <span class="t-spar">class-name</span> <code><b>) = default;</b></code>
+</td>
+<td> (3)
+</td>
+<td class="t-sdsc-nopad">
+</td></tr>
+
+
+
+<tr>
+<td colspan="10" class="t-sdsc-sep">
+</td></tr></table>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  <span class="t-spar">op</span>
+</td>
+<td> -
+</td>
+<td>  a comparison operator (<code>&lt;=&gt;</code>, <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, or <code>&gt;=</code>)
+</td></tr>
+<tr class="t-par">
+<td>  <span class="t-spar">return-type</span>
+</td>
+<td> -
+</td>
+<td>  return type of the operator function. Must be
+<ul><li> <a href="auto.html" title="cpp/language/auto"><code>auto</code></a> or one of <a href="default_comparisons.html#Custom_comparisons_and_comparison_categories">three comparison category types</a> if <span class="t-spar">op</span> is <code><b>&lt;=&gt;</b></code>,
+</li><li> otherwise, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>
+</li></ul>
+</td></tr></table>
+<h3><span class="mw-headline" id="Explanation">Explanation</span></h3>
+<div class="t-li1"><span class="t-li">1)</span> Declare the defaulted comparison function as a member function.</div>
+<div class="t-li1"><span class="t-li">2)</span> Declare the defaulted comparison function as a non-member function.</div>
+<div class="t-li1"><span class="t-li">3)</span> Declare the defaulted comparison function as a non-member function. Arguments are passed by value.</div>
+<p>The three-way comparison function (whether defaulted or not) is called whenever values are compared using <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, or <code>&lt;=&gt;</code> and overload resolution selects this overload.
+</p><p>The equality comparison function (whether defaulted or not) is called whenever values are compared using <code>==</code> or <code>!=</code> and overload resolution selects this overload.
+</p><p>Like defaulted special member functions, a defaulted comparison function is defined if <a href="definition.html#ODR-use" title="cpp/language/definition">odr-used</a> or <a href="constant_expression.html#Functions_and_variables_needed_for_constant_evaluation" title="cpp/language/constant expression">needed for constant evaluation</a>.
+</p>
+<h3><span class="mw-headline" id="Defaulted_comparisons">Defaulted comparisons</span></h3>
+<h4><span class="mw-headline" id="Defaulted_three-way_comparison">Defaulted three-way comparison</span></h4>
+<p>The default <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> performs lexicographical comparison by successively comparing
+the base (left-to-right depth-first) and then non-static member (in declaration order) subobjects of <code>T</code> to compute <code>&lt;=&gt;</code>, recursively expanding array members (in order of increasing subscript), and stopping early when a not-equal result is found, that is:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">for</span> <span class="coMULTI">/*each base or member subobject o of T*/</span>
+   <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">auto</span> cmp <span class="sy1">=</span> <span class="kw1">static_cast</span><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span><span class="br0">(</span>compare<span class="br0">(</span>lhs.<span class="me1">o</span>, rhs.<span class="me1">o</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> cmp <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span>
+      <span class="kw1">return</span> cmp<span class="sy4">;</span>
+<span class="kw1">return</span> <span class="kw1">static_cast</span><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span><span class="br0">(</span>strong_ordering<span class="sy4">::</span><span class="me2">equal</span><span class="br0">)</span><span class="sy4">;</span></pre></div></div>
+<p>It is unspecified whether virtual base subobjects are compared more than once.
+</p><p>If the declared return type is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span></span>, then the actual return type is the common comparison category of the base and member subobject and member array elements to be compared (see <a href="../utility/compare/common_comparison_category.html" title="cpp/utility/compare/common comparison category"><tt>std::common_comparison_category</tt></a>). This makes it easier to write cases where the return type non-trivially depends on the members, such as:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T1, <span class="kw1">class</span> T2<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> P <span class="br0">{</span>
+  T1 x1<span class="sy4">;</span>
+  T2 x2<span class="sy4">;</span>
+  <span class="kw1">friend</span> <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> P<span class="sy3">&amp;</span>, <span class="kw4">const</span> P<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>Let <span class="t-c"><span class="mw-geshi cpp source-cpp">R</span></span> be the return type, each pair of subobjects <span class="t-c"><span class="mw-geshi cpp source-cpp">a</span></span>, <span class="t-c"><span class="mw-geshi cpp source-cpp">b</span></span> is compared as follows:
+</p>
+<ul><li> If <span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">&lt;=&gt;</span> b</span></span> is usable, the result of comparison is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">static_cast</span><span class="sy1">&lt;</span>R<span class="sy1">&gt;</span><span class="br0">(</span>a <span class="sy1">&lt;=&gt;</span> b<span class="br0">)</span></span></span>.
+</li><li> Otherwise, if overload resolution for <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> is performed for <span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">&lt;=&gt;</span> b</span></span> and at least one candidate is found, the comparison is not defined (<span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> is defined as deleted).
+</li><li> Otherwise, if <span class="t-c"><span class="mw-geshi cpp source-cpp">R</span></span> is not a comparison category type (see below), or either <span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">==</span> b</span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">a <span class="sy1">&lt;</span> b</span></span> is not usable, the comparison is not defined (<span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> is defined as deleted).
+</li><li> Otherwise, if <span class="t-c"><span class="mw-geshi cpp source-cpp">R</span></span> is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/compare/strong_ordering.html"><span class="kw2664">std::<span class="me2">strong_ordering</span></span></a></span></span>, the result is
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">a <span class="sy1">==</span> b <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">equal</span> <span class="sy4">:</span>
+a <span class="sy1">&lt;</span> b  <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">less</span> <span class="sy4">:</span>
+         R<span class="sy4">::</span><span class="me2">greater</span></pre></div></div>
+<ul><li> Otherwise, if <span class="t-c"><span class="mw-geshi cpp source-cpp">R</span></span> is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/compare/weak_ordering.html"><span class="kw2666">std::<span class="me2">weak_ordering</span></span></a></span></span>, the result is
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">a <span class="sy1">==</span> b <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">equivalent</span> <span class="sy4">:</span>
+a <span class="sy1">&lt;</span> b  <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">less</span> <span class="sy4">:</span>
+         R<span class="sy4">::</span><span class="me2">greater</span></pre></div></div>
+<ul><li> Otherwise (<span class="t-c"><span class="mw-geshi cpp source-cpp">R</span></span> is <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/compare/partial_ordering.html"><span class="kw2662">std::<span class="me2">partial_ordering</span></span></a></span></span>), the result is
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1">a <span class="sy1">==</span> b <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">equivalent</span> <span class="sy4">:</span>
+a <span class="sy1">&lt;</span> b  <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">less</span> <span class="sy4">:</span>
+b <span class="sy1">&lt;</span> a  <span class="sy4">?</span> R<span class="sy4">::</span><span class="me2">greater</span> <span class="sy4">:</span> 
+         R<span class="sy4">::</span><span class="me2">unordered</span></pre></div></div>
+<p>Per the rules for any <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> overload, a defaulted <code>&lt;=&gt;</code> overload will also allow the type to be compared with <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code>.
+</p><p>If <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> is defaulted and <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> is not declared at all, then <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> is implicitly defaulted.
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;compare&gt;</span>
+<span class="kw1">struct</span> Point <span class="br0">{</span>
+  <span class="kw4">int</span> x<span class="sy4">;</span>
+  <span class="kw4">int</span> y<span class="sy4">;</span>
+  <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> Point<span class="sy3">&amp;</span><span class="br0">)</span> <span class="kw4">const</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+  <span class="co1">// ... non-comparison functions ...</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// compiler generates all six two-way comparison operators</span>
+ 
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;set&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  Point pt1<span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">1</span><span class="br0">}</span>, pt2<span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span><span class="sy4">;</span>
+  <a href="../container/set.html"><span class="kw1280">std::<span class="me2">set</span></span></a><span class="sy1">&lt;</span>Point<span class="sy1">&gt;</span> s<span class="sy4">;</span> <span class="co1">// ok</span>
+  s.<span class="me1">insert</span><span class="br0">(</span>pt1<span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// ok</span>
+  <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/boolalpha.html"><span class="kw1768">std::<span class="me2">boolalpha</span></span></a>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">==</span> pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="co1">// false; operator== is implicitly defaulted.</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy3">!</span><span class="sy1">=</span> pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="co1">// true</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">&lt;</span>  pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="co1">// true</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">&lt;=</span> pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="co1">// true</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">&gt;</span>  pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span> <span class="co1">// false</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">&gt;=</span> pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">' '</span><span class="sy4">;</span><span class="co1">// false</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<h4><span class="mw-headline" id="Defaulted_equality_comparison">Defaulted equality comparison</span></h4>
+<p>A class can define <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> as defaulted, with a return value of <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>. This will generate an equality comparison of each base class and member subobject, in their declaration order. Two objects are equal if the values of their base classes and members are equal. The test will short-circuit if an inequality is found in members or base classes earlier in declaration order.
+</p><p>Per the rules for <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span>, this will also allow inequality testing:
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> Point <span class="br0">{</span>
+  <span class="kw4">int</span> x<span class="sy4">;</span>
+  <span class="kw4">int</span> y<span class="sy4">;</span>
+  <span class="kw4">bool</span> operator<span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> Point<span class="sy3">&amp;</span><span class="br0">)</span> <span class="kw4">const</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+  <span class="co1">// ... non-comparison functions ...</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// compiler generates element-wise equality testing</span>
+ 
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  Point pt1<span class="br0">{</span><span class="nu0">3</span>, <span class="nu0">5</span><span class="br0">}</span>, pt2<span class="br0">{</span><span class="nu0">2</span>, <span class="nu0">5</span><span class="br0">}</span><span class="sy4">;</span>
+  <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/boolalpha.html"><span class="kw1768">std::<span class="me2">boolalpha</span></span></a>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy3">!</span><span class="sy1">=</span> pt2<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span>  <span class="co1">// true</span>
+    <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>pt1 <span class="sy1">==</span> pt1<span class="br0">)</span> <span class="sy1">&lt;&lt;</span> <span class="st0">'<span class="es1">\n</span>'</span><span class="sy4">;</span> <span class="co1">// true</span>
+  <span class="kw1">struct</span> <span class="br0">[</span><span class="br0">[</span>maybe_unused<span class="br0">]</span><span class="br0">]</span> <span class="br0">{</span> <span class="kw4">int</span> x<span class="br0">{</span><span class="br0">}</span>, y<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="br0">}</span> p, q<span class="sy4">;</span>
+  <span class="co1">// if (p == q) { } // Error: 'operator==' is not defined</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<h4><span class="mw-headline" id="Other_defaulted_comparison_operators">Other defaulted comparison operators</span></h4>
+<p>Any of the four relational operators can be explicitly defaulted. A defaulted relational operator must have the return type <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>.
+</p><p>Such operator will be deleted if overload resolution over <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">&lt;=&gt;</span> y</span></span> (considering also <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> with reversed order of parameters) fails, or if this <span class="t-c"><span class="mw-geshi cpp source-cpp">operator@</span></span> is not applicable to the result of that <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">&lt;=&gt;</span> y</span></span>. Otherwise, the defaulted <span class="t-c"><span class="mw-geshi cpp source-cpp">operator@</span></span> calls <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">&lt;=&gt;</span> y @ <span class="nu0">0</span></span></span> if an <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> with the original order of parameters was selected by overload resolution, or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="nu0">0</span> @ y <span class="sy1">&lt;=&gt;</span> x</span></span> otherwise:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> HasNoRelational <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">struct</span> C <span class="br0">{</span>
+  <span class="kw1">friend</span> HasNoRelational operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> C<span class="sy3">&amp;</span>, <span class="kw4">const</span> C<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw4">bool</span> operator<span class="sy1">&lt;</span><span class="br0">(</span><span class="kw4">const</span> C<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>                       <span class="co1">// ok, function is deleted</span>
+<span class="br0">}</span><span class="sy4">;</span></pre></div></div>
+<p>Similarly, <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy3">!</span><span class="sy1">=</span></span></span> can be defaulted. It is deleted if overload resolution over <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">==</span> y</span></span> (considering also <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span> with reversed order of parameters) fails, or if the result of <span class="t-c"><span class="mw-geshi cpp source-cpp">x <span class="sy1">==</span> y</span></span> does not have type <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span></span>. The defaulted <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy3">!</span><span class="sy1">=</span></span></span> calls <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="br0">(</span>x <span class="sy1">==</span> y<span class="br0">)</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy3">!</span><span class="br0">(</span>y <span class="sy1">==</span> x<span class="br0">)</span></span></span> as selected by overload resolution.
+</p><p>Defaulting the relational operators can be useful in order to create functions whose addresses may be taken. For other uses, it is sufficient to provide only <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> and <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">==</span></span></span>.
+</p>
+<h3><span class="mw-headline" id="Custom_comparisons_and_comparison_categories">Custom comparisons and comparison categories</span></h3>
+<p>When the default semantics are not suitable, such as when the members must be compared out of order, or must use a comparison that's different from their natural comparison, then the programmer can write <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> and let the compiler generate the appropriate two-way comparison operators. The kind of two-way comparison operators generated depends on the return type of the user-defined <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span>.
+</p><p>There are three available return types:
+</p>
+<table class="wikitable" style="font-size:85%; text-align:center;">
+
+<tr>
+<th> Return type
+</th>
+<th> Equivalent values are..
+</th>
+<th> Incomparable values are..
+</th></tr>
+<tr>
+<td> <a href="../utility/compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><tt>std::strong_ordering</tt></a>
+</td>
+<td> indistinguishable
+</td>
+<td> not allowed
+</td></tr>
+<tr>
+<td> <a href="../utility/compare/weak_ordering.html" title="cpp/utility/compare/weak ordering"><tt>std::weak_ordering</tt></a>
+</td>
+<td> distinguishable
+</td>
+<td> not allowed
+</td></tr>
+<tr>
+<td> <a href="../utility/compare/partial_ordering.html" title="cpp/utility/compare/partial ordering"><tt>std::partial_ordering</tt></a>
+</td>
+<td> distinguishable
+</td>
+<td> allowed
+</td></tr></table>
+<h4><span class="mw-headline" id="Strong_ordering">Strong ordering</span></h4>
+<p>An example of a custom <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> that returns <a href="../utility/compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><tt>std::strong_ordering</tt></a> is an operator that compares every member of a class, except in order that is different from the default (here: last name first).
+</p>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;compare&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+<span class="kw1">struct</span> Base <span class="br0">{</span>
+    <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> zip<span class="sy4">;</span>
+    <span class="kw4">auto</span> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> Base<span class="sy3">&amp;</span><span class="br0">)</span> <span class="kw4">const</span> <span class="sy1">=</span> <span class="kw1">default</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="kw1">struct</span> TotallyOrdered <span class="sy4">:</span> Base <span class="br0">{</span>
+  <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> tax_id<span class="sy4">;</span>
+  <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> first_name<span class="sy4">;</span>
+  <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> last_name<span class="sy4">;</span>
+<span class="kw1">public</span><span class="sy4">:</span>
+ <span class="co1">// custom operator&lt;=&gt; because we want to compare last names first:</span>
+ <a href="../utility/compare/strong_ordering.html"><span class="kw2664">std::<span class="me2">strong_ordering</span></span></a> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> TotallyOrdered<span class="sy3">&amp;</span> that<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span>
+   <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">auto</span> cmp <span class="sy1">=</span> <span class="br0">(</span>Base<span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span> <span class="sy1">&lt;=&gt;</span> <span class="br0">(</span>Base<span class="sy3">&amp;</span><span class="br0">)</span>that<span class="sy4">;</span> cmp <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span>
+       <span class="kw1">return</span> cmp<span class="sy4">;</span>
+   <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">auto</span> cmp <span class="sy1">=</span> last_name <span class="sy1">&lt;=&gt;</span> that.<span class="me1">last_name</span><span class="sy4">;</span> cmp <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span>
+       <span class="kw1">return</span> cmp<span class="sy4">;</span>
+   <span class="kw1">if</span> <span class="br0">(</span><span class="kw4">auto</span> cmp <span class="sy1">=</span> first_name <span class="sy1">&lt;=&gt;</span> that.<span class="me1">first_name</span><span class="sy4">;</span> cmp <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span>
+       <span class="kw1">return</span> cmp<span class="sy4">;</span>
+   <span class="kw1">return</span> tax_id <span class="sy1">&lt;=&gt;</span> that.<span class="me1">tax_id</span><span class="sy4">;</span>
+ <span class="br0">}</span>
+ <span class="co1">// ... non-comparison functions ...</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// compiler generates all four relational operators</span>
+ 
+<span class="co2">#include &lt;cassert&gt;</span>
+<span class="co2">#include &lt;set&gt;</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  TotallyOrdered to1<span class="br0">{</span><span class="st0">"a"</span>,<span class="st0">"b"</span>,<span class="st0">"c"</span>,<span class="st0">"d"</span><span class="br0">}</span>, to2<span class="br0">{</span><span class="st0">"a"</span>,<span class="st0">"b"</span>,<span class="st0">"d"</span>,<span class="st0">"c"</span><span class="br0">}</span><span class="sy4">;</span>
+  <a href="../container/set.html"><span class="kw1280">std::<span class="me2">set</span></span></a><span class="sy1">&lt;</span>TotallyOrdered<span class="sy1">&gt;</span> s<span class="sy4">;</span> <span class="co1">// ok</span>
+  s.<span class="me1">insert</span><span class="br0">(</span>to1<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ok</span>
+  <a href="../error/assert.html"><span class="kw775">assert</span></a><span class="br0">(</span>to2 <span class="sy1">&lt;=</span> to1<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ok, single call to &lt;=&gt;</span>
+<span class="br0">}</span></pre></div></div>
+</div>
+<p>Note: an operator that returns a <a href="../utility/compare/strong_ordering.html" title="cpp/utility/compare/strong ordering"><tt>std::strong_ordering</tt></a> should compare every member, because if any member is left out, substitutability can be compromised: it becomes possible to distinguish two values that compare equal.
+</p>
+<h4><span class="mw-headline" id="Weak_ordering">Weak ordering</span></h4>
+<p>An example of a custom <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> that returns <a href="../utility/compare/weak_ordering.html" title="cpp/utility/compare/weak ordering"><tt>std::weak_ordering</tt></a> is an operator that compares string members of a class in case-insensitive manner: this is different from the default comparison (so a custom operator is required) and it's possible to distinguish two strings that compare equal under this comparison.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> CaseInsensitiveString <span class="br0">{</span>
+  <a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="sy4">;</span>
+<span class="kw1">public</span><span class="sy4">:</span>
+  <a href="../utility/compare/weak_ordering.html"><span class="kw2666">std::<span class="me2">weak_ordering</span></span></a> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> CaseInsensitiveString<span class="sy3">&amp;</span> b<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span>
+    <span class="kw1">return</span> case_insensitive_compare<span class="br0">(</span>s.<span class="me1">c_str</span><span class="br0">(</span><span class="br0">)</span>, b.<span class="me1">s</span>.<span class="me1">c_str</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+  <a href="../utility/compare/weak_ordering.html"><span class="kw2666">std::<span class="me2">weak_ordering</span></span></a> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> b<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span>
+    <span class="kw1">return</span> case_insensitive_compare<span class="br0">(</span>s.<span class="me1">c_str</span><span class="br0">(</span><span class="br0">)</span>, b<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+  <span class="co1">// ... non-comparison functions ...</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// Compiler generates all four relational operators</span>
+CaseInsensitiveString cis1, cis2<span class="sy4">;</span>
+<a href="../container/set.html"><span class="kw1280">std::<span class="me2">set</span></span></a><span class="sy1">&lt;</span>CaseInsensitiveString<span class="sy1">&gt;</span> s<span class="sy4">;</span> <span class="co1">// ok</span>
+s.<span class="me1">insert</span><span class="br0">(</span><span class="coMULTI">/*...*/</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// ok</span>
+<span class="kw1">if</span> <span class="br0">(</span>cis1 <span class="sy1">&lt;=</span> cis2<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, performs one comparison operation</span>
+ 
+<span class="co1">// Compiler also generates all eight heterogeneous relational operators</span>
+<span class="kw1">if</span> <span class="br0">(</span>cis1 <span class="sy1">&lt;=</span> <span class="st0">"xyzzy"</span><span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, performs one comparison operation</span>
+<span class="kw1">if</span> <span class="br0">(</span><span class="st0">"xyzzy"</span> <span class="sy1">&gt;=</span> cis1<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, identical semantics</span></pre></div></div>
+<p>Note that this example demonstrates the effect a heterogeneous <span class="t-c"><span class="mw-geshi cpp source-cpp">operator<span class="sy1">&lt;=&gt;</span></span></span> has: it generates heterogeneous comparisons in both directions.
+</p>
+<h4><span class="mw-headline" id="Partial_ordering">Partial ordering</span></h4>
+<p>Partial ordering is an ordering that allows incomparable (unordered) values, such as NaN values in floating-point ordering, or, in this example, persons that are not related:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">class</span> PersonInFamilyTree <span class="br0">{</span> <span class="co1">// ...</span>
+<span class="kw1">public</span><span class="sy4">:</span>
+  <a href="../utility/compare/partial_ordering.html"><span class="kw2662">std::<span class="me2">partial_ordering</span></span></a> operator<span class="sy1">&lt;=&gt;</span><span class="br0">(</span><span class="kw4">const</span> PersonInFamilyTree<span class="sy3">&amp;</span> that<span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span>
+    <span class="kw1">if</span> <span class="br0">(</span>this<span class="sy2">-</span><span class="sy1">&gt;</span>is_the_same_person_as <span class="br0">(</span> that<span class="br0">)</span><span class="br0">)</span> <span class="kw1">return</span> partial_ordering<span class="sy4">::</span><span class="me2">equivalent</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>this<span class="sy2">-</span><span class="sy1">&gt;</span>is_transitive_child_of<span class="br0">(</span> that<span class="br0">)</span><span class="br0">)</span> <span class="kw1">return</span> partial_ordering<span class="sy4">::</span><span class="me2">less</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>that. <span class="me1">is_transitive_child_of</span><span class="br0">(</span><span class="sy2">*</span>this<span class="br0">)</span><span class="br0">)</span> <span class="kw1">return</span> partial_ordering<span class="sy4">::</span><span class="me2">greater</span><span class="sy4">;</span>
+    <span class="kw1">return</span> partial_ordering<span class="sy4">::</span><span class="me2">unordered</span><span class="sy4">;</span>
+  <span class="br0">}</span>
+  <span class="co1">// ... non-comparison functions ...</span>
+<span class="br0">}</span><span class="sy4">;</span>
+<span class="co1">// compiler generates all four relational operators</span>
+PersonInFamilyTree per1, per2<span class="sy4">;</span>
+<span class="kw1">if</span> <span class="br0">(</span>per1 <span class="sy1">&lt;</span> per2<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per2 is an ancestor of per1</span>
+<span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">(</span>per1 <span class="sy1">&gt;</span> per2<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per1 is an ancestor of per2</span>
+<span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">(</span><a href="../utility/compare/named_comparison_functions.html"><span class="kw2655">std::<span class="me2">is_eq</span></span></a><span class="br0">(</span>per1 <span class="sy1">&lt;=&gt;</span> per2<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per1 is per2</span>
+<span class="kw1">else</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// per1 and per2 are unrelated</span>
+<span class="kw1">if</span> <span class="br0">(</span>per1 <span class="sy1">&lt;=</span> per2<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per2 is per1 or an ancestor of per1</span>
+<span class="kw1">if</span> <span class="br0">(</span>per1 <span class="sy1">&gt;=</span> per2<span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per1 is per2 or an ancestor of per2</span>
+<span class="kw1">if</span> <span class="br0">(</span><a href="../utility/compare/named_comparison_functions.html"><span class="kw2660">std::<span class="me2">is_neq</span></span></a><span class="br0">(</span>per1 <span class="sy1">&lt;=&gt;</span> per2<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span> <span class="coMULTI">/*...*/</span> <span class="br0">}</span> <span class="co1">// ok, per1 is not per2</span></pre></div></div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<ul><li> <a href="overload_resolution.html#Call_to_an_overloaded_operator" title="cpp/language/overload resolution">overload resolution</a> in a call to an overloaded operator
+</li><li> Built-in <a href="operator_comparison.html#Three-way_comparison" title="cpp/language/operator comparison">three-way comparison operator</a>
+</li><li> <a href="operators.html#Comparison_operators" title="cpp/language/operators">Operator overloading</a> for comparison operators
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4721/1000000
+Preprocessor generated node count: 9140/1000000
+Post‐expand include size: 162221/2097152 bytes
+Template argument size: 28481/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:16800-0!*!0!!en!*!* and timestamp 20220518130819 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/default_comparisons&amp;oldid=139189">https://en.cppreference.com/mwiki/index.php?title=cpp/language/default_comparisons&amp;oldid=139189</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/default_comparisons">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 18 May 2022, at 06:08.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 170,760 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.042 secs. -->
+	</body>
+<!-- Cached 20220518132241 -->
+</html>

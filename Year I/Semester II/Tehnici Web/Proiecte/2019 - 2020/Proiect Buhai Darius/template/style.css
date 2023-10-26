@@ -1,0 +1,1005 @@
+:root{
+    --main-primarly-color: cornflowerblue;
+    --main-white-color: white;
+    --main-black-color: black;
+    --main-grey-color: #24292e;
+}
+
+@media (prefers-color-scheme: dark) {
+    /*:root{
+        --main-primarly-color: cornflowerblue;
+        --main-white-color: black;
+        --main-black-color: white;
+    }*/
+}
+
+body{
+    margin: 0px;
+    background-color: var(--main-white-color);
+    min-height: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-flow: column;
+}
+
+/*
+
+Navigation bar
+
+ */
+
+nav{
+    animation: 400ms fadeIn;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: var(--main-grey-color);
+}
+
+.nav-content{
+    max-width: calc(1280px + 14%);
+    height: 100%;
+    flex: 1 0 auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.nav-content ul{
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-content a{
+    margin-right: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    transition: color 200ms;
+}
+
+.nav-content a:hover{
+    color: var(--main-primarly-color);
+}
+
+.nav-content ul>li{
+    animation: 400ms fadeIn;
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    padding: 22px 0;
+    color: var(--main-black-color);
+    font-size: 14px;
+    line-height: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: color,background-color 200ms;
+}
+
+.nav-content ul>li:hover a{
+    color: var(--main-primarly-color);
+}
+
+.nav-content ul>li.active a{
+    color: var(--main-primarly-color);
+}
+
+.nav-content button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    height: 43px;
+    line-height: 40px;
+    cursor: pointer;
+    transition-property: border-color, background, color;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+    color: rgb(255, 255, 255);
+    min-width: 90px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--main-primarly-color);
+    border-image: initial;
+    padding: 0px 12px;
+    overflow: hidden;
+    background: var(--main-primarly-color);
+}
+
+.nav-content button.danger{
+    background-color: indianred;
+    border-color: indianred !important;
+}
+
+.nav-content button:hover{
+    background-color: transparent !important;
+}
+
+.nav-content button:disabled{
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.nav-container .nav-toggle{
+    display: none;
+    border: none;
+    background-color: transparent;
+}
+
+/* Medium devices (phones, 992 and down) */
+@media only screen and (max-width: 992px) {
+    nav{
+        animation: none !important;
+        height: 50px;
+        padding-bottom: 30px;
+        overflow: hidden;
+    }
+    nav.expanded{
+        animation: animateNavIn 300ms !important;
+        height: auto;
+    }
+    .nav-content{
+        display: none;
+        height: auto;
+        margin-top: 90px;
+    }
+    nav.expanded .nav-content{
+        display: block;
+    }
+    .nav-content ul>li {
+        display: block;
+        padding-bottom: 30px;
+        padding-top: 0;
+    }
+    .nav-content ul>li a{
+        font-size: 20px;
+    }
+    .nav-container .nav-toggle{
+        display: block;
+        color: white;
+        float: right;
+        margin-right: 25px;
+        margin-top: 25px;
+        cursor: pointer;
+    }
+}
+
+/*
+    Bill container
+ */
+
+.bill-container{
+    var(--bil-width, 30%);
+    overflow: scroll;
+    animation: 200ms animateBillIn;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 12;
+    background-color: var(--main-grey-color);
+}
+
+/* Extra small and small devices (phones, 600px and down) */
+@media only screen and (max-width: 768px) {
+    .bill-container{
+        width: 100%;
+    }
+    @keyframes animateBillIn{
+        from {right: -100%;}
+        to {right: 0;}
+    }
+
+    @keyframes animateBillOut{
+        from {right: 0;}
+        to{right: -100%;display: none;}
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .bill-container{
+        width: 60%;
+    }
+    @keyframes animateBillIn{
+        from {right: -60%;}
+        to {right: 0;}
+    }
+
+    @keyframes animateBillOut{
+        from {right: 0;}
+        to{right: -60%;display: none;}
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .bill-container{
+        width: 30%;
+    }
+    @keyframes animateBillIn{
+        from {right: -30%;}
+        to {right: 0;}
+    }
+
+    @keyframes animateBillOut{
+        from {right: 0;}
+        to{right: -30%;display: none;}
+    }
+}
+
+.bill-container.hide{
+    animation: 300ms animateBillOut;
+}
+
+.bill-container button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    vertical-align: center;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.bill-container button span{
+    font-size: 18px;
+    margin-left: 8px;
+    position: relative;
+    bottom: 2px;
+}
+
+.bill-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-content: start;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bill-content a{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.bill-item{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    height: 90px;
+    color: white;
+    border-bottom: solid 1px rgba(255,255,255, 0.1);
+    display: grid;
+    grid-template-columns: 30% 60% 10%;
+}
+
+.bill-item img{
+    height: 70px;
+    max-width: 90%;
+    border-radius: 2px;
+}
+
+.bill-item div{
+    vertical-align: center;
+}
+
+.bill-item h4{
+    font-family: "Montserrat", sans-serif;
+    color: whitesmoke;
+    font-weight: 500;
+    font-variant-ligatures: common-ligatures;
+    margin: 0;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+    display: block;
+    color: #b3b3b1;
+}
+
+.bill-item p{
+    font-weight: 300;
+    font-size: 13px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+/*
+
+ Menu content
+
+ */
+
+.no-transition{
+    transition: none;
+}
+
+.menu-container{
+    max-width: calc(1280px + 14%);
+    flex: 1 0 auto;
+    margin: 100px auto;
+    box-sizing: border-box;
+    min-height: 70vh;
+    padding: 5% 7% 7% 7%;
+}
+
+.menu-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-item{
+    animation: 400ms fadeIn;
+    height: 450px;
+    margin-left: 1%;
+    padding: 2% 2% 2% 2%;
+    text-align: center;
+    align-content: space-between;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .menu-item{
+        width: 99%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .menu-item{
+        width: 44%;
+    }
+    .menu-item-horizontal{
+        width: 100% !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .menu-item{
+        width: 44%;
+    }
+    .menu-item-horizontal{
+        width: 100% !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .menu-item{
+        width: 28%;
+    }
+    .menu-item-horizontal{
+        width: 100% !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .menu-item{
+        width: 20%;
+    }
+    .menu-item-horizontal{
+        width: 100% !important;
+    }
+}
+
+.menu-item:hover img{
+    transition: 500ms;
+    padding-bottom: 0;
+    padding-top: 6px;
+}
+
+.menu-item-image{
+    transition: 500ms;
+    padding-bottom: 6px;
+    cursor: pointer;
+    text-align: center;
+    max-width: 100%;
+    height: 40%;
+}
+
+.menu-item-title{
+    text-align: left;
+    font: inherit;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: no-common-ligatures;
+    border-collapse: separate;
+    border-spacing: 31.016px 0;
+    box-sizing: border-box;
+    margin: 10px 0 0 0;
+    color: #000;
+    font-size: 20px;
+    line-height: 1.125;
+    font-family: Dodo,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Oxygen-Sans,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-weight: 500;
+}
+
+.menu-item-description{
+    margin-bottom: 15%;
+    text-align: left;
+    height: 90px;
+    overflow: hidden;
+    color: #878686;
+    font-size: 15px;
+    line-height: 1.375;
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Oxygen-Sans,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+.menu-item-price-container{
+    display: flex;
+    align-content: space-between;
+}
+
+.menu-item-button{
+    color:black;
+    border: 1px solid rgb(230,230,230);
+    background-color: rgb(230,230,230);
+    border-radius: 10px;
+    width: 130px;
+    box-sizing: border-box;
+    overflow: visible;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 5%;
+    transition: background-color .3s ease;
+    line-height: 1;
+    padding: 12px;
+    font-family: Dodo,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Oxygen-Sans,Helvetica Neue,Arial,Ap
+}
+
+.menu-item-button.success{
+     background-color: #4CAF50;
+     border-color: #4CAF50;
+     color: white;
+ }
+
+.menu-item-button.success:hover{
+    background-color: seagreen;
+    color: white;
+}
+
+.menu-item-button:hover{
+    color: black;
+    border-color: rgb(240,240,240);
+    background-color: rgb(240,240,240);
+}
+
+.menu-item-price{
+    text-align: left;
+    font: inherit;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: no-common-ligatures;
+    border-collapse: separate;
+    border-spacing: 31.016px 0;
+    box-sizing: border-box;
+    -webkit-box-flex: 2;
+    flex-grow: 2;
+    display: inline-block;
+    width: 90px;
+    margin: auto;
+    padding-right: 4px;
+    color: #000;
+    line-height: 1;
+    font-family: Dodo,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Oxygen-Sans,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+/**
+
+Modal
+
+ */
+
+.modal{
+    position: fixed;
+    animation: 200ms modalShowAnimation;
+    z-index: 999;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal.hide{
+    top: 100%;
+    animation: 300ms modalHideAnimation;
+}
+
+.modal-container{
+    background-color: white;
+    border-radius: 8px;
+    margin: 1.75rem auto;
+    padding: 0;
+    transition: 300ms;
+}
+
+.modal-close{
+    padding: 10px;
+    text-align: right;
+}
+
+.modal-container button{
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+    align-self: end;
+    align-content: end;
+    justify-content: end;
+    align-items: end;
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.modal-container button span{
+    font-size: 18px;
+    margin-left: 8px;
+    position: relative;
+    bottom: 2px;
+}
+
+.modal-content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 80%;
+    padding-bottom: 30px;
+}
+
+.modal-content .img{
+    width: 60%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    justify-content: center;
+}
+
+.modal-content img{
+    max-width: 80%;
+    max-height: 300px;
+}
+
+.modal-content .details-content{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    text-align: left;
+    height: 100%;
+}
+
+.modal-content .details-content h3{
+    font-size: 26px;
+    line-height: 1.1;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+}
+
+.modal-content .details-content input{
+    font-size: 26px;
+    border: none;
+    width: 90%;
+    line-height: 1.1;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+}
+
+.modal-content .details-content p{
+    font-size: 15px;
+    line-height: 1.375;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+}
+
+.modal-content .details-content textarea{
+    font-size: 15px;
+    width: 90%;
+    border-radius: 6px;
+    border-color: var(--main-grey-color);
+    min-height: 200px;
+    text-align: left;
+    line-height: 1.375;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+}
+
+.modal-content .details-content button{
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    align-self: center;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    width: 150px;
+    color: rgb(255, 255, 255);
+    height: 48px;
+    font-size: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--main-primarly-color);
+    border-image: initial;
+    padding: 0px 12px;
+    overflow: hidden;
+    background: var(--main-primarly-color);
+    border-radius: 10px;
+}
+
+.modal-content .details-content button.success{
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.modal-content .details-content button.success:hover{
+    background-color: seagreen;
+    color: white;
+}
+
+.modal-content .details-content button.save{
+
+}
+
+.modal-content .details-content button.delete{
+    background: transparent;
+    color: indianred;
+    border: none;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) {
+    .modal-content .details{
+        width: 100%;
+        height: 50%;
+    }
+    .modal-content .img{
+        width: 100%;
+        height: 50%;
+    }
+    .modal{
+        width: 90%;
+        left: 5%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .modal-content .details{
+        width: 40%;
+    }
+    .modal-content .img{
+        width: 60%;
+    }
+    .modal{
+        width: 70%;
+        left: 15%;
+    }
+}
+
+/*
+    Footer
+ */
+
+.footer{
+    height: 80px;
+    width: 100%;
+    background-color: var(--main-grey-color);
+}
+
+/*
+    Others
+ */
+
+.site-overlay{
+    animation: 200ms fadeBlurIn;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    z-index: 11;
+}
+
+.site-overlay.hide{
+    animation: 300ms fadeBlurOut;
+    backdrop-filter: none;
+    background-color: transparent;
+}
+
+.site-overlay.dark{
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+.site-overlay.white{
+    background-color: rgba(255,255,255,0.8) !important;
+}
+
+/*
+    Animations
+ */
+
+@keyframes fadeIn {
+    0% {
+        filter: opacity(0%);
+    }
+    100% {
+        filter: opacity(100%);
+    }
+}
+
+@keyframes fadeBlurIn{
+    from {
+        backdrop-filter: blur(0);
+        background-color: transparent;
+    }
+    to {
+        backdrop-filter: blur(5px);
+    }
+}
+
+@keyframes fadeBlurOut{
+    to {
+        display: none;
+        backdrop-filter: blur(0);
+        background-color: transparent;
+    }
+}
+
+@keyframes modalShowAnimation{
+    from {
+        top: 100%;
+    }
+    to {
+        top: 50px;
+    }
+}
+
+@keyframes modalHideAnimation{
+    from {
+        display: block;
+        top: 50px;
+    }
+    to {
+        top: 100%;
+        display: none;
+    }
+}
+
+@keyframes animateNavIn{
+    from {
+        height: 50px;
+    }
+    to {
+        height: auto;
+    }
+}
+
+@keyframes animateNavOut{
+    from {
+        height: auto;
+    }
+    to {
+        height: 50px;
+    }
+}
+
+[hidden]{
+    display:none !important;
+}
+
+.rating{;
+    color: dimgray;
+    text-align: left;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.rating .star.active{
+    color: orange;
+}
+
+.rating .star:hover, .star.active:hover{
+    color: darkorange;
+}
+
+/** Product style */
+.product-section{
+    margin-top: 200px;
+}
+
+.related-products{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding-top: 40px !important;
+}
+
+.related-products h1{
+    margin-bottom: 70px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.product-details{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 80%;
+    padding-bottom: 30px;
+}
+
+.product-details .img{
+    width: 60%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    justify-content: center;
+}
+
+.product-details img{
+    max-width: 80%;
+    max-height: 300px;
+}
+
+.product-details .details-content{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    text-align: left;
+    height: 100%;
+}
+
+.product-details .details-content h3{
+    font-size: 26px;
+    line-height: 1.1;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+}
+
+.product-details .details-content input{
+    font-size: 26px;
+    border: none;
+    width: 90%;
+    line-height: 1.1;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+}
+
+.product-details .details-content p{
+    font-size: 15px;
+    line-height: 1.375;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+}
+
+.product-details .details-content textarea{
+    font-size: 15px;
+    width: 90%;
+    border-radius: 6px;
+    border-color: var(--main-grey-color);
+    min-height: 200px;
+    text-align: left;
+    line-height: 1.375;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+}
+
+.product-details .details-content button{
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    align-self: center;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    width: 150px;
+    color: rgb(255, 255, 255);
+    height: 48px;
+    font-size: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--main-primarly-color);
+    border-image: initial;
+    padding: 0px 12px;
+    overflow: hidden;
+    background: var(--main-primarly-color);
+    border-radius: 10px;
+}
+
+.product-details .details-content button.success{
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.product-details .details-content button.success:hover{
+    background-color: seagreen;
+    color: white;
+}
+
+.product-details .details-content button.delete{
+    background: transparent;
+    color: indianred;
+    border: none;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) {
+    .product-details .details{
+        width: 100%;
+        height: 50%;
+    }
+    .product-details .img{
+        width: 100%;
+        height: 50%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .product-details .details{
+        width: 40%;
+    }
+    .product-details .img{
+        width: 60%;
+    }
+}
+
+/** Age calculator **/
+.age-calculator{
+    max-width: calc(1280px + 14%);
+    flex: 1 0 auto;
+    margin: 100px auto;
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 10px;
+    margin-bottom: 50px !important;
+}
+
+.age-calculator button{
+    background-color: var(--main-primarly-color);
+    border-radius: 5px;
+    padding: 11px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.age-calculator h4{
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+.age-calculator input{
+    border-radius: 5px;
+    padding: 10px;
+    border-color: transparent;
+    background-color: white;
+}

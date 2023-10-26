@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Standard library header &lt;format&gt;Â (C++20) - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/header/format","wgTitle":"cpp/header/format","wgCurRevisionId":140980,"wgArticleId":18664,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/header/format","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_header_format skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">Standard library header</span> &lt;format&gt; <span class="t-mark-rev t-since-cxx20">(C++20)</span></h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../header.html" title="cpp/header">header</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../header.html" title="cpp/header"> Standard Library headers </a><div class="t-navbar-menu"><div>Note: a slash '/' in a revision mark means that the header was deprecated and/or removed.
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> Language Support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstddef.html" title="cpp/header/cstddef"><tt>&lt;cstddef&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdlib.html" title="cpp/header/cstdlib"><tt>&lt;cstdlib&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="version.html" title="cpp/header/version"><tt>&lt;version&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="limits.html" title="cpp/header/limits"><tt>&lt;limits&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="climits.html" title="cpp/header/climits"><tt>&lt;climits&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfloat.html" title="cpp/header/cfloat"><tt>&lt;cfloat&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdint.html" title="cpp/header/cstdint"><tt>&lt;cstdint&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/header/new"><tt>&lt;new&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typeinfo.html" title="cpp/header/typeinfo"><tt>&lt;typeinfo&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="source_location.html" title="cpp/header/source location"><tt>&lt;source_location&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="exception.html" title="cpp/header/exception"><tt>&lt;exception&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/header/initializer list"><tt>&lt;initializer_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compare.html" title="cpp/header/compare"><tt>&lt;compare&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="coroutine.html" title="cpp/header/coroutine"><tt>&lt;coroutine&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csignal.html" title="cpp/header/csignal"><tt>&lt;csignal&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="csetjmp.html" title="cpp/header/csetjmp"><tt>&lt;csetjmp&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdarg.html" title="cpp/header/cstdarg"><tt>&lt;cstdarg&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Concepts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="concepts.html" title="cpp/header/concepts"><tt>&lt;concepts&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Diagnostics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stdexcept.html" title="cpp/header/stdexcept"><tt>&lt;stdexcept&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cassert.html" title="cpp/header/cassert"><tt>&lt;cassert&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cerrno.html" title="cpp/header/cerrno"><tt>&lt;cerrno&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="system_error.html" title="cpp/header/system error"><tt>&lt;system_error&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> General utilities</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="utility.html" title="cpp/header/utility"><tt>&lt;utility&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory.html" title="cpp/header/memory"><tt>&lt;memory&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="memory_resource.html" title="cpp/header/memory resource"><tt>&lt;memory_resource&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="scoped_allocator.html" title="cpp/header/scoped allocator"><tt>&lt;scoped_allocator&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expected.html" title="cpp/header/expected"><tt>&lt;expected&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bitset.html" title="cpp/header/bitset"><tt>&lt;bitset&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="tuple.html" title="cpp/header/tuple"><tt>&lt;tuple&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="optional.html" title="cpp/header/optional"><tt>&lt;optional&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="any.html" title="cpp/header/any"><tt>&lt;any&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="variant.html" title="cpp/header/variant"><tt>&lt;variant&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_traits.html" title="cpp/header/type traits"><tt>&lt;type_traits&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ratio.html" title="cpp/header/ratio"><tt>&lt;ratio&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="chrono.html" title="cpp/header/chrono"><tt>&lt;chrono&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="typeindex.html" title="cpp/header/typeindex"><tt>&lt;typeindex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functional.html" title="cpp/header/functional"><tt>&lt;functional&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stacktrace.html" title="cpp/header/stacktrace"><tt>&lt;stacktrace&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ctime.html" title="cpp/header/ctime"><tt>&lt;ctime&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Strings</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="string.html" title="cpp/header/string"><tt>&lt;string&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_view.html" title="cpp/header/string view"><tt>&lt;string_view&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstring.html" title="cpp/header/cstring"><tt>&lt;cstring&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="charconv.html" title="cpp/header/charconv"><tt>&lt;charconv&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"><tt>&lt;format&gt;</tt></strong> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cctype.html" title="cpp/header/cctype"><tt>&lt;cctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cwctype.html" title="cpp/header/cwctype"><tt>&lt;cwctype&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cwchar.html" title="cpp/header/cwchar"><tt>&lt;cwchar&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cuchar.html" title="cpp/header/cuchar"><tt>&lt;cuchar&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Localization</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="locale.html" title="cpp/header/locale"><tt>&lt;locale&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="clocale.html" title="cpp/header/clocale"><tt>&lt;clocale&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="codecvt.html" title="cpp/header/codecvt"><tt>&lt;codecvt&gt;</tt></a> <span class="t-mark">(C++11/17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Containers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="span.html" title="cpp/header/span"><tt>&lt;span&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="array.html" title="cpp/header/array"><tt>&lt;array&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="vector.html" title="cpp/header/vector"><tt>&lt;vector&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="deque.html" title="cpp/header/deque"><tt>&lt;deque&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="forward_list.html" title="cpp/header/forward list"><tt>&lt;forward_list&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list.html" title="cpp/header/list"><tt>&lt;list&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="map.html" title="cpp/header/map"><tt>&lt;map&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="set.html" title="cpp/header/set"><tt>&lt;set&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="queue.html" title="cpp/header/queue"><tt>&lt;queue&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="unordered_map.html" title="cpp/header/unordered map"><tt>&lt;unordered_map&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="unordered_set.html" title="cpp/header/unordered set"><tt>&lt;unordered_set&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stack.html" title="cpp/header/stack"><tt>&lt;stack&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iterators</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iterator.html" title="cpp/header/iterator"><tt>&lt;iterator&gt;</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Ranges</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ranges.html" title="cpp/header/ranges"><tt>&lt;ranges&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Algorithms</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="algorithm.html" title="cpp/header/algorithm"><tt>&lt;algorithm&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="execution.html" title="cpp/header/execution"><tt>&lt;execution&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Numerics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="complex.html" title="cpp/header/complex"><tt>&lt;complex&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="random.html" title="cpp/header/random"><tt>&lt;random&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="valarray.html" title="cpp/header/valarray"><tt>&lt;valarray&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numeric.html" title="cpp/header/numeric"><tt>&lt;numeric&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="bit.html" title="cpp/header/bit"><tt>&lt;bit&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="numbers.html" title="cpp/header/numbers"><tt>&lt;numbers&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cfenv.html" title="cpp/header/cfenv"><tt>&lt;cfenv&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cmath.html" title="cpp/header/cmath"><tt>&lt;cmath&gt;</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Input/Output</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="iosfwd.html" title="cpp/header/iosfwd"><tt>&lt;iosfwd&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ios.html" title="cpp/header/ios"><tt>&lt;ios&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iomanip.html" title="cpp/header/iomanip"><tt>&lt;iomanip&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="streambuf.html" title="cpp/header/streambuf"><tt>&lt;streambuf&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="istream.html" title="cpp/header/istream"><tt>&lt;istream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ostream.html" title="cpp/header/ostream"><tt>&lt;ostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="iostream.html" title="cpp/header/iostream"><tt>&lt;iostream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="syncstream.html" title="cpp/header/syncstream"><tt>&lt;syncstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="spanstream.html" title="cpp/header/spanstream"><tt>&lt;spanstream&gt;</tt></a> <span class="t-mark-rev t-since-cxx23">(C++23)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sstream.html" title="cpp/header/sstream"><tt>&lt;sstream&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="fstream.html" title="cpp/header/fstream"><tt>&lt;fstream&gt;</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdio.html" title="cpp/header/cstdio"><tt>&lt;cstdio&gt;</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cinttypes.html" title="cpp/header/cinttypes"><tt>&lt;cinttypes&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="strstream.html" title="cpp/header/strstream"><tt>&lt;strstream&gt;</tt></a> <span class="t-mark">(C++98/)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Regular expressions</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="regex.html" title="cpp/header/regex"><tt>&lt;regex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Filesystem support</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="filesystem.html" title="cpp/header/filesystem"><tt>&lt;filesystem&gt;</tt></a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Thread support</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="thread.html" title="cpp/header/thread"><tt>&lt;thread&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="atomic.html" title="cpp/header/atomic"><tt>&lt;atomic&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="mutex.html" title="cpp/header/mutex"><tt>&lt;mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="shared_mutex.html" title="cpp/header/shared mutex"><tt>&lt;shared_mutex&gt;</tt></a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="condition_variable.html" title="cpp/header/condition variable"><tt>&lt;condition_variable&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span>  </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="future.html" title="cpp/header/future"><tt>&lt;future&gt;</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="stop_token.html" title="cpp/header/stop token"><tt>&lt;stop_token&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="semaphore.html" title="cpp/header/semaphore"><tt>&lt;semaphore&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="latch.html" title="cpp/header/latch"><tt>&lt;latch&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="barrier.html" title="cpp/header/barrier"><tt>&lt;barrier&gt;</tt></a> <span class="t-mark-rev t-since-cxx20">(C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <br>
+</td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> C compatibility</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cstdbool.html" title="cpp/header/cstdbool"><tt>&lt;cstdbool&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="ccomplex.html" title="cpp/header/ccomplex"><tt>&lt;ccomplex&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ctgmath.html" title="cpp/header/ctgmath"><tt>&lt;ctgmath&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cstdalign.html" title="cpp/header/cstdalign"><tt>&lt;cstdalign&gt;</tt></a> <span class="t-mark">(C++11/17/20)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="ciso646.html" title="cpp/header/ciso646"><tt>&lt;ciso646&gt;</tt></a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="stdatomic.h.html" title="cpp/header/stdatomic.h"><tt>&lt;stdatomic.h&gt;</tt></a></td></tr>
+</table></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>This header is part of the <a href="../utility/format.html" title="cpp/utility/format">format</a> library.
+</p>
+<table class="t-dsc-begin">
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Classes"> Classes</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/formatter.html" title="cpp/utility/format/formatter"> <span class="t-lines"><span>formatter</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   class template that defines formatting rules for a given type  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/basic_format_parse_context.html" title="cpp/utility/format/basic format parse context"> <span class="t-lines"><span>basic_format_parse_context</span><span>format_parse_context</span><span>wformat_parse_context</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   formatting string parser state  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/basic_format_context.html" title="cpp/utility/format/basic format context"> <span class="t-lines"><span>basic_format_context</span><span>format_context</span><span>wformat_context</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   formatting state, including all formatting arguments and the output iterator  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/basic_format_arg.html" title="cpp/utility/format/basic format arg"> <span class="t-lines"><span>basic_format_arg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   class template that provides access to a formatting argument for user-defined formatters  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/basic_format_args.html" title="cpp/utility/format/basic format args"> <span class="t-lines"><span>basic_format_args</span><span>format_args</span><span>wformat_args</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   class that provides access to all formatting arguments  <br> <span class="t-mark">(class template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/format_error.html" title="cpp/utility/format/format error"> <span class="t-lines"><span>format_error</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   exception type thrown on formatting errors  <br> <span class="t-mark">(class)</span> </td></tr>
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Functions"> Functions</span></h3>
+</td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/format.html" title="cpp/utility/format/format"> <span class="t-lines"><span>format</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   stores formatted representation of the arguments in a new string  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/format_to.html" title="cpp/utility/format/format to"> <span class="t-lines"><span>format_to</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   writes out formatted representation of its arguments through an output iterator  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/format_to_n.html" title="cpp/utility/format/format to n"> <span class="t-lines"><span>format_to_n</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   writes out formatted representation of its arguments through an output iterator, not exceeding specified size  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/formatted_size.html" title="cpp/utility/format/formatted size"> <span class="t-lines"><span>formatted_size</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   determines the number of characters necessary to store the formatted representation of its arguments  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/vformat.html" title="cpp/utility/format/vformat"> <span class="t-lines"><span>vformat</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   non-template variant of <span class="t-lc"><a href="../utility/format/format.html" title="cpp/utility/format/format">std::format</a></span> using type-erased argument representation  <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/vformat_to.html" title="cpp/utility/format/vformat to"> <span class="t-lines"><span>vformat_to</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   non-template variant of <span class="t-lc"><a href="../utility/format/format_to.html" title="cpp/utility/format/format to">std::format_to</a></span> using type-erased argument representation  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/visit_format_arg.html" title="cpp/utility/format/visit format arg"> <span class="t-lines"><span>visit_format_arg</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   argument visitation interface for user-defined formatters  <br> <span class="t-mark">(function template)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="../utility/format/make_format_args.html" title="cpp/utility/format/make format args"> <span class="t-lines"><span>make_format_args</span><span>make_wformat_args</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span><span><span class="t-mark-rev t-since-cxx20">(C++20)</span></span></span></div></div>
+</td>
+<td>   creates a type-erased object referencing all formatting arguments, convertible to format_args  <br> <span class="t-mark">(function template)</span> </td></tr>
+</table>
+<h3><span class="mw-headline" id="Synopsis">Synopsis</span></h3>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="co1">// basic format string</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> charT, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> <span class="coMULTI">/*basic-format-string*/</span><span class="sy4">;</span> <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> <span class="coMULTI">/*format-string*/</span> 
+    <span class="sy1">=</span> <span class="coMULTI">/*basic-format-string*/</span><span class="sy1">&lt;</span><span class="kw4">char</span>, type_identity_t<span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span>...<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// exposition only</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="kw1">using</span> <span class="coMULTI">/*wformat-string*/</span> 
+    <span class="sy1">=</span> <span class="coMULTI">/*basic-format-string*/</span><span class="sy1">&lt;</span><span class="kw4">wchar_t</span>, type_identity_t<span class="sy1">&lt;</span>Args<span class="sy1">&gt;</span>...<span class="sy1">&gt;</span><span class="sy4">;</span> <span class="co1">// exposition only</span>
+ 
+  <span class="co1">// formatting functions</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    string format<span class="br0">(</span><span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    wstring format<span class="br0">(</span><span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    string format<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                  <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    wstring format<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                   <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  string vformat<span class="br0">(</span>string_view fmt, format_args args<span class="br0">)</span><span class="sy4">;</span>
+  wstring vformat<span class="br0">(</span>wstring_view fmt, wformat_args args<span class="br0">)</span><span class="sy4">;</span>
+  string vformat<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, string_view fmt, format_args args<span class="br0">)</span><span class="sy4">;</span>
+  wstring vformat<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, wstring_view fmt, wformat_args args<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    Out format_to<span class="br0">(</span>Out out, <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    Out format_to<span class="br0">(</span>Out out, <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    Out format_to<span class="br0">(</span>Out out, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                  <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    Out format_to<span class="br0">(</span>Out out, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                  <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out<span class="sy1">&gt;</span>
+    Out vformat_to<span class="br0">(</span>Out out, string_view fmt, format_args args<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out<span class="sy1">&gt;</span>
+    Out vformat_to<span class="br0">(</span>Out out, wstring_view fmt, wformat_args args<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out<span class="sy1">&gt;</span>
+    Out vformat_to<span class="br0">(</span>Out out, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, string_view fmt, format_args args<span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out<span class="sy1">&gt;</span>
+    Out vformat_to<span class="br0">(</span>Out out, <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, wstring_view fmt, wformat_args args<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out<span class="sy1">&gt;</span> <span class="kw1">struct</span> format_to_n_result <span class="br0">{</span>
+    Out out<span class="sy4">;</span>
+    iter_difference_t<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> size<span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    format_to_n_result<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> format_to_n<span class="br0">(</span>Out out, iter_difference_t<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> n,
+                                        <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, 
+                                        Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    format_to_n_result<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> format_to_n<span class="br0">(</span>Out out, iter_difference_t<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> n,
+                                        <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, 
+                                        Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    format_to_n_result<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> format_to_n<span class="br0">(</span>Out out, iter_difference_t<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> n,
+                                        <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                                        <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt,
+                                        Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    format_to_n_result<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> format_to_n<span class="br0">(</span>Out out, iter_difference_t<span class="sy1">&lt;</span>Out<span class="sy1">&gt;</span> n,
+                                        <span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                                        <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt,
+                                        Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    size_t formatted_size<span class="br0">(</span><span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    size_t formatted_size<span class="br0">(</span><span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    size_t formatted_size<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                          <span class="coMULTI">/*format-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    size_t formatted_size<span class="br0">(</span><span class="kw4">const</span> locale<span class="sy3">&amp;</span> loc, 
+                          <span class="coMULTI">/*wformat-string*/</span><span class="sy1">&lt;</span>Args...<span class="sy1">&gt;</span> fmt, Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// formatter</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw1">class</span> charT <span class="sy1">=</span> <span class="kw4">char</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> formatter<span class="sy4">;</span>
+ 
+  <span class="co1">// class template basic_format_parse_context</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> charT<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_format_parse_context<span class="sy4">;</span>
+  <span class="kw1">using</span> format_parse_context <span class="sy1">=</span> basic_format_parse_context<span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wformat_parse_context <span class="sy1">=</span> basic_format_parse_context<span class="sy1">&lt;</span><span class="kw4">wchar_t</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span> charT<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_format_context<span class="sy4">;</span>
+  <span class="kw1">using</span> format_context <span class="sy1">=</span> basic_format_context<span class="sy1">&lt;</span><span class="coMULTI">/*unspecified*/</span>, <span class="kw4">char</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wformat_context <span class="sy1">=</span> basic_format_context<span class="sy1">&lt;</span><span class="coMULTI">/*unspecified*/</span>, <span class="kw4">wchar_t</span><span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// arguments</span>
+  <span class="co1">// class template basic_format_arg</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_format_arg<span class="sy4">;</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Visitor, <span class="kw1">class</span> Context<span class="sy1">&gt;</span>
+    <span class="coMULTI">/* see description */</span> visit_format_arg<span class="br0">(</span>Visitor<span class="sy3">&amp;&amp;</span> vis, basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span> arg<span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template format-arg-store</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span> <span class="kw1">struct</span> <span class="coMULTI">/*format-arg-store*/</span><span class="sy4">;</span>  <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context <span class="sy1">=</span> format_context, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="coMULTI">/*format-arg-store*/</span><span class="sy1">&lt;</span>Context, Args...<span class="sy1">&gt;</span>
+      make_format_args<span class="br0">(</span>Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+    <span class="coMULTI">/*format-arg-store*/</span><span class="sy1">&lt;</span>wformat_context, Args...<span class="sy1">&gt;</span>
+      make_wformat_args<span class="br0">(</span>Args<span class="sy3">&amp;&amp;</span>... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class template basic_format_args</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_format_args<span class="sy4">;</span>
+  <span class="kw1">using</span> format_args <span class="sy1">=</span> basic_format_args<span class="sy1">&lt;</span>format_context<span class="sy1">&gt;</span><span class="sy4">;</span>
+  <span class="kw1">using</span> wformat_args <span class="sy1">=</span> basic_format_args<span class="sy1">&lt;</span>wformat_context<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+  <span class="co1">// class format_error</span>
+  <span class="kw1">class</span> format_error<span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_basic-format-string">Class template <i><code>basic-format-string</code></i></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> charT, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+  <span class="kw1">struct</span> <span class="coMULTI">/*basic-format-string*/</span> <span class="br0">{</span>  <span class="co1">// exposition only</span>
+  <span class="kw1">private</span><span class="sy4">:</span>
+    basic_string_view<span class="sy1">&lt;</span>charT<span class="sy1">&gt;</span> str_<span class="sy4">;</span>  <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> consteval <span class="coMULTI">/*basic-format-string*/</span><span class="br0">(</span><span class="kw4">const</span> T<span class="sy3">&amp;</span> s<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::basic_format_parse_context">Class template <span class="t-lc"><a href="../utility/format/basic_format_parse_context.html" title="cpp/utility/format/basic format parse context">std::basic_format_parse_context</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> charT<span class="sy1">&gt;</span>
+  <span class="kw1">class</span> basic_format_parse_context <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">using</span> char_type <span class="sy1">=</span> charT<span class="sy4">;</span>
+    <span class="kw1">using</span> const_iterator <span class="sy1">=</span> <span class="kw1">typename</span> basic_string_view<span class="sy1">&lt;</span>charT<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">const_iterator</span><span class="sy4">;</span>
+    <span class="kw1">using</span> iterator <span class="sy1">=</span> const_iterator<span class="sy4">;</span>
+ 
+  <span class="kw1">private</span><span class="sy4">:</span>
+    iterator begin_<span class="sy4">;</span>                                    <span class="co1">// exposition only</span>
+    iterator end_<span class="sy4">;</span>                                      <span class="co1">// exposition only</span>
+    <span class="kw2">enum</span> indexing <span class="br0">{</span> unknown, manual, automatic <span class="br0">}</span><span class="sy4">;</span>       <span class="co1">// exposition only</span>
+    indexing indexing_<span class="sy4">;</span>                                 <span class="co1">// exposition only</span>
+    size_t next_arg_id_<span class="sy4">;</span>                                <span class="co1">// exposition only</span>
+    size_t num_args_<span class="sy4">;</span>                                   <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw4">constexpr</span> <span class="kw1">explicit</span> basic_format_parse_context<span class="br0">(</span>basic_string_view<span class="sy1">&lt;</span>charT<span class="sy1">&gt;</span> fmt,
+                                                  size_t num_args <span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    basic_format_parse_context<span class="br0">(</span><span class="kw4">const</span> basic_format_parse_context<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+    basic_format_parse_context<span class="sy3">&amp;</span> operator<span class="sy1">=</span><span class="br0">(</span><span class="kw4">const</span> basic_format_parse_context<span class="sy3">&amp;</span><span class="br0">)</span> <span class="sy1">=</span> delete<span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> const_iterator begin<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> const_iterator end<span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">void</span> advance_to<span class="br0">(</span>const_iterator it<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw4">constexpr</span> size_t next_arg_id<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">constexpr</span> <span class="kw4">void</span> check_arg_id<span class="br0">(</span>size_t id<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::basic_format_context">Class template <span class="t-lc"><a href="../utility/format/basic_format_context.html" title="cpp/utility/format/basic format context">std::basic_format_context</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Out, <span class="kw1">class</span> charT<span class="sy1">&gt;</span>
+  <span class="kw1">class</span> basic_format_context <span class="br0">{</span>
+    basic_format_args<span class="sy1">&lt;</span>basic_format_context<span class="sy1">&gt;</span> args_<span class="sy4">;</span>      <span class="co1">// exposition only</span>
+    Out out_<span class="sy4">;</span>                                           <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">using</span> iterator <span class="sy1">=</span> Out<span class="sy4">;</span>
+    <span class="kw1">using</span> char_type <span class="sy1">=</span> charT<span class="sy4">;</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">using</span> formatter_type <span class="sy1">=</span> formatter<span class="sy1">&lt;</span>T, charT<span class="sy1">&gt;</span><span class="sy4">;</span>
+ 
+    basic_format_arg<span class="sy1">&lt;</span>basic_format_context<span class="sy1">&gt;</span> arg<span class="br0">(</span>size_t id<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+    <a href="../locale/locale.html"><span class="kw1898">std::<span class="me2">locale</span></span></a> locale<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    iterator out<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">void</span> advance_to<span class="br0">(</span>iterator it<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::basic_format_arg">Class template <span class="t-lc"><a href="../utility/format/basic_format_arg.html" title="cpp/utility/format/basic format arg">std::basic_format_arg</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context<span class="sy1">&gt;</span>
+  <span class="kw1">class</span> basic_format_arg <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">class</span> handle<span class="sy4">;</span>
+ 
+  <span class="kw1">private</span><span class="sy4">:</span>
+    <span class="kw1">using</span> char_type <span class="sy1">=</span> <span class="kw1">typename</span> Context<span class="sy4">::</span><span class="me2">char_type</span><span class="sy4">;</span>                     <span class="co1">// exposition only</span>
+ 
+    variant<span class="sy1">&lt;</span>monostate, <span class="kw4">bool</span>, char_type,
+            <span class="kw4">int</span>, <span class="kw4">unsigned</span> <span class="kw4">int</span>, <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span>, <span class="kw4">unsigned</span> <span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span>,
+            <span class="kw4">float</span>, <span class="kw4">double</span>, <span class="kw4">long</span> <span class="kw4">double</span>,
+            <span class="kw4">const</span> char_type<span class="sy2">*</span>, basic_string_view<span class="sy1">&lt;</span>char_type<span class="sy1">&gt;</span>,
+            <span class="kw4">const</span> <span class="kw4">void</span><span class="sy2">*</span>, handle<span class="sy1">&gt;</span> value<span class="sy4">;</span>                                <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span>T<span class="sy3">&amp;&amp;</span> v<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>  <span class="co1">// exposition only</span>
+    <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span><span class="kw4">float</span> n<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>                       <span class="co1">// exposition only</span>
+    <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span><span class="kw4">double</span> n<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>                      <span class="co1">// exposition only</span>
+    <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span><span class="kw4">long</span> <span class="kw4">double</span> n<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>                 <span class="co1">// exposition only</span>
+    <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span><span class="kw4">const</span> char_type<span class="sy2">*</span> s<span class="br0">)</span><span class="sy4">;</span>                     <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> traits<span class="sy1">&gt;</span>
+      <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span>
+        basic_string_view<span class="sy1">&lt;</span>char_type, traits<span class="sy1">&gt;</span> s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>              <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> traits, <span class="kw1">class</span> Allocator<span class="sy1">&gt;</span>
+      <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span>
+        <span class="kw4">const</span> basic_string<span class="sy1">&lt;</span>char_type, traits, Allocator<span class="sy1">&gt;</span><span class="sy3">&amp;</span> s<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span> <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span>nullptr_t<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>                     <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+      <span class="kw1">explicit</span> basic_format_arg<span class="br0">(</span><span class="kw4">const</span> T<span class="sy2">*</span> p<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>                  <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    basic_format_arg<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw1">explicit</span> operator <span class="kw4">bool</span><span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::basic_format_arg::handle">Class <span class="t-lc">std::basic_format_arg::handle</span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context<span class="sy1">&gt;</span>
+  <span class="kw1">class</span> basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">handle</span> <span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">void</span><span class="sy2">*</span> ptr_<span class="sy4">;</span>                                           <span class="co1">// exposition only</span>
+    <span class="kw4">void</span> <span class="br0">(</span><span class="sy2">*</span>format_<span class="br0">)</span><span class="br0">(</span>basic_format_parse_context<span class="sy1">&lt;</span>char_type<span class="sy1">&gt;</span><span class="sy3">&amp;</span>,
+                    Context<span class="sy3">&amp;</span>, <span class="kw4">const</span> <span class="kw4">void</span><span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>                     <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span> <span class="kw1">explicit</span> handle<span class="br0">(</span>T<span class="sy3">&amp;&amp;</span> val<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>   <span class="co1">// exposition only</span>
+ 
+    <span class="kw1">friend</span> <span class="kw1">class</span> basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span><span class="sy4">;</span>                     <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw4">void</span> format<span class="br0">(</span>basic_format_parse_context<span class="sy1">&lt;</span>char_type<span class="sy1">&gt;</span><span class="sy3">&amp;</span>, Context<span class="sy3">&amp;</span> ctx<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_format-arg-store">Class template <i><code>format-arg-store</code></i></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context, <span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+  <span class="kw1">struct</span> <span class="coMULTI">/*format-arg-store*/</span> <span class="br0">{</span>      <span class="co1">// exposition only</span>
+    array<span class="sy1">&lt;</span>basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span>, sizeof...<span class="br0">(</span>Args<span class="br0">)</span><span class="sy1">&gt;</span> args<span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_template_std::basic_format_args">Class template <span class="t-lc"><a href="../utility/format/basic_format_args.html" title="cpp/utility/format/basic format args">std::basic_format_args</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> Context<span class="sy1">&gt;</span>
+  <span class="kw1">class</span> basic_format_args <span class="br0">{</span>
+    size_t size_<span class="sy4">;</span>                               <span class="co1">// exposition only</span>
+    <span class="kw4">const</span> basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span><span class="sy2">*</span> data_<span class="sy4">;</span>     <span class="co1">// exposition only</span>
+ 
+  <span class="kw1">public</span><span class="sy4">:</span>
+    basic_format_args<span class="br0">(</span><span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Args</span><span class="sy1">&gt;</span>
+      basic_format_args<span class="br0">(</span><span class="kw4">const</span> <span class="coMULTI">/*format-arg-store*/</span><span class="sy1">&lt;</span>Context, Args...<span class="sy1">&gt;</span><span class="sy3">&amp;</span> store<span class="br0">)</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+ 
+    basic_format_arg<span class="sy1">&lt;</span>Context<span class="sy1">&gt;</span> get<span class="br0">(</span>size_t i<span class="br0">)</span> <span class="kw4">const</span> <span class="kw1">noexcept</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<h4><span class="mw-headline" id="Class_std::format_error">Class <span class="t-lc"><a href="../utility/format/format_error.html" title="cpp/utility/format/format error">std::format_error</a></span></span></h4>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">namespace</span> std <span class="br0">{</span>
+  <span class="kw1">class</span> format_error <span class="sy4">:</span> <span class="kw1">public</span> runtime_error <span class="br0">{</span>
+  <span class="kw1">public</span><span class="sy4">:</span>
+    <span class="kw1">explicit</span> format_error<span class="br0">(</span><span class="kw4">const</span> string<span class="sy3">&amp;</span> what_arg<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">explicit</span> format_error<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span><span class="sy2">*</span> what_arg<span class="br0">)</span><span class="sy4">;</span>
+  <span class="br0">}</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 8524/1000000
+Preprocessor generated node count: 8067/1000000
+Postâexpand include size: 252018/2097152 bytes
+Template argument size: 54223/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:18664-0!*!0!!en!*!* and timestamp 20220730011554 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/header/format&amp;oldid=140980">https://en.cppreference.com/mwiki/index.php?title=cpp/header/format&amp;oldid=140980</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/header/format">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 July 2022, at 07:18.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 54,004 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 2.071 secs. -->
+	</body>
+<!-- Cached 20220730011554 -->
+</html>

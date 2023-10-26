@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>fegetenv, fesetenv - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/numeric/fenv/feenv","wgTitle":"c/numeric/fenv/feenv","wgCurRevisionId":133798,"wgArticleId":8614,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/numeric/fenv/feenv","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_numeric_fenv_feenv skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">fegetenv, fesetenv</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../../c.html" title="c">c</a>‎ | <a href="../../numeric.html" title="c/numeric">numeric</a>‎ | <a href="../fenv.html" title="c/numeric/fenv">fenv</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../numeric.html" title="c/numeric"> Numerics</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../math.html" title="c/numeric/math">Common mathematical functions</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../fenv.html" title="c/numeric/fenv">Floating-point environment</a> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../random.html" title="c/numeric/random">Pseudo-random number generation</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../complex.html" title="c/numeric/complex">Complex number arithmetics</a> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../tgmath.html" title="c/numeric/tgmath">Type-generic math</a> <span class="t-mark-rev t-since-c99">(C99)</span> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../fenv.html" title="c/numeric/fenv"> Floating-point environment</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> Functions</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feclearexcept.html" title="c/numeric/fenv/feclearexcept"><span class="t-lines"><span>feclearexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="fetestexcept.html" title="c/numeric/fenv/fetestexcept"><span class="t-lines"><span>fetestexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feraiseexcept.html" title="c/numeric/fenv/feraiseexcept"><span class="t-lines"><span>feraiseexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feexceptflag.html" title="c/numeric/fenv/feexceptflag"><span class="t-lines"><span>fegetexceptflag</span><span>fesetexceptflag</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feround.html" title="c/numeric/fenv/feround"><span class="t-lines"><span>fegetround</span><span>fesetround</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><strong class="selflink"><span class="t-lines"><span>fegetenv</span><span>fesetenv</span></span></strong></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feholdexcept.html" title="c/numeric/fenv/feholdexcept"><span class="t-lines"><span>feholdexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="feupdateenv.html" title="c/numeric/fenv/feupdateenv"><span class="t-lines"><span>feupdateenv</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Macro constants</td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FE_exceptions.html" title="c/numeric/fenv/FE exceptions"><span class="t-lines"><span>FE_ALL_EXCEPT</span><span>FE_DIVBYZERO</span><span>FE_INEXACT</span><span>FE_INVALID</span><span>FE_OVERFLOW</span><span>FE_UNDERFLOW</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FE_round.html" title="c/numeric/fenv/FE round"><span class="t-lines"><span>FE_DOWNWARD</span><span>FE_TONEAREST</span><span>FE_TOWARDZERO</span><span>FE_UPWARD</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="FE_DFL_ENV.html" title="c/numeric/fenv/FE DFL ENV"><span class="t-lines"><span>FE_DFL_ENV</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div></td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<table class="t-dcl-begin"><tbody>
+<tr class="t-dsc-header">
+<td> <div>Defined in header <code>&lt;fenv.h&gt;</code>
+ </div></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fegetenv<span class="br0">(</span> fenv_t<span class="sy2">*</span> envp <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (1) </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+<tr class="t-dcl t-since-c99">
+<td> <div><span class="mw-geshi c source-c"><span class="kw4">int</span> fesetenv<span class="br0">(</span> <span class="kw4">const</span> fenv_t<span class="sy2">*</span> envp <span class="br0">)</span><span class="sy4">;</span></span></div></td>
+<td> (2) </td>
+<td> <span class="t-mark-rev t-since-c99">(since C99)</span> </td>
+</tr>
+<tr class="t-dcl-sep"><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>1) Attempts to store the status of the floating-point environment in the object pointed to by <code>envp</code>.
+</p><p>2) Attempts to establish the floating-point environment from the object pointed to by <code>envp</code>. The value of that object must be previously obtained by a call to <span class="t-lc"><a href="feholdexcept.html" title="c/numeric/fenv/feholdexcept">feholdexcept</a></span> or <code>fegetenv</code> or be a floating-point macro constant. If any of the floating-point status flags are set in <code>envp</code>, they become set in the environment (and are then testable with <span class="t-lc"><a href="fetestexcept.html" title="c/numeric/fenv/fetestexcept">fetestexcept</a></span>), but the corresponding floating-point exceptions are not raised (execution continues uninterrupted)
+</p>
+<h3><span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table class="t-par-begin">
+
+
+<tr class="t-par">
+<td>  envp
+</td>
+<td> -
+</td>
+<td>  pointer to the object of type <span class="t-c"><span class="mw-geshi c source-c">fenv_t</span></span> which holds the status of the floating-point environment
+</td></tr></table>
+<h3><span class="mw-headline" id="Return_value">Return value</span></h3>
+<p><span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> on success, non-zero otherwise.
+</p>
+<h3><span class="mw-headline" id="Example">Example</span></h3>
+<div class="t-example"><div class="t-example-live-link"><div class="coliru-btn coliru-btn-run-init">Run this code</div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;math.h&gt;</span>
+<span class="co2">#include &lt;fenv.h&gt;</span>
+ 
+<span class="co2">#pragma STDC FENV_ACCESS ON</span>
+ 
+<span class="kw4">void</span> show_fe_exceptions<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"current exceptions raised: "</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw728">FE_DIVBYZERO</span></a><span class="br0">)</span><span class="br0">)</span>     <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" FE_DIVBYZERO"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw729">FE_INEXACT</span></a><span class="br0">)</span><span class="br0">)</span>       <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" FE_INEXACT"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw730">FE_INVALID</span></a><span class="br0">)</span><span class="br0">)</span>       <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" FE_INVALID"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw731">FE_OVERFLOW</span></a><span class="br0">)</span><span class="br0">)</span>      <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" FE_OVERFLOW"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw732">FE_UNDERFLOW</span></a><span class="br0">)</span><span class="br0">)</span>     <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" FE_UNDERFLOW"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span><a href="fetestexcept.html"><span class="kw719">fetestexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw727">FE_ALL_EXCEPT</span></a><span class="br0">)</span><span class="sy1">==</span><span class="nu0">0</span><span class="br0">)</span> <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">" none"</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> show_fe_rounding_method<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"current rounding method:    "</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">switch</span> <span class="br0">(</span><a href="feround.html"><span class="kw723">fegetround</span></a><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+           <span class="kw1">case</span> <a href="FE_round.html"><span class="kw734">FE_TONEAREST</span></a><span class="sy4">:</span>  <a href="../../io/fprintf.html"><span class="kw849">printf</span></a> <span class="br0">(</span><span class="st0">"FE_TONEAREST"</span><span class="br0">)</span><span class="sy4">;</span>  <span class="kw1">break</span><span class="sy4">;</span>
+           <span class="kw1">case</span> <a href="FE_round.html"><span class="kw733">FE_DOWNWARD</span></a><span class="sy4">:</span>   <a href="../../io/fprintf.html"><span class="kw849">printf</span></a> <span class="br0">(</span><span class="st0">"FE_DOWNWARD"</span><span class="br0">)</span><span class="sy4">;</span>   <span class="kw1">break</span><span class="sy4">;</span>
+           <span class="kw1">case</span> <a href="FE_round.html"><span class="kw736">FE_UPWARD</span></a><span class="sy4">:</span>     <a href="../../io/fprintf.html"><span class="kw849">printf</span></a> <span class="br0">(</span><span class="st0">"FE_UPWARD"</span><span class="br0">)</span><span class="sy4">;</span>     <span class="kw1">break</span><span class="sy4">;</span>
+           <span class="kw1">case</span> <a href="FE_round.html"><span class="kw735">FE_TOWARDZERO</span></a><span class="sy4">:</span> <a href="../../io/fprintf.html"><span class="kw849">printf</span></a> <span class="br0">(</span><span class="st0">"FE_TOWARDZERO"</span><span class="br0">)</span><span class="sy4">;</span> <span class="kw1">break</span><span class="sy4">;</span>
+           <span class="kw1">default</span><span class="sy4">:</span>            <a href="../../io/fprintf.html"><span class="kw849">printf</span></a> <span class="br0">(</span><span class="st0">"unknown"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">void</span> show_fe_environment<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    show_fe_exceptions<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    show_fe_rounding_method<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>    
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+<span class="br0">{</span>
+    fenv_t curr_env<span class="sy4">;</span>
+    <span class="kw4">int</span> rtn<span class="sy4">;</span>
+ 
+    <span class="coMULTI">/* Show default environment. */</span>
+    show_fe_environment<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="coMULTI">/* Perform some computation under default environment. */</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"+11.5 -&gt; %+4.1f<span class="es1">\n</span>"</span>, <a href="../math/rint.html"><span class="kw693">rint</span></a><span class="br0">(</span><span class="sy2">+</span><span class="nu16">11.5</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="coMULTI">/* midway between two integers */</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"+12.5 -&gt; %+4.1f<span class="es1">\n</span>"</span>, <a href="../math/rint.html"><span class="kw693">rint</span></a><span class="br0">(</span><span class="sy2">+</span><span class="nu16">12.5</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="coMULTI">/* midway between two integers */</span>
+    show_fe_environment<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="coMULTI">/* Save current environment. */</span>
+    rtn <span class="sy1">=</span> fegetenv<span class="br0">(</span><span class="sy3">&amp;</span>curr_env<span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="coMULTI">/* Perform some computation with new rounding method. */</span>
+    <a href="feclearexcept.html"><span class="kw718">feclearexcept</span></a><span class="br0">(</span><a href="FE_exceptions.html"><span class="kw727">FE_ALL_EXCEPT</span></a><span class="br0">)</span><span class="sy4">;</span>
+    <a href="feround.html"><span class="kw724">fesetround</span></a><span class="br0">(</span><a href="FE_round.html"><span class="kw733">FE_DOWNWARD</span></a><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"1.0/0.0 = %f<span class="es1">\n</span>"</span>, <span class="nu16">1.0</span><span class="sy2">/</span><span class="nu16">0.0</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"+11.5 -&gt; %+4.1f<span class="es1">\n</span>"</span>, <a href="../math/rint.html"><span class="kw693">rint</span></a><span class="br0">(</span><span class="sy2">+</span><span class="nu16">11.5</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"+12.5 -&gt; %+4.1f<span class="es1">\n</span>"</span>, <a href="../math/rint.html"><span class="kw693">rint</span></a><span class="br0">(</span><span class="sy2">+</span><span class="nu16">12.5</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+    show_fe_environment<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <a href="../../io/fprintf.html"><span class="kw849">printf</span></a><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="coMULTI">/* Restore previous environment. */</span>
+    rtn <span class="sy1">=</span> fesetenv<span class="br0">(</span><span class="sy3">&amp;</span>curr_env<span class="br0">)</span><span class="sy4">;</span>
+    show_fe_environment<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Output:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">current exceptions raised: none
+current rounding method:   FE_TONEAREST
+ 
++11.5 -&gt; +12.0
++12.5 -&gt; +12.0
+current exceptions raised: FE_INEXACT
+current rounding method:   FE_TONEAREST
+ 
+1.0/0.0 = inf
++11.5 -&gt; +11.0
++12.5 -&gt; +12.0
+current exceptions raised: FE_DIVBYZERO FE_INEXACT
+current rounding method:   FE_DOWNWARD
+ 
+current exceptions raised: FE_INEXACT
+current rounding method:   FE_TONEAREST</pre></div></div> 
+</div>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 7.6.4.1 The fegetenv function (p: 213)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.6.4.3 The fesetenv function (p: 214)
+</li></ul>
+</dd></dl>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 7.6.4.1 The fegetenv function (p: 194)
+</li></ul>
+</dd></dl>
+<dl><dd><ul><li> 7.6.4.3 The fesetenv function (p: 195)
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="feholdexcept.html" title="c/numeric/fenv/feholdexcept"> <span class="t-lines"><span>feholdexcept</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div>
+</td>
+<td>   saves the environment, clears all status flags and ignores all future errors <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="feupdateenv.html" title="c/numeric/fenv/feupdateenv"> <span class="t-lines"><span>feupdateenv</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div>
+</td>
+<td>   restores the floating-point environment and raises the previously raise exceptions <br> <span class="t-mark">(function)</span> </td></tr>
+
+<tr class="t-dsc">
+<td>  <div class="t-dsc-member-div"><div><a href="FE_DFL_ENV.html" title="c/numeric/fenv/FE DFL ENV"> <span class="t-lines"><span>FE_DFL_ENV</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c99">(C99)</span></span></span></div></div>
+</td>
+<td>   default floating-point environment <br> <span class="t-mark">(macro constant)</span> </td></tr>
+
+</table></div>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 2448/1000000
+Preprocessor generated node count: 7621/1000000
+Post‐expand include size: 70249/2097152 bytes
+Template argument size: 19131/2097152 bytes
+Highest expansion depth: 20/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:8614-0!*!0!!en!*!* and timestamp 20220313161011 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/numeric/fenv/feenv&amp;oldid=133798">https://en.cppreference.com/mwiki/index.php?title=c/numeric/fenv/feenv&amp;oldid=133798</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/numeric/fenv/feenv">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 20 September 2021, at 03:02.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 17,292 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.437 secs. -->
+	</body>
+<!-- Cached 20220313161011 -->
+</html>

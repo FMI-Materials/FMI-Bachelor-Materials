@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Template argument deduction - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"cpp/language/template_argument_deduction","wgTitle":"cpp/language/template argument deduction","wgCurRevisionId":140127,"wgArticleId":13515,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason","Pages with unreviewed CWG DR marker"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"cpp/language/template_argument_deduction","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-cpp_language_template_argument_deduction skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Template argument deduction</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a>‎ | <a href="../language.html" title="cpp/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../cpp.html" title="cpp"> C++</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../compiler_support.html" title="cpp/compiler support"> Compiler support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../freestanding.html" title="cpp/freestanding"> Freestanding and hosted</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="cpp/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="cpp/header"> Standard library headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../named_req.html" title="cpp/named req"> Named requirements </a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../feature_test.html" title="cpp/feature test"> Feature test macros </a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html#Language_support" title="cpp/utility"> Language support library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../concepts.html" title="cpp/concepts"> Concepts library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../meta.html" title="cpp/meta"> Metaprogramming library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="cpp/error"> Diagnostics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../utility.html" title="cpp/utility"> General utilities library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="cpp/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../container.html" title="cpp/container"> Containers library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../iterator.html" title="cpp/iterator"> Iterators library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../ranges.html" title="cpp/ranges"> Ranges library</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="cpp/numeric"> Numerics library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="cpp/locale"> Localizations library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="cpp/io"> Input/output library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../filesystem.html" title="cpp/filesystem"> Filesystem library</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="cpp/thread"> Concurrency support library</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="cpp/experimental"> Technical specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../symbol_index.html" title="cpp/symbol index"> Symbols index</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../links/libs.html" title="cpp/links/libs"> External libraries</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="cpp/language"> C++ language</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> General topics</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="cpp/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../comments.html" title="cpp/comment"> Comments</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="../keywords.html" title="cpp/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="escape.html" title="cpp/language/escape"> Escape sequences</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="statements.html" title="cpp/language/statements"> Flow control</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Conditional execution statements</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="if.html" title="cpp/language/if"><tt>if</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="switch.html" title="cpp/language/switch"><tt>switch</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Iteration statements (loops)</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="for.html" title="cpp/language/for"><tt>for</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="range-for.html" title="cpp/language/range-for"> range-<code>for</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="while.html" title="cpp/language/while"><tt>while</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="do.html" title="cpp/language/do"> <code>do-while</code></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Jump statements </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="continue.html" title="cpp/language/continue"><tt>continue</tt></a> - <a href="break.html" title="cpp/language/break"><tt>break</tt></a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="goto.html" title="cpp/language/goto"><tt>goto</tt></a> - <a href="return.html" title="cpp/language/return"><tt>return</tt></a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="functions.html" title="cpp/language/functions"> Functions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="lambda.html" title="cpp/language/lambda"> Lambda function expression</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="inline.html" title="cpp/language/inline"> <code>inline</code> specifier</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="except_spec.html" title="cpp/language/except spec"> Dynamic exception specifications</a> <span class="t-mark-rev t-until-cxx20">(until C++20)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="noexcept_spec.html" title="cpp/language/noexcept spec"> <code>noexcept</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Exceptions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="throw.html" title="cpp/language/throw"> <code>throw</code>-expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="try_catch.html" title="cpp/language/try catch"> <code>try</code>-<code>catch</code> block</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Namespaces</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace.html" title="cpp/language/namespace"> Namespace declaration</a>  </td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="namespace_alias.html" title="cpp/language/namespace alias"> Namespace aliases</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Types</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="types.html" title="cpp/language/types"> Fundamental types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="enum_class.html" title="cpp/language/enum"> Enumeration types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function.html" title="cpp/language/function"> Function types</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class/struct types</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="union.html" title="cpp/language/union"> Union types</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Specifiers</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="decltype.html" title="cpp/language/decltype"><tt>decltype</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="auto.html" title="cpp/language/auto"><tt>auto</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="alignas.html" title="cpp/language/alignas"><tt>alignas</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="cv.html" title="cpp/language/cv"> <code>const</code>/<code>volatile</code></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constexpr.html" title="cpp/language/constexpr"><tt>constexpr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="storage_duration.html" title="cpp/language/storage duration"> Storage duration specifiers</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="initialization.html" title="cpp/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_initialization.html" title="cpp/language/default initialization"> Default initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_initialization.html" title="cpp/language/value initialization"> Value initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="zero_initialization.html" title="cpp/language/zero initialization"> Zero initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_initialization.html" title="cpp/language/copy initialization"> Copy initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="direct_initialization.html" title="cpp/language/direct initialization"> Direct initialization</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="aggregate_initialization.html" title="cpp/language/aggregate initialization"> Aggregate initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="list_initialization.html" title="cpp/language/list initialization"> List initialization</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_initialization.html" title="cpp/language/constant initialization"> Constant initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="reference_initialization.html" title="cpp/language/reference initialization"> Reference initialization</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div>
+<div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h1"><td colspan="5"> <a href="expressions.html" title="cpp/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="cpp/language/value category"> Value categories</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="cpp/language/eval order"> Order of evaluation</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="operators.html" title="cpp/language/operators"> Operators</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="cpp/language/operator precedence"> Operator precedence</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_alternative.html" title="cpp/language/operator alternative"> Alternative representations</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Literals" title="cpp/language/expressions"> Literals</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="bool_literal.html" title="cpp/language/bool literal"> Boolean</a> - <a href="integer_literal.html" title="cpp/language/integer literal"> Integer</a> - <a href="floating_literal.html" title="cpp/language/floating literal"> Floating-point</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="character_literal.html" title="cpp/language/character literal"> Character</a> - <a href="string_literal.html" title="cpp/language/string literal"> String</a> - <a href="nullptr.html" title="cpp/language/nullptr"><tt>nullptr</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr> 
+<tr class="t-nv"><td colspan="5"> <a href="user_literal.html" title="cpp/language/user literal"> User-defined</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Utilities</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="attributes.html" title="cpp/language/attributes"> Attributes</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Types</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="typedef.html" title="cpp/language/typedef"> <code>typedef</code> declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="type_alias.html" title="cpp/language/type alias"> Type alias declaration</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Casts</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="implicit_cast.html" title="cpp/language/implicit conversion"> Implicit conversions</a> - <a href="explicit_cast.html" title="cpp/language/explicit cast"> Explicit conversions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static_cast.html" title="cpp/language/static cast"><tt>static_cast</tt></a> - <a href="dynamic_cast.html" title="cpp/language/dynamic cast"><tt>dynamic_cast</tt></a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="const_cast.html" title="cpp/language/const cast"><tt>const_cast</tt></a> - <a href="reinterpret_cast.html" title="cpp/language/reinterpret cast"><tt>reinterpret_cast</tt></a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Memory allocation</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="new.html" title="cpp/language/new"> <code>new</code> expression</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="delete.html" title="cpp/language/delete"> <code>delete</code> expression</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> <a href="classes.html" title="cpp/language/classes"> Classes</a></td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class.html" title="cpp/language/class"> Class declaration</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initializer_list.html" title="cpp/language/constructor"> Constructors</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="this.html" title="cpp/language/this"> <code>this</code> pointer</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="access.html" title="cpp/language/access"> Access specifiers</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="friend.html" title="cpp/language/friend"> <code>friend</code> specifier</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Class-specific function properties</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="virtual.html" title="cpp/language/virtual"> Virtual function</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="override.html" title="cpp/language/override"> <code>override</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="final.html" title="cpp/language/final"> <code>final</code> specifier</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="explicit.html" title="cpp/language/explicit"><tt>explicit</tt></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="static.html" title="cpp/language/static"><tt>static</tt></a> </td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Special member functions</td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="default_constructor.html" title="cpp/language/default constructor"> Default constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="copy_constructor.html" title="cpp/language/copy constructor"> Copy constructor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_constructor.html" title="cpp/language/move constructor"> Move constructor</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="as_operator.html" title="cpp/language/as operator" class="mw-redirect"> Copy assignment</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="move_operator.html" title="cpp/language/move operator" class="mw-redirect"> Move assignment</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="destructor.html" title="cpp/language/destructor"> Destructor</a></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"><a href="templates.html" title="cpp/language/templates"> Templates</a> </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class template </a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function template </a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Template specialization</a></td></tr>   
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+</table></div></td></tr>
+<tr class="t-nv-h1"><td colspan="5"> Miscellaneous </td></tr>
+<tr class="t-nv-col-table"><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="asm.html" title="cpp/language/asm"> Inline assembly</a></td></tr>
+</table></div></td><td><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="cpp/language/history"> History of C++</a></td></tr>
+</table></div></td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="templates.html" title="cpp/language/templates"> Templates</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="template_parameters.html" title="cpp/language/template parameters"> Parameters and arguments</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="class_template.html" title="cpp/language/class template"> Class templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="function_template.html" title="cpp/language/function template"> Function templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="member_template.html" title="cpp/language/member template"> Class member templates</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="variable_template.html" title="cpp/language/variable template"> Variable templates</a> <span class="t-mark-rev t-since-cxx14">(C++14)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink"> Template argument deduction</strong> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="deduction_guide.html" title="cpp/language/class template argument deduction"> Class template argument deduction</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="template_specialization.html" title="cpp/language/template specialization"> Explicit (full) specialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="partial_specialization.html" title="cpp/language/partial specialization"> Partial specialization</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="dependent_name.html" title="cpp/language/dependent name"> Dependent names</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="parameter_pack.html" title="cpp/language/parameter pack"> Parameter packs</a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="sizeof....html" title="cpp/language/sizeof..."> <code>sizeof...</code></a> <span class="t-mark-rev t-since-cxx11">(C++11)</span></td></tr>
+<tr class="t-nv"><td colspan="5">   <a href="fold.html" title="cpp/language/fold"> Fold-expressions</a> <span class="t-mark-rev t-since-cxx17">(C++17)</span></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="sfinae.html" title="cpp/language/sfinae"> SFINAE</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constraints.html" title="cpp/language/constraints"> Constraints and concepts</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="requires.html" title="cpp/language/requires"> Requires expression</a> <span class="t-mark-rev t-since-cxx20">(C++20)</span> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>In order to instantiate a <a href="function_template.html" title="cpp/language/function template">function template</a>, every template argument must be known, but not every template argument has to be specified. When possible, the compiler will deduce the missing template arguments from the function arguments. This occurs when a function call is attempted, when an address of a function template is taken, and in some <a href="template_argument_deduction.html#Other_contexts">other contexts</a>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> To, <span class="kw1">typename</span> From<span class="sy1">&gt;</span>
+To convert<span class="br0">(</span>From f<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="kw4">double</span> d<span class="br0">)</span> 
+<span class="br0">{</span>
+    <span class="kw4">int</span> i <span class="sy1">=</span> convert<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">(</span>d<span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// calls convert&lt;int, double&gt;(double)</span>
+    <span class="kw4">char</span> c <span class="sy1">=</span> convert<span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span><span class="br0">(</span>d<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// calls convert&lt;char, double&gt;(double)</span>
+    <span class="kw4">int</span><span class="br0">(</span><span class="sy2">*</span>ptr<span class="br0">)</span><span class="br0">(</span><span class="kw4">float</span><span class="br0">)</span> <span class="sy1">=</span> convert<span class="sy4">;</span> <span class="co1">// instantiates convert&lt;int, float&gt;(float) </span>
+                                <span class="co1">// and stores its address in ptr</span>
+<span class="br0">}</span></pre></div></div>
+<p>This mechanism makes it possible to use template operators, since there is no syntax to specify template arguments for an operator other than by re-writing it as a function call expression:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> 
+<span class="br0">{</span>
+    <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <span class="st0">"Hello, world"</span> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/endl.html"><span class="kw1795">std::<span class="me2">endl</span></span></a><span class="sy4">;</span>
+    <span class="co1">// operator&lt;&lt; is looked up via ADL as std::operator&lt;&lt;,</span>
+    <span class="co1">// then deduced to operator&lt;&lt;&lt;char, std::char_traits&lt;char&gt;&gt; both times</span>
+    <span class="co1">// std::endl is deduced to &amp;std::endl&lt;char, std::char_traits&lt;char&gt;&gt;</span>
+<span class="br0">}</span></pre></div></div>
+<p>Template argument deduction takes place after the function template <a href="lookup.html" title="cpp/language/lookup">name lookup</a> (which may involve <a href="adl.html" title="cpp/language/adl">argument-dependent lookup</a>) and before <a href="function_template.html#Template_argument_substitution" title="cpp/language/function template">template argument substitution</a> (which may involve <a href="sfinae.html" title="cpp/language/sfinae">SFINAE</a>) and <a href="overload_resolution.html" title="cpp/language/overload resolution">overload resolution</a>.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<p>Template argument deduction is also performed when the name of a class template is used as the type of an object being constructed:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../utility/pair.html"><span class="kw1099">std::<span class="me2">pair</span></span></a> p<span class="br0">(</span><span class="nu0">2</span>, <span class="nu16">4.5</span><span class="br0">)</span><span class="sy4">;</span>
+<a href="../utility/tuple.html"><span class="kw1101">std::<span class="me2">tuple</span></span></a> t<span class="br0">(</span><span class="nu0">4</span>, <span class="nu0">3</span>, <span class="nu16">2.5</span><span class="br0">)</span><span class="sy4">;</span>
+<a href="../algorithm/copy_n.html"><span class="kw1588">std::<span class="me2">copy_n</span></span></a><span class="br0">(</span>vi1, <span class="nu0">3</span>, <a href="../iterator/back_insert_iterator.html"><span class="kw662">std::<span class="me2">back_insert_iterator</span></span></a><span class="br0">(</span>vi2<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<a href="../algorithm/for_each.html"><span class="kw1572">std::<span class="me2">for_each</span></span></a><span class="br0">(</span>vi.<span class="me1">begin</span><span class="br0">(</span><span class="br0">)</span>, vi.<span class="me1">end</span><span class="br0">(</span><span class="br0">)</span>, Foo<span class="br0">(</span><span class="br0">[</span><span class="sy3">&amp;</span><span class="br0">]</span><span class="br0">(</span><span class="kw4">int</span> i<span class="br0">)</span> <span class="br0">{</span>...<span class="br0">}</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">auto</span> lck <span class="sy1">=</span> <a href="../thread/lock_guard.html"><span class="kw2170">std::<span class="me2">lock_guard</span></span></a><span class="br0">(</span>foo.<span class="me1">mtx</span><span class="br0">)</span><span class="sy4">;</span>
+<a href="../thread/lock_guard.html"><span class="kw2170">std::<span class="me2">lock_guard</span></span></a> lck2<span class="br0">(</span>foo.<span class="me1">mtx</span>, ul<span class="br0">)</span><span class="sy4">;</span></pre></div></div>
+<p>Template argument deduction for class templates takes place in declarations and in explicit cast expressions; see <a href="deduction_guide.html" title="cpp/language/class template argument deduction">class template argument deduction</a> for details.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Deduction_from_a_function_call">Deduction from a function call</span></h3>
+<p>Template argument deduction attempts to determine template arguments (types for type template parameters <code><b>T</b></code>i, templates for template template parameters <code><b>TT</b></code>i, and values for non-type template parameters <code><b>I</b></code>i), which can be substituted into each parameter <code><b>P</b></code> to produce the type <i>deduced</i> <code><b>A</b></code>, which is the same as the type of the argument <code><b>A</b></code>, after adjustments listed below.
+</p><p>If there are multiple parameters, each <code><b>P</b></code>/<code><b>A</b></code> pair is deduced separately and the deduced template arguments are then combined. If deduction fails or is ambiguous for any <code><b>P</b></code>/<code><b>A</b></code> pair or if different pairs yield different deduced template arguments, or if any template argument remains neither deduced nor explicitly specified, compilation fails.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<p>If removing references and cv-qualifiers from <code><b>P</b></code> gives <span class="t-c"><span class="mw-geshi cpp source-cpp"><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>P<span class="st0">'&gt;</span></span></span> and <code><b>A</b></code> is a <a href="list_initialization.html" title="cpp/language/list initialization">braced-init-list</a>, then deduction is performed for every element of the initializer list, taking <code><b>P'</b></code> as the parameter and the list element <code><b>A'</b></code> as the argument:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><a href="../utility/initializer_list.html"><span class="kw961">std::<span class="me2">initializer_list</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+f<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// P = std::initializer_list&lt;T&gt;, A = {1, 2, 3}</span>
+               <span class="co1">// P'1 = T, A'1 = 1: deduced T = int</span>
+               <span class="co1">// P'2 = T, A'2 = 2: deduced T = int</span>
+               <span class="co1">// P'3 = T, A'3 = 3: deduced T = int</span>
+               <span class="co1">// OK: deduced T = int</span>
+ 
+f<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="st0">"abc"</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = std::initializer_list&lt;T&gt;, A = {1, "abc"}</span>
+               <span class="co1">// P'1 = T, A'1 = 1: deduced T = int</span>
+               <span class="co1">// P'2 = T, A'2 = "abc": deduced T = const char*</span>
+               <span class="co1">// error: deduction fails, T is ambiguous</span></pre></div></div>
+<p>If removing references and cv-qualifiers from <code><b>P</b></code> gives <code><b>P'</b></code>[<code>N</code>], and <code><b>A</b></code> is a non-empty braced-init-list, then deduction is performed as above, except if <code>N</code> is a non-type template parameter, it is deduced from the length of the initializer list: 
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw4">void</span> h<span class="br0">(</span>T <span class="kw4">const</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span>N<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+h<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// deduced T = int, deduced N = 3</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> j<span class="br0">(</span>T <span class="kw4">const</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+j<span class="br0">(</span><span class="br0">{</span><span class="nu0">42</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// deduced T = int, array bound is not a parameter, not considered</span>
+ 
+<span class="kw1">struct</span> Aggr <span class="br0">{</span> <span class="kw4">int</span> i<span class="sy4">;</span> <span class="kw4">int</span> j<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw4">void</span> k<span class="br0">(</span>Aggr <span class="kw4">const</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span>N<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+k<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// error: deduction fails, no conversion from int to Aggr</span>
+k<span class="br0">(</span><span class="br0">{</span><span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span>, <span class="br0">{</span><span class="nu0">2</span><span class="br0">}</span>, <span class="br0">{</span><span class="nu0">3</span><span class="br0">}</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: deduced N = 3</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> M, <span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw4">void</span> m<span class="br0">(</span><span class="kw4">int</span> <span class="kw4">const</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span>M<span class="br0">]</span><span class="br0">[</span>N<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+m<span class="br0">(</span><span class="br0">{</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span>, <span class="br0">{</span><span class="nu0">3</span>, <span class="nu0">4</span><span class="br0">}</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// deduced M = 2, deduced N = 2</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, <span class="kw4">int</span> N<span class="sy1">&gt;</span>
+<span class="kw4">void</span> n<span class="br0">(</span>T <span class="kw4">const</span><span class="br0">(</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="br0">[</span>N<span class="br0">]</span>, T<span class="br0">)</span><span class="sy4">;</span>
+n<span class="br0">(</span><span class="br0">{</span><span class="br0">{</span><span class="nu0">1</span><span class="br0">}</span>, <span class="br0">{</span><span class="nu0">2</span><span class="br0">}</span>, <span class="br0">{</span><span class="nu0">3</span><span class="br0">}</span><span class="br0">}</span>, Aggr<span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// deduced T = Aggr, deduced N = 3</span></pre></div></div>
+<p>If a <a href="parameter_pack.html" title="cpp/language/parameter pack">parameter pack</a> appears as the last <code><b>P</b></code>, then the type <code><b>P</b></code> is matched against the type <code><b>A</b></code> of each remaining argument of the call. Each match deduces the template arguments for the next position in the pack expansion:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Types</span><span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>Types<span class="sy3">&amp;</span>...<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> h<span class="br0">(</span><span class="kw4">int</span> x, <span class="kw4">float</span><span class="sy3">&amp;</span> y<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">int</span> z <span class="sy1">=</span> x<span class="sy4">;</span>
+    f<span class="br0">(</span>x, y, z<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = Types&amp;..., A1 = x: deduced first member of Types... = int</span>
+                <span class="co1">// P = Types&amp;..., A2 = y: deduced second member of Types... = float</span>
+                <span class="co1">// P = Types&amp;..., A3 = z: deduced third member of Types... = const int</span>
+                <span class="co1">// calls f&lt;int, float, const int&gt;</span>
+<span class="br0">}</span></pre></div></div>
+<p><br>
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<p>If <code><b>P</b></code> is a function type, pointer to function type, or pointer to member function type and if <code><b>A</b></code> is a <a href="overloaded_address.html" title="cpp/language/overloaded address">set of overloaded functions</a> not containing function templates, template argument deduction is attempted with each overload. If only one succeeds, that successful deduction is used. If none or more than one succeeds, the template parameter is non-deduced context (see below):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">int</span> f<span class="br0">(</span>T<span class="br0">(</span><span class="sy2">*</span>p<span class="br0">)</span><span class="br0">(</span>T<span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">char</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+f<span class="br0">(</span>g<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = T(*)(T), A = overload set</span>
+      <span class="co1">// P = T(*)(T), A1 = int(int): deduced T = int</span>
+      <span class="co1">// P = T(*)(T), A2 = int(char): fails to deduce T</span>
+      <span class="co1">// only one overload works, deduction succeeds</span></pre></div></div>
+<p>Before deduction begins, the following adjustments to <code><b>P</b></code> and <code><b>A</b></code> are made:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> If <code><b>P</b></code> is not a reference type, </div>
+<div class="t-li2"><span class="t-li">a)</span> if <code><b>A</b></code> is an array type, <code><b>A</b></code> is replaced by the pointer type obtained from array-to-pointer conversion;</div>
+<div class="t-li2"><span class="t-li">b)</span> otherwise, if <code><b>A</b></code> is a function type, <code><b>A</b></code> is replaced by the pointer type obtained from function-to-pointer conversion;</div>
+<div class="t-li2"><span class="t-li">c)</span> otherwise, if <code><b>A</b></code> is a cv-qualified type, the top-level cv-qualifiers are ignored for deduction:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="sy4">;</span>
+f<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = T, A = int[3], adjusted to int*: deduced T = int*</span>
+ 
+<span class="kw4">void</span> b<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+f<span class="br0">(</span>b<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = T, A = void(int), adjusted to void(*)(int): deduced T = void(*)(int)</span>
+ 
+<span class="kw4">const</span> <span class="kw4">int</span> c <span class="sy1">=</span> <span class="nu0">13</span><span class="sy4">;</span>
+f<span class="br0">(</span>c<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = T, A = const int, adjusted to int: deduced T = int</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">2)</span> If <code><b>P</b></code> is a cv-qualified type, the top-level cv-qualifiers are ignored for deduction.</div>
+<div class="t-li1"><span class="t-li">3)</span> If <code><b>P</b></code> is a reference type, the referenced type is used for deduction.</div>
+<div class="t-li1"><span class="t-li">4)</span> If <code><b>P</b></code> is an rvalue reference to a cv-unqualified template parameter (so-called <a href="reference.html#Forwarding_references" title="cpp/language/reference">forwarding reference</a>), and the corresponding function call argument is an lvalue, the type lvalue reference to <code><b>A</b></code> is used in place of <code><b>A</b></code> for deduction (Note: this is the basis for the action of <span class="t-lc"><a href="../utility/forward.html" title="cpp/utility/forward">std::forward</a></span> <span class="t-rev-inl t-since-cxx17"><span>Note: in <a href="deduction_guide.html" title="cpp/language/class template argument deduction">class template argument deduction</a>, template parameter of a class template is never a forwarding reference</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span>):
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">int</span> f<span class="br0">(</span>T<span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// P is an rvalue reference to cv-unqualified T (forwarding reference)</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">int</span> g<span class="br0">(</span><span class="kw4">const</span> T<span class="sy3">&amp;&amp;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P is an rvalue reference to cv-qualified T (not special)</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> i<span class="sy4">;</span>
+    <span class="kw4">int</span> n1 <span class="sy1">=</span> f<span class="br0">(</span>i<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// argument is lvalue: calls f&lt;int&amp;&gt;(int&amp;) (special case)</span>
+    <span class="kw4">int</span> n2 <span class="sy1">=</span> f<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// argument is not lvalue: calls f&lt;int&gt;(int&amp;&amp;)</span>
+ 
+<span class="co1">//  int n3 = g(i); // error: deduces to g&lt;int&gt;(const int&amp;&amp;), which</span>
+                   <span class="co1">// cannot bind an rvalue reference to an lvalue</span>
+<span class="br0">}</span></pre></div></div></div>
+<p>After these transformations, the deduction processes as described below (cf. section <a href="template_argument_deduction.html#Deduction_from_a_type">Deduction from a type</a>) and attempts to find such template arguments that would make the deduced <code><b>A</b></code> (that is, <code><b>P</b></code> after adjustments listed above and the substitution of the deduced template parameters) identical to the <i>transformed</i> <code><b>A</b></code>, that is <code><b>A</b></code> after the adjustments listed above.
+</p><p>If the usual deduction from <code><b>P</b></code> and <code><b>A</b></code> fails, the following alternatives are additionally considered: 
+</p>
+<div class="t-li1"><span class="t-li">1)</span> If <code><b>P</b></code> is a reference type, the deduced <code><b>A</b></code> (i.e., the type referred to by the reference) can be more cv-qualified than the transformed <code><b>A</b></code>:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> T<span class="sy3">&amp;</span> t<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">bool</span> a <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span>
+f<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = const T&amp;, adjusted to const T, A = bool:</span>
+      <span class="co1">// deduced T = bool, deduced A = const bool</span>
+      <span class="co1">// deduced A is more cv-qualified than A</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">2)</span> The transformed <code><b>A</b></code> can be another pointer or pointer to member type that can be converted to the deduced <code><b>A</b></code> via a <a href="implicit_cast.html#Qualification_conversions" title="cpp/language/implicit cast" class="mw-redirect">qualification conversions</a> <span class="t-rev-inl t-since-cxx17"><span>or a function pointer conversion</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span>:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> T<span class="sy2">*</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span><span class="sy2">*</span> p<span class="sy4">;</span>
+f<span class="br0">(</span>p<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = const T*, A = int*:</span>
+      <span class="co1">// deduced T = int, deduced A = const int*</span>
+      <span class="co1">// qualification conversion applies (from int* to const int*)</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">3)</span> If <code><b>P</b></code> is a class and <code><b>P</b></code> has the form <a href="templates.html#template-id" title="cpp/language/templates">simple-template-id</a>, then the transformed <code><b>A</b></code> can be a derived class of the deduced <code><b>A</b></code>. Likewise, if <code><b>P</b></code> is a pointer to a class of the form <i>simple-template-id</i>, the transformed <code><b>A</b></code> can be a pointer to a derived class pointed to by the deduced <code><b>A</b></code>:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> D <span class="sy4">:</span> <span class="kw1">public</span> B<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>B<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy3">&amp;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+<span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    D<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> d<span class="sy4">;</span>
+    f<span class="br0">(</span>d<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = B&lt;T&gt;&amp;, adjusted to P = B&lt;T&gt; (a simple-template-id), A = D&lt;int&gt;:</span>
+          <span class="co1">// deduced T = int, deduced A = B&lt;int&gt;</span>
+          <span class="co1">// A is derived from deduced A</span>
+<span class="br0">}</span></pre></div></div></div>
+<h4><span class="mw-headline" id="Non-deduced_contexts">Non-deduced contexts</span></h4>
+<p>In the following cases, the types, templates, and non-type values that are used to compose <code><b>P</b></code> do not participate in template argument deduction, but instead <i>use</i> the template arguments that were either deduced elsewhere or explicitly specified. If a template parameter is used only in non-deduced contexts and is not explicitly specified, template argument deduction fails.
+</p>
+<div class="t-li1"><span class="t-li">1)</span> The <span class="t-spar">nested-name-specifier</span> (everything to the left of the scope resolution operator <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="sy4">::</span></span></span>) of a type that was specified using a <a href="name.html#Qualified_identifiers" title="cpp/language/identifiers">qualified-id</a>:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="co1">// the identity template, often used to exclude specific arguments from deduction</span>
+<span class="co1">// (available as std::type_identity as of C++20)</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> identity <span class="br0">{</span> <span class="kw1">typedef</span> T type<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> bad<span class="br0">(</span><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> x, T value <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> good<span class="br0">(</span><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span> x, <span class="kw1">typename</span> identity<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">type</span> value <span class="sy1">=</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><a href="../numeric/complex.html"><span class="kw1475">std::<span class="me2">complex</span></span></a><span class="sy1">&lt;</span><span class="kw4">double</span><span class="sy1">&gt;&gt;</span> x<span class="sy4">;</span>
+ 
+bad<span class="br0">(</span>x, <span class="nu16">1.2</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// P1 = std::vector&lt;T&gt;, A1 = std::vector&lt;std::complex&lt;double&gt;&gt;</span>
+              <span class="co1">// P1/A1: deduced T = std::complex&lt;double&gt;</span>
+              <span class="co1">// P2 = T, A2 = double</span>
+              <span class="co1">// P2/A2: deduced T = double</span>
+              <span class="co1">// error: deduction fails, T is ambiguous</span>
+ 
+good<span class="br0">(</span>x, <span class="nu16">1.2</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = std::vector&lt;T&gt;, A1 = std::vector&lt;std::complex&lt;double&gt;&gt;</span>
+              <span class="co1">// P1/A1: deduced T = std::complex&lt;double&gt;</span>
+              <span class="co1">// P2 = identity&lt;T&gt;::type, A2 = double</span>
+              <span class="co1">// P2/A2: uses T deduced by P1/A1 because T is to the left of :: in P2</span>
+              <span class="co1">// OK: T = std::complex&lt;double&gt;</span></pre></div></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">2)</span> The expression of a <a href="decltype.html" title="cpp/language/decltype">decltype</a>-specifier:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>decltype<span class="br0">(</span><span class="sy2">*</span><a href="../utility/declval.html"><span class="kw1123">std::<span class="me2">declval</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> arg<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> n<span class="sy4">;</span>
+f<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy2">*</span><span class="sy1">&gt;</span><span class="br0">(</span>n<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = decltype(*declval&lt;T&gt;()), A = int: T is in non-deduced context</span></pre></div></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<div class="t-li1"><span class="t-li">3)</span> A non-type template argument or an array bound in which a subexpression references a template parameter:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a> N<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="nu0">2</span> <span class="sy2">*</span> N<span class="sy1">&gt;</span> a<span class="br0">)</span><span class="sy4">;</span>
+ 
+<a href="../container/array.html"><span class="kw1271">std::<span class="me2">array</span></span></a><span class="sy1">&lt;</span><span class="kw4">int</span>, <span class="nu0">10</span><span class="sy1">&gt;</span> a<span class="sy4">;</span>
+f<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = std::array&lt;int, 2 * N&gt;, A = std::array&lt;int, 10&gt;:</span>
+      <span class="co1">// 2 * N is non-deduced context, N cannot be deduced</span>
+      <span class="co1">// note: f(std::array&lt;int, N&gt; a) would be able to deduce N</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">4)</span> A template parameter used in the parameter type of a function parameter that has a default argument that is being used in the call for which argument deduction is being done:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T, <span class="kw1">typename</span> F<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">const</span> <a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy3">&amp;</span> v, <span class="kw4">const</span> F<span class="sy3">&amp;</span> comp <span class="sy1">=</span> <a href="../utility/functional/less.html"><span class="kw1044">std::<span class="me2">less</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a><span class="sy1">&gt;</span> v<span class="br0">(</span><span class="nu0">3</span><span class="br0">)</span><span class="sy4">;</span>
+f<span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = const std::vector&lt;T&gt;&amp;, A1 = std::vector&lt;std::string&gt; lvalue</span>
+      <span class="co1">// P1/A1 deduced T = std::string</span>
+      <span class="co1">// P2 = const F&amp;, A2 = std::less&lt;std::string&gt; rvalue</span>
+      <span class="co1">// P2 is non-deduced context for F (template parameter) used in the</span>
+      <span class="co1">// parameter type (const F&amp;) of the function parameter comp,</span>
+      <span class="co1">// that has a default argument that is being used in the call f(v)</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">5)</span> The parameter <code><b>P</b></code>, whose <code><b>A</b></code> is a function or a set of overloads such that more than one function matches <code><b>P</b></code> or no function matches <code><b>P</b></code> or the set of overloads includes one or more function templates:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> out<span class="br0">(</span><span class="kw4">const</span> T<span class="sy3">&amp;</span> value<span class="br0">)</span> <span class="br0">{</span> <a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> value<span class="sy4">;</span> <span class="br0">}</span>
+ 
+out<span class="br0">(</span><span class="st0">"123"</span><span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// P = const T&amp;, A = const char[4] lvalue: deduced T = char[4]</span>
+out<span class="br0">(</span><a href="../io/manip/endl.html"><span class="kw1795">std::<span class="me2">endl</span></span></a><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = const T&amp;, A = function template: T is in non-deduced context</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">6)</span> The parameter <code><b>P</b></code>, whose <code><b>A</b></code> is <span class="t-rev-inl t-since-cxx17"><span>a braced-init-list, but <code><b>P</b></code> is not <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span>, a reference to one (possibly cv-qualified), or</span> <span><span class="t-mark-rev t-since-cxx17">(since C++17)</span></span></span> a reference to an array:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g1<span class="br0">(</span><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g2<span class="br0">(</span><a href="../container/vector.html"><span class="kw1272">std::<span class="me2">vector</span></span></a><span class="sy1">&lt;</span>T<span class="sy1">&gt;</span>, T x<span class="br0">)</span><span class="sy4">;</span>
+ 
+g1<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// P = std::vector&lt;T&gt;, A = {1, 2, 3}: T is in non-deduced context</span>
+                   <span class="co1">// error: T is not explicitly specified or deduced from another P/A</span>
+ 
+g2<span class="br0">(</span><span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span><span class="br0">}</span>, <span class="nu0">10</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = std::vector&lt;T&gt;, A1 = {1, 2, 3}: T is in non-deduced context</span>
+                   <span class="co1">// P2 = T, A2 = int: deduced T = int</span></pre></div></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<div class="t-li1"><span class="t-li">7)</span> The parameter <code><b>P</b></code> which is a parameter pack and does not occur at the end of the parameter list:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Ts</span>, <span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f1<span class="br0">(</span>T n, Ts... <span class="me1">args</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>... <span class="me1">Ts</span>, <span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f2<span class="br0">(</span>Ts... <span class="me1">args</span>, T n<span class="br0">)</span><span class="sy4">;</span>
+ 
+f1<span class="br0">(</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = T, A1 = 1: deduced T = int</span>
+                <span class="co1">// P2 = Ts..., A2 = 2, A3 = 3, A4 = 4: deduced Ts = [int, int, int]</span>
+ 
+f2<span class="br0">(</span><span class="nu0">1</span>, <span class="nu0">2</span>, <span class="nu0">3</span>, <span class="nu0">4</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = Ts...: Ts is non-deduced context</span></pre></div></div></div>
+<div class="t-li1"><span class="t-li">8)</span> The template parameter list that appears within the parameter <code><b>P</b></code>, and which includes a pack expansion that is not at the very end of the template parameter list:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span>...<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> T <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span>... <span class="me1">Ts1</span>, <span class="kw4">int</span> N, <span class="kw4">int</span>... <span class="me1">Ts2</span><span class="sy1">&gt;</span>
+<span class="kw4">void</span> good<span class="br0">(</span><span class="kw4">const</span> T<span class="sy1">&lt;</span>N, Ts1...<span class="sy1">&gt;</span><span class="sy3">&amp;</span> arg1, <span class="kw4">const</span> T<span class="sy1">&lt;</span>N, Ts2...<span class="sy1">&gt;</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span>... <span class="me1">Ts1</span>, <span class="kw4">int</span> N, <span class="kw4">int</span>... <span class="me1">Ts2</span><span class="sy1">&gt;</span>
+<span class="kw4">void</span> bad<span class="br0">(</span><span class="kw4">const</span> T<span class="sy1">&lt;</span>Ts1..., N<span class="sy1">&gt;</span><span class="sy3">&amp;</span> arg1, <span class="kw4">const</span> T<span class="sy1">&lt;</span>Ts2..., N<span class="sy1">&gt;</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+T<span class="sy1">&lt;</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="sy1">&gt;</span> t1<span class="sy4">;</span>
+T<span class="sy1">&lt;</span><span class="nu0">1</span>, <span class="sy2">-</span><span class="nu0">1</span>, <span class="nu0">0</span><span class="sy1">&gt;</span> t2<span class="sy4">;</span>
+ 
+good<span class="br0">(</span>t1, t2<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P1 = const T&lt;N, Ts1...&gt;&amp;, A1 = T&lt;1, 2&gt;:</span>
+              <span class="co1">// deduced N = 1, deduced Ts1 = [2]</span>
+              <span class="co1">// P2 = const T&lt;N, Ts2...&gt;&amp;, A2 = T&lt;1, -1, 0&gt;:</span>
+              <span class="co1">// deduced N = 1, deduced Ts2 = [-1, 0]</span>
+ 
+bad<span class="br0">(</span>t1, t2<span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// P1 = const T&lt;Ts1..., N&gt;&amp;, A1 = T&lt;1, 2&gt;:</span>
+              <span class="co1">// &lt;Ts1..., N&gt; is non-deduced context</span>
+              <span class="co1">// P2 = const T&lt;Ts2..., N&gt;&amp;, A2 = T&lt;1, -1, 0&gt;:</span>
+              <span class="co1">// &lt;Ts2..., N&gt; is non-deduced context</span></pre></div></div>
+</div></td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+<div class="t-li1"><span class="t-li">9)</span> For <code><b>P</b></code> of array type (but not reference to array or pointer to array), the major array bound:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f1<span class="br0">(</span><span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f2<span class="br0">(</span><span class="kw4">int</span> a<span class="br0">[</span>i<span class="br0">]</span><span class="br0">[</span><span class="nu0">20</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// P = int[i][20], array type</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f3<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span>a<span class="br0">)</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">[</span><span class="nu0">20</span><span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = int(&amp;)[i][20], reference to array</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">20</span><span class="br0">]</span><span class="sy4">;</span>
+    f1<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// OK: deduced i = 20</span>
+    f1<span class="sy1">&lt;</span><span class="nu0">20</span><span class="sy1">&gt;</span><span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    f2<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// error: i is non-deduced context</span>
+    f2<span class="sy1">&lt;</span><span class="nu0">10</span><span class="sy1">&gt;</span><span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+    f3<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// OK: deduced i = 10</span>
+    f3<span class="sy1">&lt;</span><span class="nu0">10</span><span class="sy1">&gt;</span><span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK</span>
+<span class="br0">}</span></pre></div></div></div>
+<p>In any case, if any part of a type name is non-deduced, the entire type name is non-deduced context. However, compound types can include both deduced and non-deduced type names. For example, in <span class="t-c"><span class="mw-geshi cpp source-cpp">A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">B</span><span class="sy1">&lt;</span>T2<span class="sy1">&gt;</span></span></span>, <code>T</code> is non-deduced because of rule #1 (nested name specifier), and <code>T2</code> is non-deduced because it is part of the same type name, but in <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="br0">(</span><span class="sy2">*</span>f<span class="br0">)</span><span class="br0">(</span><span class="kw1">typename</span> A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">B</span>, A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="br0">)</span></span></span>, the <code>T</code> in <span class="t-c"><span class="mw-geshi cpp source-cpp">A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">B</span></span></span> is non-deduced (because of the same rule), while the <code>T</code> in <span class="t-c"><span class="mw-geshi cpp source-cpp">A<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span></span></span> is deduced.
+</p>
+<h4><span class="mw-headline" id="Deduction_from_a_type">Deduction from a type</span></h4>
+<p>Given a function parameter <code><b>P</b></code> that depends on one or more type template parameters <code><b>T</b></code>i, template template parameters <code><b>TT</b></code>i, or non-type template parameters <code><b>I</b></code>i, and the corresponding argument <code><b>A</b></code>, deduction takes place if <code><b>P</b></code> has one of the following forms:
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: possibly a table with micro-examples </td></tr></table>
+<ul><li> <code>T</code>;
+</li><li> <code>cv-list T</code>;
+</li><li> <code>T*</code>;
+</li><li> <code>T&amp;</code>;
+</li><li> <code>T&amp;&amp;</code>;
+</li><li> <code>T[integer-constant]</code>;
+</li><li> <code>class-template-name&lt;T&gt;</code>;
+</li><li> <code>type(T)</code>;
+</li><li> <code>T()</code>;
+</li><li> <code>T(T)</code>;
+</li><li> <code>T type::*</code>;
+</li><li> <code>type T::*</code>;
+</li><li> <code>T T::*</code>;
+</li><li> <code>T(type::*)()</code>;
+</li><li> <code>type(T::*)()</code>;
+</li><li> <code>type(type::*)(T)</code>;
+</li><li> <code>type(T::*)(T)</code>;
+</li><li> <code>T (type::*)(T)</code>;
+</li><li> <code>T (T::*)()</code>;
+</li><li> <code>T (T::*)(T)</code>;
+</li><li> <code>type[i]</code>;
+</li><li> <code>class-template-name&lt;I&gt;</code>;
+</li><li> <code>TT&lt;T&gt;</code>;
+</li><li> <code>TT&lt;I&gt;</code>;
+</li><li> <code>TT&lt;&gt;</code>;
+</li></ul>
+<p>where
+</p>
+<ul><li> <code>(T)</code> is a function parameter type list where at least one parameter type contains T;
+</li><li> <code>()</code> is a function parameter type list where no parameters contain T;
+</li><li> <code>&lt;T&gt;</code> is a template argument list where at least one argument contains T;
+</li><li> <code>&lt;I&gt;</code> is a template argument list where at least one argument contains I;
+</li><li> <code>&lt;&gt;</code> is a template argument list where no arguments contain T or I.
+</li></ul>
+<p>If <code><b>P</b></code> has one of the forms that include a template parameter list <code><b>&lt;T&gt;</b></code> or <code><b>&lt;I&gt;</b></code>, then each element <code><b>P</b></code>i of that template argument list is matched against the corresponding template argument <code><b>A</b></code>i of its <code><b>A</b></code>. If the last <code><b>P</b></code>i is a pack expansion, then its pattern is compared against each remaining argument in the template argument list of <code><b>A</b></code>. A trailing parameter pack that is not otherwise deduced, is deduced to an empty parameter pack.
+</p><p>If <code><b>P</b></code> has one of the forms that include a function parameter list <code><b>(T)</b></code>, then each parameter <code><b>P</b></code>i from that list is compared with the corresponding argument <code><b>A</b></code>i from <code><b>A</b></code>'s function parameter list. If the last <code><b>P</b></code>i is a pack expansion, then its declarator is compared with each remaining <code><b>A</b></code>i in the parameter type list of <code><b>A</b></code>.
+</p><p>Forms can be nested and processed recursively: <code>X&lt;int&gt;(*)(char[6])</code> is an example of <code>type(*)(T)</code>, where <i>type</i> is <code>class-template-name&lt;T&gt;</code> and T is <code>type[i]</code>.
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-until-cxx17"><td>
+<p>Type template argument cannot be deduced from the type of a non-type template argument:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T, T i<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">double</span> a<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">double</span> v<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">20</span><span class="br0">]</span><span class="sy4">;</span>
+f<span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = double[10][i], A = double[10][20]:</span>
+      <span class="co1">// i can be deduced to equal 20</span>
+      <span class="co1">// but T cannot be deduced from the type of i</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-until-cxx17">(until C++17)</span></td></tr>
+<tr class="t-rev t-since-cxx17"><td>
+<p>When the value of the argument corresponding to a non-type template parameter P that is declared with a dependent type is deduced from an expression, the template parameters in the type of P are deduced from the type of the value.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">long</span> n<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> C<span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, T n<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> C<span class="sy1">&lt;</span>A<span class="sy1">&lt;</span>n<span class="sy1">&gt;&gt;</span> <span class="br0">{</span> <span class="kw1">using</span> Q <span class="sy1">=</span> T<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">typedef</span> <span class="kw4">long</span> R<span class="sy4">;</span>
+ 
+<span class="kw1">typedef</span> C<span class="sy1">&lt;</span>A<span class="sy1">&lt;</span><span class="nu0">2</span><span class="sy1">&gt;&gt;</span><span class="sy4">::</span><span class="me2">Q</span> R<span class="sy4">;</span> <span class="co1">// OK: T was deduced to long </span>
+                      <span class="co1">// from the template argument value in the type A&lt;2&gt;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">auto</span> X<span class="sy1">&gt;</span>
+<span class="kw1">class</span> bar<span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, T n<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>bar<span class="sy1">&lt;</span>n<span class="sy1">&gt;</span> x<span class="br0">)</span><span class="sy4">;</span>
+ 
+f<span class="br0">(</span>bar<span class="sy1">&lt;</span><span class="nu0">3</span><span class="sy1">&gt;</span><span class="br0">{</span><span class="br0">}</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: T was deduced to int (and n to 3)</span>
+             <span class="co1">// from the template argument value in the type bar&lt;3&gt;</span></pre></div></div>
+<p>The type of <code>N</code> in the type <code>T[N]</code> is <span class="t-lc"><a href="../types/size_t.html" title="cpp/types/size t">std::size_t</a></span>
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T, T i<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span> <span class="br0">(</span><span class="sy3">&amp;</span>a<span class="br0">)</span><span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> v<span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span>
+f<span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: T is std::size_t</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<p>If a non-type template parameter of function template is used in the template parameter list of function parameter(which is also a template), and the corresponding template argument is deduced, the type of the deduced template argument ( as specified in its enclosing template parameter list, meaning references are preserved) must match the type of the non-type template parameter exactly, except that cv-qualifiers are dropped, and except where the template argument is deduced from an array bound—in that case any integral type is allowed, even bool though it would always become true:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span> i<span class="sy1">&gt;</span>
+<span class="kw1">class</span> A <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">short</span> s<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>A<span class="sy1">&lt;</span>s<span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// the type of the non-type template param is short</span>
+ 
+<span class="kw4">void</span> k1<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    A<span class="sy1">&lt;</span><span class="nu0">1</span><span class="sy1">&gt;</span> a<span class="sy4">;</span>  <span class="co1">// the type of the non-type template param of a is int</span>
+ 
+    f<span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span>    <span class="co1">// P = A&lt;(short)s&gt;, A = A&lt;(int)1&gt;</span>
+             <span class="co1">// error: deduced non-type template argument does not have the same</span>
+             <span class="co1">// type as its corresponding template argument</span>
+ 
+    f<span class="sy1">&lt;</span><span class="nu0">1</span><span class="sy1">&gt;</span><span class="br0">(</span>a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: the template argument is not deduced, </span>
+             <span class="co1">// this calls f&lt;(short)1&gt;(A&lt;(short)1&gt;)</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy3">&amp;</span><span class="sy1">&gt;</span>
+<span class="kw1">struct</span> X<span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy3">&amp;</span> R<span class="sy1">&gt;</span>
+<span class="kw4">void</span> k2<span class="br0">(</span>X<span class="sy1">&lt;</span>R<span class="sy1">&gt;</span><span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> n<span class="sy4">;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>X<span class="sy1">&lt;</span>n<span class="sy1">&gt;</span> <span class="sy3">&amp;</span>x<span class="br0">)</span>
+<span class="br0">{</span>
+    k2<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = X&lt;R&gt;, A = X&lt;n&gt;</span>
+           <span class="co1">// parameter type is int&amp;</span>
+           <span class="co1">// argument type is int&amp; in struct X's template declaration</span>
+           <span class="co1">// OK (with CWG 2091): deduces R to refer to n</span>
+<span class="br0">}</span></pre></div></div>
+<p>Type template parameter cannot be deduced from the type of a function default argument:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>T <span class="sy1">=</span> <span class="nu0">5</span>, T <span class="sy1">=</span> <span class="nu0">7</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="kw4">void</span> g<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>     <span class="co1">// OK: calls f&lt;int&gt;(1, 7)</span>
+    f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>      <span class="co1">// error: cannot deduce T</span>
+    f<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: calls f&lt;int&gt;(5, 7)</span>
+<span class="br0">}</span></pre></div></div>
+<p>Deduction of template template parameter can use the type used in the template specialization used in the function call:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span><span class="sy1">&gt;</span> <span class="kw1">class</span> X<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> A <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// A is a template with a TT param</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span><span class="sy1">&gt;</span> <span class="kw1">class</span> TT<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>A<span class="sy1">&lt;</span>TT<span class="sy1">&gt;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> B <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+A<span class="sy1">&lt;</span>B<span class="sy1">&gt;</span> ab<span class="sy4">;</span>
+f<span class="br0">(</span>ab<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// P = A&lt;TT&gt;, A = A&lt;B&gt;: deduced TT = B, calls f(A&lt;B&gt;)</span></pre></div></div>
+<p>Notes: As <a href="noexcept_spec.html" title="cpp/language/noexcept spec">noexcept specification</a> has become a part of type since C++17, some compilers (e.g. GCC, Clang, and ICC, but not MSVC) are able to deduce the value in the <code>noexcept</code> specifier from a type in C++17 or later mode. Such feature has not been accepted by the standard. This is <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2355.html">CWG issue 2355</a>.
+</p>
+<h3><span class="mw-headline" id="Other_contexts">Other contexts</span></h3>
+<p>Besides function calls and operator expressions, template argument deduction is used in the following situations:
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx11"><td>
+<h4> <span class="mw-headline" id="auto_type_deduction">auto type deduction</span></h4>
+<p>Template argument deduction is used in <a href="declarations.html" title="cpp/language/declarations">declarations</a> of variables, when deducing the meaning of the <b><a href="auto.html" title="cpp/language/auto">auto specifier</a></b> from the variable's initializer.
+</p><p>The parameter <code><b>P</b></code> is obtained as follows: in <code>T</code>, the declared type of the variable that includes <code>auto</code>, every occurrence of <code>auto</code> is replaced with an imaginary type template parameter <code>U</code> or, if the initialization is copy-list-initialization, with <code>std::initializer_list&lt;U&gt;</code>. The argument <code><b>A</b></code> is the initializer expression. After deduction of <code>U</code> from <code><b>P</b></code> and <code><b>A</b></code> following the rules described above, the deduced <code>U</code> is substituted into <code>P</code> to get the actual variable type:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">const</span> <span class="kw4">auto</span><span class="sy3">&amp;</span> x <span class="sy1">=</span> <span class="nu0">1</span> <span class="sy2">+</span> <span class="nu0">2</span><span class="sy4">;</span> <span class="co1">// P = const U&amp;, A = 1 + 2:</span>
+                       <span class="co1">// same rules as for calling f(1 + 2) where f is</span>
+                       <span class="co1">// template&lt;class U&gt; void f(const U&amp; u)</span>
+                       <span class="co1">// deduced U = int, the type of x is const int&amp;</span>
+ 
+<span class="kw4">auto</span> l <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">13</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// P = std::initializer_list&lt;U&gt;, A = {13}:</span>
+               <span class="co1">// deduced U = int, the type of l is std::initializer_list&lt;int&gt;</span></pre></div></div>
+<p>In direct-list-initialization (but not in copy-list-initalization), when deducing the meaning of the <a href="auto.html" title="cpp/language/auto">auto</a> from a braced-init-list, the braced-init-list must contain only one element, and the type of auto will be the type of that element:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">auto</span> x1 <span class="sy1">=</span> <span class="br0">{</span><span class="nu0">3</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// x1 is std::initializer_list&lt;int&gt;</span>
+<span class="kw4">auto</span> x2<span class="br0">{</span><span class="nu0">1</span>, <span class="nu0">2</span><span class="br0">}</span><span class="sy4">;</span> <span class="co1">// error: not a single element</span>
+<span class="kw4">auto</span> x3<span class="br0">{</span><span class="nu0">3</span><span class="br0">}</span><span class="sy4">;</span>    <span class="co1">// x3 is int</span>
+               <span class="co1">// (before N3922 x2 and x3 were both std::initializer_list&lt;int&gt;)</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-cxx11">(since C++11)</span></td></tr>
+</table>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<h4> <span class="mw-headline" id="auto-returning_functions">auto-returning functions</span></h4>
+<p>Template argument deduction is used in declarations of <a href="functions.html" title="cpp/language/functions">functions</a>, when deducing the meaning of the <a href="auto.html" title="cpp/language/auto">auto</a> specifier in the function's return type, from the return statement.
+</p><p>For auto-returning functions, the parameter <code><b>P</b></code> is obtained as follows: in <code>T</code>, the declared return type of the function that includes <code>auto</code>, every occurrence of <code>auto</code> is replaced with an imaginary type template parameter <code>U</code>. The argument <code><b>A</b></code> is the expression of the <a href="return.html" title="cpp/language/return">return</a> statement, and if the return statement has no operand, <code><b>A</b></code> is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="br0">(</span><span class="br0">)</span></span></span>. After deduction of <code>U</code> from <code><b>P</b></code> and <code><b>A</b></code> following the rules described above, the deduced <code>U</code> is substituted into <code>T</code> to get the actual return type:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw4">auto</span> f<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="nu0">42</span><span class="sy4">;</span> <span class="br0">}</span> <span class="co1">// P = auto, A = 42:</span>
+                        <span class="co1">// deduced U = int, the return type of f is int</span></pre></div></div>
+<p>If such function has multiple return statements, the deduction is performed for each return statement. All the resulting types must be the same and become the actual return type.
+</p><p>If such function has no return statement, <code><b>A</b></code> is <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="br0">(</span><span class="br0">)</span></span></span> when deducing.
+</p><p>Note: the meaning of <span class="t-c"><span class="mw-geshi cpp source-cpp">decltype<span class="br0">(</span><span class="kw4">auto</span><span class="br0">)</span></span></span> placeholder in variable and function declarations does not use template argument deduction.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id="Overload_resolution">Overload resolution</span></h4>
+<p>Template argument deduction is used during <a href="overload_resolution.html" title="cpp/language/overload resolution">overload resolution</a>, when generating specializations from a candidate template function.
+<code><b>P</b></code> and <code><b>A</b></code> are the same as in a regular function call:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../string/basic_string.html"><span class="kw1233">std::<span class="me2">string</span></span></a> s<span class="sy4">;</span>
+<a href="../string/basic_string/getline.html"><span class="kw1259">std::<span class="me2">getline</span></span></a><span class="br0">(</span><a href="../io/cin.html"><span class="kw1760">std::<span class="me2">cin</span></span></a>, s<span class="br0">)</span><span class="sy4">;</span>
+ 
+<span class="co1">// "std::getline" names 4 function templates, </span>
+<span class="co1">// 2 of which are candidate functions (correct number of parameters)</span>
+ 
+<span class="co1">// 1st candidate template:</span>
+<span class="co1">// P1 = std::basic_istream&lt;CharT, Traits&gt;&amp;, A1 = std::cin</span>
+<span class="co1">// P2 = std::basic_string&lt;CharT, Traits, Allocator&gt;&amp;, A2 = s</span>
+<span class="co1">// deduction determines the type template parameters CharT, Traits, and Allocator</span>
+<span class="co1">// specialization std::getline&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt;&gt;</span>
+ 
+<span class="co1">// 2nd candidate template:</span>
+<span class="co1">// P1 = std::basic_istream&lt;CharT, Traits&gt;&amp;&amp;, A1 = std::cin</span>
+<span class="co1">// P2 = std::basic_string&lt;CharT, Traits, Allocator&gt;&amp;, A2 = s</span>
+<span class="co1">// deduction determines the type template parameters CharT, Traits, and Allocator</span>
+<span class="co1">// specialization std::getline&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt;&gt;</span>
+ 
+<span class="co1">// overload resolution ranks reference binding from lvalue std::cin</span>
+<span class="co1">// and picks the first of the two candidate specializations</span></pre></div></div>
+<p>If deduction fails, or if deduction succeeds, but the specialization it produces would be invalid (for example, an overloaded operator whose parameters are neither class nor enumeration types), the specialization is not included in the overload set, similar to <a href="sfinae.html" title="cpp/language/sfinae">SFINAE</a>.
+</p>
+<h4><span class="mw-headline" id="Address_of_an_overload_set">Address of an overload set</span></h4>
+<p>Template argument deduction is used when taking an <a href="overloaded_address.html" title="cpp/language/overloaded address">address of a overload set</a>, which includes function templates.
+</p><p>The function type of the function template is <code><b>P</b></code>. The <a href="overloaded_address.html" title="cpp/language/overloaded address">target type</a> is the type of <code><b>A</b></code>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><a href="../io/cout.html"><span class="kw1762">std::<span class="me2">cout</span></span></a> <span class="sy1">&lt;&lt;</span> <a href="../io/manip/endl.html"><span class="kw1795">std::<span class="me2">endl</span></span></a><span class="sy4">;</span>
+ 
+<span class="co1">// std::endl names a function template</span>
+<span class="co1">// type of endl P =</span>
+<span class="co1">// std::basic_ostream&lt;CharT, Traits&gt;&amp; (std::basic_ostream&lt;CharT, Traits&gt;&amp;)</span>
+<span class="co1">// operator&lt;&lt; parameter A =</span>
+<span class="co1">// std::basic_ostream&lt;char, std::char_traits&lt;char&gt;&gt;&amp; (*)(</span>
+<span class="co1">//   std::basic_ostream&lt;char, std::char_traits&lt;char&gt;&gt;&amp;</span>
+<span class="co1">// )</span>
+<span class="co1">// (other overloads of operator&lt;&lt; are not viable) </span>
+<span class="co1">// deduction determines the type template parameters CharT and Traits</span></pre></div></div>
+<p>An additional rule is applied to the deduction in this case: when comparing function parameters <code><b>P</b></code>i and <code><b>A</b></code>i, if any <code><b>P</b></code>i is an rvalue reference to cv-unqualified template parameter (a "forwarding reference") and the corresponding <code><b>A</b></code>i is an lvalue reference, then <code><b>P</b></code>i is adjusted to the template parameter type (T&amp;&amp; becomes T).
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx14"><td>
+<p>If the return type of the function template is a placeholder (<span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw4">auto</span></span></span> or <span class="t-c"><span class="mw-geshi cpp source-cpp">decltype<span class="br0">(</span><span class="kw4">auto</span><span class="br0">)</span></span></span>), that return type is a non-deduced context and is determined from the instantiation.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-cxx14">(since C++14)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id="Partial_ordering">Partial ordering</span></h4>
+<p>Template argument deduction is used during <a href="function_template.html" title="cpp/language/function template">partial ordering of overloaded function templates</a>
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: mini-example </td></tr></table> 
+<h4><span class="mw-headline" id="Conversion_function_template">Conversion function template</span></h4>
+<p>Template argument deduction is used when selecting <a href="cast_operator.html" title="cpp/language/cast operator">user-defined conversion function</a> template arguments.
+</p><p><code><b>A</b></code> is the type that is required as the result of the conversion. <code><b>P</b></code> is the return type of the conversion function template. If <code><b>P</b></code> is a reference type, then the referred type is used in place of <code><b>P</b></code> for the following parts of the section.
+</p><p>If <code><b>A</b></code> is not a reference type:
+</p>
+<div class="t-li1"><span class="t-li">a)</span> if the <code><b>P</b></code> is an array type, then the pointer type obtained by array-to-pointer conversion is used in place of <code><b>P</b></code>;</div>
+<div class="t-li1"><span class="t-li">b)</span> if the <code><b>P</b></code> is a function type, then the function pointer type obtained by function-to-pointer conversion is used in place of <code><b>P</b></code>;</div>
+<div class="t-li1"><span class="t-li">c)</span> if <code><b>P</b></code> is cv-qualified, the top-level cv-qualifiers are ignored.</div>
+<p>If <code><b>A</b></code> is cv-qualified, the top-level cv-qualifiers are ignored. If <code><b>A</b></code> is a reference type, the referred type is used by deduction.
+</p><p>If the usual deduction from <code><b>P</b></code> and <code><b>A</b></code> (as described above) fails, the following alternatives are additionally considered:
+</p>
+<div class="t-li1"><span class="t-li">a)</span> if <code><b>A</b></code> is a reference type, <code><b>A</b></code> can be more cv-qualified than the deduced <code><b>A</b></code>;</div>
+<div class="t-li1"><span class="t-li">b)</span> if <code><b>A</b></code> is a pointer or pointer to member type, the deduced <code><b>A</b></code> is allowed to be any pointer that can be converted to <code><b>A</b></code> by qualification conversion:
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> A
+<span class="br0">{</span>
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+    operator T<span class="sy2">***</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+A a<span class="sy4">;</span>
+ 
+<span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span> <span class="kw4">const</span><span class="sy2">*</span> <span class="kw4">const</span><span class="sy2">*</span> p1 <span class="sy1">=</span> a<span class="sy4">;</span>
+ 
+<span class="co1">// P = T***, A = const int* const* const*</span>
+<span class="co1">// regular function-call deduction for </span>
+<span class="co1">// template&lt;class T&gt; void f(T*** p) as if called with the argument</span>
+<span class="co1">// of type const int* const* const* fails</span>
+<span class="co1">// additional deduction for conversion functions determines T = int </span>
+<span class="co1">// (deduced A is int***, convertible to const int* const* const*)</span></pre></div></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-cxx17"><td>
+<div class="t-li1"><span class="t-li">c)</span> if <code><b>A</b></code> is a function pointer type, the deduced <code><b>A</b></code> is allowed to be pointer to noexcept function, convertible to <code><b>A</b></code> by function pointer conversion;</div>
+<div class="t-li1"><span class="t-li">d)</span> if <code><b>A</b></code> is a pointer to member function, the deduced <code><b>A</b></code> is allowed to be a pointer to noexcept member function, convertible to <code><b>A</b></code> by function pointer conversion.</div>
+</td>
+<td><span class="t-mark-rev t-since-cxx17">(since C++17)</span></td></tr>
+</table>
+<p>See <a href="member_template.html#Conversion_function_templates" title="cpp/language/member template">member template</a> for other rules regarding conversion function templates.
+</p>
+<h4><span class="mw-headline" id="Explicit_instantiation">Explicit instantiation</span></h4>
+<p>Template argument deduction is used in <a href="function_template.html#Explicit_instantiation" title="cpp/language/function template">explicit instantiations</a>, <a href="template_specialization.html" title="cpp/language/template specialization">explicit specializations</a>, and those <a href="friend.html#Template_friends" title="cpp/language/friend">friend declarations</a> where the declarator-id happens to refer to a specialization of a function template (for example, <span class="t-c"><span class="mw-geshi cpp source-cpp"><span class="kw1">friend</span> ostream<span class="sy3">&amp;</span> operator<span class="sy1">&lt;&lt;</span> <span class="sy1">&lt;&gt;</span> <span class="br0">(</span>...<span class="br0">)</span></span></span>), if not all template arguments are explicitly specified or defaulted, template argument deduction is used to determine which template's specialization is referred to.
+</p><p><code><b>P</b></code> is the type of the function template that is being considered as a potential match, and <code><b>A</b></code> is the function type from the declaration. If there are no matches or more than one match (after partial ordering), the function declaration is ill-formed:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> X<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>X a<span class="br0">)</span><span class="sy4">;</span>        <span class="co1">// 1st template f</span>
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> X<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>X<span class="sy2">*</span> a<span class="br0">)</span><span class="sy4">;</span>       <span class="co1">// 2nd template f</span>
+<span class="kw1">template</span><span class="sy1">&lt;&gt;</span>
+<span class="kw4">void</span> f<span class="sy1">&lt;&gt;</span><span class="br0">(</span><span class="kw4">int</span><span class="sy2">*</span> a<span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// explicit specialization of f</span>
+ 
+<span class="co1">// P1 = void(X), A1 = void(int*): deduced X = int*, f&lt;int*&gt;(int*)</span>
+<span class="co1">// P2 = void(X*), A2 = void(int*): deduced X = int, f&lt;int&gt;(int*)</span>
+<span class="co1">// f&lt;int*&gt;(int*) and f&lt;int&gt;(int*) are then submitted to partial ordering</span>
+<span class="co1">// which selects f&lt;int&gt;(int*) as the more specialized template</span></pre></div></div>
+<p>An additional rule is applied to the deduction in this case: when comparing function parameters <code><b>P</b></code>i and <code><b>A</b></code>i, if any <code><b>P</b></code>i is an rvalue reference to cv-unqualified template parameter (a "forwarding reference") and the corresponding <code><b>A</b></code>i is an lvalue reference, then <code><b>P</b></code>i is adjusted to the template parameter type (T&amp;&amp; becomes T).
+</p>
+<h4><span class="mw-headline" id="Deallocation_function_template">Deallocation function template</span></h4>
+<p>Template argument deduction is used when determining if a <a href="../memory/new/operator_delete.html" title="cpp/memory/new/operator delete">deallocation function</a> template specialization matches a given placement form of <code>operator new</code>.
+</p><p><code><b>P</b></code> is the type of the function template that is being considered as a potential match, and <code><b>A</b></code> is the function type of the deallocation function that would be the match for the placement operator new under consideration. If there is no match or more than one match (after overload resolution), the placement deallocation function is not called (memory leak may occur):
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">struct</span> X
+<span class="br0">{</span>
+    X<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span> <span class="kw1">throw</span> <a href="../error/runtime_error.html"><span class="kw771">std::<span class="me2">runtime_error</span></span></a><span class="br0">(</span><span class="st0">""</span><span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+    <span class="kw4">static</span> <span class="kw4">void</span><span class="sy2">*</span> <a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a><span class="br0">(</span><a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a> sz, <span class="kw4">bool</span> b<span class="br0">)</span>   <span class="br0">{</span> <span class="kw1">return</span> <span class="sy4">::</span><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a><span class="br0">(</span>sz<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+    <span class="kw4">static</span> <span class="kw4">void</span><span class="sy2">*</span> <a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a><span class="br0">(</span><a href="../types/size_t.html"><span class="kw106">std::<span class="me2">size_t</span></span></a> sz, <span class="kw4">double</span> f<span class="br0">)</span> <span class="br0">{</span> <span class="kw1">return</span> <span class="sy4">::</span><a href="../memory/new/operator_new.html"><span class="kw689">operator new</span></a><span class="br0">(</span>sz<span class="br0">)</span><span class="sy4">;</span> <span class="br0">}</span>
+ 
+    <span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">typename</span> T<span class="sy1">&gt;</span>
+    <span class="kw4">static</span> <span class="kw4">void</span> <a href="../memory/new/operator_delete.html"><span class="kw691">operator delete</span></a><span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span> ptr, T arg<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="sy4">::</span><a href="../memory/new/operator_delete.html"><span class="kw691">operator delete</span></a><span class="br0">(</span>ptr<span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">try</span>
+    <span class="br0">{</span>
+        X<span class="sy2">*</span> p1 <span class="sy1">=</span> new <span class="br0">(</span><span class="kw2">true</span><span class="br0">)</span> X<span class="sy4">;</span> <span class="co1">// when X() throws, operator delete is looked up</span>
+                              <span class="co1">// P1 = void(void*, T), A1 = void(void*, bool):</span>
+                              <span class="co1">// deduced T = bool</span>
+                              <span class="co1">// P2 = void(void*, T), A2 = void(void*, double):</span>
+                              <span class="co1">// deduced T = double</span>
+                              <span class="co1">// overload resolution picks operator delete&lt;bool&gt;</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span><span class="br0">(</span><span class="kw4">const</span> <a href="../error/exception.html"><span class="kw765">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+    <span class="kw1">try</span>
+    <span class="br0">{</span>
+        X<span class="sy2">*</span> p1 <span class="sy1">=</span> new <span class="br0">(</span><span class="nu16">13.2</span><span class="br0">)</span> X<span class="sy4">;</span> <span class="co1">// same lookup, picks operator delete&lt;double&gt;</span>
+    <span class="br0">}</span>
+    <span class="kw1">catch</span><span class="br0">(</span><span class="kw4">const</span> <a href="../error/exception.html"><span class="kw765">std::<span class="me2">exception</span></span></a><span class="sy3">&amp;</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+<span class="br0">}</span></pre></div></div>
+<h3><span class="mw-headline" id="Alias_templates">Alias templates</span></h3>
+<p><a href="type_alias.html" title="cpp/language/type alias">Alias templates</a> are not deduced <span class="t-rev-inl t-since-cxx20"><span>, except in <a href="deduction_guide.html#Deduction_for_alias_templates" title="cpp/language/class template argument deduction">class template argument deduction</a> </span> <span><span class="t-mark-rev t-since-cxx20">(since C++20)</span></span></span>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Alloc <span class="br0">{</span><span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">using</span> Vec <span class="sy1">=</span> vector<span class="sy1">&lt;</span>T, Alloc<span class="sy1">&lt;</span>T<span class="sy1">&gt;&gt;</span><span class="sy4">;</span>
+Vec<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span> v<span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span>, <span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw1">class</span> TT<span class="sy1">&gt;</span>
+<span class="kw4">void</span> g<span class="br0">(</span>TT<span class="sy1">&lt;</span><span class="kw4">int</span>, Alloc<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;&gt;</span><span class="br0">)</span><span class="sy4">;</span>
+g<span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// OK: deduced TT = vector</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span><span class="sy1">&gt;</span> <span class="kw1">class</span> TT<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span>TT<span class="sy1">&lt;</span><span class="kw4">int</span><span class="sy1">&gt;</span><span class="br0">)</span><span class="sy4">;</span>
+f<span class="br0">(</span>v<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// error: TT cannot be deduced as "Vec" because Vec is an alias template</span></pre></div></div>
+<h3><span class="mw-headline" id="Implicit_conversions">Implicit conversions</span></h3>
+<p>Type deduction does not consider implicit conversions (other than type adjustments listed above): that's the job for <a href="overload_resolution.html" title="cpp/language/overload resolution">overload resolution</a>, which happens later. However, if deduction succeeds for all parameters that participate in template argument deduction, and all template arguments that aren't deduced are explicitly specified or defaulted, then the remaining function parameters are compared with the corresponding function arguments. For each remaining parameter <code><b>P</b></code> with a type that was non-dependent before substitution of any explicitly-specified template arguments, if the corresponding argument <code><b>A</b></code> cannot be implicitly converted to <code><b>P</b></code>, deduction fails.
+</p><p>Parameters with dependent types in which no template-parameters participate in template argument deduction, and parameters that became non-dependent due to substitution of explicitly-specified template arguments will be checked during overload resolution:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="cpp source-cpp"><pre class="de1"><span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">struct</span> Z <span class="br0">{</span> <span class="kw1">typedef</span> <span class="kw1">typename</span> T<span class="sy4">::</span><span class="me2">x</span> xx<span class="sy4">;</span> <span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw1">typename</span> Z<span class="sy1">&lt;</span>T<span class="sy1">&gt;</span><span class="sy4">::</span><span class="me2">xx</span> f<span class="br0">(</span><span class="kw4">void</span><span class="sy2">*</span>, T<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// #1</span>
+ 
+<span class="kw1">template</span><span class="sy1">&lt;</span><span class="kw1">class</span> T<span class="sy1">&gt;</span>
+<span class="kw4">void</span> f<span class="br0">(</span><span class="kw4">int</span>, T<span class="br0">)</span><span class="sy4">;</span>                <span class="co1">// #2</span>
+ 
+<span class="kw1">struct</span> A <span class="br0">{</span><span class="br0">}</span> a<span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    f<span class="br0">(</span><span class="nu0">1</span>, a<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// for #1, deduction determines T = struct A, but the remaining argument 1</span>
+             <span class="co1">// cannot be implicitly converted to its parameter void*: deduction fails</span>
+             <span class="co1">// instantiation of the return type is not requested</span>
+             <span class="co1">// for #2, deduction determines T = struct A, and the remaining argument 1</span>
+             <span class="co1">// can be implicitly converted to its parameter int: deduction succeeds</span>
+             <span class="co1">// the function call compiles as a call to #2 (deduction failure is SFINAE)</span>
+<span class="br0">}</span></pre></div></div>
+<h3><span class="mw-headline" id="Defect_reports">Defect reports</span></h3>
+<p>The following behavior-changing defect reports were applied retroactively to previously published C++ standards.
+</p>
+<table class="dsctable" style="font-size:0.8em">
+<tr>
+<th> DR
+</th>
+<th> Applied to
+</th>
+<th> Behavior as published
+</th>
+<th> Correct behavior
+</th></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/70.html">CWG 70</a>
+</td>
+<td> C++98
+</td>
+<td> whether array bounds would be deduced was not specified
+</td>
+<td> specified as non-deduced
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/300.html">CWG 300</a>
+</td>
+<td> C++98
+</td>
+<td> deduction took place for function parameters of form<br><code>type(*)(T)/T(*)()/T(*)(T)</code>, function pointers<br>match these forms but function references do not
+</td>
+<td> change these forms to<br><code>type(T)/T()/T(T)</code> so they<br>can also cover references
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/322.html">CWG 322</a>
+</td>
+<td> C++98
+</td>
+<td> type parameters of reference types were not<br>adjusted to use the referenced type for deduction
+</td>
+<td> adjustment added
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/976.html">CWG 976</a>
+</td>
+<td> C++98
+</td>
+<td> in the deduction for conversion operator templates,<br><code>const T&amp;</code> return type could never match <code>T</code> result type
+</td>
+<td> rules adjusted to<br>allow such matches
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1387.html">CWG 1387</a>
+</td>
+<td> C++11
+</td>
+<td> the expression of a decltype-specifier was not a non-deduced context
+</td>
+<td> it is
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1391.html">CWG 1391</a>
+</td>
+<td> C++98
+</td>
+<td> effect of implicit conversions of the arguments<br>that aren't involved in deduction were not specified
+</td>
+<td> specified as described above
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/1591.html">CWG 1591</a>
+</td>
+<td> C++11
+</td>
+<td> cannot deduce array bound and element type from a <i>braced-init-list</i>
+</td>
+<td> deduction allowed
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2052.html">CWG 2052</a>
+</td>
+<td> C++98
+</td>
+<td> deducing an operator with non-class<br>non-enum arguments was a hard error
+</td>
+<td> soft error if there<br>are other overloads
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://cplusplus.github.io/CWG/issues/2091.html">CWG 2091</a>
+</td>
+<td> C++98
+</td>
+<td> deducing a reference non-type parameter did not<br>work due to type mismatch against the argument
+</td>
+<td> type mismatch avoided
+</td></tr>
+<tr>
+<td> <a rel="nofollow" class="external text" href="https://wg21.link/N3922">N3922</a>
+</td>
+<td> C++11
+</td>
+<td> direct-list-initialization of <code>auto</code> deduces <span class="t-lc"><a href="../utility/initializer_list.html" title="cpp/utility/initializer list">std::initializer_list</a></span>
+</td>
+<td> ill-formed for more than one<br>elements, deduce element<br>type for single element
+</td></tr></table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 6073/1000000
+Preprocessor generated node count: 16395/1000000
+Post‐expand include size: 162000/2097152 bytes
+Template argument size: 46186/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:13515-0!*!0!!en!*!* and timestamp 20220708023722 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=cpp/language/template_argument_deduction&amp;oldid=140127">https://en.cppreference.com/mwiki/index.php?title=cpp/language/template_argument_deduction&amp;oldid=140127</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/cpp/language/template_argument_deduction">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 8 June 2022, at 23:31.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 592,988 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 6.848 secs. -->
+	</body>
+<!-- Cached 20220708023722 -->
+</html>

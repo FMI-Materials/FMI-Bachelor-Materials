@@ -1,0 +1,132 @@
+---- lab 6
+
+-- 1
+
+SELECT * FROM EMPLOYEES;
+
+SELECT last_name, hire_date
+FROM employees
+WHERE hire_date > (SELECT hire_date
+                    FROM employees
+                    WHERE lower(last_name) = 'gates');
+
+-- 2
+
+SELECT last_name, salary, department_id
+FROM employees
+WHERE department_id = (SELECT department_id
+                        FROM employees
+                        WHERE INITCAP(last_name) = 'Gates')
+AND INITCAP(last_name) != 'Gates';
+
+-- 3
+
+SELECT last_name, salary
+FROM employees
+WHERE manager_id = (SELECT employee_id
+                    FROM employees
+                    WHERE NVL(manager_id,1) = 1);
+                    
+-- 4
+
+SELECT department_id, salary
+FROM employees
+WHERE commission_pct IS NOT NULL;
+
+SELECT last_name, salary
+FROM employees
+WHERE (department_id, salary) IN (SELECT department_id, salary
+                                FROM employees
+                                WHERE commission_pct IS NOT NULL);
+
+-- 5
+
+SELECT employee_id, last_name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary)
+                FROM employees);
+                
+--
+
+SELECT last_name, salary + salary * NVL(commission_pct,0) "Salariu total"
+FROM employees
+WHERE (salary + salary * NVL(commission_pct,0)) > ( SELECT MIN(salary)
+                                                    FROM employees
+                                                    WHERE UPPER(job_id) LIKE ('%CLERK%'))
+ORDER BY salary desc;
+
+-- 7
+
+SELECT employee_id, commission_pct
+FROM employees
+WHERE commission_pct IS NOT NULL;
+
+SELECT e.last_name, d.department_name, e.salary
+FROM employees e, departments d
+WHERE e.manager_id IN (SELECT employee_id
+                    FROM employees
+                    WHERE commission_pct IS NOT NULL)
+AND e.commission_pct IS NULL;
+
+-- 8
+
+SELECT location_id
+FROM locations
+WHERE INITCAP(city) = 'Toronto';
+
+SELECT e.last_name, e.department_id, e.job_id
+FROM employees e JOIN departments d on (e.department_id = d.department_id)
+WHERE d.location_id = (SELECT location_id
+                        FROM locations
+                        WHERE INITCAP(city) = 'Toronto');
+                        
+-- 9
+
+SELECT department_id
+FROM departments
+WHERE department_id NOT IN (SELECT UNIQUE department_id
+                            FROM employees
+                            WHERE department_id IS NOT NULL);
+                            
+-- 10
+
+INSERT INTO employees (employee_id, last_name, email, hire_date, job_id, salary,
+commission_pct)
+VALUES (252, 'Nume252', 'nume252@emp.com', SYSDATE, 'SA_REP', 5000, NULL);
+
+SELECT employee_id, last_name, email, hire_date, job_id, salary, commission_pct
+FROM employees
+WHERE employee_id = 252;
+
+ROLLBACK;
+
+INSERT INTO
+(SELECT employee_id, last_name, email, hire_date, job_id, salary,
+commission_pct
+FROM employees)
+VALUES (252, 'Nume252', 'nume252@emp.com', SYSDATE, 'SA_REP', 5000, NULL);
+
+SELECT employee_id, last_name, email, hire_date, job_id, salary, commission_pct
+FROM employees
+WHERE employee_id = 252;
+
+ROLLBACK;
+
+-- 11
+
+desc employees;
+
+CREATE TABLE SUBALTERNI
+(cod number(6) PRIMARY KEY,
+nume varchar2(25),
+prenume varchar2(20),
+cod_manager number(6),
+nume_manager varchar2(25));
+
+select * from subalterni;
+
+INSERT INTO SUBALTERNI (cod, nume, prenume, cod_manager, nume_manager)
+SELECT e1.employee_id, e1.last_name, e1.first_name, e1.manager_id, e2.last_name
+FROM employees e1, employees e2
+WHERE LOWER(e2.last_name||e2.first_name) = 'kingsteven'
+AND e1.manager_id = e2.employee_id;

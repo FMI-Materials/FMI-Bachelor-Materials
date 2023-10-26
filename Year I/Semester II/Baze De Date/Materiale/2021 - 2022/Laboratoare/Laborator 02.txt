@@ -1,0 +1,57 @@
+﻿select e.*, d.*
+from employees e, departments d
+
+
+select e.last_name, d.department_name
+from employees e, departments d
+where e.department_id = d.department_id;
+
+
+
+
+select e.last_name, e.department_id,
+ d.department_id,
+ d.department_name
+from employees e, departments d
+where e.department_id = d.department_id;
+
+
+
+
+select e.last_name, e.department_id,
+ d.department_id,
+ d.department_name
+from employees e join departments d
+on e.department_id = d.department_id;
+
+
+
+
+select e.last_name, e.department_id,
+ d.department_id,
+ d.department_name, d.location_id
+from employees e join departments d
+                                   on e.department_id = d.department_id
+                          join locations l
+                                    on (l.location_id = d.location_id);
+
+
+
+
+--***sa se afiseze numele angajatilor si
+--titlurile joburilor acestora din istoric (job_history)
+
+
+select e.last_name, j.job_title
+from employees e join job_history jh
+   on (e.job_id = jh.job_id)
+            join jobs j
+   on (j.job_id = jh.job_id);
+
+
+
+
+select e.last_name, e.manager_id,
+           m.last_name, m.employee_id
+from employees e, employees m
+where e.manager_id = m.employee_id;

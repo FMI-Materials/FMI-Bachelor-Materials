@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Implicit conversions - cppreference.com</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.21.2">
+<link rel="shortcut icon" href="../../../common/favicon.ico">
+<link rel="stylesheet" href="../../../common/ext.css">
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="../../../common/site_modules.css">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}#toc{display:none}.editsection{display:none}
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-css:7:472787eddcf4605d11de8c7ef047234f */</style>
+
+<script src="../../../common/startup_scripts.js"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"c/language/conversion","wgTitle":"c/language/conversion","wgCurRevisionId":141027,"wgArticleId":13920,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Todo with reason"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"c/language/conversion","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":0,"showtoolbar":1,"skin":"cppreference2","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"gadget-ColiruCompiler":1,"gadget-MathJax":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});;},{},{});
+/* cache key: mwiki1-mwiki_en_:resourceloader:filter:minify-js:7:9f05c6caceb9bb1a482b6cebd4c5a330 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #0000dd;}
+.c.source-c .kw2 {color: #0000ff;}
+.c.source-c .kw3 {color: #0000dd;}
+.c.source-c .kw4 {color: #0000ff;}
+.c.source-c .co1 {color: #909090;}
+.c.source-c .co2 {color: #339900;}
+.c.source-c .coMULTI {color: #ff0000; font-style: italic;}
+.c.source-c .es0 {color: #008000; font-weight: bold;}
+.c.source-c .es1 {color: #008000; font-weight: bold;}
+.c.source-c .es2 {color: #008000; font-weight: bold;}
+.c.source-c .es3 {color: #008000; font-weight: bold;}
+.c.source-c .es4 {color: #008000; font-weight: bold;}
+.c.source-c .es5 {color: #008000; font-weight: bold;}
+.c.source-c .br0 {color: #008000;}
+.c.source-c .sy0 {color: #008000;}
+.c.source-c .sy1 {color: #000080;}
+.c.source-c .sy2 {color: #000040;}
+.c.source-c .sy3 {color: #000040;}
+.c.source-c .sy4 {color: #008080;}
+.c.source-c .st0 {color: #008000;}
+.c.source-c .nu0 {color: #000080;}
+.c.source-c .nu6 {color:#000080;}
+.c.source-c .nu8 {color:#000080;}
+.c.source-c .nu12 {color:#000080;}
+.c.source-c .nu16 {color:#000080;}
+.c.source-c .nu17 {color:#000080;}
+.c.source-c .nu18 {color:#000080;}
+.c.source-c .nu19 {color:#000080;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/cppreference2/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-c_language_conversion skin-cppreference2 action-view cpp-navbar">
+        <!-- header -->
+        <!-- /header -->
+        <!-- content -->
+<div id="cpp-content-base">
+            <div id="content">
+                <a id="top"></a>
+                <div id="mw-js-message" style="display:none;"></div>
+                                <!-- firstHeading -->
+<h1 id="firstHeading" class="firstHeading">Implicit conversions</h1>
+                <!-- /firstHeading -->
+                <!-- bodyContent -->
+                <div id="bodyContent">
+                                        <!-- tagline -->
+                    <div id="siteSub">From cppreference.com</div>
+                    <!-- /tagline -->
+                                        <!-- subtitle -->
+                    <div id="contentSub"><span class="subpages">&lt; <a href="../../c.html" title="c">c</a>‎ | <a href="../language.html" title="c/language">language</a></span></div>
+                    <!-- /subtitle -->
+                                                            <!-- bodycontent -->
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="t-navbar" style=""><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../../c.html" title="c"> C</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="line-height:1.1em;">
+<tr class="t-nv"><td colspan="5"> <a href="../language.html" title="c/language"> Language</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../header.html" title="c/header"> Headers</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../types.html" title="c/types"> Type support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../program.html" title="c/program"> Program utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../variadic.html" title="c/variadic"> Variadic function support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../error.html" title="c/error"> Error handling</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../memory.html" title="c/memory"> Dynamic memory management</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../string.html" title="c/string"> Strings library</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../algorithm.html" title="c/algorithm"> Algorithms</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../numeric.html" title="c/numeric"> Numerics</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../chrono.html" title="c/chrono"> Date and time utilities</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../io.html" title="c/io"> Input/output support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../locale.html" title="c/locale"> Localization support</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../thread.html" title="c/thread"> Concurrency support</a> <span class="t-mark-rev t-since-c11">(C11)</span> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental"> Technical Specifications</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../index.html" title="c/symbol index"> Symbol index</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="../language.html" title="c/language"> C language</a><div class="t-navbar-menu"><div><div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv"><td colspan="5"> <a href="basic_concepts.html" title="c/language/basic concepts">Basic concepts</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../keyword.html" title="c/keyword"> Keywords</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../preprocessor.html" title="c/preprocessor"> Preprocessor</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="statements.html" title="c/language/statements"> Statements</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="expressions.html" title="c/language/expressions"> Expressions</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="initialization.html" title="c/language/initialization"> Initialization</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="declarations.html" title="c/language/declarations"> Declarations</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="functions.html" title="c/language/functions"> Functions</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> Miscellaneous</td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="history.html" title="c/language/history"> History of C</a></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="../experimental.html" title="c/experimental">Technical Specifications</a> </td></tr>
+</table></div><div></div></div></div></div><div class="t-navbar-sep"> </div><div class="t-navbar-head"><a href="expressions.html" title="c/language/expressions"> Expressions</a><div class="t-navbar-menu"><div><div style="display:inline-block">
+<div><table class="t-nv-begin" cellpadding="0" style="">
+<tr class="t-nv-h2"><td colspan="5"> General </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="value_category.html" title="c/language/value category"> value category</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="eval_order.html" title="c/language/eval order"> evaluation order and sequence points</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="constant_expression.html" title="c/language/constant expression">constant expressions</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <strong class="selflink">implicit conversions</strong> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="generic.html" title="c/language/generic">generic selection</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Constants_and_literals" title="c/language/expressions">constants and literals</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="integer_constant.html" title="c/language/integer constant"> integer constant</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="floating_constant.html" title="c/language/floating constant"> floating constant</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="character_constant.html" title="c/language/character constant"> character constant</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="string_literal.html" title="c/language/string literal"> string literal</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="compound_literal.html" title="c/language/compound literal"> compound literal</a></td></tr>
+<tr class="t-nv-h2"><td colspan="5"> <a href="expressions.html#Operators" title="c/language/expressions">operators</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_precedence.html" title="c/language/operator precedence">operator precedence</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_member_access.html" title="c/language/operator member access">member access and indirection</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_logical.html" title="c/language/operator logical">logical operators</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_comparison.html" title="c/language/operator comparison">comparison operators</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_arithmetic.html" title="c/language/operator arithmetic">arithmetic operators</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_assignment.html" title="c/language/operator assignment">assignment operators</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_incdec.html" title="c/language/operator incdec">increment and decrement</a> </td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="operator_other.html" title="c/language/operator other">function call, comma, conditional operator</a> </td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="sizeof.html" title="c/language/sizeof"><span class="t-lines"><span>sizeof</span></span></a></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"><div class="t-nv-ln-table"><div><a href="_Alignof.html" title="c/language/ Alignof"><span class="t-lines"><span>_Alignof</span></span></a></div><div><span class="t-lines"><span><span class="t-mark-rev t-since-c11">(C11)</span></span></span></div></div></td></tr>
+<tr class="t-nv"><td colspan="5"> <a href="cast.html" title="c/language/cast">cast operators</a> </td></tr>
+</table></div>
+</div><div></div></div></div></div><div class="t-navbar-sep"> </div></div>
+<p>When an expression is used in the context where a value of a different type is expected, <i>conversion</i> may occur:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">1L</span><span class="sy4">;</span> <span class="co1">// expression 1L has type long, int is expected</span>
+n <span class="sy1">=</span> <span class="nu16">2.1</span><span class="sy4">;</span> <span class="co1">// expression 2.1 has type double, int is expected</span>
+<span class="kw4">char</span> <span class="sy2">*</span>p <span class="sy1">=</span> <a href="../memory/malloc.html"><span class="kw403">malloc</span></a><span class="br0">(</span><span class="nu0">10</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// expression malloc(10) has type void*, char* is expected</span></pre></div></div>
+<p>Conversions take place in the following situations:
+</p>
+<h3><span class="mw-headline" id="Conversion_as_if_by_assignment">Conversion as if by assignment</span></h3>
+<ul><li> In the <a href="operator_assignment.html" title="c/language/operator assignment">assignment</a> operator, the value of the right-hand operand is converted to the unqualified type of the left-hand operand.
+</li><li> In <a href="scalar_initialization.html" title="c/language/scalar initialization">scalar initialization</a>, the value of the initializer expression is converted to the unqualified type of the object being initialized
+</li><li> In a <a href="operator_other.html" title="c/language/operator other">function-call expression</a>, to a function that has a prototype, the value of each argument expression is converted to the type of the unqualified declared types of the corresponding parameter
+</li><li> In a <a href="return.html" title="c/language/return">return statement</a>, the value of the operand of <code>return</code> is converted to an object having the return type of the function
+</li></ul>
+<p>Note that actual assignment, in addition to the conversion, also removes extra range and precision from floating-point types and prohibits overlaps; those characteristics do not apply to conversion as if by assignment.
+</p>
+<h3><span class="mw-headline" id="Default_argument_promotions">Default argument promotions</span></h3>
+<p>In a <a href="operator_other.html#Function_call" title="c/language/operator other">function call expression</a> when the call is made to
+</p>
+<div class="t-li1"><span class="t-li">1)</span> a <a href="function_declaration.html" title="c/language/function declaration">function without a prototype</a></div>
+<div class="t-li1"><span class="t-li">2)</span> a <a href="variadic.html" title="c/language/variadic">variadic function</a>, where the argument expression is one of the trailing arguments that are matched against the ellipsis parameter</div>
+<p>Each argument of integer type undergoes <i>integer promotion</i> (see below), and each argument of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> is implicitly converted to the type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span>
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> add_nums<span class="br0">(</span><span class="kw4">int</span> count, ...<span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> sum <span class="sy1">=</span> add_nums<span class="br0">(</span><span class="nu0">2</span>, <span class="st0">'c'</span>, <span class="kw2">true</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// add_nums is called with three ints: (2, 99, 1)</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<p>Note that <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> are not promoted to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> in this context.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h3><span class="mw-headline" id="Usual_arithmetic_conversions">Usual arithmetic conversions</span></h3>
+<p>The arguments of the following arithmetic operators undergo implicit conversions for the purpose of obtaining the <i>common real type</i>, which is the type in which the calculation is performed:
+</p>
+<ul><li> <a href="operator_arithmetic.html" title="c/language/operator arithmetic">binary arithmetic</a> *, /, %, +, -
+</li><li> <a href="operator_comparison.html" title="c/language/operator comparison">relational operators</a> &lt;, &gt;, &lt;=, &gt;=, ==, !=
+</li><li> <a href="operator_arithmetic.html" title="c/language/operator arithmetic">binary bitwise arithmetic</a> &amp;, ^, |, 
+</li><li> the <a href="operator_other.html" title="c/language/operator other">conditional operator</a> ?:
+</li></ul>
+<div class="t-li1"><span class="t-li">1)</span> If one operand is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span><span class="t-rev-inl t-since-c99"><span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> </span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>, the other operand is implicitly converted as follows:
+<dl><dd><ul><li>integer or real floating type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span></span></span>
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<dl><dd><ul><li>complex type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>
+</li><li>imaginary type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table></div>
+<div class="t-li1"><span class="t-li">2)</span> Otherwise, if one operand is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span><span class="t-rev-inl t-since-c99"><span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> </span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>, the other operand is implicitly converted as follows:
+<dl><dd><ul><li>integer or real floating type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span></span></span>
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<dl><dd><ul><li>complex type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>
+</li><li>imaginary type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table></div>
+<div class="t-li1"><span class="t-li">3)</span> Otherwise, if one operand is <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span><span class="t-rev-inl t-since-c99"><span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>, or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span> </span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>, the other operand is implicitly converted as follows:
+<dl><dd><ul><li>integer type to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span></span></span> (the only real type possible is float, which remains as-is)
+</li></ul>
+</dd></dl>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<dl><dd><ul><li>complex type remains <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a></span></span>
+</li><li>imaginary type remains <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a></span></span>
+</li></ul>
+</dd></dl>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table></div>
+<div class="t-li1"><span class="t-li">4)</span> Otherwise, both operands are integers. Both operands undergo <i>integer promotions</i> (see below); then, after integer promotion, one of the following cases applies:
+<dl><dd><ul><li> If the types are the same, that type is the common type.
+</li><li> Else, the types are different:
+<ul><li> If the types have the same signedness (both signed or both unsigned), the operand whose type has the lesser <i>conversion rank</i><sup>1</sup> is implicitly converted<sup>2</sup> to the other type.
+</li><li> Else, the operands have different signedness:
+<ul><li> If the unsigned type has <i>conversion rank</i> greater than or equal to the rank of the signed type, then the operand with the signed type is implicitly converted to the unsigned type.
+</li><li> Else, the unsigned type has <i>conversion rank</i> less than the signed type:
+<ul><li> If the signed type can represent all values of the unsigned type, then the operand with the unsigned type is implicitly converted to the signed type.
+</li><li> Else, both operands undergo implicit conversion to the unsigned type counterpart of the signed operand's type.</li></ul></li></ul></li></ul></li></ul></dd></dl></div>
+
+
+
+
+
+<hr>
+<dl><dd><dl><dd><dl><dd><span style="font-size: x-small">1. Refer to "integer promotions" below for the rules on ranking.</span>
+</dd><dd><span style="font-size: x-small">2. Refer to "integer conversions" under "implicit conversion semantics" below.</span>
+</dd></dl>
+</dd></dl>
+</dd></dl>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="nu0">1</span>.<span class="me1">f</span> <span class="sy2">+</span> <span class="nu0">20000001</span><span class="sy4">;</span> <span class="co1">// int is converted to float, giving 20000000.00</span>
+                <span class="co1">// addition and then rounding to float gives 20000000.00</span>
+ 
+<span class="br0">(</span><span class="kw4">char</span><span class="br0">)</span><span class="st0">'a'</span> <span class="sy2">+</span> <span class="nu0">1L</span><span class="sy4">;</span> <span class="co1">// first, char 'a', which is 97, is promoted to int</span>
+                <span class="co1">// different types: int and long</span>
+                <span class="co1">// same signedness: both signed</span>
+                <span class="co1">// different rank: long is of greater rank than int</span>
+                <span class="co1">// therefore, int 97 is converted to long 97</span>
+                <span class="co1">// the result is 97 + 1 = 98 of type signed long</span>
+ 
+2u <span class="sy2">-</span> <span class="nu0">10</span><span class="sy4">;</span> <span class="co1">// different types: unsigned int and signed int</span>
+         <span class="co1">// different signedness</span>
+         <span class="co1">// same rank</span>
+         <span class="co1">// therefore, signed int 10 is converted to unsigned int 10</span>
+         <span class="co1">// since the arithmetic operation is performed for unsigned integers (see "Arithmetic operators" topic),</span>
+         <span class="co1">// the calculation performed is (2 - 10) modulo (2 raised to n), where n is the number of bits of unsigned int</span>
+         <span class="co1">// if unsigned int is 32-bit long, then </span>
+         <span class="co1">// the result is (-8) modulo (2 raised to 32) = 4294967288 of type unsigned int</span>
+ 
+5UL <span class="sy2">-</span> 2ULL<span class="sy4">;</span> <span class="co1">// different types: unsigned long and unsigned long long</span>
+            <span class="co1">// same signedness</span>
+            <span class="co1">// different rank: rank of unsigned long long is greater</span>
+            <span class="co1">// therefore, unsigned long 5 is converted to unsigned long long 5</span>
+            <span class="co1">// since the arithmetic operation is performed for unsigned integers (see "Arithmetic operators" topic),</span>
+            <span class="co1">// if unsigned long long is 64-bit long, then</span>
+            <span class="co1">// the result is (5 - 2) modulo (2 raised to 64) = 3 of type unsigned long long</span>
+ 
+0UL <span class="sy2">-</span> 1LL<span class="sy4">;</span> <span class="co1">// different types: unsigned long and signed long long</span>
+           <span class="co1">// different signedness</span>
+           <span class="co1">// different rank: rank of signed long long is greater.</span>
+           <span class="co1">// if ULONG_MAX &gt; LLONG_MAX, then signed long long cannot represent all unsigned long</span>
+           <span class="co1">// therefore, this is the last case: both operands are converted to unsigned long long</span>
+           <span class="co1">// unsigned long 0 is converted to unsigned long long 0</span>
+           <span class="co1">// long long 1 is converted to unsigned long long 1</span>
+           <span class="co1">// since the arithmetic operation is performed for unsigned integers (see "Arithmetic operators" topic),</span>
+           <span class="co1">// if unsigned long long is 64-bit long, then  </span>
+           <span class="co1">// the calculation is (0 - 1) modulo (2 raised to 64)</span>
+           <span class="co1">// thus, the result is 18446744073709551615 (ULLONG_MAX) of type unsigned long long</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<p>The result type is determined as follows:
+</p>
+<ul><li> if both operands are complex, the result type is complex
+</li><li> if both operands are imaginary, the result type is imaginary 
+</li><li> if both operands are real, the result type is real
+</li><li> if the two floating-point operands have different type domains (complex vs. real, complex vs imaginary, or imaginary vs. real), the result type is complex
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> z <span class="sy1">=</span> <span class="nu0">1</span> <span class="sy2">+</span> <span class="nu0">2</span><span class="sy2">*</span>I<span class="sy4">;</span>
+<span class="kw4">double</span> f <span class="sy1">=</span> <span class="nu16">3.0</span><span class="sy4">;</span>
+z <span class="sy2">+</span> f<span class="sy4">;</span> <span class="co1">// z remains as-is, f is converted to double, the result is double complex</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<p>As always, the result of a floating-point operator may have greater range and precision than is indicated by its type (see <span class="t-lc"><a href="../types/limits/FLT_EVAL_METHOD.html" title="c/types/limits/FLT EVAL METHOD">FLT_EVAL_METHOD</a></span>).
+</p>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<p>Note: real and imaginary operands are not implicitly converted to complex because doing so would require extra computation, while producing undesirable results in certain cases involving infinities, NaNs and signed zeros. For example, if reals were converted to complex, 2.0×(3.0+i∞)  would evaluate as (2.0+i0.0)×(3.0+i∞) ⇒ (2.0×3.0–0.0×∞) + i(2.0×∞+0.0×3.0) ⇒ NaN+i∞ rather than the correct 6.0+i∞. If imaginaries were converted to complex, i2.0×(∞+i3.0) would evaluate as (0.0+i2.0) × (∞+i3.0) ⇒ (0.0×∞ – 2.0×3.0) + i(0.0×3.0 + 2.0×∞) ⇒ NaN + i∞ instead of –6.0 + i∞.
+</p>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<p>Note: regardless of usual arithmetic conversions, the calculation may always be performed in a narrower type than specified by these rules under the <a href="as_if.html" title="c/language/as if">as-if rule</a>
+</p>
+<h3><span class="mw-headline" id="Value_transformations">Value transformations</span></h3>
+<h4><span class="mw-headline" id="Lvalue_conversion">Lvalue conversion</span></h4>
+<p>Any <a href="value_category.html" title="c/language/value category">lvalue expression</a> of any non-array type, when used in any context other than 
+</p>
+<ul><li> as the operand of the <a href="operator_member_access.html" title="c/language/operator member access">address-of operator</a> (if allowed)
+</li><li> as the operand of the pre/post <a href="operator_incdec.html" title="c/language/operator incdec">increment and decrement operators</a>.
+</li><li> as the left-hand operand of the <a href="operator_member_access.html" title="c/language/operator member access">member access</a> (dot) operator.
+</li><li> as the left-hand operand of the <a href="operator_assignment.html" title="c/language/operator assignment">assignment and compound assignment</a> operators.
+</li><li> as the operand of <a href="sizeof.html" title="c/language/sizeof">sizeof</a>
+</li></ul>
+<p>undergoes <i>lvalue conversion</i>: the type remains the same, but loses <a href="const.html" title="c/language/const">const</a>/<a href="volatile.html" title="c/language/volatile">volatile</a>/<a href="restrict.html" title="c/language/restrict">restrict</a>-qualifiers and <a href="atomic.html" title="c/language/atomic">atomic</a> properties, if any. The value remains the same, but loses its lvalue properties (the address may no longer be taken). 
+</p><p>If the lvalue has incomplete type, the behavior is undefined.
+</p><p>If the lvalue designates an object of automatic storage duration whose address was never taken and if that object was uninitialized (not declared with an initializer and no assignment to it has been performed prior to use), the behavior is undefined.
+</p><p>This conversion models the memory load of the value of the object from its location.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">volatile</span> <span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu0">1</span><span class="sy4">;</span>
+<span class="kw4">int</span> x <span class="sy1">=</span> n<span class="sy4">;</span>            <span class="co1">// lvalue conversion on n reads the value of n</span>
+<span class="kw4">volatile</span> <span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> <span class="sy3">&amp;</span>n<span class="sy4">;</span> <span class="co1">// no lvalue conversion: does not read the value of n</span></pre></div></div>
+<h4><span class="mw-headline" id="Array_to_pointer_conversion">Array to pointer conversion</span></h4>
+<p>Any <a href="value_category.html" title="c/language/value category">lvalue expression</a> of <a href="array.html" title="c/language/array">array type</a>, when used in any context other than 
+</p>
+<ul><li> as the operand of the <a href="operator_member_access.html" title="c/language/operator member access">address-of operator</a>
+</li><li> as the operand of <a href="sizeof.html" title="c/language/sizeof">sizeof</a>
+</li><li> as the string literal used for <a href="array_initialization.html" title="c/language/array initialization">array initialization</a> 
+</li></ul>
+<p>undergoes a conversion to the non-lvalue pointer to its first element.
+</p><p>If the array was declared <a href="storage_duration.html" title="c/language/storage duration">register</a>, the behavior is undefined.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> a<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span>, b<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span><span class="sy4">;</span>
+<span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> a<span class="sy4">;</span>      <span class="co1">// conversion to &amp;a[0]</span>
+<span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span>q<span class="br0">)</span><span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy1">=</span> b<span class="sy4">;</span> <span class="co1">// conversion to &amp;b[0]</span></pre></div></div>
+<h4><span class="mw-headline" id="Function_to_pointer_conversion">Function  to pointer conversion</span></h4>
+<p>Any function designator expression, when used in any context other than 
+</p>
+<ul><li> as the operand of the <a href="operator_member_access.html" title="c/language/operator member access">address-of operator</a>
+</li><li> as the operand of <a href="sizeof.html" title="c/language/sizeof">sizeof</a>
+</li></ul>
+<p>undergoes a conversion to the non-lvalue pointer to the function designated by the expression.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> f<span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="sy4">;</span>
+<span class="kw4">int</span> <span class="br0">(</span><span class="sy2">*</span>p<span class="br0">)</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span> <span class="sy1">=</span> f<span class="sy4">;</span> <span class="co1">// conversion to &amp;f</span>
+<span class="br0">(</span><span class="sy2">***</span>p<span class="br0">)</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// repeated dereference to f and conversion back to &amp;f</span></pre></div></div>
+<h3><span class="mw-headline" id="Implicit_conversion_semantics">Implicit conversion semantics</span></h3>
+<p>Implicit conversion, whether <i>as if by assignment</i> or a <i>usual arithmetic conversion</i>, consists of two stages:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> value transformation (if applicable)</div>
+<div class="t-li1"><span class="t-li">2)</span> one of the conversions listed below (if it can produce the target type)</div>
+<h4><span class="mw-headline" id="Compatible_types">Compatible types</span></h4>
+<p>Conversion of a value of any type to any <a href="types.html#Compatible_types" title="c/language/types" class="mw-redirect">compatible type</a> is always a no-op and does not change the representation.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><a href="../types/integer.html"><span class="kw120">uint8_t</span></a> <span class="br0">(</span><span class="sy2">*</span>a<span class="br0">)</span><span class="br0">[</span><span class="nu0">10</span><span class="br0">]</span><span class="sy4">;</span>         <span class="co1">// if uint8_t is a typedef to unsigned char</span>
+<span class="kw4">unsigned</span> <span class="kw4">char</span> <span class="br0">(</span><span class="sy2">*</span>b<span class="br0">)</span><span class="br0">[</span><span class="br0">]</span> <span class="sy1">=</span> a<span class="sy4">;</span> <span class="co1">// then these pointer types are compatible</span></pre></div></div>
+<h4><span class="mw-headline" id="Integer_promotions">Integer promotions</span></h4>
+<p>Integer promotion is the implicit conversion of a value of any integer type with <i>rank</i> less or equal to <i>rank</i> of int or of a <a href="bit_field.html" title="c/language/bit field">bit field</a> of type <span class="t-lc">_Bool</span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">int</span></span></span>, <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span>, to the value of type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span> or <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span>.
+</p><p>If <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span> can represent the entire range of values of the original type (or the range of values of the original bit field), the value is converted to type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span>. Otherwise the value is converted to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">int</span></span></span>.
+</p><p>Integer promotions preserve the value, including the sign:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span> <span class="br0">{</span>
+   <span class="kw4">void</span> f<span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// old-style function declaration</span>
+   <span class="kw4">char</span> x <span class="sy1">=</span> <span class="st0">'a'</span><span class="sy4">;</span> <span class="co1">// integer conversion from int to char</span>
+   f<span class="br0">(</span>x<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// integer promotion from char back to int</span>
+<span class="br0">}</span>
+<span class="kw4">void</span> f<span class="br0">(</span>x<span class="br0">)</span> <span class="kw4">int</span> x<span class="sy4">;</span> <span class="br0">{</span><span class="br0">}</span> <span class="co1">// the function expects int</span></pre></div></div>
+<p><i>rank</i> above is a property of every <a href="compatible_type.html" title="c/language/type">integer type</a> and is defined as follows:
+</p>
+<div class="t-li1"><span class="t-li">1)</span> the ranks of all signed integer types are different and increase with their precision: rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">short</span></span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">int</span></span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">int</span></span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span></div>
+<div class="t-li1"><span class="t-li">2)</span> the ranks of all signed integer types equal the ranks of the corresponding unsigned integer types</div>
+<div class="t-li1"><span class="t-li">3)</span> the rank of any standard integer type is greater than the rank of any extended integer type of the same size (that is, rank of <span class="t-c"><span class="mw-geshi c source-c">__int64</span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span> <span class="kw4">int</span></span></span>, but rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">long</span> <span class="kw4">long</span></span></span> &lt; rank of <span class="t-c"><span class="mw-geshi c source-c">__int128</span></span> due to the rule <span class="t-v">(1)</span>)</div>
+<div class="t-li1"><span class="t-li">4)</span> rank of char equals rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">signed</span> <span class="kw4">char</span></span></span> and rank of <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">unsigned</span> <span class="kw4">char</span></span></span></div>
+<div class="t-li1"><span class="t-li">5)</span> the rank of <span class="t-lc">_Bool</span> is less than the rank of any other standard integer type</div>
+<div class="t-li1"><span class="t-li">6)</span> the rank of any enumerated type equals the rank of its compatible integer type</div>
+<div class="t-li1"><span class="t-li">7)</span> ranking is transitive: if rank of T1 &lt; rank of T2 and rank of T2 &lt; rank of T3 then rank of T1 &lt; rank of T3</div>
+<div class="t-li1"><span class="t-li">8)</span> any aspects of relative ranking of extended integer types not covered above are implementation defined.</div>
+<p>Note: integer promotions are applied only
+</p>
+<ul><li> as part of <i>usual arithmetic conversions</i> (see above)
+</li><li> as part of <i>default argument promotions</i> (see above)
+</li><li> to the operand of the unary arithmetic operators <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">+</span></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="sy2">-</span></span></span>
+</li><li> to the operand of the unary bitwise operator <span class="t-c"><span class="mw-geshi c source-c">~</span></span>
+</li><li> to both operands of the shift operators <span class="t-c"><span class="mw-geshi c source-c"><span class="sy1">&lt;&lt;</span></span></span> and <span class="t-c"><span class="mw-geshi c source-c"><span class="sy1">&gt;&gt;</span></span></span>
+</li></ul>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<h4> <span class="mw-headline" id="Boolean_conversion">Boolean conversion</span></h4>
+<p>A value of any scalar type can be implicitly converted to <span class="t-lc">_Bool</span>. The values that compare equal to zero are converted to <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span>, all other values are converted to <span class="t-c"><span class="mw-geshi c source-c"><span class="nu0">1</span></span></span>
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1">bool b1 <span class="sy1">=</span> <span class="nu16">0.5</span><span class="sy4">;</span>              <span class="co1">// b1 == 1 (0.5 converted to int would be zero)</span>
+bool b2 <span class="sy1">=</span> <span class="nu16">2.0</span><span class="sy2">*</span><a href="../numeric/complex/Imaginary_I.html"><span class="kw746">_Imaginary_I</span></a><span class="sy4">;</span> <span class="co1">// b2 == 1 (but converted to int would be zero)</span>
+bool b3 <span class="sy1">=</span> <span class="nu16">0.0</span> <span class="sy2">+</span> <span class="nu16">3.0</span><span class="sy2">*</span>I<span class="sy4">;</span>      <span class="co1">// b3 == 1 (but converted to int would be zero)</span>
+bool b4 <span class="sy1">=</span> <span class="nu16">0.0</span><span class="sy2">/</span><span class="nu16">0.0</span><span class="sy4">;</span>          <span class="co1">// b4 == 1 (NaN does not compare equal to zero)</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id="Integer_conversions">Integer conversions</span></h4>
+<p>A value of any integer type can be implicitly converted to any other integer type. Except where covered by promotions and boolean conversions above, the rules are:
+</p>
+<ul><li> if the target type can represent the value, the value is unchanged
+</li><li> otherwise, if the target type is unsigned, the value <span class="texhtml" style="white-space: nowrap;">2<span class="t-su">b<br></span></span>, where <span class="texhtml" style="white-space: nowrap;">b</span> is the number of bits in the target type, is repeatedly subtracted or added to the source value until the result fits in the target type. In other words, unsigned integers implement modulo arithmetic.
+</li><li> otherwise, if the target type is signed, the behavior is implementation-defined (which may include raising a signal)
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">char</span> x <span class="sy1">=</span> <span class="st0">'a'</span><span class="sy4">;</span> <span class="co1">// int -&gt; char, result unchanged</span>
+<span class="kw4">unsigned</span> <span class="kw4">char</span> n <span class="sy1">=</span> <span class="sy2">-</span><span class="nu0">123456</span><span class="sy4">;</span> <span class="co1">// target is unsigned, result is 192 (that is, -123456+483*256)</span>
+<span class="kw4">signed</span> <span class="kw4">char</span> m <span class="sy1">=</span> <span class="nu0">123456</span><span class="sy4">;</span>    <span class="co1">// target is signed, result is implementation-defined</span>
+<a href="../error/assert.html"><span class="kw407">assert</span></a><span class="br0">(</span><span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span> <span class="sy1">&gt;</span> <span class="sy2">-</span><span class="nu0">1</span><span class="br0">)</span><span class="sy4">;</span>  <span class="co1">// assert fails:</span>
+                           <span class="co1">// operator &gt; requests conversion of -1 to size_t,</span>
+                           <span class="co1">// target is unsigned, result is SIZE_MAX</span></pre></div></div>
+<h4><span class="mw-headline" id="Real_floating-integer_conversions">Real floating-integer conversions</span></h4>
+<p>A finite value of any real floating type can be implicitly converted to any integer type. Except where covered by boolean conversion above, the rules are:
+</p>
+<ul><li> The fractional part is discarded (truncated towards zero).
+</li></ul>
+<dl><dd><ul><li> If the resulting value can be represented by the target type, that value is used
+</li><li> otherwise, the behavior is undefined 
+</li></ul>
+</dd></dl>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> n <span class="sy1">=</span> <span class="nu16">3.14</span><span class="sy4">;</span> <span class="co1">// n == 3</span>
+<span class="kw4">int</span> x <span class="sy1">=</span> <span class="nu19">1e10</span><span class="sy4">;</span> <span class="co1">// undefined behavior for 32-bit int</span></pre></div></div>
+<p>A value of any integer type can be implicitly converted to any real floating type. 
+</p>
+<ul><li> if the value can be represented exactly by the target type, it is unchanged
+</li><li> if the value can be represented, but cannot be represented exactly, the result is the nearest higher or the nearest lower value (in other words, rounding direction is implementation-defined), although if IEEE arithmetic is supported, rounding is to nearest. It is unspecified whether <span class="t-lc"><a href="../numeric/fenv/FE_exceptions.html" title="c/numeric/fenv/FE exceptions">FE_INEXACT</a></span> is raised in this case.
+</li><li> if the value cannot be represented, the behavior is undefined, although if IEEE arithmetic is supported, <span class="t-lc"><a href="../numeric/fenv/FE_exceptions.html" title="c/numeric/fenv/FE exceptions">FE_INVALID</a></span> is raised and the result value is unspecified.
+</li></ul>
+<p>The result of this conversion may have greater range and precision than its target type indicates (see <span class="t-lc"><a href="../types/limits/FLT_EVAL_METHOD.html" title="c/types/limits/FLT EVAL METHOD">FLT_EVAL_METHOD</a></span>.
+</p><p>If control over <span class="t-lc"><a href="../numeric/fenv/FE_exceptions.html" title="c/numeric/fenv/FE exceptions">FE_INEXACT</a></span> is needed in floating-to-integer conversions, <span class="t-lc"><a href="../numeric/math/rint.html" title="c/numeric/math/rint">rint</a></span> and <span class="t-lc"><a href="../numeric/math/nearbyint.html" title="c/numeric/math/nearbyint">nearbyint</a></span> may be used.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> d <span class="sy1">=</span> <span class="nu0">10</span><span class="sy4">;</span> <span class="co1">// d = 10.00</span>
+<span class="kw4">float</span> f <span class="sy1">=</span> <span class="nu0">20000001</span><span class="sy4">;</span> <span class="co1">// f = 20000000.00 (FE_INEXACT)</span>
+<span class="kw4">float</span> x <span class="sy1">=</span> <span class="nu0">1</span><span class="sy2">+</span><span class="br0">(</span><span class="kw4">long</span> <span class="kw4">long</span><span class="br0">)</span><a href="../types/limits.html"><span class="kw377">FLT_MAX</span></a><span class="sy4">;</span> <span class="co1">// undefined behavior</span></pre></div></div>
+<h4><span class="mw-headline" id="Real_floating_point_conversions">Real floating point conversions</span></h4>
+<p>A value of any real floating type can be implicitly converted to any other real floating type.
+</p>
+<ul><li> If the value can be represented by the target type exactly, it is unchanged
+</li><li> if the value can be represented, but cannot be represented exactly, the result is the nearest higher or the nearest lower value (in other words, rounding direction is implementation-defined), although if IEEE arithmetic is supported, rounding is to nearest
+</li><li> if the value cannot be represented, the behavior is undefined <table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br>Reason: check IEEE if appropriately-signed infinity is required </td></tr></table>
+</li></ul>
+<p>The result of this conversion may have greater range and precision than its target type indicates (see <span class="t-lc"><a href="../types/limits/FLT_EVAL_METHOD.html" title="c/types/limits/FLT EVAL METHOD">FLT_EVAL_METHOD</a></span>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> d <span class="sy1">=</span> <span class="nu16">0.1</span><span class="sy4">;</span> <span class="co1">// d = 0.1000000000000000055511151231257827021181583404541015625</span>
+<span class="kw4">float</span> f <span class="sy1">=</span> d<span class="sy4">;</span>    <span class="co1">// f = 0.100000001490116119384765625</span>
+<span class="kw4">float</span> x <span class="sy1">=</span> <span class="nu0">2</span><span class="sy2">*</span><span class="br0">(</span><span class="kw4">double</span><span class="br0">)</span><a href="../types/limits.html"><span class="kw377">FLT_MAX</span></a><span class="sy4">;</span> <span class="co1">// undefined</span></pre></div></div>
+ <table class="t-rev-begin">
+<tr class="t-rev t-since-c99"><td>
+<h4> <span class="mw-headline" id="Complex_type_conversions">Complex type conversions</span></h4>
+<p>A value of any complex type can be implicitly converted to any other complex type. The real part and the imaginary part individually follow the conversion rules for the real floating types.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> d <span class="sy1">=</span> <span class="nu16">0.1</span> <span class="sy2">+</span> <span class="nu16">0.1</span><span class="sy2">*</span>I<span class="sy4">;</span>
+<span class="kw4">float</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> f <span class="sy1">=</span> d<span class="sy4">;</span> <span class="co1">// f is (0.100000001490116119384765625, 0.100000001490116119384765625)</span></pre></div></div>
+<h4> <span class="mw-headline" id="Imaginary_type_conversions">Imaginary type conversions</span></h4>
+<p>A value of any imaginary type can be implicitly converted to any other imaginary  type. The imaginary part follows the conversion rules for the real floating types.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> d <span class="sy1">=</span> <span class="nu16">0.1</span><span class="sy2">*</span><a href="../numeric/complex/Imaginary_I.html"><span class="kw746">_Imaginary_I</span></a><span class="sy4">;</span>
+<span class="kw4">float</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> f <span class="sy1">=</span> d<span class="sy4">;</span> <span class="co1">// f is 0.100000001490116119384765625*I</span></pre></div></div>
+<h4> <span class="mw-headline" id="Real-complex_conversions">Real-complex conversions</span></h4>
+<p>A value of any real floating type can be implicitly converted to any complex type. 
+</p>
+<ul><li> The real part of the result is determined by the conversion rules for the real floating types
+</li><li> The imaginary part of the result is positive zero (or unsigned zero on non-IEEE systems)
+</li></ul>
+<p>A value of any complex type can be implicitly converted to any real floating type
+</p>
+<ul><li> The real part is converted following the rules for the real floating types
+</li><li> The imaginary part is discarded
+</li></ul>
+<p>Note: in complex-to-real conversion, a NaN in the imaginary part will not propagate to the real result.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/complex.html"><span class="kw743">complex</span></a> z <span class="sy1">=</span> <span class="nu16">0.5</span> <span class="sy2">+</span> <span class="nu0">3</span><span class="sy2">*</span>I<span class="sy4">;</span>
+<span class="kw4">float</span> f <span class="sy1">=</span> z<span class="sy4">;</span>  <span class="co1">// the imaginary part is discarded, f is set to 0.5</span>
+z <span class="sy1">=</span> f<span class="sy4">;</span>        <span class="co1">// sets z to 0.5 + 0*I</span></pre></div></div>
+<h4> <span class="mw-headline" id="Real-imaginary_conversions">Real-imaginary conversions</span></h4>
+<p>A value of any imaginary type can be implicitly converted to any real type (integer or floating-point). The result is always a positive (or unsigned) zero, except when the target type is _Bool, in which case boolean conversion rules apply.
+</p><p>A value of any real type can be implicitly converted to any imaginary type. The result is always a positive imaginary zero.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> z <span class="sy1">=</span> <span class="nu0">3</span><span class="sy2">*</span>I<span class="sy4">;</span>
+bool b <span class="sy1">=</span> z<span class="sy4">;</span>  <span class="co1">// Boolean conversion: sets b to true </span>
+<span class="kw4">float</span> f <span class="sy1">=</span> z<span class="sy4">;</span> <span class="co1">// Real-imaginary conversion: sets f to 0.0 </span>
+z <span class="sy1">=</span> <span class="nu16">3.14</span><span class="sy4">;</span>    <span class="co1">// Imaginary-real conversion: sets z to 0*_Imaginary_I</span></pre></div></div>
+<h4> <span class="mw-headline" id="Complex-imaginary_conversions">Complex-imaginary conversions</span></h4>
+<p>A value of any imaginary type can be implicitly converted to any complex type.
+</p>
+<ul><li> The real part of the result is the positive zero
+</li><li> The imaginary part of the result follows the conversion rules for the corresponding real types
+</li></ul>
+<p>A value of any complex type can be implicitly converted to any imaginary type
+</p>
+<ul><li> The real part is discarded
+</li><li> The imaginary part of the result follows the conversion rules for the corresponding real types
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">double</span> <a href="../numeric/complex/imaginary.html"><span class="kw745">imaginary</span></a> z <span class="sy1">=</span> I <span class="sy2">*</span> <span class="br0">(</span><span class="nu0">3</span><span class="sy2">*</span>I<span class="br0">)</span><span class="sy4">;</span> <span class="co1">// the complex result -3.0+0i loses real part</span>
+                                <span class="co1">// sets z to 0*_Imaginary_I</span></pre></div></div>
+</td>
+<td><span class="t-mark-rev t-since-c99">(since C99)</span></td></tr>
+</table>
+<h4><span class="mw-headline" id="Pointer_conversions">Pointer conversions</span></h4>
+<p>A pointer to <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">void</span></span></span> can be implicitly converted to and from any pointer to object type with the following semantics:
+</p>
+<ul><li> If a pointer to object is converted to a pointer to void and back, its value compares equal to the original pointer.
+</li><li> No other guarantees are offered
+</li></ul>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> <a href="../memory/malloc.html"><span class="kw403">malloc</span></a><span class="br0">(</span><span class="nu0">10</span> <span class="sy2">*</span> <span class="kw4">sizeof</span><span class="br0">(</span><span class="kw4">int</span><span class="br0">)</span><span class="br0">)</span><span class="sy4">;</span> <span class="co1">// malloc returns void*</span></pre></div></div>
+<p>A pointer to an unqualified type may be implicitly converted to the pointer to qualified version of that type (in other words, <a href="const.html" title="c/language/const">const</a>, <a href="volatile.html" title="c/language/volatile">volatile</a>, and <a href="restrict.html" title="c/language/restrict">restrict</a> qualifiers can be added. The original pointer and the result compare equal.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span> n<span class="sy4">;</span>
+<span class="kw4">const</span> <span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> <span class="sy3">&amp;</span>n<span class="sy4">;</span> <span class="co1">// &amp;n has type int*</span></pre></div></div>
+<p>Any integer <a href="constant_expression.html" title="c/language/constant expression">constant expression</a> with value <span class="t-c"><span class="mw-geshi c source-c">​<span class="nu0">0</span>​</span></span> as well as integer pointer expression with value zero cast to the type <span class="t-c"><span class="mw-geshi c source-c"><span class="kw4">void</span><span class="sy2">*</span></span></span> can be implicitly converted to any pointer type (both pointer to object and pointer to function). The result is the null pointer value of its type, guaranteed to compare unequal to any non-null pointer value of that type. This integer or void* expression is known as <i>null pointer constant</i> and the standard library provides one definition of this constant as the macro <span class="t-lc"><a href="../types/NULL.html" title="c/types/NULL">NULL</a></span> .
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">int</span><span class="sy2">*</span> p <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="kw4">double</span><span class="sy2">*</span> q <span class="sy1">=</span> <a href="../types/NULL.html"><span class="kw103">NULL</span></a><span class="sy4">;</span></pre></div></div>
+<h3><span class="mw-headline" id="Notes">Notes</span></h3>
+<p>Although signed integer overflow in any arithmetic operator is undefined behavior, overflowing a signed integer type in an integer conversion is merely unspecified behavior.
+</p><p>On the other hand, although unsigned integer overflow in any arithmetic operator (and in integer conversion) is a well-defined operation and follows the rules of modulo arithmetic, overflowing an unsigned integer in a floating-to-integer conversion is undefined behavior: the values of real floating type that can be converted to unsigned integer are the values from the open interval <span class="texhtml" style="white-space: nowrap;">(-1; Unnn_MAX+1)</span>.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="c source-c"><pre class="de1"><span class="kw4">unsigned</span> <span class="kw4">int</span> n <span class="sy1">=</span> <span class="sy2">-</span><span class="nu16">1.0</span><span class="sy4">;</span> <span class="co1">// undefined behavior</span></pre></div></div>
+<p>Conversions between pointers and integers (except <span class="t-rev-inl t-since-c99"><span>from pointer to _Bool and </span> <span><span class="t-mark-rev t-since-c99">(since C99)</span></span></span>from integer constant expression with the value zero to pointer), between pointers to objects (except where either to or from is a pointer to void) and conversions between pointers to functions (except when the functions have compatible types) are never implicit and require a <a href="cast.html" title="c/language/cast">cast operator</a>.
+</p><p>There are no conversions (implicit or explicit) between pointers to functions and pointers to objects (including void*) or integers.
+</p>
+<h3><span class="mw-headline" id="References">References</span></h3>
+<div class="t-ref-std-17">
+<ul><li> C17 standard (ISO/IEC 9899:2018): 
+</li></ul>
+<dl><dd><ul><li> 6.3 Conversions (p: 37-41)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-11">
+<ul><li> C11 standard (ISO/IEC 9899:2011): 
+</li></ul>
+<dl><dd><ul><li> 6.3 Conversions (p: 50-56)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c99">
+<ul><li> C99 standard (ISO/IEC 9899:1999): 
+</li></ul>
+<dl><dd><ul><li> 6.3 Conversions (p: 42-48)
+</li></ul>
+</dd></dl>
+</div>
+<div class="t-ref-std-c89">
+<ul><li> C89/C90 standard (ISO/IEC 9899:1990): 
+</li></ul>
+<dl><dd><ul><li> 3.2 Conversions 
+</li></ul>
+</dd></dl>
+</div>
+<h3><span class="mw-headline" id="See_also">See also</span></h3>
+<table class="t-dsc-begin">
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4167/1000000
+Preprocessor generated node count: 11029/1000000
+Post‐expand include size: 68661/2097152 bytes
+Template argument size: 22508/2097152 bytes
+Highest expansion depth: 17/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:13920-0!*!0!!en!*!* and timestamp 20220713003053 -->
+</div>                    <!-- /bodycontent -->
+                                        <!-- printfooter -->
+                    <div class="printfooter">
+                    Retrieved from "<a href="https://en.cppreference.com/mwiki/index.php?title=c/language/conversion&amp;oldid=141027">https://en.cppreference.com/mwiki/index.php?title=c/language/conversion&amp;oldid=141027</a>"                    </div>
+                    <!-- /printfooter -->
+                                                            <!-- catlinks -->
+                    <!-- /catlinks -->
+                                                            <div class="visualClear"></div>
+                    <!-- debughtml -->
+                                        <!-- /debughtml -->
+                </div>
+                <!-- /bodyContent -->
+            </div>
+        </div>
+        <!-- /content -->
+        <!-- footer -->
+        <div id="cpp-footer-base" class="noprint">
+            <div id="footer">
+                        <div id="cpp-navigation">
+            <h5>Navigation</h5>
+            <ul><li><a href="https://en.cppreference.com/w/c/language/conversion">Online version</a></li><li>Offline version retrieved 2022-07-30 14:05.</li></ul></div>
+                        <ul id="footer-info">
+                                    <li id="footer-info-lastmod"> This page was last modified on 12 July 2022, at 17:30.</li>
+                                    <li id="footer-info-viewcount">This page has been accessed 171,290 times.</li>
+                            </ul>
+                    </div>
+        </div>
+        <!-- /footer -->
+        <script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../common/skin_scripts.js"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest","mediawiki.hidpi","ext.gadget.ColiruCompiler","ext.gadget.MathJax"], null, true);
+}</script>
+<script src="../../../common/site_scripts.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2828341-1']);
+_gaq.push(['_setDomainName', 'cppreference.com']);
+_gaq.push(['_trackPageview']);
+</script><!-- Served in 0.040 secs. -->
+	</body>
+<!-- Cached 20220713014351 -->
+</html>

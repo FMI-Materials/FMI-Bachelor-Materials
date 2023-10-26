@@ -1,0 +1,47 @@
+body {
+	background: skyblue;
+	counter-reset: section 2;
+}
+
+
+div#container {
+	margin-left: 15%;
+	margin-right: 15%;
+	border-left: 2px solid grey;
+	border-right: 2px solid grey;
+	background: white;
+	padding: 5%;
+	counter-reset: faraAlibi 4;
+}
+
+ol {
+	counter-increment: section;
+	list-style-type: none;
+}
+
+
+div.cont_lista {
+	counter-reset: subsection;
+}
+
+ol>li {
+	counter-increment: subsection;
+}
+
+ol::after {
+	content: "Total:"counter(subsection)
+}
+
+li::before {
+	content: counter(section)"."counter(subsection);
+}
+
+li.fara_alibi {
+	color: red;
+	font-weight: bold;
+}
+
+li.fara_alibi::after {
+	content: url('http://irinaciocan.ro/tehnici_web/imagini/smiley_hot_mic_20x19.png') "("counter(faraAlibi)")";
+	counter-increment: faraAlibi;
+}

@@ -1,0 +1,55 @@
+<!--
+    P4. Scrieti un formular cu un input text si un select cu doua optiuni: “crescator” si
+“descrescator”. Initial e selectata a doua optiune. In inputul text se vor introduce numere intregi
+separate prin virgula iar din select se va alege o optiune. La click pe submit datele se vor trimite
+catre server si in pagina se va afisa raspunsul serverului (in locul formularului sau sub el).
+Raspunsul poate fi ori:
+- numerele, separate prin virgula, ordonate conform valorii din select. Pentru exemplul de
+numere 5,-4,10,14,-8 si ordine crescatoare se va afisa: -8,-4,5,10,14
+- "date invalide". Acest raspuns se da daca textul introdus in input nu satisface conditia: textul
+sa fie format din numere intregi separate prin virgula. De exemplu: 5 1 -3 7 4.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercitiul 4</title>
+    
+</head>
+
+<body>
+    <form id="form" action="POST">
+        <input type="text" name="text" id="text">
+        <select name="sel" id="sel">
+            <option value="crescator">crescator</option>
+            <option value="descrescator" selected="selected">descrescator</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="rasp"></p>
+    <script>
+        window.onload = () => {
+        document.getElementById('form').onsubmit = (e) => {
+            e.preventDefault();
+            fetch('http://localhost:3000', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    numere: document.getElementById('text').value,
+                    ordine: document.getElementById('sel').value,
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    document.getElementById('rasp').innerHTML = data['rasp'];
+                });
+        };
+    }
+    </script>
+</body>
+
+</html>

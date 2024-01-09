@@ -1,0 +1,126 @@
+Curs 1
+
+let {a = 1; b = 2} in a + b
+let a = 1; b = 2 in a + b
+
+x = [let y = 8 in y, 9] -> functioneaza pt ca let .. in .. este o expresie
+x = [y where y = 8, 9] -> eroare pt ca .. where .. este o clauza
+
+Data.Char -> chr, ord, digitToInt, intToDigit
+
+v !! n -> v[n]
+
+(fst, snd)
+
+
+Curs 2
+
+head [] -> eroare
+
+[x] ++ [1] = [2,1] -> x nu va fi legat cu 2
+
+definitie operator : (||) :: Bool -> Bool -> Bool
+
+True || False == (||) True False
+
+mod 5 2 == 5 `mod` 2
+
+5 - 2 - 1 == (5 - 2) - 1 asociativitate stanga
+5 : 2 : [] == 5 : (2 : []) asociativitate dreapta
+
+(x:xs) ++ ys = x:(xs ++ ys)
+
+Sectiunile lui (++) : (++e) si (e++)
+(++ " world!") "Hello" -> "Hello world!"
+++ " world!" "Hello" -> Eroare
+
+(+ 3 * 4) -> ok
+(* 3 + 4) -> eroare, + are precedenta mai mica decat *
+(* 3 * 4) -> eroare, * este asociativa la stanga
+(3 * 4 *) -> ok
+
+
+Curs 3
+
+PRECEDENTE
+9 !! (left asociative)
+9 . (right asociative)
+8 ^, ^^, ** (right asociative)
+7 * / `div` `mod` `rem` `quot` (left asociative)
+6 + - (left asociative)
+5 : ++ (right asociative)
+4 == /= < <= > >= `elem` `notElem` (non-asociative)
+3 && (right asociative)
+2 || (right asociative)
+1 >> >>= (left asociative)
+0 $ $1 `seq` (right asociative) 
+
+flip f x y = f y x
+flip f = \x y -> f y x
+flip = \f x y -> f y x
+
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
+(f . g) x == f(g x)
+
+($) :: (a -> b) -> a -> b
+f(g x) == f $ g x
+
+f :: Int -> String
+g :: String -> Int
+
+f.g :: String -> String
+g.f :: Int -> Int
+
+(take 5 . reverse) [1..10] = [10,9,8,7,6]
+(reverse . take 5) [1..10] = [5,4,3,2,1]
+:t (reverse . take 5) -> [a] -> [b]
+
+take 5 $ reverse $ [1..10] = [10,9,8,7,6]
+reverse $ take 5 $ [1..10] = [5,4,3,2,1]
+:t reverse $ take 5 -> eroare
+
+a1 -> a2 -> ... -> an == a1 -> (a2 -> .. (an-1 -> an) ..)
+f x1 x2 .. xn = (...((f x1) x2)... xn)
+
+curry :: (a,b) -> c -> a -> b -> c
+uncurry :: a -> b -> c -> (a,b) -> c
+
+f :: (Int, String) -> String
+f (n, s) = take n s
+
+let cf = curry f
+f(1, "abc") == cf 1 "abc"
+
+map ($x) [f1,...,fn] = [f1 x, ..., fn x]
+
+
+Curs 4
+
+foldr (+) 0 [1,2,3] == 1 + (2 + (3 + 0))
+
+foldr (*) 1 [1,2,3] == 1 * (2 * (3 * 1))
+
+foldr (++) [] ["Ana ", "are ", "mere."] == "Ana " ++ ("are " ++ ("mere." ++ []))
+
+
+Curs 5
+
+Cu foldr, elementele sunt procesate de la dreapta la stânga:
+sum [x1,...,xn] = x1 + (x2 + (... + (xn + 0)...))
+
+Cu foldl, elementele sunt procesate de la stânga la dreapta:
+sum [x1,...,xn] = (((0 + x1) + x2) + ...) + xn
+
+Curs 6
+
+tipuri de date suma -> enumerarea alternativelor
+data Bool = False | True
+data Season = Spring | Summer | Autumn | Winter
+
+tipuri de date produs -> combinarea tipurilor
+data Point a b = Pt a b
+Point = constructor de tip
+Pt = constructor de date
+:t Pt -> a -> b -> Point a b
+
+data Tree a = Empty | Leaf a | Branch ( Tree a ) ( Tree a )

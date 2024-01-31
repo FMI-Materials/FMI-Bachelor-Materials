@@ -30,12 +30,12 @@
 | I        | [Sisteme De Operare (SO)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20I/Sisteme%20De%20Operare)                               | 2 | - | 2 | - | V  | 4       |
 | I        | [Dezvoltarea Aplicatiilor Web (DAW)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20I/Dezvoltarea%20Aplicatiilor%20Web) | 2 | - | 1 | 1 | V  | 5       |
 | I        | [Competente Avansate Intr-o Limba Straina I (Engleza)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20I/Engleza)       | - | 1 | - | - | V  | 2       |
-| II       | Inteligenta Artificiala (IA)                        | 2 | - | 2 | - | E  | 5       |
-| II       | Algoritmi Avansati (AA)                               | 2 | 1 | 1 | - | E  | 5       |
-| II       | Fundamentele Limbajelor De Programare (FLP)            | 2 | - | 2 | - | E  | 5       |
-| II       | Metode De Dezvoltare Software (MDS)                    | 2 | - | 2 | - | E  | 5       |
-| II       | Retele De Calculatoare (RC)                       | 2 | - | 2 | - | V  | 4       |
-| II       | Programare Avansata Pe Obiecte (PAO)                   | 2 | - | 1 | 1 | V  | 4       |
+| II       | [Inteligenta Artificiala (IA)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Inteligenta Artificiala)                        | 2 | - | 2 | - | E  | 5       |
+| II       | [Algoritmi Avansati (AA)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Algoritmi Avansati)                               | 2 | 1 | 1 | - | E  | 5       |
+| II       | [Fundamentele Limbajelor De Programare (FLP)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Fundamentele Limbajelor De Programare)            | 2 | - | 2 | - | E  | 5       |
+| II       | [Metode De Dezvoltare Software (MDS)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Metode De Dezvoltare Software)                    | 2 | - | 2 | - | E  | 5       |
+| II       | [Retele De Calculatoare (RC)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Retele De Calculatoare)                       | 2 | - | 2 | - | V  | 4       |
+| II       | [Programare Avansata Pe Obiecte (PAO)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20II/Programare Avansata Pe Obiecte)                   | 2 | - | 1 | 1 | V  | 4       |
 | II       | Competente Avansate Intr-o Limba Straina II (Engleza)      | - | 1 | - | - | V  | 2       |
 
 ## Credits

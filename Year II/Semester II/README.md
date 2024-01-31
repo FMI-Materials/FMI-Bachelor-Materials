@@ -1,4 +1,6 @@
 ### Semester II
+| Semester | Discipline                                       | C | S | L | P | FE | Credits |
+|----------|--------------------------------------------------|---|---|---|---|----|---------|
 | II       | [Inteligenta Artificiala (IA)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20II/Inteligenta%20Artificiala)                        | 2 | - | 2 | - | E  | 5       |
 | II       | [Algoritmi Avansati (AA)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20II/Algoritmi%20Avansati)                               | 2 | 1 | 1 | - | E  | 5       |
 | II       | [Fundamentele Limbajelor De Programare (FLP)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20II/Fundamentele%20Limbajelor%20De%20Programare)            | 2 | - | 2 | - | E  | 5       |

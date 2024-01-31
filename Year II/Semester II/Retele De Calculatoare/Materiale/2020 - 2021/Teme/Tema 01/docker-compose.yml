@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+    receptor:
+        image: snisioi/tema1_2021
+        privileged: true
+        volumes:
+            - .:/elocal
+        tty: true
+        cap_add:
+          - NET_ADMIN
+          - NET_RAW
+          - SYS_ADMIN
+        networks:
+            subnet2:
+              ipv4_address: 198.8.0.2
+        depends_on:
+            - "router"
+        command: /elocal/src/receptor.sh
+    router:
+        image: snisioi/tema1_2021
+        volumes:
+            - .:/elocal
+        tty: true
+        cap_add:
+          - NET_ADMIN
+          - NET_RAW
+          - SYS_ADMIN
+        networks:
+            subnet1:
+              ipv4_address: 172.8.0.1
+            subnet2:
+              ipv4_address: 198.8.0.1
+        sysctls:
+          - net.ipv4.ip_forward=1
+        command: /elocal/src/t1_router.sh 
+    emitator:
+        image: snisioi/tema1_2021
+        volumes:
+            - .:/elocal
+        tty: true
+        cap_add:
+          - NET_ADMIN
+          - NET_RAW
+          - SYS_ADMIN
+        networks:
+            subnet1:
+              ipv4_address: 172.8.0.2
+        depends_on:
+            - "router"
+            - "receptor"
+        command: /elocal/src/emitator.sh
+networks:
+    subnet1:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.8.0.0/16
+                  gateway: 172.8.1.1
+    subnet2:
+        ipam:
+            driver: default
+            config:
+                - subnet: 198.8.0.0/16
+                  gateway: 198.8.1.1

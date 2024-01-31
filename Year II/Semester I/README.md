@@ -1,4 +1,4 @@
-### Year II
+### Semester I
 | Semester | Discipline                                       | C | S | L | P | FE | Credits |
 |----------|--------------------------------------------------|---|---|---|---|----|---------|
 | I        | [Probabilitati Si Statistica (P&S)](https://github.com/FMI-Materials/FMI-Materials/tree/master/Year%20II/Semester%20I/Probabilitati%20Si%20Statistica)                     | 3 | - | 2 | - | E  | 5       |

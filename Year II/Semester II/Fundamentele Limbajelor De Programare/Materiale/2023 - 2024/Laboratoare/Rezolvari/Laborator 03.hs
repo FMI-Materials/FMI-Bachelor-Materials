@@ -294,45 +294,128 @@ bssos (Seq s1 s2) s = bssos s2 (bssos s1 s)
 bssos (IfE be s1 s2) s = if (valueb be s) then (bssos s1 s) else (bssos s2 s)
 bssos (WhileE be s1) s = if (valueb be s) then (bssos (WhileE be s1) (bssos s1 s)) else s
 
+--This is where the new stuff starts
+
+factorial :: Integer -> Integer
+factorial n = if n==0 then 1 else n * (factorial (n-1))
+
+fix :: (a -> a) -> a
+fix f = f (fix f)
+
+factorialf :: Integer -> Integer
+factorialf = fix (\f n -> if n==0 then 1 else n * (f (n-1)))
+
+ackermannf :: Integer -> Integer -> Integer
+ackermannf = fix (\f m n -> if m == 0 then n + 1 else if n == 0 then (f (m-1) 1) else (f (m-1) (f m (n-1))))
+
+data Peano = Zero | Succ Peano deriving Show
+
+evenp Zero = True
+evenp (Succ n) = oddp n
+oddp Zero = False
+oddp (Succ n) = evenp n
+
+evenoddf :: Peano -> (Bool, Bool)
+evenoddf = fix (\f m -> case m of
+                                Zero -> (True, False)
+                                Succ n -> let (x, y) = (f n) in (y, x))
+
+testevenoddf = evenoddf (Succ (Succ (Succ Zero))) == (False, True)
+
+denot :: Stmt -> [(String, Int)] -> [(String, Int)]
+denot Skip = id
+denot (AtrE t e) = \s -> update t (value e s) s
+denot (Seq s1 s2) = (denot s2) . (denot s1)
+denot (IfE be s1 s2) = \s -> if (valueb be s) then (denot s1 s) else (denot s2 s)
+denot (WhileE be s1) = fix (\f -> (\s -> (if (valueb be s) then (f (denot s1 s)) else s)))
+
 prog = sum_no_p
 
-test_bssos = bssos prog []
+test_denot = (bssos prog []) == (denot prog [])
 
--- This is where the new stuff starts
+--Now general stuff starts
 
--- substitutes the Qid with the string by the arithmetic expression
-substaexp :: AExp -> String -> AExp -> AExp
-substaexp = undefined
+type Algebra f a = f a -> a
 
-data Assn = BEX Bool | LEX AExp AExp | NotEX Assn | AndEX Assn Assn | DisjInfX [Assn]
+newtype Fix f = Fx (f (Fix f))
+-- :k Fix
 
--- value of an assertion relative to a state, similar to valueb
-valueassn :: Assn -> [(String, Int)] -> Bool
-valueassn = undefined
+unFix :: Fix f -> f (Fix f)
+unFix (Fx x) = x
 
--- converts a boolean expression to an assertion
-convassn :: BExp -> Assn
-convassn = undefined
+catamorphism :: Functor f => (f a -> a) -> (Fix f -> a)
+catamorphism a = fix (\f -> a . (fmap f). unFix)
+-- this is the unique initial algebra morphism
 
--- substitutes the Qid with the string by the arithmetic expression
-substassn :: Assn -> String -> AExp -> Assn
-substassn = undefined
+-- Now specific stuff for propositional logic
 
--- logical or
-orx :: Assn -> Assn -> Assn
-orx p q = NotEX (AndEX (NotEX p) (NotEX q))
+data ExprBoolF a = Var String | Neg a | Implies a a deriving Show
+-- :k ExprBoolF
 
--- extracts the list
-extr :: Assn -> [Assn]
-extr (DisjInfX li) = li
+instance Functor ExprBoolF where
+    fmap eval (Var v) = Var v
+    fmap eval (Neg phi) = Neg (eval phi)
+    fmap eval (Implies phi psi) = Implies (eval phi) (eval psi)
 
--- computes the weakest precondition
-wp :: Stmt -> Assn -> Assn
-wp = undefined
+type ExprBoolFix = Fix ExprBoolF
+-- :k ExprBool
 
-test1 = valueassn (wp prog (LEX (Qid "s") (Nu 5051))) [] -- should return true
+instance Show ExprBoolFix where
+    show (Fx a) = "(Fx (" ++ show a ++ "))"
 
-test2 = valueassn (wp prog (LEX (Qid "s") (Nu 5050))) [] -- should return true
+sampleExpr :: ExprBoolFix
+sampleExpr = Fx (Implies (Fx (Var "a")) (Fx (Var "b")))
 
-test3 = valueassn (wp prog (LEX (Qid "s") (Nu 5049))) [] -- should not terminate
+type TargetBoolAlgebra = Algebra ExprBoolF ((String -> Bool) -> Bool)
 
+impl :: Bool -> Bool -> Bool
+impl a b = (not a) || b
+
+alg :: TargetBoolAlgebra
+alg (Var v) = ($ v)
+alg (Neg x) = not . x
+alg (Implies x y) = \e -> impl (x e) (y e)
+
+sampleEval :: String -> Bool
+sampleEval "a" = True
+sampleEval "b" = False
+
+test = catamorphism alg sampleExpr sampleEval == False
+
+-- Now specific stuff for IMP
+          
+data StmtF a = AtrEF String AExp | SeqF a a | IfEF BExp a a | WhileEF BExp a | SkipF deriving Show
+
+type StmtFix = Fix StmtF
+
+instance Show StmtFix where
+    show (Fx a) = "(Fx (" ++ show a ++ "))"
+
+instance Functor StmtF where
+    fmap eval SkipF = SkipF
+    fmap eval (AtrEF t e) = AtrEF t e
+    fmap eval (SeqF s1 s2) = SeqF (eval s1) (eval s2)
+    fmap eval (IfEF be s1 s2) = IfEF be (eval s1) (eval s2)
+    fmap eval (WhileEF be s1) = WhileEF be (eval s1)
+
+type TargetStmtAlgebra = Algebra StmtF ([(String, Int)] -> [(String, Int)])
+
+algs :: TargetStmtAlgebra
+algs SkipF = id
+algs (AtrEF t e) = \s -> update t (value e s) s
+algs (SeqF s1 s2) = s2 . s1
+algs (IfEF be s1 s2) = \s -> if (valueb be s) then (s1 s) else (s2 s)
+algs (WhileEF be s1) = fix (\f -> (\s -> (if (valueb be s) then (f (s1 s)) else s)))
+
+-- Here we do a hack
+convstmt :: Stmt -> StmtFix
+convstmt Skip = Fx SkipF
+convstmt (AtrE t e) = Fx (AtrEF t e)
+convstmt (Seq s1 s2) = Fx (SeqF (convstmt s1) (convstmt s2))
+convstmt (IfE be s1 s2) = Fx (IfEF be (convstmt s1) (convstmt s2))
+convstmt (WhileE be s1) = Fx (WhileEF be (convstmt s1))
+
+progf :: StmtFix
+progf = convstmt prog
+
+testf = catamorphism algs progf []

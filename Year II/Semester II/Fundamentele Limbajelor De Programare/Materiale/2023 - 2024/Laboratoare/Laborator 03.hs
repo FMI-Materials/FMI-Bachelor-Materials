@@ -297,7 +297,7 @@ bssos (WhileE be s1) s = if (valueb be s) then (bssos (WhileE be s1) (bssos s1 s
 --This is where the new stuff starts
 
 factorial :: Integer -> Integer
-factorial n = if n == 0 then 1 else n * (factorial (n - 1))
+factorial n = if n==0 then 1 else n * (factorial (n-1))
 
 fix :: (a -> a) -> a
 fix f = f (fix f)
@@ -306,12 +306,7 @@ factorialf :: Integer -> Integer
 factorialf = fix (\f n -> if n==0 then 1 else n * (f (n-1)))
 
 ackermannf :: Integer -> Integer -> Integer
-ackermannf = fix (\f m n -> if m == 0 then n + 1 else if n == 0 then f (m - 1) 1 else f (m - 1) (f m (n - 1)))
-
--- factorialf 4
--- fix g 4
--- g (fix g) 4
--- if 4 == 0 then 1 else 4 * (fix g 3)
+ackermannf = fix (undefined)
 
 data Peano = Zero | Succ Peano deriving Show
 
@@ -321,18 +316,16 @@ oddp Zero = False
 oddp (Succ n) = evenp n
 
 evenoddf :: Peano -> (Bool, Bool)
-evenoddf = fix (\g n -> case n of 
-                          Zero -> (True, False)
-                          Succ l -> (snd (g l), (fst (g l))))
+evenoddf = fix (undefined)
 
 testevenoddf = evenoddf (Succ (Succ (Succ Zero))) == (False, True)
 
 denot :: Stmt -> [(String, Int)] -> [(String, Int)]
-denot Skip = id
-denot (AtrE t e) = \l -> update t (value e l) l
-denot (Seq s1 s2) = \l -> denot s2 (denot s1 l)
-denot (IfE be s1 s2) = \l -> if (valueb be l) then (denot s1 l) else (denot s2 l)
-denot (WhileE be s1) = fix (\f l -> if (valueb be l) then f (denot s1 l) else l)
+denot Skip = undefined
+denot (AtrE t e) = undefined
+denot (Seq s1 s2) = undefined
+denot (IfE be s1 s2) = undefined
+denot (WhileE be s1) = fix (undefined)
 
 prog = sum_no_p
 
@@ -397,20 +390,20 @@ instance Show StmtFix where
     show (Fx a) = "(Fx (" ++ show a ++ "))"
 
 instance Functor StmtF where
-    fmap eval SkipF = SkipF
-    fmap eval (AtrEF t e) = (AtrEF t e) 
-    fmap eval (SeqF s1 s2) = SeqF (eval s1) (eval s2)
-    fmap eval (IfEF be s1 s2) = IfEF be (eval s1) (eval s2)
-    fmap eval (WhileEF be s1) = WhileEF be (eval s1)
+    fmap eval SkipF = undefined
+    fmap eval (AtrEF t e) = undefined
+    fmap eval (SeqF s1 s2) = undefined
+    fmap eval (IfEF be s1 s2) = undefined
+    fmap eval (WhileEF be s1) = undefined
 
 type TargetStmtAlgebra = Algebra StmtF ([(String, Int)] -> [(String, Int)])
 
 algs :: TargetStmtAlgebra
-algs SkipF = id
-algs (AtrEF t e) = \l -> update t (value e l) l
-algs (SeqF s1 s2) = s2 . s1
-algs (IfEF be s1 s2) = \l -> if (valueb be l) then s1 l else s2 l
-algs (WhileEF be s1) = fix (\f l -> if (valueb be l) then f (s1 l) else l)
+algs SkipF = undefined
+algs (AtrEF t e) = undefined
+algs (SeqF s1 s2) = undefined
+algs (IfEF be s1 s2) = undefined
+algs (WhileEF be s1) = fix (undefined)
 
 -- Here we do a hack
 convstmt :: Stmt -> StmtFix

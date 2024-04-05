@@ -1,8 +1,7 @@
-{-# LANGUAGE TypeSynonymInstances #-}
-{-# LANGUAGE FlexibleInstances #-}
 import Data.Char
 
 newtype Parser a = Parser { parse :: String -> [(a,String)] }
+
 
 item :: Parser Char
 item = Parser (\cs -> case cs of
@@ -294,45 +293,24 @@ bssos (Seq s1 s2) s = bssos s2 (bssos s1 s)
 bssos (IfE be s1 s2) s = if (valueb be s) then (bssos s1 s) else (bssos s2 s)
 bssos (WhileE be s1) s = if (valueb be s) then (bssos (WhileE be s1) (bssos s1 s)) else s
 
+sssos1 :: (Stmt, [(String, Int)]) -> (Stmt, [(String, Int)])
+sssos1 (AtrE t e, s) = (Skip, update t (value e s) s)
+sssos1 (Seq Skip s2, s) = (s2, s)
+sssos1 (Seq s1 s2, s) = let (s3, s') = sssos1 (s1, s) in (Seq s3 s2, s')
+sssos1 (IfE be s1 s2, s) = if (valueb be s) then (s1, s) else (s2, s)
+sssos1 (WhileE be s1, s) = (IfE be (Seq s1 (WhileE be s1)) Skip, s)
+
+sssos_star :: (Stmt, [(String, Int)]) -> [(Stmt, [(String, Int)])]
+sssos_star (s1, s) = (s1, s):(sssos_plus (s1, s))
+
+sssos_plus :: (Stmt, [(String, Int)]) -> [(Stmt, [(String, Int)])]
+sssos_plus (Skip, s) = []
+sssos_plus (s1, s) = (sssos_star . sssos1) (s1, s)
+
+sssos_final_state :: (Stmt, [(String, Int)]) -> [(String, Int)]
+sssos_final_state = snd . last . sssos_star
+
 prog = sum_no_p
+inits = (prog, [])
 
-test_bssos = bssos prog []
-
--- This is where the new stuff starts
-
--- substitutes the Qid with the string by the arithmetic expression
-substaexp :: AExp -> String -> AExp -> AExp
-substaexp = undefined
-
-data Assn = BEX Bool | LEX AExp AExp | NotEX Assn | AndEX Assn Assn | DisjInfX [Assn]
-
--- value of an assertion relative to a state, similar to valueb
-valueassn :: Assn -> [(String, Int)] -> Bool
-valueassn = undefined
-
--- converts a boolean expression to an assertion
-convassn :: BExp -> Assn
-convassn = undefined
-
--- substitutes the Qid with the string by the arithmetic expression
-substassn :: Assn -> String -> AExp -> Assn
-substassn = undefined
-
--- logical or
-orx :: Assn -> Assn -> Assn
-orx p q = NotEX (AndEX (NotEX p) (NotEX q))
-
--- extracts the list
-extr :: Assn -> [Assn]
-extr (DisjInfX li) = li
-
--- computes the weakest precondition
-wp :: Stmt -> Assn -> Assn
-wp = undefined
-
-test1 = valueassn (wp prog (LEX (Qid "s") (Nu 5051))) [] -- should return true
-
-test2 = valueassn (wp prog (LEX (Qid "s") (Nu 5050))) [] -- should return true
-
-test3 = valueassn (wp prog (LEX (Qid "s") (Nu 5049))) [] -- should not terminate
-
+test = (sssos_final_state inits) == (bssos prog [])

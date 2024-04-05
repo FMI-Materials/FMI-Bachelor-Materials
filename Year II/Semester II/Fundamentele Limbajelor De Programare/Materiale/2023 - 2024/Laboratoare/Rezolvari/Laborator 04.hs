@@ -302,21 +302,36 @@ test_bssos = bssos prog []
 
 -- substitutes the Qid with the string by the arithmetic expression
 substaexp :: AExp -> String -> AExp -> AExp
-substaexp = undefined
+substaexp (Nu n) _ _ = Nu n
+substaexp (Qid v) w a = if v == w then a else (Qid v)
+substaexp (PlusE a b) w c = PlusE (substaexp a w c) (substaexp b w c)
+substaexp (TimesE a b) w c = TimesE (substaexp a w c) (substaexp b w c)
+substaexp (DivE a b) w c = DivE (substaexp a w c) (substaexp b w c)
 
 data Assn = BEX Bool | LEX AExp AExp | NotEX Assn | AndEX Assn Assn | DisjInfX [Assn]
 
 -- value of an assertion relative to a state, similar to valueb
 valueassn :: Assn -> [(String, Int)] -> Bool
-valueassn = undefined
+valueassn (BEX b) _ = b
+valueassn (LEX e1 e2) s = (value e1 s) <= (value e2 s)
+valueassn (NotEX e) s = not (valueassn e s)
+valueassn (AndEX e1 e2) s = (valueassn e1 s) && (valueassn e2 s)
+valueassn (DisjInfX li) s = or [valueassn x s | x <- li]
 
 -- converts a boolean expression to an assertion
 convassn :: BExp -> Assn
-convassn = undefined
+convassn (BE b) = BEX b
+convassn (LE a b) = LEX a b
+convassn (NotE b) = NotEX (convassn b)
+convassn (AndE b c) = AndEX (convassn b) (convassn c)
 
 -- substitutes the Qid with the string by the arithmetic expression
 substassn :: Assn -> String -> AExp -> Assn
-substassn = undefined
+substassn (BEX b) _ _ = BEX b
+substassn (LEX a b) w c = LEX (substaexp a w c) (substaexp b w c)
+substassn (NotEX a) w c = NotEX (substassn a w c)
+substassn (AndEX a b) w c = AndEX (substassn a w c) (substassn b w c)
+substassn (DisjInfX li) w c = DisjInfX [substassn a w c | a <- li]
 
 -- logical or
 orx :: Assn -> Assn -> Assn
@@ -328,7 +343,11 @@ extr (DisjInfX li) = li
 
 -- computes the weakest precondition
 wp :: Stmt -> Assn -> Assn
-wp = undefined
+wp Skip q = q
+wp (AtrE v a) q = substassn q v a
+wp (Seq c0 c1) q = wp c0 (wp c1 q)
+wp (IfE b c0 c1) q = orx (AndEX (convassn b) (wp c0 q)) (AndEX (NotEX (convassn b)) (wp c1 q))
+wp (WhileE b c) q = DisjInfX ((AndEX (NotEX (convassn b)) q) : [AndEX (convassn b) (wp c p) | p <- extr (wp (WhileE b c) q)])
 
 test1 = valueassn (wp prog (LEX (Qid "s") (Nu 5051))) [] -- should return true
 

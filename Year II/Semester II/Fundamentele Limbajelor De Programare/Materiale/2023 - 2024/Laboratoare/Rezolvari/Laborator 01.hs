@@ -185,7 +185,44 @@ term = factor `chainl1` mulop
 expr :: Parser Double
 expr = term `chainl1` addop
 
---1. Testati parser-ul de mai sus
+data Expr = ENum Double | EPlu Expr Expr | EMinu Expr Expr | EMul Expr Expr | EDiv Expr Expr | EminuU Expr
+    deriving Show
 
---2. Creati un tip de date abstract (inductiv) pt expresii aritmetice si modificati parser-ul astfel incat el sa returneze o asemenea expresie
+enum :: Parser Expr
+enum = ENum <$> number
 
+eexpr :: Parser Expr
+eexpr = eterm `chainl1` eaddop
+
+eterm :: Parser Expr
+eterm = efactor `chainl1` emulop
+
+eaddop :: Parser (Expr -> Expr -> Expr)
+eaddop = add <|> sub
+  where add = do
+                symbol "+"
+                return EPlu
+        sub = do
+                symbol "-"
+                return EMinu
+
+emulop :: Parser (Expr -> Expr -> Expr)
+emulop = mul <|> div
+  where mul = do
+                symbol "*"
+                return EMul
+        div = do
+                symbol "/"
+                return EDiv
+
+efactor :: Parser Expr
+efactor = negativeFactor <|> parensExpr <|> enum
+  where
+    negativeFactor = do
+                        symbol "-"
+                        EminuU <$> efactor
+    parensExpr = do 
+                    symbol "("
+                    x <- eexpr
+                    symbol ")"
+                    return x

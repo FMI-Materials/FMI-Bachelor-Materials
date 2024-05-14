@@ -94,11 +94,69 @@ unify es = case (onestep es) of
                     FailureS -> Failure
                     SetS fs -> unify fs
                     
-eqset1 = [Equ (Variable "z") (FuncSym "f" [Variable "x"]), Equ (FuncSym "f" [Variable "t"]) (Variable "y")]
-         -- z=f(x), f(t)=y  --> should have z=f(x), y=f(t)
+data LambdaTerm = Var String | Lam String LambdaTerm | App LambdaTerm LambdaTerm
+    deriving Show
 
-eqset2 = [Equ (FuncSym "f" [Variable "x", FuncSym "g" [Variable "y"]]) (FuncSym "f" [FuncSym "g" [Variable "z"], Variable "z"])]
-         -- f(x,g(y))=f(g(z),z) --> should have x=g(g(y)), z=g(y)
+-- free variables of a lambda term
+fv :: LambdaTerm -> [String]
+fv (Var x) = [x]
+fv (Lam x t) = [y | y <- fv t, y /= x]
+fv (App t s) = union2 (fv t) (fv s)
 
-eqset3 = [Equ (FuncSym "f" [Variable "x", FuncSym "g" [Variable "x"], FuncSym "b" []]) (FuncSym "f" [FuncSym "a" [], FuncSym "g" [Variable "z"], Variable "z"])]
-          -- f(x,g(x),b)=f(a,g(z),z) --> should return failure
+-- an endless reservoir of variables
+freshvarlist :: [String]
+freshvarlist = map ("x" ++) (map show [0..])
+
+-- This is where the new stuff starts
+
+-- annotated lambda term
+data AnnLambdaTerm = AVar String | ALam String String AnnLambdaTerm | AApp AnnLambdaTerm AnnLambdaTerm
+    deriving Show
+
+-- the gamma_M context from the type inference algorithm
+gamma :: LambdaTerm -> [(String,String)]
+gamma t = zip (fv t) freshvarlist
+
+-- auxiliary function for annotation: given a term and a list of fresh variables, returns the annotated term and the list of remaining fresh variables
+annotate_aux :: LambdaTerm -> [String] -> (AnnLambdaTerm, [String])
+annotate_aux = undefined
+
+-- annotates a term as in the type inference algorithm; returns the annotated term and the list of remaining fresh variables 
+annotate :: LambdaTerm -> (AnnLambdaTerm, [String])
+annotate t = annotate_aux t [x | x <- freshvarlist, notElem x [w | (z, w) <- (gamma t)]]
+
+-- auxiliary function for constraints: given an annotated term, a list of fresh variables and a context, returns the list of equationsand the list of remaining fresh variables
+constraints_aux :: AnnLambdaTerm -> [String] -> [(String,String)] -> ([Equ], [String])
+constraints_aux = undefined
+
+-- finds the list of equations associated to a term together with the type variable to which the term corresponds
+constraints :: LambdaTerm -> ([Equ], String)
+constraints t = let (u, z:zs) = annotate t
+                    (es, _) = constraints_aux u (z:zs) (gamma t)
+                in (es, z)
+
+-- finds the value of a variable in a set of equations in solved form
+find :: String -> [Equ] -> Term
+find z ((Equ (Variable w) t):es) | z == w = t
+find z ((Equ t (Variable w)):es) | z == w = t
+find z (_:es) = find z es
+
+data SimpleType = TypeVar String | Arrow SimpleType SimpleType
+    deriving Show
+
+-- converts a type expressed as a first-order term into a type properly formalized
+totype :: Term -> SimpleType
+totype (Variable x) = TypeVar x
+totype (FuncSym a [t, s]) = Arrow (totype t) (totype s)
+
+-- finds the type of a term if it exists
+typeinf :: LambdaTerm -> Maybe SimpleType
+typeinf t = let (es, z) = constraints t
+            in case (unify es) of
+                   Set fs -> Just (totype (find z fs))
+                   Failure -> Nothing
+
+testl1 = typeinf $ Lam "x" (Var "x")     
+testl2 = typeinf $ Lam "x" (Lam "y" (Var "x"))
+testm1 = typeinf $ (App (Lam "z" (Lam "u" (Var "z"))) (App (Var "y") (Var "x")))
+testm2 = typeinf $ (App (Var "x") (Var "x"))

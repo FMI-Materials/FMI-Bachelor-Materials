@@ -1,1 +1,0 @@
-print("ana are mere")

@@ -1,0 +1,126 @@
+#Broscoteanu Daria-Mihaela 143
+#Se dă fișierul “magazine.in” cu următoarea structură
+
+#Pe prima linie sunt două numere naturale m și n separate printr-un spațiu.
+#Pe următoarele m linii sunt câte 2 valori separate prin spațiu reprezentând informații despre un magazin
+# codul (număr natural), numele unui magazin (format din unul sau mai multe cuvinte separate prin spațiu).
+#Pe următoarele n linii sunt valori separate prin spațiu reprezentând 6 informații despre produse aflate
+# în stocul magazinelor date anterior (un produs se găsește la un singur magazin)
+# codul unui magazin (număr natural, dintre codurile date pe liniile 2, …, m+1),
+# codul produsului (număr natural), numărul de bucăți aflate în stoc (număr natural),
+# prețul produsului (număr real), greutatea produsului (număr natural), numele produsului (șir ce poate conține spații).
+#a)      [1,25p] Să se memoreze datele din fișier într-o singură structură astfel încât să se răspundă cât mai eficient la cerințele b)
+# (ștergerea unui produs având dat codul produsului și aflarea numelui unicului magazin unde se găsește acel produs)
+# și c) (accesarea numelui unui magazin și a informațiilor despre toate produsele sale, având dat codul m
+
+
+f=open(magazine.in)
+m,n=f.readline().split()
+m=int(m)
+n=int(n)
+d=dict()
+for i in range(m)
+    s=f.readline()
+    cod,nume=s.split(maxsplit=1)
+    cod=int(cod)
+    nume=nume.rstrip('n')
+    d[cod]=dict()
+    d[cod]['nume magazin']=nume
+for i in range(n)
+    s=f.readline()
+    cod_magazin,cod_produs,nr,pret,greutate,nume_produs=s.split(maxsplit=5)
+    cod_magazin=int(cod_magazin)
+    cod_produs=int(cod_produs)
+    nume_produs=nume_produs.rstrip(n)
+    pret = float(pret)
+    nr = int(nr)
+    greutate = int(greutate)
+    t=(nr,pret,greutate,nume_produs)
+    d[cod_magazin][cod_produs]=t
+f.close()
+
+for x in d.keys()
+    print(x,d[x])
+
+
+#b)     [0,75p] Să se scrie o funcție sterge_produs cu 2 parametri
+# în primul parametru se transmite structura în care s-au memorat datele la cerința a),
+# iar al doilea este codul unui produs, care șterge din structura de date primită toate informațiile
+# legate de produsul cu codul dat ca parametru. Funcția returnează numele unicului magazin unde se găsește produsul,
+# sau None dacă produsul nu se află în stocul niciunui magazin.
+
+#Să se apeleze funcția pentru un cod de produs citit de la tastatură și să se afișeze pe ecran mesajul
+#“Produsul se gasea la magazinul numit … .”, sau mesajul “Produsul nu exista.”
+# dacă niciun magazin nu are în stoc produsul cu codul dat.
+# Apoi să se afișeze pe ecran toată structura rămasă după ștergere, într-o formă convenabilă.
+
+def sterg_produs(d,cod_produs)
+    ok=0
+    nume=
+    for x in d.keys()
+        if cod_produs in d[x]
+            ok=1
+            nume=d[x]['nume magazin']
+            del d[x][cod_produs]
+    if ok==0
+        return None
+    else
+        return nume
+cod_produs=int(input())
+s=sterg_produs(d,cod_produs)
+if s==None
+    print(Produsul nu exista.)
+else
+    print(fProdusul se gasea la magazinul numit {s})
+
+for cod_magazin in d.keys()
+    print(cod_magazin,d[cod_magazin][nume magazin])
+    for x in d[cod_magazin].keys()
+        if x != nume magazin
+            print(f{x} {d[cod_magazin][x]})
+#print(d)
+
+#c)      [1p] Să se scrie o funcție produse_magazin cu 2 parametri
+# în primul parametru se transmite structura în care s-au memorat datele la cerința a),
+# iar al doilea este codul unui magazin. Funcția returnează numele magazinului și o listă
+# cu informații despre produsele din stocul său (un element al listei fiind un tuplu ce conține
+# numele produsului, numărul de bucăți aflate în stocul acelui magazin, prețul, greutatea produsului),
+# lista fiind sortată descrescător după numărul de bucăți, în caz de egalitate crescător după prețul unitar
+# (raportul dintre preț și greutate), iar în caz de egalitate crescător după numele produsului.
+# Funcția va returna o listă vidă dacă nu există un magazin cu codul primit ca parametru.
+
+#Să se apeleze funcția pentru un cod de magazin citit de la tastatură și să se afișeze rezultatul returnat ca în exemplul de mai jos.
+
+def produs_magazin(d,cod_magazin)
+    l=[]
+    if cod_magazin in d
+        nume=d[cod_magazin]['nume magazin']
+        for x in d[cod_magazin].keys()
+            if x!='nume magazin'
+                nume_produs=d[cod_magazin][x][3]
+                nr=d[cod_magazin][x][0]
+                pret=d[cod_magazin][x][1]
+                greutate=d[cod_magazin][x][2]
+                t=(nume_produs,nr,pret,greutate)
+                l.append(t)
+        l.sort(key=lambda e(-e[1],e[2]e[1],e[0]))
+        return nume,l
+    else
+        return l
+
+cod=int(input())
+l=produs_magazin(d,cod)
+if len(l)==0
+    print(cod incorect)
+else
+    print(l[0])
+    l=l[1]
+    for line in l
+        for x in line
+            print(x,end= )
+        print()
+
+
+
+
+

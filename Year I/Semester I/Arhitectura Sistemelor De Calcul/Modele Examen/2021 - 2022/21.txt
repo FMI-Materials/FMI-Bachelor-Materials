@@ -1,0 +1,112 @@
+::Q21_1:: Ce face urmatoarea secventa de cod, compilata cu godbolt x86-64 gcc 11.2, flag -O3?
+func1(int):
+        cmp     edi, 1
+        jle     .L5
+        test    dil, 1
+        je      .L6
+        mov     ecx, 2
+        jmp     .L3
+.L4:
+        mov     eax, edi
+        cdq
+        idiv    ecx
+        test    edx, edx
+        je      .L1
+.L3:
+        add     ecx, 1
+        cmp     edi, ecx
+        jge     .L4
+.L5:
+        mov     edx, 1
+.L1:
+        mov     eax, edx
+        ret
+.L6:
+        xor     edx, edx
+        jmp     .L1
+{~calculeaza minimul
+~calculeaza maximul
+~verifica daca un numar dat este prim
+~calculeaza suma elementelor dinr-un vector
+~calculeaza produsul elementelor dintr-un vector
+~calculeaza lungimea unui sir de caractere
+~altceva}
+
+
+::Q21_2:: Ce face urmatoarea secventa de cod, compilata cu godbolt x86-64 clang 13, flag -O3?
+func2(char*):                           
+        mov     eax, -1
+.LBB0_1:                                
+        add     eax, 1
+        cmp     byte ptr [rdi], 0
+        lea     rdi, [rdi + 1]
+        jne     .LBB0_1
+        ret
+{~calculeaza minimul
+~calculeaza maximul
+~verifica daca un numar dat este prim
+~calculeaza suma elementelor dinr-un vector
+~calculeaza produsul elementelor dintr-un vector
+~calculeaza lungimea unui sir de caractere
+~altceva}
+
+
+
+::Q21_3:: Ce face urmatoarea secventa de cod, compilata cu godbolt x86-64 gcc 11.2, flag -O1?
+func3(int*, int):
+        test    esi, esi
+        jle     .L4
+        mov     rax, rdi
+        lea     edx, [rsi-1]
+        lea     rcx, [rdi+4+rdx*4]
+        mov     edx, 0
+.L3:
+        add     edx, DWORD PTR [rax]
+        add     rax, 4
+        cmp     rax, rcx
+        jne     .L3
+.L1:
+        mov     eax, edx
+        ret
+.L4:
+        mov     edx, 0
+        jmp     .L1
+{~calculeaza minimul
+~calculeaza maximul
+~verifica daca un numar dat este prim
+~calculeaza suma elementelor dinr-un vector
+~calculeaza produsul elementelor dintr-un vector
+~calculeaza lungimea unui sir de caractere
+~altceva}
+
+
+
+::Q21_4:: Ce face urmatoarea secventa de cod, compilata cu godbolt x86-64 gcc 11.2, flag -O1?
+func3(int*, int):
+        test    esi, esi
+        jle     .L4
+        mov     rax, rdi
+        lea     edx, [rsi-1]
+        lea     rcx, [rdi+4+rdx*4]
+        mov     edx, 1
+.L3:
+        imul    edx, DWORD PTR [rax]
+        add     rax, 4
+        cmp     rax, rcx
+        jne     .L3
+.L1:
+        mov     eax, edx
+        ret
+.L4:
+        mov     edx, 1
+        jmp     .L1
+{~calculeaza minimul
+~calculeaza maximul
+~verifica daca un numar dat este prim
+~calculeaza suma elementelor dinr-un vector
+~calculeaza produsul elementelor dintr-un vector
+~calculeaza lungimea unui sir de caractere
+~altceva}
+
+
+

@@ -1,0 +1,64 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.Runnable;
+import java.lang.Thread;
+
+class Total {
+    private double total;
+    Total() { total = 0; };
+    public double getTotal() { return total; }
+    synchronized public void addTotal(double value) { total += value; }
+}
+
+class Fir implements Runnable {
+    private final Scanner scanner;
+    private final String material;
+    private final Total total;
+
+    Fir(String filePath, String material, Total total) throws Exception {
+        this.scanner = new Scanner(new File(filePath));
+        this.material = material;
+        this.total = total;
+    }
+
+    @Override
+    public void run() {
+        while (scanner.hasNextLine()) {
+            String[] detaliiSuvenir = scanner.nextLine().split(",");
+            String material = detaliiSuvenir[1];
+            if (material.toLowerCase().equals(this.material)) {
+                int cantitate = Integer.parseInt(detaliiSuvenir[2]);
+                int pretUnitar = Integer.parseInt(detaliiSuvenir[3]);
+                total.addTotal(cantitate * pretUnitar);
+            }
+        }
+    }
+}
+
+public class III {
+    private final static String filePath1 = "txt/stoisko_1.txt";
+    private final static String filePath2 = "txt/stoisko_2.txt";
+    private final static Scanner scanner = new Scanner(System.in);
+    private static Total total = new Total();
+
+    public static void main(String[] args) {
+        try {
+            String material = scanner.nextLine();
+
+            Thread t1 = new Thread(new Fir(filePath1, material, total));
+            Thread t2 = new Thread(new Fir(filePath2, material, total));
+
+            t1.start();
+            t2.start();
+
+            t1.join();
+            t2.join();
+
+            System.out.println(total.getTotal());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

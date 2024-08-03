@@ -1,0 +1,98 @@
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+
+class Persoana {
+    private String nume;
+    private int varsta;
+    private double salariuMediuAnual;
+
+    Persoana(String nume, int varsta, double salariuMediuAnual) {
+        this.nume = nume;
+        this.varsta = varsta;
+        this.salariuMediuAnual = salariuMediuAnual;
+    }
+
+    @Override
+    public String toString() {
+        String[] details = {nume, String.valueOf(varsta), String.valueOf(salariuMediuAnual)};
+        return String.join(",", details);
+    }
+}
+
+class CitireScrierePersoane {
+    private static CitireScrierePersoane INSTANCE = null;
+    private ArrayList<Persoana> persoane;
+    private File file;
+
+    private CitireScrierePersoane(ArrayList<Persoana> persoane, String fileName) {
+        this.persoane = persoane;
+        this.file = new File(fileName + ".csv");
+    }
+
+    public static CitireScrierePersoane getInstance(ArrayList<Persoana> persoane, String fileName) {
+        if (INSTANCE == null) {
+            INSTANCE = new CitireScrierePersoane(persoane, fileName);
+        }
+        return INSTANCE;
+    }
+
+    void writeToCSV() throws Exception {
+        FileWriter fileWriter = new FileWriter(file, false);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        for (Persoana persoana : persoane) {
+            bufferedWriter.write(persoana.toString());
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+        fileWriter.close();
+    }
+
+    ArrayList<Persoana> readFromCSV() throws Exception {
+        ArrayList<Persoana> persoane = new ArrayList<>();
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] parts = line.split(",");
+            String nume = parts[0];
+            int varsta = Integer.parseInt(parts[1]);
+            double salariuMediuAnual = Double.parseDouble(parts[2]);
+            persoane.add(new Persoana(nume, varsta, salariuMediuAnual));
+        }
+
+        bufferedReader.close();
+        fileReader.close();
+        return persoane;
+    }
+}
+
+public class IV {
+    private static final String FILE_NAME = "txt/persoane";
+
+    public static void main(String[] args) {
+        ArrayList<Persoana> persoane = new ArrayList<>();
+        persoane.add(new Persoana("Andrei", 20, 10000));
+        persoane.add(new Persoana("Mihai", 25, 20000));
+        persoane.add(new Persoana("Alex", 30, 30000));
+
+        CitireScrierePersoane citireScrierePersoane = CitireScrierePersoane.getInstance(persoane, FILE_NAME);
+
+        try {
+            citireScrierePersoane.writeToCSV();
+            ArrayList<Persoana> persoaneCitite = citireScrierePersoane.readFromCSV();
+            for (Persoana persoana : persoaneCitite) {
+                System.out.println(persoana);
+            }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

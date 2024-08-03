@@ -1,0 +1,53 @@
+--laborator 1
+/*
+comentariu
+multiplu
+; doar la final
+* le ia pe toate
+cheia primara nu are voie sa lipseasa 
+*/
+select * from EMPLOYEES ;
+
+-- cheia primara este o coloana /combinatie de coloane 
+-- este un indentificator unic (unica)
+-- nu poate fi null
+select * from jobs;
+select * from DEPARTMENTS;
+select * from JOB_HISTORY;
+
+desc EMPLOYEES ; --describe
+
+-- cheia externa este o coloana
+-- nu este unica (se repeta)
+--poate fi null
+--daca se afla intr-un tabel se afla si in tabelul pe care il refera
+
+select job_id from employees; --afiseaza 107 joburi(pt fiecare angajat 107 angajati, job_id cheie externa -se repeta pt fiecare angajat)
+select job_id from jobs; -- afiseaza 19 joburi( este cheie primara-> unica)
+
+--operatori distinct=unique
+select unique job_id from employees;
+
+--cautati erorile
+--annual salary aliasurile sugestii le pune in cap de coloane nu-i plac spatiile libere-> punem:"" sau underscore pt spatii
+select employee_id ID, last_name Nume, salary * 12 ANNUAL_SALARY FROM EMPLOYEES;
+
+--ex 6 concatenare || VP-virgula si spatiu
+select last_name ||' , '|| job_id "Angajat si titlu" from employees;
+--TEMA PROBLEMA CU BOLD DE LA EX 6 PAG 3 
+--EX 7
+SELECT LAST_NAME, SALARY FROM EMPLOYEES WHERE SALARY>2850; 
+--tema ex 8 nr departamentului dep id 
+
+--ex 9 between sau not between in interval sau in afara lui nu i place >=1500 and <=2800
+SELECT LAST_NAME, SALARY FROM EMPLOYEES WHERE SALARY not between 1500 and 2850; --86
+
+si completam si spatiile de la 10
+TEMA:
+-ex 6 bold:
+select  last_name||' , '|| last_name ||' , '|| email ||' , '|| job_id||' , '|| phone_number||' , '|| hire_date ||' , '|| salary||' , '|| commission_pct ||' , '||manager_id ||' , '||department_id "Informatii complete" from employees;
+-ex 8
+select  last_name, department_id from employees where employee_id=104;
+-ex 10
+select last_name, job_id, hire_date from employees where hire_date between '20_feb-1987' and '1-may-1989' order by hire_date;
+

@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.Comparator;
+
+class ProdusAlimentar {
+    private String denumire;
+    private int cantitate;
+    private double pretUnitar;
+    private String dataExpirare;
+
+    public ProdusAlimentar(String denumire, int cantitate, double pretUnitar, String dataExpirare) {
+        this.denumire = denumire;
+        this.cantitate = cantitate;
+        this.pretUnitar = pretUnitar;
+        this.dataExpirare = dataExpirare;
+    }
+
+    public String getDenumire() {
+        return denumire;
+    }
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public double getPretUnitar() {
+        return pretUnitar;
+    }
+
+    public String getDataExpirare() {
+        return dataExpirare;
+    }
+
+    @Override
+    public String toString() {
+        return "ProdusAlimentar{" +
+                "denumire='" + denumire + '\'' +
+                ", cantitate=" + cantitate +
+                ", pretUnitar=" + pretUnitar +
+                ", dataExpirare='" + dataExpirare + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProdusAlimentar that = (ProdusAlimentar) o;
+        return cantitate == that.cantitate && Double.compare(that.pretUnitar, pretUnitar) == 0 && Objects.equals(denumire, that.denumire) && Objects.equals(dataExpirare, that.dataExpirare);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(denumire, cantitate, pretUnitar, dataExpirare);
+    }
+}
+
+public class II {
+    public static void main(String[] args) {
+        List<ProdusAlimentar> lp = new ArrayList<>();
+        lp.add(new ProdusAlimentar("Mere", 10, 2.5, "10-10-2025"));
+        lp.add(new ProdusAlimentar("Alune", 20, 3.5, "24-12-2024"));
+        lp.add(new ProdusAlimentar("Iaurt", 5, 100.1, "12-10-2024"));
+
+        // 1
+        lp.stream()
+          .filter(produs -> produs.getDenumire().startsWith("A"))
+          .sorted(Comparator.comparing(ProdusAlimentar::getPretUnitar))
+          .forEach(System.out::println);
+          
+        // 2
+        List<ProdusAlimentar> filtered = 
+            lp.stream()
+              .filter(produs -> produs.getPretUnitar() > 100 && produs.getPretUnitar() < 1000)
+              .collect(Collectors.toList());
+
+        filtered.forEach(System.out::println);
+
+        // 3
+        Double total = 
+            lp.stream()
+              .map(produs -> produs.getCantitate() * produs.getPretUnitar())
+              .reduce(0.0, (x, y) -> x + y);
+        System.out.println(total);
+
+        // 4
+        lp.stream()
+          .collect(Collectors.groupingBy(produs -> produs.getDataExpirare().split("-")[1]))
+          .forEach((luna, produse) -> {
+              System.out.println(luna);
+              produse.forEach(System.out::println);
+          });
+    }
+}

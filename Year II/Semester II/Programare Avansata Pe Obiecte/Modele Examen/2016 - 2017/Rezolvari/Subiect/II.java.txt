@@ -1,0 +1,106 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.Comparator;
+
+class Log {
+    private String user;
+    private String date;
+    private long loginTime;
+    private long logoutTime;
+
+    public Log(String user, String date, long loginTime, long logoutTime) {
+        this.user = user;
+        this.date = date;
+        this.loginTime = loginTime;
+        this.logoutTime = logoutTime;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public long getLoginTime() {
+        return loginTime;
+    }
+
+    public long getLogoutTime() {
+        return logoutTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Log{" +
+                "user='" + user + '\'' +
+                ", date='" + date + '\'' +
+                ", loginTime=" + loginTime +
+                ", logoutTime=" + logoutTime +
+                '}';
+    }
+        
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Log log = (Log) o;
+        return loginTime == log.loginTime &&
+               logoutTime == log.logoutTime &&
+               Objects.equals(user, log.user) &&
+               Objects.equals(date, log.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, date, loginTime, logoutTime);
+    }
+}
+
+public class II {
+    public static void main(String[] args) {
+        List<Log> ll = new ArrayList<>();
+        ll.add(new Log("user1", "2017-01-01", 10, 3620));
+        ll.add(new Log("user2", "2017-01-01", 10, 20));
+        ll.add(new Log("user3", "2017-01-01", 10, 5000));
+        ll.add(new Log("user1", "2017-01-01", 10, 5000));
+        ll.add(new Log("user1", "2017-02-02", 10, 1000));
+        ll.add(new Log("user1", "2019-03-02", 10, 20));
+
+        // 1
+        ll.stream()
+          .filter(log -> log.getLogoutTime() - log.getLoginTime() >= 3600)
+          .map(Log::getUser)
+          .distinct()
+          .forEach(System.out::println);
+
+        // 2
+        ll.stream()
+          .map(Log::getDate)
+          .distinct()
+          .forEach(System.out::println);
+
+        // 3
+        List<String> users = 
+            ll.stream()
+              .filter(log -> log.getDate().equals("2017-01-01") && log.getLoginTime() < 12 * 3600)
+              .map(Log::getUser)
+              .sorted()
+              .collect(Collectors.toList());
+        users.forEach(System.out::println);
+
+        // 4
+        ll.stream()
+          .collect(Collectors.groupingBy(Log::getUser))
+          .forEach((user, logs) -> {
+                System.out.println(user);
+                logs.stream()
+                    .map(Log::getDate)
+                    .distinct()
+                    .forEach(System.out::println);
+          });
+    }
+}

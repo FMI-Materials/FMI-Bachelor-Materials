@@ -1,0 +1,70 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.Runnable;
+import java.lang.Thread;
+import java.util.Set;
+import java.util.HashSet;
+
+class Counter {
+    private long count;
+    private Set<String> words;
+    Counter() { count = 0; words = new java.util.HashSet<String>(); }
+    public long getCounter() { return count; }
+    synchronized void add(String word) {
+        if (!words.contains(word)) {
+            words.add(word);
+            ++count;
+        }
+    }
+}
+
+class Fir implements Runnable {
+    private final Scanner scanner;
+    private final int length;
+    private final Counter counter;
+
+    Fir(String filePath, int length, Counter counter) throws Exception {
+        this.scanner = new Scanner(new File(filePath));
+        this.length = length;
+        this.counter = counter;
+    }
+
+    @Override
+    public void run() {
+        while (scanner.hasNextLine()) {
+            for (String word : scanner.nextLine().split("[ .,:;!?]+")) {
+                if (word.length() == length) {
+                    counter.add(word);
+                }
+            }
+        }
+    }
+}
+
+public class II {
+    private final static String filePath1 = "txt/poezie_1.txt";
+    private final static String filePath2 = "txt/poezie_2.txt";
+    private final static Scanner scanner = new Scanner(System.in);
+    private final static Counter counter = new Counter();
+
+    public static void main(String[] args) { 
+        try {
+            int length = Integer.parseInt(scanner.nextLine());
+
+            Thread t1 = new Thread(new Fir(filePath1, length, counter));
+            Thread t2 = new Thread(new Fir(filePath2, length, counter));
+
+            t1.start();
+            t2.start();
+
+            t1.join();
+            t2.join();
+
+            System.out.println(counter.getCounter());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,119 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.Comparator;
+
+class DiplomaLicenta {
+    private String serie;
+    private String absolvent;
+    private int an;
+    private String facultate;
+    private String specializare;
+    private double medie;
+
+    public DiplomaLicenta(String serie, String absolvent, int an, String facultate, String specializare, double medie) {
+        this.serie = serie;
+        this.absolvent = absolvent;
+        this.an = an;
+        this.facultate = facultate;
+        this.specializare = specializare;
+        this.medie = medie;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public String getAbsolvent() {
+        return absolvent;
+    }
+
+    public int getAn() {
+        return an;
+    }
+
+    public String getFacultate() {
+        return facultate;
+    }
+
+    public String getSpecializare() {
+        return specializare;
+    }
+
+    public double getMedie() {
+        return medie;
+    }
+
+    @Override
+    public String toString() {
+        return "DiplomaLicenta{" +
+                "serie='" + serie + '\'' +
+                ", absolvent=" + absolvent +
+                ", an='" + an + '\'' +
+                ", facultate='" + facultate + '\'' +
+                ", specializare='" + specializare + '\'' +
+                ", medie=" + medie +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DiplomaLicenta that = (DiplomaLicenta) o;
+        return Double.compare(that.medie, medie) == 0 &&
+                serie.equals(that.serie) &&
+                absolvent.equals(that.absolvent) &&
+                an == that.an &&
+                facultate.equals(that.facultate) &&
+                specializare.equals(that.specializare);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serie, an, facultate, specializare, medie);
+    }
+}
+
+public class III {
+    public static void main(String[] args) {
+        List<DiplomaLicenta> ldl = new ArrayList<>();
+        ldl.add(new DiplomaLicenta("252", "Buzatu Giulian", 2025, "FMI", "Informatica", 9.99));
+        ldl.add(new DiplomaLicenta("252", "Neculae Andrei-Fabian", 2029, "FMI", "Informatica", 5.00));
+        ldl.add(new DiplomaLicenta("252", "Ilie Dumitru", 2024, "FMI", "Informatica", 10));
+        ldl.add(new DiplomaLicenta("251", "Idk1", 2009, "FMI", "Informatica", 10));
+        ldl.add(new DiplomaLicenta("251", "Idk2", 2007, "FMI", "Informatica", 9.60));
+        ldl.add(new DiplomaLicenta("241", "Idk3", 2018, "FMI", "Informatica", 9.12));
+        ldl.add(new DiplomaLicenta("242", "Idk4", 2018, "FMI", "CTI", 9.21));
+        ldl.add(new DiplomaLicenta("243", "Idk5", 2018, "FMI", "CTI", 5.55));
+
+        // 1
+        ldl.stream()
+           .filter(diploma -> diploma.getAn() > 2000 && diploma.getAn() < 2010)
+           .sorted(Comparator.comparing(DiplomaLicenta::getMedie).reversed())
+           .forEach(System.out::println);
+
+        // 2
+        ldl.stream()
+           .filter(diploma -> diploma.getAn() == 2018)
+           .map(DiplomaLicenta::getSpecializare)
+           .distinct()
+           .forEach(System.out::println);
+
+        // 3
+        List<String> absolventi = 
+            ldl.stream()
+               .filter(diploma -> diploma.getMedie() == 10)
+               .map(DiplomaLicenta::getAbsolvent)
+               .collect(Collectors.toList());
+        absolventi.forEach(System.out::println);
+
+        // 4
+        Long nrDiplome = 
+            ldl.stream()
+               .filter(diploma -> diploma.getSpecializare().toLowerCase().equals("informatica"))
+               .count();
+        System.out.println(nrDiplome);
+    }
+}

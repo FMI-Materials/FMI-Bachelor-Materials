@@ -1,0 +1,31 @@
+List<Vacanta> lv = new ArrayList<>();
+lv.add(new Vacanta("Mamaia", 10, 2999.99, "04/10/2024-11/10/2024"));
+lv.add(new Vacanta("Eforie Nord", 2, 1000.99, "10/10/2025-17/10/2025"));
+lv.add(new Vacanta("Sinaia", 1, 1999.99, "04/12/2024-06/12/2024"));
+
+lv.stream()
+  .filter(vacanta -> vacanta.getNrPersoane() == 2)
+  .sorted(Comparator.comparing(Vacanta::getValoare).reversed())
+  .forEach(System.out::println);
+
+lv.stream()
+  .map(Vacanta::getDestinatie)
+  .distinct()
+  .forEach(System.out::println);
+
+List<Vacanta> dubai = 
+    lv.stream()
+      .filter(vacanta -> vacanta.getDestinatie().toLowerCase().equals("dubai"))
+      .filter(vacanta -> {
+            String start = vacanta.getPerioada().split("-")[0];
+            String[] detaliiStart = start.split("/");
+            return detaliiStart[1].equals("09") && detaliiStart[2].equals("2024");
+       })
+      .collect(Collectors.toList());
+
+lv.stream()
+  .collect(Collectors.groupingBy(Vacanta::getDestinatie))
+  .forEach((destinatie, vacante) -> {
+        System.out.println(destinatie);
+        vacante.forEach(System.out::println);
+  })

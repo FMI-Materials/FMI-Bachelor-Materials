@@ -1,0 +1,42 @@
+class Adresa {
+    String strada;
+    int numar;
+
+    Adresa(String strada, int numar) {
+        this.strada = strada;
+        this.numar = numar;
+    }
+
+    Adresa(Adresa adresa) {
+        this.strada = adresa.strada;
+        this.numar = adresa.numar;
+    }
+}
+
+// regula 1: clasa de tip final
+final class Angajat {
+    // regula 2: toate campurile vor fi final si private
+    private final String nume;
+    private final int varsta;
+    private final double venitAnual;
+    private final Adresa adresa;
+
+    public Angajat(String nume, int varsta, double venitAnual, Adresa adresa) {
+        this.nume = nume;
+        this.varsta = varsta;
+        this.venitAnual = venitAnual;
+
+        // regula 4a: compozitie, nu agregare
+        this.adresa = new Adresa(adresa);
+    }
+
+    public String getNume() { return nume; }
+    public int getVarsta() { return varsta; }
+    public double getVenitAnual() { return venitAnual; }
+    public Adresa getAdresa() {
+        // regula 4b: se vor returna referinte catre copii ale campurilor mutabile
+        return new Adresa(adresa);
+    }
+
+    // regula 3: clasa nu va contine metode de tip set
+}

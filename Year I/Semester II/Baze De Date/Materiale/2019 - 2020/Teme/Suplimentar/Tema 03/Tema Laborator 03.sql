@@ -1,0 +1,84 @@
+--1
+select * from
+(select s_id as Cod, s_last as "Student sau curs", 'student' from student where f_id = (select f_id from faculty where f_last = 'Brown') union 
+select course_no as Cod, course_name as "Student sau curs", 'curs' from course_section join course using (course_no) where f_id = (select f_id from faculty where f_last = 'Brown'));
+
+--2
+select s_id, s_last from student s where 
+(select count(*) from enrollment join course_section using (c_sec_id) join course using (course_no) where s_id=s.s_id and course_name = 'Programming in C++') = 0 
+and (select count(*) from enrollment join course_section using (c_sec_id) join course using (course_no) where s_id=s.s_id and course_name = 'Database Management') > 0;
+
+--3
+select s_id as COD, s_last as NUME from student s where
+(select count(1) from enrollment where s_id = s.s_id and (grade = 'C') or grade = null)>0;
+
+--4
+select l.loc_id, l.bldg_code, l.capacity from location l where (select count(*) from location l2 where l2.capacity < l.capacity) = 0;
+
+--5
+CREATE TABLE t (id NUMBER PRIMARY KEY); INSERT INTO t VALUES(1);
+INSERT INTO t VALUES(2); 
+INSERT INTO t VALUES(4); 
+INSERT INTO t VALUES(6);
+INSERT INTO t VALUES(8); 
+INSERT INTO t VALUES(9);
+
+select min(id)+1 "Min | Max" from T where id+1 not in (select id from T)
+union 
+select max(id)-1 from T where id - 1 not in (select id from T);
+
+--6
+select f.f_id, f.f_last, 
+decode(nvl(s.cnt, 0), 0, 'NU', 'DA (' || s.cnt || ')') as Student,
+decode(nvl(c.cnt, 0), 0, 'NU', 'DA (' || c.cnt || ')') as Curs
+from faculty f, 
+(select count(1) as cnt, f_id from student group by f_id) s, 
+(select count(1) as cnt, f_id from course_section group by f_id) c
+where s.f_id = f.f_id and c.f_id = f.f_id;
+
+--7
+select t1.term_desc, t2.term_desc from term t1, term t2
+where t1.term_id < t2.term_id and substr(t1.term_desc, 0, length(t1.term_desc)-1) = substr(t2.term_desc, 0, length(t2.term_desc)-1) and t1.term_desc != t2.term_desc;
+
+--8
+with cursuri as (select s_id,s_last,s_first,course_no
+from student s join enrollment e using(s_id) join course_section c1 using(c_sec_id)
+order by s_id ASC)
+select distinct c1.s_id,c1.s_last,c1.s_first,c1.course_no,c2.course_no
+from cursuri c1 inner join cursuri c2 on(c1.s_id = c2.s_id)
+WHERE (SUBSTR(c1.course_no, 5, 1) != SUBSTR(c2.course_no, 5, 1))
+      AND (c1.course_no != c2.course_no)
+      AND (c1.course_no < c2.course_no)
+order by c1.s_id ASC;
+
+--9
+select cs1.course_no, cs2.course_no from course_section cs1 join course_section cs2 using (term_id)
+where cs1.course_no > cs2.course_no;
+
+--10
+select course_no, course_name, term_desc, max_enrl from course_section 
+join course using (course_no) join term using (term_id)
+where max_enrl < (select max(max_enrl) from course_section where loc_id=1);
+
+--11
+select course_no from course_section cs where 
+(select count(*) from course section where max_enrl < cs.max_enrl) = 0;
+
+
+--12
+select f_last, round((select avg(max_enrl) from course_section where f_id = f.f_id), 2) 
+as "Medie" from faculty f;
+
+--13
+select f_last, s.cnt from faculty f, 
+(select count(1) as cnt, f_id from student group by f_id) s
+where s.f_id = f.f_id and s.cnt>=3;
+
+--14
+select c.course_name, loc.cap as "Capacitatea maximă", cs.loc_id
+from course c join course_section cs using (course_no),
+(select max(capacity) as cap, loc_id from location group by loc_id) loc
+where loc.loc_id = cs.loc_id;
+
+--15
+select round(avg(max_enrl),2) as "Media locurilor" from course_section join term using (term_id) where term_desc like '%2007%';

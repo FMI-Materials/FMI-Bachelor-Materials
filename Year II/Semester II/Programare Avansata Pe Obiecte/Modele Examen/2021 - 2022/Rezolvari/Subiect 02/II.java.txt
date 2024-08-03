@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.Comparator;
+
+class Suvenir {
+    private String denumire;
+    private String material;
+    private int cantitate;
+    private double pretUnitar;
+
+    public Suvenir(String denumire, String material, int cantitate, double pretUnitar) {
+        this.denumire = denumire;
+        this.material = material;
+        this.cantitate = cantitate;
+        this.pretUnitar = pretUnitar;
+    }
+
+    public String getDenumire() {
+        return denumire;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public double getPretUnitar() {
+        return pretUnitar;
+    }
+
+    @Override
+    public String toString() {
+        return "Suvenir{" +
+                "denumire='" + denumire + '\'' +
+                ", material='" + material + '\'' +
+                ", cantitate=" + cantitate +
+                ", pretUnitar=" + pretUnitar +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Suvenir)) return false;
+        Suvenir suvenir = (Suvenir) o;
+        return getCantitate() == suvenir.getCantitate() &&
+                Double.compare(suvenir.getPretUnitar(), getPretUnitar()) == 0 &&
+                getDenumire().equals(suvenir.getDenumire()) &&
+                getMaterial().equals(suvenir.getMaterial());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDenumire(), getMaterial(), getCantitate(), getPretUnitar());
+    }
+}
+
+public class II {
+    public static void main(String[] args) {
+        List<Suvenir> ls = new ArrayList<>();
+        ls.add(new Suvenir("bratara", "piele", 10, 19.99));
+        ls.add(new Suvenir("cercel", "aur", 2, 99.99));
+        ls.add(new Suvenir("inel", "aur", 1, 1.99));
+        ls.add(new Suvenir("colier", "plastic", 1, 500.99));
+        ls.add(new Suvenir("bratara", "aur", 1, 199999999.99));
+        ls.add(new Suvenir("trofeu", "argint", 1, 11209.90));
+
+        // 1
+        ls.stream()
+          .filter(suvenir -> suvenir.getMaterial().toLowerCase().equals("aur") && suvenir.getPretUnitar() <= 100)
+          .sorted(Comparator.comparing(Suvenir::getPretUnitar).reversed())
+          .forEach(System.out::println);
+            
+        // 2
+        ls.stream()
+          .map(suvenir -> suvenir.getMaterial())
+          .distinct()
+          .forEach(System.out::println);
+          
+        // 3
+        List<Suvenir> filtered = 
+            ls.stream()
+              .filter(suvenir -> suvenir.getMaterial().toLowerCase().equals("plastic"))
+              .filter(suvenir -> suvenir.getPretUnitar() > 500 && suvenir.getPretUnitar() < 1000)
+              .collect(Collectors.toList());
+        filtered.forEach(System.out::println);
+    
+        // 4
+        ls.stream()
+          .collect(Collectors.groupingBy(Suvenir::getMaterial))
+          .forEach((material, suvenir) -> {
+            System.out.println(material);
+            suvenir.forEach(System.out::println);
+          });
+    }
+}

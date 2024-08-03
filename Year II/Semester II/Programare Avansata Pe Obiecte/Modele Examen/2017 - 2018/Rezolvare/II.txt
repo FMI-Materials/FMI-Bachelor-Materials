@@ -1,0 +1,27 @@
+List<Produs> lp = new ArrayList<>();
+lp.add(new Produs("MegaJava", "sampon", 10, 19.99));
+lp.add(new Produs("MegaJava", "deodorant", 50, 9.99));
+lp.add(new Produs("Carrefour", "chipsuri", 25, 10.99));
+
+lp.stream()
+  .filter(produs -> produs.getFirma().equalsIgnoreCase("MegaJava"))
+  .sorted(Comparator.comparing(Produs::getPretUnitar).reversed())
+  .forEach(System.out::println);
+
+lp.stream()
+  .map(Produs::getDenumire)
+  .distinct()
+  .collect(Collectors.toList())
+  .forEach(System.out::println);
+
+List<Produs> scump = 
+    lp.stream()
+      .filter(produs -> produs.getUnitar() * produs.getCantitate() >= 1000)
+      .collect(Collectors.toList());
+
+lp.stream()
+  .collect(Collectors.groupingBy(Produs::getFirma))
+  .forEach((firma, produse) -> {
+    System.out.println(firma);
+    produse.forEach(System.out::println);
+  });

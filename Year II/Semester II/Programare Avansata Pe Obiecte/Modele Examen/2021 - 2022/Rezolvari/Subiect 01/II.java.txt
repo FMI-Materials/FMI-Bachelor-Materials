@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+class Imobil {
+    private String tip;
+    private String locatie;
+    private int nrCamere;
+    private double suprafata;
+    private double pret;
+
+    public Imobil(String tip, String locatie, int nrCamere, double suprafata, double pret) {
+        this.tip = tip;
+        this.locatie = locatie;
+        this.nrCamere = nrCamere;
+        this.suprafata = suprafata;
+        this.pret = pret;
+    }
+
+    public int getNrCamere() {
+        return nrCamere;
+    }
+
+    public String getLocalitate() {
+        return locatie;
+    }
+
+    public double getSuprafata() {
+        return suprafata;
+    }
+
+    public double getPret() {
+        return pret;
+    }
+
+    @Override
+    public String toString() {
+        return "Imobil{" + "tip='" + tip + '\'' + ", locatie='" + locatie + '\'' + ", nrCamere=" + nrCamere + ", suprafata=" + suprafata + ", pret=" + pret + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tip, locatie, nrCamere, suprafata, pret);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Imobil imobil = (Imobil) o;
+        return nrCamere == imobil.nrCamere &&
+                Double.compare(imobil.suprafata, suprafata) == 0 &&
+                Double.compare(imobil.pret, pret) == 0 &&
+                tip.equals(imobil.tip) &&
+                locatie.equals(imobil.locatie);
+     }
+}
+
+public class II {
+    public static void main(String[] args) {
+        List<Imobil> li = new ArrayList<>();
+        li.add(new Imobil("casa", "Sinaia", 3, 10.0, 19999999.99));
+        li.add(new Imobil("casa", "Sinaia", 2, 10.0, 199.99));
+        li.add(new Imobil("apartament", "Suceava", 1, 2.0, 1999.99));
+        li.add(new Imobil("bloc", "Bucuresti", 100, 100.0, 1.99));
+        li.add(new Imobil("bloc", "Bucuresti", 100, 100.0, 200000.99));
+
+        // 1
+        li.stream()
+          .filter(imobil -> imobil.getNrCamere() >= 3 && imobil.getPret() <= 100000)
+          .sorted((i1, i2) -> (int)(i1.getSuprafata() - i2.getSuprafata()))
+          .forEach(System.out::println); 
+
+        // 2
+        li.stream()
+          .map(imobil -> imobil.getLocalitate())
+          .distinct()
+          .forEach(System.out::println);
+          
+        // 3
+        List<Imobil> bucu = 
+            li.stream()
+              .filter(imobil -> imobil.getLocalitate().toLowerCase().equals("bucuresti"))
+              .filter(imobil -> imobil.getPret() > 200000 && imobil.getPret() < 500000)
+              .collect(Collectors.toList());
+        bucu.forEach(System.out::println);
+
+        // 4
+        li.stream()
+          .collect(Collectors.groupingBy(Imobil::getLocalitate))
+          .forEach((localitate, imobil) -> {
+              System.out.println(localitate);
+              imobil.forEach(System.out::println);
+          });
+    }
+}

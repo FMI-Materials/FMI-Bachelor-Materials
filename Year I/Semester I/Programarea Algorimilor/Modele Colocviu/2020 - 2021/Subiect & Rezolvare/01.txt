@@ -1,0 +1,87 @@
+#Broscoteanu Daria-Mihaela 143
+#a) [0,5p] Scrieți o funcție citire_matrice cu un parametru reprezentând numele unui fișier care conține elementele unei matrice
+# de numere naturale cu următoarea structură: pe linia i a fișierului sunt elementele de pe linia i a matricei separate printr-un
+# spațiu (vezi exemplul de fișier de intrare la punctul c)). Funcția citește elementele matricei din fișierul cu numele dat ca parametru
+# și returnează matricea cu aceste elemente.
+# Dacă în fișierul de intrare numărul de numere de pe fiecare linie nu este același pentru toate liniile funcția va returna None.
+def citire_matrice(nume):
+    f=open(nume)
+    l=[]
+    s=f.readline()
+
+    while s!="":
+        ll=[int(x) for x in s.split()]
+        if len(l)>0:
+            if len(ll)!=len(l[0]):
+                return None
+        l.append(ll)
+        s=f.readline()
+
+    f.close()
+    return l
+#print(citire_matrice("date.in"))
+#l=citire_matrice("date.in")
+
+#b) [1,25p] Scrieți o funcție multimi care primește ca parametri (în această ordine):
+# o matrice  și un număr variabil de numere naturale reprezentând indici ai liniilor din matrice
+# (indicele primei linii din matrice este 0; indicii dați sunt mai mici decât numărul de linii ale matricei).
+# Asociem fiecărei linii din matrice două mulțimi: mulțimea elementelor negative și mulțimea elementelor
+# pozitive care au prima cifră egală cu ultima.
+
+#Funcția returnează următoarele două mulțimi:
+
+#- intersecția mulțimilor elementelor negative asociate liniilor corespunzătoare indicilor dați
+
+#- reuniunea mulțimilor elementelor pozitive care au prima cifră egală cu ultima asociate liniilor corespunzătoare indicilor dați
+
+# (elementele din reuniune sunt distincte două câte două, la fel și cele din intersecție).
+def multimi(l,*param):
+    m1=set()
+    m2=set()
+    for x in param:
+        m=set()
+        n=set()
+        x=int(x)
+        for i in range(len(l[x])):
+            if int(l[x][i])>0:
+                s=str(l[x][i])
+                c1=s[0]
+                c2=s[len(s)-1]
+                if c1==c2:
+                    m.add(l[x][i])
+            else:
+                if int(l[x][i])<0:
+                    n.add(l[x][i])
+        if len(m2)==0:
+            m2=m
+        else:
+            m2=m2|m
+        if len(m1)==0:
+            m1=n
+        else:
+            p=set()
+            p=m1.intersection(n)
+            m1=p
+    return m1,m2
+
+#print(multimi(l,0,3))
+
+
+#c) [1,25p] Se dă fișierul "matrice.in" cu structura descrisă la punctul a).
+# Folosind apeluri utile ale funcțiilor de la a) și b) să se citească matricea din fișierul “matrice.in”
+# și să se afișeze pe ecran numerele pozitive cu prima cifră egală cu ultima care se află în fișier pe ultimele 3 linii
+# (se vor afișa pe aceeași linie, separate prin spațiu, ordonate crescător), precum și numărul de elemente negative
+# care se află atât pe prima cât și pe ultima linie din fișier.
+
+#Pentru punctul c) se acordă 1p dacă este rezolvat corect dar fără a folosi funcția de la b).
+
+l=citire_matrice("matrice.in")
+n=len(l)
+negative,pozitive=multimi(l,n-3,n-2,n-1)
+pozitive=list(pozitive)
+pozitive.sort()
+for x in pozitive:
+    print(x,end=" ")
+negative,pozitive=multimi(l,0,n-1)
+print()
+print(len(negative))

@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.Runnable;
+import java.lang.Thread;
+
+class Total {
+    private double total;
+    Total() { total = 0; }
+    public double getTotal() { return total; }
+    synchronized public void addTotal(double value) { total += value; }
+}
+
+class Fir implements Runnable {
+    private final Scanner scanner;
+    private final double pmin;
+    private final String lexp;
+    private final Total total;
+
+    Fir(String filePath, double pmin, String lexp, Total total) throws FileNotFoundException {
+        this.scanner = new Scanner(new File(filePath));
+        this.pmin = pmin;
+        this.lexp = lexp;
+        this.total = total;
+    }
+
+    @Override
+    public void run() {
+        while (scanner.hasNextLine()) {
+            String[] detaliiProdus = scanner.nextLine().split(",");
+            double pretUnitar = Double.parseDouble(detaliiProdus[2]);
+            String luna = detaliiProdus[3].split("-")[1];
+            if (pretUnitar >= pmin && luna.equals(lexp)) {
+                total.addTotal(pretUnitar * Double.parseDouble(detaliiProdus[1]));
+            }
+        }
+    }
+}
+
+public class III {
+    private final static String filePath1 = "txt/produse_1.txt";
+    private final static String filePath2 = "txt/produse_2.txt";
+    private final static Scanner scanner = new Scanner(System.in);
+    private static Total total = new Total();
+
+    public static void main(String[] args) {
+        try {
+            double pmin = Double.parseDouble(scanner.nextLine());
+            String lexp = scanner.nextLine();
+
+            Thread t1 = new Thread(new Fir(filePath1, pmin, lexp, total));
+            Thread t2 = new Thread(new Fir(filePath2, pmin, lexp, total));
+
+            t1.start();
+            t2.start();
+
+            t1.join();
+            t2.join();
+
+            System.out.println(total.getTotal());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

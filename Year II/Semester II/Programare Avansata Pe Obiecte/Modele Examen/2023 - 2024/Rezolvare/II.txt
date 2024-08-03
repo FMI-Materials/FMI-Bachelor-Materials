@@ -1,0 +1,27 @@
+List<Automobil> la = new ArrayList<>();
+la.add(new Automobil("Audi", "A6", 2500, 5000));
+la.add(new Automobil("BMW", "X5", 3000, 4000));
+la.add(new Automobil("Mercedes", "S500", 4000, 3000));
+
+la.stream()
+  .filter(automobil -> automobil.getPret() >= 5000)
+  .sorted(Comparator.comparing(Automobil::getPret).reversed())
+  .forEach(System.out::println);
+
+la.stream()
+  .map(Automobil::getMarca)
+  .distinct()
+  .forEach(System.out::println);
+
+List<Automobil> automobile = 
+    la.stream()
+      .filter(automobil -> automobil.getCapacitate() > 2000 && automobil.getPret() < 3000)
+      .collect(Collectors.toList());
+
+
+System.out.println(
+    la.stream()
+      .filter(automobil -> automobil.getMarca().equalsIgnoreCase("Audi"))
+      .max(Comparator.comparing(Automobil::getPret))
+      .orElse(null)
+);

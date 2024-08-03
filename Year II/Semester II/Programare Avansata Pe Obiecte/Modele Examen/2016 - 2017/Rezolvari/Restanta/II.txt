@@ -1,0 +1,27 @@
+List<Asigurare> la = new ArrayList<>();
+la.add(new Asigurare("de sanatate", "Andrei", 129.99, "Sinaia"));
+la.add(new Asigurare("de viata", "Giulian", 64.99, "Suceava"));
+la.add(new Asigurare("RCA", "Dumitru", 9.99, "Bucuresti"));
+
+la.stream()
+  .filter(asigurare -> asigurare.getTip().toLowerCase().equls("rca"))
+  .sorted(Comparator.comparing(Asigurare::getValoare).reversed())
+  .forEach(System.out::println);
+
+la.stream()
+  .map(Asigurare::getLocalitate)
+  .distinct()
+  .firEach(System.out::println);
+
+List<Asigurare> asigurari = 
+    la.stream()
+      .filter(asigurare -> asigurare.getLocalitate.toLowerCase().equals("bucuresti"))
+      .filter(asigrare -> asigurare.getValoare() > 10000 && asigurare.getValoare() < 50000)
+      .collect(Collectors.toList());
+
+la.stream()
+  .collect(Collectors.groupingBy(Asigurare::getTitular))
+  .forEach((titular, asigurari) -> {
+        System.out.println(titular);
+        asigurari.forEach(System.out::println);
+  })

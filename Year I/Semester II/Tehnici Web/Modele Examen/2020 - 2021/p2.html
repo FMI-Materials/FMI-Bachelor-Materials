@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>P2</title>
+
+	<style>
+		.cutie {
+			width: 10px;
+			height: 10px;
+			border: 2px solid black;
+			display: inline-block;
+			margin-left: 10px;
+		}
+	</style>
+
+	<script>
+		window.onload=function(){
+  
+  var d = new Date();
+  var n = d.getHours();
+  var colors = ['red', 'green', 'blue', 'purple', 'lime'];
+
+  for(var i=0;i<n;i++) {
+
+    var div=document.createElement("div"); //creare colectie
+    document.body.appendChild(div);
+    div.className="cutie";
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    div.style.backgroundColor = randomColor;
+    div.innerHTML=(i+1);
+
+    var initial= parseInt(window.getComputedStyle(div).height); //preluare stil creat cu CSS: 150
+
+    div.onclick=function(event){ //click pe div
+      if(this.style.height!=="" || this.style.width!==""){
+        var curent=parseInt(this.style.height);
+         this.style.height= curent+5+'px';
+         this.style.width= curent+5+'px';
+       }
+       else
+      {
+          this.style.height= initial + 5 + 'px';
+          this.style.width= initial + 5 + 'px';
+      }
+      event.stopPropagation(); //oprirea propagarii spre parinte
+    }
+  }
+  document.body.onclick=function(){ //click pe body
+    var divuri=document.getElementsByClassName("cutie");
+    for(d of divuri) {
+      d.style.height=initial +'px';
+      d.style.width=initial +'px';
+    }
+  }
+}
+	</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

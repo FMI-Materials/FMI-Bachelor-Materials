@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>P3</title>
+	<script>
+		window.onload=function(){
+  
+  var date = new Date();
+  var inputs=document.getElementsByName("grosime");
+  if(localStorage.getItem("grosime")){
+    input.value=localStorage.getItem("grosime");
+  }
+  else
+  {
+    for(i = 0; i < inputs.length; i++) {
+    if(inputs[i].checked)
+      var input = inputs[i];
+  }
+  }
+  document.getElementById("paragraf").innerHTML = "Popescu Paullo Robertto Karloss "+date;
+  document.getElementById("paragraf").style.border = input.value+" solid black";
+
+  var par=document.getElementsByName("grosime");
+  var nr=par.length;
+
+  window.onkeydown=function(event){
+    if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) {
+      	window.onkeydown=null;
+        var c=setInterval(myFunction,3000);
+      }
+    }
+    function myFunction(){
+          var x;
+          for(let p of par){
+            if (p.innerHTML.split(" ").length > parseInt(input.value)){
+              x=p;
+              break;
+            }
+          }
+            clearInterval(c);
+            localStorage.setItem("grosime",input);
+          }
+        }
+    function myStopFunction() {
+  clearInterval(myVar);
+}
+
+  }
+	</script>
+</head>
+
+<body>
+	<p id="paragraf"></p>
+	<label>
+    <input type="radio" name="grosime" value="10px" checked>10px
+    <input type="radio" name="grosime" value="20px">20px
+    <input type="radio" name="grosime" value="30px">30px
+    <input type="radio" name="grosime" value="40px">40px
+    <input type="radio" name="grosime" value="50px">50px
+    <br/>
+	</label>
+</body>
+</html>

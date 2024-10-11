@@ -1,0 +1,33 @@
+import java.sql.*;
+import java.util.Scanner;
+
+public class Main {
+    private final static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        double s = scanner.nextDouble();
+        int v = scanner.nextInt();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/Angajati");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
+                "SELECT *" + 
+                "\nFROM DateAngajati" +
+                "\nWHERE Varsta <= " + v + " AND Salariu >= " + s);
+
+            while (resultSet.next()) {
+                System.out.println("CNP: " + resultSet.getString("CNP"));
+                System.out.println("Nume: " + resultSet.getString("Nume"));
+                System.out.println("Varsta: " + resultSet.getInt("Varsta"));
+                System.out.println("Salariu: " + resultSet.getDouble("Salariu"));
+                System.out.println();
+            }
+
+            connection.close();
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

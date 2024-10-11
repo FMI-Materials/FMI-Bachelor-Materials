@@ -1,0 +1,199 @@
+-- 1
+CREATE TABLE EMP_ANE AS SELECT * FROM EMPLOYEES;
+CREATE TABLE DEPT_ANE AS SELECT * FROM DEPARTMENTS; 
+
+-- 2
+DESC EMPLOYEES;
+DESC EMP_ANE;
+DESC DEPARTMENTS;
+DESC DEPT_ANE;
+
+-- 3
+SELECT *
+FROM EMP_ANE;
+
+SELECT *
+FROM DEPT_ANE;
+
+-- 4
+ALTER TABLE EMP_ANE
+ADD CONSTRAINT PK_EMP_ANE PRIMARY KEY(employee_id);
+
+ALTER TABLE DEPT_ANE
+ADD CONSTRAINT PK_DEPT_ANE PRIMARY KEY(department_id);
+
+ALTER TABLE EMP_ANE
+ADD CONSTRAINT FK_EMP_DEPT_ANE FOREIGN KEY(department_id) REFERENCES DEPT_ANE(department_id);
+
+ALTER TABLE EMP_ANE ADD CONSTRAINT FK_EMP_EMP_ANE FOREIGN KEY(manager_id)
+REFERENCES emp_pnu(employee_id);
+
+ALTER TABLE DEPT_ANE
+ADD CONSTRAINT FK_DEPT_EMP_ANE FOREIGN KEY(manager_id) REFERENCES EMP_PNU(employee_id);
+
+-- 5
+INSERT INTO DEPT_ANE (department_id, department_name, location_id)
+VALUES (300, 'Programare', NULL);
+
+COMMIT
+
+-- 6
+INSERT INTO EMP_ANE
+VALUES (250, NULL, 'nume250', 'email250', NULL, SYSDATE, 'IT_PROG', NULL, NULL, NULL, 300);
+
+COMMIT
+
+-- 7
+INSERT INTO EMP_ANE (hire_date, job_id, employee_id, last_name, email, department_id)
+VALUES (SYSDATE, 'sa_man', 278, 'nume_278', 'email_278', 300);
+
+COMMIT
+
+-- 8
+CREATE TABLE EMP1_ANE AS SELECT * FROM EMPLOYEES;
+DELETE FROM EMP1_ANE;
+
+INSERT INTO EMP1_ANE
+    SELECT *
+    FROM EMPLOYEES
+    WHERE commission_pct > 0.25;
+
+SELECT * FROM EMP1_ANE;
+
+-- 9
+INSERT INTO EMP_ANE (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+VALUES(&cod, '&&prenume', '&&nume', substr('&prenume', 1, 1) || substr('&nume', 1, 7), SYSDATE, 'IT_PROG', &sal);
+UNDEFINE prenume;
+UNDEFINE nume;
+
+SELECT * FROM EMP_ANE;
+
+ROLLBACK;
+
+-- 10
+DELETE FROM EMP1_ANE;
+
+CREATE TABLE EMP2_ANE AS SELECT * FROM EMPLOYEES;
+DELETE FROM EMP2_ANE;
+
+CREATE TABLE EMP3_ANE AS SELECT * FROM EMPLOYEES;
+DELETE FROM EMP3_ANE;
+
+INSERT ALL
+    WHEN salary < 5000 THEN
+        INTO EMP1_ANE
+    WHEN salary BETWEEN 5000 AND 10000 THEN
+        INTO EMP2_ANE
+    ELSE
+        INTO EMP3_ANE
+SELECT * FROM EMPLOYEES;
+
+SELECT * FROM EMP1_ANE;
+SELECT * FROM EMP2_ANE;
+SELECT * FROM EMP3_ANE;
+
+ROLLBACK;
+
+-- 11
+CREATE TABLE EMP0_ANE AS SELECT * FROM EMPLOYEES;
+DELETE FROM EMP0_ANE;
+
+INSERT FIRST
+    WHEN department_id = 80 THEN
+        INTO EMP0_ANE
+    WHEN salary < 5000 THEN
+        INTO EMP1_ANE
+    WHEN salary BETWEEN 5000 AND 10000 THEN
+        INTO EMP2_ANE
+    ELSE
+        INTO EMP3_ANE
+SELECT * FROM EMPLOYEES;
+
+SELECT * FROM EMP0_ANE;
+SELECT * FROM EMP1_ANE;
+SELECT * FROM EMP2_ANE;
+SELECT * FROM EMP3_ANE;
+
+ROLLBACK;
+
+-- 12
+UPDATE EMP_ANE
+SET salary = salary * 1.05;
+
+SELECT * FROM EMP_ANE;
+
+ROLLBACK;
+
+-- 13
+UPDATE EMP_ANE
+SET job_id = 'SA_REP'
+WHERE department_id = 80 AND commission_pct IS NOT NULL;
+
+SELECT * FROM EMP_ANE;
+
+ROLLBACK;
+
+-- 14
+SELECT *
+FROM EMP_ANE
+WHERE UPPER(last_name || first_name) = 'GRANTDOUGLAS'; --199
+
+SELECT *
+FROM DEPT_ANE
+WHERE department_id = 20;
+
+UPDATE DEPT_ANE
+SET manager_id = (
+                    SELECT employee_id
+                    FROM EMP_ANE
+                    WHERE UPPER(last_name || first_name) = 'GRANTDOUGLAS'
+                 )
+WHERE department_id = 20;
+
+UPDATE EMP_ANE
+SET salary = salary + 1000
+WHERE UPPER(last_name || first_name) = 'GRANTDOUGLAS';
+
+ROLLBACK;
+
+-- 15
+DELETE FROM DEPT_ANE;
+SELECT * FROM DEPT_ANE;
+
+-- 16
+SELECT d.department_id
+FROM EMPLOYEES e 
+RIGHT JOIN DEPARTMENTS d ON(e.department_id = d.department_id)
+WHERE employee_id IS NULL;
+
+DELETE FROM DEPT_ANE
+WHERE department_id IN (
+                            SELECT department_id
+                            FROM DEPARTMENTS 
+                            MINUS 
+                            SELECT department_id
+                            FROM EMPLOYEES
+                       );
+
+SELECT * FROM DEPT_ANE;
+
+ROLLBACK;
+
+-- 17
+INSERT INTO DEPT_ANE
+VALUES(320, 'DEPT_NOU', NULL, NULL);
+
+SELECT * FROM dept_pnu;
+
+-- 18
+SAVEPOINT p;
+
+-- 19
+DELETE FROM DEPT_ANE
+WHERE department_id BETWEEN 160 AND 200;
+
+SELECT * FROM DEPT_ANE;
+
+-- 20
+ROLLBACK TO p;
+COMMIT;

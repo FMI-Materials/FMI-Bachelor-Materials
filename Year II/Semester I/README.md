@@ -2,7 +2,7 @@
 | Discipline                                       | C | S | L | P | FE | Credits |
 |--------------------------------------------------|---|---|---|---|----|---------|
 | [Probabilitati Si Statistica (P&S)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Probabilitati%20Si%20Statistica)                     | 3 | - | 2 | - | E  | 5       |
-| [Algoritmi fundamentali (AF)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Algoritmi%20Fundamentali)                          | 2 | 1 | 1 | - | E  | 5       |
+| [Algoritmi Fundamentali (AF)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Algoritmi%20Fundamentali)                          | 2 | 1 | 1 | - | E  | 5       |
 | [Sisteme De Gestiune A Bazelor De Date (SGBD)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Sisteme%20De%20Gestiune%20A%20Bazelor%20De%20Date)           | 2 | - | 2 | - | E  | 5       |
 | [Programare Functionala (PF)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Programare%20Functionala)                               | 2 | - | 2 | - | E  | 4       |
 | [Sisteme De Operare (SO)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20II/Semester%20I/Sisteme%20De%20Operare)                               | 2 | - | 2 | - | E  | 4       |

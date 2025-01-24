@@ -1,12 +1,12 @@
 ### Semester II
-| Discipline                                       | C | S | L | P | FE | Credits |
-|--------------------------------------------------|---|---|---|---|----|---------|
-| [Optional 4](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionale)               | - | - | - | - | -  | -       |
-| [Optional 5](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionale)               | - | - | - | - | -  | -       |
-| [Optional 6](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionale)               | - | - | - | - | -  | -       |
-| [Optional 7](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionale)               | - | - | - | - | -  | -       |
-| [Realizarea Lucrarii De Licenta](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20II/Licenta)               | - | - | - | 2 | V  | 7       |
-| Practica               | - | - | - | 160 | V  | 7       |
+| Discipline                                     | C | S | L | P   | FE | Credits |
+|------------------------------------------------|---|---|---|-----|----|---------|
+| [Securitatea Sistemelor Informatice (SSI)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20I/Securitatea%20Sistemelor%20Informatice) | 2 | 1 | 2 | -   | E  | 4       |
+| [Optional 4](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
+| [Optional 5](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
+| [Optional 6](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
+| [Realizarea Lucrarii De Licenta](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20II/Licenta)           | - | - | - | 2   | V  | 7       |
+| [Practica](https://fmi.unibuc.ro/practica/)                                 | - | - | - | 160 | V  | 7       |
 
 ## Optionale
 - [Production engineering (industrie)](https://optionale.fmi.unibuc.ro/courses/60)

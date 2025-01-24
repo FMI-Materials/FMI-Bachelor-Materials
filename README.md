@@ -46,7 +46,7 @@
 | I        | [Optional 1](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
 | I        | [Optional 2](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
 | I        | [Optional 3](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
-| II       | [Securitatea Sistemelor Informatice (SSI)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20I/Securitatea%20Sistemelor%20Informatice) | 2 | 1 | 2 | -   | E  | 4       |
+| II       | [Securitatea Sistemelor Informatice (SSI)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20II/Securitatea%20Sistemelor%20Informatice) | 2 | 1 | 2 | -   | E  | 4       |
 | II       | [Optional 4](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
 | II       | [Optional 5](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
 | II       | [Optional 6](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |

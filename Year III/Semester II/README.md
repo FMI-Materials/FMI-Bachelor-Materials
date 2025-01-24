@@ -1,7 +1,7 @@
 ### Semester II
 | Discipline                                     | C | S | L | P   | FE | Credits |
 |------------------------------------------------|---|---|---|-----|----|---------|
-| [Securitatea Sistemelor Informatice (SSI)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20I/Securitatea%20Sistemelor%20Informatice) | 2 | 1 | 2 | -   | E  | 4       |
+| [Securitatea Sistemelor Informatice (SSI)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20II/Securitatea%20Sistemelor%20Informatice) | 2 | 1 | 2 | -   | E  | 4       |
 | [Optional 4](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
 | [Optional 5](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |
 | [Optional 6](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | E  | 4       |

@@ -1,0 +1,101 @@
+data MList = ML (MVar [Int]) 
+
+f_concurrency :: a -> IO b 
+f_stm :: a -> STM b
+
+atomically :: STM a -> IO a 
+
+
+newMList :: IO MList 
+newMList = do
+	mvar <- newMVar []
+	return $ ML mvar 
+
+-- cand implementam un channel, vrem un API specific pentru acel channel 
+-- newMList, readMList, writeMList 
+
+
+ML (MVar [Int]) 
+
+return $ ML (newMVar [])        :: IO (ML (MVar [Int])) 
+         ML (newMVar [])	:: ML (MVar [Int]) 
+	     newMVar []	        :: MVar [Int]
+	             []		:: [Int]
+
+
+[10, 20, 30, 40, 50]
+^
+scriu 0 
+[0, 10, 20, 30, 40, 50]
+		     ^ citire 
+[0, 10, 20, 30, 40]	
+
+
+scriere: adaug la inceputul listei
+citire: citesc de la sfarsitul listei 
+
+modifyMVar_ :: MVar a -> (a -> IO a) -> IO ()
+-- functia modifyMVar_ se aplica peste un MVar cu o functie care imi descrie modificarea 
+-- si am garantia ca in MVar a s-a produs acea modificare 
+
+ML (MVar [10, 20, 30, 40, 50]) 0
+------------------------------
+    ~~~~~~~~~~~~~~~~~~~~~~~~~
+ML (MVar [0, 10, 20, 30, 40, 50]) 
+
+
+writeMList :: MList -> Int -> IO ()
+wirteMList (ML mvar) val = do
+	modifyMVar_ mvar $ \list -> return (val : list)
+
+modifyMVar :: MVar a -> (a -> IO (a, b)) -> IO b
+
+
+readMList :: MList -> IO (Maybe Int)
+readMList (ML mvar) = do 
+	modifyMvar mvar $ \list -> case reverse list of 
+		[] -> return ([], Nothing)
+		(x:xs) -> return (reverse xs, Just x)
+
+forkIO $ forever $ do ... 
+
+
+stationary(Floor) nu, {stationary, Floor} da 
+f(T1, T2, ..., Tn) -> {f, T1, T2, ..., Tn} 
+
+start_lifts(MaxCap, NFloors) -> 
+	Lift1 = spawn(fun () -> lift_loop(lift1, {stationary, 0}, MaxCap, [], NFloors) end),
+	Lift2 = spawn(fun () -> lift_loop(lift2, {stationary, 0}, MaxCap, [], NFloors) end).
+
+lift_loop(Name, {stationary, Floor}, MaxCap, Passengers, NFloors) ->
+	receive
+		{request, From, To, PersonPid} when length(Passengers) < MaxCap ->
+			Direction = if 
+				From > Floor -> up;
+				From < Floor -> down;
+				true -> stationary
+			end, 
+			PersonPid ! {enter, Name},
+			lift_loop(Name, {moving, Direction, From}, MaxCap, [{From, To, PersonPid} | Passengers], NFloors);
+		_ -> 
+			lift_loop(Name, {stationary, Floor}, MaxCap, Passenger, NFloors)
+	end;
+
+lift_loop(Name, {moving, Direction, TargetFloor}, MaxCap, Passenger, NFloors) ->
+
+	.
+
+start_passenger(Lift1, Lift2, From, To) ->
+	spawn(fun () -> passenger_loop(waiting, {Lift1, Lift2}, From, To) end).
+
+
+passenger_loop(waiting, {Lift1, Lift2}, From, To) ->
+	Lift1 ! {request, From, To, self()},
+	Lift2 ! {request, From, To, self()},
+	receive 
+		{enter, Lift} -> 
+			io:format("Pasagerul a intrat in liftul ~p spre etajul ~p~n", [Lift, To]),
+			passenger_loop(moving, {Lift1, Lift2}, From, To);
+		_ ->
+			passenger_loop(waiting, {Lift1, Lift}, From, To).
+		

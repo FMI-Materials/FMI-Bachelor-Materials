@@ -1,11 +1,11 @@
 ### Semester I
 | Discipline                                     | C | S | L | P   | FE | Credits |
 |------------------------------------------------|---|---|---|-----|----|---------|
-| [Calculabilitate Si Complexitate (CC)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20I/Calculabilitate%20Si%20Complexitate)     | 2 | 1 | - | -   | E  | 6       |
-| [Inginerie Software (IS)](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Semester%20I/Inginerie%20Software)                  | 2 | - | - | 1   | E  | 6       |
-| [Optional 1](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
-| [Optional 2](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
-| [Optional 3](https://github.com/FMI-Materials/FMI-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
+| [Calculabilitate Si Complexitate (CC)](https://github.com/FMI-Materials/FMI-Bachelor-Materials/tree/main/Year%20III/Semester%20I/Calculabilitate%20Si%20Complexitate)     | 2 | 1 | - | -   | E  | 6       |
+| [Inginerie Software (IS)](https://github.com/FMI-Materials/FMI-Bachelor-Materials/tree/main/Year%20III/Semester%20I/Inginerie%20Software)                  | 2 | - | - | 1   | E  | 6       |
+| [Optional 1](https://github.com/FMI-Materials/FMI-Bachelor-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
+| [Optional 2](https://github.com/FMI-Materials/FMI-Bachelor-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
+| [Optional 3](https://github.com/FMI-Materials/FMI-Bachelor-Materials/tree/main/Year%20III/Optionals)                               | 2 | - | 2 | -   | V  | 6       |
 
 ## Optionale
 - [JavaScript server-side: NodeJS & GraphQL (industrie)](https://optionale.fmi.unibuc.ro/courses/44)
